@@ -1,5 +1,5 @@
 //
-//  SKAlertControllerTransition.swift
+//  KKAlertControllerTransition.swift
 //  spade-swift
 //
 //  Created by Keith CheeHui on 21/04/2021.
@@ -9,7 +9,7 @@ import Foundation
 
 import UIKit
 
-class SKViewControllerAnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
+class KKViewControllerAnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
     let backgroundColor: UIColor
     init(backgroundColor: UIColor) {
@@ -46,7 +46,7 @@ class SKViewControllerAnimatedTransition: NSObject, UIViewControllerAnimatedTran
     }
 }
 
-class SKAlertControllerPresentTransition: SKViewControllerAnimatedTransition {
+class KKAlertControllerPresentTransition: KKViewControllerAnimatedTransition {
     
     override func animateTransition(_ from: UIViewController, to: UIViewController, container: UIView, completion: @escaping (Bool) -> Void) {
         to.view.frame = container.bounds
@@ -62,7 +62,7 @@ class SKAlertControllerPresentTransition: SKViewControllerAnimatedTransition {
     }
 }
 
-class TSKAlertControllerDismissTransition: SKViewControllerAnimatedTransition {
+class TKKAlertControllerDismissTransition: KKViewControllerAnimatedTransition {
     override func animateTransition(_ from: UIViewController, to: UIViewController, container: UIView, completion: @escaping (Bool) -> Void) {
         container.addSubview(from.view)
 

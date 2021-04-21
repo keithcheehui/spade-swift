@@ -13,16 +13,16 @@
 		0676B5AF262FD6EF0023311F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0676B5AD262FD6EF0023311F /* Main.storyboard */; };
 		0676B5B1262FD6F30023311F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0676B5B0262FD6F30023311F /* Assets.xcassets */; };
 		0676B5B4262FD6F30023311F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0676B5B2262FD6F30023311F /* LaunchScreen.storyboard */; };
-		0676B5F0262FD7F20023311F /* SKUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5EF262FD7F20023311F /* SKUtil.swift */; };
-		0676B5F3262FD8520023311F /* SKConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5F2262FD8520023311F /* SKConstant.swift */; };
-		0676B5F6262FD8BD0023311F /* SKSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5F5262FD8BD0023311F /* SKSingleton.swift */; };
-		0676B5F9262FD8E40023311F /* SKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5F8262FD8E40023311F /* SKColor.swift */; };
-		0676B5FC262FD94A0023311F /* SKFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5FB262FD94A0023311F /* SKFont.swift */; };
+		0676B5F0262FD7F20023311F /* KKUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5EF262FD7F20023311F /* KKUtil.swift */; };
+		0676B5F3262FD8520023311F /* KKConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5F2262FD8520023311F /* KKConstant.swift */; };
+		0676B5F6262FD8BD0023311F /* KKSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5F5262FD8BD0023311F /* KKSingleton.swift */; };
+		0676B5F9262FD8E40023311F /* KKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5F8262FD8E40023311F /* KKColor.swift */; };
+		0676B5FC262FD94A0023311F /* KKFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5FB262FD94A0023311F /* KKFont.swift */; };
 		0676B5FF262FD9A50023311F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0676B5FE262FD9A50023311F /* Localizable.strings */; };
 		0676B60E262FDAF40023311F /* SKFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B60D262FDAF40023311F /* SKFuture.swift */; };
 		0676B612262FDAFE0023311F /* SKResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B611262FDAFE0023311F /* SKResult.swift */; };
-		0676B616262FDB790023311F /* SKAlertControllerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B615262FDB790023311F /* SKAlertControllerTransition.swift */; };
-		0676B624262FDC8F0023311F /* SKBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B623262FDC8F0023311F /* SKBaseViewController.swift */; };
+		0676B616262FDB790023311F /* KKAlertControllerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B615262FDB790023311F /* KKAlertControllerTransition.swift */; };
+		0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B623262FDC8F0023311F /* KKBaseViewController.swift */; };
 		3ED808A9A35A15A51B9CD1B0 /* Pods_spade_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,18 +33,18 @@
 		0676B5AB262FD6EF0023311F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0676B5B0262FD6F30023311F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0676B5B5262FD6F30023311F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0676B5EF262FD7F20023311F /* SKUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKUtil.swift; sourceTree = "<group>"; };
-		0676B5F2262FD8520023311F /* SKConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKConstant.swift; sourceTree = "<group>"; };
-		0676B5F5262FD8BD0023311F /* SKSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSingleton.swift; sourceTree = "<group>"; };
-		0676B5F8262FD8E40023311F /* SKColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKColor.swift; sourceTree = "<group>"; };
-		0676B5FB262FD94A0023311F /* SKFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKFont.swift; sourceTree = "<group>"; };
+		0676B5EF262FD7F20023311F /* KKUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKUtil.swift; sourceTree = "<group>"; };
+		0676B5F2262FD8520023311F /* KKConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKConstant.swift; sourceTree = "<group>"; };
+		0676B5F5262FD8BD0023311F /* KKSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSingleton.swift; sourceTree = "<group>"; };
+		0676B5F8262FD8E40023311F /* KKColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKColor.swift; sourceTree = "<group>"; };
+		0676B5FB262FD94A0023311F /* KKFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKFont.swift; sourceTree = "<group>"; };
 		0676B5FE262FD9A50023311F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		0676B60A262FDA9A0023311F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0676B60B262FDA9A0023311F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0676B60D262FDAF40023311F /* SKFuture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKFuture.swift; sourceTree = "<group>"; };
 		0676B611262FDAFE0023311F /* SKResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKResult.swift; sourceTree = "<group>"; };
-		0676B615262FDB790023311F /* SKAlertControllerTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAlertControllerTransition.swift; sourceTree = "<group>"; };
-		0676B623262FDC8F0023311F /* SKBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKBaseViewController.swift; sourceTree = "<group>"; };
+		0676B615262FDB790023311F /* KKAlertControllerTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAlertControllerTransition.swift; sourceTree = "<group>"; };
+		0676B623262FDC8F0023311F /* KKBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKBaseViewController.swift; sourceTree = "<group>"; };
 		1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spade_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E2D902D25F2E5F3802521A0 /* Pods-spade-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spade-swift.release.xcconfig"; path = "Target Support Files/Pods-spade-swift/Pods-spade-swift.release.xcconfig"; sourceTree = "<group>"; };
 		DE9CF2AF875923073B28E1B7 /* Pods-spade-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spade-swift.debug.xcconfig"; path = "Target Support Files/Pods-spade-swift/Pods-spade-swift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -100,11 +100,11 @@
 			children = (
 				0676B614262FDB400023311F /* AlertView */,
 				0676B60C262FDAD70023311F /* Future */,
-				0676B5EF262FD7F20023311F /* SKUtil.swift */,
-				0676B5F2262FD8520023311F /* SKConstant.swift */,
-				0676B5F5262FD8BD0023311F /* SKSingleton.swift */,
-				0676B5F8262FD8E40023311F /* SKColor.swift */,
-				0676B5FB262FD94A0023311F /* SKFont.swift */,
+				0676B5EF262FD7F20023311F /* KKUtil.swift */,
+				0676B5F2262FD8520023311F /* KKConstant.swift */,
+				0676B5F5262FD8BD0023311F /* KKSingleton.swift */,
+				0676B5F8262FD8E40023311F /* KKColor.swift */,
+				0676B5FB262FD94A0023311F /* KKFont.swift */,
 				0676B5FE262FD9A50023311F /* Localizable.strings */,
 			);
 			path = Helper;
@@ -133,7 +133,7 @@
 		0676B614262FDB400023311F /* AlertView */ = {
 			isa = PBXGroup;
 			children = (
-				0676B615262FDB790023311F /* SKAlertControllerTransition.swift */,
+				0676B615262FDB790023311F /* KKAlertControllerTransition.swift */,
 			);
 			path = AlertView;
 			sourceTree = "<group>";
@@ -203,7 +203,7 @@
 		0676B621262FDC620023311F /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				0676B623262FDC8F0023311F /* SKBaseViewController.swift */,
+				0676B623262FDC8F0023311F /* KKBaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -342,16 +342,16 @@
 			files = (
 				0676B612262FDAFE0023311F /* SKResult.swift in Sources */,
 				0676B5AC262FD6EF0023311F /* ViewController.swift in Sources */,
-				0676B5F3262FD8520023311F /* SKConstant.swift in Sources */,
+				0676B5F3262FD8520023311F /* KKConstant.swift in Sources */,
 				0676B5A8262FD6EF0023311F /* AppDelegate.swift in Sources */,
-				0676B5F6262FD8BD0023311F /* SKSingleton.swift in Sources */,
-				0676B624262FDC8F0023311F /* SKBaseViewController.swift in Sources */,
-				0676B5FC262FD94A0023311F /* SKFont.swift in Sources */,
+				0676B5F6262FD8BD0023311F /* KKSingleton.swift in Sources */,
+				0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */,
+				0676B5FC262FD94A0023311F /* KKFont.swift in Sources */,
 				0676B60E262FDAF40023311F /* SKFuture.swift in Sources */,
-				0676B616262FDB790023311F /* SKAlertControllerTransition.swift in Sources */,
+				0676B616262FDB790023311F /* KKAlertControllerTransition.swift in Sources */,
 				0676B5AA262FD6EF0023311F /* SceneDelegate.swift in Sources */,
-				0676B5F0262FD7F20023311F /* SKUtil.swift in Sources */,
-				0676B5F9262FD8E40023311F /* SKColor.swift in Sources */,
+				0676B5F0262FD7F20023311F /* KKUtil.swift in Sources */,
+				0676B5F9262FD8E40023311F /* KKColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

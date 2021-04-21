@@ -1,5 +1,5 @@
 //
-//  SKBaseViewController.swift
+//  KKBaseViewController.swift
 //  spade-swift
 //
 //  Created by Keith CheeHui on 21/04/2021.
@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class SKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
+class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var activityIndicator:       UIActivityIndicatorView!
 

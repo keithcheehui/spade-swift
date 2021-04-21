@@ -1,5 +1,5 @@
 //
-//  SKUtil.swift
+//  KKUtil.swift
 //  spade-swift
 //
 //  Created by Keith CheeHui on 21/04/2021.
@@ -8,7 +8,7 @@
 import UIKit
 import SystemConfiguration
 
-class SKUtil: NSObject {
+class KKUtil: NSObject {
     
     ///Check internet connectivity
     class func isConnectedToInternet() ->Bool {
@@ -74,5 +74,10 @@ class SKUtil: NSObject {
         }
         urlComponents!.queryItems!.append(contentsOf: newParams)
         return urlComponents?.url
+    }
+    
+    ///convert size according to the screen size
+    class func ConvertSizeByDensity(size: CGFloat) -> CGFloat {
+        return size * ScreenSize.minLength / 414.0
     }
 }

@@ -1,5 +1,5 @@
 //
-//  SKSingleton.swift
+//  KKSingleton.swift
 //  spade-swift
 //
 //  Created by Keith CheeHui on 21/04/2021.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class SKSingleton: NSObject {
+class KKSingleton: NSObject {
     
-    static let sharedInstance = SKSingleton.init()
+    static let sharedInstance = KKSingleton.init()
     
         
     private override init() {}
