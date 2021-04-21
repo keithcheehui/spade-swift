@@ -39,7 +39,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UIControl">
             <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -224,6 +224,9 @@
                 <constraint firstItem="jFN-fs-NPi" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="SKq-Zf-qUm"/>
                 <constraint firstItem="jFN-fs-NPi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="YEd-l1-G9C"/>
             </constraints>
+            <connections>
+                <action selector="btnCloseDidPressed" destination="-1" eventType="touchUpInside" id="p9T-9V-dX3"/>
+            </connections>
             <point key="canvasLocation" x="138.61607142857142" y="89.855072463768124"/>
         </view>
     </objects>

@@ -79,6 +79,9 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
         
         txtUsername.delegate = self
         txtPassword.delegate = self
+        
+        txtUsername.returnKeyType = .next
+        txtPassword.returnKeyType = .done
     }
 
     ///Button Actions

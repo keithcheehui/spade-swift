@@ -77,6 +77,10 @@ class KKRegistrationViewController: KKBaseViewController, UITextFieldDelegate {
         txtUsername.delegate = self
         txtPassword.delegate = self
         txtConfirmPassword.delegate = self
+        
+        txtUsername.returnKeyType = .next
+        txtPassword.returnKeyType = .next
+        txtConfirmPassword.returnKeyType = .done
     }
 
     ///Button Actions
