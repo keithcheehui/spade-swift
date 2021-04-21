@@ -24,6 +24,10 @@
 		0676B616262FDB790023311F /* KKAlertControllerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B615262FDB790023311F /* KKAlertControllerTransition.swift */; };
 		0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B623262FDC8F0023311F /* KKBaseViewController.swift */; };
 		3ED808A9A35A15A51B9CD1B0 /* Pods_spade_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */; };
+		53268BFF2630604F00ECAAE2 /* KKOnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53268BFE2630604F00ECAAE2 /* KKOnBoarding.swift */; };
+		53268C062630612900ECAAE2 /* KKOnBoarding.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53268C052630612900ECAAE2 /* KKOnBoarding.xib */; };
+		53268C09263068EB00ECAAE2 /* KKLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53268C08263068EB00ECAAE2 /* KKLogin.swift */; };
+		53268C0D263068F600ECAAE2 /* KKLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53268C0C263068F600ECAAE2 /* KKLogin.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +51,10 @@
 		0676B623262FDC8F0023311F /* KKBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKBaseViewController.swift; sourceTree = "<group>"; };
 		1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spade_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E2D902D25F2E5F3802521A0 /* Pods-spade-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spade-swift.release.xcconfig"; path = "Target Support Files/Pods-spade-swift/Pods-spade-swift.release.xcconfig"; sourceTree = "<group>"; };
+		53268BFE2630604F00ECAAE2 /* KKOnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKOnBoarding.swift; sourceTree = "<group>"; };
+		53268C052630612900ECAAE2 /* KKOnBoarding.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKOnBoarding.xib; sourceTree = "<group>"; };
+		53268C08263068EB00ECAAE2 /* KKLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKLogin.swift; sourceTree = "<group>"; };
+		53268C0C263068F600ECAAE2 /* KKLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKLogin.xib; sourceTree = "<group>"; };
 		DE9CF2AF875923073B28E1B7 /* Pods-spade-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spade-swift.debug.xcconfig"; path = "Target Support Files/Pods-spade-swift/Pods-spade-swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,19 +151,12 @@
 			children = (
 				0676B621262FDC620023311F /* Base */,
 				0676B620262FDC530023311F /* Splash Screen */,
-				0676B61C262FDBFE0023311F /* Onboarding */,
-				0676B61A262FDBF30023311F /* Login */,
 				0676B61B262FDBF80023311F /* Registration */,
 				0676B61D262FDC080023311F /* Home */,
+				53268C012630605500ECAAE2 /* OnBoarding */,
+				53268C0F263068FC00ECAAE2 /* Login */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		0676B61A262FDBF30023311F /* Login */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		0676B61B262FDBF80023311F /* Registration */ = {
@@ -163,13 +164,6 @@
 			children = (
 			);
 			path = Registration;
-			sourceTree = "<group>";
-		};
-		0676B61C262FDBFE0023311F /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		0676B61D262FDC080023311F /* Home */ = {
@@ -223,6 +217,24 @@
 				1E2D902D25F2E5F3802521A0 /* Pods-spade-swift.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		53268C012630605500ECAAE2 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				53268BFE2630604F00ECAAE2 /* KKOnBoarding.swift */,
+				53268C052630612900ECAAE2 /* KKOnBoarding.xib */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		53268C0F263068FC00ECAAE2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				53268C08263068EB00ECAAE2 /* KKLogin.swift */,
+				53268C0C263068F600ECAAE2 /* KKLogin.xib */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +297,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0676B5B4262FD6F30023311F /* LaunchScreen.storyboard in Resources */,
+				53268C0D263068F600ECAAE2 /* KKLogin.xib in Resources */,
+				53268C062630612900ECAAE2 /* KKOnBoarding.xib in Resources */,
 				0676B5FF262FD9A50023311F /* Localizable.strings in Resources */,
 				0676B5B1262FD6F30023311F /* Assets.xcassets in Resources */,
 				0676B5AF262FD6EF0023311F /* Main.storyboard in Resources */,
@@ -347,6 +361,8 @@
 				0676B5F6262FD8BD0023311F /* KKSingleton.swift in Sources */,
 				0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */,
 				0676B5FC262FD94A0023311F /* KKFont.swift in Sources */,
+                53268C09263068EB00ECAAE2 /* KKLogin.swift in Sources */,
+                53268BFF2630604F00ECAAE2 /* KKOnBoarding.swift in Sources */,
 				0676B60E262FDAF40023311F /* SKFuture.swift in Sources */,
 				0676B616262FDB790023311F /* KKAlertControllerTransition.swift in Sources */,
 				0676B5AA262FD6EF0023311F /* SceneDelegate.swift in Sources */,
