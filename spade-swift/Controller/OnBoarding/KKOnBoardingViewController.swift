@@ -1,5 +1,5 @@
 //
-//  KKOnBoarding.swift
+//  KKOnBoardingViewController.swift
 //  spade-swift
 //
 //  Created by Wong Sai Khong on 21/04/2021.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class KKOnBoarding: SKBaseViewController {
+class KKOnBoardingViewController: KKBaseViewController {
 
     @IBOutlet weak var imgBG: UIImageView!
     @IBOutlet weak var imgLogo: UIImageView!

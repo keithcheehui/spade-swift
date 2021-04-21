@@ -24,10 +24,10 @@
 		0676B616262FDB790023311F /* KKAlertControllerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B615262FDB790023311F /* KKAlertControllerTransition.swift */; };
 		0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B623262FDC8F0023311F /* KKBaseViewController.swift */; };
 		3ED808A9A35A15A51B9CD1B0 /* Pods_spade_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */; };
-		53268BFF2630604F00ECAAE2 /* KKOnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53268BFE2630604F00ECAAE2 /* KKOnBoarding.swift */; };
-		53268C062630612900ECAAE2 /* KKOnBoarding.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53268C052630612900ECAAE2 /* KKOnBoarding.xib */; };
-		53268C09263068EB00ECAAE2 /* KKLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53268C08263068EB00ECAAE2 /* KKLogin.swift */; };
-		53268C0D263068F600ECAAE2 /* KKLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53268C0C263068F600ECAAE2 /* KKLogin.xib */; };
+		53268BFF2630604F00ECAAE2 /* KKOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53268BFE2630604F00ECAAE2 /* KKOnBoardingViewController.swift */; };
+		53268C062630612900ECAAE2 /* KKOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53268C052630612900ECAAE2 /* KKOnBoardingViewController.xib */; };
+		53268C09263068EB00ECAAE2 /* KKLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53268C08263068EB00ECAAE2 /* KKLoginViewController.swift */; };
+		53268C0D263068F600ECAAE2 /* KKLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53268C0C263068F600ECAAE2 /* KKLoginViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,10 +51,10 @@
 		0676B623262FDC8F0023311F /* KKBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKBaseViewController.swift; sourceTree = "<group>"; };
 		1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spade_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E2D902D25F2E5F3802521A0 /* Pods-spade-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spade-swift.release.xcconfig"; path = "Target Support Files/Pods-spade-swift/Pods-spade-swift.release.xcconfig"; sourceTree = "<group>"; };
-		53268BFE2630604F00ECAAE2 /* KKOnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKOnBoarding.swift; sourceTree = "<group>"; };
-		53268C052630612900ECAAE2 /* KKOnBoarding.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKOnBoarding.xib; sourceTree = "<group>"; };
-		53268C08263068EB00ECAAE2 /* KKLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKLogin.swift; sourceTree = "<group>"; };
-		53268C0C263068F600ECAAE2 /* KKLogin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKLogin.xib; sourceTree = "<group>"; };
+		53268BFE2630604F00ECAAE2 /* KKOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKOnBoardingViewController.swift; sourceTree = "<group>"; };
+		53268C052630612900ECAAE2 /* KKOnBoardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKOnBoardingViewController.xib; sourceTree = "<group>"; };
+		53268C08263068EB00ECAAE2 /* KKLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKLoginViewController.swift; sourceTree = "<group>"; };
+		53268C0C263068F600ECAAE2 /* KKLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKLoginViewController.xib; sourceTree = "<group>"; };
 		DE9CF2AF875923073B28E1B7 /* Pods-spade-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spade-swift.debug.xcconfig"; path = "Target Support Files/Pods-spade-swift/Pods-spade-swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,8 +222,8 @@
 		53268C012630605500ECAAE2 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				53268BFE2630604F00ECAAE2 /* KKOnBoarding.swift */,
-				53268C052630612900ECAAE2 /* KKOnBoarding.xib */,
+				53268BFE2630604F00ECAAE2 /* KKOnBoardingViewController.swift */,
+				53268C052630612900ECAAE2 /* KKOnBoardingViewController.xib */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -231,8 +231,8 @@
 		53268C0F263068FC00ECAAE2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				53268C08263068EB00ECAAE2 /* KKLogin.swift */,
-				53268C0C263068F600ECAAE2 /* KKLogin.xib */,
+				53268C08263068EB00ECAAE2 /* KKLoginViewController.swift */,
+				53268C0C263068F600ECAAE2 /* KKLoginViewController.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -297,8 +297,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0676B5B4262FD6F30023311F /* LaunchScreen.storyboard in Resources */,
-				53268C0D263068F600ECAAE2 /* KKLogin.xib in Resources */,
-				53268C062630612900ECAAE2 /* KKOnBoarding.xib in Resources */,
+				53268C0D263068F600ECAAE2 /* KKLoginViewController.xib in Resources */,
+				53268C062630612900ECAAE2 /* KKOnBoardingViewController.xib in Resources */,
 				0676B5FF262FD9A50023311F /* Localizable.strings in Resources */,
 				0676B5B1262FD6F30023311F /* Assets.xcassets in Resources */,
 				0676B5AF262FD6EF0023311F /* Main.storyboard in Resources */,
@@ -361,8 +361,8 @@
 				0676B5F6262FD8BD0023311F /* KKSingleton.swift in Sources */,
 				0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */,
 				0676B5FC262FD94A0023311F /* KKFont.swift in Sources */,
-                53268C09263068EB00ECAAE2 /* KKLogin.swift in Sources */,
-                53268BFF2630604F00ECAAE2 /* KKOnBoarding.swift in Sources */,
+				53268C09263068EB00ECAAE2 /* KKLoginViewController.swift in Sources */,
+				53268BFF2630604F00ECAAE2 /* KKOnBoardingViewController.swift in Sources */,
 				0676B60E262FDAF40023311F /* SKFuture.swift in Sources */,
 				0676B616262FDB790023311F /* KKAlertControllerTransition.swift in Sources */,
 				0676B5AA262FD6EF0023311F /* SceneDelegate.swift in Sources */,
