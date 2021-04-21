@@ -14,7 +14,7 @@ class SKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.edgesForExtendedLayout = []
         
         activityIndicator = UIActivityIndicatorView.init(style: .white)
