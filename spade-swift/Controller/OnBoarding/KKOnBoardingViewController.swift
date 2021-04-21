@@ -30,7 +30,6 @@ class KKOnBoardingViewController: KKBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         initialLayout()
     }
 
@@ -41,8 +40,6 @@ class KKOnBoardingViewController: KKBaseViewController {
         buttonContainerMarginBottom.constant = buttonContainerMarginRight.constant
         btnLoginMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 50)
         btnLoginMarginRight.constant = btnLoginMarginLeft.constant
-        
-        
     }
     
     ///Button Actions
@@ -51,11 +48,11 @@ class KKOnBoardingViewController: KKBaseViewController {
     }
     
     @IBAction func btnLoginDidPressed(){
-        
+        self.present(KKLoginViewController(), animated: false, completion: nil)
     }
     
     @IBAction func btnRegisterDidPressed(){
-        
+        self.present(KKRegistrationViewController(), animated: false, completion: nil)
     }
 }
 

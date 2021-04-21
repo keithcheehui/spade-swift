@@ -68,7 +68,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="FUx-VZ-2tT" secondAttribute="bottom" id="BdF-cO-yts"/>
                                 <constraint firstItem="Ymd-gt-Zfb" firstAttribute="top" secondItem="6Jg-D5-nPB" secondAttribute="top" id="GCd-dq-M5J"/>
@@ -91,7 +91,7 @@
                                         <constraint firstAttribute="width" constant="150" id="Kxd-9H-e4E"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter login ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P57-GX-RAH">
@@ -106,7 +106,7 @@
                                     </connections>
                                 </textField>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="XbX-0f-ZX5" firstAttribute="top" secondItem="qwF-ZP-wTN" secondAttribute="top" id="Apy-vi-2Up"/>
                                 <constraint firstItem="P57-GX-RAH" firstAttribute="leading" secondItem="XbX-0f-ZX5" secondAttribute="trailing" constant="16" id="GMj-Em-063"/>
@@ -124,7 +124,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGO-OW-Bh3">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KkP-GN-ZlA">
@@ -136,7 +136,7 @@
                                     </connections>
                                 </textField>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="KkP-GN-ZlA" secondAttribute="bottom" id="4aL-IB-UkQ"/>
                                 <constraint firstItem="UGO-OW-Bh3" firstAttribute="top" secondItem="x2k-pB-i17" secondAttribute="top" id="809-VK-mTt"/>
@@ -151,15 +151,16 @@
                             <rect key="frame" x="216" y="195" width="138" height="40"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UT9-kn-Gqo">
-                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <rect key="frame" x="0.0" y="10" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="UT9-kn-Gqo" secondAttribute="height" multiplier="1:1" id="68A-95-IT8"/>
+                                        <constraint firstAttribute="width" constant="20" id="sAp-K2-9uk"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfg-m1-8wm">
-                                    <rect key="frame" x="56" y="0.0" width="82" height="40"/>
+                                    <rect key="frame" x="28" y="0.0" width="110" height="40"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMC-Ku-shl">
@@ -169,28 +170,27 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="nfg-m1-8wm" secondAttribute="trailing" id="9Wv-UF-bNg"/>
                                 <constraint firstAttribute="trailing" secondItem="OMC-Ku-shl" secondAttribute="trailing" id="9y2-Hv-blB"/>
                                 <constraint firstItem="OMC-Ku-shl" firstAttribute="leading" secondItem="pmH-IY-LWV" secondAttribute="leading" id="CnQ-wr-qXO"/>
                                 <constraint firstItem="OMC-Ku-shl" firstAttribute="top" secondItem="pmH-IY-LWV" secondAttribute="top" id="FBC-AL-mKd"/>
                                 <constraint firstAttribute="bottom" secondItem="nfg-m1-8wm" secondAttribute="bottom" id="GXg-xA-DJ5"/>
-                                <constraint firstItem="UT9-kn-Gqo" firstAttribute="top" secondItem="pmH-IY-LWV" secondAttribute="top" id="HUh-sm-wIq"/>
                                 <constraint firstItem="nfg-m1-8wm" firstAttribute="top" secondItem="pmH-IY-LWV" secondAttribute="top" id="MFW-Cd-Fhr"/>
                                 <constraint firstItem="UT9-kn-Gqo" firstAttribute="leading" secondItem="pmH-IY-LWV" secondAttribute="leading" id="Pz9-f0-eIr"/>
+                                <constraint firstItem="OMC-Ku-shl" firstAttribute="centerY" secondItem="UT9-kn-Gqo" secondAttribute="centerY" id="lp7-FV-wuy"/>
                                 <constraint firstAttribute="bottom" secondItem="OMC-Ku-shl" secondAttribute="bottom" id="m9c-sg-0ca"/>
-                                <constraint firstItem="nfg-m1-8wm" firstAttribute="leading" secondItem="UT9-kn-Gqo" secondAttribute="trailing" constant="16" id="nMz-YK-H31"/>
-                                <constraint firstAttribute="bottom" secondItem="UT9-kn-Gqo" secondAttribute="bottom" id="s56-NK-fVU"/>
+                                <constraint firstItem="nfg-m1-8wm" firstAttribute="leading" secondItem="UT9-kn-Gqo" secondAttribute="trailing" constant="8" id="nMz-YK-H31"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKN-hJ-LJe">
                             <rect key="frame" x="378" y="195" width="138" height="40"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Passwords?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IeS-gw-wGo">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Passwords?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IeS-gw-wGo">
                                     <rect key="frame" x="0.0" y="0.0" width="138" height="40"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hp-T7-Sza">
@@ -200,7 +200,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="7hp-T7-Sza" secondAttribute="bottom" id="0Kx-E9-JUy"/>
                                 <constraint firstItem="IeS-gw-wGo" firstAttribute="top" secondItem="hKN-hJ-LJe" secondAttribute="top" id="3iv-Kz-60Q"/>
@@ -225,7 +225,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="200" id="5Bf-LL-KMl"/>
                                 <constraint firstItem="cHX-J6-8sk" firstAttribute="top" secondItem="E01-6Y-Zvv" secondAttribute="top" id="Dc1-TP-Iz2"/>

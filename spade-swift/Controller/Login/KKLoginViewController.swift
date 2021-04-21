@@ -47,20 +47,35 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
     }
     
     func initialLayout(){
+        self.view.backgroundColor = UIColor(white: 0, alpha: 0.05)
+
         imgLoginHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 40)
         usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        lblUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
-        txtUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 300)
+        lblUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 100)
+        txtUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 350)
         btnConfirmWidth.constant = KKUtil.ConvertSizeByDensity(size: 200)
         usernameContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 30)
         usernameContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 50)
         usernameContainerMarginRight.constant = usernameContainerMarginLeft.constant
         passwordContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 16)
-        rememberMeContainerMarginTop.constant = passwordContainerMarginTop.constant
+        rememberMeContainerMarginTop.constant = 0
         btnConfirmContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 30)
         btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 20)
+        
         lblUsername.text = KKUtil.languageSelectedStringForKey(key: "login_username")
+        txtUsername.placeholder = KKUtil.languageSelectedStringForKey(key: "login_username_placeholder")
+        lblPassword.text = KKUtil.languageSelectedStringForKey(key: "login_password")
+        txtPassword.placeholder = KKUtil.languageSelectedStringForKey(key: "login_password_placeholder")
+        lblRememberMe.text = KKUtil.languageSelectedStringForKey(key: "login_remember_me")
+        lblForgotPassword.text = KKUtil.languageSelectedStringForKey(key: "login_forgot_password")
+
+        lblUsername.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
+        txtUsername.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
+        lblPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
+        txtPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
+        lblRememberMe.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelSmallFont))
+        lblForgotPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelSmallFont))
         
         txtUsername.delegate = self
         txtPassword.delegate = self
@@ -68,7 +83,7 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
 
     ///Button Actions
     @IBAction func btnCloseDidPressed(){
-        
+        self.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func btnRememberMeDidPressed(){
