@@ -18,11 +18,11 @@
 		0676B5F6262FD8BD0023311F /* KKSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5F5262FD8BD0023311F /* KKSingleton.swift */; };
 		0676B5F9262FD8E40023311F /* KKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5F8262FD8E40023311F /* KKColor.swift */; };
 		0676B5FC262FD94A0023311F /* KKFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5FB262FD94A0023311F /* KKFont.swift */; };
-		0676B5FF262FD9A50023311F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0676B5FE262FD9A50023311F /* Localizable.strings */; };
 		0676B60E262FDAF40023311F /* SKFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B60D262FDAF40023311F /* SKFuture.swift */; };
 		0676B612262FDAFE0023311F /* SKResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B611262FDAFE0023311F /* SKResult.swift */; };
 		0676B616262FDB790023311F /* KKAlertControllerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B615262FDB790023311F /* KKAlertControllerTransition.swift */; };
 		0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B623262FDC8F0023311F /* KKBaseViewController.swift */; };
+		0676B668263095EE0023311F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0676B66A263095EE0023311F /* Localizable.strings */; };
 		3ED808A9A35A15A51B9CD1B0 /* Pods_spade_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */; };
 		53268BFF2630604F00ECAAE2 /* KKOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53268BFE2630604F00ECAAE2 /* KKOnBoardingViewController.swift */; };
 		53268C062630612900ECAAE2 /* KKOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53268C052630612900ECAAE2 /* KKOnBoardingViewController.xib */; };
@@ -44,13 +44,13 @@
 		0676B5F5262FD8BD0023311F /* KKSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSingleton.swift; sourceTree = "<group>"; };
 		0676B5F8262FD8E40023311F /* KKColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKColor.swift; sourceTree = "<group>"; };
 		0676B5FB262FD94A0023311F /* KKFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKFont.swift; sourceTree = "<group>"; };
-		0676B5FE262FD9A50023311F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		0676B60A262FDA9A0023311F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		0676B60B262FDA9A0023311F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0676B60D262FDAF40023311F /* SKFuture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKFuture.swift; sourceTree = "<group>"; };
 		0676B611262FDAFE0023311F /* SKResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKResult.swift; sourceTree = "<group>"; };
 		0676B615262FDB790023311F /* KKAlertControllerTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAlertControllerTransition.swift; sourceTree = "<group>"; };
 		0676B623262FDC8F0023311F /* KKBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKBaseViewController.swift; sourceTree = "<group>"; };
+		0676B660263095560023311F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0676B661263095560023311F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0676B669263095EE0023311F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spade_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E2D902D25F2E5F3802521A0 /* Pods-spade-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spade-swift.release.xcconfig"; path = "Target Support Files/Pods-spade-swift/Pods-spade-swift.release.xcconfig"; sourceTree = "<group>"; };
 		53268BFE2630604F00ECAAE2 /* KKOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKOnBoardingViewController.swift; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 				0676B5F5262FD8BD0023311F /* KKSingleton.swift */,
 				0676B5F8262FD8E40023311F /* KKColor.swift */,
 				0676B5FB262FD94A0023311F /* KKFont.swift */,
-				0676B5FE262FD9A50023311F /* Localizable.strings */,
+				0676B66A263095EE0023311F /* Localizable.strings */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -285,7 +285,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
 			mainGroup = 0676B59B262FD6EF0023311F;
 			productRefGroup = 0676B5A5262FD6EF0023311F /* Products */;
@@ -306,7 +305,7 @@
 				53268C1826307FC100ECAAE2 /* KKRegistrationViewController.xib in Resources */,
 				53268C0D263068F600ECAAE2 /* KKLoginViewController.xib in Resources */,
 				53268C062630612900ECAAE2 /* KKOnBoardingViewController.xib in Resources */,
-				0676B5FF262FD9A50023311F /* Localizable.strings in Resources */,
+				0676B668263095EE0023311F /* Localizable.strings in Resources */,
 				0676B5B1262FD6F30023311F /* Assets.xcassets in Resources */,
 				0676B5AF262FD6EF0023311F /* Main.storyboard in Resources */,
 			);
@@ -385,7 +384,7 @@
 		0676B5AD262FD6EF0023311F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0676B60B262FDA9A0023311F /* Base */,
+				0676B661263095560023311F /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -393,9 +392,17 @@
 		0676B5B2262FD6F30023311F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0676B60A262FDA9A0023311F /* Base */,
+				0676B660263095560023311F /* en */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		0676B66A263095EE0023311F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0676B669263095EE0023311F /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -405,6 +412,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -466,6 +474,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

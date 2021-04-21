@@ -19,8 +19,8 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         activityIndicator = UIActivityIndicatorView.init(style: .white)
         activityIndicator.alpha = CGFloat(0)
-        activityIndicator.color = .cinemoi_white_FFFFFF
-        activityIndicator.backgroundColor = UIColor.cinemoi_black_000000.withAlphaComponent(0.75)
+        activityIndicator.color = .spade_white_FFFFFF
+        activityIndicator.backgroundColor = UIColor.spade_black_000000.withAlphaComponent(0.75)
         activityIndicator.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.height)
     }
     

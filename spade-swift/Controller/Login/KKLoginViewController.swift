@@ -60,6 +60,7 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
         rememberMeContainerMarginTop.constant = passwordContainerMarginTop.constant
         btnConfirmContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 30)
         btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 20)
+        lblUsername.text = KKUtil.languageSelectedStringForKey(key: "login_username")
         
         txtUsername.delegate = self
         txtPassword.delegate = self

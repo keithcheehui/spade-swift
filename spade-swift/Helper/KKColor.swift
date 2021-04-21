@@ -10,8 +10,8 @@ import UIKit
 
 extension UIColor {
 
-    static let cinemoi_white_FFFFFF = UIColor.init(hexCode: "#FFFFFF")
-    static let cinemoi_black_000000 = UIColor.init(hexCode: "#000000")
+    static let spade_white_FFFFFF = UIColor.init(hexCode: "#FFFFFF")
+    static let spade_black_000000 = UIColor.init(hexCode: "#000000")
     
     convenience init(red: Int, green: Int, blue: Int, alphaValue: CGFloat = 1.0) {
         assert(red >= 0 && red <= 255, "Invalid red component")
