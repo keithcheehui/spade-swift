@@ -54,7 +54,9 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2BY-79-8B2" userLabel="btnFB">
                                     <rect key="frame" x="0.0" y="0.0" width="198.66666666666666" height="49.666666666666664"/>
-                                    <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="btnFBDidPressed" destination="-1" eventType="touchUpInside" id="KLr-WF-Ua9"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -78,7 +80,9 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTB-SK-Bv8" userLabel="btnLogin">
                                     <rect key="frame" x="0.0" y="0.0" width="198.66666666666666" height="49.666666666666664"/>
-                                    <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="btnLoginDidPressed" destination="-1" eventType="touchUpInside" id="jiD-hm-fQm"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -101,7 +105,9 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNd-Zz-MbP" userLabel="btnRegister">
                                     <rect key="frame" x="0.0" y="0.0" width="198.66666666666666" height="49.666666666666664"/>
-                                    <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="btnRegisterDidPressed" destination="-1" eventType="touchUpInside" id="SdQ-f4-kx6"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>

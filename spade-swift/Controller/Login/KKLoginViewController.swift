@@ -8,10 +8,11 @@
 import Foundation
 import UIKit
 
-class KKLoginViewController: KKBaseViewController {
+class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
 
     @IBOutlet weak var imgLogin: UIImageView!
     @IBOutlet weak var imgClose: UIImageView!
+    @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var lblUsername: UILabel!
     @IBOutlet weak var txtUsername: UITextField!
     @IBOutlet weak var lblPassword: UILabel!
@@ -60,7 +61,40 @@ class KKLoginViewController: KKBaseViewController {
         btnConfirmContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 30)
         btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 20)
         
+        txtUsername.delegate = self
+        txtPassword.delegate = self
     }
 
+    ///Button Actions
+    @IBAction func btnCloseDidPressed(){
+        
+    }
+    
+    @IBAction func btnRememberMeDidPressed(){
+        
+    }
+    
+    @IBAction func btnForgotPasswordDidPressed(){
+        
+    }
+    
+    @IBAction func btnConfirmDidPressed(){
+        
+    }
+    
+    ///TextField Delegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.switchBasedNextTextField(textField)
+        return true
+    }
+    
+    private func switchBasedNextTextField(_ textField: UITextField) {
+        switch textField {
+        case txtUsername:
+            txtPassword.becomeFirstResponder()
+        default:
+            txtPassword.resignFirstResponder()
+        }
+    }
 }
 

@@ -44,6 +44,18 @@ class KKOnBoardingViewController: KKBaseViewController {
         
         
     }
-
+    
+    ///Button Actions
+    @IBAction func btnFBDidPressed(){
+        
+    }
+    
+    @IBAction func btnLoginDidPressed(){
+        
+    }
+    
+    @IBAction func btnRegisterDidPressed(){
+        
+    }
 }
 

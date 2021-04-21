@@ -57,6 +57,15 @@ class KKUtil: NSObject {
         return emailTest.evaluate(with: testStr)
     }
     
+    ///Check input validation
+    class func isValidInput (testStr: String) -> Bool {
+        
+        let inputRegEx = "{6,12}"
+        
+        let inputTest = NSPredicate(format:"SELF MATCHES %@", inputRegEx)
+        return inputTest.evaluate(with: testStr)
+    }
+    
     ///Get Label Height according to its text with font
     class func getLabelSize (text: String, maximumLabelSize: CGSize, attributes: [NSAttributedString.Key : Any]?) -> CGSize {
         
