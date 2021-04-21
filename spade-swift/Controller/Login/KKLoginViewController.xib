@@ -30,10 +30,10 @@
                 <outlet property="lblUsernameWidth" destination="Kxd-9H-e4E" id="JOR-gz-CgM"/>
                 <outlet property="passwordContainerMarginTop" destination="ONg-Ic-lnG" id="8Sf-ep-u3u"/>
                 <outlet property="rememberMeContainerMarginTop" destination="4VT-G5-8gy" id="hrc-5t-6rZ"/>
-                <outlet property="textFieldContainerHeight" destination="RuZ-Ym-giN" id="YkS-Ud-1hk"/>
                 <outlet property="txtPassword" destination="KkP-GN-ZlA" id="NES-z6-UtN"/>
                 <outlet property="txtUsername" destination="P57-GX-RAH" id="I2l-9R-ORn"/>
                 <outlet property="txtUsernameWidth" destination="UHr-Gq-2fG" id="u2o-Vv-VnX"/>
+                <outlet property="usernameContainerHeight" destination="RuZ-Ym-giN" id="yMC-4P-ges"/>
                 <outlet property="usernameContainerMarginLeft" destination="nMg-ox-ozc" id="UwW-aM-rbV"/>
                 <outlet property="usernameContainerMarginRight" destination="QLx-5Z-D1G" id="Bil-MB-5sb"/>
                 <outlet property="usernameContainerMarginTop" destination="MqZ-kU-FkT" id="ga4-fg-c08"/>

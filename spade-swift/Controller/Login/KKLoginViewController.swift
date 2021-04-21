@@ -26,7 +26,7 @@ class KKLoginViewController: KKBaseViewController {
     
     @IBOutlet weak var imgLoginHeight: NSLayoutConstraint!
     @IBOutlet weak var imgCloseWidth: NSLayoutConstraint!
-    @IBOutlet weak var textFieldContainerHeight: NSLayoutConstraint!
+    @IBOutlet weak var usernameContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var lblUsernameWidth: NSLayoutConstraint!
     @IBOutlet weak var txtUsernameWidth: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmWidth: NSLayoutConstraint!
@@ -42,8 +42,25 @@ class KKLoginViewController: KKBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        initialLayout()
     }
-
+    
+    func initialLayout(){
+        imgLoginHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        lblUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
+        txtUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 300)
+        btnConfirmWidth.constant = KKUtil.ConvertSizeByDensity(size: 200)
+        usernameContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        usernameContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 50)
+        usernameContainerMarginRight.constant = usernameContainerMarginLeft.constant
+        passwordContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 16)
+        rememberMeContainerMarginTop.constant = passwordContainerMarginTop.constant
+        btnConfirmContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 20)
+        
+    }
 
 }
 

@@ -21,6 +21,8 @@ class KKOnBoardingViewController: KKBaseViewController {
     
     @IBOutlet weak var buttonContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var buttonContainerMarginBottom: NSLayoutConstraint!
+    @IBOutlet weak var buttonContainerMarginLeft: NSLayoutConstraint!
+    @IBOutlet weak var buttonContainerMarginRight: NSLayoutConstraint!
     @IBOutlet weak var btnLoginMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var btnLoginMarginRight: NSLayoutConstraint!
     
@@ -28,8 +30,20 @@ class KKOnBoardingViewController: KKBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        initialLayout()
     }
 
+    func initialLayout(){
+        buttonContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 80)
+        buttonContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 60)
+        buttonContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 100)
+        buttonContainerMarginBottom.constant = buttonContainerMarginRight.constant
+        btnLoginMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 50)
+        btnLoginMarginRight.constant = btnLoginMarginLeft.constant
+        
+        
+    }
 
 }
 

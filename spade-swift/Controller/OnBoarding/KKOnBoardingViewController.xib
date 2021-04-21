@@ -17,6 +17,8 @@
                 <outlet property="btnLoginMarginRight" destination="mO1-8U-XgY" id="Hco-CZ-pSN"/>
                 <outlet property="btnRegister" destination="GNd-Zz-MbP" id="eq5-K2-hE5"/>
                 <outlet property="buttonContainerMarginBottom" destination="RxJ-nb-rWE" id="eDF-qT-O3L"/>
+                <outlet property="buttonContainerMarginLeft" destination="0vu-YP-J5c" id="STr-4O-e9c"/>
+                <outlet property="buttonContainerMarginRight" destination="JQD-nf-vCQ" id="Vfk-te-D9n"/>
                 <outlet property="buttonContainerMarginTop" destination="QXr-q8-mkb" id="XYc-Uo-0uL"/>
                 <outlet property="imgBG" destination="eD2-fF-oGt" id="jHp-yQ-SIH"/>
                 <outlet property="imgFB" destination="sM4-Oq-Psk" id="9th-Da-5Vc"/>
@@ -35,23 +37,23 @@
                     <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vIL-Eb-Nt9" userLabel="imgLogo">
-                    <rect key="frame" x="298" y="62.333333333333343" width="300" height="150"/>
+                    <rect key="frame" x="298" y="74.333333333333314" width="300" height="150"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="vIL-Eb-Nt9" secondAttribute="height" multiplier="2:1" id="RyV-5q-OMP"/>
                         <constraint firstAttribute="width" constant="300" id="hMW-jv-GE7"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gox-qQ-2CI" userLabel="buttonContainerView">
-                    <rect key="frame" x="94" y="292.33333333333331" width="708" height="50.666666666666686"/>
+                    <rect key="frame" x="100" y="304.33333333333331" width="696" height="49.666666666666686"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jod-4Q-Aua" userLabel="fbView">
-                            <rect key="frame" x="0.0" y="0.0" width="202.66666666666666" height="50.666666666666664"/>
+                            <rect key="frame" x="0.0" y="0.0" width="198.66666666666666" height="49.666666666666664"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sM4-Oq-Psk" userLabel="imgFB">
-                                    <rect key="frame" x="0.0" y="0.0" width="202.66666666666666" height="50.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="198.66666666666666" height="49.666666666666664"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2BY-79-8B2" userLabel="btnFB">
-                                    <rect key="frame" x="0.0" y="0.0" width="202.66666666666666" height="50.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="198.66666666666666" height="49.666666666666664"/>
                                     <state key="normal" title="Button"/>
                                 </button>
                             </subviews>
@@ -69,13 +71,13 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qHC-BC-tJr" userLabel="loginView">
-                            <rect key="frame" x="252.66666666666669" y="0.0" width="202.66666666666669" height="50.666666666666664"/>
+                            <rect key="frame" x="248.66666666666669" y="0.0" width="198.66666666666669" height="49.666666666666664"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oIP-bF-cwf" userLabel="imgLogin">
-                                    <rect key="frame" x="0.0" y="0.0" width="202.66666666666666" height="50.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="198.66666666666666" height="49.666666666666664"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTB-SK-Bv8" userLabel="btnLogin">
-                                    <rect key="frame" x="0.0" y="0.0" width="202.66666666666666" height="50.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="198.66666666666666" height="49.666666666666664"/>
                                     <state key="normal" title="Button"/>
                                 </button>
                             </subviews>
@@ -92,13 +94,13 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YkP-Xj-EUw" userLabel="registerView">
-                            <rect key="frame" x="505.33333333333343" y="0.0" width="202.66666666666669" height="50.666666666666664"/>
+                            <rect key="frame" x="497.33333333333343" y="0.0" width="198.66666666666669" height="49.666666666666664"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LuF-Nq-hHm" userLabel="imgRegister">
-                                    <rect key="frame" x="0.0" y="0.0" width="202.66666666666666" height="50.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="198.66666666666666" height="49.666666666666664"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNd-Zz-MbP" userLabel="btnRegister">
-                                    <rect key="frame" x="0.0" y="0.0" width="202.66666666666666" height="50.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="198.66666666666666" height="49.666666666666664"/>
                                     <state key="normal" title="Button"/>
                                 </button>
                             </subviews>
@@ -135,13 +137,13 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="gox-qQ-2CI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="0vu-YP-J5c"/>
+                <constraint firstItem="gox-qQ-2CI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="100" id="0vu-YP-J5c"/>
                 <constraint firstItem="eD2-fF-oGt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3qq-gf-1Np"/>
                 <constraint firstAttribute="bottom" secondItem="eD2-fF-oGt" secondAttribute="bottom" id="85K-zE-8Xr"/>
                 <constraint firstItem="vIL-Eb-Nt9" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="JOl-7Z-3hw"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gox-qQ-2CI" secondAttribute="trailing" constant="50" id="JQD-nf-vCQ"/>
+                <constraint firstAttribute="trailing" secondItem="gox-qQ-2CI" secondAttribute="trailing" constant="100" id="JQD-nf-vCQ"/>
                 <constraint firstItem="gox-qQ-2CI" firstAttribute="top" secondItem="vIL-Eb-Nt9" secondAttribute="bottom" constant="80" id="QXr-q8-mkb"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="gox-qQ-2CI" secondAttribute="bottom" constant="50" id="RxJ-nb-rWE"/>
+                <constraint firstAttribute="bottom" secondItem="gox-qQ-2CI" secondAttribute="bottom" constant="60" id="RxJ-nb-rWE"/>
                 <constraint firstItem="eD2-fF-oGt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="UmO-5p-FIM"/>
                 <constraint firstAttribute="trailing" secondItem="eD2-fF-oGt" secondAttribute="trailing" id="q3h-Wc-3xt"/>
             </constraints>
