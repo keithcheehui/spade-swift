@@ -5,3 +5,7 @@
   Created by Keith CheeHui on 21/04/2021.
   
 */
+
+//MARK : ONBOARDING
+"onboarding_login"          = "LOGIN";
+"onboarding_register"       = "REGISTER";
