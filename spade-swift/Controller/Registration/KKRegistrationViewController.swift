@@ -44,21 +44,21 @@ class KKRegistrationViewController: KKBaseViewController, UITextFieldDelegate {
     }
     
     func initialLayout(){
-        self.view.backgroundColor = UIColor(white: 0, alpha: 0.05)
+        self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
 
-        imgRegisterHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        imgRegisterHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
+        imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
         lblUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
-        txtUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 350)
+        txtUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 300)
         btnConfirmWidth.constant = KKUtil.ConvertSizeByDensity(size: 200)
-        usernameContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        usernameContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 50)
         usernameContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 50)
-        usernameContainerMarginRight.constant = usernameContainerMarginLeft.constant
+        usernameContainerMarginRight.constant = KKUtil.ConvertSizeByDensity(size: 80)
         passwordContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 16)
         confirmPasswordContainerMarginTop.constant = passwordContainerMarginTop.constant
-        btnConfirmContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 30)
-        btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 20)
+        btnConfirmContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
         
         lblUsername.text = KKUtil.languageSelectedStringForKey(key: "register_username")
         txtUsername.placeholder = KKUtil.languageSelectedStringForKey(key: "register_username_placeholder")

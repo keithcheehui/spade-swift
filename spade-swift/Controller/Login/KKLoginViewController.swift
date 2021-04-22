@@ -47,21 +47,21 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
     }
     
     func initialLayout(){
-        self.view.backgroundColor = UIColor(white: 0, alpha: 0.05)
+        self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
 
-        imgLoginHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        imgLoginHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
+        imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
         lblUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 100)
-        txtUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 350)
+        txtUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 300)
         btnConfirmWidth.constant = KKUtil.ConvertSizeByDensity(size: 200)
-        usernameContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 30)
-        usernameContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 50)
+        usernameContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 50)
+        usernameContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 80)
         usernameContainerMarginRight.constant = usernameContainerMarginLeft.constant
         passwordContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 16)
-        rememberMeContainerMarginTop.constant = 0
-        btnConfirmContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 30)
-        btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 20)
+        rememberMeContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 8)
+        btnConfirmContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
         
         lblUsername.text = KKUtil.languageSelectedStringForKey(key: "login_username")
         txtUsername.placeholder = KKUtil.languageSelectedStringForKey(key: "login_username_placeholder")
