@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "Hover_Bg.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Hover_Bg.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

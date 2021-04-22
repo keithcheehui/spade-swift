@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "deposit.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "deposit.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
