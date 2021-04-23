@@ -21,14 +21,8 @@ struct ScreenSize {
 
 struct ConstantSize {
     
-    #if os(tvOS)
-    static let paddingStandard = CGFloat(50)
-    static let paddingSecondary = CGFloat(32)
-    static let defaultCornerRadius = CGFloat(8)
-    #else
     static let paddingStandard = CGFloat(24)
     static let paddingSecondary = CGFloat(16)
-    #endif
     
     static let paddingDouble = paddingStandard*2
     static let paddingHalf = paddingStandard/2
@@ -45,4 +39,15 @@ struct ConstantSize {
     static let ssoLabelFont = CGFloat(16)
     static let ssoLabelSmallFont = CGFloat(13)
 
+}
+
+struct Spade {
+    
+    struct DevServer {
+        static let baseApiURL: String = ""
+    }
+    
+    struct ProdServer {
+        static let baseApiURL: String = ""
+    }
 }
