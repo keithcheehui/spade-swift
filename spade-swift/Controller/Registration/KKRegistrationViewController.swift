@@ -44,28 +44,48 @@ class KKRegistrationViewController: KKBaseViewController, UITextFieldDelegate {
     }
     
     func initialLayout(){
-        imgRegisterHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+
+        imgRegisterHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
+        imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
         lblUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
         txtUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 300)
         btnConfirmWidth.constant = KKUtil.ConvertSizeByDensity(size: 200)
-        usernameContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        usernameContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 50)
         usernameContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 50)
-        usernameContainerMarginRight.constant = usernameContainerMarginLeft.constant
+        usernameContainerMarginRight.constant = KKUtil.ConvertSizeByDensity(size: 80)
         passwordContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 16)
         confirmPasswordContainerMarginTop.constant = passwordContainerMarginTop.constant
-        btnConfirmContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 30)
-        btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 20)
+        btnConfirmContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
         
+        lblUsername.text = KKUtil.languageSelectedStringForKey(key: "register_username")
+        txtUsername.placeholder = KKUtil.languageSelectedStringForKey(key: "register_username_placeholder")
+        lblPassword.text = KKUtil.languageSelectedStringForKey(key: "register_password")
+        txtPassword.placeholder = KKUtil.languageSelectedStringForKey(key: "register_password_placeholder")
+        lblConfirmPassword.text = KKUtil.languageSelectedStringForKey(key: "register_confirm_password")
+        txtConfirmPassword.placeholder = KKUtil.languageSelectedStringForKey(key: "register_confirm_password_placeholder")
+
+        lblUsername.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
+        txtUsername.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
+        lblPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
+        txtPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
+        lblConfirmPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
+        txtConfirmPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
+
         txtUsername.delegate = self
         txtPassword.delegate = self
         txtConfirmPassword.delegate = self
+        
+        txtUsername.returnKeyType = .next
+        txtPassword.returnKeyType = .next
+        txtConfirmPassword.returnKeyType = .done
     }
 
     ///Button Actions
     @IBAction func btnCloseDidPressed(){
-        
+        self.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func btnConfirmDidPressed(){

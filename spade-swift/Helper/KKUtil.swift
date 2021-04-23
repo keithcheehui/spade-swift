@@ -89,4 +89,9 @@ class KKUtil: NSObject {
     class func ConvertSizeByDensity(size: CGFloat) -> CGFloat {
         return size * ScreenSize.minLength / 414.0
     }
+    
+    ///convert size according to the screen size
+    class func isSmallerPhone() -> Bool {
+        return ScreenSize.maxLength < 812.0
+    }
 }

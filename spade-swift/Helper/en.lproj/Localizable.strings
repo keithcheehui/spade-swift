@@ -7,19 +7,19 @@
 */
 
 //MARK : LOGIN
-"login_username"                    = "Username123";
+"login_username"                    = "Username:";
 "login_username_placeholder"        = "Please enter login ID";
-"login_password"                    = "Password";
+"login_password"                    = "Password:";
 "login_password_placeholder"        = "Please enter your password";
 "login_remember_me"                 = "Remember me";
 "login_forgot_password"             = "Forgot Password?";
 
 //MARK : REGISTRATION
-"register_username"                         = "Username";
+"register_username"                         = "Username:";
 "register_username_placeholder"             = "Username must be between 6-12 characters.";
-"register_password"                         = "Password";
+"register_password"                         = "Password:";
 "register_password_placeholder"             = "Password must be between 6-12 characters.";
-"register_confirm_password"                 = "Confirm Password";
+"register_confirm_password"                 = "Confirm Password:";
 "register_confirm_password_placeholder"     = "Please re-enter your password";
 
 
