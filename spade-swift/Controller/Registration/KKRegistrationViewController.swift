@@ -14,10 +14,13 @@ class KKRegistrationViewController: KKBaseViewController, UITextFieldDelegate {
     @IBOutlet weak var imgClose: UIImageView!
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var lblUsername: UILabel!
+    @IBOutlet weak var usernameView: UIView!
     @IBOutlet weak var txtUsername: UITextField!
     @IBOutlet weak var lblPassword: UILabel!
+    @IBOutlet weak var passwordView: UIView!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var lblConfirmPassword: UILabel!
+    @IBOutlet weak var confirmPasswordView: UIView!
     @IBOutlet weak var txtConfirmPassword: UITextField!
     @IBOutlet weak var imgConfirm: UIImageView!
     @IBOutlet weak var btnConfirm: UIButton!
@@ -45,7 +48,15 @@ class KKRegistrationViewController: KKBaseViewController, UITextFieldDelegate {
     
     func initialLayout(){
         self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        
+        usernameView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        passwordView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        confirmPasswordView.backgroundColor = UIColor(white: 0, alpha: 0.5)
 
+        usernameView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
+        passwordView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
+        confirmPasswordView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
+        
         imgRegisterHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
         usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
@@ -61,12 +72,13 @@ class KKRegistrationViewController: KKBaseViewController, UITextFieldDelegate {
         btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
         
         lblUsername.text = KKUtil.languageSelectedStringForKey(key: "register_username")
-        txtUsername.placeholder = KKUtil.languageSelectedStringForKey(key: "register_username_placeholder")
         lblPassword.text = KKUtil.languageSelectedStringForKey(key: "register_password")
-        txtPassword.placeholder = KKUtil.languageSelectedStringForKey(key: "register_password_placeholder")
         lblConfirmPassword.text = KKUtil.languageSelectedStringForKey(key: "register_confirm_password")
-        txtConfirmPassword.placeholder = KKUtil.languageSelectedStringForKey(key: "register_confirm_password_placeholder")
 
+        txtUsername.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "register_username_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
+        txtPassword.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "register_password_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
+        txtConfirmPassword.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "register_confirm_password_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
+                
         lblUsername.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
         txtUsername.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
         lblPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))

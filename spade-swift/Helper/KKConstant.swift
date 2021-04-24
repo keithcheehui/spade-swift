@@ -36,8 +36,8 @@ struct ConstantSize {
     static let navBarBtnWidth = CGFloat(65)
     static let navBarSeperatorHeight = CGFloat(2)
 
-    static let ssoLabelFont = CGFloat(16)
-    static let ssoLabelSmallFont = CGFloat(13)
+    static let ssoLabelFont = CGFloat(14)
+    static let ssoLabelSmallFont = CGFloat(12)
 }
 
 struct Spade {

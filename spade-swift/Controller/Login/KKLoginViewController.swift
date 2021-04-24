@@ -12,18 +12,17 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
 
     @IBOutlet weak var imgLogin: UIImageView!
     @IBOutlet weak var imgClose: UIImageView!
-    @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var lblUsername: UILabel!
+    @IBOutlet weak var usernameView: UIView!
     @IBOutlet weak var txtUsername: UITextField!
     @IBOutlet weak var lblPassword: UILabel!
+    @IBOutlet weak var passwordView: UIView!
     @IBOutlet weak var txtPassword: UITextField!
+    @IBOutlet weak var rememberView: UIView!
     @IBOutlet weak var imgRememberMe: UIImageView!
     @IBOutlet weak var lblRememberMe: UILabel!
-    @IBOutlet weak var btnRememberMe: UIButton!
     @IBOutlet weak var lblForgotPassword: UILabel!
-    @IBOutlet weak var btnForgotPassword: UIButton!
     @IBOutlet weak var imgConfirm: UIImageView!
-    @IBOutlet weak var btnConfirm: UIButton!
     
     @IBOutlet weak var imgLoginHeight: NSLayoutConstraint!
     @IBOutlet weak var imgCloseWidth: NSLayoutConstraint!
@@ -31,6 +30,7 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
     @IBOutlet weak var lblUsernameWidth: NSLayoutConstraint!
     @IBOutlet weak var txtUsernameWidth: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmWidth: NSLayoutConstraint!
+    @IBOutlet weak var rememberMeCheckboxWidth: NSLayoutConstraint!
     @IBOutlet weak var usernameContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var usernameContainerMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var usernameContainerMarginRight: NSLayoutConstraint!
@@ -48,13 +48,22 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
     
     func initialLayout(){
         self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        
+        usernameView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        passwordView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        rememberView.backgroundColor = UIColor(white: 0, alpha: 0.5)
 
+        usernameView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
+        passwordView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
+        rememberView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
+        
         imgLoginHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
         usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
         lblUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 100)
         txtUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 300)
         btnConfirmWidth.constant = KKUtil.ConvertSizeByDensity(size: 200)
+        rememberMeCheckboxWidth.constant = KKUtil.ConvertSizeByDensity(size: 20)
         usernameContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 50)
         usernameContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 80)
         usernameContainerMarginRight.constant = usernameContainerMarginLeft.constant
@@ -64,12 +73,15 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
         btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
         
         lblUsername.text = KKUtil.languageSelectedStringForKey(key: "login_username")
-        txtUsername.placeholder = KKUtil.languageSelectedStringForKey(key: "login_username_placeholder")
         lblPassword.text = KKUtil.languageSelectedStringForKey(key: "login_password")
-        txtPassword.placeholder = KKUtil.languageSelectedStringForKey(key: "login_password_placeholder")
         lblRememberMe.text = KKUtil.languageSelectedStringForKey(key: "login_remember_me")
-        lblForgotPassword.text = KKUtil.languageSelectedStringForKey(key: "login_forgot_password")
-
+        let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue]
+        let underlineAttributedString = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "login_forgot_password"), attributes: underlineAttribute)
+        lblForgotPassword.attributedText = underlineAttributedString
+        
+        txtUsername.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "login_username_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
+        txtPassword.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "login_password_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
+                
         lblUsername.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
         txtUsername.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
         lblPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
@@ -82,6 +94,8 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
         
         txtUsername.returnKeyType = .next
         txtPassword.returnKeyType = .done
+        
+        imgRememberMe.isHidden = true
     }
 
     ///Button Actions
@@ -90,7 +104,11 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
     }
     
     @IBAction func btnRememberMeDidPressed(){
-        
+        if (imgRememberMe.isHidden){
+            imgRememberMe.isHidden = false
+        } else {
+            imgRememberMe.isHidden = true
+        }
     }
     
     @IBAction func btnForgotPasswordDidPressed(){

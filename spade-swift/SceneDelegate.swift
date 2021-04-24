@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
 
             let window = UIWindow(windowScene: windowScene)
-            let viewController = KKHomeViewController.init()
+            let viewController = KKOnBoardingViewController.init()
             window.rootViewController = viewController
 
             self.window = window
