@@ -27,6 +27,10 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var announcementContainer: UIView!
     @IBOutlet weak var lblAnnouncement: UILabel!
     
+    ///Content
+    @IBOutlet weak var menuContainer: UIView!
+    
+    
     ///Footer Container
     @IBOutlet weak var lblAffiliate: UILabel!
     @IBOutlet weak var lblRebate: UILabel!
@@ -48,6 +52,7 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var announcementContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var imgAnnouncementHeight: NSLayoutConstraint!
     @IBOutlet weak var footerContainerHeight: NSLayoutConstraint!
+    @IBOutlet weak var footerButtonContainerMarginRight: NSLayoutConstraint!
     @IBOutlet weak var imgAffiliateWidth: NSLayoutConstraint!
     @IBOutlet weak var btnWithdrawWidth: NSLayoutConstraint!
     
@@ -61,19 +66,20 @@ class KKHomeViewController: KKBaseViewController {
         topContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 70)
         imgProfileWidth.constant = KKUtil.ConvertSizeByDensity(size: 50)
         lblProfileNameWidth.constant = KKUtil.ConvertSizeByDensity(size: 70)
-        lblCopyWidth.constant = KKUtil.ConvertSizeByDensity(size: 70)
+        lblCopyWidth.constant = KKUtil.ConvertSizeByDensity(size: 60)
         expBarHeight.constant = KKUtil.ConvertSizeByDensity(size: 4)
         moneyContainerWidth.constant = KKUtil.ConvertSizeByDensity(size: 180)
         moneyContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
         imgCoinWidth.constant = KKUtil.ConvertSizeByDensity(size: 40)
         imgRefreshWidth.constant = KKUtil.ConvertSizeByDensity(size: 18)
-        missionContainerWidth.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        announcementContainerWidth.constant = KKUtil.ConvertSizeByDensity(size: 400)
+        missionContainerWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 45 : 40)
+        announcementContainerWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 350 : 400)
         announcementContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         imgAnnouncementHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         footerContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        imgAffiliateWidth.constant = KKUtil.ConvertSizeByDensity(size: 24)
-        btnWithdrawWidth.constant = KKUtil.ConvertSizeByDensity(size: 110)
+        footerButtonContainerMarginRight.constant = KKUtil.ConvertSizeByDensity(size: 20)
+        imgAffiliateWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 18 : 22)
+        btnWithdrawWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 110 : 130)
 
         imgBG.image = UIImage(named: "bg_main")
         imgProfile.image = UIImage(named: "ic_profile")
@@ -89,14 +95,14 @@ class KKHomeViewController: KKBaseViewController {
         lblMore.text = KKUtil.languageSelectedStringForKey(key: "home_more")
         
         lblProfileName.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
-        lblVip.font = UIFont.systemFont(ofSize: 11)
-        lblAnnouncement.font = UIFont.systemFont(ofSize: 12)
-        lblCopy.font = UIFont.systemFont(ofSize: 11)
-        lblMoney.font = UIFont.systemFont(ofSize: 14)
-        lblMission.font = UIFont.systemFont(ofSize: 10)
+        lblVip.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 11))
+        lblAnnouncement.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
+        lblCopy.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 11))
+        lblMoney.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 13))
+        lblMission.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
         lblBonus.font = lblMission.font
         lblSettings.font = lblMission.font
-        lblAffiliate.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
+        lblAffiliate.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
         lblRebate.font = lblAffiliate.font
         lblMessage.font = lblAffiliate.font
         lblSupport.font = lblAffiliate.font
@@ -109,18 +115,31 @@ class KKHomeViewController: KKBaseViewController {
 
         
         copyContainer.backgroundColor = UIColor(white: 0, alpha: 0.8)
-        copyContainer.layer.cornerRadius = 10
-        copyContainer.layer.borderWidth = 1.0
+        copyContainer.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 9 : 10)
+        copyContainer.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 1.0)
         copyContainer.layer.borderColor = UIColor.spade_white_FFFFFF.cgColor
         moneyContainer.backgroundColor = UIColor(white: 0, alpha: 0.3)
-        moneyContainer.layer.cornerRadius = 10
+        moneyContainer.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 9 : 10)
         announcementContainer.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        announcementContainer.layer.cornerRadius = 10
-        
+        announcementContainer.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 9 : 10)
+
+        setGradientBackground(colorTop: UIColor(white: 0, alpha: 0.0), colorCenter: UIColor(white: 0, alpha: 0.5), colorBottom: UIColor(white: 0, alpha: 0.0), view: menuContainer)
+
         let ratio = Float(10) / Float(10)
         expBar.progress = Float(ratio)
     }
+    
+    func setGradientBackground(colorTop: UIColor, colorCenter: UIColor, colorBottom: UIColor, view: UIView){
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop.cgColor, colorCenter.cgColor, colorBottom.cgColor]
+//        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
+//        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.locations = [0, 0.5, 1]
+        gradientLayer.frame = view.bounds
 
+        view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     ///Button Actions
     @IBAction func btnProfileDidPressed(){
         
