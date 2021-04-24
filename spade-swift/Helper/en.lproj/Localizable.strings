@@ -22,4 +22,14 @@
 "register_confirm_password"                 = "Confirm Password:";
 "register_confirm_password_placeholder"     = "Please re-enter your password";
 
+//MARK : HOME
+"home_copy_id"      = "COPY ID";
+"home_mission"      = "Mission";
+"home_bonus"        = "Bonus";
+"home_settings"     = "Settings";
+"home_affiliates"   = "Affiliates";
+"home_rebate"       = "Rebate";
+"home_message"      = "Message";
+"home_support"      = "Support";
+"home_more"         = "More";
 

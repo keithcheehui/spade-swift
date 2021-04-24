@@ -38,7 +38,6 @@ struct ConstantSize {
 
     static let ssoLabelFont = CGFloat(16)
     static let ssoLabelSmallFont = CGFloat(13)
-
 }
 
 struct Spade {
