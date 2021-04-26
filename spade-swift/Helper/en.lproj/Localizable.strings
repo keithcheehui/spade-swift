@@ -6,7 +6,7 @@
   
 */
 
-//MARK : LOGIN
+//MARK: LOGIN
 "login_username"                    = "Username:";
 "login_username_placeholder"        = "Please enter login ID";
 "login_password"                    = "Password:";
@@ -14,7 +14,7 @@
 "login_remember_me"                 = "Remember me";
 "login_forgot_password"             = "Forgot Password?";
 
-//MARK : REGISTRATION
+//MARK: REGISTRATION
 "register_username"                         = "Username:";
 "register_username_placeholder"             = "Username must be between 6-12 characters.";
 "register_password"                         = "Password:";
@@ -22,7 +22,7 @@
 "register_confirm_password"                 = "Confirm Password:";
 "register_confirm_password_placeholder"     = "Please re-enter your password";
 
-//MARK : HOME
+//MARK: HOME
 "home_copy_id"      = "COPY ID";
 "home_mission"      = "Mission";
 "home_bonus"        = "Bonus";
@@ -32,4 +32,11 @@
 "home_message"      = "Message";
 "home_support"      = "Support";
 "home_more"         = "More";
+
+//MARK: Personal Center
+"personal_user_info"            = "User Info";
+"personal_betting_record"       = "Betting Record";
+"personal_account_detail"       = "Account Details";
+"personal_individual_report"    = "Individual Report";
+
 
