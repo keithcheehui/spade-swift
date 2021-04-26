@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06051B2926371E7900130057 /* KKSplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06051B2726371E7900130057 /* KKSplashScreenViewController.swift */; };
+		06051B2A26371E7900130057 /* KKSplashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06051B2826371E7900130057 /* KKSplashScreenViewController.xib */; };
 		062C397D2632C74200E86EEA /* KKApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062C397C2632C74200E86EEA /* KKApiRouter.swift */; };
 		062C39812632C92C00E86EEA /* KKApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062C39802632C92C00E86EEA /* KKApiClient.swift */; };
 		062C39852632C98600E86EEA /* KKApiErrorDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062C39842632C98600E86EEA /* KKApiErrorDetails.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06051B2726371E7900130057 /* KKSplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSplashScreenViewController.swift; sourceTree = "<group>"; };
+		06051B2826371E7900130057 /* KKSplashScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKSplashScreenViewController.xib; sourceTree = "<group>"; };
 		062C397C2632C74200E86EEA /* KKApiRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKApiRouter.swift; sourceTree = "<group>"; };
 		062C39802632C92C00E86EEA /* KKApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKApiClient.swift; sourceTree = "<group>"; };
 		062C39842632C98600E86EEA /* KKApiErrorDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKApiErrorDetails.swift; sourceTree = "<group>"; };
@@ -84,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06051B2626371E5100130057 /* Splash Screen */ = {
+			isa = PBXGroup;
+			children = (
+				06051B2726371E7900130057 /* KKSplashScreenViewController.swift */,
+				06051B2826371E7900130057 /* KKSplashScreenViewController.xib */,
+			);
+			path = "Splash Screen";
+			sourceTree = "<group>";
+		};
 		062C39832632C96A00E86EEA /* Api Error */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,7 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				0676B621262FDC620023311F /* Base */,
-				53268C012630605500ECAAE2 /* OnBoarding */,
+				06051B2626371E5100130057 /* Splash Screen */,
+				53268C012630605500ECAAE2 /* Onboarding */,
 				53268C0F263068FC00ECAAE2 /* Login */,
 				53268C1A26307FC700ECAAE2 /* Registration */,
 				533CA6B82631741A00768C08 /* Home */,
@@ -222,13 +236,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		53268C012630605500ECAAE2 /* OnBoarding */ = {
+		53268C012630605500ECAAE2 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
 				53268BFE2630604F00ECAAE2 /* KKOnBoardingViewController.swift */,
 				53268C052630612900ECAAE2 /* KKOnBoardingViewController.xib */,
 			);
-			path = OnBoarding;
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		53268C0F263068FC00ECAAE2 /* Login */ = {
@@ -323,6 +337,7 @@
 				0676B668263095EE0023311F /* Localizable.strings in Resources */,
 				0676B5B1262FD6F30023311F /* Assets.xcassets in Resources */,
 				0676B5AF262FD6EF0023311F /* Main.storyboard in Resources */,
+				06051B2A26371E7900130057 /* KKSplashScreenViewController.xib in Resources */,
 				533CA6BB2631745C00768C08 /* KKHomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,6 +404,7 @@
 				53268BFF2630604F00ECAAE2 /* KKOnBoardingViewController.swift in Sources */,
 				0676B60E262FDAF40023311F /* SKFuture.swift in Sources */,
 				53268C1526307FB800ECAAE2 /* KKRegistrationViewController.swift in Sources */,
+				06051B2926371E7900130057 /* KKSplashScreenViewController.swift in Sources */,
 				0676B616262FDB790023311F /* KKAlertControllerTransition.swift in Sources */,
 				0676B5AA262FD6EF0023311F /* SceneDelegate.swift in Sources */,
 				062C397D2632C74200E86EEA /* KKApiRouter.swift in Sources */,

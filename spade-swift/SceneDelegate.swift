@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
 
             let window = UIWindow(windowScene: windowScene)
-            let viewController = KKOnBoardingViewController.init()
+            let viewController = KKSplashScreenViewController.init()
             window.rootViewController = viewController
 
             self.window = window
@@ -59,6 +59,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
+    func changeRootViewController(viewController: UIViewController) {
+        
+        if (!((self.window?.rootViewController) != nil)) {
+            
+            self.window?.rootViewController = viewController
+            return
+        }
+        
+        let snapshot: UIView! = self.window?.snapshotView(afterScreenUpdates: true)
+        viewController.view.addSubview(snapshot!)
+        self.window?.rootViewController = viewController
+        
+        UIView.transition(with: snapshot,
+                          duration: Double(0.25),
+                          options: .transitionCrossDissolve,
+                          animations: {
+            snapshot.layer.opacity = 0
+            snapshot.layer.transform = CATransform3DMakeScale(CGFloat(1.5), CGFloat(1.5), CGFloat(1.5))
+        },
+        completion: { status in
+            snapshot.removeFromSuperview()
+        })
+    }
 }
 

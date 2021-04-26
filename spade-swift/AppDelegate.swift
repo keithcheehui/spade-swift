@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.makeKeyAndVisible()
            
-            let viewController = KKOnBoardingViewController.init()
+            let viewController = KKSplashScreenViewController.init()
             window?.rootViewController = viewController
         }
         
