@@ -24,6 +24,7 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var lblMission: UILabel!
     @IBOutlet weak var lblBonus: UILabel!
     @IBOutlet weak var lblSettings: UILabel!
+    @IBOutlet weak var lblLanguage: UILabel!
     @IBOutlet weak var announcementContainer: UIView!
     @IBOutlet weak var lblAnnouncement: UILabel!
     
@@ -102,6 +103,7 @@ class KKHomeViewController: KKBaseViewController {
         lblMission.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
         lblBonus.font = lblMission.font
         lblSettings.font = lblMission.font
+        lblLanguage.font = lblMission.font
         lblAffiliate.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
         lblRebate.font = lblAffiliate.font
         lblMessage.font = lblAffiliate.font
@@ -112,6 +114,7 @@ class KKHomeViewController: KKBaseViewController {
         lblVip.text = "VIP 1"
         lblMoney.text = "999,999,999"
         lblAnnouncement.text = "Welcome Welcome Welcome Welcome Welcome"
+        lblLanguage.text = "English"
 
         
         copyContainer.backgroundColor = UIColor(white: 0, alpha: 0.8)
@@ -162,6 +165,10 @@ class KKHomeViewController: KKBaseViewController {
     }
     
     @IBAction func btnSettingsDidPressed(){
+        
+    }
+    
+    @IBAction func btnLanguageDidPressed(){
         
     }
     
