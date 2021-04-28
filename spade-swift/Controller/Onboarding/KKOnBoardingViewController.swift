@@ -46,7 +46,7 @@ class KKOnBoardingViewController: KKBaseViewController {
     
     ///Button Actions
     @IBAction func btnFBDidPressed(){
-        
+        self.navigationController?.pushViewController(KKHomeViewController(), animated: true)
     }
     
     @IBAction func btnLoginDidPressed(){

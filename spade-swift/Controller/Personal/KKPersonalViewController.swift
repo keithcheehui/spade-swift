@@ -62,7 +62,7 @@ class KKPersonalViewController: KKBaseViewController {
     
     ///Button Actions
     @IBAction func btnBackDidPressed(){
-        
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnUserInfoDidPressed(){

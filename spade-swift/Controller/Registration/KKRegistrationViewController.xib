@@ -235,7 +235,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="PlF-nf-H6J" firstAttribute="top" secondItem="0HL-63-HQY" secondAttribute="bottom" constant="50" id="0p3-0Y-LEK"/>
                         <constraint firstItem="6Xa-8j-7zH" firstAttribute="top" secondItem="gpO-me-tCb" secondAttribute="bottom" constant="40" id="2Zb-2n-DFB"/>

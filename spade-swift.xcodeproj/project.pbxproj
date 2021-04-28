@@ -37,6 +37,8 @@
 		53268C1826307FC100ECAAE2 /* KKRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53268C1726307FC100ECAAE2 /* KKRegistrationViewController.xib */; };
 		533CA6BB2631745C00768C08 /* KKHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533CA6BA2631745C00768C08 /* KKHomeViewController.xib */; };
 		533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CA6BD2631746800768C08 /* KKHomeViewController.swift */; };
+		53963E0A2639A36C00D803D4 /* KKSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53963E092639A36C00D803D4 /* KKSettingsViewController.swift */; };
+		53963E0D2639A37400D803D4 /* KKSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53963E0C2639A37400D803D4 /* KKSettingsViewController.xib */; };
 		53C64EFA263700D00068F03E /* KKPersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53C64EF9263700D00068F03E /* KKPersonalViewController.xib */; };
 		53C64EFD263700E10068F03E /* KKPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C64EFC263700E10068F03E /* KKPersonalViewController.swift */; };
 /* End PBXBuildFile section */
@@ -75,6 +77,8 @@
 		53268C1726307FC100ECAAE2 /* KKRegistrationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKRegistrationViewController.xib; sourceTree = "<group>"; };
 		533CA6BA2631745C00768C08 /* KKHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKHomeViewController.xib; sourceTree = "<group>"; };
 		533CA6BD2631746800768C08 /* KKHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKHomeViewController.swift; sourceTree = "<group>"; };
+		53963E092639A36C00D803D4 /* KKSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSettingsViewController.swift; sourceTree = "<group>"; };
+		53963E0C2639A37400D803D4 /* KKSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKSettingsViewController.xib; sourceTree = "<group>"; };
 		53C64EF9263700D00068F03E /* KKPersonalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKPersonalViewController.xib; sourceTree = "<group>"; };
 		53C64EFC263700E10068F03E /* KKPersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPersonalViewController.swift; sourceTree = "<group>"; };
 		DE9CF2AF875923073B28E1B7 /* Pods-spade-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spade-swift.debug.xcconfig"; path = "Target Support Files/Pods-spade-swift/Pods-spade-swift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 				53268C1A26307FC700ECAAE2 /* Registration */,
 				533CA6B82631741A00768C08 /* Home */,
 				53C64EF72637006C0068F03E /* Personal */,
+				53963E062639A30A00D803D4 /* Settings */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -277,11 +282,20 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		53963E062639A30A00D803D4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				53963E092639A36C00D803D4 /* KKSettingsViewController.swift */,
+				53963E0C2639A37400D803D4 /* KKSettingsViewController.xib */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		53C64EF72637006C0068F03E /* Personal */ = {
 			isa = PBXGroup;
 			children = (
-				53C64EF9263700D00068F03E /* KKPersonalViewController.xib */,
 				53C64EFC263700E10068F03E /* KKPersonalViewController.swift */,
+				53C64EF9263700D00068F03E /* KKPersonalViewController.xib */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -354,6 +368,7 @@
 				06051B2A26371E7900130057 /* KKSplashScreenViewController.xib in Resources */,
 				533CA6BB2631745C00768C08 /* KKHomeViewController.xib in Resources */,
 				53C64EFA263700D00068F03E /* KKPersonalViewController.xib in Resources */,
+				53963E0D2639A37400D803D4 /* KKSettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +426,7 @@
 				0676B5AC262FD6EF0023311F /* ViewController.swift in Sources */,
 				0676B5F3262FD8520023311F /* KKConstant.swift in Sources */,
 				533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */,
+				53963E0A2639A36C00D803D4 /* KKSettingsViewController.swift in Sources */,
 				0676B5A8262FD6EF0023311F /* AppDelegate.swift in Sources */,
 				0676B5F6262FD8BD0023311F /* KKSingleton.swift in Sources */,
 				0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */,

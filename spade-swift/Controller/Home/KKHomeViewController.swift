@@ -145,7 +145,7 @@ class KKHomeViewController: KKBaseViewController {
     
     ///Button Actions
     @IBAction func btnProfileDidPressed(){
-        
+        self.navigationController?.pushViewController(KKPersonalViewController(), animated: true)
     }
     
     @IBAction func btnCopyDidPressed(){
@@ -165,7 +165,7 @@ class KKHomeViewController: KKBaseViewController {
     }
     
     @IBAction func btnSettingsDidPressed(){
-        
+        self.present(KKSettingsViewController(), animated: false, completion: nil)
     }
     
     @IBAction func btnLanguageDidPressed(){
@@ -185,7 +185,7 @@ class KKHomeViewController: KKBaseViewController {
     }
     
     @IBAction func btnSupportDidPressed(){
-        
+
     }
     
     @IBAction func btnMoreDidPressed(){

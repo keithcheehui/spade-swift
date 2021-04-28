@@ -39,4 +39,10 @@
 "personal_account_detail"       = "Account Details";
 "personal_individual_report"    = "Individual Report";
 
+//MARK: Settings
+"settings_volume_setting"       = "Volume Setting";
+"settings_change_password"      = "Change Password";
+"settings_version"              = "Version";
+"settings_device_binding"       = "Device Binding";
+
 
