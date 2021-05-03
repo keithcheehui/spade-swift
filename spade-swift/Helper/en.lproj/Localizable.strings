@@ -45,4 +45,31 @@
 "settings_version"              = "Version";
 "settings_device_binding"       = "Device Binding";
 
+//MARK: Affiliates
+"affiliates_my_affiliate"       = "My Affiliate";
+"affiliates_downline"           = "Downline";
+"affiliates_guideline"          = "Guideline";
+"affiliates_turnover"           = "Turnover";
+
+//MARK: Rebate
+"rebate_manual_rebate"          = "Manual Rebate";
+"rebate_rebate_record"          = "Rebate Record";
+"rebate_rebate_ratio"           = "Rebate Ratio";
+
+//MARK: Message
+"message_system_mail"           = "System Mail";
+"message_notification"          = "Notification";
+
+//MARK: Customer Service
+"support_live_chat"             = "Live Chat";
+"support_faq"                   = "FAQ";
+
+//MARK: Deposit
+"deposit_bank_account"          = "Bank Account";
+"deposit_artificial"            = "Artificial";
+
+//MARK: Withdraw
+"withdraw_withdraw"             = "Withdraw";
+"withdraw_withdraw_history"     = "Withdraw History";
+"withdraw_bank_card"            = "Bank Card";
 

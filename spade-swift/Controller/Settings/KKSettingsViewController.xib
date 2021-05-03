@@ -43,7 +43,7 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_popup" translatesAutoresizingMaskIntoConstraints="NO" id="HKg-PG-58C">
                             <rect key="frame" x="0.0" y="0.0" width="608" height="374"/>
                         </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_login" translatesAutoresizingMaskIntoConstraints="NO" id="rjo-Hn-9nx">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rjo-Hn-9nx">
                             <rect key="frame" x="25" y="25" width="558" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="FFV-3T-IjB"/>
@@ -351,7 +351,6 @@
         <image name="ic_account_detail" width="68" height="68"/>
         <image name="ic_betting_record" width="68" height="68"/>
         <image name="ic_close" width="83" height="86"/>
-        <image name="ic_login" width="222" height="60"/>
         <image name="ic_report" width="68" height="68"/>
         <image name="ic_user_info" width="68" height="68"/>
         <systemColor name="systemBackgroundColor">

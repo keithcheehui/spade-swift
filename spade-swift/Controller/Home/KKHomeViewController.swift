@@ -153,7 +153,7 @@ class KKHomeViewController: KKBaseViewController {
     }
 
     @IBAction func btnRefreshDidPressed(){
-        
+        self.navigationController?.pushViewController(KKPersonalViewController(), animated: true)
     }
     
     @IBAction func btnMissionDidPressed(){
@@ -173,19 +173,19 @@ class KKHomeViewController: KKBaseViewController {
     }
     
     @IBAction func btnAffiliatesDidPressed(){
-        
+        self.navigationController?.pushViewController(KKAffiliateViewController(), animated: true)
     }
     
     @IBAction func btnRebateDidPressed(){
-        
+        self.navigationController?.pushViewController(KKRebateViewController(), animated: true)
     }
     
     @IBAction func btnMessageDidPressed(){
-        
+        self.navigationController?.pushViewController(KKMessageViewController(), animated: true)
     }
     
     @IBAction func btnSupportDidPressed(){
-
+        self.navigationController?.pushViewController(KKSupportViewController(), animated: true)
     }
     
     @IBAction func btnMoreDidPressed(){
@@ -193,10 +193,10 @@ class KKHomeViewController: KKBaseViewController {
     }
     
     @IBAction func btnDepositDidPressed(){
-        
+        self.navigationController?.pushViewController(KKDepositViewController(), animated: true)
     }
     
     @IBAction func btnWithdrawDidPressed(){
-        
+        self.navigationController?.pushViewController(KKWithdrawViewController(), animated: true)
     }
 }
