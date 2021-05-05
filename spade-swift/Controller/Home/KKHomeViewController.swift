@@ -145,7 +145,7 @@ class KKHomeViewController: KKBaseViewController {
     
     ///Button Actions
     @IBAction func btnProfileDidPressed(){
-        self.navigationController?.pushViewController(KKPersonalViewController(), animated: true)
+        self.navigationController?.pushViewController(KKPersonalPageViewController(), animated: true)
     }
     
     @IBAction func btnCopyDidPressed(){
@@ -153,7 +153,7 @@ class KKHomeViewController: KKBaseViewController {
     }
 
     @IBAction func btnRefreshDidPressed(){
-        self.navigationController?.pushViewController(KKPersonalViewController(), animated: true)
+        self.navigationController?.pushViewController(KKPersonalPageViewController(), animated: true)
     }
     
     @IBAction func btnMissionDidPressed(){

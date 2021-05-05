@@ -15,8 +15,8 @@ struct ScreenSize {
     static let maxLength = max(width, height)
     static let minLength = min(width, height)
     static let statusBarHeight = UIApplication.shared.statusBarFrame.height
-    static let navBarHeight = CGFloat(50)
-    static let navBarTotalHeight = statusBarHeight + navBarHeight
+    static let leftNotchWidth = CGFloat(44)
+    static let navBarHeight = CGFloat(60)
 }
 
 struct ConstantSize {
@@ -38,6 +38,11 @@ struct ConstantSize {
 
     static let ssoLabelFont = CGFloat(14)
     static let ssoLabelSmallFont = CGFloat(12)
+}
+
+struct CellIdentifier {
+    
+    static let sideMenuTableCellIdentifier = "SIDE_MENU_TABLE_CELL_IDENTIFIER"
 }
 
 struct Spade {

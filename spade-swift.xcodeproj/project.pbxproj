@@ -12,6 +12,8 @@
 		062C397D2632C74200E86EEA /* KKApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062C397C2632C74200E86EEA /* KKApiRouter.swift */; };
 		062C39812632C92C00E86EEA /* KKApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062C39802632C92C00E86EEA /* KKApiClient.swift */; };
 		062C39852632C98600E86EEA /* KKApiErrorDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062C39842632C98600E86EEA /* KKApiErrorDetails.swift */; };
+		067029D62641278300DFADAC /* KKPersonalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067029D52641278300DFADAC /* KKPersonalPageViewController.swift */; };
+		067029DA2641326E00DFADAC /* KKSideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067029D92641326E00DFADAC /* KKSideMenuTableViewCell.swift */; };
 		0676B5A8262FD6EF0023311F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5A7262FD6EF0023311F /* AppDelegate.swift */; };
 		0676B5AA262FD6EF0023311F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5A9262FD6EF0023311F /* SceneDelegate.swift */; };
 		0676B5AC262FD6EF0023311F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5AB262FD6EF0023311F /* ViewController.swift */; };
@@ -61,6 +63,8 @@
 		062C397C2632C74200E86EEA /* KKApiRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKApiRouter.swift; sourceTree = "<group>"; };
 		062C39802632C92C00E86EEA /* KKApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKApiClient.swift; sourceTree = "<group>"; };
 		062C39842632C98600E86EEA /* KKApiErrorDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKApiErrorDetails.swift; sourceTree = "<group>"; };
+		067029D52641278300DFADAC /* KKPersonalPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPersonalPageViewController.swift; sourceTree = "<group>"; };
+		067029D92641326E00DFADAC /* KKSideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		0676B5A4262FD6EF0023311F /* spade-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "spade-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0676B5A7262FD6EF0023311F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0676B5A9262FD6EF0023311F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +139,14 @@
 				062C39842632C98600E86EEA /* KKApiErrorDetails.swift */,
 			);
 			path = "Api Error";
+			sourceTree = "<group>";
+		};
+		067029D82641323500DFADAC /* Side Menu */ = {
+			isa = PBXGroup;
+			children = (
+				067029D92641326E00DFADAC /* KKSideMenuTableViewCell.swift */,
+			);
+			path = "Side Menu";
 			sourceTree = "<group>";
 		};
 		0676B59B262FD6EF0023311F = {
@@ -239,6 +251,7 @@
 		0676B61E262FDC170023311F /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
+				067029D82641323500DFADAC /* Side Menu */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -380,6 +393,7 @@
 			children = (
 				53C64EFC263700E10068F03E /* KKPersonalViewController.swift */,
 				53C64EF9263700D00068F03E /* KKPersonalViewController.xib */,
+				067029D52641278300DFADAC /* KKPersonalPageViewController.swift */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -512,8 +526,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				062C39812632C92C00E86EEA /* KKApiClient.swift in Sources */,
+				067029DA2641326E00DFADAC /* KKSideMenuTableViewCell.swift in Sources */,
 				0676B612262FDAFE0023311F /* SKResult.swift in Sources */,
 				0676B5AC262FD6EF0023311F /* ViewController.swift in Sources */,
+				067029D62641278300DFADAC /* KKPersonalPageViewController.swift in Sources */,
 				0676B5F3262FD8520023311F /* KKConstant.swift in Sources */,
 				53AAAE2926401CA9004103F0 /* KKWithdrawViewController.swift in Sources */,
 				533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */,
