@@ -10,11 +10,12 @@ import UIKit
 
 class KKMessageViewController: KKBaseViewController {
     
-    @IBOutlet weak var lblUserInfo: UILabel!
-    @IBOutlet weak var lblBettingRecord: UILabel!
-    @IBOutlet weak var imgHoverUserInfo: UIImageView!
-    @IBOutlet weak var imgHoverBettingRecord: UIImageView!
-    
+    @IBOutlet weak var lblSystemMail: UILabel!
+    @IBOutlet weak var lblNotification: UILabel!
+    @IBOutlet weak var imgHoverSystemMail: UIImageView!
+    @IBOutlet weak var imgHoverNotification: UIImageView!
+    @IBOutlet weak var contentView: UIView!
+
     @IBOutlet weak var imgBackWidth: NSLayoutConstraint!
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
     @IBOutlet weak var imgMenuIconWidth: NSLayoutConstraint!
@@ -25,30 +26,32 @@ class KKMessageViewController: KKBaseViewController {
     @IBOutlet weak var separatorHeight: NSLayoutConstraint!
     
     
+    enum viewType: Int {
+        case systemMail = 0
+        case notification = 1
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
         initialLayout()
+        buttonHover(type: viewType.systemMail.rawValue)
     }
     
     func initialLayout(){
-        imgBackWidth.constant = KKUtil.ConvertSizeByDensity(size: 35)
-        sideMenuWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
-        imgMenuIconWidth.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        menuItemHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        separatorHeight.constant = KKUtil.ConvertSizeByDensity(size: 10)
-
-        headerContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 20 : 30)
-        menuItemMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 15)
+        imgBackWidth.constant = ConstantSize.imgBackWidth
+        sideMenuWidth.constant = ConstantSize.sideMenuWidth
+        imgMenuIconWidth.constant = ConstantSize.imgMenuIconWidth
+        menuItemHeight.constant = ConstantSize.menuItemHeight
+        separatorHeight.constant = ConstantSize.separatorHeight
+        headerContainerMarginLeft.constant = ConstantSize.headerContainerMarginLeft
+        menuItemMarginLeft.constant = ConstantSize.menuItemMarginLeft
         
-        lblUserInfo.text = KKUtil.languageSelectedStringForKey(key: "message_system_mail")
-        lblBettingRecord.text = KKUtil.languageSelectedStringForKey(key: "message_notification")
+        lblSystemMail.text = KKUtil.languageSelectedStringForKey(key: "message_system_mail")
+        lblNotification.text = KKUtil.languageSelectedStringForKey(key: "message_notification")
         
-        lblUserInfo.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
-        lblBettingRecord.font = lblUserInfo.font
-
-        buttonHover(image: imgHoverUserInfo)
+        lblSystemMail.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+        lblNotification.font = lblSystemMail.font
     }
     
     
@@ -57,18 +60,41 @@ class KKMessageViewController: KKBaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func btnUserInfoDidPressed(){
-        buttonHover(image: imgHoverUserInfo)
+    @IBAction func btnSystemMailDidPressed(){
+        buttonHover(type: viewType.systemMail.rawValue)
     }
     
-    @IBAction func btnBettingRecordDidPressed(){
-        buttonHover(image: imgHoverBettingRecord)
+    @IBAction func btnNotificationDidPressed(){
+        buttonHover(type: viewType.notification.rawValue)
     }
 
-    func buttonHover(image: UIImageView){
-        imgHoverUserInfo.isHidden = true
-        imgHoverBettingRecord.isHidden = true
+    func buttonHover(type: Int){
+        imgHoverSystemMail.isHidden = true
+        imgHoverNotification.isHidden = true
         
-        image.isHidden = false
+        var viewController: UIViewController = KKOnBoardingViewController()
+        
+        switch type {
+        case viewType.notification.rawValue:
+            imgHoverNotification.isHidden = false
+            viewController = KKPersonalViewController()
+            break;
+        default:
+            imgHoverSystemMail.isHidden = false
+            viewController = KKOnBoardingViewController()
+            break;
+        }
+        
+        changeView(vc: viewController)
+    }
+    
+    func changeView(vc: UIViewController){
+        for view in contentView.subviews{
+            view.removeFromSuperview()
+        }
+        
+        vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
+        contentView.addSubview(vc.view)
+        self.addChild(vc)
     }
 }

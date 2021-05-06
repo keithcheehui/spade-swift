@@ -79,12 +79,12 @@ class KKRegistrationViewController: KKBaseViewController, UITextFieldDelegate {
         txtPassword.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "register_password_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
         txtConfirmPassword.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "register_confirm_password_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
                 
-        lblUsername.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
-        txtUsername.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
-        lblPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
-        txtPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
-        lblConfirmPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
-        txtConfirmPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
+        lblUsername.font = UIFont.systemFont(ofSize: ConstantSize.ssoLabelFont)
+        txtUsername.font = lblUsername.font
+        lblPassword.font = lblUsername.font
+        txtPassword.font = lblUsername.font
+        lblConfirmPassword.font = lblUsername.font
+        txtConfirmPassword.font = lblUsername.font
 
         txtUsername.delegate = self
         txtPassword.delegate = self

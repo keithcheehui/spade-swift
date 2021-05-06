@@ -135,8 +135,6 @@ class KKHomeViewController: KKBaseViewController {
     func setGradientBackground(colorTop: UIColor, colorCenter: UIColor, colorBottom: UIColor, view: UIView){
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [colorTop.cgColor, colorCenter.cgColor, colorBottom.cgColor]
-//        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
-//        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
         gradientLayer.locations = [0, 0.5, 1]
         gradientLayer.frame = view.bounds
 
@@ -145,7 +143,7 @@ class KKHomeViewController: KKBaseViewController {
     
     ///Button Actions
     @IBAction func btnProfileDidPressed(){
-        self.navigationController?.pushViewController(KKPersonalPageViewController(), animated: true)
+        self.navigationController?.pushViewController(KKPersonalViewController(), animated: true)
     }
     
     @IBAction func btnCopyDidPressed(){
@@ -153,7 +151,7 @@ class KKHomeViewController: KKBaseViewController {
     }
 
     @IBAction func btnRefreshDidPressed(){
-        self.navigationController?.pushViewController(KKPersonalPageViewController(), animated: true)
+        
     }
     
     @IBAction func btnMissionDidPressed(){

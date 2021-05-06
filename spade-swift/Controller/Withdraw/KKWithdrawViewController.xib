@@ -11,15 +11,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKWithdrawViewController">
             <connections>
+                <outlet property="contentView" destination="NI7-3Q-eUY" id="uFK-XO-Wuw"/>
                 <outlet property="headerContainerMarginLeft" destination="UCJ-eL-mGm" id="5oj-ot-9x3"/>
                 <outlet property="imgBackWidth" destination="zoH-8i-JIX" id="Joh-ya-0qe"/>
-                <outlet property="imgHoverAccountDetails" destination="UC5-Yc-mIK" id="URW-qF-6Ly"/>
-                <outlet property="imgHoverBettingRecord" destination="qPa-iR-0Lk" id="ktX-eP-425"/>
-                <outlet property="imgHoverUserInfo" destination="ECu-y6-85K" id="KuZ-v9-1qL"/>
+                <outlet property="imgHoverBankCard" destination="UC5-Yc-mIK" id="Wzk-O3-75G"/>
+                <outlet property="imgHoverWithdraw" destination="ECu-y6-85K" id="dWL-QZ-0I6"/>
+                <outlet property="imgHoverWithdrawHistory" destination="qPa-iR-0Lk" id="jT4-ZT-wKt"/>
                 <outlet property="imgMenuIconWidth" destination="hHc-bX-y8a" id="SQ9-WY-GNv"/>
-                <outlet property="lblAccountDetails" destination="V88-ba-S0b" id="RU7-cY-SiZ"/>
-                <outlet property="lblBettingRecord" destination="h1L-At-A7m" id="EzK-EE-Qvi"/>
-                <outlet property="lblUserInfo" destination="KT2-hf-azi" id="1zL-1D-pfx"/>
+                <outlet property="lblBankCard" destination="V88-ba-S0b" id="dWD-k5-Gaa"/>
+                <outlet property="lblWithdraw" destination="KT2-hf-azi" id="Tca-SG-R3o"/>
+                <outlet property="lblWithdrawHistory" destination="h1L-At-A7m" id="zpV-5Q-qfI"/>
                 <outlet property="menuItemHeight" destination="0wh-dm-SAr" id="5UU-iy-ihV"/>
                 <outlet property="menuItemMarginLeft" destination="Ma9-72-l50" id="R7k-wi-xnx"/>
                 <outlet property="separatorHeight" destination="P23-xV-uzx" id="Z5Q-Cs-kWn"/>
@@ -54,7 +55,7 @@
                                         <constraint firstAttribute="width" constant="25" id="hHc-bX-y8a"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KT2-hf-azi">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Withdraw" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KT2-hf-azi">
                                     <rect key="frame" x="48" y="14" width="94" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -63,7 +64,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dyg-Lu-Rkg">
                                     <rect key="frame" x="0.0" y="0.0" width="146" height="40"/>
                                     <connections>
-                                        <action selector="btnUserInfoDidPressed" destination="-1" eventType="touchUpInside" id="EcZ-Ro-iNo"/>
+                                        <action selector="btnWithdrawDidPressed" destination="-1" eventType="touchUpInside" id="zap-IL-EhD"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -103,7 +104,7 @@
                                         <constraint firstAttribute="width" secondItem="BbX-31-aic" secondAttribute="height" multiplier="1:1" id="n4b-zt-aRE"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Betting Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1L-At-A7m">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Withdraw History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1L-At-A7m">
                                     <rect key="frame" x="48" y="14" width="94" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -112,7 +113,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBH-ZT-6cy">
                                     <rect key="frame" x="0.0" y="0.0" width="146" height="40"/>
                                     <connections>
-                                        <action selector="btnBettingRecordDidPressed" destination="-1" eventType="touchUpInside" id="3B2-JM-anU"/>
+                                        <action selector="btnWithdrawHistoryDidPressed" destination="-1" eventType="touchUpInside" id="yX3-oK-mUi"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -147,7 +148,7 @@
                                         <constraint firstAttribute="width" secondItem="PzS-Ea-rhH" secondAttribute="height" multiplier="1:1" id="iGY-fH-Vsj"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V88-ba-S0b">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V88-ba-S0b">
                                     <rect key="frame" x="48" y="14" width="94" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -156,7 +157,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWO-5a-zrL">
                                     <rect key="frame" x="0.0" y="0.0" width="146" height="40"/>
                                     <connections>
-                                        <action selector="btnAccountDetailsDidPressed" destination="-1" eventType="touchUpInside" id="Pvy-r9-7FB"/>
+                                        <action selector="btnBankCardDidPressed" destination="-1" eventType="touchUpInside" id="SNC-vm-yx7"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -227,11 +228,19 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_box" translatesAutoresizingMaskIntoConstraints="NO" id="72j-lD-7nQ">
                             <rect key="frame" x="0.0" y="0.0" width="662" height="344"/>
                         </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NI7-3Q-eUY">
+                            <rect key="frame" x="20" y="20" width="622" height="304"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="72j-lD-7nQ" secondAttribute="trailing" id="5kq-Zl-f0Y"/>
+                        <constraint firstItem="NI7-3Q-eUY" firstAttribute="top" secondItem="Ggt-l0-a5y" secondAttribute="top" constant="20" id="8Ek-be-ttc"/>
+                        <constraint firstAttribute="trailing" secondItem="NI7-3Q-eUY" secondAttribute="trailing" constant="20" id="CdP-D2-i5x"/>
                         <constraint firstItem="72j-lD-7nQ" firstAttribute="leading" secondItem="Ggt-l0-a5y" secondAttribute="leading" id="IGX-wh-aAq"/>
+                        <constraint firstAttribute="bottom" secondItem="NI7-3Q-eUY" secondAttribute="bottom" constant="20" id="OmP-Gv-2V5"/>
+                        <constraint firstItem="NI7-3Q-eUY" firstAttribute="leading" secondItem="Ggt-l0-a5y" secondAttribute="leading" constant="20" id="b2W-le-jHi"/>
                         <constraint firstItem="72j-lD-7nQ" firstAttribute="top" secondItem="Ggt-l0-a5y" secondAttribute="top" id="hJd-jr-bHG"/>
                         <constraint firstAttribute="bottom" secondItem="72j-lD-7nQ" secondAttribute="bottom" id="vDh-8U-PAF"/>
                     </constraints>

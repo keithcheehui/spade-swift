@@ -10,12 +10,13 @@ import UIKit
 
 class KKRebateViewController: KKBaseViewController {
     
-    @IBOutlet weak var lblUserInfo: UILabel!
-    @IBOutlet weak var lblBettingRecord: UILabel!
-    @IBOutlet weak var lblAccountDetails: UILabel!
-    @IBOutlet weak var imgHoverUserInfo: UIImageView!
-    @IBOutlet weak var imgHoverBettingRecord: UIImageView!
-    @IBOutlet weak var imgHoverAccountDetails: UIImageView!
+    @IBOutlet weak var lblManualRebate: UILabel!
+    @IBOutlet weak var lblRebateRecord: UILabel!
+    @IBOutlet weak var lblRebateRatio: UILabel!
+    @IBOutlet weak var imgHoverManualRebate: UIImageView!
+    @IBOutlet weak var imgHoverRebateRecord: UIImageView!
+    @IBOutlet weak var imgHoverRebateRatio: UIImageView!
+    @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var imgBackWidth: NSLayoutConstraint!
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
@@ -27,32 +28,35 @@ class KKRebateViewController: KKBaseViewController {
     @IBOutlet weak var separatorHeight: NSLayoutConstraint!
     
     
+    enum viewType: Int {
+        case manualRebate = 0
+        case rebateRecord = 1
+        case rebateRatio = 2
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
         initialLayout()
+        buttonHover(type: viewType.manualRebate.rawValue)
     }
     
     func initialLayout(){
-        imgBackWidth.constant = KKUtil.ConvertSizeByDensity(size: 35)
-        sideMenuWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
-        imgMenuIconWidth.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        menuItemHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        separatorHeight.constant = KKUtil.ConvertSizeByDensity(size: 10)
-
-        headerContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 20 : 30)
-        menuItemMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 15)
+        imgBackWidth.constant = ConstantSize.imgBackWidth
+        sideMenuWidth.constant = ConstantSize.sideMenuWidth
+        imgMenuIconWidth.constant = ConstantSize.imgMenuIconWidth
+        menuItemHeight.constant = ConstantSize.menuItemHeight
+        separatorHeight.constant = ConstantSize.separatorHeight
+        headerContainerMarginLeft.constant = ConstantSize.headerContainerMarginLeft
+        menuItemMarginLeft.constant = ConstantSize.menuItemMarginLeft
         
-        lblUserInfo.text = KKUtil.languageSelectedStringForKey(key: "rebate_manual_rebate")
-        lblBettingRecord.text = KKUtil.languageSelectedStringForKey(key: "rebate_rebate_record")
-        lblAccountDetails.text = KKUtil.languageSelectedStringForKey(key: "rebate_rebate_ratio")
+        lblManualRebate.text = KKUtil.languageSelectedStringForKey(key: "rebate_manual_rebate")
+        lblRebateRecord.text = KKUtil.languageSelectedStringForKey(key: "rebate_rebate_record")
+        lblRebateRatio.text = KKUtil.languageSelectedStringForKey(key: "rebate_rebate_ratio")
         
-        lblUserInfo.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
-        lblBettingRecord.font = lblUserInfo.font
-        lblAccountDetails.font = lblUserInfo.font
-
-        buttonHover(image: imgHoverUserInfo)
+        lblManualRebate.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+        lblRebateRecord.font = lblManualRebate.font
+        lblRebateRatio.font = lblManualRebate.font
     }
     
     
@@ -61,23 +65,50 @@ class KKRebateViewController: KKBaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func btnUserInfoDidPressed(){
-        buttonHover(image: imgHoverUserInfo)
+    @IBAction func btnManualRebateDidPressed(){
+        buttonHover(type: viewType.manualRebate.rawValue)
     }
     
-    @IBAction func btnBettingRecordDidPressed(){
-        buttonHover(image: imgHoverBettingRecord)
+    @IBAction func btnRebateRecordDidPressed(){
+        buttonHover(type: viewType.rebateRecord.rawValue)
     }
 
-    @IBAction func btnAccountDetailsDidPressed(){
-        buttonHover(image: imgHoverAccountDetails)
+    @IBAction func btnRebateRatioDidPressed(){
+        buttonHover(type: viewType.rebateRatio.rawValue)
     }
     
-    func buttonHover(image: UIImageView){
-        imgHoverUserInfo.isHidden = true
-        imgHoverBettingRecord.isHidden = true
-        imgHoverAccountDetails.isHidden = true
+    func buttonHover(type: Int){
+        imgHoverManualRebate.isHidden = true
+        imgHoverRebateRecord.isHidden = true
+        imgHoverRebateRatio.isHidden = true
         
-        image.isHidden = false
+        var viewController: UIViewController = KKOnBoardingViewController()
+        
+        switch type {
+        case viewType.rebateRecord.rawValue:
+            imgHoverRebateRecord.isHidden = false
+            viewController = KKPersonalViewController()
+            break;
+        case viewType.rebateRatio.rawValue:
+            imgHoverRebateRatio.isHidden = false
+            viewController = KKOnBoardingViewController()
+            break;
+        default:
+            imgHoverManualRebate.isHidden = false
+            viewController = KKOnBoardingViewController()
+            break;
+        }
+        
+        changeView(vc: viewController)
+    }
+    
+    func changeView(vc: UIViewController){
+        for view in contentView.subviews{
+            view.removeFromSuperview()
+        }
+        
+        vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
+        contentView.addSubview(vc.view)
+        self.addChild(vc)
     }
 }

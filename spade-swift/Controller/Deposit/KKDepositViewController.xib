@@ -11,13 +11,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKDepositViewController" customModule="spade_swift" customModuleProvider="target">
             <connections>
+                <outlet property="contentView" destination="PAR-bt-yOp" id="DPv-q0-044"/>
                 <outlet property="headerContainerMarginLeft" destination="UCJ-eL-mGm" id="5oj-ot-9x3"/>
                 <outlet property="imgBackWidth" destination="zoH-8i-JIX" id="Joh-ya-0qe"/>
-                <outlet property="imgHoverBettingRecord" destination="qPa-iR-0Lk" id="ktX-eP-425"/>
-                <outlet property="imgHoverUserInfo" destination="ECu-y6-85K" id="KuZ-v9-1qL"/>
+                <outlet property="imgHoverArtificial" destination="qPa-iR-0Lk" id="NS7-93-WcK"/>
+                <outlet property="imgHoverBankAccount" destination="ECu-y6-85K" id="gBB-te-n2O"/>
                 <outlet property="imgMenuIconWidth" destination="hHc-bX-y8a" id="SQ9-WY-GNv"/>
-                <outlet property="lblBettingRecord" destination="h1L-At-A7m" id="EzK-EE-Qvi"/>
-                <outlet property="lblUserInfo" destination="KT2-hf-azi" id="1zL-1D-pfx"/>
+                <outlet property="lblArtificial" destination="h1L-At-A7m" id="ufk-IY-pnu"/>
+                <outlet property="lblBankAccount" destination="KT2-hf-azi" id="50O-FF-QFP"/>
                 <outlet property="menuItemHeight" destination="0wh-dm-SAr" id="5UU-iy-ihV"/>
                 <outlet property="menuItemMarginLeft" destination="Ma9-72-l50" id="R7k-wi-xnx"/>
                 <outlet property="separatorHeight" destination="P23-xV-uzx" id="Z5Q-Cs-kWn"/>
@@ -52,7 +53,7 @@
                                         <constraint firstAttribute="width" constant="25" id="hHc-bX-y8a"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KT2-hf-azi">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KT2-hf-azi">
                                     <rect key="frame" x="48" y="14" width="94" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,7 +62,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dyg-Lu-Rkg">
                                     <rect key="frame" x="0.0" y="0.0" width="146" height="40"/>
                                     <connections>
-                                        <action selector="btnUserInfoDidPressed" destination="-1" eventType="touchUpInside" id="EcZ-Ro-iNo"/>
+                                        <action selector="btnBankAccountDidPressed" destination="-1" eventType="touchUpInside" id="poW-nd-rDJ"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -101,7 +102,7 @@
                                         <constraint firstAttribute="width" secondItem="BbX-31-aic" secondAttribute="height" multiplier="1:1" id="n4b-zt-aRE"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Betting Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1L-At-A7m">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artificial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1L-At-A7m">
                                     <rect key="frame" x="48" y="14" width="94" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -110,7 +111,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBH-ZT-6cy">
                                     <rect key="frame" x="0.0" y="0.0" width="146" height="40"/>
                                     <connections>
-                                        <action selector="btnBettingRecordDidPressed" destination="-1" eventType="touchUpInside" id="3B2-JM-anU"/>
+                                        <action selector="btnArtificialDidPressed" destination="-1" eventType="touchUpInside" id="cpA-dl-Onh"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -171,12 +172,20 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_box" translatesAutoresizingMaskIntoConstraints="NO" id="72j-lD-7nQ">
                             <rect key="frame" x="0.0" y="0.0" width="662" height="344"/>
                         </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAR-bt-yOp">
+                            <rect key="frame" x="20" y="20" width="622" height="304"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="PAR-bt-yOp" firstAttribute="top" secondItem="Ggt-l0-a5y" secondAttribute="top" constant="20" id="3IU-SS-qPs"/>
                         <constraint firstAttribute="trailing" secondItem="72j-lD-7nQ" secondAttribute="trailing" id="5kq-Zl-f0Y"/>
                         <constraint firstItem="72j-lD-7nQ" firstAttribute="leading" secondItem="Ggt-l0-a5y" secondAttribute="leading" id="IGX-wh-aAq"/>
+                        <constraint firstAttribute="bottom" secondItem="PAR-bt-yOp" secondAttribute="bottom" constant="20" id="S7c-GJ-J7H"/>
                         <constraint firstItem="72j-lD-7nQ" firstAttribute="top" secondItem="Ggt-l0-a5y" secondAttribute="top" id="hJd-jr-bHG"/>
+                        <constraint firstItem="PAR-bt-yOp" firstAttribute="leading" secondItem="Ggt-l0-a5y" secondAttribute="leading" constant="20" id="prt-xx-0b8"/>
+                        <constraint firstAttribute="trailing" secondItem="PAR-bt-yOp" secondAttribute="trailing" constant="20" id="qLc-S3-6Ck"/>
                         <constraint firstAttribute="bottom" secondItem="72j-lD-7nQ" secondAttribute="bottom" id="vDh-8U-PAF"/>
                     </constraints>
                 </view>

@@ -26,6 +26,7 @@ class KKPersonalPageViewController: KKBaseViewController {
     }
     
     var pageViewController:             UIPageViewController!
+    var bgImageView:                    UIImageView!
     var sideMenuTableView:              UITableView!
     var contentImageView:               UIImageView!
 
@@ -37,13 +38,20 @@ class KKPersonalPageViewController: KKBaseViewController {
     
     func setUpOverallView() {
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bg_mini_games")!)
+        self.view.backgroundColor = UIColor(white: 0, alpha: 0)
+        var x = KKUtil.hasTopNotch() ? ScreenSize.leftNotchWidth : 0.0
+
+        bgImageView = UIImageView.init()
+        bgImageView.image = UIImage(named: "bg_mini_games")
+        bgImageView.contentMode = .scaleToFill
+        bgImageView.frame = self.view.frame
+        self.view.addSubview(bgImageView)
         
         contentImageView = UIImageView.init()
         contentImageView.image = UIImage(named: "bg_box")
         contentImageView.contentMode = .scaleToFill
         contentImageView.isUserInteractionEnabled = true
-        contentImageView.frame = CGRect(x: ScreenSize.leftNotchWidth + ViewConstant.sideMenuWidth + ViewConstant.pageViewControllerPadding,
+        contentImageView.frame = CGRect(x: x + ViewConstant.sideMenuWidth + ViewConstant.pageViewControllerPadding,
                                                y: ScreenSize.navBarHeight + ViewConstant.pageViewControllerTopPadding,
                                                width: ScreenSize.width - (ScreenSize.leftNotchWidth + ViewConstant.sideMenuWidth + ViewConstant.pageViewControllerPadding*2),
                                                height: ScreenSize.height - (ScreenSize.navBarHeight + ViewConstant.pageViewControllerTopPadding))
@@ -58,7 +66,7 @@ class KKPersonalPageViewController: KKBaseViewController {
         sideMenuTableView.isScrollEnabled = false
         sideMenuTableView.delegate = self
         sideMenuTableView.dataSource = self
-        sideMenuTableView.frame = CGRect(x: ScreenSize.leftNotchWidth, y: ViewConstant.sideMenuYPos, width: ViewConstant.sideMenuWidth, height: ScreenSize.height - ViewConstant.sideMenuYPos)
+        sideMenuTableView.frame = CGRect(x: x, y: ViewConstant.sideMenuYPos, width: ViewConstant.sideMenuWidth, height: ScreenSize.height - ViewConstant.sideMenuYPos)
         self.view.addSubview(sideMenuTableView)
         
         let headerImageView = UIImageView.init()
@@ -160,7 +168,7 @@ extension KKPersonalPageViewController: UITableViewDataSource, UITableViewDelega
         }
         
         if (indexPath.row == 0) {
-            let viewController = KKTestingPageViewController.init()
+            let viewController = KKOnBoardingViewController.init()
             viewController.view.frame = CGRect(x: 0, y: 0, width: contentImageView.frame.width, height: contentImageView.frame.height)
             contentImageView.addSubview(viewController.view)
             self.addChild(viewController)

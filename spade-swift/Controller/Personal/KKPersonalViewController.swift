@@ -18,7 +18,8 @@ class KKPersonalViewController: KKBaseViewController {
     @IBOutlet weak var imgHoverBettingRecord: UIImageView!
     @IBOutlet weak var imgHoverAccountDetails: UIImageView!
     @IBOutlet weak var imgHoverIndividualReport: UIImageView!
-    
+    @IBOutlet weak var contentView: UIView!
+
     @IBOutlet weak var imgBackWidth: NSLayoutConstraint!
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
     @IBOutlet weak var imgMenuIconWidth: NSLayoutConstraint!
@@ -29,22 +30,28 @@ class KKPersonalViewController: KKBaseViewController {
     @IBOutlet weak var separatorHeight: NSLayoutConstraint!
     
     
+    enum viewType: Int {
+        case userInfo = 0
+        case bettingRecord = 1
+        case accountDetail = 2
+        case individualReport = 3
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
         initialLayout()
+        buttonHover(type: viewType.userInfo.rawValue)
     }
     
     func initialLayout(){
-        imgBackWidth.constant = KKUtil.ConvertSizeByDensity(size: 35)
-        sideMenuWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
-        imgMenuIconWidth.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        menuItemHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        separatorHeight.constant = KKUtil.ConvertSizeByDensity(size: 10)
-
-        headerContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 20 : 30)
-        menuItemMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 15)
+        imgBackWidth.constant = ConstantSize.imgBackWidth
+        sideMenuWidth.constant = ConstantSize.sideMenuWidth
+        imgMenuIconWidth.constant = ConstantSize.imgMenuIconWidth
+        menuItemHeight.constant = ConstantSize.menuItemHeight
+        separatorHeight.constant = ConstantSize.separatorHeight
+        headerContainerMarginLeft.constant = ConstantSize.headerContainerMarginLeft
+        menuItemMarginLeft.constant = ConstantSize.menuItemMarginLeft
         
         lblUserInfo.text = KKUtil.languageSelectedStringForKey(key: "personal_user_info")
         lblBettingRecord.text = KKUtil.languageSelectedStringForKey(key: "personal_betting_record")
@@ -55,8 +62,6 @@ class KKPersonalViewController: KKBaseViewController {
         lblBettingRecord.font = lblUserInfo.font
         lblAccountDetails.font = lblUserInfo.font
         lblIndividualReport.font = lblUserInfo.font
-
-        buttonHover(image: imgHoverUserInfo)
     }
     
     
@@ -66,27 +71,58 @@ class KKPersonalViewController: KKBaseViewController {
     }
     
     @IBAction func btnUserInfoDidPressed(){
-        buttonHover(image: imgHoverUserInfo)
+        buttonHover(type: viewType.userInfo.rawValue)
     }
     
     @IBAction func btnBettingRecordDidPressed(){
-        buttonHover(image: imgHoverBettingRecord)
+        buttonHover(type: viewType.bettingRecord.rawValue)
     }
 
     @IBAction func btnAccountDetailsDidPressed(){
-        buttonHover(image: imgHoverAccountDetails)
+        buttonHover(type: viewType.accountDetail.rawValue)
     }
     
     @IBAction func btnIndividualReportDidPressed(){
-        buttonHover(image: imgHoverIndividualReport)
+        buttonHover(type: viewType.individualReport.rawValue)
     }
     
-    func buttonHover(image: UIImageView){
+    func buttonHover(type: Int){
         imgHoverUserInfo.isHidden = true
         imgHoverBettingRecord.isHidden = true
         imgHoverAccountDetails.isHidden = true
         imgHoverIndividualReport.isHidden = true
         
-        image.isHidden = false
+        var viewController: UIViewController = KKOnBoardingViewController()
+        
+        switch type {
+        case viewType.bettingRecord.rawValue:
+            imgHoverBettingRecord.isHidden = false
+            viewController = KKPersonalViewController()
+            break;
+        case viewType.accountDetail.rawValue:
+            imgHoverAccountDetails.isHidden = false
+            viewController = KKOnBoardingViewController()
+            break;
+        case viewType.individualReport.rawValue:
+            imgHoverIndividualReport.isHidden = false
+            viewController = KKPersonalViewController()
+            break;
+        default:
+            imgHoverUserInfo.isHidden = false
+            viewController = KKOnBoardingViewController()
+            break;
+        }
+        
+        changeView(vc: viewController)
+    }
+    
+    func changeView(vc: UIViewController){
+        for view in contentView.subviews{
+            view.removeFromSuperview()
+        }
+        
+        vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
+        contentView.addSubview(vc.view)
+        self.addChild(vc)
     }
 }

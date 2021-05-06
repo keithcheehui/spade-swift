@@ -42,7 +42,7 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
         initialLayout()
     }
     
@@ -82,12 +82,12 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
         txtUsername.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "login_username_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
         txtPassword.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "login_password_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
                 
-        lblUsername.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
-        txtUsername.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
-        lblPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
-        txtPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelFont))
-        lblRememberMe.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelSmallFont))
-        lblForgotPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: ConstantSize.ssoLabelSmallFont))
+        lblUsername.font = UIFont.systemFont(ofSize: ConstantSize.ssoLabelFont)
+        txtUsername.font = lblUsername.font
+        lblPassword.font = lblUsername.font
+        txtPassword.font = lblUsername.font
+        lblRememberMe.font = UIFont.systemFont(ofSize: ConstantSize.ssoLabelSmallFont)
+        lblForgotPassword.font = lblRememberMe.font
         
         txtUsername.delegate = self
         txtPassword.delegate = self

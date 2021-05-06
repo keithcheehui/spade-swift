@@ -10,13 +10,14 @@ import UIKit
 
 class KKWithdrawViewController: KKBaseViewController {
     
-    @IBOutlet weak var lblUserInfo: UILabel!
-    @IBOutlet weak var lblBettingRecord: UILabel!
-    @IBOutlet weak var lblAccountDetails: UILabel!
-    @IBOutlet weak var imgHoverUserInfo: UIImageView!
-    @IBOutlet weak var imgHoverBettingRecord: UIImageView!
-    @IBOutlet weak var imgHoverAccountDetails: UIImageView!
-    
+    @IBOutlet weak var lblWithdraw: UILabel!
+    @IBOutlet weak var lblWithdrawHistory: UILabel!
+    @IBOutlet weak var lblBankCard: UILabel!
+    @IBOutlet weak var imgHoverWithdraw: UIImageView!
+    @IBOutlet weak var imgHoverWithdrawHistory: UIImageView!
+    @IBOutlet weak var imgHoverBankCard: UIImageView!
+    @IBOutlet weak var contentView: UIView!
+
     @IBOutlet weak var imgBackWidth: NSLayoutConstraint!
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
     @IBOutlet weak var imgMenuIconWidth: NSLayoutConstraint!
@@ -27,32 +28,35 @@ class KKWithdrawViewController: KKBaseViewController {
     @IBOutlet weak var separatorHeight: NSLayoutConstraint!
     
     
+    enum viewType: Int {
+        case withdraw = 0
+        case withdrawHistory = 1
+        case bankCard = 2
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
         initialLayout()
+        buttonHover(type: viewType.withdraw.rawValue)
     }
     
     func initialLayout(){
-        imgBackWidth.constant = KKUtil.ConvertSizeByDensity(size: 35)
-        sideMenuWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
-        imgMenuIconWidth.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        menuItemHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        separatorHeight.constant = KKUtil.ConvertSizeByDensity(size: 10)
-
-        headerContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 20 : 30)
-        menuItemMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 15)
+        imgBackWidth.constant = ConstantSize.imgBackWidth
+        sideMenuWidth.constant = ConstantSize.sideMenuWidth
+        imgMenuIconWidth.constant = ConstantSize.imgMenuIconWidth
+        menuItemHeight.constant = ConstantSize.menuItemHeight
+        separatorHeight.constant = ConstantSize.separatorHeight
+        headerContainerMarginLeft.constant = ConstantSize.headerContainerMarginLeft
+        menuItemMarginLeft.constant = ConstantSize.menuItemMarginLeft
         
-        lblUserInfo.text = KKUtil.languageSelectedStringForKey(key: "withdraw_withdraw")
-        lblBettingRecord.text = KKUtil.languageSelectedStringForKey(key: "withdraw_withdraw_history")
-        lblAccountDetails.text = KKUtil.languageSelectedStringForKey(key: "withdraw_bank_card")
+        lblWithdraw.text = KKUtil.languageSelectedStringForKey(key: "withdraw_withdraw")
+        lblWithdrawHistory.text = KKUtil.languageSelectedStringForKey(key: "withdraw_withdraw_history")
+        lblBankCard.text = KKUtil.languageSelectedStringForKey(key: "withdraw_bank_card")
         
-        lblUserInfo.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
-        lblBettingRecord.font = lblUserInfo.font
-        lblAccountDetails.font = lblUserInfo.font
-
-        buttonHover(image: imgHoverUserInfo)
+        lblWithdraw.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+        lblWithdrawHistory.font = lblWithdraw.font
+        lblBankCard.font = lblWithdraw.font
     }
     
     
@@ -61,23 +65,50 @@ class KKWithdrawViewController: KKBaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func btnUserInfoDidPressed(){
-        buttonHover(image: imgHoverUserInfo)
+    @IBAction func btnWithdrawDidPressed(){
+        buttonHover(type: viewType.withdraw.rawValue)
     }
     
-    @IBAction func btnBettingRecordDidPressed(){
-        buttonHover(image: imgHoverBettingRecord)
+    @IBAction func btnWithdrawHistoryDidPressed(){
+        buttonHover(type: viewType.withdrawHistory.rawValue)
     }
 
-    @IBAction func btnAccountDetailsDidPressed(){
-        buttonHover(image: imgHoverAccountDetails)
+    @IBAction func btnBankCardDidPressed(){
+        buttonHover(type: viewType.bankCard.rawValue)
+    }
+
+    func buttonHover(type: Int){
+        imgHoverWithdraw.isHidden = true
+        imgHoverWithdrawHistory.isHidden = true
+        imgHoverBankCard.isHidden = true
+
+        var viewController: UIViewController = KKOnBoardingViewController()
+        
+        switch type {
+        case viewType.withdrawHistory.rawValue:
+            imgHoverWithdrawHistory.isHidden = false
+            viewController = KKPersonalViewController()
+            break;
+        case viewType.bankCard.rawValue:
+            imgHoverBankCard.isHidden = false
+            viewController = KKPersonalViewController()
+            break;
+        default:
+            imgHoverWithdraw.isHidden = false
+            viewController = KKOnBoardingViewController()
+            break;
+        }
+        
+        changeView(vc: viewController)
     }
     
-    func buttonHover(image: UIImageView){
-        imgHoverUserInfo.isHidden = true
-        imgHoverBettingRecord.isHidden = true
-        imgHoverAccountDetails.isHidden = true
+    func changeView(vc: UIViewController){
+        for view in contentView.subviews{
+            view.removeFromSuperview()
+        }
         
-        image.isHidden = false
+        vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
+        contentView.addSubview(vc.view)
+        self.addChild(vc)
     }
 }
