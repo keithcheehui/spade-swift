@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="landscape" appearance="light"/>
+    <device id="retina6_5" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -11,6 +11,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKSplashScreenViewController" customModule="spade_swift" customModuleProvider="target">
             <connections>
+                <outlet property="imgBgloadingBar" destination="6mE-dO-FO5" id="jiD-SJ-tab"/>
+                <outlet property="imgLogoWidth" destination="Drc-3P-Bbk" id="2I2-fV-lcN"/>
+                <outlet property="lblLoading" destination="RxZ-vG-klO" id="Lxi-iH-k4l"/>
+                <outlet property="lblLoadingMarginBottom" destination="aRH-SQ-7jY" id="R1t-bk-gIw"/>
+                <outlet property="loadingBar" destination="zfA-aU-Nin" id="Vip-jY-dRg"/>
+                <outlet property="loadingBarHeight" destination="jJw-AD-Aca" id="0rY-ce-F4w"/>
+                <outlet property="loadingBarMarginLeft" destination="aFg-We-trw" id="THN-ro-5QU"/>
+                <outlet property="loadingBarMarginRight" destination="xCP-Eh-xJn" id="chG-rn-4mA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,12 +26,62 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_sso" translatesAutoresizingMaskIntoConstraints="NO" id="4tN-1I-XrW" userLabel="imgBG">
+                    <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo" translatesAutoresizingMaskIntoConstraints="NO" id="pWt-2A-yko" userLabel="imgLogo">
+                    <rect key="frame" x="223" y="46" width="450" height="225"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="450" id="Drc-3P-Bbk"/>
+                        <constraint firstAttribute="width" secondItem="pWt-2A-yko" secondAttribute="height" multiplier="2:1" id="bPd-3T-JvI"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="loading 40%..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxZ-vG-klO">
+                    <rect key="frame" x="407" y="349.66666666666669" width="82" height="14.333333333333314"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfA-aU-Nin">
+                    <rect key="frame" x="174" y="311.66666666666669" width="548" height="30"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_loading_bar2" translatesAutoresizingMaskIntoConstraints="NO" id="6mE-dO-FO5">
+                            <rect key="frame" x="0.0" y="0.0" width="548" height="30"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="6mE-dO-FO5" firstAttribute="leading" secondItem="zfA-aU-Nin" secondAttribute="leading" id="1BI-0Y-OQI"/>
+                        <constraint firstAttribute="trailing" secondItem="6mE-dO-FO5" secondAttribute="trailing" id="DDR-ST-QBH"/>
+                        <constraint firstAttribute="bottom" secondItem="6mE-dO-FO5" secondAttribute="bottom" id="XgF-hT-84i"/>
+                        <constraint firstAttribute="height" constant="30" id="jJw-AD-Aca"/>
+                        <constraint firstItem="6mE-dO-FO5" firstAttribute="top" secondItem="zfA-aU-Nin" secondAttribute="top" id="r6j-bq-ehT"/>
+                    </constraints>
+                </view>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="28" y="135"/>
+            <constraints>
+                <constraint firstItem="pWt-2A-yko" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0pK-tF-teU"/>
+                <constraint firstAttribute="bottom" secondItem="4tN-1I-XrW" secondAttribute="bottom" id="6h5-Lj-iBx"/>
+                <constraint firstItem="RxZ-vG-klO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="EYd-QZ-2Ui"/>
+                <constraint firstItem="RxZ-vG-klO" firstAttribute="top" secondItem="zfA-aU-Nin" secondAttribute="bottom" constant="8" id="MhZ-G6-Q4Z"/>
+                <constraint firstItem="pWt-2A-yko" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="46" id="N56-gM-qzn"/>
+                <constraint firstItem="zfA-aU-Nin" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="130" id="aFg-We-trw"/>
+                <constraint firstAttribute="bottom" secondItem="RxZ-vG-klO" secondAttribute="bottom" constant="50" id="aRH-SQ-7jY"/>
+                <constraint firstItem="4tN-1I-XrW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="c0h-4L-HcQ"/>
+                <constraint firstAttribute="trailing" secondItem="4tN-1I-XrW" secondAttribute="trailing" id="ljB-L5-LYD"/>
+                <constraint firstItem="4tN-1I-XrW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="sQh-Ts-k6T"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zfA-aU-Nin" secondAttribute="trailing" constant="130" id="xCP-Eh-xJn"/>
+            </constraints>
+            <point key="canvasLocation" x="27.455357142857142" y="134.78260869565219"/>
         </view>
     </objects>
     <resources>
+        <image name="bg_loading_bar2" width="1479" height="69"/>
+        <image name="bg_sso" width="2208" height="1242"/>
+        <image name="ic_logo" width="1148" height="671"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

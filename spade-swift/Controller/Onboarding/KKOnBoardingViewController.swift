@@ -20,7 +20,6 @@ class KKOnBoardingViewController: KKBaseViewController {
     @IBOutlet weak var btnRegister: UIButton!
     
     @IBOutlet weak var imgLogoWidth: NSLayoutConstraint!
-    @IBOutlet weak var buttonContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var buttonContainerMarginBottom: NSLayoutConstraint!
     @IBOutlet weak var buttonContainerMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var buttonContainerMarginRight: NSLayoutConstraint!
@@ -36,7 +35,6 @@ class KKOnBoardingViewController: KKBaseViewController {
 
     func initialLayout(){
         imgLogoWidth.constant = KKUtil.ConvertSizeByDensity(size: 480)
-        buttonContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 20)
         buttonContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 50 : 45)
         buttonContainerMarginLeft.constant =  KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 100 : 120)
         buttonContainerMarginRight.constant = buttonContainerMarginLeft.constant

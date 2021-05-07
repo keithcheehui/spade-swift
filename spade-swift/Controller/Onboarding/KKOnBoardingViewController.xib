@@ -19,7 +19,6 @@
                 <outlet property="buttonContainerMarginBottom" destination="RxJ-nb-rWE" id="eDF-qT-O3L"/>
                 <outlet property="buttonContainerMarginLeft" destination="0vu-YP-J5c" id="STr-4O-e9c"/>
                 <outlet property="buttonContainerMarginRight" destination="JQD-nf-vCQ" id="Vfk-te-D9n"/>
-                <outlet property="buttonContainerMarginTop" destination="QXr-q8-mkb" id="XYc-Uo-0uL"/>
                 <outlet property="imgBG" destination="eD2-fF-oGt" id="jHp-yQ-SIH"/>
                 <outlet property="imgFB" destination="sM4-Oq-Psk" id="9th-Da-5Vc"/>
                 <outlet property="imgLogin" destination="oIP-bF-cwf" id="b3F-7p-3Ly"/>
@@ -38,7 +37,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo" translatesAutoresizingMaskIntoConstraints="NO" id="vIL-Eb-Nt9" userLabel="imgLogo">
-                    <rect key="frame" x="223" y="50.666666666666657" width="450" height="224.99999999999997"/>
+                    <rect key="frame" x="223" y="46" width="450" height="225"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="vIL-Eb-Nt9" secondAttribute="height" multiplier="2:1" id="RyV-5q-OMP"/>
                         <constraint firstAttribute="width" constant="450" id="hMW-jv-GE7"/>
@@ -146,10 +145,10 @@
             <constraints>
                 <constraint firstItem="gox-qQ-2CI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="120" id="0vu-YP-J5c"/>
                 <constraint firstItem="eD2-fF-oGt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3qq-gf-1Np"/>
+                <constraint firstItem="vIL-Eb-Nt9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="46" id="7Hv-VC-Hd3"/>
                 <constraint firstAttribute="bottom" secondItem="eD2-fF-oGt" secondAttribute="bottom" id="85K-zE-8Xr"/>
                 <constraint firstItem="vIL-Eb-Nt9" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="JOl-7Z-3hw"/>
                 <constraint firstAttribute="trailing" secondItem="gox-qQ-2CI" secondAttribute="trailing" constant="120" id="JQD-nf-vCQ"/>
-                <constraint firstItem="gox-qQ-2CI" firstAttribute="top" secondItem="vIL-Eb-Nt9" secondAttribute="bottom" constant="20" id="QXr-q8-mkb"/>
                 <constraint firstAttribute="bottom" secondItem="gox-qQ-2CI" secondAttribute="bottom" constant="50" id="RxJ-nb-rWE"/>
                 <constraint firstItem="eD2-fF-oGt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="UmO-5p-FIM"/>
                 <constraint firstAttribute="trailing" secondItem="eD2-fF-oGt" secondAttribute="trailing" id="q3h-Wc-3xt"/>
