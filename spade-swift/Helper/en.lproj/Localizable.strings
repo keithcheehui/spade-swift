@@ -43,7 +43,16 @@
 "settings_volume_setting"       = "Volume Setting";
 "settings_change_password"      = "Change Password";
 "settings_version"              = "Version";
-"settings_device_binding"       = "Device Binding";
+"settings_logout"               = "Logout";
+"settings_current_password"     = "Current Password";
+"settings_new_password"         = "New Password";
+"settings_reconfirm_password"   = "Reconfirm Password";
+"settings_version_ios"          = "iOS Version: ";
+"settings_version_android"      = "Android Version: ";
+"settings_version_h5"           = "H5 Version: ";
+"settings_volume_title"         = "Sound Settings";
+"settings_volume_music"         = "Music";
+"settings_volume_sound"         = "Sound";
 
 //MARK: Affiliates
 "affiliates_my_affiliate"       = "My Affiliate";
