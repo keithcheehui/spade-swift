@@ -39,6 +39,20 @@
 "personal_account_detail"       = "Account Details";
 "personal_individual_report"    = "Individual Report";
 
+//MARK: USER INFO
+"user_info_level_privilege"         = "Level Privilege";
+"user_info_current_membership"      = "Current membership level: ";
+"user_info_basic_information"       = "Basic Information";
+"user_info_account"                 = "Account";
+"user_info_id"                      = "ID";
+"user_info_username"                = "Username";
+"user_info_birthday"                = "Birthday";
+"user_info_gender"                  = "Gender";
+"user_info_contact_information"     = "Contact Information";
+"user_info_email"                   = "Email";
+"user_info_phone"                   = "Phone";
+
+
 //MARK: Settings
 "settings_volume_setting"       = "Volume Setting";
 "settings_change_password"      = "Change Password";
