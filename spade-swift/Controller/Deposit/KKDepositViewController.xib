@@ -220,10 +220,10 @@
                                 <constraint firstItem="S0I-0p-Asj" firstAttribute="leading" secondItem="cN1-au-Sgl" secondAttribute="leading" id="rKV-UQ-W8k"/>
                             </constraints>
                         </view>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="abu-PH-Ueu">
-                            <rect key="frame" x="100" y="1.5" width="171" height="57"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title_deposit" translatesAutoresizingMaskIntoConstraints="NO" id="abu-PH-Ueu">
+                            <rect key="frame" x="100" y="18" width="122.5" height="24.5"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="abu-PH-Ueu" secondAttribute="height" multiplier="3:1" id="xVK-PF-OAN"/>
+                                <constraint firstAttribute="width" secondItem="abu-PH-Ueu" secondAttribute="height" multiplier="5:1" id="xVK-PF-OAN"/>
                             </constraints>
                         </imageView>
                     </subviews>
@@ -231,7 +231,7 @@
                     <constraints>
                         <constraint firstItem="cN1-au-Sgl" firstAttribute="top" secondItem="8oC-08-Q4z" secondAttribute="top" id="Fes-Ui-Tqo"/>
                         <constraint firstItem="abu-PH-Ueu" firstAttribute="leading" secondItem="cN1-au-Sgl" secondAttribute="trailing" constant="40" id="H2I-Pl-fTU"/>
-                        <constraint firstItem="abu-PH-Ueu" firstAttribute="height" secondItem="S0I-0p-Asj" secondAttribute="height" multiplier="1.62857" id="P6B-Jv-oKk"/>
+                        <constraint firstItem="abu-PH-Ueu" firstAttribute="height" secondItem="S0I-0p-Asj" secondAttribute="height" multiplier="0.7" id="P6B-Jv-oKk"/>
                         <constraint firstItem="abu-PH-Ueu" firstAttribute="centerY" secondItem="8oC-08-Q4z" secondAttribute="centerY" id="VsL-77-sme"/>
                         <constraint firstItem="cN1-au-Sgl" firstAttribute="leading" secondItem="8oC-08-Q4z" secondAttribute="leading" id="pKV-Kf-2Zi"/>
                         <constraint firstAttribute="bottom" secondItem="cN1-au-Sgl" secondAttribute="bottom" id="sSm-Fq-r3u"/>
@@ -277,6 +277,7 @@
         <image name="ic_back" width="97" height="81"/>
         <image name="ic_betting_record" width="68" height="68"/>
         <image name="ic_user_info" width="68" height="68"/>
+        <image name="title_deposit" width="207" height="57"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
