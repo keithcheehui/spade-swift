@@ -50,7 +50,7 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_hover" translatesAutoresizingMaskIntoConstraints="NO" id="ECu-y6-85K">
                                     <rect key="frame" x="0.0" y="0.0" width="146" height="40"/>
                                 </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user_info" translatesAutoresizingMaskIntoConstraints="NO" id="akk-tV-x0i">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_my_affiliate" translatesAutoresizingMaskIntoConstraints="NO" id="akk-tV-x0i">
                                     <rect key="frame" x="15" y="7.5" width="25" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="akk-tV-x0i" secondAttribute="height" multiplier="1:1" id="51v-OU-Rec"/>
@@ -100,7 +100,7 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_hover" translatesAutoresizingMaskIntoConstraints="NO" id="qPa-iR-0Lk">
                                     <rect key="frame" x="0.0" y="0.0" width="146" height="40"/>
                                 </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_betting_record" translatesAutoresizingMaskIntoConstraints="NO" id="BbX-31-aic">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_downline" translatesAutoresizingMaskIntoConstraints="NO" id="BbX-31-aic">
                                     <rect key="frame" x="15" y="7.5" width="25" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="BbX-31-aic" secondAttribute="height" multiplier="1:1" id="n4b-zt-aRE"/>
@@ -144,7 +144,7 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_hover" translatesAutoresizingMaskIntoConstraints="NO" id="UC5-Yc-mIK">
                                     <rect key="frame" x="0.0" y="0.0" width="146" height="40"/>
                                 </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_account_detail" translatesAutoresizingMaskIntoConstraints="NO" id="PzS-Ea-rhH">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_information" translatesAutoresizingMaskIntoConstraints="NO" id="PzS-Ea-rhH">
                                     <rect key="frame" x="15" y="7.5" width="25" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="PzS-Ea-rhH" secondAttribute="height" multiplier="1:1" id="iGY-fH-Vsj"/>
@@ -188,7 +188,7 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_hover" translatesAutoresizingMaskIntoConstraints="NO" id="eW3-hc-FDa">
                                     <rect key="frame" x="0.0" y="0.0" width="146" height="40"/>
                                 </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_report" translatesAutoresizingMaskIntoConstraints="NO" id="6TM-vL-mIx">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_turnover" translatesAutoresizingMaskIntoConstraints="NO" id="6TM-vL-mIx">
                                     <rect key="frame" x="15" y="7.5" width="25" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="6TM-vL-mIx" secondAttribute="height" multiplier="1:1" id="OQF-80-6NI"/>
@@ -379,11 +379,11 @@
         <image name="bg_mini_games" width="2208" height="1242"/>
         <image name="bg_separator" width="382" height="2"/>
         <image name="bg_sidemenu" width="426" height="1242"/>
-        <image name="ic_account_detail" width="68" height="68"/>
         <image name="ic_back" width="97" height="81"/>
-        <image name="ic_betting_record" width="68" height="68"/>
-        <image name="ic_report" width="68" height="68"/>
-        <image name="ic_user_info" width="68" height="68"/>
+        <image name="ic_downline" width="68" height="68"/>
+        <image name="ic_information" width="68" height="68"/>
+        <image name="ic_my_affiliate" width="68" height="68"/>
+        <image name="ic_turnover" width="68" height="68"/>
         <image name="title_affilates" width="225" height="57"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

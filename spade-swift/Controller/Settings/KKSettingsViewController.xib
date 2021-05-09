@@ -45,6 +45,7 @@
                 <outlet property="reconfirmPasswordView" destination="WIh-o3-xcc" id="wwJ-eb-gIT"/>
                 <outlet property="separatorHeight" destination="JSx-92-sZm" id="1Pp-WH-rXJ"/>
                 <outlet property="sideMenuWidth" destination="D7y-90-2kw" id="Mrd-fn-Akg"/>
+                <outlet property="soundSectionView" destination="Q4P-Az-wpI" id="RwM-W4-SY0"/>
                 <outlet property="soundSlider" destination="fvQ-Gc-Jqt" id="T8n-4Q-syj"/>
                 <outlet property="titleHeight" destination="FFV-3T-IjB" id="1db-56-Wa1"/>
                 <outlet property="titleMarginTop" destination="Ta1-57-zTs" id="2Qv-Te-b4w"/>

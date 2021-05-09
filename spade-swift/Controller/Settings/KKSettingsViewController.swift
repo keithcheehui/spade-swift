@@ -57,6 +57,7 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
     
     ///Volume Setting Subview
     @IBOutlet weak var volumeContentView: UIView!
+    @IBOutlet weak var soundSectionView: UIView!
     @IBOutlet weak var lblSoundSettings: UILabel!
     @IBOutlet weak var lblMusic: UILabel!
     @IBOutlet weak var lblSound: UILabel!
@@ -157,6 +158,8 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
     }
     
     func volumeLayout(){
+        soundSectionView.backgroundColor = UIColor(white: 0, alpha: 0.3)
+
         lblSoundSettings.text = KKUtil.languageSelectedStringForKey(key: "settings_volume_title")
         lblMusic.text = KKUtil.languageSelectedStringForKey(key: "settings_volume_music")
         lblSound.text = KKUtil.languageSelectedStringForKey(key: "settings_volume_sound")
