@@ -9,12 +9,15 @@ import Foundation
 import UIKit
 
 class KKSupportViewController: KKBaseViewController {
+//                               , UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var lblLiveChat: UILabel!
     @IBOutlet weak var lblFaq: UILabel!
     @IBOutlet weak var imgHoverLiveChat: UIImageView!
     @IBOutlet weak var imgHoverFaq: UIImageView!
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var liveChatCollectionView: UICollectionView!
 
     @IBOutlet weak var imgBackWidth: NSLayoutConstraint!
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
@@ -36,6 +39,14 @@ class KKSupportViewController: KKBaseViewController {
 
         initialLayout()
         buttonHover(type: viewType.liveChat.rawValue)
+        
+//        let flowLayout = UICollectionViewFlowLayout()
+//        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//        flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: 150), height: KKUtil.ConvertSizeByDensity(size: 200))
+//        
+//        liveChatCollectionView.initialLayout = flowLayout
+//        liveChatCollectionView.register(KKLiveChatCollectionCell.self, forCellWithReuseIdentifier: CellIdentifier.liveChatCollectionViewCellIdentifier)
+
     }
     
     func initialLayout(){
@@ -72,20 +83,20 @@ class KKSupportViewController: KKBaseViewController {
         imgHoverLiveChat.isHidden = true
         imgHoverFaq.isHidden = true
         
-        var viewController: UIViewController = KKOnBoardingViewController()
-        
+        mainView.isHidden = true
+        liveChatCollectionView.isHidden = true
+                
         switch type {
         case viewType.faq.rawValue:
             imgHoverFaq.isHidden = false
-            viewController = KKFaqViewController()
+            mainView.isHidden = false
+            changeView(vc: KKFaqViewController())
             break;
         default:
             imgHoverLiveChat.isHidden = false
-            viewController = KKOnBoardingViewController()
+            liveChatCollectionView.isHidden = false
             break;
         }
-        
-        changeView(vc: viewController)
     }
     
     func changeView(vc: UIViewController){
@@ -97,4 +108,20 @@ class KKSupportViewController: KKBaseViewController {
         contentView.addSubview(vc.view)
         self.addChild(vc)
     }
+    
+    ///Live Chat
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        1
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        var cell: KKLiveChatCollectionCell? = collectionView.dequeueReusableCell(withIdentifier: CellIdentifier.liveChatCollectionViewCellIdentifier) as? KKLiveChatCollectionCell
+//
+//        if (cell == nil) {
+//            cell = KKLiveChatCollectionCell.init(reuseIdentifier: CellIdentifier.liveChatCollectionViewCellIdentifier)
+//        }
+//
+//
+//        return cell
+//    }
 }
