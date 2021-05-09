@@ -77,7 +77,7 @@ class KKSupportViewController: KKBaseViewController {
         switch type {
         case viewType.faq.rawValue:
             imgHoverFaq.isHidden = false
-            viewController = KKPersonalViewController()
+            viewController = KKFaqViewController()
             break;
         default:
             imgHoverLiveChat.isHidden = false

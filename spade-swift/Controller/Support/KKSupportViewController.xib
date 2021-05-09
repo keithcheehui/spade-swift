@@ -173,20 +173,20 @@
                             <rect key="frame" x="0.0" y="0.0" width="662" height="344"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y3K-eA-vbD">
-                            <rect key="frame" x="20" y="20" width="622" height="304"/>
+                            <rect key="frame" x="0.0" y="20" width="662" height="304"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="72j-lD-7nQ" secondAttribute="trailing" id="5kq-Zl-f0Y"/>
-                        <constraint firstItem="Y3K-eA-vbD" firstAttribute="leading" secondItem="Ggt-l0-a5y" secondAttribute="leading" constant="20" id="GgA-bv-XgV"/>
+                        <constraint firstItem="Y3K-eA-vbD" firstAttribute="leading" secondItem="Ggt-l0-a5y" secondAttribute="leading" id="GgA-bv-XgV"/>
                         <constraint firstItem="72j-lD-7nQ" firstAttribute="leading" secondItem="Ggt-l0-a5y" secondAttribute="leading" id="IGX-wh-aAq"/>
                         <constraint firstItem="72j-lD-7nQ" firstAttribute="top" secondItem="Ggt-l0-a5y" secondAttribute="top" id="hJd-jr-bHG"/>
                         <constraint firstAttribute="bottom" secondItem="Y3K-eA-vbD" secondAttribute="bottom" constant="20" id="obM-Oh-kmb"/>
                         <constraint firstAttribute="bottom" secondItem="72j-lD-7nQ" secondAttribute="bottom" id="vDh-8U-PAF"/>
                         <constraint firstItem="Y3K-eA-vbD" firstAttribute="top" secondItem="Ggt-l0-a5y" secondAttribute="top" constant="20" id="wWX-os-1q4"/>
-                        <constraint firstAttribute="trailing" secondItem="Y3K-eA-vbD" secondAttribute="trailing" constant="20" id="yR4-j8-EjD"/>
+                        <constraint firstAttribute="trailing" secondItem="Y3K-eA-vbD" secondAttribute="trailing" id="yR4-j8-EjD"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8oC-08-Q4z">

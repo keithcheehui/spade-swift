@@ -41,6 +41,8 @@
 		533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CA6BD2631746800768C08 /* KKHomeViewController.swift */; };
 		5381676A26464B0F00FC96A6 /* KKUserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5381676926464B0F00FC96A6 /* KKUserInfoViewController.xib */; };
 		5381676D26464B3300FC96A6 /* KKUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5381676C26464B3300FC96A6 /* KKUserInfoViewController.swift */; };
+		538FB07D2648012200F3E823 /* KKFaqViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538FB07C2648012200F3E823 /* KKFaqViewController.swift */; };
+		538FB0802648012B00F3E823 /* KKFaqViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 538FB07F2648012B00F3E823 /* KKFaqViewController.xib */; };
 		53963E0A2639A36C00D803D4 /* KKSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53963E092639A36C00D803D4 /* KKSettingsViewController.swift */; };
 		53963E0D2639A37400D803D4 /* KKSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53963E0C2639A37400D803D4 /* KKSettingsViewController.xib */; };
 		53AAAE06264018E3004103F0 /* KKRebateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AAAE05264018E3004103F0 /* KKRebateViewController.swift */; };
@@ -97,6 +99,8 @@
 		533CA6BD2631746800768C08 /* KKHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKHomeViewController.swift; sourceTree = "<group>"; };
 		5381676926464B0F00FC96A6 /* KKUserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKUserInfoViewController.xib; sourceTree = "<group>"; };
 		5381676C26464B3300FC96A6 /* KKUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKUserInfoViewController.swift; sourceTree = "<group>"; };
+		538FB07C2648012200F3E823 /* KKFaqViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKFaqViewController.swift; sourceTree = "<group>"; };
+		538FB07F2648012B00F3E823 /* KKFaqViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKFaqViewController.xib; sourceTree = "<group>"; };
 		53963E092639A36C00D803D4 /* KKSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSettingsViewController.swift; sourceTree = "<group>"; };
 		53963E0C2639A37400D803D4 /* KKSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKSettingsViewController.xib; sourceTree = "<group>"; };
 		53AAAE05264018E3004103F0 /* KKRebateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKRebateViewController.swift; sourceTree = "<group>"; };
@@ -338,6 +342,15 @@
 			path = UserInfo;
 			sourceTree = "<group>";
 		};
+		538FB0822648013100F3E823 /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				538FB07C2648012200F3E823 /* KKFaqViewController.swift */,
+				538FB07F2648012B00F3E823 /* KKFaqViewController.xib */,
+			);
+			path = FAQ;
+			sourceTree = "<group>";
+		};
 		53963E062639A30A00D803D4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +392,7 @@
 			children = (
 				53AAAE1526401BD0004103F0 /* KKSupportViewController.swift */,
 				53AAAE1826401BD9004103F0 /* KKSupportViewController.xib */,
+				538FB0822648013100F3E823 /* FAQ */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -480,6 +494,7 @@
 				0676B5B1262FD6F30023311F /* Assets.xcassets in Resources */,
 				53AAAE2C26401CAE004103F0 /* KKWithdrawViewController.xib in Resources */,
 				5381676A26464B0F00FC96A6 /* KKUserInfoViewController.xib in Resources */,
+				538FB0802648012B00F3E823 /* KKFaqViewController.xib in Resources */,
 				53AAAE1926401BD9004103F0 /* KKSupportViewController.xib in Resources */,
 				0676B5AF262FD6EF0023311F /* Main.storyboard in Resources */,
 				53AAAE2326401C4A004103F0 /* KKDepositViewController.xib in Resources */,
@@ -541,6 +556,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				062C39812632C92C00E86EEA /* KKApiClient.swift in Sources */,
+				538FB07D2648012200F3E823 /* KKFaqViewController.swift in Sources */,
 				067029DA2641326E00DFADAC /* KKSideMenuTableViewCell.swift in Sources */,
 				0676B612262FDAFE0023311F /* SKResult.swift in Sources */,
 				0676B5AC262FD6EF0023311F /* ViewController.swift in Sources */,
