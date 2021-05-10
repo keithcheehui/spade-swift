@@ -44,7 +44,7 @@ class KKSplashScreenViewController: KKBaseViewController {
         imgProgress.image = UIImage(named: "bg_loading_bar")
         imgProgress.contentMode = .scaleToFill
         imgProgress.clipsToBounds = true
-        imgProgress.frame = CGRect(x: 0.5, y: 0.25, width: 0, height: loadingBar.bounds.height - 6)
+        imgProgress.frame = CGRect(x: 1, y: 0.25, width: 0, height: loadingBar.bounds.height - 6)
         loadingBar.addSubview(imgProgress)
         
         self.perform(#selector(updateProgress), with: nil, afterDelay: 0.1)
@@ -52,17 +52,17 @@ class KKSplashScreenViewController: KKBaseViewController {
     
     @objc func updateProgress() {
         
-        progressValue = progressValue + 0.01
+        progressValue = progressValue + 0.1
         self.imgProgress.frame.size.width = self.loadingBar.bounds.width * progressValue
 
-        if progressValue < 1.0 {
+        if progressValue < 0.9 {
             
-            lblLoading.text = String.init(format: "%.0f%% loading...", progressValue*100)
+            lblLoading.text = String.init(format: "loading %.0f%%...", progressValue*100)
             self.perform(#selector(updateProgress), with: nil, afterDelay: 0.1)
         }
         else
         {
-            lblLoading.text = "100% loading..."
+            lblLoading.text = "loading 100%..."
             self.proceedToOnboardingPage()
         }
     }
