@@ -49,7 +49,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MVN-Wd-4BF">
                     <rect key="frame" x="135" y="28.5" width="626" height="357"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_popup" translatesAutoresizingMaskIntoConstraints="NO" id="kI8-Kg-dMq">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_popup_sso" translatesAutoresizingMaskIntoConstraints="NO" id="kI8-Kg-dMq">
                             <rect key="frame" x="0.0" y="0.0" width="626" height="357"/>
                         </imageView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title_register" translatesAutoresizingMaskIntoConstraints="NO" id="0HL-63-HQY">
@@ -278,7 +278,7 @@
         </view>
     </objects>
     <resources>
-        <image name="bg_popup" width="1416" height="1009"/>
+        <image name="bg_popup_sso" width="1416" height="1009"/>
         <image name="btn_confirm" width="329" height="109"/>
         <image name="ic_close" width="83" height="86"/>
         <image name="title_register" width="360" height="60"/>

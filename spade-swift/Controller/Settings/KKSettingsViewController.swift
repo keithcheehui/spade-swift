@@ -96,6 +96,7 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
         imgMenuIconWidth.constant = KKUtil.ConvertSizeByDensity(size: 25)
         menuItemHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         separatorHeight.constant = KKUtil.ConvertSizeByDensity(size: 10)
+        menuItemMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 15)
         
         lblVolumeSetting.text = KKUtil.languageSelectedStringForKey(key: "settings_volume_setting")
         lblChangePassword.text = KKUtil.languageSelectedStringForKey(key: "settings_change_password")
