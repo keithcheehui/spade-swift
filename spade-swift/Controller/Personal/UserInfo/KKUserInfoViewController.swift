@@ -198,7 +198,7 @@ class KKUserInfoViewController: KKBaseViewController, UITextFieldDelegate {
     
     @IBAction func btnEditDidPressed(){
         if (isEditMode){
-            //TODO: Before change to display mode, need to save the detail
+            //TODO: PENDING API. Before change to display mode, need to save the detail
             
             isEditMode = false
             displayView()

@@ -15,6 +15,8 @@ class KKLiveChatCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        //TODO: KEITH, not sure still got any missing
+        //The containerview and lblhotline leave it first, I will link the layout
     }
 
     required init?(coder aDecoder: NSCoder) {

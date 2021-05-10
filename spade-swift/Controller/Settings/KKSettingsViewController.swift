@@ -171,7 +171,7 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
         musicSlider.setThumbImage(UIImage(named: "ic_spade"), for: .normal)
         soundSlider.setThumbImage(UIImage(named: "ic_spade"), for: .normal)
 
-        //TODO: custom the slider and the thumb size
+        //TODO: KEITH, custom the slider and the thumb size
 
     }
     
@@ -211,7 +211,7 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
     
     func buttonHover(type: Int){
         if (type == viewType.logout.rawValue){
-            //TODO: Do logout
+            //TODO: KEITH, Do logout
             return
         }
         

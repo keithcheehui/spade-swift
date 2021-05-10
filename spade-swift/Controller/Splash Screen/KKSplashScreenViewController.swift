@@ -47,8 +47,6 @@ class KKSplashScreenViewController: KKBaseViewController {
         imgProgress.frame = CGRect(x: 0.5, y: 0.25, width: 0, height: loadingBar.bounds.height - 6)
         loadingBar.addSubview(imgProgress)
         
-        //TODO: KEITH, NEED TO ADD ANIMATION AND THE WIDTH IS NOT CORRECT
-        //MAKE THE lblLoading % ANIMATION TOO
         self.perform(#selector(updateProgress), with: nil, afterDelay: 0.1)
     }
     

@@ -40,6 +40,8 @@ class KKSupportViewController: KKBaseViewController {
         initialLayout()
         buttonHover(type: viewType.liveChat.rawValue)
         
+        //TODO: KEITH, help to implement and register the collection view cell
+        
 //        let flowLayout = UICollectionViewFlowLayout()
 //        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 //        flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: 150), height: KKUtil.ConvertSizeByDensity(size: 200))
@@ -110,6 +112,7 @@ class KKSupportViewController: KKBaseViewController {
     }
     
     ///Live Chat
+    //TODO: KEITH, continue implement the collection view
 //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        1
 //    }
