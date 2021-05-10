@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="48" id="Uvv-gf-w4Z" customClass="KKAnnouncementTableCell" customModule="spade_swift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="370" height="48"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uvv-gf-w4Z" id="imH-zJ-sH0">
+                <rect key="frame" x="0.0" y="0.0" width="370" height="48"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lPb-dn-FDL">
+                        <rect key="frame" x="0.0" y="0.0" width="370" height="48"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021-01-23 19:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azL-Yz-VWv">
+                                <rect key="frame" x="20" y="0.0" width="129" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank Changing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DfD-3d-Ogl">
+                                <rect key="frame" x="157" y="0.0" width="193" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="azL-Yz-VWv" firstAttribute="leading" secondItem="lPb-dn-FDL" secondAttribute="leading" constant="20" id="2jw-Ga-Uz7"/>
+                            <constraint firstItem="DfD-3d-Ogl" firstAttribute="leading" secondItem="azL-Yz-VWv" secondAttribute="trailing" constant="8" id="Kha-Sw-lEh"/>
+                            <constraint firstItem="DfD-3d-Ogl" firstAttribute="width" secondItem="azL-Yz-VWv" secondAttribute="width" multiplier="1.5" id="Sth-Xp-gb2"/>
+                            <constraint firstAttribute="bottom" secondItem="DfD-3d-Ogl" secondAttribute="bottom" id="Uf4-bW-icL"/>
+                            <constraint firstItem="azL-Yz-VWv" firstAttribute="top" secondItem="lPb-dn-FDL" secondAttribute="top" id="f8G-xy-RCB"/>
+                            <constraint firstAttribute="bottom" secondItem="azL-Yz-VWv" secondAttribute="bottom" id="gVx-es-jbT"/>
+                            <constraint firstAttribute="trailing" secondItem="DfD-3d-Ogl" secondAttribute="trailing" constant="20" id="ik5-Cy-HGK"/>
+                            <constraint firstItem="DfD-3d-Ogl" firstAttribute="top" secondItem="lPb-dn-FDL" secondAttribute="top" id="lcG-l2-yas"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="lPb-dn-FDL" firstAttribute="top" secondItem="imH-zJ-sH0" secondAttribute="top" id="9rT-EP-50I"/>
+                    <constraint firstItem="lPb-dn-FDL" firstAttribute="leading" secondItem="imH-zJ-sH0" secondAttribute="leading" id="Aoy-sQ-Cb6"/>
+                    <constraint firstAttribute="trailing" secondItem="lPb-dn-FDL" secondAttribute="trailing" id="J6i-wa-wPc"/>
+                    <constraint firstAttribute="bottom" secondItem="lPb-dn-FDL" secondAttribute="bottom" id="zEr-Pe-V3b"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="containerView" destination="lPb-dn-FDL" id="YBp-ft-Vn2"/>
+                <outlet property="lblDate" destination="azL-Yz-VWv" id="JBl-ZY-6gX"/>
+                <outlet property="lblTitle" destination="DfD-3d-Ogl" id="RLQ-PF-rxc"/>
+            </connections>
+            <point key="canvasLocation" x="-304.34782608695656" y="101.11607142857143"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

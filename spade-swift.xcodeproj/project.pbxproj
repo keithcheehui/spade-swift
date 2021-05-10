@@ -41,6 +41,10 @@
 		533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CA6BD2631746800768C08 /* KKHomeViewController.swift */; };
 		5381676A26464B0F00FC96A6 /* KKUserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5381676926464B0F00FC96A6 /* KKUserInfoViewController.xib */; };
 		5381676D26464B3300FC96A6 /* KKUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5381676C26464B3300FC96A6 /* KKUserInfoViewController.swift */; };
+		5381D82C26495A94003BBD2A /* KKAnnouncementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5381D82B26495A94003BBD2A /* KKAnnouncementViewController.swift */; };
+		5381D82F26495A9D003BBD2A /* KKAnnouncementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5381D82E26495A9D003BBD2A /* KKAnnouncementViewController.xib */; };
+		5381D834264961E2003BBD2A /* KKAnnouncementTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5381D833264961E2003BBD2A /* KKAnnouncementTableCell.xib */; };
+		5381D837264961EC003BBD2A /* KKAnnouncementTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5381D836264961EC003BBD2A /* KKAnnouncementTableCell.swift */; };
 		538FB07D2648012200F3E823 /* KKFaqViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538FB07C2648012200F3E823 /* KKFaqViewController.swift */; };
 		538FB0802648012B00F3E823 /* KKFaqViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 538FB07F2648012B00F3E823 /* KKFaqViewController.xib */; };
 		538FB090264825E000F3E823 /* KKLiveChatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 538FB08F264825E000F3E823 /* KKLiveChatCollectionViewCell.xib */; };
@@ -101,6 +105,10 @@
 		533CA6BD2631746800768C08 /* KKHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKHomeViewController.swift; sourceTree = "<group>"; };
 		5381676926464B0F00FC96A6 /* KKUserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKUserInfoViewController.xib; sourceTree = "<group>"; };
 		5381676C26464B3300FC96A6 /* KKUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKUserInfoViewController.swift; sourceTree = "<group>"; };
+		5381D82B26495A94003BBD2A /* KKAnnouncementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAnnouncementViewController.swift; sourceTree = "<group>"; };
+		5381D82E26495A9D003BBD2A /* KKAnnouncementViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKAnnouncementViewController.xib; sourceTree = "<group>"; };
+		5381D833264961E2003BBD2A /* KKAnnouncementTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKAnnouncementTableCell.xib; sourceTree = "<group>"; };
+		5381D836264961EC003BBD2A /* KKAnnouncementTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAnnouncementTableCell.swift; sourceTree = "<group>"; };
 		538FB07C2648012200F3E823 /* KKFaqViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKFaqViewController.swift; sourceTree = "<group>"; };
 		538FB07F2648012B00F3E823 /* KKFaqViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKFaqViewController.xib; sourceTree = "<group>"; };
 		538FB08F264825E000F3E823 /* KKLiveChatCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKLiveChatCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -256,6 +264,7 @@
 				53AAAE2E26401D0A004103F0 /* Withdraw */,
 				53C64EF72637006C0068F03E /* Personal */,
 				53963E062639A30A00D803D4 /* Settings */,
+				5381D83126495AA2003BBD2A /* Announcement */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -265,6 +274,7 @@
 			children = (
 				067029D82641323500DFADAC /* Side Menu */,
 				538FB09526482B8000F3E823 /* Live Chat */,
+				5381D839264961F1003BBD2A /* Announcement */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -345,6 +355,24 @@
 				5381676926464B0F00FC96A6 /* KKUserInfoViewController.xib */,
 			);
 			path = UserInfo;
+			sourceTree = "<group>";
+		};
+		5381D83126495AA2003BBD2A /* Announcement */ = {
+			isa = PBXGroup;
+			children = (
+				5381D82B26495A94003BBD2A /* KKAnnouncementViewController.swift */,
+				5381D82E26495A9D003BBD2A /* KKAnnouncementViewController.xib */,
+			);
+			path = Announcement;
+			sourceTree = "<group>";
+		};
+		5381D839264961F1003BBD2A /* Announcement */ = {
+			isa = PBXGroup;
+			children = (
+				5381D836264961EC003BBD2A /* KKAnnouncementTableCell.swift */,
+				5381D833264961E2003BBD2A /* KKAnnouncementTableCell.xib */,
+			);
+			path = Announcement;
 			sourceTree = "<group>";
 		};
 		538FB0822648013100F3E823 /* FAQ */ = {
@@ -499,9 +527,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				53AAAE1126401B12004103F0 /* KKMessageViewController.xib in Resources */,
+				5381D82F26495A9D003BBD2A /* KKAnnouncementViewController.xib in Resources */,
 				0676B5B4262FD6F30023311F /* LaunchScreen.storyboard in Resources */,
 				53268C1826307FC100ECAAE2 /* KKRegistrationViewController.xib in Resources */,
 				53AAAE3726401FF7004103F0 /* KKAffiliateViewController.xib in Resources */,
+				5381D834264961E2003BBD2A /* KKAnnouncementTableCell.xib in Resources */,
 				53268C0D263068F600ECAAE2 /* KKLoginViewController.xib in Resources */,
 				53268C062630612900ECAAE2 /* KKOnBoardingViewController.xib in Resources */,
 				0676B668263095EE0023311F /* Localizable.strings in Resources */,
@@ -579,8 +609,10 @@
 				0676B5F3262FD8520023311F /* KKConstant.swift in Sources */,
 				53AAAE2926401CA9004103F0 /* KKWithdrawViewController.swift in Sources */,
 				533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */,
+				5381D82C26495A94003BBD2A /* KKAnnouncementViewController.swift in Sources */,
 				53963E0A2639A36C00D803D4 /* KKSettingsViewController.swift in Sources */,
 				5381676D26464B3300FC96A6 /* KKUserInfoViewController.swift in Sources */,
+				5381D837264961EC003BBD2A /* KKAnnouncementTableCell.swift in Sources */,
 				0676B5A8262FD6EF0023311F /* AppDelegate.swift in Sources */,
 				53AAAE3426401FF0004103F0 /* KKAffiliateViewController.swift in Sources */,
 				0676B5F6262FD8BD0023311F /* KKSingleton.swift in Sources */,

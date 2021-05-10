@@ -481,17 +481,27 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMc-gk-bsF">
+                            <rect key="frame" x="0.0" y="0.0" width="350" height="25"/>
+                            <connections>
+                                <action selector="btnAnnouncementDidPressed" destination="-1" eventType="touchUpInside" id="tf6-hB-irS"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="eMc-gk-bsF" secondAttribute="trailing" id="7bc-NB-qjH"/>
                         <constraint firstAttribute="width" constant="350" id="GGM-cp-4ju"/>
                         <constraint firstItem="FhT-j7-giH" firstAttribute="leading" secondItem="Cun-E2-bYt" secondAttribute="trailing" constant="16" id="Q8X-EY-t5z"/>
+                        <constraint firstItem="eMc-gk-bsF" firstAttribute="top" secondItem="kwg-tf-4uS" secondAttribute="top" id="SmU-hK-Sti"/>
                         <constraint firstAttribute="bottom" secondItem="Cun-E2-bYt" secondAttribute="bottom" id="Tfm-IL-mcV"/>
                         <constraint firstItem="FhT-j7-giH" firstAttribute="top" secondItem="kwg-tf-4uS" secondAttribute="top" id="UpV-oz-0my"/>
                         <constraint firstAttribute="height" constant="25" id="YGt-Nh-faR"/>
                         <constraint firstAttribute="trailing" secondItem="FhT-j7-giH" secondAttribute="trailing" constant="25" id="e7K-7r-m7t"/>
                         <constraint firstItem="Cun-E2-bYt" firstAttribute="leading" secondItem="kwg-tf-4uS" secondAttribute="leading" id="k5K-Oz-mjE"/>
+                        <constraint firstAttribute="bottom" secondItem="eMc-gk-bsF" secondAttribute="bottom" id="kvZ-gJ-2nH"/>
                         <constraint firstAttribute="bottom" secondItem="FhT-j7-giH" secondAttribute="bottom" id="qDz-kG-qsY"/>
+                        <constraint firstItem="eMc-gk-bsF" firstAttribute="leading" secondItem="kwg-tf-4uS" secondAttribute="leading" id="wpW-d8-VOS"/>
                         <constraint firstItem="Cun-E2-bYt" firstAttribute="top" secondItem="kwg-tf-4uS" secondAttribute="top" id="zlH-xE-ews"/>
                     </constraints>
                 </view>

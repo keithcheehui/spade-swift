@@ -170,6 +170,10 @@ class KKHomeViewController: KKBaseViewController {
         
     }
     
+    @IBAction func btnAnnouncementDidPressed(){
+        self.present(KKAnnouncementViewController(), animated: false, completion: nil)
+    }
+    
     @IBAction func btnAffiliatesDidPressed(){
         self.navigationController?.pushViewController(KKAffiliateViewController(), animated: true)
     }
