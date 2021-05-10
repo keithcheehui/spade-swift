@@ -20,6 +20,7 @@ class KKSplashScreenViewController: KKBaseViewController {
     @IBOutlet weak var lblLoadingMarginBottom: NSLayoutConstraint!
     
     var imgProgress: UIImageView!
+    var progressValue: CGFloat = 0
 
     
     override func viewDidLoad() {
@@ -27,7 +28,6 @@ class KKSplashScreenViewController: KKBaseViewController {
 
         initialLayout()
         drawLoadingProgress()
-        self.proceedToOnboardingPage()
     }
 
     func initialLayout(){
@@ -39,16 +39,34 @@ class KKSplashScreenViewController: KKBaseViewController {
     }
 
     func drawLoadingProgress(){
+        
         imgProgress = UIImageView.init()
         imgProgress.image = UIImage(named: "bg_loading_bar")
         imgProgress.contentMode = .scaleToFill
-        imgProgress.frame = imgBgloadingBar.bounds
-        imgProgress.frame.size.width = 0
+        imgProgress.clipsToBounds = true
+        imgProgress.frame = CGRect(x: 0.5, y: 0.25, width: 0, height: loadingBar.bounds.height - 6)
         loadingBar.addSubview(imgProgress)
         
         //TODO: KEITH, NEED TO ADD ANIMATION AND THE WIDTH IS NOT CORRECT
         //MAKE THE lblLoading % ANIMATION TOO
+        self.perform(#selector(updateProgress), with: nil, afterDelay: 0.1)
+    }
+    
+    @objc func updateProgress() {
         
+        progressValue = progressValue + 0.01
+        self.imgProgress.frame.size.width = self.loadingBar.bounds.width * progressValue
+
+        if progressValue < 1.0 {
+            
+            lblLoading.text = String.init(format: "%.0f%% loading...", progressValue*100)
+            self.perform(#selector(updateProgress), with: nil, afterDelay: 0.1)
+        }
+        else
+        {
+            lblLoading.text = "100% loading..."
+            self.proceedToOnboardingPage()
+        }
     }
     
     @objc func proceedToOnboardingPage() {
