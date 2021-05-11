@@ -19,6 +19,7 @@ class KKAffiliateViewController: KKBaseViewController {
     @IBOutlet weak var imgHoverGuideline: UIImageView!
     @IBOutlet weak var imgHoverTurnover: UIImageView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var imgBG: UIImageView!
 
     @IBOutlet weak var imgBackWidth: NSLayoutConstraint!
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
@@ -88,11 +89,13 @@ class KKAffiliateViewController: KKBaseViewController {
     }
     
     func buttonHover(type: Int){
+        imgBG.isHidden = false
+
         imgHoverMyAffiliate.isHidden = true
         imgHoverDownline.isHidden = true
         imgHoverGuideline.isHidden = true
         imgHoverTurnover.isHidden = true
-        
+
         var viewController: UIViewController = KKOnBoardingViewController()
         
         switch type {
@@ -109,8 +112,9 @@ class KKAffiliateViewController: KKBaseViewController {
             viewController = KKPersonalViewController()
             break;
         default:
+            imgBG.isHidden = true
             imgHoverMyAffiliate.isHidden = false
-            viewController = KKOnBoardingViewController()
+            viewController = KKMyAffiliateViewController()
             break;
         }
         

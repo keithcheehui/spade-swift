@@ -52,7 +52,6 @@
 "user_info_email"                   = "Email";
 "user_info_phone"                   = "Phone";
 
-
 //MARK: Settings
 "settings_volume_setting"       = "Volume Setting";
 "settings_change_password"      = "Change Password";
@@ -73,6 +72,20 @@
 "affiliates_downline"           = "Downline";
 "affiliates_guideline"          = "Guideline";
 "affiliates_turnover"           = "Turnover";
+
+//MARK: My Affiliates
+"my_affi_my_id"                 = "My ID";
+"my_affi_referrer_id"           = "Referrer ID";
+"my_affi_member_count"          = "Member Count (New)";
+"my_affi_turnover"              = "Today Team Turnover";
+"my_affi_today_com"             = "Today Commission";
+"my_affi_yesterday_com"         = "Yesterday Commission";
+"my_affi_downline"              = "Downline";
+"my_affi_save"                  = "Click to save image";
+"my_affi_copy"                  = "COPY";
+"my_affi_total_com"             = "Total Commission";
+"my_affi_available_com"         = "Available Commission";
+"my_affi_share_reward"          = "Share Reward";
 
 //MARK: Rebate
 "rebate_manual_rebate"          = "Manual Rebate";
