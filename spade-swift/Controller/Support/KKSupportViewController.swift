@@ -8,8 +8,7 @@
 import Foundation
 import UIKit
 
-class KKSupportViewController: KKBaseViewController {
-//                               , UICollectionViewDataSource, UICollectionViewDelegate {
+class KKSupportViewController: KKBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var lblLiveChat: UILabel!
     @IBOutlet weak var lblFaq: UILabel!
@@ -40,15 +39,12 @@ class KKSupportViewController: KKBaseViewController {
         initialLayout()
         buttonHover(type: viewType.liveChat.rawValue)
         
-        //TODO: KEITH, help to implement and register the collection view cell
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: 130), height: KKUtil.ConvertSizeByDensity(size: 180))
         
-//        let flowLayout = UICollectionViewFlowLayout()
-//        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: 150), height: KKUtil.ConvertSizeByDensity(size: 200))
-//        
-//        liveChatCollectionView.initialLayout = flowLayout
-//        liveChatCollectionView.register(KKLiveChatCollectionCell.self, forCellWithReuseIdentifier: CellIdentifier.liveChatCollectionViewCellIdentifier)
-
+        liveChatCollectionView.collectionViewLayout = flowLayout
+        liveChatCollectionView.register(UINib(nibName: "KKLiveChatCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.liveChatCollectionViewCellIdentifier)
     }
     
     func initialLayout(){
@@ -112,19 +108,16 @@ class KKSupportViewController: KKBaseViewController {
     }
     
     ///Live Chat
-    //TODO: KEITH, continue implement the collection view
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        1
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        var cell: KKLiveChatCollectionCell? = collectionView.dequeueReusableCell(withIdentifier: CellIdentifier.liveChatCollectionViewCellIdentifier) as? KKLiveChatCollectionCell
-//
-//        if (cell == nil) {
-//            cell = KKLiveChatCollectionCell.init(reuseIdentifier: CellIdentifier.liveChatCollectionViewCellIdentifier)
-//        }
-//
-//
-//        return cell
-//    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.liveChatCollectionViewCellIdentifier, for: indexPath) as? KKLiveChatCollectionViewCell
+        else {
+            fatalError("DequeueReusableCell failed while casting")
+        }
+        return cell
+    }
 }

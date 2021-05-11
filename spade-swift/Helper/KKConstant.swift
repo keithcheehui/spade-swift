@@ -52,9 +52,9 @@ struct ConstantSize {
 struct CellIdentifier {
     
     static let sideMenuTableCellIdentifier = "SIDE_MENU_TABLE_CELL_IDENTIFIER"
-    static let announcementTableCellIdentifier = "ANNOUNCEMENT_TABLE_CELL_IDENTIFIER"
+    static let announcementTableCellIdentifier = "KKAnnouncementTableCell"
 
-    static let liveChatCollectionViewCellIdentifier = "LIVE_CHAT_COLLECTION_VIEW_CELL_IDENTIFIER"
+    static let liveChatCollectionViewCellIdentifier = "KKLiveChatCollectionViewCell"
 }
 
 struct Spade {

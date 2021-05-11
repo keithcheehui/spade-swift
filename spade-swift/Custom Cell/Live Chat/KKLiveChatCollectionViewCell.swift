@@ -13,13 +13,14 @@ class KKLiveChatCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var lblHotline: UILabel!
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        //TODO: KEITH, not sure still got any missing
-        //The containerview and lblhotline leave it first, I will link the layout
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        containerView.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 1)
+        containerView.layer.borderColor = UIColor(white: 1, alpha: 0.3).cgColor
+        containerView.layer.cornerRadius = 8
+        
+        lblHotline.textColor = UIColor.spade_white_FFFFFF
+        lblHotline.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 16))
     }
 }

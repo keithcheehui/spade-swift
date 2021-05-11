@@ -178,6 +178,10 @@
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="KrF-Hk-AAQ"/>
+                        <outlet property="delegate" destination="-1" id="Hek-5o-GpM"/>
+                    </connections>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggt-l0-a5y">
                     <rect key="frame" x="214" y="70" width="662" height="344"/>
@@ -289,7 +293,7 @@
         <image name="bg_header" width="2208" height="142"/>
         <image name="bg_hover" width="373" height="112"/>
         <image name="bg_mini_games" width="2208" height="1242"/>
-        <image name="bg_separator" width="382" height="2"/>
+        <image name="bg_separator" width="383" height="6"/>
         <image name="bg_sidemenu" width="426" height="1242"/>
         <image name="ic_back" width="97" height="81"/>
         <image name="ic_faq" width="68" height="68"/>

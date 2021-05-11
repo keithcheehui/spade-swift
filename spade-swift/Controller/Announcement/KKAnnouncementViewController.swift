@@ -48,14 +48,17 @@ class KKAnnouncementViewController: KKBaseViewController, UITableViewDataSource,
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: KKAnnouncementTableCell? = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.announcementTableCellIdentifier) as? KKAnnouncementTableCell
-        
-        if (cell == nil) {
-            cell = KKAnnouncementTableCell.init(style: .default, reuseIdentifier: CellIdentifier.announcementTableCellIdentifier)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.announcementTableCellIdentifier, for: indexPath) as? KKAnnouncementTableCell
+        else {
+            fatalError("DequeueReusableCell failed while casting")
         }
         
-        cell?.selectionStyle = .none
+        cell.selectionStyle = .none
         
-        return cell!
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return KKUtil.ConvertSizeByDensity(size: 50)
     }
 }
