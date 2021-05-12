@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKBankListViewController" customModule="spade_swift" customModuleProvider="target">
+            <connections>
+                <outlet property="bankTableView" destination="MwT-iB-hQm" id="cMw-J2-lI2"/>
+                <outlet property="view" destination="iN0-l3-epB" id="yNO-GK-NOJ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MwT-iB-hQm">
+                    <rect key="frame" x="30" y="15" width="836" height="384"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="CoZ-8W-2fi"/>
+                        <outlet property="delegate" destination="-1" id="PH3-v8-py5"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="MwT-iB-hQm" secondAttribute="trailing" constant="30" id="8Ed-FD-Mzb"/>
+                <constraint firstAttribute="bottom" secondItem="MwT-iB-hQm" secondAttribute="bottom" constant="15" id="KjG-sz-1K9"/>
+                <constraint firstItem="MwT-iB-hQm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="VV8-RP-836"/>
+                <constraint firstItem="MwT-iB-hQm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="af0-OH-Rvb"/>
+            </constraints>
+            <point key="canvasLocation" x="141" y="135"/>
+        </view>
+    </objects>
+</document>

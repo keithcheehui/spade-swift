@@ -35,6 +35,10 @@
 		5317F22D264C100E0076D69B /* KKWithdrawRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5317F22C264C100E0076D69B /* KKWithdrawRequestViewController.xib */; };
 		5317F232264C222A0076D69B /* KKBankTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317F231264C222A0076D69B /* KKBankTableCell.swift */; };
 		5317F235264C223A0076D69B /* KKBankTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5317F234264C223A0076D69B /* KKBankTableCell.xib */; };
+		5317F23B264C2A8E0076D69B /* KKAddBankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317F23A264C2A8E0076D69B /* KKAddBankViewController.swift */; };
+		5317F23E264C2A990076D69B /* KKAddBankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5317F23D264C2A990076D69B /* KKAddBankViewController.xib */; };
+		5317F243264C2B390076D69B /* KKBankListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317F242264C2B390076D69B /* KKBankListViewController.swift */; };
+		5317F246264C2B420076D69B /* KKBankListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5317F245264C2B420076D69B /* KKBankListViewController.xib */; };
 		53268BFF2630604F00ECAAE2 /* KKOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53268BFE2630604F00ECAAE2 /* KKOnBoardingViewController.swift */; };
 		53268C062630612900ECAAE2 /* KKOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53268C052630612900ECAAE2 /* KKOnBoardingViewController.xib */; };
 		53268C09263068EB00ECAAE2 /* KKLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53268C08263068EB00ECAAE2 /* KKLoginViewController.swift */; };
@@ -105,6 +109,10 @@
 		5317F22C264C100E0076D69B /* KKWithdrawRequestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKWithdrawRequestViewController.xib; sourceTree = "<group>"; };
 		5317F231264C222A0076D69B /* KKBankTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKBankTableCell.swift; sourceTree = "<group>"; };
 		5317F234264C223A0076D69B /* KKBankTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKBankTableCell.xib; sourceTree = "<group>"; };
+		5317F23A264C2A8E0076D69B /* KKAddBankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAddBankViewController.swift; sourceTree = "<group>"; };
+		5317F23D264C2A990076D69B /* KKAddBankViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKAddBankViewController.xib; sourceTree = "<group>"; };
+		5317F242264C2B390076D69B /* KKBankListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKBankListViewController.swift; sourceTree = "<group>"; };
+		5317F245264C2B420076D69B /* KKBankListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKBankListViewController.xib; sourceTree = "<group>"; };
 		53268BFE2630604F00ECAAE2 /* KKOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKOnBoardingViewController.swift; sourceTree = "<group>"; };
 		53268C052630612900ECAAE2 /* KKOnBoardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKOnBoardingViewController.xib; sourceTree = "<group>"; };
 		53268C08263068EB00ECAAE2 /* KKLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKLoginViewController.swift; sourceTree = "<group>"; };
@@ -343,6 +351,24 @@
 			path = "Bank Cell";
 			sourceTree = "<group>";
 		};
+		5317F240264C2AB70076D69B /* Add Bank Card */ = {
+			isa = PBXGroup;
+			children = (
+				5317F23A264C2A8E0076D69B /* KKAddBankViewController.swift */,
+				5317F23D264C2A990076D69B /* KKAddBankViewController.xib */,
+			);
+			path = "Add Bank Card";
+			sourceTree = "<group>";
+		};
+		5317F248264C2B460076D69B /* Bank List */ = {
+			isa = PBXGroup;
+			children = (
+				5317F242264C2B390076D69B /* KKBankListViewController.swift */,
+				5317F245264C2B420076D69B /* KKBankListViewController.xib */,
+			);
+			path = "Bank List";
+			sourceTree = "<group>";
+		};
 		53268C012630605500ECAAE2 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +521,8 @@
 				53AAAE2826401CA9004103F0 /* KKWithdrawViewController.swift */,
 				53AAAE2B26401CAE004103F0 /* KKWithdrawViewController.xib */,
 				5317F22F264C104F0076D69B /* Withdraw Request */,
+				5317F248264C2B460076D69B /* Bank List */,
+				5317F240264C2AB70076D69B /* Add Bank Card */,
 			);
 			path = Withdraw;
 			sourceTree = "<group>";
@@ -574,9 +602,11 @@
 				53268C1826307FC100ECAAE2 /* KKRegistrationViewController.xib in Resources */,
 				53AAAE3726401FF7004103F0 /* KKAffiliateViewController.xib in Resources */,
 				5381D834264961E2003BBD2A /* KKAnnouncementTableCell.xib in Resources */,
+				5317F23E264C2A990076D69B /* KKAddBankViewController.xib in Resources */,
 				53268C0D263068F600ECAAE2 /* KKLoginViewController.xib in Resources */,
 				53268C062630612900ECAAE2 /* KKOnBoardingViewController.xib in Resources */,
 				0676B668263095EE0023311F /* Localizable.strings in Resources */,
+				5317F246264C2B420076D69B /* KKBankListViewController.xib in Resources */,
 				5317F235264C223A0076D69B /* KKBankTableCell.xib in Resources */,
 				53363E47264ACE26001F6B48 /* KKMyAffiliateViewController.xib in Resources */,
 				0676B5B1262FD6F30023311F /* Assets.xcassets in Resources */,
@@ -655,6 +685,7 @@
 				53AAAE2926401CA9004103F0 /* KKWithdrawViewController.swift in Sources */,
 				533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */,
 				5381D82C26495A94003BBD2A /* KKAnnouncementViewController.swift in Sources */,
+				5317F23B264C2A8E0076D69B /* KKAddBankViewController.swift in Sources */,
 				5317F22A264C10050076D69B /* KKWithdrawRequestViewController.swift in Sources */,
 				53963E0A2639A36C00D803D4 /* KKSettingsViewController.swift in Sources */,
 				5381676D26464B3300FC96A6 /* KKUserInfoViewController.swift in Sources */,
@@ -682,6 +713,7 @@
 				062C39852632C98600E86EEA /* KKApiErrorDetails.swift in Sources */,
 				0676B5F9262FD8E40023311F /* KKColor.swift in Sources */,
 				53AAAE0E26401B09004103F0 /* KKMessageViewController.swift in Sources */,
+				5317F243264C2B390076D69B /* KKBankListViewController.swift in Sources */,
 				53AAAE06264018E3004103F0 /* KKRebateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,13 +26,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maybank Berhad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQC-bt-7cR">
-                                <rect key="frame" x="69" y="12" width="283.5" height="21"/>
+                                <rect key="frame" x="69" y="12" width="321.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234 **** **** 0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvV-hi-2Uw">
-                                <rect key="frame" x="372.5" y="12" width="198.5" height="21"/>
+                                <rect key="frame" x="410.5" y="12" width="160.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -45,7 +45,7 @@
                             <constraint firstItem="77v-wy-E6e" firstAttribute="top" secondItem="IQ8-xg-7j4" secondAttribute="top" constant="8" id="IeY-cC-6CQ"/>
                             <constraint firstItem="tvV-hi-2Uw" firstAttribute="leading" secondItem="sQC-bt-7cR" secondAttribute="trailing" constant="20" id="eh8-pe-h6e"/>
                             <constraint firstItem="77v-wy-E6e" firstAttribute="leading" secondItem="IQ8-xg-7j4" secondAttribute="leading" constant="20" id="kYG-y4-tjb"/>
-                            <constraint firstItem="tvV-hi-2Uw" firstAttribute="width" secondItem="sQC-bt-7cR" secondAttribute="width" multiplier="0.7" id="kuY-tF-07q"/>
+                            <constraint firstItem="tvV-hi-2Uw" firstAttribute="width" secondItem="sQC-bt-7cR" secondAttribute="width" multiplier="0.5" id="kuY-tF-07q"/>
                             <constraint firstItem="sQC-bt-7cR" firstAttribute="centerY" secondItem="IQ8-xg-7j4" secondAttribute="centerY" id="oLT-rP-oGA"/>
                             <constraint firstAttribute="trailing" secondItem="tvV-hi-2Uw" secondAttribute="trailing" constant="30" id="ovL-cf-Si7"/>
                             <constraint firstItem="77v-wy-E6e" firstAttribute="centerY" secondItem="IQ8-xg-7j4" secondAttribute="centerY" id="t8R-6E-g1r"/>

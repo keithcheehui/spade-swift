@@ -1,5 +1,5 @@
 //
-//  KKWithdrawRequestViewController.swift
+//  KKAddBankViewController.swift
 //  spade-swift
 //
 //  Created by Wong Sai Khong on 12/05/2021.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSource, UITableViewDelegate {
+class KKAddBankViewController: KKBaseViewController {
     
     @IBOutlet weak var lblWithdrawAmount: UILabel!
     @IBOutlet weak var txtWithdrawAmountView: UIView!
@@ -21,7 +21,6 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
 
     @IBOutlet weak var bankListContainer: UIView!
     @IBOutlet weak var lblSelectBank: UILabel!
-    @IBOutlet weak var bankTableView: UITableView!
 
     @IBOutlet weak var withdrawContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var addBankContainerHeight: NSLayoutConstraint!
@@ -66,56 +65,14 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
         lblDescription.textColor = lblWithdrawAmount.textColor
         lblSelectBank.textColor = lblWithdrawAmount.textColor
         lblNotice.textColor = UIColor.spade_orange_FFBA00
-        
-        bankTableView.backgroundColor = UIColor(white: 0, alpha: 0)
-        bankTableView.register(UINib(nibName: "KKBankTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.bankTableCellIdentifier)
-
-        changeView(noBank: true)
-    }
-    
-    func changeView(noBank: Bool) {
-        if (noBank){
-            bankListContainer.isHidden = true
-            addBankContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 55)
-        } else {
-            bankListContainer.isHidden = false
-            addBankContainerHeight.constant = 0
-        }
     }
     
     ///Button Actions
-    @IBAction func btnClearDidPressed(){
-        txtWithdrawAmount.text = ""
-    }
-    
-    @IBAction func btnAddBankDidPressed(){
+    @IBAction func btnBackDidPressed(){
 
     }
     
     @IBAction func btnConfirmDidPressed(){
 
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.bankTableCellIdentifier, for: indexPath) as? KKBankTableCell
-        else {
-            fatalError("DequeueReusableCell failed while casting")
-        }
-        
-        cell.lblBankName.text = "Maybank Berhad Maybank"
-        cell.lblBankAccount.text = "1111 **** **** 0000"
-        
-        cell.selectionStyle = .none
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return KKUtil.ConvertSizeByDensity(size: 45)
-    }
 }
-

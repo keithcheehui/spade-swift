@@ -82,7 +82,7 @@ class KKWithdrawViewController: KKBaseViewController {
         imgHoverWithdrawHistory.isHidden = true
         imgHoverBankCard.isHidden = true
 
-        var viewController: UIViewController = KKOnBoardingViewController()
+        var viewController: UIViewController = KKWithdrawRequestViewController()
         
         switch type {
         case viewType.withdrawHistory.rawValue:
@@ -91,7 +91,7 @@ class KKWithdrawViewController: KKBaseViewController {
             break;
         case viewType.bankCard.rawValue:
             imgHoverBankCard.isHidden = false
-            viewController = KKPersonalViewController()
+            viewController = KKBankListViewController()
             break;
         default:
             imgHoverWithdraw.isHidden = false

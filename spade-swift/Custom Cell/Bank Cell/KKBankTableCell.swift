@@ -22,7 +22,7 @@ class KKBankTableCell: UITableViewCell {
         // Initialization code
         containerView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         containerView.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 1)
-        containerView.layer.borderColor = UIColor(white: 1, alpha: 0.5).cgColor
+        containerView.layer.borderColor = UIColor(white: 1, alpha: 0.3).cgColor
         containerView.layer.cornerRadius = 8
         
         imgSelectedWidth.constant = KKUtil.ConvertSizeByDensity(size: 20)
