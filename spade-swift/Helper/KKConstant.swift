@@ -53,6 +53,7 @@ struct CellIdentifier {
     
     static let sideMenuTableCellIdentifier = "SIDE_MENU_TABLE_CELL_IDENTIFIER"
     static let announcementTableCellIdentifier = "KKAnnouncementTableCell"
+    static let bankTableCellIdentifier = "KKBankTableCell"
 
     static let liveChatCollectionViewCellIdentifier = "KKLiveChatCollectionViewCell"
 }

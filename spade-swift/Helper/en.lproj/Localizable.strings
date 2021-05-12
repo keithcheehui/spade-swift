@@ -108,4 +108,8 @@
 "withdraw_withdraw"             = "Withdraw";
 "withdraw_withdraw_history"     = "Withdraw History";
 "withdraw_bank_card"            = "Bank Card";
-
+"withdraw_withdraw_amount"      = "Withdraw Amount";
+"withdraw_withdraw_placeholder" = "Please enter withdraw amount";
+"withdraw_notice"               = "Notice: Withdraw only from RM30-Rm10,000 only";
+"withdraw_description"          = "You have not add any bank account yet, please add bank account first before withdrawal";
+"withdraw_select_bank"          = "Please select your bank account";

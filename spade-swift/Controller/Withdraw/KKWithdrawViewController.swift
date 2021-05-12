@@ -95,7 +95,7 @@ class KKWithdrawViewController: KKBaseViewController {
             break;
         default:
             imgHoverWithdraw.isHidden = false
-            viewController = KKOnBoardingViewController()
+            viewController = KKWithdrawRequestViewController()
             break;
         }
         

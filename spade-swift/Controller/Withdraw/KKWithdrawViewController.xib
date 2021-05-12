@@ -229,18 +229,18 @@
                             <rect key="frame" x="0.0" y="0.0" width="662" height="344"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NI7-3Q-eUY">
-                            <rect key="frame" x="20" y="20" width="622" height="304"/>
+                            <rect key="frame" x="0.0" y="0.0" width="662" height="344"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="72j-lD-7nQ" secondAttribute="trailing" id="5kq-Zl-f0Y"/>
-                        <constraint firstItem="NI7-3Q-eUY" firstAttribute="top" secondItem="Ggt-l0-a5y" secondAttribute="top" constant="20" id="8Ek-be-ttc"/>
-                        <constraint firstAttribute="trailing" secondItem="NI7-3Q-eUY" secondAttribute="trailing" constant="20" id="CdP-D2-i5x"/>
+                        <constraint firstItem="NI7-3Q-eUY" firstAttribute="top" secondItem="Ggt-l0-a5y" secondAttribute="top" id="8Ek-be-ttc"/>
+                        <constraint firstAttribute="trailing" secondItem="NI7-3Q-eUY" secondAttribute="trailing" id="CdP-D2-i5x"/>
                         <constraint firstItem="72j-lD-7nQ" firstAttribute="leading" secondItem="Ggt-l0-a5y" secondAttribute="leading" id="IGX-wh-aAq"/>
-                        <constraint firstAttribute="bottom" secondItem="NI7-3Q-eUY" secondAttribute="bottom" constant="20" id="OmP-Gv-2V5"/>
-                        <constraint firstItem="NI7-3Q-eUY" firstAttribute="leading" secondItem="Ggt-l0-a5y" secondAttribute="leading" constant="20" id="b2W-le-jHi"/>
+                        <constraint firstAttribute="bottom" secondItem="NI7-3Q-eUY" secondAttribute="bottom" id="OmP-Gv-2V5"/>
+                        <constraint firstItem="NI7-3Q-eUY" firstAttribute="leading" secondItem="Ggt-l0-a5y" secondAttribute="leading" id="b2W-le-jHi"/>
                         <constraint firstItem="72j-lD-7nQ" firstAttribute="top" secondItem="Ggt-l0-a5y" secondAttribute="top" id="hJd-jr-bHG"/>
                         <constraint firstAttribute="bottom" secondItem="72j-lD-7nQ" secondAttribute="bottom" id="vDh-8U-PAF"/>
                     </constraints>
@@ -328,7 +328,7 @@
         <image name="bg_header" width="2208" height="142"/>
         <image name="bg_hover" width="373" height="112"/>
         <image name="bg_mini_games" width="2208" height="1242"/>
-        <image name="bg_separator" width="382" height="2"/>
+        <image name="bg_separator" width="383" height="6"/>
         <image name="bg_sidemenu" width="426" height="1242"/>
         <image name="ic_back" width="97" height="81"/>
         <image name="ic_bank_card" width="68" height="68"/>
