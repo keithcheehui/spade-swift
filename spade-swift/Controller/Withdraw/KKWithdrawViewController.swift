@@ -86,7 +86,7 @@ class KKWithdrawViewController: KKBaseViewController {
         imgHoverWithdrawHistory.isHidden = true
         imgHoverBankCard.isHidden = true
 
-        var viewController: UIViewController = KKWithdrawRequestViewController()
+        var viewController: KKBaseViewController = KKWithdrawRequestViewController()
         
         switch type {
         case viewType.withdrawHistory.rawValue:
@@ -106,11 +106,13 @@ class KKWithdrawViewController: KKBaseViewController {
         changeView(vc: viewController)
     }
     
-    func changeView(vc: UIViewController){
+    func changeView(vc: KKBaseViewController){
         for view in contentView.subviews{
             view.removeFromSuperview()
         }
         
+        vc.tableContentView = contentView
+        vc.displayViewController = self
         vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
         contentView.addSubview(vc.view)
         self.addChild(vc)

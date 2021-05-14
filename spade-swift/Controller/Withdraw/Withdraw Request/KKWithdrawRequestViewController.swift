@@ -15,6 +15,7 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
     @IBOutlet weak var txtWithdrawAmount: UITextField!
     @IBOutlet weak var lblNotice: UILabel!
 
+
     @IBOutlet weak var addBankContainer: UIView!
     @IBOutlet weak var lblTitleWithdraw: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
@@ -26,6 +27,7 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
     @IBOutlet weak var withdrawContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var addBankContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmHeight: NSLayoutConstraint!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +91,13 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
     }
     
     @IBAction func btnAddDidPressed(){
-        self.navigationController?.pushViewController(KKAddBankViewController(), animated: true)
+//        self.navigationController?.pushViewController(KKAddBankViewController(), animated: true)
+        
+        let viewController = KKAddBankViewController.init()
+        viewController.view.frame = CGRect(x: 0, y: 0, width: tableContentView.frame.width, height: tableContentView.frame.height)
+        tableContentView.addSubview(viewController.view)
+        displayViewController.addChild(viewController)
+        
     }
     
     @IBAction func btnConfirmDidPressed(){

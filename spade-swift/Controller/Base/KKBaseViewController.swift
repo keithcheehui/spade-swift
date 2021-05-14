@@ -10,7 +10,9 @@ import Kingfisher
 
 class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    var activityIndicator:       UIActivityIndicatorView!
+    var activityIndicator:      UIActivityIndicatorView!
+    var tableContentView:       UIView!
+    var displayViewController:  KKBaseViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
