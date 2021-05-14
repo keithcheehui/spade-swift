@@ -120,3 +120,6 @@
 "withdraw_bank_account"                     = "Bank Account Number";
 "withdraw_bank_account_placeholder"         = "Please enter the bank account number";
 "withdraw_add_bank_description"             = "Prompt: Please select the correct bank and fill with real name. When submit withdrawal, you will be transferred directly to this account. For security reason, you can't change it after adding the bank account. If you need to modify it, please contact customer service.";
+
+//MARK: Announcement
+"announcement_back" = "BACK";

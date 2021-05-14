@@ -78,7 +78,6 @@ class KKAddBankViewController: KKBaseViewController {
     }
     
     @IBAction func btnBackDidPressed(){
-//        self.navigationController?.popViewController(animated: true)
         self.willMove(toParent: nil)
         self.removeFromParent()
         self.view.removeFromSuperview()

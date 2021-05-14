@@ -91,13 +91,10 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
     }
     
     @IBAction func btnAddDidPressed(){
-//        self.navigationController?.pushViewController(KKAddBankViewController(), animated: true)
-        
         let viewController = KKAddBankViewController.init()
         viewController.view.frame = CGRect(x: 0, y: 0, width: tableContentView.frame.width, height: tableContentView.frame.height)
         tableContentView.addSubview(viewController.view)
         displayViewController.addChild(viewController)
-        
     }
     
     @IBAction func btnConfirmDidPressed(){

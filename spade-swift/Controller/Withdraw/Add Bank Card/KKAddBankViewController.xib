@@ -30,7 +30,7 @@
             <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_mini_games" translatesAutoresizingMaskIntoConstraints="NO" id="YfM-b6-03o">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_box" translatesAutoresizingMaskIntoConstraints="NO" id="YfM-b6-03o">
                     <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvg-7H-sfJ">
@@ -246,7 +246,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="YfM-b6-03o" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4W1-x0-gor"/>
                 <constraint firstItem="mvg-7H-sfJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="RFJ-Jw-Kfc"/>
@@ -261,7 +261,7 @@
         </view>
     </objects>
     <resources>
-        <image name="bg_mini_games" width="2208" height="1242"/>
+        <image name="bg_box" width="1615" height="1015"/>
         <image name="btn_back" width="329" height="109"/>
         <image name="btn_confirm" width="329" height="109"/>
         <image name="ic_arrow_down" width="42" height="29"/>

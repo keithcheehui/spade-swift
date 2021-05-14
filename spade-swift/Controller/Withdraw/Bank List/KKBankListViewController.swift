@@ -57,7 +57,10 @@ class KKBankListViewController: KKBaseViewController, UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row == 0) {
-            self.navigationController?.pushViewController(KKAddBankViewController(), animated: true)
+            let viewController = KKAddBankViewController.init()
+            viewController.view.frame = CGRect(x: 0, y: 0, width: tableContentView.frame.width, height: tableContentView.frame.height)
+            tableContentView.addSubview(viewController.view)
+            displayViewController.addChild(viewController)
         }
     }
     
