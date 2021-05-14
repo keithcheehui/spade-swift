@@ -212,7 +212,7 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
     
     func buttonHover(type: Int){
         if (type == viewType.logout.rawValue){
-            //TODO: KEITH, Do logout
+            KKUtil.logOutUser()
             return
         }
         

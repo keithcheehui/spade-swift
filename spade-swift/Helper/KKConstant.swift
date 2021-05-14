@@ -49,6 +49,10 @@ struct ConstantSize {
     static let menuItemMarginLeft = KKUtil.ConvertSizeByDensity(size: 15)
 }
 
+struct CacheKey {
+    static let loginStatus = "LOGIN_STATUS"
+}
+
 struct CellIdentifier {
     
     static let sideMenuTableCellIdentifier = "SIDE_MENU_TABLE_CELL_IDENTIFIER"
