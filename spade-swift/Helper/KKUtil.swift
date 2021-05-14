@@ -101,4 +101,40 @@ class KKUtil: NSObject {
         }
         return false
     }
+    
+    ///logout user
+    class func logOutUser() {
+        UserDefaults.standard.set(false, forKey: CacheKey.loginStatus)
+        UserDefaults.standard.synchronize()
+        
+        KKUtil.proceedOnboardingPage()
+    }
+    
+    ///redirect user to onboarding page
+    class func proceedOnboardingPage() {
+        let viewController = KKOnBoardingViewController.init()
+        let navigationController = UINavigationController.init(rootViewController: viewController)
+        
+        if #available(iOS 13.0, *) {
+        
+            let scene = UIApplication.shared.connectedScenes.first
+            if let sceneDelegate : SceneDelegate = (scene?.delegate as? SceneDelegate) {
+            
+                sceneDelegate.changeRootViewController(viewController: navigationController)
+            }
+        }
+        else
+        {
+            guard let window = UIApplication.shared.keyWindow else {
+                return
+            }
+                        
+            UIView.transition(with: window, duration: Double(0.25), options: .transitionCrossDissolve, animations: {
+                
+                let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+                appDelegate!.window?.rootViewController = navigationController
+                
+            }, completion: nil)
+        }
+    }
 }
