@@ -16,7 +16,7 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
     @IBOutlet weak var lblNotice: UILabel!
 
     @IBOutlet weak var addBankContainer: UIView!
-    @IBOutlet weak var lblWithdraw: UILabel!
+    @IBOutlet weak var lblTitleWithdraw: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
 
     @IBOutlet weak var bankListContainer: UIView!
@@ -34,7 +34,7 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
     }
     
     func initialLayout(){
-        withdrawContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
+        withdrawContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
         btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 35)
         
         txtWithdrawAmountView.backgroundColor = UIColor(white: 0, alpha: 0.3)
@@ -47,7 +47,7 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
         
         lblWithdrawAmount.text = KKUtil.languageSelectedStringForKey(key: "withdraw_withdraw_amount")
         lblNotice.text = KKUtil.languageSelectedStringForKey(key: "withdraw_notice")
-        lblWithdraw.text = KKUtil.languageSelectedStringForKey(key: "withdraw_withdraw")
+        lblTitleWithdraw.text = KKUtil.languageSelectedStringForKey(key: "withdraw_withdraw")
         lblDescription.text = KKUtil.languageSelectedStringForKey(key: "withdraw_description")
         lblSelectBank.text = KKUtil.languageSelectedStringForKey(key: "withdraw_select_bank")
 
@@ -57,12 +57,12 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
         txtWithdrawAmount.font = lblWithdrawAmount.font
         lblNotice.font = lblWithdrawAmount.font
         lblSelectBank.font = lblWithdrawAmount.font
-        lblWithdraw.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+        lblTitleWithdraw.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
         lblDescription.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 8))
         
         lblWithdrawAmount.textColor = UIColor.spade_white_FFFFFF
         txtWithdrawAmount.textColor = lblWithdrawAmount.textColor
-        lblWithdraw.textColor = lblWithdrawAmount.textColor
+        lblTitleWithdraw.textColor = lblWithdrawAmount.textColor
         lblDescription.textColor = lblWithdrawAmount.textColor
         lblSelectBank.textColor = lblWithdrawAmount.textColor
         lblNotice.textColor = UIColor.spade_orange_FFBA00
@@ -70,10 +70,10 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
         bankTableView.backgroundColor = UIColor(white: 0, alpha: 0)
         bankTableView.register(UINib(nibName: "KKBankTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.bankTableCellIdentifier)
 
-        changeView(noBank: true)
+        changeLayoutView(noBank: true)
     }
     
-    func changeView(noBank: Bool) {
+    func changeLayoutView(noBank: Bool) {
         if (noBank){
             bankListContainer.isHidden = true
             addBankContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 55)
@@ -88,8 +88,8 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
         txtWithdrawAmount.text = ""
     }
     
-    @IBAction func btnAddBankDidPressed(){
-
+    @IBAction func btnAddDidPressed(){
+        self.navigationController?.pushViewController(KKAddBankViewController(), animated: true)
     }
     
     @IBAction func btnConfirmDidPressed(){

@@ -65,27 +65,14 @@ class KKDepositViewController: KKBaseViewController {
     }
     
     @IBAction func btnArtificialDidPressed(){
-        buttonHover(type: viewType.artificial.rawValue)
+        self.navigationController?.pushViewController(KKSupportViewController(), animated: true)
     }
 
     func buttonHover(type: Int){
-        imgHoverBankAccount.isHidden = true
+        imgHoverBankAccount.isHidden = false
         imgHoverArtificial.isHidden = true
-
-        var viewController: UIViewController = KKOnBoardingViewController()
         
-        switch type {
-        case viewType.artificial.rawValue:
-            imgHoverArtificial.isHidden = false
-            viewController = KKPersonalViewController()
-            break;
-        default:
-            imgHoverBankAccount.isHidden = false
-            viewController = KKOnBoardingViewController()
-            break;
-        }
-        
-        changeView(vc: viewController)
+        changeView(vc: KKOnBoardingViewController())
     }
     
     func changeView(vc: UIViewController){

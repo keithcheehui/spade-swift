@@ -10,21 +10,22 @@ import UIKit
 
 class KKAddBankViewController: KKBaseViewController {
     
-    @IBOutlet weak var lblWithdrawAmount: UILabel!
-    @IBOutlet weak var txtWithdrawAmountView: UIView!
-    @IBOutlet weak var txtWithdrawAmount: UITextField!
-    @IBOutlet weak var lblNotice: UILabel!
+    @IBOutlet weak var lblCardholderName: UILabel!
+    @IBOutlet weak var txtCardholderNameView: UIView!
+    @IBOutlet weak var txtCardholderName: UITextField!
+    
+    @IBOutlet weak var lblBankName: UILabel!
+    @IBOutlet weak var txtBankNameView: UIView!
+    @IBOutlet weak var txtBankName: UITextField!
+    
+    @IBOutlet weak var lblBankAccount: UILabel!
+    @IBOutlet weak var txtBankAccountView: UIView!
+    @IBOutlet weak var txtBankAccount: UITextField!
 
-    @IBOutlet weak var addBankContainer: UIView!
-    @IBOutlet weak var lblWithdraw: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
-
-    @IBOutlet weak var bankListContainer: UIView!
-    @IBOutlet weak var lblSelectBank: UILabel!
-
-    @IBOutlet weak var withdrawContainerHeight: NSLayoutConstraint!
-    @IBOutlet weak var addBankContainerHeight: NSLayoutConstraint!
-    @IBOutlet weak var btnConfirmHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var textFieldHeight: NSLayoutConstraint!
+    @IBOutlet weak var buttonHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,43 +34,51 @@ class KKAddBankViewController: KKBaseViewController {
     }
     
     func initialLayout(){
-        withdrawContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 35)
+        textFieldHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        buttonHeight.constant = KKUtil.ConvertSizeByDensity(size: 35)
         
-        txtWithdrawAmountView.backgroundColor = UIColor(white: 0, alpha: 0.3)
-        addBankContainer.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        txtCardholderNameView.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        txtBankNameView.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        txtBankAccountView.backgroundColor = UIColor(white: 0, alpha: 0.3)
 
-        txtWithdrawAmountView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 8)
-        addBankContainer.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 8)
-        addBankContainer.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 1)
-        addBankContainer.layer.borderColor = UIColor(white: 1, alpha: 0.3).cgColor
+        txtCardholderNameView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 8)
+        txtBankNameView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 8)
+        txtBankAccountView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 8)
         
-        lblWithdrawAmount.text = KKUtil.languageSelectedStringForKey(key: "withdraw_withdraw_amount")
-        lblNotice.text = KKUtil.languageSelectedStringForKey(key: "withdraw_notice")
-        lblWithdraw.text = KKUtil.languageSelectedStringForKey(key: "withdraw_withdraw")
-        lblDescription.text = KKUtil.languageSelectedStringForKey(key: "withdraw_description")
-        lblSelectBank.text = KKUtil.languageSelectedStringForKey(key: "withdraw_select_bank")
+        lblCardholderName.text = KKUtil.languageSelectedStringForKey(key: "withdraw_cardholder_name")
+        lblBankName.text = KKUtil.languageSelectedStringForKey(key: "withdraw_bank_name")
+        lblBankAccount.text = KKUtil.languageSelectedStringForKey(key: "withdraw_bank_account")
+        lblDescription.text = KKUtil.languageSelectedStringForKey(key: "withdraw_add_bank_description")
 
-        txtWithdrawAmount.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "withdraw_withdraw_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
+        txtCardholderName.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "withdraw_cardholder_name_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
+        txtBankName.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "withdraw_bank_name"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
+        txtBankAccount.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "withdraw_bank_account_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
         
-        lblWithdrawAmount.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
-        txtWithdrawAmount.font = lblWithdrawAmount.font
-        lblNotice.font = lblWithdrawAmount.font
-        lblSelectBank.font = lblWithdrawAmount.font
-        lblWithdraw.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
-        lblDescription.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 8))
+        lblCardholderName.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
+        lblBankName.font = lblCardholderName.font
+        lblBankAccount.font = lblCardholderName.font
         
-        lblWithdrawAmount.textColor = UIColor.spade_white_FFFFFF
-        txtWithdrawAmount.textColor = lblWithdrawAmount.textColor
-        lblWithdraw.textColor = lblWithdrawAmount.textColor
-        lblDescription.textColor = lblWithdrawAmount.textColor
-        lblSelectBank.textColor = lblWithdrawAmount.textColor
-        lblNotice.textColor = UIColor.spade_orange_FFBA00
+        txtCardholderName.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+        txtBankName.font = txtCardholderName.font
+        txtBankAccount.font = txtCardholderName.font
+        lblDescription.font = txtCardholderName.font
+        
+        lblCardholderName.textColor = UIColor.spade_white_FFFFFF
+        lblBankName.textColor = lblCardholderName.textColor
+        lblBankAccount.textColor = lblCardholderName.textColor
+        txtCardholderName.textColor = lblCardholderName.textColor
+        txtBankName.textColor = lblCardholderName.textColor
+        txtBankAccount.textColor = lblCardholderName.textColor
+        txtBankAccount.textColor = UIColor.spade_blue_5CB5DE
     }
     
     ///Button Actions
-    @IBAction func btnBackDidPressed(){
+    @IBAction func btnDropdownDidPressed(){
 
+    }
+    
+    @IBAction func btnBackDidPressed(){
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnConfirmDidPressed(){
