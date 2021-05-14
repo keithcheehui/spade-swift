@@ -72,7 +72,7 @@ class KKDepositViewController: KKBaseViewController {
         imgHoverBankAccount.isHidden = false
         imgHoverArtificial.isHidden = true
         
-        changeView(vc: KKOnBoardingViewController())
+        changeView(vc: KKDepositRequestViewController())
     }
     
     func changeView(vc: UIViewController){

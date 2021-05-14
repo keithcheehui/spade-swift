@@ -103,6 +103,21 @@
 //MARK: Deposit
 "deposit_bank_account"          = "Bank Account";
 "deposit_artificial"            = "Artificial";
+"deposit_bank_name" = "Bank Name";
+"deposit_account_name" = "Account Name";
+"deposit_account_number" = "Account Number";
+"deposit_copy" = "COPY";
+"deposit_information" = "Deposit Information";
+"deposit_history" = "Deposit History";
+"deposit_time" = "Deposit Time";
+"deposit_channel" = "Deposit Channel";
+"deposit_amount" = "Deposit Amount";
+"deposit_amount_placeholder" = "Min 20.00-Max 30000.00";
+"deposit_ref_no" = "Reference No.";
+"deposit_ref_no_placeholder" = "Reference Number";
+"deposit_promotion" = "Promtion";
+"deposit_promotion_placeholder" = "Select Activity";
+"deposit_receipt" = "Receipt";
 
 //MARK: Withdraw
 "withdraw_withdraw"                         = "Withdraw";

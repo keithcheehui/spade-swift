@@ -173,19 +173,19 @@
                             <rect key="frame" x="0.0" y="0.0" width="662" height="344"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAR-bt-yOp">
-                            <rect key="frame" x="20" y="20" width="622" height="304"/>
+                            <rect key="frame" x="0.0" y="0.0" width="662" height="344"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="PAR-bt-yOp" firstAttribute="top" secondItem="Ggt-l0-a5y" secondAttribute="top" constant="20" id="3IU-SS-qPs"/>
+                        <constraint firstItem="PAR-bt-yOp" firstAttribute="top" secondItem="Ggt-l0-a5y" secondAttribute="top" id="3IU-SS-qPs"/>
                         <constraint firstAttribute="trailing" secondItem="72j-lD-7nQ" secondAttribute="trailing" id="5kq-Zl-f0Y"/>
                         <constraint firstItem="72j-lD-7nQ" firstAttribute="leading" secondItem="Ggt-l0-a5y" secondAttribute="leading" id="IGX-wh-aAq"/>
-                        <constraint firstAttribute="bottom" secondItem="PAR-bt-yOp" secondAttribute="bottom" constant="20" id="S7c-GJ-J7H"/>
+                        <constraint firstAttribute="bottom" secondItem="PAR-bt-yOp" secondAttribute="bottom" id="S7c-GJ-J7H"/>
                         <constraint firstItem="72j-lD-7nQ" firstAttribute="top" secondItem="Ggt-l0-a5y" secondAttribute="top" id="hJd-jr-bHG"/>
-                        <constraint firstItem="PAR-bt-yOp" firstAttribute="leading" secondItem="Ggt-l0-a5y" secondAttribute="leading" constant="20" id="prt-xx-0b8"/>
-                        <constraint firstAttribute="trailing" secondItem="PAR-bt-yOp" secondAttribute="trailing" constant="20" id="qLc-S3-6Ck"/>
+                        <constraint firstItem="PAR-bt-yOp" firstAttribute="leading" secondItem="Ggt-l0-a5y" secondAttribute="leading" id="prt-xx-0b8"/>
+                        <constraint firstAttribute="trailing" secondItem="PAR-bt-yOp" secondAttribute="trailing" id="qLc-S3-6Ck"/>
                         <constraint firstAttribute="bottom" secondItem="72j-lD-7nQ" secondAttribute="bottom" id="vDh-8U-PAF"/>
                     </constraints>
                 </view>
@@ -272,7 +272,7 @@
         <image name="bg_header" width="2208" height="142"/>
         <image name="bg_hover" width="373" height="112"/>
         <image name="bg_mini_games" width="2208" height="1242"/>
-        <image name="bg_separator" width="382" height="2"/>
+        <image name="bg_separator" width="383" height="6"/>
         <image name="bg_sidemenu" width="426" height="1242"/>
         <image name="ic_back" width="97" height="81"/>
         <image name="ic_livechat" width="68" height="68"/>
