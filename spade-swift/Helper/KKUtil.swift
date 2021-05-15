@@ -107,21 +107,26 @@ class KKUtil: NSObject {
         UserDefaults.standard.set(false, forKey: CacheKey.loginStatus)
         UserDefaults.standard.synchronize()
         
-        KKUtil.proceedOnboardingPage()
+        KKUtil.proceedToPage(vc: KKSplashScreenViewController.init())
     }
     
-    ///redirect user to onboarding page
-    class func proceedOnboardingPage() {
-        let viewController = KKOnBoardingViewController.init()
-        let navigationController = UINavigationController.init(rootViewController: viewController)
+    ///redirect to home page
+    class func redirectToHome() {
+        KKUtil.proceedToPage(vc: KKHomeViewController.init())
+    }
+    
+    ///redirect user to home page
+    class func proceedToPage(vc: KKBaseViewController) {
+        let navigationController = UINavigationController.init(rootViewController: vc)
         
         if #available(iOS 13.0, *) {
-        
-            let scene = UIApplication.shared.connectedScenes.first
-            if let sceneDelegate : SceneDelegate = (scene?.delegate as? SceneDelegate) {
-            
-                sceneDelegate.changeRootViewController(viewController: navigationController)
-            }
+            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+                let scene = UIApplication.shared.connectedScenes.first
+                if let sceneDelegate : SceneDelegate = (scene?.delegate as? SceneDelegate) {
+                
+                    sceneDelegate.changeRootViewController(viewController: navigationController)
+                }
+            })
         }
         else
         {
@@ -129,8 +134,7 @@ class KKUtil: NSObject {
                 return
             }
                         
-            UIView.transition(with: window, duration: Double(0.25), options: .transitionCrossDissolve, animations: {
-                
+            UIView.transition(with: window, duration: 0, options: .transitionCrossDissolve, animations: {
                 let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
                 appDelegate!.window?.rootViewController = navigationController
                 

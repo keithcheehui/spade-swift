@@ -119,11 +119,11 @@ extension KKPersonalPageViewController: UITableViewDataSource, UITableViewDelega
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var sideMenuCell: KKSideMenuTableViewCell? = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.sideMenuTableCellIdentifier) as? KKSideMenuTableViewCell
+        var sideMenuCell: KKSideMenuTableViewCell? = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.sideMenuTVCIdentifier) as? KKSideMenuTableViewCell
         
         if (sideMenuCell == nil) {
             
-            sideMenuCell = KKSideMenuTableViewCell.init(style: .default, reuseIdentifier: CellIdentifier.sideMenuTableCellIdentifier)
+            sideMenuCell = KKSideMenuTableViewCell.init(style: .default, reuseIdentifier: CellIdentifier.sideMenuTVCIdentifier)
         }
         
         switch indexPath.row {

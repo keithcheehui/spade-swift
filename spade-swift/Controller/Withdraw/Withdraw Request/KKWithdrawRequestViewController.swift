@@ -70,7 +70,7 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
         lblNotice.textColor = UIColor.spade_orange_FFBA00
         
         bankTableView.backgroundColor = UIColor(white: 0, alpha: 0)
-        bankTableView.register(UINib(nibName: "KKBankTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.bankTableCellIdentifier)
+        bankTableView.register(UINib(nibName: "KKBankTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.bankTVCIdentifier)
 
         changeLayoutView(noBank: true)
     }
@@ -106,7 +106,7 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.bankTableCellIdentifier, for: indexPath) as? KKBankTableCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.bankTVCIdentifier, for: indexPath) as? KKBankTableCell
         else {
             fatalError("DequeueReusableCell failed while casting")
         }

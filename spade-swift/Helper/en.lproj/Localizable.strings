@@ -6,6 +6,9 @@
   
 */
 
+//MARK: SELECT COUNTRY
+"country_title"                             = "Choose your country:";
+
 //MARK: LOGIN
 "login_username"                            = "Username:";
 "login_username_placeholder"                = "Please enter login ID";

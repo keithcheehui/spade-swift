@@ -38,7 +38,7 @@ class KKAnnouncementViewController: KKBaseViewController, UITableViewDataSource,
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
         
         announcementTableView.backgroundColor = UIColor(white: 0, alpha: 0)
-        announcementTableView.register(UINib(nibName: "KKAnnouncementTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.announcementTableCellIdentifier)
+        announcementTableView.register(UINib(nibName: "KKAnnouncementTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.announcementTVCIdentifier)
         
         contentContainer.isHidden = true
         lblBack.text = KKUtil.languageSelectedStringForKey(key: "announcement_back")
@@ -65,7 +65,7 @@ class KKAnnouncementViewController: KKBaseViewController, UITableViewDataSource,
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.announcementTableCellIdentifier, for: indexPath) as? KKAnnouncementTableCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.announcementTVCIdentifier, for: indexPath) as? KKAnnouncementTableCell
         else {
             fatalError("DequeueReusableCell failed while casting")
         }

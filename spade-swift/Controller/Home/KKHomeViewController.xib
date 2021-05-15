@@ -15,6 +15,7 @@
                 <outlet property="announcementContainerHeight" destination="YGt-Nh-faR" id="OiD-g7-Bzd"/>
                 <outlet property="announcementContainerWidth" destination="GGM-cp-4ju" id="VAo-Y7-GnP"/>
                 <outlet property="btnWithdrawWidth" destination="6Qq-eT-Czd" id="wf4-As-3Qp"/>
+                <outlet property="contentView" destination="Qwe-En-JUw" id="GAP-Kj-aIz"/>
                 <outlet property="copyContainer" destination="JQB-B9-hJe" id="omX-HS-4mg"/>
                 <outlet property="expBar" destination="k3Q-0C-3Ch" id="fw6-iW-WZ0"/>
                 <outlet property="expBarHeight" destination="XhM-D3-x8H" id="X23-St-9Mk"/>
@@ -456,10 +457,18 @@
                                 <constraint firstAttribute="width" constant="150" id="BgX-2Q-yVN"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qwe-En-JUw">
+                            <rect key="frame" x="150" y="0.0" width="686" height="304"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="9Kw-Ap-8iK" firstAttribute="leading" secondItem="P5n-aS-kDi" secondAttribute="leading" id="2vZ-mp-zIM"/>
+                        <constraint firstAttribute="bottom" secondItem="Qwe-En-JUw" secondAttribute="bottom" id="EWo-61-zBh"/>
+                        <constraint firstAttribute="trailing" secondItem="Qwe-En-JUw" secondAttribute="trailing" id="Rwm-34-U2M"/>
+                        <constraint firstItem="Qwe-En-JUw" firstAttribute="top" secondItem="P5n-aS-kDi" secondAttribute="top" id="VfL-wt-Cyh"/>
+                        <constraint firstItem="Qwe-En-JUw" firstAttribute="leading" secondItem="9Kw-Ap-8iK" secondAttribute="trailing" id="efo-Wm-n2U"/>
                         <constraint firstItem="9Kw-Ap-8iK" firstAttribute="top" secondItem="P5n-aS-kDi" secondAttribute="top" id="uPa-jo-nrF"/>
                         <constraint firstAttribute="bottom" secondItem="9Kw-Ap-8iK" secondAttribute="bottom" id="xoW-Fb-RZ0"/>
                     </constraints>

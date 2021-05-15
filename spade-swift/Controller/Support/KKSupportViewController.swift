@@ -44,7 +44,7 @@ class KKSupportViewController: KKBaseViewController, UICollectionViewDataSource,
         flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: 130), height: KKUtil.ConvertSizeByDensity(size: 180))
         
         liveChatCollectionView.collectionViewLayout = flowLayout
-        liveChatCollectionView.register(UINib(nibName: "KKLiveChatCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.liveChatCollectionViewCellIdentifier)
+        liveChatCollectionView.register(UINib(nibName: "KKLiveChatCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.liveChatCVCIdentifier)
     }
     
     func initialLayout(){
@@ -114,7 +114,7 @@ class KKSupportViewController: KKBaseViewController, UICollectionViewDataSource,
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.liveChatCollectionViewCellIdentifier, for: indexPath) as? KKLiveChatCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.liveChatCVCIdentifier, for: indexPath) as? KKLiveChatCollectionViewCell
         else {
             fatalError("DequeueReusableCell failed while casting")
         }

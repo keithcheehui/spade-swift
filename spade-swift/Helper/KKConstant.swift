@@ -55,11 +55,13 @@ struct CacheKey {
 
 struct CellIdentifier {
     
-    static let sideMenuTableCellIdentifier = "SIDE_MENU_TABLE_CELL_IDENTIFIER"
-    static let announcementTableCellIdentifier = "KKAnnouncementTableCell"
-    static let bankTableCellIdentifier = "KKBankTableCell"
+    static let sideMenuTVCIdentifier = "SIDE_MENU_TABLE_CELL_IDENTIFIER"
+    static let announcementTVCIdentifier = "KKAnnouncementTableCell"
+    static let bankTVCIdentifier = "KKBankTableCell"
 
-    static let liveChatCollectionViewCellIdentifier = "KKLiveChatCollectionViewCell"
+    static let liveChatCVCIdentifier = "KKLiveChatCollectionViewCell"
+    static let countryCVCIdentifier = "KKCountryItemCell"
+    
 }
 
 struct Spade {

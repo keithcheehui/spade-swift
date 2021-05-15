@@ -30,7 +30,8 @@ class KKHomeViewController: KKBaseViewController {
     
     ///Content
     @IBOutlet weak var menuContainer: UIView!
-    
+    @IBOutlet weak var contentView: UIView!
+
     
     ///Footer Container
     @IBOutlet weak var lblAffiliate: UILabel!

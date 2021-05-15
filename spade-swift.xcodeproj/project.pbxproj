@@ -53,6 +53,8 @@
 		532FF60E264FD0B300999512 /* KKGuidelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 532FF60D264FD0B300999512 /* KKGuidelineViewController.xib */; };
 		532FF613264FE02B00999512 /* KKWithdrawCommissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FF612264FE02B00999512 /* KKWithdrawCommissionViewController.swift */; };
 		532FF616264FE03500999512 /* KKWithdrawCommissionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 532FF615264FE03500999512 /* KKWithdrawCommissionViewController.xib */; };
+		532FF61C264FF76D00999512 /* KKLiveCasinoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FF61B264FF76D00999512 /* KKLiveCasinoViewController.swift */; };
+		532FF61F264FF77700999512 /* KKLiveCasinoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 532FF61E264FF77700999512 /* KKLiveCasinoViewController.xib */; };
 		53363E44264ACE0C001F6B48 /* KKMyAffiliateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53363E43264ACE0C001F6B48 /* KKMyAffiliateViewController.swift */; };
 		53363E47264ACE26001F6B48 /* KKMyAffiliateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53363E46264ACE26001F6B48 /* KKMyAffiliateViewController.xib */; };
 		533CA6BB2631745C00768C08 /* KKHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533CA6BA2631745C00768C08 /* KKHomeViewController.xib */; };
@@ -83,6 +85,10 @@
 		53AAAE3726401FF7004103F0 /* KKAffiliateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53AAAE3626401FF7004103F0 /* KKAffiliateViewController.xib */; };
 		53C64EFA263700D00068F03E /* KKPersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53C64EF9263700D00068F03E /* KKPersonalViewController.xib */; };
 		53C64EFD263700E10068F03E /* KKPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C64EFC263700E10068F03E /* KKPersonalViewController.swift */; };
+		53DF81D1265028ED00BA6119 /* KKSelectCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF81D0265028ED00BA6119 /* KKSelectCountryViewController.swift */; };
+		53DF81D4265028FC00BA6119 /* KKSelectCountryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53DF81D3265028FC00BA6119 /* KKSelectCountryViewController.xib */; };
+		53DF81D926502F7200BA6119 /* KKCountryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF81D826502F7200BA6119 /* KKCountryItemCell.swift */; };
+		53DF81DC26502F8100BA6119 /* KKCountryItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53DF81DB26502F8100BA6119 /* KKCountryItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,6 +141,8 @@
 		532FF60D264FD0B300999512 /* KKGuidelineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKGuidelineViewController.xib; sourceTree = "<group>"; };
 		532FF612264FE02B00999512 /* KKWithdrawCommissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKWithdrawCommissionViewController.swift; sourceTree = "<group>"; };
 		532FF615264FE03500999512 /* KKWithdrawCommissionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKWithdrawCommissionViewController.xib; sourceTree = "<group>"; };
+		532FF61B264FF76D00999512 /* KKLiveCasinoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKLiveCasinoViewController.swift; sourceTree = "<group>"; };
+		532FF61E264FF77700999512 /* KKLiveCasinoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKLiveCasinoViewController.xib; sourceTree = "<group>"; };
 		53363E43264ACE0C001F6B48 /* KKMyAffiliateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKMyAffiliateViewController.swift; sourceTree = "<group>"; };
 		53363E46264ACE26001F6B48 /* KKMyAffiliateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKMyAffiliateViewController.xib; sourceTree = "<group>"; };
 		533CA6BA2631745C00768C08 /* KKHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKHomeViewController.xib; sourceTree = "<group>"; };
@@ -165,6 +173,10 @@
 		53AAAE3626401FF7004103F0 /* KKAffiliateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKAffiliateViewController.xib; sourceTree = "<group>"; };
 		53C64EF9263700D00068F03E /* KKPersonalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKPersonalViewController.xib; sourceTree = "<group>"; };
 		53C64EFC263700E10068F03E /* KKPersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPersonalViewController.swift; sourceTree = "<group>"; };
+		53DF81D0265028ED00BA6119 /* KKSelectCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSelectCountryViewController.swift; sourceTree = "<group>"; };
+		53DF81D3265028FC00BA6119 /* KKSelectCountryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKSelectCountryViewController.xib; sourceTree = "<group>"; };
+		53DF81D826502F7200BA6119 /* KKCountryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKCountryItemCell.swift; sourceTree = "<group>"; };
+		53DF81DB26502F8100BA6119 /* KKCountryItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKCountryItemCell.xib; sourceTree = "<group>"; };
 		DE9CF2AF875923073B28E1B7 /* Pods-spade-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spade-swift.debug.xcconfig"; path = "Target Support Files/Pods-spade-swift/Pods-spade-swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -289,6 +301,7 @@
 				0676B621262FDC620023311F /* Base */,
 				06051B2626371E5100130057 /* Splash Screen */,
 				53268C012630605500ECAAE2 /* Onboarding */,
+				53DF81D62650290000BA6119 /* Select Country */,
 				53268C0F263068FC00ECAAE2 /* Login */,
 				53268C1A26307FC700ECAAE2 /* Registration */,
 				533CA6B82631741A00768C08 /* Home */,
@@ -312,6 +325,7 @@
 				538FB09526482B8000F3E823 /* Live Chat */,
 				5381D839264961F1003BBD2A /* Announcement */,
 				5317F237264C223E0076D69B /* Bank Cell */,
+				53DF81DE26502F8500BA6119 /* Country Item */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -448,6 +462,15 @@
 			path = "Withdraw Commission";
 			sourceTree = "<group>";
 		};
+		532FF621264FF88400999512 /* Live Casino */ = {
+			isa = PBXGroup;
+			children = (
+				532FF61B264FF76D00999512 /* KKLiveCasinoViewController.swift */,
+				532FF61E264FF77700999512 /* KKLiveCasinoViewController.xib */,
+			);
+			path = "Live Casino";
+			sourceTree = "<group>";
+		};
 		53363E49264ACE2D001F6B48 /* My Affliate */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,6 +485,7 @@
 			children = (
 				533CA6BD2631746800768C08 /* KKHomeViewController.swift */,
 				533CA6BA2631745C00768C08 /* KKHomeViewController.xib */,
+				532FF621264FF88400999512 /* Live Casino */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -594,6 +618,24 @@
 			path = Personal;
 			sourceTree = "<group>";
 		};
+		53DF81D62650290000BA6119 /* Select Country */ = {
+			isa = PBXGroup;
+			children = (
+				53DF81D0265028ED00BA6119 /* KKSelectCountryViewController.swift */,
+				53DF81D3265028FC00BA6119 /* KKSelectCountryViewController.xib */,
+			);
+			path = "Select Country";
+			sourceTree = "<group>";
+		};
+		53DF81DE26502F8500BA6119 /* Country Item */ = {
+			isa = PBXGroup;
+			children = (
+				53DF81D826502F7200BA6119 /* KKCountryItemCell.swift */,
+				53DF81DB26502F8100BA6119 /* KKCountryItemCell.xib */,
+			);
+			path = "Country Item";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -669,6 +711,7 @@
 				53363E47264ACE26001F6B48 /* KKMyAffiliateViewController.xib in Resources */,
 				0676B5B1262FD6F30023311F /* Assets.xcassets in Resources */,
 				538FB090264825E000F3E823 /* KKLiveChatCollectionViewCell.xib in Resources */,
+				532FF61F264FF77700999512 /* KKLiveCasinoViewController.xib in Resources */,
 				5317F22D264C100E0076D69B /* KKWithdrawRequestViewController.xib in Resources */,
 				53AAAE2C26401CAE004103F0 /* KKWithdrawViewController.xib in Resources */,
 				5381676A26464B0F00FC96A6 /* KKUserInfoViewController.xib in Resources */,
@@ -680,9 +723,11 @@
 				06051B2A26371E7900130057 /* KKSplashScreenViewController.xib in Resources */,
 				533CA6BB2631745C00768C08 /* KKHomeViewController.xib in Resources */,
 				53C64EFA263700D00068F03E /* KKPersonalViewController.xib in Resources */,
+				53DF81DC26502F8100BA6119 /* KKCountryItemCell.xib in Resources */,
 				532FF60E264FD0B300999512 /* KKGuidelineViewController.xib in Resources */,
 				53AAAE092640191A004103F0 /* KKRebateViewController.xib in Resources */,
 				53963E0D2639A37400D803D4 /* KKSettingsViewController.xib in Resources */,
+				53DF81D4265028FC00BA6119 /* KKSelectCountryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,6 +784,7 @@
 				538FB07D2648012200F3E823 /* KKFaqViewController.swift in Sources */,
 				067029DA2641326E00DFADAC /* KKSideMenuTableViewCell.swift in Sources */,
 				532FF613264FE02B00999512 /* KKWithdrawCommissionViewController.swift in Sources */,
+				532FF61C264FF76D00999512 /* KKLiveCasinoViewController.swift in Sources */,
 				0676B612262FDAFE0023311F /* SKResult.swift in Sources */,
 				0676B5AC262FD6EF0023311F /* ViewController.swift in Sources */,
 				067029D62641278300DFADAC /* KKPersonalPageViewController.swift in Sources */,
@@ -761,10 +807,12 @@
 				538FB09326482B3500F3E823 /* KKLiveChatCollectionViewCell.swift in Sources */,
 				0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */,
 				0676B5FC262FD94A0023311F /* KKFont.swift in Sources */,
+				53DF81D1265028ED00BA6119 /* KKSelectCountryViewController.swift in Sources */,
 				53363E44264ACE0C001F6B48 /* KKMyAffiliateViewController.swift in Sources */,
 				53AAAE1626401BD0004103F0 /* KKSupportViewController.swift in Sources */,
 				531D3432264E7EE60070BB3A /* KKAnnoucementContentViewController.swift in Sources */,
 				53268C09263068EB00ECAAE2 /* KKLoginViewController.swift in Sources */,
+				53DF81D926502F7200BA6119 /* KKCountryItemCell.swift in Sources */,
 				53268BFF2630604F00ECAAE2 /* KKOnBoardingViewController.swift in Sources */,
 				0676B60E262FDAF40023311F /* SKFuture.swift in Sources */,
 				53268C1526307FB800ECAAE2 /* KKRegistrationViewController.swift in Sources */,

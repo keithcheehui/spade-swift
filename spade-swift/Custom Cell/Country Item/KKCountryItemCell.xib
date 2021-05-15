@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KKCountryItemCell" id="MQF-1V-YiR" customClass="KKCountryItemCell" customModule="spade_swift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wax-x2-DNE">
+                <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coZ-62-uxT">
+                        <rect key="frame" x="45" y="14.5" width="137" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile" translatesAutoresizingMaskIntoConstraints="NO" id="QOv-Us-ccu">
+                        <rect key="frame" x="0.0" y="7.5" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="3Zf-lI-ax8"/>
+                            <constraint firstAttribute="width" secondItem="QOv-Us-ccu" secondAttribute="height" multiplier="1:1" id="cwZ-ea-WhW"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="coZ-62-uxT" firstAttribute="leading" secondItem="QOv-Us-ccu" secondAttribute="trailing" constant="10" id="6mr-OT-C9x"/>
+                    <constraint firstItem="QOv-Us-ccu" firstAttribute="centerY" secondItem="Wax-x2-DNE" secondAttribute="centerY" id="IWM-TH-N7A"/>
+                    <constraint firstItem="QOv-Us-ccu" firstAttribute="leading" secondItem="Wax-x2-DNE" secondAttribute="leading" id="aTA-XU-CMx"/>
+                    <constraint firstAttribute="trailing" secondItem="coZ-62-uxT" secondAttribute="trailing" constant="5" id="uYC-2H-h3W"/>
+                    <constraint firstItem="coZ-62-uxT" firstAttribute="centerY" secondItem="Wax-x2-DNE" secondAttribute="centerY" id="yUs-eT-baA"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <size key="customSize" width="187" height="50"/>
+            <connections>
+                <outlet property="imgCountry" destination="QOv-Us-ccu" id="EX9-aZ-6YR"/>
+                <outlet property="lblCountryName" destination="coZ-62-uxT" id="E2E-xd-ShP"/>
+            </connections>
+            <point key="canvasLocation" x="118.11594202898551" y="71.651785714285708"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_profile" width="111" height="111"/>
+    </resources>
+</document>
