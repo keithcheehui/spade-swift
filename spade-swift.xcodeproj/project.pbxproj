@@ -51,6 +51,8 @@
 		53268C1826307FC100ECAAE2 /* KKRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53268C1726307FC100ECAAE2 /* KKRegistrationViewController.xib */; };
 		532FF60B264FD0AA00999512 /* KKGuidelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FF60A264FD0AA00999512 /* KKGuidelineViewController.swift */; };
 		532FF60E264FD0B300999512 /* KKGuidelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 532FF60D264FD0B300999512 /* KKGuidelineViewController.xib */; };
+		532FF613264FE02B00999512 /* KKWithdrawCommissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532FF612264FE02B00999512 /* KKWithdrawCommissionViewController.swift */; };
+		532FF616264FE03500999512 /* KKWithdrawCommissionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 532FF615264FE03500999512 /* KKWithdrawCommissionViewController.xib */; };
 		53363E44264ACE0C001F6B48 /* KKMyAffiliateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53363E43264ACE0C001F6B48 /* KKMyAffiliateViewController.swift */; };
 		53363E47264ACE26001F6B48 /* KKMyAffiliateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53363E46264ACE26001F6B48 /* KKMyAffiliateViewController.xib */; };
 		533CA6BB2631745C00768C08 /* KKHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533CA6BA2631745C00768C08 /* KKHomeViewController.xib */; };
@@ -131,6 +133,8 @@
 		53268C1726307FC100ECAAE2 /* KKRegistrationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKRegistrationViewController.xib; sourceTree = "<group>"; };
 		532FF60A264FD0AA00999512 /* KKGuidelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKGuidelineViewController.swift; sourceTree = "<group>"; };
 		532FF60D264FD0B300999512 /* KKGuidelineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKGuidelineViewController.xib; sourceTree = "<group>"; };
+		532FF612264FE02B00999512 /* KKWithdrawCommissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKWithdrawCommissionViewController.swift; sourceTree = "<group>"; };
+		532FF615264FE03500999512 /* KKWithdrawCommissionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKWithdrawCommissionViewController.xib; sourceTree = "<group>"; };
 		53363E43264ACE0C001F6B48 /* KKMyAffiliateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKMyAffiliateViewController.swift; sourceTree = "<group>"; };
 		53363E46264ACE26001F6B48 /* KKMyAffiliateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKMyAffiliateViewController.xib; sourceTree = "<group>"; };
 		533CA6BA2631745C00768C08 /* KKHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKHomeViewController.xib; sourceTree = "<group>"; };
@@ -435,6 +439,15 @@
 			path = Guideline;
 			sourceTree = "<group>";
 		};
+		532FF618264FE07500999512 /* Withdraw Commission */ = {
+			isa = PBXGroup;
+			children = (
+				532FF612264FE02B00999512 /* KKWithdrawCommissionViewController.swift */,
+				532FF615264FE03500999512 /* KKWithdrawCommissionViewController.xib */,
+			);
+			path = "Withdraw Commission";
+			sourceTree = "<group>";
+		};
 		53363E49264ACE2D001F6B48 /* My Affliate */ = {
 			isa = PBXGroup;
 			children = (
@@ -514,6 +527,7 @@
 				53AAAE3326401FF0004103F0 /* KKAffiliateViewController.swift */,
 				53AAAE3626401FF7004103F0 /* KKAffiliateViewController.xib */,
 				53363E49264ACE2D001F6B48 /* My Affliate */,
+				532FF618264FE07500999512 /* Withdraw Commission */,
 				532FF60F264FD0B800999512 /* Guideline */,
 			);
 			path = Afiliate;
@@ -651,6 +665,7 @@
 				0676B668263095EE0023311F /* Localizable.strings in Resources */,
 				5317F246264C2B420076D69B /* KKBankListViewController.xib in Resources */,
 				5317F235264C223A0076D69B /* KKBankTableCell.xib in Resources */,
+				532FF616264FE03500999512 /* KKWithdrawCommissionViewController.xib in Resources */,
 				53363E47264ACE26001F6B48 /* KKMyAffiliateViewController.xib in Resources */,
 				0676B5B1262FD6F30023311F /* Assets.xcassets in Resources */,
 				538FB090264825E000F3E823 /* KKLiveChatCollectionViewCell.xib in Resources */,
@@ -723,6 +738,7 @@
 				062C39812632C92C00E86EEA /* KKApiClient.swift in Sources */,
 				538FB07D2648012200F3E823 /* KKFaqViewController.swift in Sources */,
 				067029DA2641326E00DFADAC /* KKSideMenuTableViewCell.swift in Sources */,
+				532FF613264FE02B00999512 /* KKWithdrawCommissionViewController.swift in Sources */,
 				0676B612262FDAFE0023311F /* SKResult.swift in Sources */,
 				0676B5AC262FD6EF0023311F /* ViewController.swift in Sources */,
 				067029D62641278300DFADAC /* KKPersonalPageViewController.swift in Sources */,

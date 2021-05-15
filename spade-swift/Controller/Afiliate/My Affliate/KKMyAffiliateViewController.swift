@@ -197,7 +197,7 @@ class KKMyAffiliateViewController: KKBaseViewController {
     }
     
     @IBAction func btnCollectCommissionDidPressed(){
-
+        self.present(KKWithdrawCommissionViewController(), animated: false, completion: nil)
     }
     
     @IBAction func btnCollectRewardDidPressed(){

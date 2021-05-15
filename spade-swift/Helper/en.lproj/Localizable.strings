@@ -139,3 +139,12 @@
 
 //MARK: Announcement
 "announcement_back"                         = "BACK";
+
+//MARK: Withdraw Commission
+"withdraw_com_avaiable" = "Commission Avaiable: ";
+"withdraw_com_avaiable_value" = "RM0.00";
+"withdraw_com_balance" = "Balance: ";
+"withdraw_com_transfer" = "Transfer Commission: ";
+"withdraw_com_currency_rm" = "RM";
+"withdraw_com_clear" = "Clear";
+"withdraw_com_tip" = "*Tips: Account balance will be updated immediately, please contact our customer service if the transfer amount is missing";
