@@ -105,7 +105,7 @@ class KKAffiliateViewController: KKBaseViewController {
             break;
         case viewType.guideline.rawValue:
             imgHoverGuideline.isHidden = false
-            viewController = KKOnBoardingViewController()
+            viewController = KKGuidelineViewController()
             break;
         case viewType.turnover.rawValue:
             imgHoverTurnover.isHidden = false

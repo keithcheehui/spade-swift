@@ -7,12 +7,12 @@
 */
 
 //MARK: LOGIN
-"login_username"                    = "Username:";
-"login_username_placeholder"        = "Please enter login ID";
-"login_password"                    = "Password:";
-"login_password_placeholder"        = "Please enter your password";
-"login_remember_me"                 = "Remember me";
-"login_forgot_password"             = "Forgot Password?";
+"login_username"                            = "Username:";
+"login_username_placeholder"                = "Please enter login ID";
+"login_password"                            = "Password:";
+"login_password_placeholder"                = "Please enter your password";
+"login_remember_me"                         = "Remember me";
+"login_forgot_password"                     = "Forgot Password?";
 
 //MARK: REGISTRATION
 "register_username"                         = "Username:";
@@ -23,101 +23,102 @@
 "register_confirm_password_placeholder"     = "Please re-enter your password";
 
 //MARK: HOME
-"home_copy_id"      = "COPY ID";
-"home_mission"      = "Mission";
-"home_bonus"        = "Bonus";
-"home_settings"     = "Settings";
-"home_affiliates"   = "Affiliates";
-"home_rebate"       = "Rebate";
-"home_message"      = "Message";
-"home_support"      = "Support";
-"home_more"         = "More";
+"home_copy_id"                              = "COPY ID";
+"home_mission"                              = "Mission";
+"home_bonus"                                = "Bonus";
+"home_settings"                             = "Settings";
+"home_affiliates"                           = "Affiliates";
+"home_rebate"                               = "Rebate";
+"home_message"                              = "Message";
+"home_support"                              = "Support";
+"home_more"                                 = "More";
 
 //MARK: Personal Center
-"personal_user_info"            = "User Info";
-"personal_betting_record"       = "Betting Record";
-"personal_account_detail"       = "Account Details";
-"personal_individual_report"    = "Individual Report";
+"personal_user_info"                        = "User Info";
+"personal_betting_record"                   = "Betting Record";
+"personal_account_detail"                   = "Account Details";
+"personal_individual_report"                = "Individual Report";
 
 //MARK: USER INFO
-"user_info_level_privilege"         = "Level Privilege";
-"user_info_current_membership"      = "Current membership level: ";
-"user_info_basic_information"       = "Basic Information";
-"user_info_account"                 = "Account";
-"user_info_id"                      = "ID";
-"user_info_username"                = "Username";
-"user_info_birthday"                = "Birthday";
-"user_info_gender"                  = "Gender";
-"user_info_contact_information"     = "Contact Information";
-"user_info_email"                   = "Email";
-"user_info_phone"                   = "Phone";
+"user_info_level_privilege"                 = "Level Privilege";
+"user_info_current_membership"              = "Current membership level: ";
+"user_info_basic_information"               = "Basic Information";
+"user_info_account"                         = "Account";
+"user_info_id"                              = "ID";
+"user_info_username"                        = "Username";
+"user_info_birthday"                        = "Birthday";
+"user_info_gender"                          = "Gender";
+"user_info_contact_information"             = "Contact Information";
+"user_info_email"                           = "Email";
+"user_info_phone"                           = "Phone";
 
 //MARK: Settings
-"settings_volume_setting"       = "Volume Setting";
-"settings_change_password"      = "Change Password";
-"settings_version"              = "Version";
-"settings_logout"               = "Logout";
-"settings_current_password"     = "Current Password";
-"settings_new_password"         = "New Password";
-"settings_reconfirm_password"   = "Reconfirm Password";
-"settings_version_ios"          = "iOS Version: ";
-"settings_version_android"      = "Android Version: ";
-"settings_version_h5"           = "H5 Version: ";
-"settings_volume_title"         = "Sound Settings";
-"settings_volume_music"         = "Music";
-"settings_volume_sound"         = "Sound";
+"settings_volume_setting"                   = "Volume Setting";
+"settings_change_password"                  = "Change Password";
+"settings_version"                          = "Version";
+"settings_logout"                           = "Logout";
+"settings_current_password"                 = "Current Password";
+"settings_new_password"                     = "New Password";
+"settings_reconfirm_password"               = "Reconfirm Password";
+"settings_version_ios"                      = "iOS Version: ";
+"settings_version_android"                  = "Android Version: ";
+"settings_version_h5"                       = "H5 Version: ";
+"settings_volume_title"                     = "Sound Settings";
+"settings_volume_music"                     = "Music";
+"settings_volume_sound"                     = "Sound";
 
 //MARK: Affiliates
-"affiliates_my_affiliate"       = "My Affiliate";
-"affiliates_downline"           = "Downline";
-"affiliates_guideline"          = "Guideline";
-"affiliates_turnover"           = "Turnover";
+"affiliates_my_affiliate"                   = "My Affiliate";
+"affiliates_downline"                       = "Downline";
+"affiliates_guideline"                      = "Guideline";
+"affiliates_turnover"                       = "Turnover";
+"affiliates_downline_commission"            = "RM 20 commission for each RM10,000";
 
 //MARK: My Affiliates
-"my_affi_my_id"                 = "My ID";
-"my_affi_referrer_id"           = "Referrer ID";
-"my_affi_member_count"          = "Member Count (New)";
-"my_affi_turnover"              = "Today Team Turnover";
-"my_affi_today_com"             = "Today Commission";
-"my_affi_yesterday_com"         = "Yesterday Commission";
-"my_affi_downline"              = "Downline";
-"my_affi_save"                  = "Click to save image";
-"my_affi_copy"                  = "COPY";
-"my_affi_total_com"             = "Total Commission";
-"my_affi_available_com"         = "Available Commission";
-"my_affi_share_reward"          = "Share Reward";
+"my_affi_my_id"                             = "My ID";
+"my_affi_referrer_id"                       = "Referrer ID";
+"my_affi_member_count"                      = "Member Count (New)";
+"my_affi_turnover"                          = "Today Team Turnover";
+"my_affi_today_com"                         = "Today Commission";
+"my_affi_yesterday_com"                     = "Yesterday Commission";
+"my_affi_downline"                          = "Downline";
+"my_affi_save"                              = "Click to save image";
+"my_affi_copy"                              = "COPY";
+"my_affi_total_com"                         = "Total Commission";
+"my_affi_available_com"                     = "Available Commission";
+"my_affi_share_reward"                      = "Share Reward";
 
 //MARK: Rebate
-"rebate_manual_rebate"          = "Manual Rebate";
-"rebate_rebate_record"          = "Rebate Record";
-"rebate_rebate_ratio"           = "Rebate Ratio";
+"rebate_manual_rebate"                      = "Manual Rebate";
+"rebate_rebate_record"                      = "Rebate Record";
+"rebate_rebate_ratio"                       = "Rebate Ratio";
 
 //MARK: Message
-"message_system_mail"           = "System Mail";
-"message_notification"          = "Notification";
+"message_system_mail"                       = "System Mail";
+"message_notification"                      = "Notification";
 
 //MARK: Customer Service
-"support_live_chat"             = "Live Chat";
-"support_faq"                   = "FAQ";
+"support_live_chat"                         = "Live Chat";
+"support_faq"                               = "FAQ";
 
 //MARK: Deposit
-"deposit_bank_account"          = "Bank Account";
-"deposit_artificial"            = "Artificial";
-"deposit_bank_name" = "Bank Name";
-"deposit_account_name" = "Account Name";
-"deposit_account_number" = "Account Number";
-"deposit_copy" = "COPY";
-"deposit_information" = "Deposit Information";
-"deposit_history" = "Deposit History";
-"deposit_time" = "Deposit Time";
-"deposit_channel" = "Deposit Channel";
-"deposit_amount" = "Deposit Amount";
-"deposit_amount_placeholder" = "Min 20.00-Max 30000.00";
-"deposit_ref_no" = "Reference No.";
-"deposit_ref_no_placeholder" = "Reference Number";
-"deposit_promotion" = "Promtion";
-"deposit_promotion_placeholder" = "Select Activity";
-"deposit_receipt" = "Receipt";
+"deposit_bank_account"                      = "Bank Account";
+"deposit_artificial"                        = "Artificial";
+"deposit_bank_name"                         = "Bank Name";
+"deposit_account_name"                      = "Account Name";
+"deposit_account_number"                    = "Account Number";
+"deposit_copy"                              = "COPY";
+"deposit_information"                       = "Deposit Information";
+"deposit_history"                           = "Deposit History";
+"deposit_time"                              = "Deposit Time";
+"deposit_channel"                           = "Deposit Channel";
+"deposit_amount"                            = "Deposit Amount";
+"deposit_amount_placeholder"                = "Min 20.00-Max 30000.00";
+"deposit_ref_no"                            = "Reference No.";
+"deposit_ref_no_placeholder"                = "Reference Number";
+"deposit_promotion"                         = "Promtion";
+"deposit_promotion_placeholder"             = "Select Activity";
+"deposit_receipt"                           = "Receipt";
 
 //MARK: Withdraw
 "withdraw_withdraw"                         = "Withdraw";
@@ -137,4 +138,4 @@
 "withdraw_add_bank_description"             = "Prompt: Please select the correct bank and fill with real name. When submit withdrawal, you will be transferred directly to this account. For security reason, you can't change it after adding the bank account. If you need to modify it, please contact customer service.";
 
 //MARK: Announcement
-"announcement_back" = "BACK";
+"announcement_back"                         = "BACK";

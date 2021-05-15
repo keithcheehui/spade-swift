@@ -51,7 +51,6 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var missionContainerWidth: NSLayoutConstraint!
     @IBOutlet weak var announcementContainerWidth: NSLayoutConstraint!
     @IBOutlet weak var announcementContainerHeight: NSLayoutConstraint!
-    @IBOutlet weak var imgAnnouncementHeight: NSLayoutConstraint!
     @IBOutlet weak var footerContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var footerButtonContainerMarginRight: NSLayoutConstraint!
     @IBOutlet weak var imgAffiliateWidth: NSLayoutConstraint!
@@ -76,13 +75,12 @@ class KKHomeViewController: KKBaseViewController {
         missionContainerWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 45 : 40)
         announcementContainerWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 350 : 400)
         announcementContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
-        imgAnnouncementHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         footerContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         footerButtonContainerMarginRight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         imgAffiliateWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 18 : 22)
         btnWithdrawWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 110 : 130)
 
-        imgBG.image = UIImage(named: "bg_main")
+        imgBG.image = UIImage(named: "bg_p2p")
         imgProfile.image = UIImage(named: "ic_profile")
 
         lblCopy.text = KKUtil.languageSelectedStringForKey(key: "home_copy_id")
