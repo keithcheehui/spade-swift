@@ -57,10 +57,23 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var imgAffiliateWidth: NSLayoutConstraint!
     @IBOutlet weak var btnWithdrawWidth: NSLayoutConstraint!
     
+    enum viewType: Int {
+        case hotGame = 0
+        case slots = 1
+        case fishing = 2
+        case liveCasino = 3
+        case p2pGame = 4
+        case sports = 5
+        case lottery = 6
+        case esports = 7
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         initialLayout()
+        
+        buttonHover(type: viewType.p2pGame.rawValue)
     }
     
     func initialLayout(){
@@ -81,7 +94,6 @@ class KKHomeViewController: KKBaseViewController {
         imgAffiliateWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 18 : 22)
         btnWithdrawWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 110 : 130)
 
-        imgBG.image = UIImage(named: "bg_p2p")
         imgProfile.image = UIImage(named: "ic_profile")
 
         lblCopy.text = KKUtil.languageSelectedStringForKey(key: "home_copy_id")
@@ -138,6 +150,53 @@ class KKHomeViewController: KKBaseViewController {
         gradientLayer.frame = view.bounds
 
         view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func updateLobbyBackgroundImage(gameType: Int) {
+        switch gameType {
+        case viewType.hotGame.rawValue:
+            imgBG.image = UIImage(named: "bg_hot_game")
+        case viewType.slots.rawValue:
+            imgBG.image = UIImage(named: "bg_p2p")
+        case viewType.fishing.rawValue:
+            imgBG.image = UIImage(named: "bg_fishing")
+        case viewType.liveCasino.rawValue:
+            imgBG.image = UIImage(named: "bg_live_casino")
+        case viewType.sports.rawValue:
+            imgBG.image = UIImage(named: "bg_sport")
+        case viewType.lottery.rawValue:
+            imgBG.image = UIImage(named: "bg_p2p")
+        case viewType.esports.rawValue:
+            imgBG.image = UIImage(named: "bg_p2p")
+        default:
+            imgBG.image = UIImage(named: "bg_p2p")
+        }
+    }
+    
+    func buttonHover(type: Int){
+        var viewController: KKBaseViewController = KKGameListViewController()
+        
+        switch type {
+        case viewType.liveCasino.rawValue:
+            viewController = KKLiveCasinoViewController()
+            break;
+        default:
+            viewController = KKGameListViewController()
+            break;
+        }
+        
+        updateLobbyBackgroundImage(gameType: type)
+        changeView(vc: viewController)
+    }
+    
+    func changeView(vc: UIViewController){
+        for view in contentView.subviews{
+            view.removeFromSuperview()
+        }
+        
+        vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
+        contentView.addSubview(vc.view)
+        self.addChild(vc)
     }
     
     ///Button Actions

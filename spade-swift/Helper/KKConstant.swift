@@ -61,6 +61,9 @@ struct CellIdentifier {
 
     static let liveChatCVCIdentifier = "KKLiveChatCollectionViewCell"
     static let countryCVCIdentifier = "KKCountryItemCell"
+    static let liveCasinoCVCIdentifier = "KKLiveCasinoItemCell"
+    static let gameItemCVCIdentifier = "KKSingleRowGameItemCell"
+
     
 }
 

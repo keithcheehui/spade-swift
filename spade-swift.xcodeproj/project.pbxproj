@@ -59,6 +59,12 @@
 		53363E47264ACE26001F6B48 /* KKMyAffiliateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53363E46264ACE26001F6B48 /* KKMyAffiliateViewController.xib */; };
 		533CA6BB2631745C00768C08 /* KKHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533CA6BA2631745C00768C08 /* KKHomeViewController.xib */; };
 		533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CA6BD2631746800768C08 /* KKHomeViewController.swift */; };
+		5365E1F82651195C005CB297 /* KKLiveCasinoItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E1F72651195C005CB297 /* KKLiveCasinoItemCell.swift */; };
+		5365E1FB26511965005CB297 /* KKLiveCasinoItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5365E1FA26511965005CB297 /* KKLiveCasinoItemCell.xib */; };
+		5365E200265122FC005CB297 /* KKSingleRowGameItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E1FF265122FC005CB297 /* KKSingleRowGameItemCell.swift */; };
+		5365E20426512317005CB297 /* KKSingleRowGameItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5365E20326512317005CB297 /* KKSingleRowGameItemCell.xib */; };
+		5365E208265124D0005CB297 /* KKGameListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E207265124D0005CB297 /* KKGameListViewController.swift */; };
+		5365E20B265124D9005CB297 /* KKGameListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5365E20A265124D9005CB297 /* KKGameListViewController.xib */; };
 		5381676A26464B0F00FC96A6 /* KKUserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5381676926464B0F00FC96A6 /* KKUserInfoViewController.xib */; };
 		5381676D26464B3300FC96A6 /* KKUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5381676C26464B3300FC96A6 /* KKUserInfoViewController.swift */; };
 		5381D82C26495A94003BBD2A /* KKAnnouncementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5381D82B26495A94003BBD2A /* KKAnnouncementViewController.swift */; };
@@ -147,6 +153,12 @@
 		53363E46264ACE26001F6B48 /* KKMyAffiliateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKMyAffiliateViewController.xib; sourceTree = "<group>"; };
 		533CA6BA2631745C00768C08 /* KKHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKHomeViewController.xib; sourceTree = "<group>"; };
 		533CA6BD2631746800768C08 /* KKHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKHomeViewController.swift; sourceTree = "<group>"; };
+		5365E1F72651195C005CB297 /* KKLiveCasinoItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKLiveCasinoItemCell.swift; sourceTree = "<group>"; };
+		5365E1FA26511965005CB297 /* KKLiveCasinoItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKLiveCasinoItemCell.xib; sourceTree = "<group>"; };
+		5365E1FF265122FC005CB297 /* KKSingleRowGameItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSingleRowGameItemCell.swift; sourceTree = "<group>"; };
+		5365E20326512317005CB297 /* KKSingleRowGameItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKSingleRowGameItemCell.xib; sourceTree = "<group>"; };
+		5365E207265124D0005CB297 /* KKGameListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKGameListViewController.swift; sourceTree = "<group>"; };
+		5365E20A265124D9005CB297 /* KKGameListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKGameListViewController.xib; sourceTree = "<group>"; };
 		5381676926464B0F00FC96A6 /* KKUserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKUserInfoViewController.xib; sourceTree = "<group>"; };
 		5381676C26464B3300FC96A6 /* KKUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKUserInfoViewController.swift; sourceTree = "<group>"; };
 		5381D82B26495A94003BBD2A /* KKAnnouncementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAnnouncementViewController.swift; sourceTree = "<group>"; };
@@ -326,6 +338,8 @@
 				5381D839264961F1003BBD2A /* Announcement */,
 				5317F237264C223E0076D69B /* Bank Cell */,
 				53DF81DE26502F8500BA6119 /* Country Item */,
+				5365E1FD2651196A005CB297 /* Live Casino Item */,
+				5365E20226512305005CB297 /* Single Row Game Item */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -485,9 +499,37 @@
 			children = (
 				533CA6BD2631746800768C08 /* KKHomeViewController.swift */,
 				533CA6BA2631745C00768C08 /* KKHomeViewController.xib */,
+				5365E20D265124DD005CB297 /* Game Listing */,
 				532FF621264FF88400999512 /* Live Casino */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		5365E1FD2651196A005CB297 /* Live Casino Item */ = {
+			isa = PBXGroup;
+			children = (
+				5365E1F72651195C005CB297 /* KKLiveCasinoItemCell.swift */,
+				5365E1FA26511965005CB297 /* KKLiveCasinoItemCell.xib */,
+			);
+			path = "Live Casino Item";
+			sourceTree = "<group>";
+		};
+		5365E20226512305005CB297 /* Single Row Game Item */ = {
+			isa = PBXGroup;
+			children = (
+				5365E1FF265122FC005CB297 /* KKSingleRowGameItemCell.swift */,
+				5365E20326512317005CB297 /* KKSingleRowGameItemCell.xib */,
+			);
+			path = "Single Row Game Item";
+			sourceTree = "<group>";
+		};
+		5365E20D265124DD005CB297 /* Game Listing */ = {
+			isa = PBXGroup;
+			children = (
+				5365E207265124D0005CB297 /* KKGameListViewController.swift */,
+				5365E20A265124D9005CB297 /* KKGameListViewController.xib */,
+			);
+			path = "Game Listing";
 			sourceTree = "<group>";
 		};
 		5381676F26464B3900FC96A6 /* UserInfo */ = {
@@ -711,13 +753,16 @@
 				53363E47264ACE26001F6B48 /* KKMyAffiliateViewController.xib in Resources */,
 				0676B5B1262FD6F30023311F /* Assets.xcassets in Resources */,
 				538FB090264825E000F3E823 /* KKLiveChatCollectionViewCell.xib in Resources */,
+				5365E20426512317005CB297 /* KKSingleRowGameItemCell.xib in Resources */,
 				532FF61F264FF77700999512 /* KKLiveCasinoViewController.xib in Resources */,
 				5317F22D264C100E0076D69B /* KKWithdrawRequestViewController.xib in Resources */,
 				53AAAE2C26401CAE004103F0 /* KKWithdrawViewController.xib in Resources */,
 				5381676A26464B0F00FC96A6 /* KKUserInfoViewController.xib in Resources */,
 				538FB0802648012B00F3E823 /* KKFaqViewController.xib in Resources */,
+				5365E20B265124D9005CB297 /* KKGameListViewController.xib in Resources */,
 				53AAAE1926401BD9004103F0 /* KKSupportViewController.xib in Resources */,
 				531D3435264E7EF20070BB3A /* KKAnnoucementContentViewController.xib in Resources */,
+				5365E1FB26511965005CB297 /* KKLiveCasinoItemCell.xib in Resources */,
 				0676B5AF262FD6EF0023311F /* Main.storyboard in Resources */,
 				53AAAE2326401C4A004103F0 /* KKDepositViewController.xib in Resources */,
 				06051B2A26371E7900130057 /* KKSplashScreenViewController.xib in Resources */,
@@ -782,6 +827,7 @@
 			files = (
 				062C39812632C92C00E86EEA /* KKApiClient.swift in Sources */,
 				538FB07D2648012200F3E823 /* KKFaqViewController.swift in Sources */,
+				5365E208265124D0005CB297 /* KKGameListViewController.swift in Sources */,
 				067029DA2641326E00DFADAC /* KKSideMenuTableViewCell.swift in Sources */,
 				532FF613264FE02B00999512 /* KKWithdrawCommissionViewController.swift in Sources */,
 				532FF61C264FF76D00999512 /* KKLiveCasinoViewController.swift in Sources */,
@@ -803,6 +849,7 @@
 				53AAAE3426401FF0004103F0 /* KKAffiliateViewController.swift in Sources */,
 				5317F232264C222A0076D69B /* KKBankTableCell.swift in Sources */,
 				0676B5F6262FD8BD0023311F /* KKSingleton.swift in Sources */,
+				5365E1F82651195C005CB297 /* KKLiveCasinoItemCell.swift in Sources */,
 				53AAAE2026401C40004103F0 /* KKDepositViewController.swift in Sources */,
 				538FB09326482B3500F3E823 /* KKLiveChatCollectionViewCell.swift in Sources */,
 				0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */,
@@ -814,6 +861,7 @@
 				53268C09263068EB00ECAAE2 /* KKLoginViewController.swift in Sources */,
 				53DF81D926502F7200BA6119 /* KKCountryItemCell.swift in Sources */,
 				53268BFF2630604F00ECAAE2 /* KKOnBoardingViewController.swift in Sources */,
+				5365E200265122FC005CB297 /* KKSingleRowGameItemCell.swift in Sources */,
 				0676B60E262FDAF40023311F /* SKFuture.swift in Sources */,
 				53268C1526307FB800ECAAE2 /* KKRegistrationViewController.swift in Sources */,
 				06051B2926371E7900130057 /* KKSplashScreenViewController.swift in Sources */,
