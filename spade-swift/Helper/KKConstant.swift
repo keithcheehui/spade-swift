@@ -63,8 +63,7 @@ struct CellIdentifier {
     static let countryCVCIdentifier = "KKCountryItemCell"
     static let liveCasinoCVCIdentifier = "KKLiveCasinoItemCell"
     static let gameItemCVCIdentifier = "KKSingleRowGameItemCell"
-
-    
+    static let gameMenuItemCVCIdentifier = "KKGameMenuItemCell"
 }
 
 struct Spade {

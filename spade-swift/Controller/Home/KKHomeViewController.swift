@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class KKHomeViewController: KKBaseViewController {
+class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var imgBG: UIImageView!
     
@@ -30,8 +30,8 @@ class KKHomeViewController: KKBaseViewController {
     
     ///Content
     @IBOutlet weak var menuContainer: UIView!
+    @IBOutlet weak var menuCollectionView: UICollectionView!
     @IBOutlet weak var contentView: UIView!
-
     
     ///Footer Container
     @IBOutlet weak var lblAffiliate: UILabel!
@@ -56,6 +56,7 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var footerButtonContainerMarginRight: NSLayoutConstraint!
     @IBOutlet weak var imgAffiliateWidth: NSLayoutConstraint!
     @IBOutlet weak var btnWithdrawWidth: NSLayoutConstraint!
+    @IBOutlet weak var menuWidth: NSLayoutConstraint!
     
     enum viewType: Int {
         case hotGame = 0
@@ -72,6 +73,7 @@ class KKHomeViewController: KKBaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         initialLayout()
+        initFlowLayout()
         
         buttonHover(type: viewType.p2pGame.rawValue)
     }
@@ -93,8 +95,7 @@ class KKHomeViewController: KKBaseViewController {
         footerButtonContainerMarginRight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         imgAffiliateWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 18 : 22)
         btnWithdrawWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 110 : 130)
-
-        imgProfile.image = UIImage(named: "ic_profile")
+        menuWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
 
         lblCopy.text = KKUtil.languageSelectedStringForKey(key: "home_copy_id")
         lblMission.text = KKUtil.languageSelectedStringForKey(key: "home_mission")
@@ -121,12 +122,12 @@ class KKHomeViewController: KKBaseViewController {
         lblSupport.font = lblAffiliate.font
         lblMore.font = lblAffiliate.font
 
+        imgProfile.image = UIImage(named: "ic_profile")
         lblProfileName.text = "80808080"
         lblVip.text = "VIP 1"
         lblMoney.text = "999,999,999"
         lblAnnouncement.text = "Welcome Welcome Welcome Welcome Welcome"
         lblLanguage.text = "English"
-
         
         copyContainer.backgroundColor = UIColor(white: 0, alpha: 0.8)
         copyContainer.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 9 : 10)
@@ -137,7 +138,7 @@ class KKHomeViewController: KKBaseViewController {
         announcementContainer.backgroundColor = UIColor(white: 0, alpha: 0.5)
         announcementContainer.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 9 : 10)
 
-        setGradientBackground(colorTop: UIColor(white: 0, alpha: 0.0), colorCenter: UIColor(white: 0, alpha: 0.5), colorBottom: UIColor(white: 0, alpha: 0.0), view: menuContainer)
+        setGradientBackground(colorTop: UIColor(white: 0, alpha: 0.0), colorCenter: UIColor(white: 0, alpha: 0.65), colorBottom: UIColor(white: 0, alpha: 0.0), view: menuContainer)
 
         let ratio = Float(10) / Float(10)
         expBar.progress = Float(ratio)
@@ -145,9 +146,12 @@ class KKHomeViewController: KKBaseViewController {
     
     func setGradientBackground(colorTop: UIColor, colorCenter: UIColor, colorBottom: UIColor, view: UIView){
         let gradientLayer = CAGradientLayer()
+//        gradientLayer.colors = [colorTop.cgColor, colorCenter.cgColor, colorCenter.cgColor, colorCenter.cgColor, colorBottom.cgColor]
+//        gradientLayer.locations = [0, 0.25, 0.5, 0.75, 1]
         gradientLayer.colors = [colorTop.cgColor, colorCenter.cgColor, colorBottom.cgColor]
         gradientLayer.locations = [0, 0.5, 1]
         gradientLayer.frame = view.bounds
+        gradientLayer.frame.size.width = menuWidth.constant
 
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
@@ -258,5 +262,35 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnWithdrawDidPressed(){
         self.navigationController?.pushViewController(KKWithdrawViewController(), animated: true)
+    }
+    
+    //Game Menu
+    func initFlowLayout(){
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.scrollDirection = .vertical
+        flowLayout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        flowLayout.itemSize = CGSize(width: menuWidth.constant, height: KKUtil.ConvertSizeByDensity(size: 50))
+
+        menuCollectionView.collectionViewLayout = flowLayout
+        menuCollectionView.register(UINib(nibName: "KKGameMenuItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.gameMenuItemCVCIdentifier)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 8
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.gameMenuItemCVCIdentifier, for: indexPath) as? KKGameMenuItemCell
+        else {
+            fatalError("DequeueReusableCell failed while casting")
+        }
+        
+        if (indexPath.row == 0) {
+            cell.imgHover.isHidden = false
+        }
+        
+        return cell
     }
 }

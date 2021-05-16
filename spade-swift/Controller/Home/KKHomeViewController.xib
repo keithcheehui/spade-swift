@@ -43,7 +43,9 @@
                 <outlet property="lblSettings" destination="R9P-Im-F9L" id="cYA-tL-Na4"/>
                 <outlet property="lblSupport" destination="lXc-1w-vh2" id="8RD-8N-Mef"/>
                 <outlet property="lblVip" destination="S5q-zi-XDj" id="Ia3-aq-Zlv"/>
+                <outlet property="menuCollectionView" destination="YbE-h5-LZK" id="eum-Dr-aXs"/>
                 <outlet property="menuContainer" destination="9Kw-Ap-8iK" id="5Ld-sc-SnU"/>
+                <outlet property="menuWidth" destination="BgX-2Q-yVN" id="AQb-ul-1GL"/>
                 <outlet property="missionContainerWidth" destination="KH5-0Y-nqD" id="Kvg-Cl-VUb"/>
                 <outlet property="moneyContainer" destination="hRO-cZ-tBh" id="3pP-I6-NIb"/>
                 <outlet property="moneyContainerHeight" destination="Upe-kO-Bmr" id="wOu-yA-mva"/>
@@ -452,9 +454,30 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Kw-Ap-8iK">
                             <rect key="frame" x="0.0" y="0.0" width="150" height="304"/>
+                            <subviews>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="YbE-h5-LZK">
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="304"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vUQ-7S-6FU">
+                                        <size key="itemSize" width="128" height="128"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="CDi-ha-uUs"/>
+                                        <outlet property="delegate" destination="-1" id="HuO-9z-Q71"/>
+                                    </connections>
+                                </collectionView>
+                            </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="150" id="BgX-2Q-yVN"/>
+                                <constraint firstAttribute="trailing" secondItem="YbE-h5-LZK" secondAttribute="trailing" id="MGD-qO-6F8"/>
+                                <constraint firstItem="YbE-h5-LZK" firstAttribute="top" secondItem="9Kw-Ap-8iK" secondAttribute="top" id="OkO-D7-4he"/>
+                                <constraint firstItem="YbE-h5-LZK" firstAttribute="leading" secondItem="9Kw-Ap-8iK" secondAttribute="leading" id="sA3-Mf-jvl"/>
+                                <constraint firstAttribute="bottom" secondItem="YbE-h5-LZK" secondAttribute="bottom" id="xmJ-1n-sQ6"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qwe-En-JUw">
