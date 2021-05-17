@@ -23,8 +23,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xgz-vC-GzP">
                                 <rect key="frame" x="0.0" y="0.0" width="130" height="94.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_profile" translatesAutoresizingMaskIntoConstraints="NO" id="wlZ-xR-kaV">
-                                        <rect key="frame" x="9.5" y="20" width="111" height="74.5"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_support_default" translatesAutoresizingMaskIntoConstraints="NO" id="wlZ-xR-kaV">
+                                        <rect key="frame" x="-17" y="20" width="164" height="74.5"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -102,6 +102,6 @@
     </objects>
     <resources>
         <image name="btn_contact" width="270" height="85"/>
-        <image name="ic_profile" width="111" height="111"/>
+        <image name="ic_support_default" width="164" height="163"/>
     </resources>
 </document>
