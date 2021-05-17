@@ -111,8 +111,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cb-b8-vuG">
                                                     <rect key="frame" x="420" y="0.0" width="30" height="30"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="VQm-QM-bbI">
-                                                            <rect key="frame" x="5" y="0.0" width="20" height="30"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="VQm-QM-bbI">
+                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kaf-h1-mhT">
                                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -127,9 +127,9 @@
                                                         <constraint firstAttribute="bottom" secondItem="Kaf-h1-mhT" secondAttribute="bottom" id="G9M-U9-tgT"/>
                                                         <constraint firstAttribute="trailing" secondItem="Kaf-h1-mhT" secondAttribute="trailing" id="Kkr-yr-88C"/>
                                                         <constraint firstItem="Kaf-h1-mhT" firstAttribute="leading" secondItem="0cb-b8-vuG" secondAttribute="leading" id="PU5-nH-pV5"/>
-                                                        <constraint firstItem="VQm-QM-bbI" firstAttribute="leading" secondItem="0cb-b8-vuG" secondAttribute="leading" constant="5" id="R05-TD-WvE"/>
+                                                        <constraint firstItem="VQm-QM-bbI" firstAttribute="leading" secondItem="0cb-b8-vuG" secondAttribute="leading" id="R05-TD-WvE"/>
                                                         <constraint firstAttribute="width" secondItem="0cb-b8-vuG" secondAttribute="height" multiplier="1:1" id="aAb-Sz-Ovc"/>
-                                                        <constraint firstAttribute="trailing" secondItem="VQm-QM-bbI" secondAttribute="trailing" constant="5" id="loS-HA-EIo"/>
+                                                        <constraint firstAttribute="trailing" secondItem="VQm-QM-bbI" secondAttribute="trailing" id="loS-HA-EIo"/>
                                                         <constraint firstAttribute="bottom" secondItem="VQm-QM-bbI" secondAttribute="bottom" id="oug-7S-uig"/>
                                                         <constraint firstItem="VQm-QM-bbI" firstAttribute="top" secondItem="0cb-b8-vuG" secondAttribute="top" id="vga-gR-GlJ"/>
                                                     </constraints>
@@ -398,8 +398,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uuE-qU-XvV">
                                                     <rect key="frame" x="194.33333333333337" y="0.0" width="30" height="30"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="Lp3-E1-Rm1">
-                                                            <rect key="frame" x="5" y="0.0" width="20" height="30"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="Lp3-E1-Rm1">
+                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvb-B6-Yu0">
                                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -413,10 +413,10 @@
                                                         <constraint firstAttribute="bottom" secondItem="qvb-B6-Yu0" secondAttribute="bottom" id="7O4-jZ-Dlw"/>
                                                         <constraint firstAttribute="trailing" secondItem="qvb-B6-Yu0" secondAttribute="trailing" id="CWW-7v-qlY"/>
                                                         <constraint firstItem="Lp3-E1-Rm1" firstAttribute="top" secondItem="uuE-qU-XvV" secondAttribute="top" id="D9b-9c-et3"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Lp3-E1-Rm1" secondAttribute="trailing" constant="5" id="EEH-NB-vNz"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Lp3-E1-Rm1" secondAttribute="trailing" id="EEH-NB-vNz"/>
                                                         <constraint firstAttribute="bottom" secondItem="Lp3-E1-Rm1" secondAttribute="bottom" id="H5L-io-Ggb"/>
                                                         <constraint firstAttribute="width" secondItem="uuE-qU-XvV" secondAttribute="height" multiplier="1:1" id="P00-Gq-sdv"/>
-                                                        <constraint firstItem="Lp3-E1-Rm1" firstAttribute="leading" secondItem="uuE-qU-XvV" secondAttribute="leading" constant="5" id="VB7-Qr-XDu"/>
+                                                        <constraint firstItem="Lp3-E1-Rm1" firstAttribute="leading" secondItem="uuE-qU-XvV" secondAttribute="leading" id="VB7-Qr-XDu"/>
                                                         <constraint firstItem="qvb-B6-Yu0" firstAttribute="leading" secondItem="uuE-qU-XvV" secondAttribute="leading" id="eCN-pr-agR"/>
                                                         <constraint firstItem="qvb-B6-Yu0" firstAttribute="top" secondItem="uuE-qU-XvV" secondAttribute="top" id="zJF-vq-ni9"/>
                                                     </constraints>
@@ -543,8 +543,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ulz-Fq-XEM">
                                                     <rect key="frame" x="194.66666666666669" y="0.0" width="30" height="30"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="nFS-Bg-d2R">
-                                                            <rect key="frame" x="5" y="0.0" width="20" height="30"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="nFS-Bg-d2R">
+                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYc-p7-Row">
                                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -555,10 +555,10 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="nFS-Bg-d2R" secondAttribute="trailing" constant="5" id="21Z-Mv-M5G"/>
+                                                        <constraint firstAttribute="trailing" secondItem="nFS-Bg-d2R" secondAttribute="trailing" id="21Z-Mv-M5G"/>
                                                         <constraint firstAttribute="bottom" secondItem="nFS-Bg-d2R" secondAttribute="bottom" id="Aar-xM-E6c"/>
                                                         <constraint firstAttribute="trailing" secondItem="hYc-p7-Row" secondAttribute="trailing" id="CM1-Dm-vIP"/>
-                                                        <constraint firstItem="nFS-Bg-d2R" firstAttribute="leading" secondItem="Ulz-Fq-XEM" secondAttribute="leading" constant="5" id="JVi-dL-TlY"/>
+                                                        <constraint firstItem="nFS-Bg-d2R" firstAttribute="leading" secondItem="Ulz-Fq-XEM" secondAttribute="leading" id="JVi-dL-TlY"/>
                                                         <constraint firstAttribute="width" secondItem="Ulz-Fq-XEM" secondAttribute="height" multiplier="1:1" id="cEQ-TD-oN9"/>
                                                         <constraint firstItem="nFS-Bg-d2R" firstAttribute="top" secondItem="Ulz-Fq-XEM" secondAttribute="top" id="iLa-w8-JMH"/>
                                                         <constraint firstAttribute="bottom" secondItem="hYc-p7-Row" secondAttribute="bottom" id="lpd-N4-mTz"/>
@@ -745,9 +745,9 @@
     </objects>
     <resources>
         <image name="btn_copy" width="120" height="68"/>
+        <image name="btn_dropdown" width="53" height="53"/>
         <image name="btn_submit" width="310" height="103"/>
         <image name="btn_upload" width="233" height="59"/>
-        <image name="ic_arrow_down" width="42" height="29"/>
         <image name="ic_spade" width="21" height="21"/>
         <image name="ic_withdraw_history" width="68" height="68"/>
     </resources>

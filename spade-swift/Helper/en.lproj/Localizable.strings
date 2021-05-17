@@ -8,6 +8,10 @@
 
 //MARK: SELECT COUNTRY
 "country_title"                             = "Choose your country:";
+"country_malaysia"                          = "Malaysia";
+"country_indonesia"                         = "Indonesia";
+"country_thailand"                          = "Thailand";
+"country_singapore"                         = "Singapore";
 
 //MARK: LOGIN
 "login_username"                            = "Username:";

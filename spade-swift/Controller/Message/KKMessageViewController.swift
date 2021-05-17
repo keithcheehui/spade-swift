@@ -77,7 +77,7 @@ class KKMessageViewController: KKBaseViewController {
         switch type {
         case viewType.notification.rawValue:
             imgHoverNotification.isHidden = false
-            viewController = KKPersonalViewController()
+            viewController = KKOnBoardingViewController()
             break;
         default:
             imgHoverSystemMail.isHidden = false

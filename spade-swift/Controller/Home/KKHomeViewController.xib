@@ -355,7 +355,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUP-vw-Qfg">
                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                             <connections>
-                                                <action selector="btnSettingsDidPressed" destination="-1" eventType="touchUpInside" id="625-k2-D8x"/>
+                                                <action selector="btnSettingsDidPressed" destination="-1" eventType="touchUpInside" id="XSf-Re-iRz"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -394,7 +394,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                             <connections>
                                                 <action selector="btnLanguageDidPressed" destination="-1" eventType="touchUpInside" id="2C0-qz-ExF"/>
-                                                <action selector="btnSettingsDidPressed" destination="-1" eventType="touchUpInside" id="mqe-a8-z5j"/>
                                             </connections>
                                         </button>
                                     </subviews>

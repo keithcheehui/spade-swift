@@ -87,7 +87,7 @@ class KKRebateViewController: KKBaseViewController {
         switch type {
         case viewType.rebateRecord.rawValue:
             imgHoverRebateRecord.isHidden = false
-            viewController = KKPersonalViewController()
+            viewController = KKOnBoardingViewController()
             break;
         case viewType.rebateRatio.rawValue:
             imgHoverRebateRatio.isHidden = false

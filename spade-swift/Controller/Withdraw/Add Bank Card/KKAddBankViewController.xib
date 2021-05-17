@@ -96,8 +96,8 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1C-bd-Oa9">
                                             <rect key="frame" x="497" y="0.0" width="30" height="30"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_arrow_down" translatesAutoresizingMaskIntoConstraints="NO" id="sjX-8C-cY8">
-                                                    <rect key="frame" x="5" y="0.0" width="20" height="30"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="sjX-8C-cY8">
+                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hI4-9b-ucj">
                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -108,10 +108,10 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="sjX-8C-cY8" firstAttribute="leading" secondItem="h1C-bd-Oa9" secondAttribute="leading" constant="5" id="29h-yc-Ox3"/>
+                                                <constraint firstItem="sjX-8C-cY8" firstAttribute="leading" secondItem="h1C-bd-Oa9" secondAttribute="leading" id="29h-yc-Ox3"/>
                                                 <constraint firstAttribute="bottom" secondItem="hI4-9b-ucj" secondAttribute="bottom" id="A3Q-t5-kok"/>
                                                 <constraint firstItem="sjX-8C-cY8" firstAttribute="top" secondItem="h1C-bd-Oa9" secondAttribute="top" id="HVc-ng-asB"/>
-                                                <constraint firstAttribute="trailing" secondItem="sjX-8C-cY8" secondAttribute="trailing" constant="5" id="OjL-3g-mDz"/>
+                                                <constraint firstAttribute="trailing" secondItem="sjX-8C-cY8" secondAttribute="trailing" id="OjL-3g-mDz"/>
                                                 <constraint firstItem="hI4-9b-ucj" firstAttribute="leading" secondItem="h1C-bd-Oa9" secondAttribute="leading" id="TyP-lI-Dhx"/>
                                                 <constraint firstAttribute="width" secondItem="h1C-bd-Oa9" secondAttribute="height" multiplier="1:1" id="cmL-OZ-If2"/>
                                                 <constraint firstAttribute="trailing" secondItem="hI4-9b-ucj" secondAttribute="trailing" id="hEs-4O-ekd"/>
@@ -264,6 +264,6 @@
         <image name="bg_box" width="1615" height="1015"/>
         <image name="btn_back" width="329" height="109"/>
         <image name="btn_confirm" width="329" height="109"/>
-        <image name="ic_arrow_down" width="42" height="29"/>
+        <image name="btn_dropdown" width="53" height="53"/>
     </resources>
 </document>

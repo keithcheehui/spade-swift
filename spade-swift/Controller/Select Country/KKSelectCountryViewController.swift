@@ -10,7 +10,6 @@ import UIKit
 
 class KKSelectCountryViewController: KKBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var countryCollectionView: UICollectionView!
 
@@ -20,7 +19,14 @@ class KKSelectCountryViewController: KKBaseViewController, UICollectionViewDataS
     @IBOutlet weak var titleHeight: NSLayoutConstraint!
 
     var selectedIndex = 0
-
+    
+    enum countryName: Int {
+        case malaysia = 0
+        case indonesia = 1
+        case thailand = 2
+        case singapore = 3
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -63,6 +69,17 @@ class KKSelectCountryViewController: KKBaseViewController, UICollectionViewDataS
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.countryCVCIdentifier, for: indexPath) as? KKCountryItemCell
         else {
             fatalError("DequeueReusableCell failed while casting")
+        }
+        
+        switch (indexPath.row){
+        case countryName.indonesia.rawValue:
+            cell.lblCountryName.text = KKUtil.languageSelectedStringForKey(key: "country_indonesia")
+        case countryName.thailand.rawValue:
+            cell.lblCountryName.text = KKUtil.languageSelectedStringForKey(key: "country_thailand")
+        case countryName.singapore.rawValue:
+            cell.lblCountryName.text = KKUtil.languageSelectedStringForKey(key: "country_singapore")
+        default:
+            cell.lblCountryName.text = KKUtil.languageSelectedStringForKey(key: "country_malaysia")
         }
         
         if (indexPath.row == selectedIndex) {

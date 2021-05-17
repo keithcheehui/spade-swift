@@ -101,7 +101,7 @@ class KKAffiliateViewController: KKBaseViewController {
         switch type {
         case viewType.downline.rawValue:
             imgHoverDownline.isHidden = false
-            viewController = KKPersonalViewController()
+            viewController = KKOnBoardingViewController()
             break;
         case viewType.guideline.rawValue:
             imgHoverGuideline.isHidden = false
@@ -109,7 +109,7 @@ class KKAffiliateViewController: KKBaseViewController {
             break;
         case viewType.turnover.rawValue:
             imgHoverTurnover.isHidden = false
-            viewController = KKPersonalViewController()
+            viewController = KKOnBoardingViewController()
             break;
         default:
             imgBG.isHidden = true
