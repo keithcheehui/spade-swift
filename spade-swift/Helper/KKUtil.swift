@@ -92,7 +92,7 @@ class KKUtil: NSObject {
     
     ///convert size according to the screen size
     class func isSmallerPhone() -> Bool {
-        return ScreenSize.maxLength < 812.0
+        return ScreenSize.maxLength <= 812.0
     }
     
     class func hasTopNotch() -> Bool {

@@ -166,6 +166,32 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
         }
     }
     
+    func getMenuIcon(index: Int) -> String{
+        var menuIcon = ""
+        switch index {
+        case GameType.hotGame:
+            menuIcon = "ic_hot"
+        case GameType.slots:
+            menuIcon = "ic_slots"
+        case GameType.fishing:
+            menuIcon = "ic_fishing"
+        case GameType.liveCasino:
+            menuIcon = "ic_live_casino"
+        case GameType.p2pGame:
+            menuIcon = "ic_p2p"
+        case GameType.sports:
+            menuIcon = "ic_sports"
+        case GameType.lottery:
+            menuIcon = "ic_p2p"
+        case GameType.esports:
+            menuIcon = "ic_p2p"
+        default:
+            break
+        }
+        
+        return menuIcon
+    }
+    
     func getMenuName(index: Int) -> String{
         var menuName = ""
         switch index {
@@ -287,7 +313,7 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
         flowLayout.minimumLineSpacing = 0
         flowLayout.scrollDirection = .vertical
         flowLayout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-        flowLayout.itemSize = CGSize(width: menuWidth.constant, height: KKUtil.ConvertSizeByDensity(size: 50))
+        flowLayout.itemSize = CGSize(width: menuWidth.constant, height: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 40 : 50))
 
         menuCollectionView.collectionViewLayout = flowLayout
         menuCollectionView.register(UINib(nibName: "KKGameMenuItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.gameMenuItemCVCIdentifier)
@@ -311,6 +337,7 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
         }
         
         cell.lblMenuName.text = KKUtil.languageSelectedStringForKey(key: getMenuName(index: indexPath.row))
+        cell.imgMenuIcon.image = UIImage(named: getMenuIcon(index: indexPath.row))
         
         return cell
     }

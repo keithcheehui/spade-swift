@@ -34,15 +34,15 @@ class KKGameListViewController: KKBaseViewController, UICollectionViewDataSource
     
     func initFlowLayout(){
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumLineSpacing = 0
+//        flowLayout.minimumLineSpacing = 0
         flowLayout.scrollDirection = .horizontal
         
         var size = CGFloat(0)
         if (KKUtil.isSmallerPhone()){
-            size = KKUtil.ConvertSizeByDensity(size: gameCollectionView.frame.size.height / 2 - 65)
+//            size = KKUtil.ConvertSizeByDensity(size: gameCollectionView.frame.size.height / 2 - 75)
             flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         } else {
-            size = KKUtil.ConvertSizeByDensity(size: gameCollectionView.frame.size.height / 2 - 60)
+//            size = KKUtil.ConvertSizeByDensity(size: gameCollectionView.frame.size.height / 2 - 75)
             flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 20)
         }
         
@@ -50,6 +50,7 @@ class KKGameListViewController: KKBaseViewController, UICollectionViewDataSource
             size = KKUtil.ConvertSizeByDensity(size: 150)
             flowLayout.itemSize = CGSize(width: size, height: size * 1.56)
         } else {
+            size = KKUtil.ConvertSizeByDensity(size: 110)
             flowLayout.itemSize = CGSize(width: size, height: size)
         }
 

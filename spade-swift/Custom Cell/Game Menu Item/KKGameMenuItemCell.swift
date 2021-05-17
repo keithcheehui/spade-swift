@@ -19,7 +19,7 @@ class KKGameMenuItemCell: UICollectionViewCell {
         // Initialization code
         
         lblMenuName.textColor = UIColor.spade_white_FFFFFF
-        lblMenuName.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 16))
+        lblMenuName.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 14))
         imgHover.isHidden = true
     }
 }
