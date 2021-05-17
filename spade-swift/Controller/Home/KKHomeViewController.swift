@@ -198,10 +198,14 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
 
         switch type {
         case GameType.liveCasino:
-            changeView(vc: KKLiveCasinoViewController())
+            let viewController = KKLoginViewController.init()
+            viewController.selectedGameType = selectedGameType
+            changeView(vc: viewController)
             break;
         default:
-            changeView(vc: KKGameListViewController())
+            let viewController = KKGameListViewController.init()
+            viewController.selectedGameType = selectedGameType
+            changeView(vc: viewController)
             break;
         }
     }
