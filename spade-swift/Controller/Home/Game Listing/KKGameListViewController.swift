@@ -19,7 +19,12 @@ class KKGameListViewController: KKBaseViewController, UICollectionViewDataSource
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         initialLayout()
+        updateLayout()
+    }
+    
+    public func updateLayout(){
         initFlowLayout()
+        gameCollectionView.reloadData()
     }
     
     func initialLayout(){
@@ -40,14 +45,26 @@ class KKGameListViewController: KKBaseViewController, UICollectionViewDataSource
             size = KKUtil.ConvertSizeByDensity(size: gameCollectionView.frame.size.height / 2 - 60)
             flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 20)
         }
-        //for double row
-//        flowLayout.itemSize = CGSize(width: size, height: size)
         
-        //for single row
-        flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: (gameCollectionView.frame.size.height - 60) / 2), height: KKUtil.ConvertSizeByDensity(size: gameCollectionView.frame.size.height - 60))
+        if (isSingleRow()){
+            flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: (gameCollectionView.frame.size.height - 60) / 2), height: KKUtil.ConvertSizeByDensity(size: gameCollectionView.frame.size.height - 60))
+        } else {
+            flowLayout.itemSize = CGSize(width: size, height: size)
+        }
 
         gameCollectionView.collectionViewLayout = flowLayout
         gameCollectionView.register(UINib(nibName: "KKSingleRowGameItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.gameItemCVCIdentifier)
+    }
+    
+    func isSingleRow() -> Bool{
+        switch selectedGameType {
+        case GameType.hotGame:
+            return false
+        case GameType.fishing:
+            return false
+        default:
+            return true
+        }
     }
     
     //Game List
@@ -61,6 +78,32 @@ class KKGameListViewController: KKBaseViewController, UICollectionViewDataSource
         else {
             fatalError("DequeueReusableCell failed while casting")
         }
+        
+        var imageName = ""
+        var showBetButton = true
+        
+        switch selectedGameType {
+        case GameType.hotGame:
+            imageName = "ic_game_example"
+        case GameType.slots:
+            imageName = "bg_918"
+        case GameType.fishing:
+            imageName = "bg_fish_1"
+        case GameType.p2pGame:
+            imageName = "bg_default"
+        case GameType.sports:
+            imageName = "bg_sport_1"
+            showBetButton = false
+        case GameType.lottery:
+            imageName = "bg_default"
+        case GameType.esports:
+            imageName = "bg_default"
+        default:
+            break
+        }
+        
+        cell.imgGameImage.image = UIImage(named: imageName)
+        cell.btnBetNow.isHidden = showBetButton
         
         return cell
     }

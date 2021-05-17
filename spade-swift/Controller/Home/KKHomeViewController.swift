@@ -58,24 +58,13 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var btnWithdrawWidth: NSLayoutConstraint!
     @IBOutlet weak var menuWidth: NSLayoutConstraint!
     
-    enum viewType: Int {
-        case hotGame = 0
-        case slots = 1
-        case fishing = 2
-        case liveCasino = 3
-        case p2pGame = 4
-        case sports = 5
-        case lottery = 6
-        case esports = 7
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         initialLayout()
         initFlowLayout()
         
-        buttonHover(type: viewType.p2pGame.rawValue)
+        buttonHover(type: selectedGameType)
     }
     
     func initialLayout(){
@@ -158,42 +147,66 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
     
     func updateLobbyBackgroundImage(gameType: Int) {
         switch gameType {
-        case viewType.hotGame.rawValue:
+        case GameType.hotGame:
             imgBG.image = UIImage(named: "bg_hot_game")
-        case viewType.slots.rawValue:
+        case GameType.slots:
             imgBG.image = UIImage(named: "bg_p2p")
-        case viewType.fishing.rawValue:
+        case GameType.fishing:
             imgBG.image = UIImage(named: "bg_fishing")
-        case viewType.liveCasino.rawValue:
+        case GameType.liveCasino:
             imgBG.image = UIImage(named: "bg_live_casino")
-        case viewType.sports.rawValue:
+        case GameType.sports:
             imgBG.image = UIImage(named: "bg_sport")
-        case viewType.lottery.rawValue:
+        case GameType.lottery:
             imgBG.image = UIImage(named: "bg_p2p")
-        case viewType.esports.rawValue:
+        case GameType.esports:
             imgBG.image = UIImage(named: "bg_p2p")
         default:
             imgBG.image = UIImage(named: "bg_p2p")
         }
+    }
+    
+    func getMenuName(index: Int) -> String{
+        var menuName = ""
+        switch index {
+        case GameType.hotGame:
+            menuName = "home_hot_game"
+        case GameType.slots:
+            menuName = "home_slots"
+        case GameType.fishing:
+            menuName = "home_fishing"
+        case GameType.liveCasino:
+            menuName = "home_live_casino"
+        case GameType.p2pGame:
+            menuName = "home_p2p_game"
+        case GameType.sports:
+            menuName = "home_sports"
+        case GameType.lottery:
+            menuName = "home_lottery"
+        case GameType.esports:
+            menuName = "home_esports"
+        default:
+            break
+        }
+        
+        return menuName
     }
     
     func buttonHover(type: Int){
-        var viewController: KKBaseViewController = KKGameListViewController()
-        
+        selectedGameType = type
+        updateLobbyBackgroundImage(gameType: type)
+
         switch type {
-        case viewType.liveCasino.rawValue:
-            viewController = KKLiveCasinoViewController()
+        case GameType.liveCasino:
+            changeView(vc: KKLiveCasinoViewController())
             break;
         default:
-            viewController = KKGameListViewController()
+            changeView(vc: KKGameListViewController())
             break;
         }
-        
-        updateLobbyBackgroundImage(gameType: type)
-        changeView(vc: viewController)
     }
     
-    func changeView(vc: UIViewController){
+    func changeView(vc: KKBaseViewController){
         for view in contentView.subviews{
             view.removeFromSuperview()
         }
@@ -287,10 +300,20 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
             fatalError("DequeueReusableCell failed while casting")
         }
         
-        if (indexPath.row == 0) {
+        if (indexPath.row == selectedGameType) {
             cell.imgHover.isHidden = false
+        } else {
+            cell.imgHover.isHidden = true
         }
         
+        cell.lblMenuName.text = KKUtil.languageSelectedStringForKey(key: getMenuName(index: indexPath.row))
+        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        buttonHover(type: indexPath.row)
+        collectionView.reloadData()
+        return
     }
 }

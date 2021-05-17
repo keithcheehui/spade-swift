@@ -75,7 +75,7 @@ class KKDepositViewController: KKBaseViewController {
         changeView(vc: KKDepositRequestViewController())
     }
     
-    func changeView(vc: UIViewController){
+    func changeView(vc: KKBaseViewController){
         for view in contentView.subviews{
             view.removeFromSuperview()
         }

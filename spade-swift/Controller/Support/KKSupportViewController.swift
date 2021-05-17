@@ -97,7 +97,7 @@ class KKSupportViewController: KKBaseViewController, UICollectionViewDataSource,
         }
     }
     
-    func changeView(vc: UIViewController){
+    func changeView(vc: KKBaseViewController){
         for view in contentView.subviews{
             view.removeFromSuperview()
         }

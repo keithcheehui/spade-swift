@@ -39,6 +39,14 @@
 "home_message"                              = "Message";
 "home_support"                              = "Support";
 "home_more"                                 = "More";
+"home_hot_game"                             = "Hot Game";
+"home_slots"                                = "Slots";
+"home_fishing"                              = "Fishing";
+"home_live_casino"                          = "Live Casino";
+"home_p2p_game"                             = "P2P Game";
+"home_sports"                               = "Sports";
+"home_lottery"                              = "Lottery";
+"home_esports"                              = "Esports";
 
 //MARK: Personal Center
 "personal_user_info"                        = "User Info";

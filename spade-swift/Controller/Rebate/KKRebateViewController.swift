@@ -81,28 +81,24 @@ class KKRebateViewController: KKBaseViewController {
         imgHoverManualRebate.isHidden = true
         imgHoverRebateRecord.isHidden = true
         imgHoverRebateRatio.isHidden = true
-        
-        var viewController: UIViewController = KKOnBoardingViewController()
-        
+                
         switch type {
         case viewType.rebateRecord.rawValue:
             imgHoverRebateRecord.isHidden = false
-            viewController = KKOnBoardingViewController()
+            changeView(vc: KKOnBoardingViewController())
             break;
         case viewType.rebateRatio.rawValue:
             imgHoverRebateRatio.isHidden = false
-            viewController = KKOnBoardingViewController()
+            changeView(vc: KKOnBoardingViewController())
             break;
         default:
             imgHoverManualRebate.isHidden = false
-            viewController = KKOnBoardingViewController()
+            changeView(vc: KKOnBoardingViewController())
             break;
         }
-        
-        changeView(vc: viewController)
     }
     
-    func changeView(vc: UIViewController){
+    func changeView(vc: KKBaseViewController){
         for view in contentView.subviews{
             view.removeFromSuperview()
         }

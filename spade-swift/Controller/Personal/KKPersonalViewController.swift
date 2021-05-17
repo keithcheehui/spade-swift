@@ -91,32 +91,28 @@ class KKPersonalViewController: KKBaseViewController {
         imgHoverBettingRecord.isHidden = true
         imgHoverAccountDetails.isHidden = true
         imgHoverIndividualReport.isHidden = true
-        
-        var viewController: UIViewController = KKUserInfoViewController()
-        
+                
         switch type {
         case viewType.bettingRecord.rawValue:
             imgHoverBettingRecord.isHidden = false
-            viewController = KKOnBoardingViewController()
+            changeView(vc: KKOnBoardingViewController())
             break;
         case viewType.accountDetail.rawValue:
             imgHoverAccountDetails.isHidden = false
-            viewController = KKOnBoardingViewController()
+            changeView(vc: KKOnBoardingViewController())
             break;
         case viewType.individualReport.rawValue:
             imgHoverIndividualReport.isHidden = false
-            viewController = KKPersonalViewController()
+            changeView(vc: KKOnBoardingViewController())
             break;
         default:
             imgHoverUserInfo.isHidden = false
-            viewController = KKUserInfoViewController()
+            changeView(vc: KKUserInfoViewController())
             break;
         }
-        
-        changeView(vc: viewController)
     }
     
-    func changeView(vc: UIViewController){
+    func changeView(vc: KKBaseViewController){
         for view in contentView.subviews{
             view.removeFromSuperview()
         }

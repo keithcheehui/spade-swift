@@ -95,33 +95,29 @@ class KKAffiliateViewController: KKBaseViewController {
         imgHoverDownline.isHidden = true
         imgHoverGuideline.isHidden = true
         imgHoverTurnover.isHidden = true
-
-        var viewController: UIViewController = KKOnBoardingViewController()
         
         switch type {
         case viewType.downline.rawValue:
             imgHoverDownline.isHidden = false
-            viewController = KKOnBoardingViewController()
+            changeView(vc: KKOnBoardingViewController())
             break;
         case viewType.guideline.rawValue:
             imgHoverGuideline.isHidden = false
-            viewController = KKGuidelineViewController()
+            changeView(vc: KKGuidelineViewController())
             break;
         case viewType.turnover.rawValue:
             imgHoverTurnover.isHidden = false
-            viewController = KKOnBoardingViewController()
+            changeView(vc: KKOnBoardingViewController())
             break;
         default:
             imgBG.isHidden = true
             imgHoverMyAffiliate.isHidden = false
-            viewController = KKMyAffiliateViewController()
+            changeView(vc: KKMyAffiliateViewController())
             break;
         }
-        
-        changeView(vc: viewController)
     }
     
-    func changeView(vc: UIViewController){
+    func changeView(vc: KKBaseViewController){
         for view in contentView.subviews{
             view.removeFromSuperview()
         }

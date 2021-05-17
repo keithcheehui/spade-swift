@@ -71,24 +71,20 @@ class KKMessageViewController: KKBaseViewController {
     func buttonHover(type: Int){
         imgHoverSystemMail.isHidden = true
         imgHoverNotification.isHidden = true
-        
-        var viewController: UIViewController = KKOnBoardingViewController()
-        
+                
         switch type {
         case viewType.notification.rawValue:
             imgHoverNotification.isHidden = false
-            viewController = KKOnBoardingViewController()
+            changeView(vc: KKOnBoardingViewController())
             break;
         default:
             imgHoverSystemMail.isHidden = false
-            viewController = KKOnBoardingViewController()
+            changeView(vc: KKOnBoardingViewController())
             break;
         }
-        
-        changeView(vc: viewController)
     }
     
-    func changeView(vc: UIViewController){
+    func changeView(vc: KKBaseViewController){
         for view in contentView.subviews{
             view.removeFromSuperview()
         }

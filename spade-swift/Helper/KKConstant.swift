@@ -76,3 +76,14 @@ struct Spade {
         static let baseApiURL: String = ""
     }
 }
+
+struct GameType {
+    static let hotGame = 0
+    static let slots = 1
+    static let fishing = 2
+    static let liveCasino = 3
+    static let p2pGame = 4
+    static let sports = 5
+    static let lottery = 6
+    static let esports = 7
+}
