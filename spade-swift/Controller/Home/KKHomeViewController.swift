@@ -198,7 +198,7 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
 
         switch type {
         case GameType.liveCasino:
-            let viewController = KKLoginViewController.init()
+            let viewController = KKLiveCasinoViewController.init()
             viewController.selectedGameType = selectedGameType
             changeView(vc: viewController)
             break;

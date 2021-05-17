@@ -47,7 +47,8 @@ class KKGameListViewController: KKBaseViewController, UICollectionViewDataSource
         }
         
         if (isSingleRow()){
-            flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: (gameCollectionView.frame.size.height - 60) / 2), height: KKUtil.ConvertSizeByDensity(size: gameCollectionView.frame.size.height - 60))
+            size = KKUtil.ConvertSizeByDensity(size: 150)
+            flowLayout.itemSize = CGSize(width: size, height: size * 1.56)
         } else {
             flowLayout.itemSize = CGSize(width: size, height: size)
         }
@@ -58,9 +59,7 @@ class KKGameListViewController: KKBaseViewController, UICollectionViewDataSource
     
     func isSingleRow() -> Bool{
         switch selectedGameType {
-        case GameType.hotGame:
-            return false
-        case GameType.fishing:
+        case GameType.hotGame, GameType.fishing:
             return false
         default:
             return true

@@ -15,6 +15,8 @@ class KKSelectCountryViewController: KKBaseViewController, UICollectionViewDataS
 
     @IBOutlet weak var containerMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var containerMarginRight: NSLayoutConstraint!
+    @IBOutlet weak var lblTitleMarginLeft: NSLayoutConstraint!
+    @IBOutlet weak var lblTitleMarginRight: NSLayoutConstraint!
     @IBOutlet weak var titleMarginTop: NSLayoutConstraint!
     @IBOutlet weak var titleHeight: NSLayoutConstraint!
 
@@ -34,7 +36,7 @@ class KKSelectCountryViewController: KKBaseViewController, UICollectionViewDataS
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 100 : 130), height: KKUtil.ConvertSizeByDensity(size: 40))
+        flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: 130), height: KKUtil.ConvertSizeByDensity(size: 40))
         
         countryCollectionView.collectionViewLayout = flowLayout
         countryCollectionView.register(UINib(nibName: "KKCountryItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.countryCVCIdentifier)
@@ -43,11 +45,13 @@ class KKSelectCountryViewController: KKBaseViewController, UICollectionViewDataS
     func initialLayout(){
         self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
         
-        containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 100 : 130)
+        containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 90 : 130)
         containerMarginRight.constant = containerMarginLeft.constant
         titleMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 25)
         titleHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        
+        lblTitleMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 65)
+        lblTitleMarginRight.constant = lblTitleMarginLeft.constant
+
         lblTitle.text = KKUtil.languageSelectedStringForKey(key: "country_title")
         lblTitle.textColor = UIColor.spade_white_FFFFFF
         lblTitle.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 14))

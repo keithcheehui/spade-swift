@@ -15,6 +15,8 @@
                 <outlet property="containerMarginRight" destination="bHT-xt-jXt" id="f79-56-eYb"/>
                 <outlet property="countryCollectionView" destination="Unx-Ca-erc" id="41H-oR-aiV"/>
                 <outlet property="lblTitle" destination="JoW-YV-QAz" id="rbu-Dt-IXK"/>
+                <outlet property="lblTitleMarginLeft" destination="Nu0-aW-y6v" id="4B9-hE-hv4"/>
+                <outlet property="lblTitleMarginRight" destination="oVr-wj-mKn" id="cKM-3i-aW4"/>
                 <outlet property="titleHeight" destination="2bj-oE-M93" id="grg-oz-xaQ"/>
                 <outlet property="titleMarginTop" destination="Uhr-vn-Nat" id="5hn-uS-9ct"/>
                 <outlet property="view" destination="iN0-l3-epB" id="f2W-bK-GvT"/>
@@ -38,7 +40,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoW-YV-QAz">
-                            <rect key="frame" x="65" y="90" width="42" height="21"/>
+                            <rect key="frame" x="65" y="90" width="478" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -74,17 +76,18 @@
                     <constraints>
                         <constraint firstItem="FNO-Vr-sCM" firstAttribute="top" secondItem="Unx-Ca-erc" secondAttribute="bottom" constant="20" id="1v3-hU-YAE"/>
                         <constraint firstItem="Unx-Ca-erc" firstAttribute="top" secondItem="JoW-YV-QAz" secondAttribute="bottom" constant="20" id="6JY-pf-Tzv"/>
-                        <constraint firstAttribute="trailing" secondItem="Unx-Ca-erc" secondAttribute="trailing" constant="65" id="76T-XY-nPA"/>
                         <constraint firstAttribute="trailing" secondItem="bef-qs-Jyw" secondAttribute="trailing" id="HGh-Xv-VLu"/>
-                        <constraint firstItem="Unx-Ca-erc" firstAttribute="leading" secondItem="SeE-Va-oe0" secondAttribute="leading" constant="65" id="HZf-6I-whc"/>
                         <constraint firstItem="JoW-YV-QAz" firstAttribute="leading" secondItem="SeE-Va-oe0" secondAttribute="leading" constant="65" id="Nu0-aW-y6v"/>
                         <constraint firstAttribute="bottom" secondItem="FNO-Vr-sCM" secondAttribute="bottom" constant="45" id="O5O-iv-FYE"/>
                         <constraint firstItem="JoW-YV-QAz" firstAttribute="top" secondItem="c8b-g5-beD" secondAttribute="bottom" constant="40" id="SIz-2r-b3o"/>
+                        <constraint firstItem="Unx-Ca-erc" firstAttribute="leading" secondItem="JoW-YV-QAz" secondAttribute="leading" id="Ua1-Qb-YbM"/>
                         <constraint firstItem="c8b-g5-beD" firstAttribute="top" secondItem="SeE-Va-oe0" secondAttribute="top" constant="25" id="Uhr-vn-Nat"/>
                         <constraint firstItem="c8b-g5-beD" firstAttribute="leading" secondItem="SeE-Va-oe0" secondAttribute="leading" constant="25" id="Vp4-fU-7Rl"/>
                         <constraint firstAttribute="bottom" secondItem="bef-qs-Jyw" secondAttribute="bottom" id="Wlw-QT-7O9"/>
                         <constraint firstItem="bef-qs-Jyw" firstAttribute="top" secondItem="SeE-Va-oe0" secondAttribute="top" id="XWi-IW-xmv"/>
+                        <constraint firstItem="Unx-Ca-erc" firstAttribute="trailing" secondItem="JoW-YV-QAz" secondAttribute="trailing" id="Z9L-r3-gVB"/>
                         <constraint firstItem="bef-qs-Jyw" firstAttribute="leading" secondItem="SeE-Va-oe0" secondAttribute="leading" id="joH-52-7a9"/>
+                        <constraint firstAttribute="trailing" secondItem="JoW-YV-QAz" secondAttribute="trailing" constant="65" id="oVr-wj-mKn"/>
                         <constraint firstItem="FNO-Vr-sCM" firstAttribute="centerX" secondItem="SeE-Va-oe0" secondAttribute="centerX" id="s0g-HD-9F1"/>
                         <constraint firstAttribute="trailing" secondItem="c8b-g5-beD" secondAttribute="trailing" constant="25" id="sig-j8-n27"/>
                     </constraints>

@@ -46,6 +46,7 @@
             <size key="customSize" width="187" height="50"/>
             <connections>
                 <outlet property="imgCountry" destination="QOv-Us-ccu" id="EX9-aZ-6YR"/>
+                <outlet property="imgCountryWidth" destination="3Zf-lI-ax8" id="C1I-RL-ork"/>
                 <outlet property="lblCountryName" destination="coZ-62-uxT" id="E2E-xd-ShP"/>
             </connections>
             <point key="canvasLocation" x="118.11594202898551" y="71.651785714285708"/>

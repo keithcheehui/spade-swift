@@ -12,12 +12,15 @@ class KKCountryItemCell: UICollectionViewCell {
     
     @IBOutlet weak var imgCountry: UIImageView!
     @IBOutlet weak var lblCountryName: UILabel!
-    
+    @IBOutlet weak var imgCountryWidth: NSLayoutConstraint!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        imgCountryWidth.constant = KKUtil.ConvertSizeByDensity(size: 35)
+        
         imgCountry.layer.masksToBounds = true
-        imgCountry.layer.cornerRadius = self.imgCountry.frame.size.height / 2
+        imgCountry.layer.cornerRadius = imgCountryWidth.constant / 2
         imgCountry.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 0)
         imgCountry.layer.borderColor = UIColor(white: 1, alpha: 1).cgColor
         imgCountry.clipsToBounds = true

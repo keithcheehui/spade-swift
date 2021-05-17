@@ -12,10 +12,12 @@ class KKSingleRowGameItemCell: UICollectionViewCell {
     
     @IBOutlet weak var imgGameImage: UIImageView!
     @IBOutlet weak var btnBetNow: UIButton!
+    @IBOutlet weak var btnBetNowMarginBottom: NSLayoutConstraint!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         btnBetNow.isHidden = true
+        btnBetNowMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 20)
     }
 }
