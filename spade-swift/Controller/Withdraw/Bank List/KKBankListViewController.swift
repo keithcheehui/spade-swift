@@ -43,6 +43,7 @@ class KKBankListViewController: KKBaseViewController, UITableViewDataSource, UIT
         } else {
             cell.containerView.layer.borderWidth = 0
 
+            cell.imgBank.image = UIImage(named: "ic_bank_maybank")
             cell.lblBankName.text = "Maybank Berhad Maybank"
             cell.lblBankAccount.text = "1111 **** **** 0000"
             cell.lblBankAccount.isHidden = false

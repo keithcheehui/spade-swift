@@ -158,9 +158,9 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
         case GameType.sports:
             imgBG.image = UIImage(named: "bg_sport")
         case GameType.lottery:
-            imgBG.image = UIImage(named: "bg_p2p")
+            imgBG.image = UIImage(named: "bg_lottery")
         case GameType.esports:
-            imgBG.image = UIImage(named: "bg_p2p")
+            imgBG.image = UIImage(named: "bg_esports")
         default:
             imgBG.image = UIImage(named: "bg_p2p")
         }
@@ -182,9 +182,9 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
         case GameType.sports:
             menuIcon = "ic_sports"
         case GameType.lottery:
-            menuIcon = "ic_p2p"
+            menuIcon = "ic_lottery"
         case GameType.esports:
-            menuIcon = "ic_p2p"
+            menuIcon = "ic_esports"
         default:
             break
         }

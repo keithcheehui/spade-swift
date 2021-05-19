@@ -33,7 +33,7 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_popup_sso" translatesAutoresizingMaskIntoConstraints="NO" id="bef-qs-Jyw">
                             <rect key="frame" x="0.0" y="0.0" width="608" height="374"/>
                         </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c8b-g5-beD">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="title_country" translatesAutoresizingMaskIntoConstraints="NO" id="c8b-g5-beD">
                             <rect key="frame" x="25" y="25" width="558" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="2bj-oE-M93"/>
@@ -107,6 +107,7 @@
     <resources>
         <image name="bg_popup_sso" width="1416" height="1009"/>
         <image name="btn_confirm_sso" width="467" height="138"/>
+        <image name="title_country" width="353" height="60"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

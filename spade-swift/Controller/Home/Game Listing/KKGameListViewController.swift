@@ -34,23 +34,42 @@ class KKGameListViewController: KKBaseViewController, UICollectionViewDataSource
     
     func initFlowLayout(){
         let flowLayout = UICollectionViewFlowLayout()
-//        flowLayout.minimumLineSpacing = 0
         flowLayout.scrollDirection = .horizontal
-        
+        flowLayout.minimumInteritemSpacing = 0
+
         var size = CGFloat(0)
-        if (KKUtil.isSmallerPhone()){
-//            size = KKUtil.ConvertSizeByDensity(size: gameCollectionView.frame.size.height / 2 - 75)
-            flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        } else {
-//            size = KKUtil.ConvertSizeByDensity(size: gameCollectionView.frame.size.height / 2 - 75)
-            flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 20)
-        }
-        
+//        size = KKUtil.ConvertSizeByDensity(size: gameCollectionView.frame.size.height / 2 - 75)
+
         if (isSingleRow()){
             size = KKUtil.ConvertSizeByDensity(size: 150)
             flowLayout.itemSize = CGSize(width: size, height: size * 1.56)
+            flowLayout.minimumLineSpacing = 0
+            
+            if (KKUtil.isSmallerPhone()){
+                flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+            } else {
+                flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 20)
+            }
         } else {
-            size = KKUtil.ConvertSizeByDensity(size: 110)
+            if (selectedGameType == GameType.fishing) {
+                size = KKUtil.ConvertSizeByDensity(size: 130)
+
+                if (KKUtil.isSmallerPhone()){
+                    flowLayout.sectionInset = UIEdgeInsets(top: -10, left: 10, bottom: -10, right: 10)
+                } else {
+                    flowLayout.sectionInset = UIEdgeInsets(top: -10, left: 30, bottom: -10, right: 20)
+                }
+            } else {
+                size = KKUtil.ConvertSizeByDensity(size: 115)
+
+                if (KKUtil.isSmallerPhone()){
+                    flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+                } else {
+                    flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 20)
+                }
+            }
+            
+            flowLayout.minimumLineSpacing = 10
             flowLayout.itemSize = CGSize(width: size, height: size)
         }
 
@@ -69,7 +88,7 @@ class KKGameListViewController: KKBaseViewController, UICollectionViewDataSource
     
     //Game List
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return 8
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -84,27 +103,89 @@ class KKGameListViewController: KKBaseViewController, UICollectionViewDataSource
         
         switch selectedGameType {
         case GameType.hotGame:
-            imageName = "ic_game_example"
+            imageName = getHotGameImage(index: indexPath.row)
         case GameType.slots:
-            imageName = "bg_918"
+            imageName = getSlotGameImage(index: indexPath.row)
         case GameType.fishing:
-            imageName = "bg_fish_1"
+            imageName = getFishingGameImage(index: indexPath.row)
         case GameType.p2pGame:
-            imageName = "bg_default"
+            imageName = getP2PGameImage(index: indexPath.row)
         case GameType.sports:
-            imageName = "bg_sport_1"
+            imageName = getSportGameImage(index: indexPath.row)
             showBetButton = false
         case GameType.lottery:
-            imageName = "bg_default"
+            imageName = getLotteryGameImage(index: indexPath.row)
         case GameType.esports:
-            imageName = "bg_default"
+            imageName = getEsportGameImage(index: indexPath.row)
         default:
             break
         }
         
         cell.imgGameImage.image = UIImage(named: imageName)
         cell.btnBetNow.isHidden = showBetButton
-        
+                
         return cell
+    }
+    
+    func getHotGameImage(index: Int) -> String {
+        let imageName = "ic_game_example"
+        return imageName
+    }
+    
+    func getSlotGameImage(index: Int) -> String {
+        var imageName = ""
+        
+        switch index {
+        case 0:
+            imageName = "bg_mega888"
+        case 1:
+            imageName = "bg_918"
+        case 2:
+            imageName = "bg_pussy888"
+        default:
+            imageName = "bg_sky1388"
+        }
+        
+        return imageName
+    }
+    
+    func getFishingGameImage(index: Int) -> String {
+        let imageName = "bg_fish_" + String(index + 1)
+        return imageName
+    }
+    
+    func getP2PGameImage(index: Int) -> String {
+        let imageName = "bg_default"
+        return imageName
+    }
+    
+    func getSportGameImage(index: Int) -> String {
+        var imageName = "bg_sport_" + String(index + 1)
+
+        if (index > 2) {
+            imageName = "bg_sport_3"
+        }
+        
+        return imageName
+    }
+    
+    func getLotteryGameImage(index: Int) -> String {
+        var imageName = "bg_lottery_" + String(index + 1)
+
+        if (index > 2) {
+            imageName = "bg_lottery_2"
+        }
+        
+        return imageName
+    }
+    
+    func getEsportGameImage(index: Int) -> String {
+        var imageName = "bg_esports_" + String(index + 1)
+
+        if (index > 2) {
+            imageName = "bg_esports_2"
+        }
+        
+        return imageName
     }
 }

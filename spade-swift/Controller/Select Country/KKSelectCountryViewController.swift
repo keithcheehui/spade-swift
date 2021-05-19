@@ -78,12 +78,16 @@ class KKSelectCountryViewController: KKBaseViewController, UICollectionViewDataS
         switch (indexPath.row){
         case countryName.indonesia.rawValue:
             cell.lblCountryName.text = KKUtil.languageSelectedStringForKey(key: "country_indonesia")
+            cell.imgCountry.image = UIImage(named: "ic_indonesia")
         case countryName.thailand.rawValue:
             cell.lblCountryName.text = KKUtil.languageSelectedStringForKey(key: "country_thailand")
+            cell.imgCountry.image = UIImage(named: "ic_thailand")
         case countryName.singapore.rawValue:
             cell.lblCountryName.text = KKUtil.languageSelectedStringForKey(key: "country_singapore")
+            cell.imgCountry.image = UIImage(named: "ic_singapore")
         default:
             cell.lblCountryName.text = KKUtil.languageSelectedStringForKey(key: "country_malaysia")
+            cell.imgCountry.image = UIImage(named: "ic_malaysia")
         }
         
         if (indexPath.row == selectedIndex) {
