@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="KKBonusMenuTableCell" rowHeight="62" id="pTr-r5-Btc" customClass="KKBonusMenuTableCell" customModule="spade_swift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="151" height="62"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pTr-r5-Btc" id="7AS-uY-VuS">
+                <rect key="frame" x="0.0" y="0.0" width="151" height="62"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_hover" translatesAutoresizingMaskIntoConstraints="NO" id="qUu-X1-Xc1">
+                        <rect key="frame" x="0.0" y="0.0" width="151" height="57"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live Casino" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03e-av-nlY">
+                        <rect key="frame" x="0.0" y="0.0" width="151" height="57"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_separator" translatesAutoresizingMaskIntoConstraints="NO" id="Kd5-BY-ZL4">
+                        <rect key="frame" x="0.0" y="57" width="151" height="5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="5" id="xvZ-DC-xna"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="03e-av-nlY" firstAttribute="top" secondItem="7AS-uY-VuS" secondAttribute="top" id="D8y-DJ-8QL"/>
+                    <constraint firstItem="qUu-X1-Xc1" firstAttribute="leading" secondItem="7AS-uY-VuS" secondAttribute="leading" id="GDo-TD-jyL"/>
+                    <constraint firstAttribute="bottom" secondItem="Kd5-BY-ZL4" secondAttribute="bottom" id="QH4-eZ-MOk"/>
+                    <constraint firstItem="Kd5-BY-ZL4" firstAttribute="top" secondItem="03e-av-nlY" secondAttribute="bottom" id="ZJe-mA-4zf"/>
+                    <constraint firstAttribute="trailing" secondItem="Kd5-BY-ZL4" secondAttribute="trailing" id="gpu-xw-zWb"/>
+                    <constraint firstItem="Kd5-BY-ZL4" firstAttribute="top" secondItem="qUu-X1-Xc1" secondAttribute="bottom" id="hXb-7V-iPc"/>
+                    <constraint firstItem="qUu-X1-Xc1" firstAttribute="top" secondItem="7AS-uY-VuS" secondAttribute="top" id="ljY-H0-qeU"/>
+                    <constraint firstItem="Kd5-BY-ZL4" firstAttribute="leading" secondItem="7AS-uY-VuS" secondAttribute="leading" id="sOf-sL-p9E"/>
+                    <constraint firstAttribute="trailing" secondItem="qUu-X1-Xc1" secondAttribute="trailing" id="tt9-Bk-XMb"/>
+                    <constraint firstItem="03e-av-nlY" firstAttribute="leading" secondItem="7AS-uY-VuS" secondAttribute="leading" id="vSM-pD-DCE"/>
+                    <constraint firstAttribute="trailing" secondItem="03e-av-nlY" secondAttribute="trailing" id="zfe-B4-gzi"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="imgHover" destination="qUu-X1-Xc1" id="JhS-yu-uxO"/>
+                <outlet property="imgSeparatorHeight" destination="xvZ-DC-xna" id="WGa-q6-OuG"/>
+                <outlet property="lblMenuName" destination="03e-av-nlY" id="y0V-Tu-9br"/>
+            </connections>
+            <point key="canvasLocation" x="-377.536231884058" y="112.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="bg_hover" width="373" height="112"/>
+        <image name="bg_separator" width="383" height="6"/>
+    </resources>
+</document>

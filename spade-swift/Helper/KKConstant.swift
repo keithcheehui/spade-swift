@@ -58,12 +58,15 @@ struct CellIdentifier {
     static let sideMenuTVCIdentifier = "SIDE_MENU_TABLE_CELL_IDENTIFIER"
     static let announcementTVCIdentifier = "KKAnnouncementTableCell"
     static let bankTVCIdentifier = "KKBankTableCell"
+    static let bonusTVCIdentifier = "KKBonusMenuTableCell"
 
     static let liveChatCVCIdentifier = "KKLiveChatCollectionViewCell"
     static let countryCVCIdentifier = "KKCountryItemCell"
     static let liveCasinoCVCIdentifier = "KKLiveCasinoItemCell"
     static let gameItemCVCIdentifier = "KKSingleRowGameItemCell"
     static let gameMenuItemCVCIdentifier = "KKGameMenuItemCell"
+    static let bonusItemCVCIdentifier = "KKBonusItemCell"
+    
 }
 
 struct Spade {

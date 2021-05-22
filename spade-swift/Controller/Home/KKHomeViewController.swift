@@ -264,7 +264,7 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
     }
     
     @IBAction func btnBonusDidPressed(){
-        
+        self.present(KKBonusViewController(), animated: false, completion: nil)
     }
     
     @IBAction func btnSettingsDidPressed(){
