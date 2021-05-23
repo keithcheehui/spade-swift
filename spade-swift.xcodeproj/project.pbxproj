@@ -59,6 +59,8 @@
 		53363E47264ACE26001F6B48 /* KKMyAffiliateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53363E46264ACE26001F6B48 /* KKMyAffiliateViewController.xib */; };
 		533CA6BB2631745C00768C08 /* KKHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533CA6BA2631745C00768C08 /* KKHomeViewController.xib */; };
 		533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CA6BD2631746800768C08 /* KKHomeViewController.swift */; };
+		53602F63265A5EF700137AD6 /* KKMessageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53602F62265A5EF700137AD6 /* KKMessageTableCell.swift */; };
+		53602F68265A5F0400137AD6 /* KKMessageTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53602F67265A5F0400137AD6 /* KKMessageTableCell.xib */; };
 		5365E1F82651195C005CB297 /* KKLiveCasinoItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E1F72651195C005CB297 /* KKLiveCasinoItemCell.swift */; };
 		5365E1FB26511965005CB297 /* KKLiveCasinoItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5365E1FA26511965005CB297 /* KKLiveCasinoItemCell.xib */; };
 		5365E200265122FC005CB297 /* KKSingleRowGameItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E1FF265122FC005CB297 /* KKSingleRowGameItemCell.swift */; };
@@ -73,6 +75,8 @@
 		5381D82F26495A9D003BBD2A /* KKAnnouncementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5381D82E26495A9D003BBD2A /* KKAnnouncementViewController.xib */; };
 		5381D834264961E2003BBD2A /* KKAnnouncementTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5381D833264961E2003BBD2A /* KKAnnouncementTableCell.xib */; };
 		5381D837264961EC003BBD2A /* KKAnnouncementTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5381D836264961EC003BBD2A /* KKAnnouncementTableCell.swift */; };
+		538A5888265A5BB800F0B03B /* KKMessageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538A5887265A5BB800F0B03B /* KKMessageListViewController.swift */; };
+		538A588B265A5BC400F0B03B /* KKMessageListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 538A588A265A5BC400F0B03B /* KKMessageListViewController.xib */; };
 		538FB07D2648012200F3E823 /* KKFaqViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538FB07C2648012200F3E823 /* KKFaqViewController.swift */; };
 		538FB0802648012B00F3E823 /* KKFaqViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 538FB07F2648012B00F3E823 /* KKFaqViewController.xib */; };
 		538FB090264825E000F3E823 /* KKLiveChatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 538FB08F264825E000F3E823 /* KKLiveChatCollectionViewCell.xib */; };
@@ -163,6 +167,8 @@
 		53363E46264ACE26001F6B48 /* KKMyAffiliateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKMyAffiliateViewController.xib; sourceTree = "<group>"; };
 		533CA6BA2631745C00768C08 /* KKHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKHomeViewController.xib; sourceTree = "<group>"; };
 		533CA6BD2631746800768C08 /* KKHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKHomeViewController.swift; sourceTree = "<group>"; };
+		53602F62265A5EF700137AD6 /* KKMessageTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKMessageTableCell.swift; sourceTree = "<group>"; };
+		53602F67265A5F0400137AD6 /* KKMessageTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKMessageTableCell.xib; sourceTree = "<group>"; };
 		5365E1F72651195C005CB297 /* KKLiveCasinoItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKLiveCasinoItemCell.swift; sourceTree = "<group>"; };
 		5365E1FA26511965005CB297 /* KKLiveCasinoItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKLiveCasinoItemCell.xib; sourceTree = "<group>"; };
 		5365E1FF265122FC005CB297 /* KKSingleRowGameItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSingleRowGameItemCell.swift; sourceTree = "<group>"; };
@@ -177,6 +183,8 @@
 		5381D82E26495A9D003BBD2A /* KKAnnouncementViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKAnnouncementViewController.xib; sourceTree = "<group>"; };
 		5381D833264961E2003BBD2A /* KKAnnouncementTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKAnnouncementTableCell.xib; sourceTree = "<group>"; };
 		5381D836264961EC003BBD2A /* KKAnnouncementTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAnnouncementTableCell.swift; sourceTree = "<group>"; };
+		538A5887265A5BB800F0B03B /* KKMessageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKMessageListViewController.swift; sourceTree = "<group>"; };
+		538A588A265A5BC400F0B03B /* KKMessageListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKMessageListViewController.xib; sourceTree = "<group>"; };
 		538FB07C2648012200F3E823 /* KKFaqViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKFaqViewController.swift; sourceTree = "<group>"; };
 		538FB07F2648012B00F3E823 /* KKFaqViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKFaqViewController.xib; sourceTree = "<group>"; };
 		538FB08F264825E000F3E823 /* KKLiveChatCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKLiveChatCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -354,6 +362,7 @@
 		0676B61E262FDC170023311F /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
+				53602F61265A5EDE00137AD6 /* Message Cell */,
 				067029D82641323500DFADAC /* Side Menu */,
 				538FB09526482B8000F3E823 /* Live Chat */,
 				5381D839264961F1003BBD2A /* Announcement */,
@@ -529,6 +538,15 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		53602F61265A5EDE00137AD6 /* Message Cell */ = {
+			isa = PBXGroup;
+			children = (
+				53602F62265A5EF700137AD6 /* KKMessageTableCell.swift */,
+				53602F67265A5F0400137AD6 /* KKMessageTableCell.xib */,
+			);
+			path = "Message Cell";
+			sourceTree = "<group>";
+		};
 		5365E1FD2651196A005CB297 /* Live Casino Item */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,6 +611,15 @@
 			path = Announcement;
 			sourceTree = "<group>";
 		};
+		538A5886265A5BA400F0B03B /* Message List */ = {
+			isa = PBXGroup;
+			children = (
+				538A5887265A5BB800F0B03B /* KKMessageListViewController.swift */,
+				538A588A265A5BC400F0B03B /* KKMessageListViewController.xib */,
+			);
+			path = "Message List";
+			sourceTree = "<group>";
+		};
 		538FB0822648013100F3E823 /* FAQ */ = {
 			isa = PBXGroup;
 			children = (
@@ -646,6 +673,7 @@
 			children = (
 				53AAAE0D26401B09004103F0 /* KKMessageViewController.swift */,
 				53AAAE1026401B12004103F0 /* KKMessageViewController.xib */,
+				538A5886265A5BA400F0B03B /* Message List */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -809,6 +837,7 @@
 				53AAAE1126401B12004103F0 /* KKMessageViewController.xib in Resources */,
 				5381D82F26495A9D003BBD2A /* KKAnnouncementViewController.xib in Resources */,
 				0676B5B4262FD6F30023311F /* LaunchScreen.storyboard in Resources */,
+				538A588B265A5BC400F0B03B /* KKMessageListViewController.xib in Resources */,
 				53268C1826307FC100ECAAE2 /* KKRegistrationViewController.xib in Resources */,
 				53AAAE3726401FF7004103F0 /* KKAffiliateViewController.xib in Resources */,
 				53E2FF232658CA3A0017CA67 /* KKBonusMenuTableCell.xib in Resources */,
@@ -847,6 +876,7 @@
 				532FF60E264FD0B300999512 /* KKGuidelineViewController.xib in Resources */,
 				53AAAE092640191A004103F0 /* KKRebateViewController.xib in Resources */,
 				53963E0D2639A37400D803D4 /* KKSettingsViewController.xib in Resources */,
+				53602F68265A5F0400137AD6 /* KKMessageTableCell.xib in Resources */,
 				53DF81D4265028FC00BA6119 /* KKSelectCountryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -930,8 +960,10 @@
 				5365E1F82651195C005CB297 /* KKLiveCasinoItemCell.swift in Sources */,
 				53AAAE2026401C40004103F0 /* KKDepositViewController.swift in Sources */,
 				538FB09326482B3500F3E823 /* KKLiveChatCollectionViewCell.swift in Sources */,
+				538A5888265A5BB800F0B03B /* KKMessageListViewController.swift in Sources */,
 				0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */,
 				0676B5FC262FD94A0023311F /* KKFont.swift in Sources */,
+				53602F63265A5EF700137AD6 /* KKMessageTableCell.swift in Sources */,
 				53DF81D1265028ED00BA6119 /* KKSelectCountryViewController.swift in Sources */,
 				53363E44264ACE0C001F6B48 /* KKMyAffiliateViewController.swift in Sources */,
 				53AAAE1626401BD0004103F0 /* KKSupportViewController.swift in Sources */,

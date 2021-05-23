@@ -111,6 +111,7 @@
 //MARK: Message
 "message_system_mail"                       = "System Mail";
 "message_notification"                      = "Notification";
+"message_title"                             = "0/1 Message will be deleted after 1 month";
 
 //MARK: Customer Service
 "support_live_chat"                         = "Live Chat";

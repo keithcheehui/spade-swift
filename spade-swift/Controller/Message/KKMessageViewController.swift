@@ -79,7 +79,7 @@ class KKMessageViewController: KKBaseViewController {
             break;
         default:
             imgHoverSystemMail.isHidden = false
-            changeView(vc: KKOnBoardingViewController())
+            changeView(vc: KKMessageListViewController())
             break;
         }
     }

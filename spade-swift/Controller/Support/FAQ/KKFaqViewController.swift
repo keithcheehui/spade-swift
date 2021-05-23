@@ -10,8 +10,6 @@ import UIKit
 
 class KKFaqViewController: KKBaseViewController, UITableViewDataSource, UITableViewDelegate {
     
-    
-    
     @IBOutlet weak var faqTableView: UITableView!
 
     var sections = ["FAQ Section 1", "FAQ Section 2", "FAQ Section 3"]

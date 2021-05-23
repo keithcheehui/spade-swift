@@ -59,6 +59,8 @@ struct CellIdentifier {
     static let announcementTVCIdentifier = "KKAnnouncementTableCell"
     static let bankTVCIdentifier = "KKBankTableCell"
     static let bonusTVCIdentifier = "KKBonusMenuTableCell"
+    static let messageTVCIdentifier = "KKMessageTableCell"
+    
 
     static let liveChatCVCIdentifier = "KKLiveChatCollectionViewCell"
     static let countryCVCIdentifier = "KKCountryItemCell"
