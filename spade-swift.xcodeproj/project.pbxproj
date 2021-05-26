@@ -59,6 +59,7 @@
 		53363E47264ACE26001F6B48 /* KKMyAffiliateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53363E46264ACE26001F6B48 /* KKMyAffiliateViewController.xib */; };
 		533CA6BB2631745C00768C08 /* KKHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533CA6BA2631745C00768C08 /* KKHomeViewController.xib */; };
 		533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CA6BD2631746800768C08 /* KKHomeViewController.swift */; };
+		5344FF61265E5E6B00313899 /* KKAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5344FF60265E5E6B00313899 /* KKAnimation.swift */; };
 		53602F63265A5EF700137AD6 /* KKMessageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53602F62265A5EF700137AD6 /* KKMessageTableCell.swift */; };
 		53602F68265A5F0400137AD6 /* KKMessageTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53602F67265A5F0400137AD6 /* KKMessageTableCell.xib */; };
 		5365E1F82651195C005CB297 /* KKLiveCasinoItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E1F72651195C005CB297 /* KKLiveCasinoItemCell.swift */; };
@@ -167,6 +168,7 @@
 		53363E46264ACE26001F6B48 /* KKMyAffiliateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKMyAffiliateViewController.xib; sourceTree = "<group>"; };
 		533CA6BA2631745C00768C08 /* KKHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKHomeViewController.xib; sourceTree = "<group>"; };
 		533CA6BD2631746800768C08 /* KKHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKHomeViewController.swift; sourceTree = "<group>"; };
+		5344FF60265E5E6B00313899 /* KKAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAnimation.swift; sourceTree = "<group>"; };
 		53602F62265A5EF700137AD6 /* KKMessageTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKMessageTableCell.swift; sourceTree = "<group>"; };
 		53602F67265A5F0400137AD6 /* KKMessageTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKMessageTableCell.xib; sourceTree = "<group>"; };
 		5365E1F72651195C005CB297 /* KKLiveCasinoItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKLiveCasinoItemCell.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				062C397C2632C74200E86EEA /* KKApiRouter.swift */,
 				062C39802632C92C00E86EEA /* KKApiClient.swift */,
 				0676B5EF262FD7F20023311F /* KKUtil.swift */,
+				5344FF60265E5E6B00313899 /* KKAnimation.swift */,
 				0676B5F2262FD8520023311F /* KKConstant.swift */,
 				0676B5F5262FD8BD0023311F /* KKSingleton.swift */,
 				0676B5F8262FD8E40023311F /* KKColor.swift */,
@@ -978,6 +981,7 @@
 				06051B2926371E7900130057 /* KKSplashScreenViewController.swift in Sources */,
 				0676B616262FDB790023311F /* KKAlertControllerTransition.swift in Sources */,
 				53C64EFD263700E10068F03E /* KKPersonalViewController.swift in Sources */,
+				5344FF61265E5E6B00313899 /* KKAnimation.swift in Sources */,
 				0676B5AA262FD6EF0023311F /* SceneDelegate.swift in Sources */,
 				062C397D2632C74200E86EEA /* KKApiRouter.swift in Sources */,
 				0676B5F0262FD7F20023311F /* KKUtil.swift in Sources */,
@@ -1146,7 +1150,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = ZB74P7LU6H;
 				INFOPLIST_FILE = "$(SRCROOT)/spade-swift/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1171,7 +1175,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = ZB74P7LU6H;
 				INFOPLIST_FILE = "$(SRCROOT)/spade-swift/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
