@@ -29,14 +29,17 @@ class KKRegistrationViewController: KKBaseViewController, UITextFieldDelegate {
     @IBOutlet weak var imgCloseWidth: NSLayoutConstraint!
     @IBOutlet weak var usernameContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var lblUsernameWidth: NSLayoutConstraint!
-    @IBOutlet weak var txtUsernameWidth: NSLayoutConstraint!
-    @IBOutlet weak var btnConfirmWidth: NSLayoutConstraint!
+    @IBOutlet weak var btnConfirmHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var containerMarginTop: NSLayoutConstraint!
+    @IBOutlet weak var containerMarginBottom: NSLayoutConstraint!
+    @IBOutlet weak var containerMarginLeft: NSLayoutConstraint!
+    @IBOutlet weak var containerMarginRight: NSLayoutConstraint!
     @IBOutlet weak var usernameContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var usernameContainerMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var usernameContainerMarginRight: NSLayoutConstraint!
     @IBOutlet weak var passwordContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var confirmPasswordContainerMarginTop: NSLayoutConstraint!
-    @IBOutlet weak var btnConfirmContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmContainerMarginBottom: NSLayoutConstraint!
     
     
@@ -61,14 +64,17 @@ class KKRegistrationViewController: KKBaseViewController, UITextFieldDelegate {
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
         usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
         lblUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
-        txtUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 300)
-        btnConfirmWidth.constant = KKUtil.ConvertSizeByDensity(size: 200)
+        btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        
+        containerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 20)
+        containerMarginBottom.constant = containerMarginTop.constant
+        containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 100 : 130)
+        containerMarginRight.constant = containerMarginLeft.constant
         usernameContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 50)
-        usernameContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 50)
-        usernameContainerMarginRight.constant = KKUtil.ConvertSizeByDensity(size: 80)
+        usernameContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 60)
+        usernameContainerMarginRight.constant = usernameContainerMarginLeft.constant
         passwordContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 16)
         confirmPasswordContainerMarginTop.constant = passwordContainerMarginTop.constant
-        btnConfirmContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 40)
         btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
         
         lblUsername.text = KKUtil.languageSelectedStringForKey(key: "register_username")
@@ -101,7 +107,7 @@ class KKRegistrationViewController: KKBaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func btnConfirmDidPressed(){
-        
+        self.dismiss(animated: false, completion: nil)
     }
     
     ///TextField Delegate

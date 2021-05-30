@@ -29,6 +29,14 @@
 "register_confirm_password"                 = "Confirm Password:";
 "register_confirm_password_placeholder"     = "Please re-enter your password";
 
+//MARK: OTP
+"otp_mobile"                                = "Mobile Number:";
+"otp_mobile_placeholder"                    = "Please enter your phone number";
+"otp_digit"                                 = "Enter 4 digit OTP:";
+"otp_did_you_receive"                       = "Didn't receive the OTP?";
+"otp_resend"                                = "Resend in ";
+
+
 //MARK: HOME
 "home_copy_id"                              = "COPY ID";
 "home_mission"                              = "Mission";

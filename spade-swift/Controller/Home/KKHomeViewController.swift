@@ -21,6 +21,7 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var expBar: UIProgressView!
     @IBOutlet weak var moneyContainer: UIView!
     @IBOutlet weak var lblMoney: UILabel!
+    @IBOutlet weak var lblCountry: UILabel!
     @IBOutlet weak var lblMission: UILabel!
     @IBOutlet weak var lblBonus: UILabel!
     @IBOutlet weak var lblSettings: UILabel!
@@ -28,6 +29,9 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var announcementContainer: UIView!
     @IBOutlet weak var lblAnnouncement: UILabel!
     
+    ///Guest
+    @IBOutlet weak var guestContainer: UIView!
+
     ///Content
     @IBOutlet weak var menuContainer: UIView!
     @IBOutlet weak var menuCollectionView: UICollectionView!
@@ -49,7 +53,7 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var imgCoinWidth: NSLayoutConstraint!
     @IBOutlet weak var imgRefreshWidth: NSLayoutConstraint!
     @IBOutlet weak var topContainerHeight: NSLayoutConstraint!
-    @IBOutlet weak var missionContainerWidth: NSLayoutConstraint!
+    @IBOutlet weak var topButtonsContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var announcementContainerWidth: NSLayoutConstraint!
     @IBOutlet weak var announcementContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var footerContainerHeight: NSLayoutConstraint!
@@ -65,6 +69,7 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
         initFlowLayout()
         
         buttonHover(type: selectedGameType)
+        setupGuestView(isGuest: true)
     }
     
     func initialLayout(){
@@ -77,7 +82,7 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
         moneyContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
         imgCoinWidth.constant = KKUtil.ConvertSizeByDensity(size: 40)
         imgRefreshWidth.constant = KKUtil.ConvertSizeByDensity(size: 18)
-        missionContainerWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 45 : 40)
+        topButtonsContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         announcementContainerWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 350 : 400)
         announcementContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         footerContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
@@ -102,6 +107,7 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
         lblCopy.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 11))
         lblMoney.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 13))
         lblMission.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+        lblCountry.font = lblMission.font
         lblBonus.font = lblMission.font
         lblSettings.font = lblMission.font
         lblLanguage.font = lblMission.font
@@ -117,6 +123,7 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
         lblMoney.text = "999,999,999"
         lblAnnouncement.text = "Welcome Welcome Welcome Welcome Welcome"
         lblLanguage.text = "English"
+        lblCountry.text = "Malaysia"
         
         copyContainer.backgroundColor = UIColor(white: 0, alpha: 0.8)
         copyContainer.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 9 : 10)
@@ -218,6 +225,21 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
         return menuName
     }
     
+    func setupGuestView(isGuest: Bool){
+        if isGuest {
+            guestContainer.isHidden = false
+            copyContainer.isHidden = true
+            lblVip.isHidden = true
+            expBar.isHidden = true
+            
+        } else {
+            guestContainer.isHidden = true
+            copyContainer.isHidden = false
+            lblVip.isHidden = false
+            expBar.isHidden = false
+        }
+    }
+    
     func buttonHover(type: Int){
         selectedGameType = type
         updateLobbyBackgroundImage(gameType: type)
@@ -254,8 +276,21 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
     @IBAction func btnCopyDidPressed(){
         
     }
+    
+    @IBAction func btnLoginDidPressed(){
+        self.present(KKLoginViewController(), animated: false, completion: nil)
+    }
+    
+    @IBAction func btnRegisterDidPressed(){
+        self.present(KKOTPViewController(), animated: false, completion: nil)
+    }
+    
 
     @IBAction func btnRefreshDidPressed(){
+        
+    }
+    
+    @IBAction func btnCountryDidPressed(){
         
     }
     

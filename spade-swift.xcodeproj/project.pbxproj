@@ -84,6 +84,8 @@
 		538FB09326482B3500F3E823 /* KKLiveChatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538FB09226482B3500F3E823 /* KKLiveChatCollectionViewCell.swift */; };
 		53963E0A2639A36C00D803D4 /* KKSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53963E092639A36C00D803D4 /* KKSettingsViewController.swift */; };
 		53963E0D2639A37400D803D4 /* KKSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53963E0C2639A37400D803D4 /* KKSettingsViewController.xib */; };
+		539A0FA1266343440098739E /* KKOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539A0FA0266343440098739E /* KKOTPViewController.swift */; };
+		539A0FA4266343510098739E /* KKOTPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 539A0FA3266343510098739E /* KKOTPViewController.xib */; };
 		53AAAE06264018E3004103F0 /* KKRebateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AAAE05264018E3004103F0 /* KKRebateViewController.swift */; };
 		53AAAE092640191A004103F0 /* KKRebateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53AAAE082640191A004103F0 /* KKRebateViewController.xib */; };
 		53AAAE0E26401B09004103F0 /* KKMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AAAE0D26401B09004103F0 /* KKMessageViewController.swift */; };
@@ -193,6 +195,8 @@
 		538FB09226482B3500F3E823 /* KKLiveChatCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKLiveChatCollectionViewCell.swift; sourceTree = "<group>"; };
 		53963E092639A36C00D803D4 /* KKSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSettingsViewController.swift; sourceTree = "<group>"; };
 		53963E0C2639A37400D803D4 /* KKSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKSettingsViewController.xib; sourceTree = "<group>"; };
+		539A0FA0266343440098739E /* KKOTPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKOTPViewController.swift; sourceTree = "<group>"; };
+		539A0FA3266343510098739E /* KKOTPViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKOTPViewController.xib; sourceTree = "<group>"; };
 		53AAAE05264018E3004103F0 /* KKRebateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKRebateViewController.swift; sourceTree = "<group>"; };
 		53AAAE082640191A004103F0 /* KKRebateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKRebateViewController.xib; sourceTree = "<group>"; };
 		53AAAE0D26401B09004103F0 /* KKMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKMessageViewController.swift; sourceTree = "<group>"; };
@@ -488,6 +492,8 @@
 		53268C1A26307FC700ECAAE2 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				539A0FA0266343440098739E /* KKOTPViewController.swift */,
+				539A0FA3266343510098739E /* KKOTPViewController.xib */,
 				53268C1426307FB800ECAAE2 /* KKRegistrationViewController.swift */,
 				53268C1726307FC100ECAAE2 /* KKRegistrationViewController.xib */,
 			);
@@ -851,6 +857,7 @@
 				53268C0D263068F600ECAAE2 /* KKLoginViewController.xib in Resources */,
 				53268C062630612900ECAAE2 /* KKOnBoardingViewController.xib in Resources */,
 				0676B668263095EE0023311F /* Localizable.strings in Resources */,
+				539A0FA4266343510098739E /* KKOTPViewController.xib in Resources */,
 				5317F246264C2B420076D69B /* KKBankListViewController.xib in Resources */,
 				5317F235264C223A0076D69B /* KKBankTableCell.xib in Resources */,
 				532FF616264FE03500999512 /* KKWithdrawCommissionViewController.xib in Resources */,
@@ -984,6 +991,7 @@
 				5344FF61265E5E6B00313899 /* KKAnimation.swift in Sources */,
 				0676B5AA262FD6EF0023311F /* SceneDelegate.swift in Sources */,
 				062C397D2632C74200E86EEA /* KKApiRouter.swift in Sources */,
+				539A0FA1266343440098739E /* KKOTPViewController.swift in Sources */,
 				0676B5F0262FD7F20023311F /* KKUtil.swift in Sources */,
 				53E2FF0F2658BDE00017CA67 /* KKBonusViewController.swift in Sources */,
 				062C39852632C98600E86EEA /* KKApiErrorDetails.swift in Sources */,

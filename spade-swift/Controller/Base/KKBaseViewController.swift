@@ -72,6 +72,18 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     @objc func dismissBtnClicked() {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    //MARK:- OTP and Registration
+    @objc func closeOTPAndOpenRegistration() {
+//        self.dismiss(animated: false, completion: {
+//            self.present(KKRegistrationViewController(), animated: false, completion: nil)
+//        })
+        weak var pvc = self.presentingViewController
+
+        self.dismiss(animated: true, completion: {
+            pvc?.present(KKRegistrationViewController(), animated: true, completion: nil)
+        })
+    }
 }
 
 extension UIDevice {

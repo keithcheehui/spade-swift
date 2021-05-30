@@ -28,15 +28,18 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
     @IBOutlet weak var imgCloseWidth: NSLayoutConstraint!
     @IBOutlet weak var usernameContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var lblUsernameWidth: NSLayoutConstraint!
-    @IBOutlet weak var txtUsernameWidth: NSLayoutConstraint!
-    @IBOutlet weak var btnConfirmWidth: NSLayoutConstraint!
+    @IBOutlet weak var btnConfirmHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var containerMarginTop: NSLayoutConstraint!
+    @IBOutlet weak var containerMarginBottom: NSLayoutConstraint!
+    @IBOutlet weak var containerMarginLeft: NSLayoutConstraint!
+    @IBOutlet weak var containerMarginRight: NSLayoutConstraint!
     @IBOutlet weak var rememberMeCheckboxWidth: NSLayoutConstraint!
     @IBOutlet weak var usernameContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var usernameContainerMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var usernameContainerMarginRight: NSLayoutConstraint!
     @IBOutlet weak var passwordContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var rememberMeContainerMarginTop: NSLayoutConstraint!
-    @IBOutlet weak var btnConfirmContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmContainerMarginBottom: NSLayoutConstraint!
     
     
@@ -61,15 +64,18 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
         usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
         lblUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 100)
-        txtUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 300)
-        btnConfirmWidth.constant = KKUtil.ConvertSizeByDensity(size: 200)
+        btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        
+        containerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 20)
+        containerMarginBottom.constant = containerMarginTop.constant
+        containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 100 : 130)
+        containerMarginRight.constant = containerMarginLeft.constant
         rememberMeCheckboxWidth.constant = KKUtil.ConvertSizeByDensity(size: 20)
         usernameContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 50)
         usernameContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 80)
         usernameContainerMarginRight.constant = usernameContainerMarginLeft.constant
         passwordContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 16)
         rememberMeContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 8)
-        btnConfirmContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 40)
         btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
         
         lblUsername.text = KKUtil.languageSelectedStringForKey(key: "login_username")
@@ -116,7 +122,7 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
     }
     
     @IBAction func btnConfirmDidPressed(){
-        
+        self.dismiss(animated: false, completion: nil)
     }
     
     ///TextField Delegate
