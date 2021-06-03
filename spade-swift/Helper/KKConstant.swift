@@ -53,6 +53,45 @@ struct CacheKey {
     static let loginStatus = "LOGIN_STATUS"
 }
 
+struct APIKeys {
+    static let platform = "p"
+    static let phoneNumber = "phone_number"
+    static let OTPCode = "otp_code"
+    static let username = "username"
+    static let password = "password"
+    static let confirmPassword = "confirm_password"
+    static let type = " type"
+    static let registrationPlatform = "register_platform"
+    static let locale = "locale"
+    static let countryCode = "country_code"
+}
+
+struct Platform {
+    static let iOS = "ios"
+}
+
+struct LoginType {
+    static let username = "username"
+}
+
+struct RegistrationType {
+    static let phoneNumber = "phone_number"
+}
+
+struct CountryCode {
+    static let Malaysia     = "MYS"
+    static let Thailand     = "THA"
+    static let Singapore    = "SGP"
+    static let Indonesia    = "IDN"
+}
+
+struct LocaleCode {
+    static let English = "en"
+    static let Thailand = "th"
+    static let Malay = "ms"
+    static let Mandarin = "zh-CN"
+}
+
 struct CellIdentifier {
     
     static let sideMenuTVCIdentifier = "SIDE_MENU_TABLE_CELL_IDENTIFIER"
@@ -74,11 +113,11 @@ struct CellIdentifier {
 struct Spade {
     
     struct DevServer {
-        static let baseApiURL: String = ""
+        static let baseApiURL: String = "https://legend.fteg.dev/api/"
     }
     
     struct ProdServer {
-        static let baseApiURL: String = ""
+        static let baseApiURL: String = "https://legend.fteg.dev/api/"
     }
 }
 
@@ -91,4 +130,14 @@ struct GameType {
     static let sports = 5
     static let lottery = 6
     static let esports = 7
+}
+
+enum HTTPHeaderField: String {
+    
+    case contentType = "Content-Type"
+}
+
+enum ContentType: String {
+    
+    case json = "application/json"
 }

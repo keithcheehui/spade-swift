@@ -33,7 +33,7 @@ class KKApiClient: NSObject {
                     do {
                         
                         let apiErrorDetail = try decoder.decode(KKApiErrorDetails.self, from: data)
-                        guard let apiError = apiErrorDetail.error
+                        guard let apiError = apiErrorDetail.status
                             else {
                             
                             guard let apiMessage = apiErrorDetail.message
@@ -53,7 +53,87 @@ class KKApiClient: NSObject {
             })
         })
     }
+    
+    //MARK:- Version Control
+    
+    static func getAppVersion() -> Future<KKAppVersionResponse> {
+        
+        let parameter = [APIKeys.platform       : Platform.iOS,
+                        ] as [String : Any]
+        
+        return performRequest(route: .appVersion(parameter: parameter))
+    }
 
+    //MARK:- OTP
+    
+    static func sendOTPRequest(phoneNumber: String) -> Future<KKOTPRequestResponse> {
+        
+        let parameter = [APIKeys.phoneNumber    : phoneNumber,
+                        ] as [String : Any]
+     
+        return performRequest(route: .otpRequest(parameter: parameter))
+    }
+    
+    static func proceedOTPVerification(phoneNumber: String, otpCode: String) -> Future<KKGeneralResponse> {
+        
+        let parameter = [APIKeys.phoneNumber    : phoneNumber,
+                         APIKeys.OTPCode        : otpCode
+                        ] as [String : Any]
+     
+        return performRequest(route: .otpVerify(parameter: parameter))
+    }
+    
+    //MARK:- User Authentication Flow
+    
+    static func userAccountLogin(username: String, password: String) -> Future<KKUserCredential> {
+        
+        let parameter = [APIKeys.username       : username,
+                         APIKeys.password       : password,
+                         APIKeys.type           : LoginType.username,
+                        ] as [String : Any]
+        
+        return performRequest(route: .userAccountLogin(parameter: parameter))
+    }
+    
+    static func userAccountRegistration(username: String, password: String, phoneNumber: String) -> Future<KKUserCredential> {
+        
+        let parameter = [APIKeys.username               : username,
+                         APIKeys.password               : password,
+                         APIKeys.confirmPassword        : password,
+                         APIKeys.phoneNumber            : phoneNumber,
+                         APIKeys.registrationPlatform   : Platform.iOS,
+                         APIKeys.type                   : RegistrationType.phoneNumber,
+                        ] as [String : Any]
+        
+        return performRequest(route: .userAccountRegistration(parameter: parameter))
+    }
+    
+    //MARK:- Content
+    
+    static func getContentAnnouncement() ->  Future<KKAnnouncementResponse> {
+        
+        let parameter = [APIKeys.locale    : LocaleCode.English,
+                        ] as [String : Any]
+        
+        return performRequest(route: .getAnnouncementContent(parameter: parameter))
+    }
+    
+    static func getContentGroupsAndPlatform() -> Future<KKGroupPlatformResponse> {
+        
+        let parameter = [APIKeys.locale         : LocaleCode.English,
+                         APIKeys.countryCode    : CountryCode.Malaysia
+                        ] as [String : Any]
+        
+        return performRequest(route: .getGroupAndPlatformContent(parameter: parameter))
+    }
+    
+    static func getAllPlatformProduct() -> Future<KKPlatformProductResponse> {
+        
+        let parameter = [APIKeys.locale    : LocaleCode.English,
+                        ] as [String : Any]
+        
+        return performRequest(route: .getPlatformProductsContent(parameter: parameter))
+    }
 }
 
 extension URL {

@@ -10,14 +10,32 @@ import Alamofire
 
 enum ApiRouter: URLRequestConvertible {
     
+    case appVersion(parameter: [String: Any])
+    case otpRequest(parameter: [String: Any])
+    case otpVerify(parameter: [String: Any])
     case userAccountLogin(parameter: [String: Any])
+    case userAccountRegistration(parameter: [String: Any])
+    case userForgotPassword(parameter: [String: Any])
+    case getAnnouncementContent(parameter: [String: Any])
+    case getGroupAndPlatformContent(parameter: [String: Any])
+    case getPlatformProductsContent(parameter: [String: Any])
     
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         
         switch self {
         
-        case .userAccountLogin:
+        case .appVersion,
+             .getAnnouncementContent,
+             .getGroupAndPlatformContent,
+             .getPlatformProductsContent:
+            return .get
+        
+        case .otpRequest,
+             .otpVerify,
+             .userAccountLogin,
+             .userAccountRegistration,
+             .userForgotPassword:
             return .post
             
         }
@@ -27,9 +45,33 @@ enum ApiRouter: URLRequestConvertible {
     private var path: String {
         
         switch self {
+        
+        case .appVersion:
+            return "app/version"
+        
+        case .otpRequest:
+            return "otp/request"
+        
+        case .otpVerify:
+            return "otp/verify"
             
         case .userAccountLogin:
-            return ""
+            return "login"
+            
+        case .userAccountRegistration:
+            return "register"
+            
+        case .userForgotPassword:
+            return "password/forgot"
+            
+        case .getAnnouncementContent:
+            return "app/content/announcements"
+            
+        case .getGroupAndPlatformContent:
+            return "app/content/groupsAndPlatforms"
+            
+        case .getPlatformProductsContent:
+            return "app/content/products"
             
         }
     }
@@ -38,18 +80,55 @@ enum ApiRouter: URLRequestConvertible {
     private var parameters: Parameters? {
            
         switch self {
+        
+        case .appVersion(let parameter):
+            return parameter
+            
+        case .otpRequest(let parameter):
+            return parameter
+            
+        case .otpVerify(let parameter):
+            return parameter
             
         case .userAccountLogin(let parameter):
             return parameter
+            
+        case .userAccountRegistration(let parameter):
+            return parameter
+            
+        case .userForgotPassword(let parameter):
+            return parameter
+            
+        case .getAnnouncementContent(let parameter):
+            return parameter
+            
+        case .getGroupAndPlatformContent(let parameter):
+            return parameter
+            
+        case .getPlatformProductsContent(let parameter):
+            return parameter
+            
         }
     }
     
     func asURLRequest() throws -> URLRequest {
         
-        let url : URL = try Spade.DevServer.baseApiURL.asURL()
+        let url : URL = try Spade.ProdServer.baseApiURL.asURL()
         
         var urlRequest : URLRequest = URLRequest(url: url.appendingPathComponent(path))
+        
+        if (method.rawValue == "GET" && parameters != nil)
+        {
+            let dict: NSDictionary = parameters! as NSDictionary
+
+            for i in 0 ..< dict.allKeys.count {
+
+                urlRequest = URLRequest(url: KKUtil.addQueryParams(url: urlRequest.url!, newParams: [URLQueryItem.init(name: dict.allKeys[i] as! String, value: (dict.object(forKey: dict.allKeys[i]) as! String))])!)
+            }
+        }
+        
         urlRequest.httpMethod = method.rawValue
+        urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
 
         // Parameters
         if let parameters = parameters

@@ -30,6 +30,28 @@
 		0676B616262FDB790023311F /* KKAlertControllerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B615262FDB790023311F /* KKAlertControllerTransition.swift */; };
 		0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B623262FDC8F0023311F /* KKBaseViewController.swift */; };
 		0676B668263095EE0023311F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0676B66A263095EE0023311F /* Localizable.strings */; };
+		06BF5C0F2669776E00C10008 /* KKOTPRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C0D2669776E00C10008 /* KKOTPRequestResponse.swift */; };
+		06BF5C102669776E00C10008 /* KKOTPRequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C0E2669776E00C10008 /* KKOTPRequestData.swift */; };
+		06BF5C16266977B200C10008 /* KKAppVersionResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C11266977B200C10008 /* KKAppVersionResults.swift */; };
+		06BF5C17266977B200C10008 /* KKAppVersionCountries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C12266977B200C10008 /* KKAppVersionCountries.swift */; };
+		06BF5C18266977B200C10008 /* KKAppVersionLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C13266977B200C10008 /* KKAppVersionLanguages.swift */; };
+		06BF5C19266977B200C10008 /* KKAppVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C14266977B200C10008 /* KKAppVersionResponse.swift */; };
+		06BF5C1A266977B200C10008 /* KKAppVersionAppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C15266977B200C10008 /* KKAppVersionAppVersion.swift */; };
+		06BF5C1D2669795500C10008 /* KKGeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C1C2669795500C10008 /* KKGeneralResponse.swift */; };
+		06BF5C2326697A1900C10008 /* KKUserCredentialDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C1F26697A1900C10008 /* KKUserCredentialDetails.swift */; };
+		06BF5C2426697A1900C10008 /* KKUserCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C2026697A1900C10008 /* KKUserCredential.swift */; };
+		06BF5C2526697A1900C10008 /* KKUserCredentialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C2126697A1900C10008 /* KKUserCredentialData.swift */; };
+		06BF5C2626697A1900C10008 /* KKUserCredentialTierDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C2226697A1900C10008 /* KKUserCredentialTierDetails.swift */; };
+		06BF5C2B2669803300C10008 /* KKAnnouncementResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C282669803300C10008 /* KKAnnouncementResults.swift */; };
+		06BF5C2C2669803300C10008 /* KKAnnouncementDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C292669803300C10008 /* KKAnnouncementDetails.swift */; };
+		06BF5C2D2669803300C10008 /* KKAnnouncementResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C2A2669803300C10008 /* KKAnnouncementResponse.swift */; };
+		06BF5C332669814C00C10008 /* KKGroupPlatformResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C2F2669814C00C10008 /* KKGroupPlatformResponse.swift */; };
+		06BF5C342669814C00C10008 /* KKGroupPlatformDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C302669814C00C10008 /* KKGroupPlatformDetails.swift */; };
+		06BF5C352669814C00C10008 /* KKGroupPlatformGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C312669814C00C10008 /* KKGroupPlatformGroups.swift */; };
+		06BF5C362669814C00C10008 /* KKGroupPlatformResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C322669814C00C10008 /* KKGroupPlatformResults.swift */; };
+		06BF5C3B2669833100C10008 /* KKPlatformProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C382669833100C10008 /* KKPlatformProductDetails.swift */; };
+		06BF5C3C2669833100C10008 /* KKPlatformProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C392669833100C10008 /* KKPlatformProductResponse.swift */; };
+		06BF5C3D2669833100C10008 /* KKPlatformProductResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C3A2669833100C10008 /* KKPlatformProductResults.swift */; };
 		3ED808A9A35A15A51B9CD1B0 /* Pods_spade_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */; };
 		5317F22A264C10050076D69B /* KKWithdrawRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317F229264C10050076D69B /* KKWithdrawRequestViewController.swift */; };
 		5317F22D264C100E0076D69B /* KKWithdrawRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5317F22C264C100E0076D69B /* KKWithdrawRequestViewController.xib */; };
@@ -140,6 +162,28 @@
 		0676B660263095560023311F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0676B661263095560023311F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0676B669263095EE0023311F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		06BF5C0D2669776E00C10008 /* KKOTPRequestResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKOTPRequestResponse.swift; sourceTree = "<group>"; };
+		06BF5C0E2669776E00C10008 /* KKOTPRequestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKOTPRequestData.swift; sourceTree = "<group>"; };
+		06BF5C11266977B200C10008 /* KKAppVersionResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKAppVersionResults.swift; sourceTree = "<group>"; };
+		06BF5C12266977B200C10008 /* KKAppVersionCountries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKAppVersionCountries.swift; sourceTree = "<group>"; };
+		06BF5C13266977B200C10008 /* KKAppVersionLanguages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKAppVersionLanguages.swift; sourceTree = "<group>"; };
+		06BF5C14266977B200C10008 /* KKAppVersionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKAppVersionResponse.swift; sourceTree = "<group>"; };
+		06BF5C15266977B200C10008 /* KKAppVersionAppVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKAppVersionAppVersion.swift; sourceTree = "<group>"; };
+		06BF5C1C2669795500C10008 /* KKGeneralResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKGeneralResponse.swift; sourceTree = "<group>"; };
+		06BF5C1F26697A1900C10008 /* KKUserCredentialDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserCredentialDetails.swift; sourceTree = "<group>"; };
+		06BF5C2026697A1900C10008 /* KKUserCredential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserCredential.swift; sourceTree = "<group>"; };
+		06BF5C2126697A1900C10008 /* KKUserCredentialData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserCredentialData.swift; sourceTree = "<group>"; };
+		06BF5C2226697A1900C10008 /* KKUserCredentialTierDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserCredentialTierDetails.swift; sourceTree = "<group>"; };
+		06BF5C282669803300C10008 /* KKAnnouncementResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKAnnouncementResults.swift; sourceTree = "<group>"; };
+		06BF5C292669803300C10008 /* KKAnnouncementDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKAnnouncementDetails.swift; sourceTree = "<group>"; };
+		06BF5C2A2669803300C10008 /* KKAnnouncementResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKAnnouncementResponse.swift; sourceTree = "<group>"; };
+		06BF5C2F2669814C00C10008 /* KKGroupPlatformResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKGroupPlatformResponse.swift; sourceTree = "<group>"; };
+		06BF5C302669814C00C10008 /* KKGroupPlatformDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKGroupPlatformDetails.swift; sourceTree = "<group>"; };
+		06BF5C312669814C00C10008 /* KKGroupPlatformGroups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKGroupPlatformGroups.swift; sourceTree = "<group>"; };
+		06BF5C322669814C00C10008 /* KKGroupPlatformResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKGroupPlatformResults.swift; sourceTree = "<group>"; };
+		06BF5C382669833100C10008 /* KKPlatformProductDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKPlatformProductDetails.swift; sourceTree = "<group>"; };
+		06BF5C392669833100C10008 /* KKPlatformProductResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKPlatformProductResponse.swift; sourceTree = "<group>"; };
+		06BF5C3A2669833100C10008 /* KKPlatformProductResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKPlatformProductResults.swift; sourceTree = "<group>"; };
 		1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spade_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E2D902D25F2E5F3802521A0 /* Pods-spade-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spade-swift.release.xcconfig"; path = "Target Support Files/Pods-spade-swift/Pods-spade-swift.release.xcconfig"; sourceTree = "<group>"; };
 		5317F229264C10050076D69B /* KKWithdrawRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKWithdrawRequestViewController.swift; sourceTree = "<group>"; };
@@ -387,6 +431,13 @@
 		0676B61F262FDC320023311F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				06BF5C1B2669791600C10008 /* General */,
+				06BF5C012669762200C10008 /* App Version */,
+				06BF5C0C2669774B00C10008 /* OTP */,
+				06BF5C1E266979BB00C10008 /* User Credential */,
+				06BF5C272669802100C10008 /* Announcement */,
+				06BF5C2E2669813900C10008 /* Group and Platforms */,
+				06BF5C372669831E00C10008 /* Platform Product */,
 				062C39832632C96A00E86EEA /* Api Error */,
 			);
 			path = Model;
@@ -398,6 +449,77 @@
 				0676B623262FDC8F0023311F /* KKBaseViewController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		06BF5C012669762200C10008 /* App Version */ = {
+			isa = PBXGroup;
+			children = (
+				06BF5C15266977B200C10008 /* KKAppVersionAppVersion.swift */,
+				06BF5C12266977B200C10008 /* KKAppVersionCountries.swift */,
+				06BF5C13266977B200C10008 /* KKAppVersionLanguages.swift */,
+				06BF5C14266977B200C10008 /* KKAppVersionResponse.swift */,
+				06BF5C11266977B200C10008 /* KKAppVersionResults.swift */,
+			);
+			path = "App Version";
+			sourceTree = "<group>";
+		};
+		06BF5C0C2669774B00C10008 /* OTP */ = {
+			isa = PBXGroup;
+			children = (
+				06BF5C0E2669776E00C10008 /* KKOTPRequestData.swift */,
+				06BF5C0D2669776E00C10008 /* KKOTPRequestResponse.swift */,
+			);
+			path = OTP;
+			sourceTree = "<group>";
+		};
+		06BF5C1B2669791600C10008 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				06BF5C1C2669795500C10008 /* KKGeneralResponse.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		06BF5C1E266979BB00C10008 /* User Credential */ = {
+			isa = PBXGroup;
+			children = (
+				06BF5C2126697A1900C10008 /* KKUserCredentialData.swift */,
+				06BF5C2226697A1900C10008 /* KKUserCredentialTierDetails.swift */,
+				06BF5C1F26697A1900C10008 /* KKUserCredentialDetails.swift */,
+				06BF5C2026697A1900C10008 /* KKUserCredential.swift */,
+			);
+			path = "User Credential";
+			sourceTree = "<group>";
+		};
+		06BF5C272669802100C10008 /* Announcement */ = {
+			isa = PBXGroup;
+			children = (
+				06BF5C292669803300C10008 /* KKAnnouncementDetails.swift */,
+				06BF5C2A2669803300C10008 /* KKAnnouncementResponse.swift */,
+				06BF5C282669803300C10008 /* KKAnnouncementResults.swift */,
+			);
+			path = Announcement;
+			sourceTree = "<group>";
+		};
+		06BF5C2E2669813900C10008 /* Group and Platforms */ = {
+			isa = PBXGroup;
+			children = (
+				06BF5C312669814C00C10008 /* KKGroupPlatformGroups.swift */,
+				06BF5C302669814C00C10008 /* KKGroupPlatformDetails.swift */,
+				06BF5C2F2669814C00C10008 /* KKGroupPlatformResponse.swift */,
+				06BF5C322669814C00C10008 /* KKGroupPlatformResults.swift */,
+			);
+			path = "Group and Platforms";
+			sourceTree = "<group>";
+		};
+		06BF5C372669831E00C10008 /* Platform Product */ = {
+			isa = PBXGroup;
+			children = (
+				06BF5C382669833100C10008 /* KKPlatformProductDetails.swift */,
+				06BF5C392669833100C10008 /* KKPlatformProductResponse.swift */,
+				06BF5C3A2669833100C10008 /* KKPlatformProductResults.swift */,
+			);
+			path = "Platform Product";
 			sourceTree = "<group>";
 		};
 		1285A7FD2AD630CB1857867C /* Frameworks */ = {
@@ -943,11 +1065,13 @@
 				062C39812632C92C00E86EEA /* KKApiClient.swift in Sources */,
 				538FB07D2648012200F3E823 /* KKFaqViewController.swift in Sources */,
 				5365E208265124D0005CB297 /* KKGameListViewController.swift in Sources */,
+				06BF5C16266977B200C10008 /* KKAppVersionResults.swift in Sources */,
 				067029DA2641326E00DFADAC /* KKSideMenuTableViewCell.swift in Sources */,
 				532FF613264FE02B00999512 /* KKWithdrawCommissionViewController.swift in Sources */,
 				532FF61C264FF76D00999512 /* KKLiveCasinoViewController.swift in Sources */,
 				0676B612262FDAFE0023311F /* SKResult.swift in Sources */,
 				0676B5AC262FD6EF0023311F /* ViewController.swift in Sources */,
+				06BF5C3B2669833100C10008 /* KKPlatformProductDetails.swift in Sources */,
 				53E2FF282658CC730017CA67 /* KKBonusItemCell.swift in Sources */,
 				067029D62641278300DFADAC /* KKPersonalPageViewController.swift in Sources */,
 				0676B5F3262FD8520023311F /* KKConstant.swift in Sources */,
@@ -955,10 +1079,15 @@
 				533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */,
 				5381D82C26495A94003BBD2A /* KKAnnouncementViewController.swift in Sources */,
 				5317F23B264C2A8E0076D69B /* KKAddBankViewController.swift in Sources */,
+				06BF5C352669814C00C10008 /* KKGroupPlatformGroups.swift in Sources */,
 				53E2FF182658C5A00017CA67 /* KKBonusContentViewController.swift in Sources */,
+				06BF5C2526697A1900C10008 /* KKUserCredentialData.swift in Sources */,
 				5317F22A264C10050076D69B /* KKWithdrawRequestViewController.swift in Sources */,
 				53963E0A2639A36C00D803D4 /* KKSettingsViewController.swift in Sources */,
+				06BF5C1D2669795500C10008 /* KKGeneralResponse.swift in Sources */,
+				06BF5C2426697A1900C10008 /* KKUserCredential.swift in Sources */,
 				5381676D26464B3300FC96A6 /* KKUserInfoViewController.swift in Sources */,
+				06BF5C332669814C00C10008 /* KKGroupPlatformResponse.swift in Sources */,
 				5381D837264961EC003BBD2A /* KKAnnouncementTableCell.swift in Sources */,
 				532FF60B264FD0AA00999512 /* KKGuidelineViewController.swift in Sources */,
 				531D343C264EA9170070BB3A /* KKDepositRequestViewController.swift in Sources */,
@@ -966,12 +1095,22 @@
 				53AAAE3426401FF0004103F0 /* KKAffiliateViewController.swift in Sources */,
 				5317F232264C222A0076D69B /* KKBankTableCell.swift in Sources */,
 				0676B5F6262FD8BD0023311F /* KKSingleton.swift in Sources */,
+				06BF5C2326697A1900C10008 /* KKUserCredentialDetails.swift in Sources */,
 				5365E210265135B8005CB297 /* KKGameMenuItemCell.swift in Sources */,
+				06BF5C17266977B200C10008 /* KKAppVersionCountries.swift in Sources */,
+				06BF5C2626697A1900C10008 /* KKUserCredentialTierDetails.swift in Sources */,
+				06BF5C3C2669833100C10008 /* KKPlatformProductResponse.swift in Sources */,
 				5365E1F82651195C005CB297 /* KKLiveCasinoItemCell.swift in Sources */,
 				53AAAE2026401C40004103F0 /* KKDepositViewController.swift in Sources */,
 				538FB09326482B3500F3E823 /* KKLiveChatCollectionViewCell.swift in Sources */,
 				538A5888265A5BB800F0B03B /* KKMessageListViewController.swift in Sources */,
+				06BF5C2C2669803300C10008 /* KKAnnouncementDetails.swift in Sources */,
+				06BF5C1A266977B200C10008 /* KKAppVersionAppVersion.swift in Sources */,
 				0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */,
+				06BF5C0F2669776E00C10008 /* KKOTPRequestResponse.swift in Sources */,
+				06BF5C3D2669833100C10008 /* KKPlatformProductResults.swift in Sources */,
+				06BF5C2B2669803300C10008 /* KKAnnouncementResults.swift in Sources */,
+				06BF5C2D2669803300C10008 /* KKAnnouncementResponse.swift in Sources */,
 				0676B5FC262FD94A0023311F /* KKFont.swift in Sources */,
 				53602F63265A5EF700137AD6 /* KKMessageTableCell.swift in Sources */,
 				53DF81D1265028ED00BA6119 /* KKSelectCountryViewController.swift in Sources */,
@@ -979,10 +1118,13 @@
 				53AAAE1626401BD0004103F0 /* KKSupportViewController.swift in Sources */,
 				531D3432264E7EE60070BB3A /* KKAnnoucementContentViewController.swift in Sources */,
 				53268C09263068EB00ECAAE2 /* KKLoginViewController.swift in Sources */,
+				06BF5C18266977B200C10008 /* KKAppVersionLanguages.swift in Sources */,
 				53DF81D926502F7200BA6119 /* KKCountryItemCell.swift in Sources */,
 				53E2FF202658CA2E0017CA67 /* KKBonusMenuTableCell.swift in Sources */,
 				53268BFF2630604F00ECAAE2 /* KKOnBoardingViewController.swift in Sources */,
+				06BF5C362669814C00C10008 /* KKGroupPlatformResults.swift in Sources */,
 				5365E200265122FC005CB297 /* KKSingleRowGameItemCell.swift in Sources */,
+				06BF5C19266977B200C10008 /* KKAppVersionResponse.swift in Sources */,
 				0676B60E262FDAF40023311F /* SKFuture.swift in Sources */,
 				53268C1526307FB800ECAAE2 /* KKRegistrationViewController.swift in Sources */,
 				06051B2926371E7900130057 /* KKSplashScreenViewController.swift in Sources */,
@@ -990,6 +1132,7 @@
 				53C64EFD263700E10068F03E /* KKPersonalViewController.swift in Sources */,
 				5344FF61265E5E6B00313899 /* KKAnimation.swift in Sources */,
 				0676B5AA262FD6EF0023311F /* SceneDelegate.swift in Sources */,
+				06BF5C342669814C00C10008 /* KKGroupPlatformDetails.swift in Sources */,
 				062C397D2632C74200E86EEA /* KKApiRouter.swift in Sources */,
 				539A0FA1266343440098739E /* KKOTPViewController.swift in Sources */,
 				0676B5F0262FD7F20023311F /* KKUtil.swift in Sources */,
@@ -999,6 +1142,7 @@
 				53AAAE0E26401B09004103F0 /* KKMessageViewController.swift in Sources */,
 				5317F243264C2B390076D69B /* KKBankListViewController.swift in Sources */,
 				53AAAE06264018E3004103F0 /* KKRebateViewController.swift in Sources */,
+				06BF5C102669776E00C10008 /* KKOTPRequestData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
