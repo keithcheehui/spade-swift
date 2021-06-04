@@ -63,7 +63,7 @@ class KKLoginViewController: KKBaseViewController {
         imgLoginHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
         usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
-        lblUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 100)
+        lblUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 80)
         btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         
         containerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 20)
@@ -72,7 +72,7 @@ class KKLoginViewController: KKBaseViewController {
         containerMarginRight.constant = containerMarginLeft.constant
         rememberMeCheckboxWidth.constant = KKUtil.ConvertSizeByDensity(size: 20)
         usernameContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 50)
-        usernameContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 80)
+        usernameContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 60)
         usernameContainerMarginRight.constant = usernameContainerMarginLeft.constant
         passwordContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 16)
         rememberMeContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 8)

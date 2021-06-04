@@ -36,8 +36,8 @@ struct ConstantSize {
     static let navBarBtnWidth = CGFloat(65)
     static let navBarSeperatorHeight = CGFloat(2)
 
-    static let ssoLabelFont = KKUtil.ConvertSizeByDensity(size: 14)
-    static let ssoLabelSmallFont = KKUtil.ConvertSizeByDensity(size: 12)
+    static let ssoLabelFont = KKUtil.ConvertSizeByDensity(size: 12)
+    static let ssoLabelSmallFont = KKUtil.ConvertSizeByDensity(size: 10)
     
     
     static let imgBackWidth = KKUtil.ConvertSizeByDensity(size: 35)

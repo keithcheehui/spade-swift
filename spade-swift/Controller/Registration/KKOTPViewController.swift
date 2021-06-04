@@ -30,6 +30,7 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
     @IBOutlet weak var lblNoReceive: UILabel!
     @IBOutlet weak var lblResend: UILabel!
     @IBOutlet weak var lblSend: UILabel!
+    @IBOutlet weak var btnResend: UIButton!
 
     @IBOutlet weak var imgRegisterHeight: NSLayoutConstraint!
     @IBOutlet weak var imgCloseWidth: NSLayoutConstraint!
@@ -76,8 +77,8 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
         imgRegisterHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
         titleContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
-        lblTitleWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
-        txtCountryCodeWidth.constant = KKUtil.ConvertSizeByDensity(size: 90)
+        lblTitleWidth.constant = KKUtil.ConvertSizeByDensity(size: 110)
+        txtCountryCodeWidth.constant = KKUtil.ConvertSizeByDensity(size: 80)
         btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         
         containerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 20)
@@ -85,7 +86,7 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
         containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 100 : 180)
         containerMarginRight.constant = containerMarginLeft.constant
         mobileContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 50)
-        mobileContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        mobileContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 50)
         mobileContainerMarginRight.constant = mobileContainerMarginLeft.constant
         digitContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 16)
         btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
@@ -94,7 +95,7 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
         lblOTPDigit.text = KKUtil.languageSelectedStringForKey(key: "otp_digit")
         lblNoReceive.text = KKUtil.languageSelectedStringForKey(key: "otp_did_you_receive")
         lblResend.text = KKUtil.languageSelectedStringForKey(key: "otp_resend")
-        lblSend.text = KKUtil.languageSelectedStringForKey(key: "otp_resend")
+        lblSend.text = KKUtil.languageSelectedStringForKey(key: "otp_send")
         
         txtMobile.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "otp_mobile_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
                 
@@ -108,7 +109,7 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
         txtOTP4.font = lblMobileNumber.font
         lblNoReceive.font = lblMobileNumber.font
         lblResend.font = lblMobileNumber.font
-        lblSend.font = lblMobileNumber.font
+        lblSend.font = UIFont.systemFont(ofSize: ConstantSize.ssoLabelSmallFont)
 
         txtMobile.delegate = self
         txtOTP1.delegate = self
@@ -131,6 +132,10 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func btnSendDidPressed(){
+
+    }
+    
+    @IBAction func btnResendDidPressed(){
 
     }
     

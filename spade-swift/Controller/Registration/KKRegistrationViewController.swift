@@ -63,7 +63,7 @@ class KKRegistrationViewController: KKBaseViewController, UITextFieldDelegate {
         imgRegisterHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
         usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
-        lblUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
+        lblUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 120)
         btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         
         containerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 20)
