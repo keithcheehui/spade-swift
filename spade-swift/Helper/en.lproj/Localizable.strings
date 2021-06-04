@@ -35,7 +35,7 @@
 "otp_digit"                                 = "Enter 4 digit OTP:";
 "otp_did_you_receive"                       = "Didn't receive the OTP?";
 "otp_resend"                                = "Resend in ";
-
+"otp_send"                                  = "SEND";
 
 //MARK: HOME
 "home_copy_id"                              = "COPY ID";

@@ -29,14 +29,16 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
     @IBOutlet weak var txtOTP4: UITextField!
     @IBOutlet weak var lblNoReceive: UILabel!
     @IBOutlet weak var lblResend: UILabel!
-    
+    @IBOutlet weak var lblSend: UILabel!
+
     @IBOutlet weak var imgRegisterHeight: NSLayoutConstraint!
     @IBOutlet weak var imgCloseWidth: NSLayoutConstraint!
     @IBOutlet weak var titleContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var lblTitleWidth: NSLayoutConstraint!
     @IBOutlet weak var txtCountryCodeWidth: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak var lblSendWidth: NSLayoutConstraint!
+
     @IBOutlet weak var containerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var containerMarginBottom: NSLayoutConstraint!
     @IBOutlet weak var containerMarginLeft: NSLayoutConstraint!
@@ -92,7 +94,8 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
         lblOTPDigit.text = KKUtil.languageSelectedStringForKey(key: "otp_digit")
         lblNoReceive.text = KKUtil.languageSelectedStringForKey(key: "otp_did_you_receive")
         lblResend.text = KKUtil.languageSelectedStringForKey(key: "otp_resend")
-
+        lblSend.text = KKUtil.languageSelectedStringForKey(key: "otp_resend")
+        
         txtMobile.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "otp_mobile_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
                 
         lblMobileNumber.font = UIFont.systemFont(ofSize: ConstantSize.ssoLabelFont)
@@ -105,6 +108,7 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
         txtOTP4.font = lblMobileNumber.font
         lblNoReceive.font = lblMobileNumber.font
         lblResend.font = lblMobileNumber.font
+        lblSend.font = lblMobileNumber.font
 
         txtMobile.delegate = self
         txtOTP1.delegate = self
@@ -124,6 +128,10 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
     ///Button Actions
     @IBAction func btnCloseDidPressed(){
         self.dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func btnSendDidPressed(){
+
     }
     
     @IBAction func btnConfirmDidPressed(){
