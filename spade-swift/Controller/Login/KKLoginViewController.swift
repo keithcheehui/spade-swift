@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
+class KKLoginViewController: KKBaseViewController {
 
     @IBOutlet weak var imgLogin: UIImageView!
     @IBOutlet weak var imgClose: UIImageView!
@@ -103,8 +103,20 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
         
         imgRememberMe.isHidden = true
     }
+    
+    //MARK:- API Calls
+    
+    @objc func userAccountLogin() {
+        
+        KKApiClient.userAccountLogin(username: txtUsername.text!, password: txtPassword.text!).execute { userCredential in
+            
+            
+        } onFailure: { errorMessage in
+            
+        }
+    }
 
-    ///Button Actions
+    //MARK:- Button Actions
     @IBAction func btnCloseDidPressed(){
         self.dismiss(animated: false, completion: nil)
     }
@@ -124,8 +136,10 @@ class KKLoginViewController: KKBaseViewController,UITextFieldDelegate {
     @IBAction func btnConfirmDidPressed(){
         self.dismiss(animated: false, completion: nil)
     }
+}
+
+extension KKLoginViewController: UITextFieldDelegate {
     
-    ///TextField Delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.switchBasedNextTextField(textField)
         return true
