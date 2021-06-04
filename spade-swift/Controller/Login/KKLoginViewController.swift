@@ -108,11 +108,15 @@ class KKLoginViewController: KKBaseViewController {
     
     @objc func userAccountLogin() {
         
+        self.showAnimatedLoader()
+        
         KKApiClient.userAccountLogin(username: txtUsername.text!, password: txtPassword.text!).execute { userCredential in
             
+            self.hideAnimatedLoader()
             
         } onFailure: { errorMessage in
             
+            self.hideAnimatedLoader()
         }
     }
 
