@@ -9,6 +9,7 @@ target 'spade-swift' do
   pod 'MBProgressHUD',                '~> 1.2.0'
   pod 'IQKeyboardManagerSwift',       '~> 6.5.5'
   pod 'Kingfisher',                   '~> 5.14.0'
+  pod 'KeychainSwift',                '~> 19.0.0'
 
   # Pods for spade-swift
 

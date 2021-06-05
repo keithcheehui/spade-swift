@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class KKSplashScreenViewController: KKBaseViewController {
 
@@ -21,6 +22,7 @@ class KKSplashScreenViewController: KKBaseViewController {
     
     var imgProgress: UIImageView!
     var progressValue: CGFloat = 0
+    var stopProgress: CGFloat = 0.7
 
     
     override func viewDidLoad() {
@@ -28,6 +30,22 @@ class KKSplashScreenViewController: KKBaseViewController {
 
         initialLayout()
         drawLoadingProgress()
+        
+        if KKUtil.isConnectedToInternet() {
+            
+            self.getAppVersion()
+        }
+        else
+        {
+            let appVersionDetails = KKUtil.decodeAppVersionFromCache()
+            
+            if appVersionDetails != nil {
+                
+                KKSingleton.sharedInstance.countryArray = appVersionDetails!.countries!
+                KKSingleton.sharedInstance.languageArray = appVersionDetails!.languages!
+                self.stopProgress = 1
+            }
+        }
     }
 
     func initialLayout(){
@@ -50,20 +68,46 @@ class KKSplashScreenViewController: KKBaseViewController {
         self.perform(#selector(updateProgress), with: nil, afterDelay: 0.1)
     }
     
+    //MARK:- Animation
+    
     @objc func updateProgress() {
         
-        progressValue = progressValue + 0.1
+        progressValue = progressValue + 0.01
         self.imgProgress.frame.size.width = self.loadingBar.bounds.width * progressValue
 
-        if progressValue < 0.9 {
+        if progressValue <= stopProgress {
             
             lblLoading.text = String.init(format: "loading %.0f%%...", progressValue*100)
-            self.perform(#selector(updateProgress), with: nil, afterDelay: 0.1)
+            self.perform(#selector(updateProgress), with: nil, afterDelay: 0.03)
         }
-        else
+        else if stopProgress >= 1
         {
             lblLoading.text = "loading 100%..."
             self.present(KKSelectCountryViewController(), animated: false, completion: nil)
+        }
+    }
+    
+    //MARK:- API Calls
+    
+    func getAppVersion() {
+        
+        KKApiClient.getAppVersion().execute { appVersionResponse in
+            
+            guard let appVersionDetails = appVersionResponse.results else { return }
+            
+            do {
+                KeychainSwift().set(try JSONEncoder().encode(appVersionDetails), forKey: CacheKey.appVersionDetails)
+                KKSingleton.sharedInstance.countryArray = appVersionDetails.countries!
+                KKSingleton.sharedInstance.languageArray = appVersionDetails.languages!
+                
+                self.stopProgress = 1
+            }
+            catch {
+                
+            }
+            
+        } onFailure: { errorMessage in
+            
         }
     }
 }

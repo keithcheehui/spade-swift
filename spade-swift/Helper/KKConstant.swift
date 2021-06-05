@@ -50,7 +50,10 @@ struct ConstantSize {
 }
 
 struct CacheKey {
-    static let loginStatus = "LOGIN_STATUS"
+    static let loginStatus = "login_status"
+    static let accessToken = "access_token"
+    static let refreshToken = "refresh_token"
+    static let appVersionDetails = "app_version_details"
 }
 
 struct APIKeys {

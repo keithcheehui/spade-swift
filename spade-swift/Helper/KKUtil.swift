@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KeychainSwift
 import SystemConfiguration
 
 class KKUtil: NSObject {
@@ -108,6 +109,18 @@ class KKUtil: NSObject {
         UserDefaults.standard.synchronize()
         
         KKUtil.proceedToPage(vc: KKSplashScreenViewController.init())
+    }
+    
+    class func decodeAppVersionFromCache() -> KKAppVersionResults? {
+        
+        if (KeychainSwift().getData(CacheKey.appVersionDetails) != nil)
+        {
+            let appVersionDetails = try! JSONDecoder().decode(KKAppVersionResults.self, from: KeychainSwift().getData(CacheKey.appVersionDetails)!)
+            
+            return appVersionDetails
+        }
+        
+        return nil
     }
     
     ///redirect to home page
