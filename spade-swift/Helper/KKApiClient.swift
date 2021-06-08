@@ -135,6 +135,24 @@ class KKApiClient: NSObject {
         
         return performRequest(route: .getPlatformProductsContent(parameter: parameter))
     }
+    
+    static func getSystemMessages() -> Future<KKSystemMessageResponse> {
+        
+        let parameter = [APIKeys.locale    : LocaleCode.English,
+                        ] as [String : Any]
+        
+        return performRequest(route: .getSystemMessageContent(parameter: parameter))
+    }
+    
+    //MARK:- FAQ
+    
+    static func getCustomerFAQ() -> Future<KKFAQResponse> {
+        
+        let parameter = [APIKeys.locale    : LocaleCode.English,
+                        ] as [String : Any]
+        
+        return performRequest(route: .customerFAQ(parameter: parameter))
+    }
 }
 
 extension URL {

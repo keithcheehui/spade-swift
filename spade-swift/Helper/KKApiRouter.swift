@@ -19,6 +19,8 @@ enum ApiRouter: URLRequestConvertible {
     case getAnnouncementContent(parameter: [String: Any])
     case getGroupAndPlatformContent(parameter: [String: Any])
     case getPlatformProductsContent(parameter: [String: Any])
+    case getSystemMessageContent(parameter: [String: Any])
+    case customerFAQ(parameter: [String: Any])
     
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
@@ -26,9 +28,11 @@ enum ApiRouter: URLRequestConvertible {
         switch self {
         
         case .appVersion,
+             .customerFAQ,
              .getAnnouncementContent,
              .getGroupAndPlatformContent,
-             .getPlatformProductsContent:
+             .getPlatformProductsContent,
+             .getSystemMessageContent:
             return .get
         
         case .otpRequest,
@@ -64,6 +68,9 @@ enum ApiRouter: URLRequestConvertible {
         case .userForgotPassword:
             return "password/forgot"
             
+        case .customerFAQ:
+            return "app/customer_service/faqs"
+            
         case .getAnnouncementContent:
             return "app/content/announcements"
             
@@ -72,6 +79,9 @@ enum ApiRouter: URLRequestConvertible {
             
         case .getPlatformProductsContent:
             return "app/content/products"
+            
+        case .getSystemMessageContent:
+            return "app/content/system_messages"
             
         }
     }
@@ -99,6 +109,9 @@ enum ApiRouter: URLRequestConvertible {
         case .userForgotPassword(let parameter):
             return parameter
             
+        case .customerFAQ(let parameter):
+            return parameter
+            
         case .getAnnouncementContent(let parameter):
             return parameter
             
@@ -106,6 +119,9 @@ enum ApiRouter: URLRequestConvertible {
             return parameter
             
         case .getPlatformProductsContent(let parameter):
+            return parameter
+            
+        case .getSystemMessageContent(let parameter):
             return parameter
             
         }

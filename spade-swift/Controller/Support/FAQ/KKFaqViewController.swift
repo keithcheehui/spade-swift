@@ -8,25 +8,50 @@
 import Foundation
 import UIKit
 
-class KKFaqViewController: KKBaseViewController, UITableViewDataSource, UITableViewDelegate {
+class KKFaqViewController: KKBaseViewController {
     
     @IBOutlet weak var faqTableView: UITableView!
 
-    var sections = ["FAQ Section 1", "FAQ Section 2", "FAQ Section 3"]
-    var itemsInSections = [
-        ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vulputate, lorem a blandit fermentum, neque lacus pulvinar orci, et scelerisque leo magna id urna. Mauris vitae malesuada ex. Aliquam interdum lorem eu libero ullamcorper condimentum. Donec et maximus urna, a suscipit lectus. Duis consequat nulla eu sem aliquam, sit amet mattis magna porttitor. Nullam nunc eros, posuere sit amet sodales a, mattis id velit. Cras et rhoncus ligula, id tristique nulla. Vestibulum vitae augue lacus. Cras sit amet diam a libero efficitur tempor eu a justo. Donec eget quam vitae sapien consectetur varius. Sed justo diam, ultricies finibus convallis eu, sollicitudin at tortor. Donec posuere tortor ligula, sed mattis libero sodales ut. Donec sed egestas ipsum, ac ornare lectus. Nulla faucibus ut odio quis imperdiet. Aenean porta eu leo vel tristique. Lorem ipsum dolor sit amet, consectetur adipiscing elit."],
-        ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vulputate, lorem a blandit fermentum, neque lacus pulvinar orci, et scelerisque leo magna id urna. Mauris vitae malesuada ex."],
-        ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vulputate, lorem a blandit fermentum, neque lacus pulvinar orci, et scelerisque leo magna id urna. Mauris vitae malesuada ex. Aliquam interdum lorem eu libero ullamcorper condimentum. Donec et maximus urna, a suscipit lectus. Duis consequat nulla eu sem aliquam, sit amet mattis magna porttitor. Nullam nunc eros, posuere sit amet sodales a, mattis id velit. Cras et rhoncus ligula, id tristique nulla. Vestibulum vitae augue lacus. Cras sit amet diam a libero efficitur tempor eu a justo."]]
+    var faqArray: [KKFAQDetails]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.getCustomerFAQ()
         
         faqTableView.backgroundColor = UIColor(white: 0, alpha: 0)
         faqTableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableCell")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        faqTableView.reloadData()
+    }
+    
+    //MARK:- API Calls
+    
+    func getCustomerFAQ() {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.getCustomerFAQ().execute { FAQResponse in
+            
+            self.hideAnimatedLoader()
+            self.faqArray = FAQResponse.results?.faqs
+            self.faqTableView.reloadData()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+        }
+    }
+}
+
+extension KKFaqViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return faqArray.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -49,7 +74,7 @@ class KKFaqViewController: KKBaseViewController, UITableViewDataSource, UITableV
         headerLabel.numberOfLines = 0
         headerLabel.backgroundColor = UIColor.clear
         headerLabel.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
-        headerLabel.text = sections[section]
+        headerLabel.text = faqArray[section].title
 
         let headerView = UIView()
         headerView.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: KKUtil.ConvertSizeByDensity(size: 30))
@@ -68,12 +93,12 @@ class KKFaqViewController: KKBaseViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemsInSections[section].count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath)
-        let cellText = itemsInSections[indexPath.section][0]
+        let cellText = faqArray[indexPath.section].content
         cell.textLabel?.text = cellText
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.numberOfLines = 0

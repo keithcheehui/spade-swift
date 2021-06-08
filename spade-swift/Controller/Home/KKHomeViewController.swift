@@ -268,7 +268,12 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
         self.addChild(vc)
     }
     
-    ///Button Actions
+    //MARK:- API Calls
+    
+    
+    
+    //MARK:- Button Actions
+    
     @IBAction func btnProfileDidPressed(){
         self.navigationController?.pushViewController(KKPersonalViewController(), animated: true)
     }
