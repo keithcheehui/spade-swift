@@ -104,23 +104,43 @@ class KKLoginViewController: KKBaseViewController {
         imgRememberMe.isHidden = true
     }
     
+    //MARK:- Validation
+    
+    @objc func runTextFieldValidation() {
+        
+        self.view.endEditing(true)
+        
+        if txtUsername.text!.count == 0 {
+            
+            
+        }
+        
+        if txtPassword.text!.count == 0 {
+            
+        }
+        
+        self.showAnimatedLoader()
+        self.userAccountLogin()
+    }
+    
     //MARK:- API Calls
     
     @objc func userAccountLogin() {
         
-        self.showAnimatedLoader()
-        
         KKApiClient.userAccountLogin(username: txtUsername.text!, password: txtPassword.text!).execute { userCredential in
             
             self.hideAnimatedLoader()
+            self.dismiss(animated: false, completion: nil)
             
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
+            self.dismiss(animated: false, completion: nil)
         }
     }
 
     //MARK:- Button Actions
+    
     @IBAction func btnCloseDidPressed(){
         self.dismiss(animated: false, completion: nil)
     }
@@ -138,7 +158,8 @@ class KKLoginViewController: KKBaseViewController {
     }
     
     @IBAction func btnConfirmDidPressed(){
-        self.dismiss(animated: false, completion: nil)
+        
+        self.runTextFieldValidation()
     }
 }
 

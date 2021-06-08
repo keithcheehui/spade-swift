@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class KKRegistrationViewController: KKBaseViewController, UITextFieldDelegate {
+class KKRegistrationViewController: KKBaseViewController {
     
     @IBOutlet weak var imgRegister: UIImageView!
     @IBOutlet weak var imgClose: UIImageView!
@@ -41,6 +41,8 @@ class KKRegistrationViewController: KKBaseViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var confirmPasswordContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmContainerMarginBottom: NSLayoutConstraint!
+    
+    var verifiedPhoneNumber: String!
     
     
     override func viewDidLoad() {
@@ -100,17 +102,75 @@ class KKRegistrationViewController: KKBaseViewController, UITextFieldDelegate {
         txtPassword.returnKeyType = .next
         txtConfirmPassword.returnKeyType = .done
     }
+    
+    //MARK:- Validation
+    
+    @objc func runTextFieldValidation() {
+        
+        self.view.endEditing(true)
+        
+        if txtUsername.text!.count == 0 {
+            
+        }
+        
+        if txtPassword.text!.count == 0 {
+            
+        }
+        
+        if txtConfirmPassword.text!.count == 0 {
+            
+        }
+        
+        if txtConfirmPassword.text != txtPassword.text {
+            
+        }
+        
+        self.showAnimatedLoader()
+        self.userAccountRegistration()
+    }
+    
+    //MARK:- API Calls
+    
+    @objc func userAccountRegistration() {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.userAccountRegistration(username: txtUsername.text!, password: txtPassword.text!, phoneNumber: verifiedPhoneNumber).execute { userCredential in
+            
+            self.userAccountLogin()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+        }
+    }
+    
+    @objc func userAccountLogin() {
+        
+        KKApiClient.userAccountLogin(username: txtUsername.text!, password: txtPassword.text!).execute { userCredential in
+            
+            self.hideAnimatedLoader()
+            self.dismiss(animated: false, completion: nil)
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+        }
+    }
 
-    ///Button Actions
+    //MARK:- Button Actions
+    
     @IBAction func btnCloseDidPressed(){
         self.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func btnConfirmDidPressed(){
-        self.dismiss(animated: false, completion: nil)
+        self.runTextFieldValidation()
     }
+}
+
+extension KKRegistrationViewController: UITextFieldDelegate {
     
-    ///TextField Delegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.switchBasedNextTextField(textField)
         return true

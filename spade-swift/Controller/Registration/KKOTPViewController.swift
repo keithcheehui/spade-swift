@@ -8,7 +8,15 @@
 import Foundation
 import UIKit
 
-class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
+class KKOTPViewController: KKBaseViewController {
+    
+    enum OTPTextField: Int {
+        
+        case OTPTextField1          = 1
+        case OTPTextField2          = 2
+        case OTPTextField3          = 3
+        case OTPTextField4          = 4
+    }
     
     @IBOutlet weak var imgRegister: UIImageView!
     @IBOutlet weak var imgClose: UIImageView!
@@ -20,17 +28,19 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
     @IBOutlet weak var txtMobile: UITextField!
     @IBOutlet weak var lblOTPDigit: UILabel!
     @IBOutlet weak var otpView1: UIView!
-    @IBOutlet weak var txtOTP1: UITextField!
+    @IBOutlet weak var txtOTP1: UITextFieldDisableTouch!
     @IBOutlet weak var otpView2: UIView!
-    @IBOutlet weak var txtOTP2: UITextField!
+    @IBOutlet weak var txtOTP2: UITextFieldDisableTouch!
     @IBOutlet weak var otpView3: UIView!
-    @IBOutlet weak var txtOTP3: UITextField!
+    @IBOutlet weak var txtOTP3: UITextFieldDisableTouch!
     @IBOutlet weak var otpView4: UIView!
-    @IBOutlet weak var txtOTP4: UITextField!
+    @IBOutlet weak var txtOTP4: UITextFieldDisableTouch!
     @IBOutlet weak var lblNoReceive: UILabel!
     @IBOutlet weak var lblResend: UILabel!
     @IBOutlet weak var lblSend: UILabel!
     @IBOutlet weak var btnResend: UIButton!
+    @IBOutlet weak var btnConfirm: UIButton!
+    @IBOutlet weak var OTPView: UIView!
 
     @IBOutlet weak var imgRegisterHeight: NSLayoutConstraint!
     @IBOutlet weak var imgCloseWidth: NSLayoutConstraint!
@@ -50,6 +60,7 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
     @IBOutlet weak var digitContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmContainerMarginBottom: NSLayoutConstraint!
     
+    var phoneNumber: String! = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +118,12 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
         txtOTP2.font = lblMobileNumber.font
         txtOTP3.font = lblMobileNumber.font
         txtOTP4.font = lblMobileNumber.font
+        
+        txtOTP1.tag = OTPTextField.OTPTextField1.rawValue
+        txtOTP2.tag = OTPTextField.OTPTextField2.rawValue
+        txtOTP3.tag = OTPTextField.OTPTextField3.rawValue
+        txtOTP4.tag = OTPTextField.OTPTextField4.rawValue
+        
         lblNoReceive.font = lblMobileNumber.font
         lblResend.font = lblMobileNumber.font
         lblSend.font = UIFont.systemFont(ofSize: ConstantSize.ssoLabelSmallFont)
@@ -116,6 +133,10 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
         txtOTP2.delegate = self
         txtOTP3.delegate = self
         txtOTP4.delegate = self
+        txtOTP1.backspaceDelegate = self
+        txtOTP2.backspaceDelegate = self
+        txtOTP3.backspaceDelegate = self
+        txtOTP4.backspaceDelegate = self
         
         txtMobile.returnKeyType = .next
         txtOTP1.returnKeyType = .next
@@ -123,7 +144,15 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
         txtOTP3.returnKeyType = .next
         txtOTP4.returnKeyType = .done
         
+        txtOTP1.addTarget(self, action: #selector(textfieldDidChange(_:)), for: .editingChanged)
+        txtOTP2.addTarget(self, action: #selector(textfieldDidChange(_:)), for: .editingChanged)
+        txtOTP3.addTarget(self, action: #selector(textfieldDidChange(_:)), for: .editingChanged)
+        txtOTP4.addTarget(self, action: #selector(textfieldDidChange(_:)), for: .editingChanged)
+        
         txtCountryCode.isEnabled = false
+        
+        OTPView.isUserInteractionEnabled = true
+        OTPView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(checkOTPFirstResponder)))
     }
 
     ///Button Actions
@@ -133,17 +162,158 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
     
     @IBAction func btnSendDidPressed(){
 
+        if txtMobile.text!.isEmpty {
+            
+        }
+        else
+        {
+            if txtMobile.text!.first == "0" {
+                
+                phoneNumber = "60\(txtMobile.text!.dropFirst())"
+            }
+            else
+            {
+                phoneNumber = "60\(txtMobile.text!)"
+            }
+            
+            self.requestPhoneNumberOTP()
+        }
     }
     
     @IBAction func btnResendDidPressed(){
 
+        self.btnSendDidPressed()
     }
     
     @IBAction func btnConfirmDidPressed(){
-        self.closeOTPAndOpenRegistration()
+        
+        self.verifyOTPAndProceed()
     }
     
-    ///TextField Delegate
+    //MARK:- API Calls
+    
+    @objc func requestPhoneNumberOTP() {
+        
+        KKApiClient.sendOTPRequest(phoneNumber: phoneNumber).execute { KKOTPRequestResponse in
+            
+            print("success request")
+            
+        } onFailure: { errorMessage in
+            
+            print("failed request")
+        }
+    }
+    
+    func verifyOTPAndProceed() {
+        
+        let OTPCode = "\(txtOTP1.text!)\(txtOTP2.text!)\(txtOTP3.text!)\(txtOTP4.text!)"
+        
+        if OTPCode.count != 4 {
+            
+            
+        }
+        else
+        {
+            self.showAnimatedLoader()
+            
+            KKApiClient.proceedOTPVerification(phoneNumber: phoneNumber, otpCode: OTPCode).execute { generalResponse in
+                
+                self.hideAnimatedLoader()
+                self.closeOTPAndOpenRegistration()
+                
+            } onFailure: { errorMessage in
+                
+                self.hideAnimatedLoader()
+            }
+
+        }
+    }
+    
+    //MARK:- Others
+    
+    func OTPConfirmButtonValidation() {
+        
+        if txtOTP1.text!.isEmpty || txtOTP2.text!.isEmpty || txtOTP3.text!.isEmpty || txtOTP4.text!.isEmpty {
+            btnConfirm.alpha = 0.5
+            btnConfirm.isUserInteractionEnabled = false
+        } else {
+            btnConfirm.alpha = 1.0
+            btnConfirm.isUserInteractionEnabled = true
+        }
+    }
+
+    @objc func checkOTPFirstResponder() {
+        
+        if txtOTP1.text!.isEmpty {
+            
+            txtOTP1.becomeFirstResponder()
+        }
+        else if txtOTP2.text!.isEmpty {
+            
+            txtOTP2.becomeFirstResponder()
+        }
+        else if txtOTP3.text!.isEmpty {
+            
+            txtOTP3.becomeFirstResponder()
+        }
+        else if txtOTP4.text!.isEmpty {
+            
+            txtOTP4.becomeFirstResponder()
+        }
+    }
+    
+    //MARK:- OTP and Registration
+    @objc func closeOTPAndOpenRegistration() {
+
+        weak var pvc = self.presentingViewController
+
+        self.dismiss(animated: true, completion: {
+            
+            let viewController = KKRegistrationViewController.init()
+            viewController.verifiedPhoneNumber = self.phoneNumber
+            pvc?.present(viewController, animated: true, completion: nil)
+        })
+    }
+}
+
+extension KKOTPViewController: UITextFieldDelegate, UITextFieldBackspaceDelegate {
+    
+    @objc func textfieldDidChange(_ sender: UITextField) {
+        let string = sender.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if (sender == txtOTP4 && string.isEmpty){
+            txtOTP4.resignFirstResponder()
+            txtOTP3.becomeFirstResponder()
+        }else if (sender == txtOTP3 && string.isEmpty){
+            txtOTP3.resignFirstResponder()
+            txtOTP2.becomeFirstResponder()
+        }else if (sender == txtOTP2 && string.isEmpty){
+            txtOTP2.resignFirstResponder()
+            txtOTP1.becomeFirstResponder()
+        } else if (sender == txtOTP1 && string.isEmpty){
+            txtOTP1.resignFirstResponder()
+        }
+        
+        if (sender == txtOTP1 && !string.isEmpty){
+            txtOTP1.text = String(string.last!)
+            txtOTP1.resignFirstResponder()
+            txtOTP2.becomeFirstResponder()
+        } else if (sender == txtOTP2 && !string.isEmpty){
+            txtOTP2.text = String(string.last!)
+            txtOTP2.resignFirstResponder()
+            txtOTP3.becomeFirstResponder()
+        } else if (sender == txtOTP3 && !string.isEmpty){
+            txtOTP3.text = String(string.last!)
+            txtOTP3.resignFirstResponder()
+            txtOTP4.becomeFirstResponder()
+        } else if (sender == txtOTP4 && !string.isEmpty){
+            txtOTP4.text = String(string.last!)
+            txtOTP4.resignFirstResponder()
+        }
+        
+        OTPConfirmButtonValidation()
+    }
+        
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.switchBasedNextTextField(textField)
         return true
@@ -179,9 +349,43 @@ class KKOTPViewController: KKBaseViewController, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if (range.location > 0 && textField == txtOTP4) {
-            textField.text?.removeLast()
+        
+        let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
+        let compSepByCharInSet = string.components(separatedBy: aSet)
+        let numberFiltered = compSepByCharInSet.joined(separator: "")
+        return string == numberFiltered
+    }
+    
+    func textFieldDidDelete(textField: UITextField) {
+        
+        let string = textField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if string.isEmpty {
+            
+            if textField.tag != OTPTextField.OTPTextField1.rawValue {
+                
+                let previousTextField: UITextField = view.viewWithTag(textField.tag - 1) as! UITextField
+                previousTextField.text = ""
+                previousTextField.becomeFirstResponder()
+            }
         }
-        return true
+    }
+}
+
+protocol UITextFieldBackspaceDelegate: AnyObject {
+    func textFieldDidDelete(textField: UITextField)
+}
+
+class UITextFieldDisableTouch: UITextField {
+    
+    weak var backspaceDelegate: UITextFieldBackspaceDelegate?
+
+    override func deleteBackward() {
+        super.deleteBackward()
+        backspaceDelegate?.textFieldDidDelete(textField: self)
+    }
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        return nil
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         else
         {
+            IQKeyboardManager.shared.enable = true
+            IQKeyboardManager.shared.enableAutoToolbar = false
+            IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+            
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.makeKeyAndVisible()
            

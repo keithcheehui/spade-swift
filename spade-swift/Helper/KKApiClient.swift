@@ -103,6 +103,7 @@ class KKApiClient: NSObject {
                          APIKeys.phoneNumber            : phoneNumber,
                          APIKeys.registrationPlatform   : Platform.iOS,
                          APIKeys.type                   : RegistrationType.phoneNumber,
+                         APIKeys.countryCode            : "MYS"
                         ] as [String : Any]
         
         return performRequest(route: .userAccountRegistration(parameter: parameter))

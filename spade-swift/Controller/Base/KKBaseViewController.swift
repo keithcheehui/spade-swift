@@ -72,18 +72,6 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     @objc func dismissBtnClicked() {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    //MARK:- OTP and Registration
-    @objc func closeOTPAndOpenRegistration() {
-//        self.dismiss(animated: false, completion: {
-//            self.present(KKRegistrationViewController(), animated: false, completion: nil)
-//        })
-        weak var pvc = self.presentingViewController
-
-        self.dismiss(animated: true, completion: {
-            pvc?.present(KKRegistrationViewController(), animated: true, completion: nil)
-        })
-    }
 }
 
 extension UIDevice {
@@ -91,4 +79,11 @@ extension UIDevice {
         let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
         return bottom > 0
     }
+}
+
+extension String {
+  var isBackspace: Bool {
+    let char = self.cString(using: String.Encoding.utf8)!
+    return strcmp(char, "\\b") == -92
+  }
 }
