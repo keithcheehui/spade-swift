@@ -8,19 +8,29 @@
 import Foundation
 import UIKit
 
-class KKMessageListViewController: KKBaseViewController, UITableViewDataSource, UITableViewDelegate {
+class KKMessageListViewController: KKBaseViewController {
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var messageTableView: UITableView!
 
     let messageList = [{},{},{}]
     var selectedMessageIndex = -1
+    var systemMessageArray: [KKSystemMessageDetails]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialLayout()
+        self.getSystemMessageContent()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        messageTableView.reloadData()
+    }
+    
+    //MARK:- Layout Setup
     
     func initialLayout(){
         messageTableView.backgroundColor = UIColor(white: 0, alpha: 0)
@@ -30,9 +40,31 @@ class KKMessageListViewController: KKBaseViewController, UITableViewDataSource, 
         lblTitle.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
         lblTitle.textColor = UIColor.spade_white_FFFFFF
     }
+
+    //MARK:- API Calls
+    
+    func getSystemMessageContent() {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.getSystemMessages().execute { systemMessageResponse in
+            
+            self.hideAnimatedLoader()
+            self.systemMessageArray = systemMessageResponse.results?.systemMessages
+            self.messageTableView.reloadData()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+        }
+
+    }
+}
+
+extension KKMessageListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messageList.count
+        return systemMessageArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,11 +77,11 @@ class KKMessageListViewController: KKBaseViewController, UITableViewDataSource, 
             cell.lblMsgContent.isHidden = false
             cell.imgArrow.transform = CGAffineTransform(rotationAngle: CGFloat(180.0 * Double.pi / 180.0))
             //TODO: Keith: Calculate the msg content height, replace the 30 hard code
-            cell.bottomLabelHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
+            cell.bottomLabelHeight.constant = cell.setUpMessageDetails(messageDetails: systemMessageArray[indexPath.row], isHidden: false)
         } else {
             cell.lblMsgContent.isHidden = true
             cell.imgArrow.transform = CGAffineTransform(rotationAngle: CGFloat(0.0 * Double.pi / 180.0))
-            cell.bottomLabelHeight.constant = 0
+            cell.bottomLabelHeight.constant = cell.setUpMessageDetails(messageDetails: systemMessageArray[indexPath.row], isHidden: true)
         }
         
         cell.selectionStyle = .none
@@ -69,9 +101,9 @@ class KKMessageListViewController: KKBaseViewController, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //TODO: Keith: Calculate the msg content height, replace the 80 hard code
         if (selectedMessageIndex == indexPath.row) {
-            return KKUtil.ConvertSizeByDensity(size: 80)
+            return KKMessageTableCell.calculateMessageDetailsHeight(messageDetails: systemMessageArray[indexPath.row], isHidden: false)
         } else {
-            return KKUtil.ConvertSizeByDensity(size: 50)
+            return KKMessageTableCell.calculateMessageDetailsHeight(messageDetails: systemMessageArray[indexPath.row], isHidden: true)
         }
     }
 }

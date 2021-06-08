@@ -43,5 +43,49 @@ class KKMessageTableCell: UITableViewCell {
         lblDate.text = "2021-01-23 19:00:00"
         lblMsgContent.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vulputate, lorem a blandit fermentum, neque lacus pulvinar orci, et scelerisque leo magna id urna. Mauris vitae malesuada ex."
     }
+    
+    func setUpMessageDetails(messageDetails: KKSystemMessageDetails, isHidden: Bool)  -> CGFloat {
+        
+        let maximumLabelSize = CGSize(width: ScreenSize.width*0.6, height: .greatestFiniteMagnitude)
+        
+        lblMsgTitle.text = messageDetails.title
+        lblDate.text = "2021-01-23 19:00:00"
+        lblMsgContent.text = messageDetails.content
+        
+        let msgContentLabelAttributes: [NSAttributedString.Key: Any] = [
+            .font   : UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+        ]
+        
+        let expectedMsgContentLabelSize = KKUtil.getLabelSize(text: messageDetails.content!,
+                                                              maximumLabelSize: maximumLabelSize,
+                                                              attributes: msgContentLabelAttributes)
+        
+        if !isHidden {
+            
+            return expectedMsgContentLabelSize.height
+        }
+        
+        return CGFloat(0)
+    }
+    
+    class func calculateMessageDetailsHeight(messageDetails: KKSystemMessageDetails, isHidden: Bool)  -> CGFloat {
+        
+        let maximumLabelSize = CGSize(width: ScreenSize.width*0.6, height: .greatestFiniteMagnitude)
+        
+        let msgContentLabelAttributes: [NSAttributedString.Key: Any] = [
+            .font   : UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+        ]
+        
+        let expectedMsgContentLabelSize = KKUtil.getLabelSize(text: messageDetails.content!,
+                                                              maximumLabelSize: maximumLabelSize,
+                                                              attributes: msgContentLabelAttributes)
+        
+        if !isHidden {
+            
+            return expectedMsgContentLabelSize.height + KKUtil.ConvertSizeByDensity(size: 50)
+        }
+        
+        return KKUtil.ConvertSizeByDensity(size: 50)
+    }
 }
 
