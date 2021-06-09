@@ -256,8 +256,8 @@ class KKOTPViewController: KKBaseViewController {
             
             txtOTP3.becomeFirstResponder()
         }
-        else 
-            
+        else
+        {
             txtOTP4.becomeFirstResponder()
         }
     }
