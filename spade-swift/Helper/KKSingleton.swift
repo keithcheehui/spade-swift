@@ -11,8 +11,10 @@ class KKSingleton: NSObject {
     
     static let sharedInstance = KKSingleton.init()
     
+    var announcementArray:  [KKAnnouncementDetails] = []
     var countryArray:       [KKAppVersionCountries] = []
     var languageArray:      [KKAppVersionLanguages] = []
+    
     
         
     private override init() {}

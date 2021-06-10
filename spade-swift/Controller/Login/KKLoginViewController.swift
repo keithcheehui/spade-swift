@@ -112,11 +112,18 @@ class KKLoginViewController: KKBaseViewController {
         
         if txtUsername.text!.count == 0 {
             
-            
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_username_required"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_username_required_desc"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            return
         }
         
         if txtPassword.text!.count == 0 {
             
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_required"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            return
         }
         
         self.showAnimatedLoader()
@@ -135,7 +142,7 @@ class KKLoginViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.dismiss(animated: false, completion: nil)
+            self.showAlertView(alertMessage: "Api Error. Currently api is updating")
         }
     }
 

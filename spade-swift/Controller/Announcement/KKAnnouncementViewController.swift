@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class KKAnnouncementViewController: KKBaseViewController, UITableViewDataSource, UITableViewDelegate {
+class KKAnnouncementViewController: KKBaseViewController {
     
     @IBOutlet weak var announcementTableView: UITableView!
 
@@ -59,9 +59,12 @@ class KKAnnouncementViewController: KKBaseViewController, UITableViewDataSource,
         announcementTableView.isHidden = false
         contentContainer.isHidden = true
     }
+}
+
+extension KKAnnouncementViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return announcementList.count
+        return KKSingleton.sharedInstance.announcementArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,6 +73,7 @@ class KKAnnouncementViewController: KKBaseViewController, UITableViewDataSource,
             fatalError("DequeueReusableCell failed while casting")
         }
         
+        cell.lblTitle.text = KKSingleton.sharedInstance.announcementArray[indexPath.row].title
         cell.selectionStyle = .none
         
         return cell
@@ -79,12 +83,13 @@ class KKAnnouncementViewController: KKBaseViewController, UITableViewDataSource,
         announcementTableView.isHidden = true
         contentContainer.isHidden = false
         
-        let vc: KKBaseViewController = KKAnnoucementContentViewController()
-        vc.tableContentView = contentView
-        vc.displayViewController = self
-        vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
-        contentView.addSubview(vc.view)
-        self.addChild(vc)
+        let viewController = KKAnnoucementContentViewController()
+        viewController.tableContentView = contentView
+        viewController.displayViewController = self
+        viewController.announcementDetails = KKSingleton.sharedInstance.announcementArray[indexPath.row]
+        viewController.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
+        contentView.addSubview(viewController.view)
+        self.addChild(viewController)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

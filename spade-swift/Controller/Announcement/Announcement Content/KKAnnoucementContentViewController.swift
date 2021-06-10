@@ -14,6 +14,8 @@ class KKAnnoucementContentViewController: KKBaseViewController {
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblContent: UITextView!
     
+    var announcementDetails: KKAnnouncementDetails!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,9 +23,9 @@ class KKAnnoucementContentViewController: KKBaseViewController {
     }
     
     func initialLayout(){
-        lblTitle.text = "Bank Changing"
+        lblTitle.text = announcementDetails.title
         lblDate.text = "2021-01-23 19:00:00"
-        lblContent.text = "Please be informed that from 08 April, we will stop using Pattarakorn - Kbank - 5490. Please check our bank account at the deposit form. Sorry for the incovenience.\n\n\nLegend Gaming Management."
+        lblContent.text = announcementDetails.descriptionValue
         
         lblTitle.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
         lblDate.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))

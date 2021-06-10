@@ -56,6 +56,7 @@ class KKMessageListViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: "Api Error. Currently api is updating")
         }
 
     }

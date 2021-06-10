@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06006DF6267296DA00A2C8C9 /* KKCustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06006DF5267296DA00A2C8C9 /* KKCustomAlertViewController.swift */; };
+		06006DFB267299B000A2C8C9 /* NeutraText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 06006DF8267299AF00A2C8C9 /* NeutraText-Bold.otf */; };
+		06006DFC267299B000A2C8C9 /* NeutraDisp-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 06006DF9267299B000A2C8C9 /* NeutraDisp-Medium.otf */; };
+		06006DFD267299B000A2C8C9 /* Neutra Display Titling.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06006DFA267299B000A2C8C9 /* Neutra Display Titling.ttf */; };
+		06006E0326729AF400A2C8C9 /* Futura Bold font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06006DFE26729AF300A2C8C9 /* Futura Bold font.ttf */; };
+		06006E0426729AF400A2C8C9 /* futuraHeavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06006DFF26729AF300A2C8C9 /* futuraHeavy.ttf */; };
+		06006E0526729AF400A2C8C9 /* Haarlem Deco DEMO.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06006E0026729AF400A2C8C9 /* Haarlem Deco DEMO.ttf */; };
+		06006E0626729AF400A2C8C9 /* futura medium bt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06006E0126729AF400A2C8C9 /* futura medium bt.ttf */; };
+		06006E0726729AF400A2C8C9 /* FuturaBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06006E0226729AF400A2C8C9 /* FuturaBook.ttf */; };
 		06051B2926371E7900130057 /* KKSplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06051B2726371E7900130057 /* KKSplashScreenViewController.swift */; };
 		06051B2A26371E7900130057 /* KKSplashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06051B2826371E7900130057 /* KKSplashScreenViewController.xib */; };
 		06290620266FFEE600A26DC5 /* KKSystemMessageResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0629061D266FFEE600A26DC5 /* KKSystemMessageResults.swift */; };
@@ -144,6 +153,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06006DF5267296DA00A2C8C9 /* KKCustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKCustomAlertViewController.swift; sourceTree = "<group>"; };
+		06006DF8267299AF00A2C8C9 /* NeutraText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeutraText-Bold.otf"; sourceTree = "<group>"; };
+		06006DF9267299B000A2C8C9 /* NeutraDisp-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeutraDisp-Medium.otf"; sourceTree = "<group>"; };
+		06006DFA267299B000A2C8C9 /* Neutra Display Titling.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Neutra Display Titling.ttf"; sourceTree = "<group>"; };
+		06006DFE26729AF300A2C8C9 /* Futura Bold font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Futura Bold font.ttf"; sourceTree = "<group>"; };
+		06006DFF26729AF300A2C8C9 /* futuraHeavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = futuraHeavy.ttf; sourceTree = "<group>"; };
+		06006E0026729AF400A2C8C9 /* Haarlem Deco DEMO.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Haarlem Deco DEMO.ttf"; sourceTree = "<group>"; };
+		06006E0126729AF400A2C8C9 /* futura medium bt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "futura medium bt.ttf"; sourceTree = "<group>"; };
+		06006E0226729AF400A2C8C9 /* FuturaBook.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FuturaBook.ttf; sourceTree = "<group>"; };
 		06051B2726371E7900130057 /* KKSplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSplashScreenViewController.swift; sourceTree = "<group>"; };
 		06051B2826371E7900130057 /* KKSplashScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKSplashScreenViewController.xib; sourceTree = "<group>"; };
 		0629061D266FFEE600A26DC5 /* KKSystemMessageResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKSystemMessageResults.swift; sourceTree = "<group>"; };
@@ -296,6 +314,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06006DF72672999A00A2C8C9 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				06006DFE26729AF300A2C8C9 /* Futura Bold font.ttf */,
+				06006E0126729AF400A2C8C9 /* futura medium bt.ttf */,
+				06006E0226729AF400A2C8C9 /* FuturaBook.ttf */,
+				06006DFF26729AF300A2C8C9 /* futuraHeavy.ttf */,
+				06006E0026729AF400A2C8C9 /* Haarlem Deco DEMO.ttf */,
+				06006DFA267299B000A2C8C9 /* Neutra Display Titling.ttf */,
+				06006DF9267299B000A2C8C9 /* NeutraDisp-Medium.otf */,
+				06006DF8267299AF00A2C8C9 /* NeutraText-Bold.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		06051B2626371E5100130057 /* Splash Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +429,7 @@
 		0676B5BE262FD7030023311F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				06006DF72672999A00A2C8C9 /* Font */,
 				0676B5B0262FD6F30023311F /* Assets.xcassets */,
 				0676B5B2262FD6F30023311F /* LaunchScreen.storyboard */,
 				0676B5B5262FD6F30023311F /* Info.plist */,
@@ -416,6 +450,7 @@
 		0676B614262FDB400023311F /* AlertView */ = {
 			isa = PBXGroup;
 			children = (
+				06006DF5267296DA00A2C8C9 /* KKCustomAlertViewController.swift */,
 				0676B615262FDB790023311F /* KKAlertControllerTransition.swift */,
 			);
 			path = AlertView;
@@ -1002,8 +1037,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06006DFB267299B000A2C8C9 /* NeutraText-Bold.otf in Resources */,
 				53AAAE1126401B12004103F0 /* KKMessageViewController.xib in Resources */,
 				5381D82F26495A9D003BBD2A /* KKAnnouncementViewController.xib in Resources */,
+				06006DFC267299B000A2C8C9 /* NeutraDisp-Medium.otf in Resources */,
 				0676B5B4262FD6F30023311F /* LaunchScreen.storyboard in Resources */,
 				538A588B265A5BC400F0B03B /* KKMessageListViewController.xib in Resources */,
 				53268C1826307FC100ECAAE2 /* KKRegistrationViewController.xib in Resources */,
@@ -1016,6 +1053,7 @@
 				53268C0D263068F600ECAAE2 /* KKLoginViewController.xib in Resources */,
 				53268C062630612900ECAAE2 /* KKOnBoardingViewController.xib in Resources */,
 				0676B668263095EE0023311F /* Localizable.strings in Resources */,
+				06006E0526729AF400A2C8C9 /* Haarlem Deco DEMO.ttf in Resources */,
 				539A0FA4266343510098739E /* KKOTPViewController.xib in Resources */,
 				5317F246264C2B420076D69B /* KKBankListViewController.xib in Resources */,
 				5317F235264C223A0076D69B /* KKBankTableCell.xib in Resources */,
@@ -1029,6 +1067,7 @@
 				53AAAE2C26401CAE004103F0 /* KKWithdrawViewController.xib in Resources */,
 				5381676A26464B0F00FC96A6 /* KKUserInfoViewController.xib in Resources */,
 				538FB0802648012B00F3E823 /* KKFaqViewController.xib in Resources */,
+				06006E0426729AF400A2C8C9 /* futuraHeavy.ttf in Resources */,
 				5365E20B265124D9005CB297 /* KKGameListViewController.xib in Resources */,
 				53AAAE1926401BD9004103F0 /* KKSupportViewController.xib in Resources */,
 				531D3435264E7EF20070BB3A /* KKAnnoucementContentViewController.xib in Resources */,
@@ -1037,7 +1076,11 @@
 				53AAAE2326401C4A004103F0 /* KKDepositViewController.xib in Resources */,
 				5365E213265135C2005CB297 /* KKGameMenuItemCell.xib in Resources */,
 				06051B2A26371E7900130057 /* KKSplashScreenViewController.xib in Resources */,
+				06006E0326729AF400A2C8C9 /* Futura Bold font.ttf in Resources */,
 				533CA6BB2631745C00768C08 /* KKHomeViewController.xib in Resources */,
+				06006DFD267299B000A2C8C9 /* Neutra Display Titling.ttf in Resources */,
+				06006E0626729AF400A2C8C9 /* futura medium bt.ttf in Resources */,
+				06006E0726729AF400A2C8C9 /* FuturaBook.ttf in Resources */,
 				53E2FF2B2658CC820017CA67 /* KKBonusItemCell.xib in Resources */,
 				53C64EFA263700D00068F03E /* KKPersonalViewController.xib in Resources */,
 				53E2FF122658BDEB0017CA67 /* KKBonusViewController.xib in Resources */,
@@ -1166,6 +1209,7 @@
 				53DF81D926502F7200BA6119 /* KKCountryItemCell.swift in Sources */,
 				53E2FF202658CA2E0017CA67 /* KKBonusMenuTableCell.swift in Sources */,
 				53268BFF2630604F00ECAAE2 /* KKOnBoardingViewController.swift in Sources */,
+				06006DF6267296DA00A2C8C9 /* KKCustomAlertViewController.swift in Sources */,
 				06BF5C362669814C00C10008 /* KKGroupPlatformResults.swift in Sources */,
 				5365E200265122FC005CB297 /* KKSingleRowGameItemCell.swift in Sources */,
 				06BF5C19266977B200C10008 /* KKAppVersionResponse.swift in Sources */,

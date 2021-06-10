@@ -178,3 +178,25 @@
 "live_casino_sa" = "SA Gaming";
 "live_casino_dg" = "DG Gaming";
 "live_casino_bg" = "BG Gaming";
+
+//MARK: ERROR MESSAGE
+"error_internet_connection"                     = "Internet Connection Required";
+"error_internet_connection_desc"                = "Please check your internet connection and try again.";
+"error_internal_server_error"                   = "Internal Server Error";
+"error_internal_server_error_desc"              = "The server encountered an internal server error or misconfiguration and was unable to complete your request.";
+"error_invalid_credential"                      = "Invalid credentials";
+"error_invalid_credential_desc"                 = "Email and password may be invalid. Please check and try again.";
+"error_mobile_required"                         = "Validation Error";
+"error_mobile_required_desc"                    = "Please fill in your mobile number.";
+"error_otp_required"                            = "Validation Error";
+"error_otp_required_desc"                       = "Please fill in the OTP sent to your mobile number.";
+"error_username_required"                       = "Validation Error";
+"error_username_required_desc"                  = "Please fill in your username.";
+"error_password_required"                       = "Validation Error";
+"error_password_required_desc"                  = "Please fill in your password.";
+"error_password_confirm_required"               = "Validation Error";
+"error_password_confirm_required_desc"          = "Please fill in your password to re-confirm.";
+"error_password_not_match"                      = "Password Does Not Match";
+"error_password_not_match_desc"                 = "Password confirmation does not matches with your new password.";
+"error_error_encountered"                       = "Error Encountered";
+"error_okay"                                    = "OKAY";

@@ -63,6 +63,42 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         })
     }
     
+    //MARK:- Alert View Setup
+    
+    func showAlertView(alertMessage: String) {
+        
+        if alertMessage.contains("connection") && alertMessage.contains("offline") {
+            
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_internet_connection"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_internet_connection_desc"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+        }
+        else if alertMessage.contains("internal server error") {
+            
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_internal_server_error"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_internal_server_error_desc"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+        }
+        else if (alertMessage.contains("invalid_grant") || alertMessage.contains("Invalid password")) {
+            
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_invalid_credential"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_invalid_credential_desc"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+        }
+        else
+        {
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_error_encountered"),
+                                           body: alertMessage,
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+        }
+    }
+    
+    func showPopUpWithSingleButton(title: String, body: String, buttonTitle: String) {
+        
+        let alertView = KKCustomAlertViewController.init(title: title, body: body, buttonTitle: buttonTitle)
+        self.present(alertView, animated: true, completion: nil)
+    }
+    
     //MARK:- General Method
 
     @objc func backBtnClicked() {
@@ -75,15 +111,34 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
 }
 
 extension UIDevice {
+    
     var hasNotch: Bool {
+        
         let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
         return bottom > 0
     }
 }
 
 extension String {
-  var isBackspace: Bool {
-    let char = self.cString(using: String.Encoding.utf8)!
-    return strcmp(char, "\\b") == -92
-  }
+    
+    var isBackspace: Bool {
+        
+        let char = self.cString(using: String.Encoding.utf8)!
+        return strcmp(char, "\\b") == -92
+    }
+}
+
+extension UIImageView {
+    
+    func setUpImage(with url: String?, placeholder: UIImage? = nil) {
+        
+        if let urlString = url , let URL = URL(string: urlString) {
+                            
+            self.kf.setImage(with: URL, placeholder: placeholder)
+        }
+        else if let image = placeholder
+        {
+            self.image = image
+        }
+    }
 }

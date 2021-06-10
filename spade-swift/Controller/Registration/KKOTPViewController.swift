@@ -164,6 +164,9 @@ class KKOTPViewController: KKBaseViewController {
 
         if txtMobile.text!.isEmpty {
             
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_mobile_required"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_mobile_required_desc"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
         }
         else
         {
@@ -194,13 +197,16 @@ class KKOTPViewController: KKBaseViewController {
     
     @objc func requestPhoneNumberOTP() {
         
+        self.showAnimatedLoader()
+        
         KKApiClient.sendOTPRequest(phoneNumber: phoneNumber).execute { KKOTPRequestResponse in
             
-            print("success request")
+            self.hideAnimatedLoader()
             
         } onFailure: { errorMessage in
             
-            print("failed request")
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: "Api Error. Currently api is updating")
         }
     }
     
@@ -210,7 +216,9 @@ class KKOTPViewController: KKBaseViewController {
         
         if OTPCode.count != 4 {
             
-            
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_otp_required"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_otp_required_desc"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
         }
         else
         {
@@ -224,6 +232,7 @@ class KKOTPViewController: KKBaseViewController {
             } onFailure: { errorMessage in
                 
                 self.hideAnimatedLoader()
+                self.showAlertView(alertMessage: "Api Error. Currently api is updating")
             }
 
         }

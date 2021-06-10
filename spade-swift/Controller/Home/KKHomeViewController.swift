@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class KKHomeViewController: KKBaseViewController {
     
     @IBOutlet weak var imgBG: UIImageView!
     
@@ -61,6 +61,8 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var imgAffiliateWidth: NSLayoutConstraint!
     @IBOutlet weak var btnWithdrawWidth: NSLayoutConstraint!
     @IBOutlet weak var menuWidth: NSLayoutConstraint!
+    
+    var groupPlatformArray: [KKGroupPlatformGroups]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -347,7 +349,8 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
         self.navigationController?.pushViewController(KKWithdrawViewController(), animated: true)
     }
     
-    //Game Menu
+    //MARK:- Collection View Flow Layout
+    
     func initFlowLayout(){
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 0
@@ -359,8 +362,30 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
         menuCollectionView.register(UINib(nibName: "KKGameMenuItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.gameMenuItemCVCIdentifier)
     }
     
+    //MARK:- API Calls
+    
+    func getContentGroupAndPlatform() {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.getContentGroupsAndPlatform().execute { groupPlatformResponse in
+            
+            self.hideAnimatedLoader()
+            self.groupPlatformArray = groupPlatformResponse.results!.groups!
+            self.menuCollectionView.reloadData()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: "Api Error. Currently api is updating")
+        }
+    }
+}
+
+extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return groupPlatformArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -376,8 +401,8 @@ class KKHomeViewController: KKBaseViewController, UICollectionViewDataSource, UI
             cell.imgHover.isHidden = true
         }
         
-        cell.lblMenuName.text = KKUtil.languageSelectedStringForKey(key: getMenuName(index: indexPath.row))
-        cell.imgMenuIcon.image = UIImage(named: getMenuIcon(index: indexPath.row))
+        cell.lblMenuName.text = groupPlatformArray[indexPath.item].name
+        cell.imgMenuIcon.setUpImage(with: groupPlatformArray[indexPath.item].img)
         
         return cell
     }

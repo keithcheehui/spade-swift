@@ -23,7 +23,7 @@ class KKSplashScreenViewController: KKBaseViewController {
     var imgProgress: UIImageView!
     var progressValue: CGFloat = 0
     var stopProgress: CGFloat = 0.7
-
+    var timerStop: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,18 +33,11 @@ class KKSplashScreenViewController: KKBaseViewController {
         
         if KKUtil.isConnectedToInternet() {
             
-            self.getAppVersion()
+            self.getAnnouncement()
         }
         else
         {
-            let appVersionDetails = KKUtil.decodeAppVersionFromCache()
-            
-            if appVersionDetails != nil {
-                
-                KKSingleton.sharedInstance.countryArray = appVersionDetails!.countries!
-                KKSingleton.sharedInstance.languageArray = appVersionDetails!.languages!
-                self.stopProgress = 1
-            }
+            self.appVersionApiFailed()
         }
     }
 
@@ -77,17 +70,32 @@ class KKSplashScreenViewController: KKBaseViewController {
 
         if progressValue <= stopProgress {
             
+            timerStop = false
             lblLoading.text = String.init(format: "loading %.0f%%...", progressValue*100)
             self.perform(#selector(updateProgress), with: nil, afterDelay: 0.03)
         }
         else if stopProgress >= 1
         {
+            timerStop = true
             lblLoading.text = "loading 100%..."
             self.present(KKSelectCountryViewController(), animated: false, completion: nil)
         }
     }
     
     //MARK:- API Calls
+    
+    func getAnnouncement() {
+        
+        KKApiClient.getContentAnnouncement().execute { announcementResponse in
+            
+            KKSingleton.sharedInstance.announcementArray = announcementResponse.results!.announcements!
+            self.getAppVersion()
+            
+        } onFailure: { errorMessage in
+            
+            self.getAppVersion()
+        }
+    }
     
     func getAppVersion() {
         
@@ -101,6 +109,11 @@ class KKSplashScreenViewController: KKBaseViewController {
                 KKSingleton.sharedInstance.languageArray = appVersionDetails.languages!
                 
                 self.stopProgress = 1
+                
+                if self.timerStop {
+                    
+                    self.perform(#selector(self.updateProgress), with: nil, afterDelay: 0.03)
+                }
             }
             catch {
                 
@@ -108,6 +121,27 @@ class KKSplashScreenViewController: KKBaseViewController {
             
         } onFailure: { errorMessage in
             
+            self.appVersionApiFailed()
+        }
+    }
+    
+    //MARK:- Others
+    
+    func appVersionApiFailed() {
+        
+        let appVersionDetails = KKUtil.decodeAppVersionFromCache()
+        
+        if appVersionDetails != nil {
+            
+            KKSingleton.sharedInstance.countryArray = appVersionDetails!.countries!
+            KKSingleton.sharedInstance.languageArray = appVersionDetails!.languages!
+        }
+        
+        self.stopProgress = 1
+        
+        if self.timerStop {
+            
+            self.perform(#selector(self.updateProgress), with: nil, afterDelay: 0.03)
         }
     }
 }

@@ -62,7 +62,7 @@ class KKAlertControllerPresentTransition: KKViewControllerAnimatedTransition {
     }
 }
 
-class TKKAlertControllerDismissTransition: KKViewControllerAnimatedTransition {
+class KKAlertControllerDismissTransition: KKViewControllerAnimatedTransition {
     override func animateTransition(_ from: UIViewController, to: UIViewController, container: UIView, completion: @escaping (Bool) -> Void) {
         container.addSubview(from.view)
 

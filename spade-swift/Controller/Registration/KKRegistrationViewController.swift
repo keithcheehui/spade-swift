@@ -111,18 +111,33 @@ class KKRegistrationViewController: KKBaseViewController {
         
         if txtUsername.text!.count == 0 {
             
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_username_required"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_username_required_desc"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+
         }
         
         if txtPassword.text!.count == 0 {
             
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_required"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+
         }
         
         if txtConfirmPassword.text!.count == 0 {
             
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_confirm_required"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_password_confirm_required_desc"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+
         }
         
         if txtConfirmPassword.text != txtPassword.text {
             
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_not_match"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_password_not_match_desc"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
         }
         
         self.showAnimatedLoader()
@@ -142,6 +157,7 @@ class KKRegistrationViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: "Api Error. Currently api is updating")
         }
     }
     
@@ -155,6 +171,7 @@ class KKRegistrationViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: "Api Error. Currently api is updating")
         }
     }
 
