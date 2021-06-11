@@ -120,7 +120,7 @@ class KKHomeViewController: KKBaseViewController {
         lblMore.font = lblAffiliate.font
 
         imgProfile.image = UIImage(named: "ic_profile")
-        lblProfileName.text = "80808080"
+        lblProfileName.text = KKUtil.languageSelectedStringForKey(key: "home_guest")
         lblVip.text = "VIP 1"
         lblMoney.text = "999,999,999"
         lblAnnouncement.text = "Welcome Welcome Welcome Welcome Welcome"
