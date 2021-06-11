@@ -16,6 +16,8 @@ class KKOTPViewController: KKBaseViewController {
         case OTPTextField2          = 2
         case OTPTextField3          = 3
         case OTPTextField4          = 4
+        case OTPTextField5          = 5
+        case OTPTextField6          = 6
     }
     
     @IBOutlet weak var imgRegister: UIImageView!
@@ -35,6 +37,10 @@ class KKOTPViewController: KKBaseViewController {
     @IBOutlet weak var txtOTP3: UITextFieldDisableTouch!
     @IBOutlet weak var otpView4: UIView!
     @IBOutlet weak var txtOTP4: UITextFieldDisableTouch!
+    @IBOutlet weak var otpView5: UIView!
+    @IBOutlet weak var txtOTP5: UITextFieldDisableTouch!
+    @IBOutlet weak var otpView6: UIView!
+    @IBOutlet weak var txtOTP6: UITextFieldDisableTouch!
     @IBOutlet weak var resendView: UIView!
     @IBOutlet weak var lblNoReceive: UILabel!
     @IBOutlet weak var lblResend: UILabel!
@@ -81,6 +87,8 @@ class KKOTPViewController: KKBaseViewController {
         otpView2.backgroundColor = UIColor(white: 0, alpha: 0.5)
         otpView3.backgroundColor = UIColor(white: 0, alpha: 0.5)
         otpView4.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        otpView5.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        otpView6.backgroundColor = UIColor(white: 0, alpha: 0.5)
 
         countryCodeView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
         mobileView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
@@ -88,6 +96,8 @@ class KKOTPViewController: KKBaseViewController {
         otpView2.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
         otpView3.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
         otpView4.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
+        otpView5.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
+        otpView6.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
 
         imgRegisterHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
@@ -122,12 +132,16 @@ class KKOTPViewController: KKBaseViewController {
         txtOTP2.font = lblMobileNumber.font
         txtOTP3.font = lblMobileNumber.font
         txtOTP4.font = lblMobileNumber.font
-        
+        txtOTP5.font = lblMobileNumber.font
+        txtOTP6.font = lblMobileNumber.font
+
         txtOTP1.tag = OTPTextField.OTPTextField1.rawValue
         txtOTP2.tag = OTPTextField.OTPTextField2.rawValue
         txtOTP3.tag = OTPTextField.OTPTextField3.rawValue
         txtOTP4.tag = OTPTextField.OTPTextField4.rawValue
-        
+        txtOTP5.tag = OTPTextField.OTPTextField5.rawValue
+        txtOTP6.tag = OTPTextField.OTPTextField6.rawValue
+
         lblNoReceive.font = lblMobileNumber.font
         lblResend.font = lblMobileNumber.font
         lblSend.font = UIFont.systemFont(ofSize: ConstantSize.ssoLabelSmallFont)
@@ -141,24 +155,32 @@ class KKOTPViewController: KKBaseViewController {
         txtOTP2.backspaceDelegate = self
         txtOTP3.backspaceDelegate = self
         txtOTP4.backspaceDelegate = self
+        txtOTP5.backspaceDelegate = self
+        txtOTP6.backspaceDelegate = self
         
         txtMobile.returnKeyType = .next
         txtOTP1.returnKeyType = .next
         txtOTP2.returnKeyType = .next
         txtOTP3.returnKeyType = .next
-        txtOTP4.returnKeyType = .done
+        txtOTP4.returnKeyType = .next
+        txtOTP5.returnKeyType = .next
+        txtOTP6.returnKeyType = .done
         
         txtOTP1.addTarget(self, action: #selector(textfieldDidChange(_:)), for: .editingChanged)
         txtOTP2.addTarget(self, action: #selector(textfieldDidChange(_:)), for: .editingChanged)
         txtOTP3.addTarget(self, action: #selector(textfieldDidChange(_:)), for: .editingChanged)
         txtOTP4.addTarget(self, action: #selector(textfieldDidChange(_:)), for: .editingChanged)
-        
+        txtOTP5.addTarget(self, action: #selector(textfieldDidChange(_:)), for: .editingChanged)
+        txtOTP6.addTarget(self, action: #selector(textfieldDidChange(_:)), for: .editingChanged)
+
         txtMobile.keyboardType = .numberPad
         txtOTP1.keyboardType = .numberPad
         txtOTP2.keyboardType = .numberPad
         txtOTP3.keyboardType = .numberPad
         txtOTP4.keyboardType = .numberPad
-        
+        txtOTP5.keyboardType = .numberPad
+        txtOTP6.keyboardType = .numberPad
+
         txtCountryCode.isEnabled = false
         
         OTPView.isUserInteractionEnabled = true
@@ -272,8 +294,12 @@ class KKOTPViewController: KKBaseViewController {
             txtOTP2.becomeFirstResponder()
         } else if txtOTP3.text!.isEmpty {
             txtOTP3.becomeFirstResponder()
-        } else {
+        } else if txtOTP4.text!.isEmpty {
             txtOTP4.becomeFirstResponder()
+        } else if txtOTP5.text!.isEmpty {
+            txtOTP5.becomeFirstResponder()
+        }else {
+            txtOTP6.becomeFirstResponder()
         }
     }
     
@@ -295,7 +321,13 @@ extension KKOTPViewController: UITextFieldDelegate, UITextFieldBackspaceDelegate
     @objc func textfieldDidChange(_ sender: UITextField) {
         let string = sender.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if (sender == txtOTP4 && string.isEmpty){
+        if (sender == txtOTP6 && string.isEmpty){
+            txtOTP6.resignFirstResponder()
+            txtOTP5.becomeFirstResponder()
+        }else if (sender == txtOTP5 && string.isEmpty){
+            txtOTP5.resignFirstResponder()
+            txtOTP4.becomeFirstResponder()
+        }else if (sender == txtOTP4 && string.isEmpty){
             txtOTP4.resignFirstResponder()
             txtOTP3.becomeFirstResponder()
         }else if (sender == txtOTP3 && string.isEmpty){
@@ -323,6 +355,12 @@ extension KKOTPViewController: UITextFieldDelegate, UITextFieldBackspaceDelegate
         } else if (sender == txtOTP4 && !string.isEmpty){
             txtOTP4.text = String(string.last!)
             txtOTP4.resignFirstResponder()
+        } else if (sender == txtOTP5 && !string.isEmpty){
+            txtOTP5.text = String(string.last!)
+            txtOTP5.resignFirstResponder()
+        } else if (sender == txtOTP6 && !string.isEmpty){
+            txtOTP6.text = String(string.last!)
+            txtOTP6.resignFirstResponder()
         }
         
         OTPConfirmButtonValidation()
@@ -343,8 +381,12 @@ extension KKOTPViewController: UITextFieldDelegate, UITextFieldBackspaceDelegate
             txtOTP3.becomeFirstResponder()
         case txtOTP3:
             txtOTP4.becomeFirstResponder()
+        case txtOTP4:
+            txtOTP5.becomeFirstResponder()
+        case txtOTP5:
+            txtOTP6.becomeFirstResponder()
         default:
-            txtOTP4.resignFirstResponder()
+            txtOTP6.resignFirstResponder()
         }
     }
 
@@ -358,6 +400,10 @@ extension KKOTPViewController: UITextFieldDelegate, UITextFieldBackspaceDelegate
                 txtOTP3.becomeFirstResponder()
             } else if (textField == txtOTP3 && currentText != "") {
                 txtOTP4.becomeFirstResponder()
+            } else if (textField == txtOTP4 && currentText != "") {
+                txtOTP5.becomeFirstResponder()
+            } else if (textField == txtOTP5 && currentText != "") {
+                txtOTP6.becomeFirstResponder()
             }
         }
     }
