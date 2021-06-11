@@ -111,6 +111,7 @@ class KKUtil: NSObject {
         KKUtil.proceedToPage(vc: KKSplashScreenViewController.init())
     }
     
+    ///decode app version
     class func decodeAppVersionFromCache() -> KKAppVersionResults? {
         
         if (KeychainSwift().getData(CacheKey.appVersionDetails) != nil)
@@ -118,6 +119,19 @@ class KKUtil: NSObject {
             let appVersionDetails = try! JSONDecoder().decode(KKAppVersionResults.self, from: KeychainSwift().getData(CacheKey.appVersionDetails)!)
             
             return appVersionDetails
+        }
+        
+        return nil
+    }
+    
+    ///decode selected country
+    class func decodeSelectedCountryFromCache() -> KKAppVersionCountries? {
+        
+        if (KeychainSwift().getData(CacheKey.selectedCountry) != nil)
+        {
+            let countryDetails = try! JSONDecoder().decode(KKAppVersionCountries.self, from: KeychainSwift().getData(CacheKey.selectedCountry)!)
+            
+            return countryDetails
         }
         
         return nil

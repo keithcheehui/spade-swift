@@ -69,8 +69,8 @@ class KKHomeViewController: KKBaseViewController {
         // Do any additional setup after loading the view.
         initialLayout()
         initFlowLayout()
+        self.getContentGroupAndPlatform()
         
-        buttonHover(type: selectedGameType)
         setupGuestView(isGuest: true)
     }
     
@@ -241,25 +241,7 @@ class KKHomeViewController: KKBaseViewController {
             expBar.isHidden = false
         }
     }
-    
-    func buttonHover(type: Int){
-        selectedGameType = type
-        updateLobbyBackgroundImage(gameType: type)
 
-        switch type {
-        case GameType.liveCasino:
-            let viewController = KKLiveCasinoViewController.init()
-            viewController.selectedGameType = selectedGameType
-            changeView(vc: viewController)
-            break;
-        default:
-            let viewController = KKGameListViewController.init()
-            viewController.selectedGameType = selectedGameType
-            changeView(vc: viewController)
-            break;
-        }
-    }
-    
     func changeView(vc: KKBaseViewController){
         for view in contentView.subviews{
             view.removeFromSuperview()
@@ -374,6 +356,14 @@ class KKHomeViewController: KKBaseViewController {
             self.groupPlatformArray = groupPlatformResponse.results!.groups!
             self.menuCollectionView.reloadData()
             
+            self.selectedGameType = 0
+            self.updateLobbyBackgroundImage(gameType: self.selectedGameType)
+            
+            let viewController = KKGameListViewController.init()
+            viewController.selectedGameType = self.selectedGameType
+            viewController.gameListArray = self.groupPlatformArray[self.selectedGameType].platforms
+            self.changeView(vc: viewController)
+            
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
@@ -408,7 +398,25 @@ extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        buttonHover(type: indexPath.row)
+        selectedGameType = indexPath.item
+        updateLobbyBackgroundImage(gameType: selectedGameType)
+        
+        switch selectedGameType {
+        case GameType.liveCasino:
+            let viewController = KKLiveCasinoViewController.init()
+            viewController.selectedGameType = selectedGameType
+            viewController.liveCasinoArray = groupPlatformArray[indexPath.item].platforms
+            changeView(vc: viewController)
+            break;
+        default:
+            let viewController = KKGameListViewController.init()
+            viewController.selectedGameType = selectedGameType
+            viewController.gameListArray = groupPlatformArray[indexPath.item].platforms
+            changeView(vc: viewController)
+            break;
+        }
+        
+        
         collectionView.reloadData()
         return
     }

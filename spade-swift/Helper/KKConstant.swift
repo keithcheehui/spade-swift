@@ -54,6 +54,7 @@ struct CacheKey {
     static let accessToken = "access_token"
     static let refreshToken = "refresh_token"
     static let appVersionDetails = "app_version_details"
+    static let selectedCountry = "selected_country"
 }
 
 struct APIKeys {

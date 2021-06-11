@@ -151,6 +151,8 @@ class KKOTPViewController: KKBaseViewController {
         txtOTP2.delegate = self
         txtOTP3.delegate = self
         txtOTP4.delegate = self
+        txtOTP5.delegate = self
+        txtOTP6.delegate = self
         txtOTP1.backspaceDelegate = self
         txtOTP2.backspaceDelegate = self
         txtOTP3.backspaceDelegate = self
@@ -254,8 +256,8 @@ class KKOTPViewController: KKBaseViewController {
     
     func verifyOTPAndProceed() {
         
-        let OTPCode = "\(txtOTP1.text!)\(txtOTP2.text!)\(txtOTP3.text!)\(txtOTP4.text!)"
-        if OTPCode.count != 4 {
+        let OTPCode = "\(txtOTP1.text!)\(txtOTP2.text!)\(txtOTP3.text!)\(txtOTP4.text!)\(txtOTP5.text!)\(txtOTP6.text!)"
+        if OTPCode.count != 6 {
             self.showPopUpWithSingleButton(
                 title: KKUtil.languageSelectedStringForKey(key: "error_otp_required"),
                 body: KKUtil.languageSelectedStringForKey(key: "error_otp_required_desc"),
@@ -277,7 +279,7 @@ class KKOTPViewController: KKBaseViewController {
     
     func OTPConfirmButtonValidation() {
         
-        if txtOTP1.text!.isEmpty || txtOTP2.text!.isEmpty || txtOTP3.text!.isEmpty || txtOTP4.text!.isEmpty {
+        if txtOTP1.text!.isEmpty || txtOTP2.text!.isEmpty || txtOTP3.text!.isEmpty || txtOTP4.text!.isEmpty || txtOTP5.text!.isEmpty || txtOTP6.text!.isEmpty {
             btnConfirm.alpha = 0.5
             btnConfirm.isUserInteractionEnabled = false
         } else {

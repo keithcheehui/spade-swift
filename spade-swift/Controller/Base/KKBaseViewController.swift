@@ -14,6 +14,11 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     var tableContentView:       UIView!
     var displayViewController:  KKBaseViewController!
     var selectedGameType: Int = 0
+    
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        
+        return true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

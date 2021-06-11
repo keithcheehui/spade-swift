@@ -7,8 +7,9 @@
 
 import Foundation
 import UIKit
+import KeychainSwift
 
-class KKSelectCountryViewController: KKBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class KKSelectCountryViewController: KKBaseViewController {
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var countryCollectionView: UICollectionView!
@@ -21,13 +22,6 @@ class KKSelectCountryViewController: KKBaseViewController, UICollectionViewDataS
     @IBOutlet weak var titleHeight: NSLayoutConstraint!
 
     var selectedIndex = 0
-    
-    enum countryName: Int {
-        case malaysia = 0
-        case indonesia = 1
-        case thailand = 2
-        case singapore = 3
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,12 +54,15 @@ class KKSelectCountryViewController: KKBaseViewController, UICollectionViewDataS
     
     ///Button Actions
     @IBAction func btnConfirmDidPressed(){
+        
         KKUtil.redirectToHome()
     }
+}
+
+extension KKSelectCountryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    ///Live Chat
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return KKSingleton.sharedInstance.countryArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -75,20 +72,8 @@ class KKSelectCountryViewController: KKBaseViewController, UICollectionViewDataS
             fatalError("DequeueReusableCell failed while casting")
         }
         
-        switch (indexPath.row){
-        case countryName.indonesia.rawValue:
-            cell.lblCountryName.text = KKUtil.languageSelectedStringForKey(key: "country_indonesia")
-            cell.imgCountry.image = UIImage(named: "ic_indonesia")
-        case countryName.thailand.rawValue:
-            cell.lblCountryName.text = KKUtil.languageSelectedStringForKey(key: "country_thailand")
-            cell.imgCountry.image = UIImage(named: "ic_thailand")
-        case countryName.singapore.rawValue:
-            cell.lblCountryName.text = KKUtil.languageSelectedStringForKey(key: "country_singapore")
-            cell.imgCountry.image = UIImage(named: "ic_singapore")
-        default:
-            cell.lblCountryName.text = KKUtil.languageSelectedStringForKey(key: "country_malaysia")
-            cell.imgCountry.image = UIImage(named: "ic_malaysia")
-        }
+        cell.lblCountryName.text = KKSingleton.sharedInstance.countryArray[indexPath.item].name
+        cell.imgCountry.setUpImage(with: KKSingleton.sharedInstance.countryArray[indexPath.item].img)
         
         if (indexPath.row == selectedIndex) {
             cell.imgCountry.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 2)
@@ -100,9 +85,17 @@ class KKSelectCountryViewController: KKBaseViewController, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedIndex = indexPath.row
+        
+        selectedIndex = indexPath.item
+        
+        do {
+            KeychainSwift().set(try JSONEncoder().encode(KKSingleton.sharedInstance.countryArray[indexPath.item]), forKey: CacheKey.selectedCountry)
+        }
+        catch {
+            
+        }
+        
         collectionView.reloadData()
-        return
     }
 }
 

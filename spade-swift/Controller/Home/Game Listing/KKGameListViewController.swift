@@ -8,13 +8,15 @@
 import Foundation
 import UIKit
 
-class KKGameListViewController: KKBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class KKGameListViewController: KKBaseViewController {
     
     @IBOutlet weak var gameCollectionView: UICollectionView!
         
     @IBOutlet weak var containerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var containerMarginBottom: NSLayoutConstraint!
     
+    var gameListArray: [KKGroupPlatformDetails]! = []
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -85,10 +87,12 @@ class KKGameListViewController: KKBaseViewController, UICollectionViewDataSource
             return true
         }
     }
+}
+
+extension KKGameListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    //Game List
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return gameListArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -100,28 +104,8 @@ class KKGameListViewController: KKBaseViewController, UICollectionViewDataSource
         
         var imageName = ""
         var showBetButton = true
-        
-        switch selectedGameType {
-        case GameType.hotGame:
-            imageName = getHotGameImage(index: indexPath.row)
-        case GameType.slots:
-            imageName = getSlotGameImage(index: indexPath.row)
-        case GameType.fishing:
-            imageName = getFishingGameImage(index: indexPath.row)
-        case GameType.p2pGame:
-            imageName = getP2PGameImage(index: indexPath.row)
-        case GameType.sports:
-            imageName = getSportGameImage(index: indexPath.row)
-            showBetButton = false
-        case GameType.lottery:
-            imageName = getLotteryGameImage(index: indexPath.row)
-        case GameType.esports:
-            imageName = getEsportGameImage(index: indexPath.row)
-        default:
-            break
-        }
-        
-        cell.imgGameImage.image = UIImage(named: imageName)
+                
+        cell.imgGameImage.setUpImage(with: gameListArray[indexPath.item].img)
         cell.btnBetNow.isHidden = showBetButton
                 
         return cell

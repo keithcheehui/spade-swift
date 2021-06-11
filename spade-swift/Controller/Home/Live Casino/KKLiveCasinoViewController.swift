@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class KKLiveCasinoViewController: KKBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class KKLiveCasinoViewController: KKBaseViewController {
     
     @IBOutlet weak var imgBG: UIImageView!
     @IBOutlet weak var imgGameIcon: UIImageView!
@@ -26,6 +26,7 @@ class KKLiveCasinoViewController: KKBaseViewController, UICollectionViewDataSour
     @IBOutlet weak var gameCollectionViewWidth: NSLayoutConstraint!
     
     var selectedLiveCasinoIndex = 0
+    var liveCasinoArray: [KKGroupPlatformDetails]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,10 +67,13 @@ class KKLiveCasinoViewController: KKBaseViewController, UICollectionViewDataSour
     @IBAction func btnBetNowDidPressed(){
         
     }
+}
+
+extension KKLiveCasinoViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     //Game List
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return liveCasinoArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -79,27 +83,22 @@ class KKLiveCasinoViewController: KKBaseViewController, UICollectionViewDataSour
             fatalError("DequeueReusableCell failed while casting")
         }
         
+        cell.imgGirlIcon.setUpImage(with: liveCasinoArray[indexPath.item].img)
+        cell.lblGameName.text = liveCasinoArray[indexPath.item].name!
+        
         switch indexPath.row {
         case 0:
-            cell.imgGirlIcon.image = UIImage(named: "ic_girl_ag")
             cell.imgGameIcon.image = UIImage(named: "ic_ag")
-            cell.lblGameName.text = KKUtil.languageSelectedStringForKey(key: "live_casino_ag")
         case 1:
-            cell.imgGirlIcon.image = UIImage(named: "ic_girl_sa")
             cell.imgGameIcon.image = UIImage(named: "ic_sa")
-            cell.lblGameName.text = KKUtil.languageSelectedStringForKey(key: "live_casino_sa")
         case 2:
-            cell.imgGirlIcon.image = UIImage(named: "ic_girl_dg")
             cell.imgGameIcon.image = UIImage(named: "ic_dg")
-            cell.lblGameName.text = KKUtil.languageSelectedStringForKey(key: "live_casino_dg")
         case 3:
-            cell.imgGirlIcon.image = UIImage(named: "ic_girl_bg")
             cell.imgGameIcon.image = UIImage(named: "ic_bg")
-            cell.lblGameName.text = KKUtil.languageSelectedStringForKey(key: "live_casino_bg")
         default:
             break;
         }
-        
+
         if (selectedLiveCasinoIndex == indexPath.row){
             cell.imgHover.isHidden = false
         } else {
@@ -113,23 +112,18 @@ class KKLiveCasinoViewController: KKBaseViewController, UICollectionViewDataSour
         selectedLiveCasinoIndex = indexPath.row
         gameCollectionView.reloadData()
         
+        imgBG.setUpImage(with: liveCasinoArray[indexPath.item].img)
+        lblGameName.text = liveCasinoArray[indexPath.item].name!
+        
         switch indexPath.row {
         case 0:
-            imgBG.image = UIImage(named: "ic_girl_ag")
             imgGameIcon.image = UIImage(named: "ic_ag")
-            lblGameName.text = KKUtil.languageSelectedStringForKey(key: "live_casino_ag")
         case 1:
-            imgBG.image = UIImage(named: "ic_girl_sa")
             imgGameIcon.image = UIImage(named: "ic_sa")
-            lblGameName.text = KKUtil.languageSelectedStringForKey(key: "live_casino_sa")
         case 2:
-            imgBG.image = UIImage(named: "ic_girl_dg")
             imgGameIcon.image = UIImage(named: "ic_dg")
-            lblGameName.text = KKUtil.languageSelectedStringForKey(key: "live_casino_dg")
         case 3:
-            imgBG.image = UIImage(named: "ic_girl_bg")
             imgGameIcon.image = UIImage(named: "ic_bg")
-            lblGameName.text = KKUtil.languageSelectedStringForKey(key: "live_casino_bg")
         default:
             break;
         }
