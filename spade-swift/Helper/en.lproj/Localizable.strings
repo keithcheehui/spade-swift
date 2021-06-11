@@ -36,6 +36,7 @@
 "otp_did_you_receive"                       = "Didn't receive the OTP?";
 "otp_resend"                                = "Resend in ";
 "otp_send"                                  = "SEND";
+"otp_click_to_resend"                       = "Click here to resend";
 
 //MARK: HOME
 "home_copy_id"                              = "COPY ID";

@@ -17,6 +17,7 @@
                 <outlet property="btnConfirmContainerMarginBottom" destination="9vj-28-44N" id="bh9-t0-QjJ"/>
                 <outlet property="btnConfirmHeight" destination="k0J-nF-Nhj" id="CZK-RD-0mf"/>
                 <outlet property="btnResend" destination="QCn-PN-op3" id="A1B-TN-aSU"/>
+                <outlet property="btnSend" destination="iYw-Jt-obD" id="Bwu-ka-pwL"/>
                 <outlet property="containerMarginBottom" destination="Nlk-6M-S9P" id="3CN-E1-MHA"/>
                 <outlet property="containerMarginLeft" destination="dU9-o3-2YF" id="r5M-zo-LhO"/>
                 <outlet property="containerMarginRight" destination="qxm-RK-xht" id="JDj-zy-Xzh"/>
@@ -42,6 +43,7 @@
                 <outlet property="otpView2" destination="nHs-jU-Xc5" id="xBf-t6-h8B"/>
                 <outlet property="otpView3" destination="fA6-bs-eJv" id="NoV-1g-Z2I"/>
                 <outlet property="otpView4" destination="R4g-UH-eWr" id="3XH-5b-M1Z"/>
+                <outlet property="resendView" destination="dIR-xe-jVW" id="Tz8-d5-jSV"/>
                 <outlet property="titleContainerHeight" destination="AEa-HK-ql8" id="MAg-wQ-v53"/>
                 <outlet property="txtCountryCode" destination="85H-AY-JYQ" id="LAw-zd-ygm"/>
                 <outlet property="txtCountryCodeWidth" destination="q7i-En-Dda" id="mU7-ac-iQu"/>

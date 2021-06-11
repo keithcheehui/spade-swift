@@ -35,9 +35,11 @@ class KKOTPViewController: KKBaseViewController {
     @IBOutlet weak var txtOTP3: UITextFieldDisableTouch!
     @IBOutlet weak var otpView4: UIView!
     @IBOutlet weak var txtOTP4: UITextFieldDisableTouch!
+    @IBOutlet weak var resendView: UIView!
     @IBOutlet weak var lblNoReceive: UILabel!
     @IBOutlet weak var lblResend: UILabel!
     @IBOutlet weak var lblSend: UILabel!
+    @IBOutlet weak var btnSend: UIButton!
     @IBOutlet weak var btnResend: UIButton!
     @IBOutlet weak var btnConfirm: UIButton!
     @IBOutlet weak var OTPView: UIView!
@@ -61,6 +63,8 @@ class KKOTPViewController: KKBaseViewController {
     @IBOutlet weak var btnConfirmContainerMarginBottom: NSLayoutConstraint!
     
     var phoneNumber: String! = ""
+    var timerCountdown = 60
+    var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,12 +153,35 @@ class KKOTPViewController: KKBaseViewController {
         txtOTP3.addTarget(self, action: #selector(textfieldDidChange(_:)), for: .editingChanged)
         txtOTP4.addTarget(self, action: #selector(textfieldDidChange(_:)), for: .editingChanged)
         
+        txtMobile.keyboardType = .numberPad
+        txtOTP1.keyboardType = .numberPad
+        txtOTP2.keyboardType = .numberPad
+        txtOTP3.keyboardType = .numberPad
+        txtOTP4.keyboardType = .numberPad
+        
         txtCountryCode.isEnabled = false
         
         OTPView.isUserInteractionEnabled = true
         OTPView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(checkOTPFirstResponder)))
+        
+        resendView.isHidden = true
+        btnSend.isUserInteractionEnabled = true
     }
 
+    @objc func timerUpdate() {
+        if(timerCountdown > 0) {
+            timerCountdown -= 1
+            lblResend.text = KKUtil.languageSelectedStringForKey(key: "otp_resend") + String(timerCountdown)
+            btnSend.isUserInteractionEnabled = false
+            btnResend.isUserInteractionEnabled = false
+        } else {
+            timer.invalidate()
+            btnSend.isUserInteractionEnabled = true
+            btnResend.isUserInteractionEnabled = true
+            lblResend.text = KKUtil.languageSelectedStringForKey(key: "otp_click_to_resend")
+        }
+    }
+    
     ///Button Actions
     @IBAction func btnCloseDidPressed(){
         self.dismiss(animated: false, completion: nil)
@@ -163,19 +190,15 @@ class KKOTPViewController: KKBaseViewController {
     @IBAction func btnSendDidPressed(){
 
         if txtMobile.text!.isEmpty {
-            
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_mobile_required"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_mobile_required_desc"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
-        }
-        else
-        {
+            self.showPopUpWithSingleButton(
+                title: KKUtil.languageSelectedStringForKey(key: "error_mobile_required"),
+                body: KKUtil.languageSelectedStringForKey(key: "error_mobile_required_desc"),
+                buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay")
+            )
+        } else {
             if txtMobile.text!.first == "0" {
-                
                 phoneNumber = "60\(txtMobile.text!.dropFirst())"
-            }
-            else
-            {
+            } else {
                 phoneNumber = "60\(txtMobile.text!)"
             }
             
@@ -184,27 +207,24 @@ class KKOTPViewController: KKBaseViewController {
     }
     
     @IBAction func btnResendDidPressed(){
-
         self.btnSendDidPressed()
     }
     
     @IBAction func btnConfirmDidPressed(){
-        
         self.verifyOTPAndProceed()
     }
     
     //MARK:- API Calls
     
     @objc func requestPhoneNumberOTP() {
-        
         self.showAnimatedLoader()
         
         KKApiClient.sendOTPRequest(phoneNumber: phoneNumber).execute { KKOTPRequestResponse in
-            
             self.hideAnimatedLoader()
-            
+            self.resendView.isHidden = false
+            self.timerCountdown = 60
+            self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.timerUpdate), userInfo: nil, repeats: true)
         } onFailure: { errorMessage in
-            
             self.hideAnimatedLoader()
             self.showAlertView(alertMessage: "Api Error. Currently api is updating")
         }
@@ -213,28 +233,21 @@ class KKOTPViewController: KKBaseViewController {
     func verifyOTPAndProceed() {
         
         let OTPCode = "\(txtOTP1.text!)\(txtOTP2.text!)\(txtOTP3.text!)\(txtOTP4.text!)"
-        
         if OTPCode.count != 4 {
-            
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_otp_required"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_otp_required_desc"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
-        }
-        else
-        {
+            self.showPopUpWithSingleButton(
+                title: KKUtil.languageSelectedStringForKey(key: "error_otp_required"),
+                body: KKUtil.languageSelectedStringForKey(key: "error_otp_required_desc"),
+                buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+        } else {
             self.showAnimatedLoader()
             
             KKApiClient.proceedOTPVerification(phoneNumber: phoneNumber, otpCode: OTPCode).execute { generalResponse in
-                
                 self.hideAnimatedLoader()
                 self.closeOTPAndOpenRegistration()
-                
             } onFailure: { errorMessage in
-                
                 self.hideAnimatedLoader()
                 self.showAlertView(alertMessage: "Api Error. Currently api is updating")
             }
-
         }
     }
     
@@ -254,19 +267,12 @@ class KKOTPViewController: KKBaseViewController {
     @objc func checkOTPFirstResponder() {
         
         if txtOTP1.text!.isEmpty {
-            
             txtOTP1.becomeFirstResponder()
-        }
-        else if txtOTP2.text!.isEmpty {
-            
+        } else if txtOTP2.text!.isEmpty {
             txtOTP2.becomeFirstResponder()
-        }
-        else if txtOTP3.text!.isEmpty {
-            
+        } else if txtOTP3.text!.isEmpty {
             txtOTP3.becomeFirstResponder()
-        }
-        else
-        {
+        } else {
             txtOTP4.becomeFirstResponder()
         }
     }
@@ -277,7 +283,6 @@ class KKOTPViewController: KKBaseViewController {
         weak var pvc = self.presentingViewController
 
         self.dismiss(animated: true, completion: {
-            
             let viewController = KKRegistrationViewController.init()
             viewController.verifiedPhoneNumber = self.phoneNumber
             pvc?.present(viewController, animated: true, completion: nil)
