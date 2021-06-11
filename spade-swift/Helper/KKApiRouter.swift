@@ -51,7 +51,7 @@ enum ApiRouter: URLRequestConvertible {
         switch self {
         
         case .appVersion:
-            return "app/version"
+            return "version"
         
         case .otpRequest:
             return "otp/request"
@@ -69,19 +69,19 @@ enum ApiRouter: URLRequestConvertible {
             return "password/forgot"
             
         case .customerFAQ:
-            return "app/customer_service/faqs"
+            return "customer_service/faqs"
             
         case .getAnnouncementContent:
-            return "app/content/announcements"
+            return "content/announcements"
             
         case .getGroupAndPlatformContent:
-            return "app/content/groupsAndPlatforms"
+            return "content/groupsAndPlatforms"
             
         case .getPlatformProductsContent:
-            return "app/content/products"
+            return "content/products"
             
         case .getSystemMessageContent:
-            return "app/content/system_messages"
+            return "content/system_messages"
             
         }
     }
