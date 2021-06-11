@@ -69,6 +69,7 @@ class KKOTPViewController: KKBaseViewController {
     @IBOutlet weak var btnConfirmContainerMarginBottom: NSLayoutConstraint!
     
     var phoneNumber: String! = ""
+    var otpTextField6NotEmpty = false
     var timerCountdown = 60
     var timer = Timer()
     
@@ -323,10 +324,7 @@ extension KKOTPViewController: UITextFieldDelegate, UITextFieldBackspaceDelegate
     @objc func textfieldDidChange(_ sender: UITextField) {
         let string = sender.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if (sender == txtOTP6 && string.isEmpty){
-            txtOTP6.resignFirstResponder()
-            txtOTP5.becomeFirstResponder()
-        }else if (sender == txtOTP5 && string.isEmpty){
+        if (sender == txtOTP5 && string.isEmpty){
             txtOTP5.resignFirstResponder()
             txtOTP4.becomeFirstResponder()
         }else if (sender == txtOTP4 && string.isEmpty){
@@ -412,6 +410,20 @@ extension KKOTPViewController: UITextFieldDelegate, UITextFieldBackspaceDelegate
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
+        if textField.tag == OTPTextField.OTPTextField6.rawValue {
+            
+            let string = textField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            if string.isEmpty {
+                
+                otpTextField6NotEmpty = false
+            }
+            else
+            {
+                otpTextField6NotEmpty = true
+            }
+        }
+        
         let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
         let compSepByCharInSet = string.components(separatedBy: aSet)
         let numberFiltered = compSepByCharInSet.joined(separator: "")
@@ -422,14 +434,21 @@ extension KKOTPViewController: UITextFieldDelegate, UITextFieldBackspaceDelegate
         
         let string = textField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if string.isEmpty {
+        if !otpTextField6NotEmpty {
             
-            if textField.tag != OTPTextField.OTPTextField1.rawValue {
+            if string.isEmpty {
                 
-                let previousTextField: UITextField = view.viewWithTag(textField.tag - 1) as! UITextField
-                previousTextField.text = ""
-                previousTextField.becomeFirstResponder()
+                if textField.tag != OTPTextField.OTPTextField1.rawValue {
+                    
+                    let previousTextField: UITextField = view.viewWithTag(textField.tag - 1) as! UITextField
+                    previousTextField.text = ""
+                    previousTextField.becomeFirstResponder()
+                }
             }
+        }
+        else
+        {
+            otpTextField6NotEmpty = false
         }
     }
 }
@@ -451,3 +470,4 @@ class UITextFieldDisableTouch: UITextField {
         return nil
     }
 }
+
