@@ -38,10 +38,6 @@ class KKMessageTableCell: UITableViewCell {
         lblMsgTitle.textColor = UIColor.spade_white_FFFFFF
         lblDate.textColor = lblMsgTitle.textColor
         lblMsgContent.textColor = lblMsgTitle.textColor
-        
-        lblMsgTitle.text = "Welcome Gifts"
-        lblDate.text = "2021-01-23 19:00:00"
-        lblMsgContent.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vulputate, lorem a blandit fermentum, neque lacus pulvinar orci, et scelerisque leo magna id urna. Mauris vitae malesuada ex."
     }
     
     func setUpMessageDetails(messageDetails: KKSystemMessageDetails, isHidden: Bool)  -> CGFloat {
@@ -49,7 +45,7 @@ class KKMessageTableCell: UITableViewCell {
         let maximumLabelSize = CGSize(width: ScreenSize.width*0.6, height: .greatestFiniteMagnitude)
         
         lblMsgTitle.text = messageDetails.title
-        lblDate.text = "2021-01-23 19:00:00"
+        lblDate.text = messageDetails.created_at
         lblMsgContent.text = messageDetails.content
         
         let msgContentLabelAttributes: [NSAttributedString.Key: Any] = [

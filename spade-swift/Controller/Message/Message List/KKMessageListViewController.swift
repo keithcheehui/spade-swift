@@ -100,7 +100,7 @@ extension KKMessageListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //TODO: Keith: Calculate the msg content height, replace the 80 hard code
+        //TODO: Keith: the msg text add margin bottom
         if (selectedMessageIndex == indexPath.row) {
             return KKMessageTableCell.calculateMessageDetailsHeight(messageDetails: systemMessageArray[indexPath.row], isHidden: false)
         } else {
