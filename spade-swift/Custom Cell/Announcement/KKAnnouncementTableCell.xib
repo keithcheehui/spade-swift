@@ -20,13 +20,13 @@
                         <rect key="frame" x="0.0" y="5" width="485" height="38"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021-01-23 19:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azL-Yz-VWv">
-                                <rect key="frame" x="20" y="0.0" width="136.5" height="38"/>
+                                <rect key="frame" x="20" y="0.0" width="141" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank Changing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DfD-3d-Ogl">
-                                <rect key="frame" x="164.5" y="0.0" width="300.5" height="38"/>
+                                <rect key="frame" x="169" y="0.0" width="296" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,7 +36,7 @@
                         <constraints>
                             <constraint firstItem="azL-Yz-VWv" firstAttribute="leading" secondItem="lPb-dn-FDL" secondAttribute="leading" constant="20" id="2jw-Ga-Uz7"/>
                             <constraint firstItem="DfD-3d-Ogl" firstAttribute="leading" secondItem="azL-Yz-VWv" secondAttribute="trailing" constant="8" id="Kha-Sw-lEh"/>
-                            <constraint firstItem="DfD-3d-Ogl" firstAttribute="width" secondItem="azL-Yz-VWv" secondAttribute="width" multiplier="2.2" id="Sth-Xp-gb2"/>
+                            <constraint firstItem="DfD-3d-Ogl" firstAttribute="width" secondItem="azL-Yz-VWv" secondAttribute="width" multiplier="2.1" id="Sth-Xp-gb2"/>
                             <constraint firstAttribute="bottom" secondItem="DfD-3d-Ogl" secondAttribute="bottom" id="Uf4-bW-icL"/>
                             <constraint firstItem="azL-Yz-VWv" firstAttribute="top" secondItem="lPb-dn-FDL" secondAttribute="top" id="f8G-xy-RCB"/>
                             <constraint firstAttribute="bottom" secondItem="azL-Yz-VWv" secondAttribute="bottom" id="gVx-es-jbT"/>
