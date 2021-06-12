@@ -21,6 +21,6 @@ class KKLiveChatCollectionViewCell: UICollectionViewCell {
         containerView.layer.cornerRadius = 8
         
         lblHotline.textColor = UIColor.spade_white_FFFFFF
-        lblHotline.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 16))
+        lblHotline.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 14))
     }
 }

@@ -69,6 +69,9 @@
 		06BF5C3C2669833100C10008 /* KKPlatformProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C392669833100C10008 /* KKPlatformProductResponse.swift */; };
 		06BF5C3D2669833100C10008 /* KKPlatformProductResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C3A2669833100C10008 /* KKPlatformProductResults.swift */; };
 		3ED808A9A35A15A51B9CD1B0 /* Pods_spade_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */; };
+		5314289F2674978700801FD9 /* KKLiveChatDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5314289E2674978700801FD9 /* KKLiveChatDetails.swift */; };
+		531428A22674979500801FD9 /* KKLiveChatResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531428A12674979500801FD9 /* KKLiveChatResponse.swift */; };
+		531428A5267497A300801FD9 /* KKLiveChatResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531428A4267497A300801FD9 /* KKLiveChatResults.swift */; };
 		5317F22A264C10050076D69B /* KKWithdrawRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317F229264C10050076D69B /* KKWithdrawRequestViewController.swift */; };
 		5317F22D264C100E0076D69B /* KKWithdrawRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5317F22C264C100E0076D69B /* KKWithdrawRequestViewController.xib */; };
 		5317F232264C222A0076D69B /* KKBankTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317F231264C222A0076D69B /* KKBankTableCell.swift */; };
@@ -218,6 +221,9 @@
 		06BF5C3A2669833100C10008 /* KKPlatformProductResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKPlatformProductResults.swift; sourceTree = "<group>"; };
 		1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spade_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E2D902D25F2E5F3802521A0 /* Pods-spade-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spade-swift.release.xcconfig"; path = "Target Support Files/Pods-spade-swift/Pods-spade-swift.release.xcconfig"; sourceTree = "<group>"; };
+		5314289E2674978700801FD9 /* KKLiveChatDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKLiveChatDetails.swift; sourceTree = "<group>"; };
+		531428A12674979500801FD9 /* KKLiveChatResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKLiveChatResponse.swift; sourceTree = "<group>"; };
+		531428A4267497A300801FD9 /* KKLiveChatResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKLiveChatResults.swift; sourceTree = "<group>"; };
 		5317F229264C10050076D69B /* KKWithdrawRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKWithdrawRequestViewController.swift; sourceTree = "<group>"; };
 		5317F22C264C100E0076D69B /* KKWithdrawRequestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKWithdrawRequestViewController.xib; sourceTree = "<group>"; };
 		5317F231264C222A0076D69B /* KKBankTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKBankTableCell.swift; sourceTree = "<group>"; };
@@ -511,6 +517,9 @@
 				0629061C266FFEC100A26DC5 /* System Message */,
 				06290623266FFF1700A26DC5 /* FAQ */,
 				062C39832632C96A00E86EEA /* Api Error */,
+				5314289E2674978700801FD9 /* KKLiveChatDetails.swift */,
+				531428A12674979500801FD9 /* KKLiveChatResponse.swift */,
+				531428A4267497A300801FD9 /* KKLiveChatResults.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1192,6 +1201,7 @@
 				06BF5C2C2669803300C10008 /* KKAnnouncementDetails.swift in Sources */,
 				06BF5C1A266977B200C10008 /* KKAppVersionAppVersion.swift in Sources */,
 				0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */,
+				531428A5267497A300801FD9 /* KKLiveChatResults.swift in Sources */,
 				06BF5C0F2669776E00C10008 /* KKOTPRequestResponse.swift in Sources */,
 				06BF5C3D2669833100C10008 /* KKPlatformProductResults.swift in Sources */,
 				06BF5C2B2669803300C10008 /* KKAnnouncementResults.swift in Sources */,
@@ -1219,6 +1229,7 @@
 				0676B616262FDB790023311F /* KKAlertControllerTransition.swift in Sources */,
 				53C64EFD263700E10068F03E /* KKPersonalViewController.swift in Sources */,
 				5344FF61265E5E6B00313899 /* KKAnimation.swift in Sources */,
+				531428A22674979500801FD9 /* KKLiveChatResponse.swift in Sources */,
 				0676B5AA262FD6EF0023311F /* SceneDelegate.swift in Sources */,
 				06BF5C342669814C00C10008 /* KKGroupPlatformDetails.swift in Sources */,
 				062C397D2632C74200E86EEA /* KKApiRouter.swift in Sources */,
@@ -1230,6 +1241,7 @@
 				53AAAE0E26401B09004103F0 /* KKMessageViewController.swift in Sources */,
 				5317F243264C2B390076D69B /* KKBankListViewController.swift in Sources */,
 				53AAAE06264018E3004103F0 /* KKRebateViewController.swift in Sources */,
+				5314289F2674978700801FD9 /* KKLiveChatDetails.swift in Sources */,
 				06BF5C102669776E00C10008 /* KKOTPRequestData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

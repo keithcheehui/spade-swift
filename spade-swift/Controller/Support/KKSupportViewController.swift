@@ -27,7 +27,8 @@ class KKSupportViewController: KKBaseViewController, UICollectionViewDataSource,
     @IBOutlet weak var menuItemMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var separatorHeight: NSLayoutConstraint!
     
-    
+    var liveChatArray: [KKLiveChatDetails]! = []
+
     enum viewType: Int {
         case liveChat = 0
         case faq = 1
@@ -39,12 +40,17 @@ class KKSupportViewController: KKBaseViewController, UICollectionViewDataSource,
         initialLayout()
         buttonHover(type: viewType.liveChat.rawValue)
         
+        //TODO: KEITH the space between items too big, how to change?
         let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumLineSpacing = 10
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: 130), height: KKUtil.ConvertSizeByDensity(size: 180))
+        flowLayout.scrollDirection = .vertical
         
         liveChatCollectionView.collectionViewLayout = flowLayout
         liveChatCollectionView.register(UINib(nibName: "KKLiveChatCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.liveChatCVCIdentifier)
+        
+        getCustomerLiveChat()
     }
     
     func initialLayout(){
@@ -63,6 +69,24 @@ class KKSupportViewController: KKBaseViewController, UICollectionViewDataSource,
         lblFaq.font = lblLiveChat.font
     }
     
+    //MARK:- API Calls
+    
+    func getCustomerLiveChat() {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.getCustomerLiveChat().execute { LiveChatResponse in
+            
+            self.hideAnimatedLoader()
+            self.liveChatArray = LiveChatResponse.results?.live_chats
+            self.liveChatCollectionView.reloadData()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: "Api Error. Currently api is updating")
+        }
+    }
     
     ///Button Actions
     @IBAction func btnBackDidPressed(){
@@ -109,7 +133,7 @@ class KKSupportViewController: KKBaseViewController, UICollectionViewDataSource,
     
     ///Live Chat
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return liveChatArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -118,6 +142,17 @@ class KKSupportViewController: KKBaseViewController, UICollectionViewDataSource,
         else {
             fatalError("DequeueReusableCell failed while casting")
         }
+        
+        cell.lblHotline.text = liveChatArray[indexPath.row].platform
+        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let link = liveChatArray[indexPath.row].redirect_link
+        
+        if let url = URL(string: link!) {
+            UIApplication.shared.open(url)
+        }
     }
 }

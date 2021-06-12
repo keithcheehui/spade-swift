@@ -154,6 +154,16 @@ class KKApiClient: NSObject {
         
         return performRequest(route: .customerFAQ(parameter: parameter))
     }
+    
+    //MARK:- Live Chat
+    
+    static func getCustomerLiveChat() -> Future<KKLiveChatResponse> {
+        
+        let parameter = [APIKeys.locale    : LocaleCode.English,
+                        ] as [String : Any]
+        
+        return performRequest(route: .customerLiveChat(parameter: parameter))
+    }
 }
 
 extension URL {

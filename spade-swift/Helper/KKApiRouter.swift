@@ -21,7 +21,8 @@ enum ApiRouter: URLRequestConvertible {
     case getPlatformProductsContent(parameter: [String: Any])
     case getSystemMessageContent(parameter: [String: Any])
     case customerFAQ(parameter: [String: Any])
-    
+    case customerLiveChat(parameter: [String: Any])
+
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         
@@ -29,6 +30,7 @@ enum ApiRouter: URLRequestConvertible {
         
         case .appVersion,
              .customerFAQ,
+             .customerLiveChat,
              .getAnnouncementContent,
              .getGroupAndPlatformContent,
              .getPlatformProductsContent,
@@ -71,6 +73,9 @@ enum ApiRouter: URLRequestConvertible {
         case .customerFAQ:
             return "customer_service/faqs"
             
+        case .customerLiveChat:
+            return "customer_service/live_chats"
+            
         case .getAnnouncementContent:
             return "content/announcements"
             
@@ -110,6 +115,9 @@ enum ApiRouter: URLRequestConvertible {
             return parameter
             
         case .customerFAQ(let parameter):
+            return parameter
+            
+        case .customerLiveChat(let parameter):
             return parameter
             
         case .getAnnouncementContent(let parameter):
