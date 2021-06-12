@@ -64,7 +64,7 @@ struct APIKeys {
     static let username = "username"
     static let password = "password"
     static let confirmPassword = "confirm_password"
-    static let type = " type"
+    static let type = "type"
     static let registrationPlatform = "register_platform"
     static let locale = "locale"
     static let countryCode = "country_code"

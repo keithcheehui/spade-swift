@@ -27,7 +27,8 @@ class KKApiClient: NSObject {
                     print("success = \(value)")
                     completion(.success(value))
                 case .failure(let error):
-                    
+                    print("failure = \(error)")
+
                     guard let data = response.data else { return completion(.failure(error.localizedDescription)) }
                     
                     do {
