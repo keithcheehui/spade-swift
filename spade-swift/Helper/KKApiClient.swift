@@ -164,6 +164,26 @@ class KKApiClient: NSObject {
         
         return performRequest(route: .customerLiveChat(parameter: parameter))
     }
+    
+    //MARK:- Bonus
+    
+    static func getBonusList() -> Future<KKBonusResponse> {
+        
+        let parameter = [APIKeys.locale    : LocaleCode.English,
+                        ] as [String : Any]
+        
+        return performRequest(route: .getBonusList(parameter: parameter))
+    }
+
+    //MARK:- Affiliate Guideline
+    
+    static func getGuidelineList() -> Future<KKGuidelineResponse> {
+        
+        let parameter = [APIKeys.locale    : LocaleCode.English,
+                        ] as [String : Any]
+        
+        return performRequest(route: .getGuidelineList(parameter: parameter))
+    }
 }
 
 extension URL {

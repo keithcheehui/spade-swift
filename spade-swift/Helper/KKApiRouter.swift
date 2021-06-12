@@ -22,6 +22,8 @@ enum ApiRouter: URLRequestConvertible {
     case getSystemMessageContent(parameter: [String: Any])
     case customerFAQ(parameter: [String: Any])
     case customerLiveChat(parameter: [String: Any])
+    case getBonusList(parameter: [String: Any])
+    case getGuidelineList(parameter: [String: Any])
 
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
@@ -34,7 +36,9 @@ enum ApiRouter: URLRequestConvertible {
              .getAnnouncementContent,
              .getGroupAndPlatformContent,
              .getPlatformProductsContent,
-             .getSystemMessageContent:
+             .getSystemMessageContent,
+             .getBonusList,
+             .getGuidelineList:
             return .get
         
         case .otpRequest,
@@ -88,6 +92,11 @@ enum ApiRouter: URLRequestConvertible {
         case .getSystemMessageContent:
             return "content/system_messages"
             
+        case .getBonusList:
+            return "content/bonus"
+            
+        case .getGuidelineList:
+            return "content/affiliate_guidelines"
         }
     }
     
@@ -132,6 +141,11 @@ enum ApiRouter: URLRequestConvertible {
         case .getSystemMessageContent(let parameter):
             return parameter
             
+        case .getBonusList(let parameter):
+            return parameter
+
+        case .getGuidelineList(let parameter):
+            return parameter
         }
     }
     

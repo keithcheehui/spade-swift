@@ -16,12 +16,8 @@ class KKGuidelineViewController: KKBaseViewController, UITableViewDataSource, UI
     @IBOutlet weak var topHeaderHeight: NSLayoutConstraint!
     @IBOutlet weak var btnCommissionTableMarginRight: NSLayoutConstraint!
 
-    var sections = ["Guideline Section 1", "Guideline Section 2", "Guideline Section 3"]
-    var itemsInSections = [
-        ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vulputate, lorem a blandit fermentum, neque lacus pulvinar orci, et scelerisque leo magna id urna. Mauris vitae malesuada ex. Aliquam interdum lorem eu libero ullamcorper condimentum. Donec et maximus urna, a suscipit lectus. Duis consequat nulla eu sem aliquam, sit amet mattis magna porttitor. Nullam nunc eros, posuere sit amet sodales a, mattis id velit. Cras et rhoncus ligula, id tristique nulla. Vestibulum vitae augue lacus. Cras sit amet diam a libero efficitur tempor eu a justo. Donec eget quam vitae sapien consectetur varius. Sed justo diam, ultricies finibus convallis eu, sollicitudin at tortor. Donec posuere tortor ligula, sed mattis libero sodales ut. Donec sed egestas ipsum, ac ornare lectus. Nulla faucibus ut odio quis imperdiet. Aenean porta eu leo vel tristique. Lorem ipsum dolor sit amet, consectetur adipiscing elit."],
-        ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vulputate, lorem a blandit fermentum, neque lacus pulvinar orci, et scelerisque leo magna id urna. Mauris vitae malesuada ex."],
-        ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vulputate, lorem a blandit fermentum, neque lacus pulvinar orci, et scelerisque leo magna id urna. Mauris vitae malesuada ex. Aliquam interdum lorem eu libero ullamcorper condimentum. Donec et maximus urna, a suscipit lectus. Duis consequat nulla eu sem aliquam, sit amet mattis magna porttitor. Nullam nunc eros, posuere sit amet sodales a, mattis id velit. Cras et rhoncus ligula, id tristique nulla. Vestibulum vitae augue lacus. Cras sit amet diam a libero efficitur tempor eu a justo."]]
-    
+    var guidelineArray: [KKGuidelineDetails]! = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,14 +29,35 @@ class KKGuidelineViewController: KKBaseViewController, UITableViewDataSource, UI
         lblCommission.text = KKUtil.languageSelectedStringForKey(key: "affiliates_downline_commission")
         lblCommission.textColor = UIColor.spade_white_FFFFFF
         lblCommission.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+        
+        getGuidelines()
     }
     
     @IBAction func btnCommissionTableDidPressed() {
         
     }
     
+    //MARK:- API Calls
+    
+    func getGuidelines() {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.getGuidelineList().execute { GuidelineResponse in
+            
+            self.hideAnimatedLoader()
+            self.guidelineArray = GuidelineResponse.results?.affiliate_guidelines
+            self.guidelineTableView.reloadData()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: "Api Error. Currently api is updating")
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return guidelineArray.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -63,7 +80,7 @@ class KKGuidelineViewController: KKBaseViewController, UITableViewDataSource, UI
         headerLabel.numberOfLines = 0
         headerLabel.backgroundColor = UIColor.clear
         headerLabel.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
-        headerLabel.text = sections[section]
+        headerLabel.text = guidelineArray[section].title
 
         let headerView = UIView()
         headerView.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: KKUtil.ConvertSizeByDensity(size: 30))
@@ -82,12 +99,12 @@ class KKGuidelineViewController: KKBaseViewController, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemsInSections[section].count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath)
-        let cellText = itemsInSections[indexPath.section][0]
+        let cellText = guidelineArray[indexPath.section].content
         cell.textLabel?.text = cellText
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.numberOfLines = 0
