@@ -171,9 +171,6 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
         
         musicSlider.setThumbImage(UIImage(named: "ic_spade"), for: .normal)
         soundSlider.setThumbImage(UIImage(named: "ic_spade"), for: .normal)
-
-        //TODO: KEITH, custom the slider and the thumb size
-
     }
     
     ///Button Actions

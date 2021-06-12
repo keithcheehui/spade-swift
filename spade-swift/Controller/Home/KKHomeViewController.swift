@@ -123,6 +123,8 @@ class KKHomeViewController: KKBaseViewController {
         lblProfileName.text = KKUtil.languageSelectedStringForKey(key: "home_guest")
         lblVip.text = "VIP 1"
         lblMoney.text = "999,999,999"
+        
+        //TODO: KEITH: put the announcement for loop to display
         lblAnnouncement.text = "Welcome Welcome Welcome Welcome Welcome"
         lblLanguage.text = "English"
         lblCountry.text = "Malaysia"
