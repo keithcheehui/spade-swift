@@ -5,7 +5,7 @@ target 'spade-swift' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'FLEX',                         '~> 4.4.0' :configurations => ['Debug']
+#  pod 'FLEX',                         '~> 4.4.0' :configurations => ['Debug']
   pod 'Alamofire',                    '~> 5.1'
   pod 'MBProgressHUD',                '~> 1.2.0'
   pod 'IQKeyboardManagerSwift',       '~> 6.5.5'
