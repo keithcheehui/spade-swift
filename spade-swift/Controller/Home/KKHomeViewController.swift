@@ -151,7 +151,7 @@ class KKHomeViewController: KKBaseViewController {
 
         var announcementString = ""
         for (_, announcementDetails) in KKSingleton.sharedInstance.announcementArray.reversed().enumerated() {
-            announcementString += "\t\t\t\(announcementDetails.title!)\t\(announcementDetails.descriptionValue!)"
+            announcementString += "\(announcementDetails.title!)               \(announcementDetails.descriptionValue!)                                                       "
         }
 
         lblAnnouncement.text = announcementString
