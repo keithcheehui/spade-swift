@@ -42,7 +42,6 @@ class KKSupportViewController: KKBaseViewController {
         
         let itemSizeWidth = liveChatCollectionView.frame.size.width/4 - ConstantSize.paddingStandard
         
-        //TODO: KEITH the space between items too big, how to change?
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: itemSizeWidth, height: KKUtil.ConvertSizeByDensity(size: 180))
         flowLayout.scrollDirection = .vertical
@@ -138,7 +137,7 @@ class KKSupportViewController: KKBaseViewController {
 extension KKSupportViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15//liveChatArray.count
+        return liveChatArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -148,7 +147,7 @@ extension KKSupportViewController: UICollectionViewDelegate, UICollectionViewDat
             fatalError("DequeueReusableCell failed while casting")
         }
         
-        cell.lblHotline.text = "test"//liveChatArray[indexPath.item].platform
+        cell.lblHotline.text = liveChatArray[indexPath.item].platform
         
         return cell
     }
