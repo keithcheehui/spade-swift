@@ -84,7 +84,7 @@ enum ApiRouter: URLRequestConvertible {
             return "content/announcements"
             
         case .getGroupAndPlatformContent:
-            return "content/groupsAndPlatforms"
+            return "content/groups"
             
         case .getPlatformProductsContent:
             return "content/products"

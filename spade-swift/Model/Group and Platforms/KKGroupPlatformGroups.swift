@@ -12,7 +12,7 @@ struct KKGroupPlatformGroups: Codable {
   enum CodingKeys: String, CodingKey {
     case descriptionValue = "description"
     case name
-    case platforms
+    case platforms = "group_items"
     case code
     case img
   }
