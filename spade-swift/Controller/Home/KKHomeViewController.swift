@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import MarqueeLabel
 
 class KKHomeViewController: KKBaseViewController {
     
@@ -27,7 +28,7 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var lblSettings: UILabel!
     @IBOutlet weak var lblLanguage: UILabel!
     @IBOutlet weak var announcementContainer: UIView!
-    @IBOutlet weak var lblAnnouncement: UILabel!
+    @IBOutlet weak var lblAnnouncement: MarqueeLabel!
     
     ///Guest
     @IBOutlet weak var guestContainer: UIView!
@@ -123,9 +124,31 @@ class KKHomeViewController: KKBaseViewController {
         lblProfileName.text = KKUtil.languageSelectedStringForKey(key: "home_guest")
         lblVip.text = "VIP 1"
         lblMoney.text = "999,999,999"
+                
+        lblAnnouncement.fadeLength = 10.0
+        lblAnnouncement.leadingBuffer = 30.0
+        lblAnnouncement.trailingBuffer = 20.0
         
-        //TODO: KEITH: put the announcement for loop to display
-        lblAnnouncement.text = "Welcome Welcome Welcome Welcome Welcome"
+        var announcementString = ""
+        
+        for (index, announcementDetails) in KKSingleton.sharedInstance.announcementArray.reversed().enumerated() {
+            
+            if announcementString.count == 0 {
+                
+                announcementString = "\t\t\t\(announcementDetails.title!)"
+            }
+            else
+            {
+                announcementString = String(format: "%@\t\t\t\t\t%@", announcementString, announcementDetails.title!)
+            }
+            
+            if index == KKSingleton.sharedInstance.announcementArray.count - 1 {
+                
+                announcementString =  "\(announcementString)\t\t"
+            }
+        }
+        
+        lblAnnouncement.text = announcementString
         lblLanguage.text = "English"
         lblCountry.text = "Malaysia"
         

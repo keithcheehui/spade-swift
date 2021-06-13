@@ -10,6 +10,7 @@ target 'spade-swift' do
   pod 'IQKeyboardManagerSwift',       '~> 6.5.5'
   pod 'Kingfisher',                   '~> 5.14.0'
   pod 'KeychainSwift',                '~> 19.0.0'
+  pod 'MarqueeLabel',                 '~> 4.0.5'
 
   # Pods for spade-swift
 

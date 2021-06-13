@@ -34,7 +34,8 @@ class KKMessageListViewController: KKBaseViewController {
     
     func initialLayout(){
         messageTableView.backgroundColor = UIColor(white: 0, alpha: 0)
-        messageTableView.register(UINib(nibName: "KKMessageTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.messageTVCIdentifier)
+//        messageTableView.register(UINib(nibName: "KKMessageTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.messageTVCIdentifier)
+        messageTableView.register(KKMessageDetailsTableViewCell.self, forCellReuseIdentifier: CellIdentifier.messageTVCIdentifier)
         
         lblTitle.text = KKUtil.languageSelectedStringForKey(key: "message_title")
         lblTitle.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
@@ -69,19 +70,15 @@ extension KKMessageListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.messageTVCIdentifier, for: indexPath) as? KKMessageTableCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.messageTVCIdentifier, for: indexPath) as? KKMessageDetailsTableViewCell
         else {
             fatalError("DequeueReusableCell failed while casting")
         }
         
         if (selectedMessageIndex == indexPath.row) {
-            cell.lblMsgContent.isHidden = false
-            cell.imgArrow.transform = CGAffineTransform(rotationAngle: CGFloat(180.0 * Double.pi / 180.0))
-            cell.bottomLabelHeight.constant = cell.setUpMessageDetails(messageDetails: systemMessageArray[indexPath.row], isHidden: false)
+            cell.setUpMessageDetails(messageDetails: systemMessageArray[indexPath.row], isHidden: false, tableViewWidth: tableView.frame.size.width)
         } else {
-            cell.lblMsgContent.isHidden = true
-            cell.imgArrow.transform = CGAffineTransform(rotationAngle: CGFloat(0.0 * Double.pi / 180.0))
-            cell.bottomLabelHeight.constant = cell.setUpMessageDetails(messageDetails: systemMessageArray[indexPath.row], isHidden: true)
+            cell.setUpMessageDetails(messageDetails: systemMessageArray[indexPath.row], isHidden: true, tableViewWidth: tableView.frame.size.width)
         }
         
         cell.selectionStyle = .none
@@ -99,11 +96,11 @@ extension KKMessageListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //TODO: Keith: the msg text add margin bottom when expanded. now too stick to bottom
+
         if (selectedMessageIndex == indexPath.row) {
-            return KKMessageTableCell.calculateMessageDetailsHeight(messageDetails: systemMessageArray[indexPath.row], isHidden: false)
+            return KKMessageDetailsTableViewCell.calculateMessageDetailsHeight(messageDetails: systemMessageArray[indexPath.row], isHidden: false, tableViewWidth: tableView.frame.size.width)
         } else {
-            return KKMessageTableCell.calculateMessageDetailsHeight(messageDetails: systemMessageArray[indexPath.row], isHidden: true)
+            return KKMessageDetailsTableViewCell.calculateMessageDetailsHeight(messageDetails: systemMessageArray[indexPath.row], isHidden: true, tableViewWidth: tableView.frame.size.width)
         }
     }
 }

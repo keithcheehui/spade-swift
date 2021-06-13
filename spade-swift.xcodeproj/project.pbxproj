@@ -46,6 +46,7 @@
 		0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B623262FDC8F0023311F /* KKBaseViewController.swift */; };
 		0676B668263095EE0023311F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0676B66A263095EE0023311F /* Localizable.strings */; };
 		06A97230266C0B17002BFD01 /* KKTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A9722F266C0B17002BFD01 /* KKTokenManager.swift */; };
+		06B1AD0726759FD400D2D574 /* KKMessageDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B1AD0626759FD400D2D574 /* KKMessageDetailsTableViewCell.swift */; };
 		06BF5C0F2669776E00C10008 /* KKOTPRequestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C0D2669776E00C10008 /* KKOTPRequestResponse.swift */; };
 		06BF5C102669776E00C10008 /* KKOTPRequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C0E2669776E00C10008 /* KKOTPRequestData.swift */; };
 		06BF5C16266977B200C10008 /* KKAppVersionResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C11266977B200C10008 /* KKAppVersionResults.swift */; };
@@ -203,6 +204,7 @@
 		0676B661263095560023311F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0676B669263095EE0023311F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		06A9722F266C0B17002BFD01 /* KKTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKTokenManager.swift; sourceTree = "<group>"; };
+		06B1AD0626759FD400D2D574 /* KKMessageDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKMessageDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		06BF5C0D2669776E00C10008 /* KKOTPRequestResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKOTPRequestResponse.swift; sourceTree = "<group>"; };
 		06BF5C0E2669776E00C10008 /* KKOTPRequestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKOTPRequestData.swift; sourceTree = "<group>"; };
 		06BF5C11266977B200C10008 /* KKAppVersionResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKAppVersionResults.swift; sourceTree = "<group>"; };
@@ -797,6 +799,7 @@
 			children = (
 				53602F62265A5EF700137AD6 /* KKMessageTableCell.swift */,
 				53602F67265A5F0400137AD6 /* KKMessageTableCell.xib */,
+				06B1AD0626759FD400D2D574 /* KKMessageDetailsTableViewCell.swift */,
 			);
 			path = "Message Cell";
 			sourceTree = "<group>";
@@ -1289,6 +1292,7 @@
 				53AAAE0E26401B09004103F0 /* KKMessageViewController.swift in Sources */,
 				5317F243264C2B390076D69B /* KKBankListViewController.swift in Sources */,
 				53AAAE06264018E3004103F0 /* KKRebateViewController.swift in Sources */,
+				06B1AD0726759FD400D2D574 /* KKMessageDetailsTableViewCell.swift in Sources */,
 				5314289F2674978700801FD9 /* KKLiveChatDetails.swift in Sources */,
 				06BF5C102669776E00C10008 /* KKOTPRequestData.swift in Sources */,
 			);
