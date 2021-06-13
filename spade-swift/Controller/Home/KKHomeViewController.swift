@@ -119,38 +119,6 @@ class KKHomeViewController: KKBaseViewController {
         lblMessage.font = lblAffiliate.font
         lblSupport.font = lblAffiliate.font
         lblMore.font = lblAffiliate.font
-
-        imgProfile.image = UIImage(named: "ic_profile")
-        lblProfileName.text = KKUtil.languageSelectedStringForKey(key: "home_guest")
-        lblVip.text = "VIP 1"
-        lblMoney.text = "999,999,999"
-                
-        lblAnnouncement.fadeLength = 10.0
-        lblAnnouncement.leadingBuffer = 30.0
-        lblAnnouncement.trailingBuffer = 20.0
-        
-        var announcementString = ""
-        
-        for (index, announcementDetails) in KKSingleton.sharedInstance.announcementArray.reversed().enumerated() {
-            
-            if announcementString.count == 0 {
-                
-                announcementString = "\t\t\t\(announcementDetails.title!)"
-            }
-            else
-            {
-                announcementString = String(format: "%@\t\t\t\t\t%@", announcementString, announcementDetails.title!)
-            }
-            
-            if index == KKSingleton.sharedInstance.announcementArray.count - 1 {
-                
-                announcementString =  "\(announcementString)\t\t"
-            }
-        }
-        
-        lblAnnouncement.text = announcementString
-        lblLanguage.text = "English"
-        lblCountry.text = "Malaysia"
         
         copyContainer.backgroundColor = UIColor(white: 0, alpha: 0.8)
         copyContainer.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 9 : 10)
@@ -165,12 +133,32 @@ class KKHomeViewController: KKBaseViewController {
 
         let ratio = Float(10) / Float(10)
         expBar.progress = Float(ratio)
+        
+        imgProfile.image = UIImage(named: "ic_profile")
+        lblProfileName.text = KKUtil.languageSelectedStringForKey(key: "home_guest")
+        lblVip.text = "VIP 1"
+        lblMoney.text = "999,999,999"
+        lblLanguage.text = "English"
+        lblCountry.text = "Malaysia"
+        setAnnouncementLabel()
+    }
+    
+    func setAnnouncementLabel() {
+        lblAnnouncement.fadeLength = 10.0
+        lblAnnouncement.leadingBuffer = 30.0
+        lblAnnouncement.trailingBuffer = 20.0
+        lblAnnouncement.speed = MarqueeLabel.SpeedLimit.duration(15)
+
+        var announcementString = ""
+        for (_, announcementDetails) in KKSingleton.sharedInstance.announcementArray.reversed().enumerated() {
+            announcementString += "\t\t\t\(announcementDetails.title!)\t\(announcementDetails.descriptionValue!)"
+        }
+
+        lblAnnouncement.text = announcementString
     }
     
     func setGradientBackground(colorTop: UIColor, colorCenter: UIColor, colorBottom: UIColor, view: UIView){
         let gradientLayer = CAGradientLayer()
-//        gradientLayer.colors = [colorTop.cgColor, colorCenter.cgColor, colorCenter.cgColor, colorCenter.cgColor, colorBottom.cgColor]
-//        gradientLayer.locations = [0, 0.25, 0.5, 0.75, 1]
         gradientLayer.colors = [colorTop.cgColor, colorCenter.cgColor, colorBottom.cgColor]
         gradientLayer.locations = [0, 0.5, 1]
         gradientLayer.frame = view.bounds
