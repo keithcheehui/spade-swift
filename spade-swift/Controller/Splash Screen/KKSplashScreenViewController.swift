@@ -80,6 +80,10 @@ class KKSplashScreenViewController: KKBaseViewController {
             lblLoading.text = "loading 100%..."
             self.present(KKSelectCountryViewController(), animated: false, completion: nil)
         }
+        else
+        {
+            timerStop = true
+        }
     }
     
     //MARK:- API Calls

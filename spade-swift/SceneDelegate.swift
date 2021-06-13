@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FLEX
 import IQKeyboardManagerSwift
 
 @available(iOS 13.0, *)
@@ -15,6 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
+        FLEXManager.shared.showExplorer()
         
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false

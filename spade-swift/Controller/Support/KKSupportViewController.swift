@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class KKSupportViewController: KKBaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class KKSupportViewController: KKBaseViewController {
     
     @IBOutlet weak var lblLiveChat: UILabel!
     @IBOutlet weak var lblFaq: UILabel!
@@ -40,12 +40,15 @@ class KKSupportViewController: KKBaseViewController, UICollectionViewDataSource,
         initialLayout()
         buttonHover(type: viewType.liveChat.rawValue)
         
+        let itemSizeWidth = liveChatCollectionView.frame.size.width/4 - ConstantSize.paddingStandard
+        
         //TODO: KEITH the space between items too big, how to change?
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumLineSpacing = 10
-        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: 130), height: KKUtil.ConvertSizeByDensity(size: 180))
+        flowLayout.itemSize = CGSize(width: itemSizeWidth, height: KKUtil.ConvertSizeByDensity(size: 180))
         flowLayout.scrollDirection = .vertical
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: ConstantSize.paddingSecondaryHalf, bottom: ConstantSize.paddingSecondaryHalf, right: ConstantSize.paddingSecondaryHalf)
+        flowLayout.minimumInteritemSpacing = ConstantSize.paddingSecondaryHalf
+        flowLayout.minimumLineSpacing = ConstantSize.paddingSecondaryHalf
         
         liveChatCollectionView.collectionViewLayout = flowLayout
         liveChatCollectionView.register(UINib(nibName: "KKLiveChatCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.liveChatCVCIdentifier)
@@ -130,10 +133,12 @@ class KKSupportViewController: KKBaseViewController, UICollectionViewDataSource,
         contentView.addSubview(vc.view)
         self.addChild(vc)
     }
+}
+
+extension KKSupportViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    ///Live Chat
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return liveChatArray.count
+        return 15//liveChatArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -143,7 +148,7 @@ class KKSupportViewController: KKBaseViewController, UICollectionViewDataSource,
             fatalError("DequeueReusableCell failed while casting")
         }
         
-        cell.lblHotline.text = liveChatArray[indexPath.row].platform
+        cell.lblHotline.text = "test"//liveChatArray[indexPath.item].platform
         
         return cell
     }
