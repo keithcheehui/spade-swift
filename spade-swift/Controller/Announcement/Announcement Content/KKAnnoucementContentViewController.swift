@@ -24,7 +24,7 @@ class KKAnnoucementContentViewController: KKBaseViewController {
     
     func initialLayout(){
         lblTitle.text = announcementDetails.title
-        lblDate.text = announcementDetails.created_at
+        lblDate.text = announcementDetails.updated_at
         lblContent.text = announcementDetails.descriptionValue
         
         lblTitle.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))

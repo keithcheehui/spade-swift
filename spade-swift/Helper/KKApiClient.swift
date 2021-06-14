@@ -27,13 +27,14 @@ class KKApiClient: NSObject {
                     print("success = \(value)")
                     completion(.success(value))
                 case .failure(let error):
-                    print("failure = \(error)")
 
                     guard let data = response.data else { return completion(.failure(error.localizedDescription)) }
                     
                     do {
                         
                         let apiErrorDetail = try decoder.decode(KKApiErrorDetails.self, from: data)
+                        print("failure data = \(apiErrorDetail)")
+
                         guard let apiError = apiErrorDetail.status
                             else {
                             

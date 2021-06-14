@@ -151,7 +151,7 @@ enum ApiRouter: URLRequestConvertible {
     
     func asURLRequest() throws -> URLRequest {
         
-        let url : URL = try Spade.ProdServer.baseApiURL.asURL()
+        let url : URL = try Spade.DevServer.baseApiURL.asURL()
         
         var urlRequest : URLRequest = URLRequest(url: url.appendingPathComponent(path))
         

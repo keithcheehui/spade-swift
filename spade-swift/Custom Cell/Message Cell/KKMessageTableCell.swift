@@ -45,7 +45,7 @@ class KKMessageTableCell: UITableViewCell {
         let maximumLabelSize = CGSize(width: ScreenSize.width*0.6, height: .greatestFiniteMagnitude)
         
         lblMsgTitle.text = messageDetails.title
-        lblDate.text = messageDetails.created_at
+        lblDate.text = messageDetails.updated_at
         lblMsgContent.text = messageDetails.content
         
         let msgContentLabelAttributes: [NSAttributedString.Key: Any] = [
