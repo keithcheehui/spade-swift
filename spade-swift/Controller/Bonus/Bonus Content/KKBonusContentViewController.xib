@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKBonusContentViewController" customModule="spade_swift" customModuleProvider="target">
             <connections>
-                <outlet property="lblContent" destination="V1Q-zH-m9N" id="5VT-OT-4hA"/>
+                <outlet property="contentWebView" destination="tnz-oI-HkV" id="QWd-aG-oyT"/>
                 <outlet property="view" destination="iN0-l3-epB" id="hEZ-Oq-r0O"/>
             </connections>
         </placeholder>
@@ -19,25 +19,23 @@
             <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V1Q-zH-m9N">
+                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnz-oI-HkV">
                     <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="uGh-JH-IzB"/>
-                    </connections>
-                </textView>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <wkWebViewConfiguration key="configuration">
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <wkPreferences key="preferences"/>
+                    </wkWebViewConfiguration>
+                </wkWebView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="V1Q-zH-m9N" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Sn6-eJ-zbj"/>
-                <constraint firstItem="V1Q-zH-m9N" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gOy-U9-r9q"/>
-                <constraint firstAttribute="bottom" secondItem="V1Q-zH-m9N" secondAttribute="bottom" id="p4H-ic-RVr"/>
-                <constraint firstAttribute="trailing" secondItem="V1Q-zH-m9N" secondAttribute="trailing" id="rl2-4O-l1S"/>
+                <constraint firstItem="tnz-oI-HkV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0xN-2X-ASg"/>
+                <constraint firstAttribute="trailing" secondItem="tnz-oI-HkV" secondAttribute="trailing" id="Rbn-uR-LAY"/>
+                <constraint firstItem="tnz-oI-HkV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="h4r-sm-sH4"/>
+                <constraint firstAttribute="bottom" secondItem="tnz-oI-HkV" secondAttribute="bottom" id="nwO-mr-Sl1"/>
             </constraints>
             <point key="canvasLocation" x="33" y="130"/>
         </view>

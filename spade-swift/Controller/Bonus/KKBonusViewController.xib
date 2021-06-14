@@ -13,7 +13,6 @@
             <connections>
                 <outlet property="backContainerHeight" destination="gcE-yd-Pxh" id="nrl-OZ-LRz"/>
                 <outlet property="bonusCollectionView" destination="rtg-gE-Ht2" id="TaW-mf-Off"/>
-                <outlet property="bonusWebView" destination="jcq-Cm-IJn" id="RQu-fu-NdR"/>
                 <outlet property="containerMarginBottom" destination="71D-ar-FSQ" id="1p4-k0-hBb"/>
                 <outlet property="containerMarginLeft" destination="Ypu-5b-Wp3" id="BEV-OQ-U17"/>
                 <outlet property="containerMarginRight" destination="NiD-vK-wP5" id="I8Z-oB-6h4"/>
@@ -96,7 +95,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="usD-sh-l1L">
                             <rect key="frame" x="165" y="40" width="408" height="278"/>
                             <subviews>
-                                <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="rtg-gE-Ht2">
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="rtg-gE-Ht2">
                                     <rect key="frame" x="0.0" y="0.0" width="408" height="278"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -106,34 +105,25 @@
                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="WzH-mJ-Ya9"/>
+                                        <outlet property="delegate" destination="-1" id="CeU-IY-wLP"/>
+                                    </connections>
                                 </collectionView>
-                                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcq-Cm-IJn">
-                                    <rect key="frame" x="0.0" y="0.0" width="408" height="278"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <wkWebViewConfiguration key="configuration">
-                                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                        <wkPreferences key="preferences"/>
-                                    </wkWebViewConfiguration>
-                                </wkWebView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="rtg-gE-Ht2" secondAttribute="bottom" id="3QW-AK-wwq"/>
-                                <constraint firstItem="jcq-Cm-IJn" firstAttribute="leading" secondItem="usD-sh-l1L" secondAttribute="leading" id="Iu8-oL-5pu"/>
-                                <constraint firstAttribute="trailing" secondItem="jcq-Cm-IJn" secondAttribute="trailing" id="KPp-hx-Dat"/>
-                                <constraint firstItem="jcq-Cm-IJn" firstAttribute="top" secondItem="usD-sh-l1L" secondAttribute="top" id="jQH-kU-jfC"/>
-                                <constraint firstAttribute="bottom" secondItem="jcq-Cm-IJn" secondAttribute="bottom" id="mq2-g3-PId"/>
                                 <constraint firstItem="rtg-gE-Ht2" firstAttribute="leading" secondItem="usD-sh-l1L" secondAttribute="leading" id="nrT-SA-Gbh"/>
                                 <constraint firstItem="rtg-gE-Ht2" firstAttribute="top" secondItem="usD-sh-l1L" secondAttribute="top" id="os6-Vi-wvr"/>
                                 <constraint firstAttribute="trailing" secondItem="rtg-gE-Ht2" secondAttribute="trailing" id="xJN-yG-xmY"/>
                             </constraints>
                         </view>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zR9-ze-IVI">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zR9-ze-IVI">
                             <rect key="frame" x="165" y="40" width="408" height="283"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rf9-Cc-cX8">
-                                    <rect key="frame" x="20" y="30" width="388" height="253"/>
+                                    <rect key="frame" x="20" y="30" width="388" height="243"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYa-EG-iwW">
@@ -178,7 +168,7 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="Rf9-Cc-cX8" secondAttribute="trailing" id="GMr-tM-iW4"/>
                                 <constraint firstAttribute="trailing" secondItem="gYa-EG-iwW" secondAttribute="trailing" id="NZU-ro-ZqZ"/>
-                                <constraint firstAttribute="bottom" secondItem="Rf9-Cc-cX8" secondAttribute="bottom" id="YqL-a7-v6X"/>
+                                <constraint firstAttribute="bottom" secondItem="Rf9-Cc-cX8" secondAttribute="bottom" constant="10" id="YqL-a7-v6X"/>
                                 <constraint firstItem="Rf9-Cc-cX8" firstAttribute="leading" secondItem="gYa-EG-iwW" secondAttribute="leading" id="ZVW-sW-bks"/>
                                 <constraint firstItem="Rf9-Cc-cX8" firstAttribute="top" secondItem="gYa-EG-iwW" secondAttribute="bottom" id="drj-5v-vlf"/>
                                 <constraint firstItem="gYa-EG-iwW" firstAttribute="leading" secondItem="zR9-ze-IVI" secondAttribute="leading" constant="20" id="od0-cH-cDt"/>

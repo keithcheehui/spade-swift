@@ -7,10 +7,8 @@
 
 import Foundation
 import UIKit
-import WebKit
 
-class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITableViewDelegate {
-//                             , UICollectionViewDataSource, UICollectionViewDelegate {
+class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var sideMenuTableView: UITableView!
     @IBOutlet weak var bonusCollectionView: UICollectionView!
@@ -18,7 +16,6 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var contentContainer: UIView!
     @IBOutlet weak var lblBack: UILabel!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var bonusWebView: WKWebView!
 
     @IBOutlet weak var containerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var containerMarginBottom: NSLayoutConstraint!
@@ -44,15 +41,14 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
         initialLayout()
         getBonusList()
         
-//        let size = KKUtil.ConvertSizeByDensity(size: 400)
-//        let flowLayout = UICollectionViewFlowLayout()
-//        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        flowLayout.itemSize = CGSize(width: size, height: size / 2.5)
-//
-//        bonusCollectionView.collectionViewLayout = flowLayout
-//        bonusCollectionView.register(UINib(nibName: "KKBonusItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.bonusItemCVCIdentifier)
+        let size = KKUtil.ConvertSizeByDensity(size: 400)
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        flowLayout.itemSize = CGSize(width: size, height: size / 2.5)
+
+        bonusCollectionView.collectionViewLayout = flowLayout
+        bonusCollectionView.register(UINib(nibName: "KKBonusItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.bonusItemCVCIdentifier)
         sideMenuTableView.register(UINib(nibName: "KKBonusMenuTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.bonusTVCIdentifier)
-        bonusCollectionView.isHidden = true
     }
     
     func initialLayout(){
@@ -103,10 +99,7 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
             
             self.sideMenuItem = bonusResponse.results?.bonuses
             self.sideMenuTableView.reloadData()
-            if !sideMenuItem[selectedMenuItem].content!.isEmpty {
-                bonusWebView.loadHTMLString(sideMenuItem[selectedMenuItem].content!, baseURL: nil)
-            }
-
+            
         } onFailure: { errorMessage in
             self.showAlertView(alertMessage: "Api Error. Currently api is updating")
         }
@@ -139,47 +132,45 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
         selectedMenuItem = indexPath.row
         tableView.reloadData()
         
-        if !sideMenuItem[indexPath.item].content!.isEmpty {
-            bonusWebView.loadHTMLString(sideMenuItem[indexPath.item].content!, baseURL: nil)
+        for view in contentView.subviews{
+            view.removeFromSuperview()
         }
-        
-//
-//        for view in contentView.subviews{
-//            view.removeFromSuperview()
-//        }
-//
-//        bonusCollectionView.isHidden = false
-//        contentContainer.isHidden = true
+
+        bonusCollectionView.isHidden = false
+        contentContainer.isHidden = true
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return KKUtil.ConvertSizeByDensity(size: 40)
     }
     
-//    ///Bonus Collection View
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 3
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.bonusItemCVCIdentifier, for: indexPath) as? KKBonusItemCell
-//        else {
-//            fatalError("DequeueReusableCell failed while casting")
-//        }
-//
-//        return cell
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        bonusCollectionView.isHidden = true
-//        contentContainer.isHidden = false
-//
-//        let vc: KKBaseViewController = KKBonusContentViewController()
-//        vc.tableContentView = contentView
-//        vc.displayViewController = self
-//        vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
-//        contentView.addSubview(vc.view)
-//        self.addChild(vc)
-//    }
+    ///Bonus Collection View
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.bonusItemCVCIdentifier, for: indexPath) as? KKBonusItemCell
+        else {
+            fatalError("DequeueReusableCell failed while casting")
+        }
+        
+//        cell.imgBonusBG.setUpImage(with: sideMenuItem[selectedMenuItem].img)
+
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        bonusCollectionView.isHidden = true
+        contentContainer.isHidden = false
+
+        let vc = KKBonusContentViewController.init()
+        vc.htmlContent = sideMenuItem[selectedMenuItem].content!
+        vc.tableContentView = contentView
+        vc.displayViewController = self
+        vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
+        contentView.addSubview(vc.view)
+        self.addChild(vc)
+    }
 }
