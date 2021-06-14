@@ -130,10 +130,10 @@ class KKApiClient: NSObject {
         return performRequest(route: .getGroupAndPlatformContent(parameter: parameter))
     }
     
-    static func getAllPlatformProduct(gCode: String = "", pCode: String = "") -> Future<KKPlatformProductResponse> {
+    static func getAllPlatformProduct(gCode: String = "", gameTypeCode: String = "") -> Future<KKPlatformProductResponse> {
         
         let parameter = [APIKeys.locale         : LocaleCode.English,
-                         APIKeys.platformCode   : pCode,
+                         APIKeys.gameTypeCode   : gameTypeCode,
                          APIKeys.groupCode      : gCode,
                          APIKeys.countryCode    : CountryCode.Malaysia
                         ] as [String : Any]

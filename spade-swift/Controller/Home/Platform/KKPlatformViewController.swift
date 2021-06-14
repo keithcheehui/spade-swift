@@ -16,7 +16,7 @@ class KKPlatformViewController: KKBaseViewController {
     
     enum itemType: String {
         case product = "Product"
-        case platform = "Platform"
+        case gameType = "Game type"
     }
     
     var platformCode: String? = ""
@@ -62,7 +62,7 @@ class KKPlatformViewController: KKBaseViewController {
     func getProductList(pCode: String? = "") {
         self.showAnimatedLoader()
         
-        KKApiClient.getAllPlatformProduct(gCode: "", pCode: pCode!).execute { groupPlatformResponse in
+        KKApiClient.getAllPlatformProduct(gCode: "", gameTypeCode: pCode!).execute { groupPlatformResponse in
             
             self.hideAnimatedLoader()
             self.gameListArray = groupPlatformResponse.results!.products!

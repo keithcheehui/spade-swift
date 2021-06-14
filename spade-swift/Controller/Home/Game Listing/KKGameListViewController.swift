@@ -17,7 +17,7 @@ class KKGameListViewController: KKBaseViewController {
     
     enum itemType: String {
         case product = "Product"
-        case platform = "Platform"
+        case gameType = "Game type"
     }
     
     var gameListArray: [KKGroupPlatformDetails]! = []
@@ -115,7 +115,7 @@ extension KKGameListViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if gameListArray[indexPath.item].type == itemType.platform.rawValue {
+        if gameListArray[indexPath.item].type == itemType.gameType.rawValue {
             let vc = KKPlatformViewController()
             vc.platformCode = gameListArray[indexPath.item].code
             self.navigationController?.pushViewController(vc, animated: true)

@@ -11,7 +11,7 @@ struct KKBonusDetails: Codable {
 
     enum CodingKeys: String, CodingKey {
         case img
-        case button_name
+        case button_name = "group_name"
         case content
     }
 

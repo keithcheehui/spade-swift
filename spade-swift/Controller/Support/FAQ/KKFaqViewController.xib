@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKFaqViewController" customModule="spade_swift" customModuleProvider="target">
             <connections>
                 <outlet property="faqTableView" destination="unf-cY-Sc4" id="vnR-RZ-ba5"/>
+                <outlet property="faqWebView" destination="g0i-sp-SS4" id="S1X-aO-cbg"/>
                 <outlet property="view" destination="iN0-l3-epB" id="VBD-f7-Hcm"/>
             </connections>
         </placeholder>
@@ -20,22 +21,31 @@
             <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="unf-cY-Sc4">
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="unf-cY-Sc4">
                     <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="IXm-3C-P0C"/>
-                        <outlet property="delegate" destination="-1" id="FEb-Ig-OTB"/>
-                    </connections>
                 </tableView>
+                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g0i-sp-SS4">
+                    <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <wkWebViewConfiguration key="configuration">
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <wkPreferences key="preferences"/>
+                    </wkWebViewConfiguration>
+                </wkWebView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="unf-cY-Sc4" secondAttribute="trailing" id="4eI-hb-B3Y"/>
+                <constraint firstItem="g0i-sp-SS4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GBd-8S-kj8"/>
+                <constraint firstAttribute="bottom" secondItem="g0i-sp-SS4" secondAttribute="bottom" id="Icz-Ya-cLd"/>
+                <constraint firstAttribute="trailing" secondItem="g0i-sp-SS4" secondAttribute="trailing" id="NOR-pU-cvq"/>
+                <constraint firstItem="g0i-sp-SS4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QQC-dH-5vo"/>
                 <constraint firstAttribute="bottom" secondItem="unf-cY-Sc4" secondAttribute="bottom" id="dUH-0X-w6I"/>
                 <constraint firstItem="unf-cY-Sc4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dge-pC-uTx"/>
                 <constraint firstItem="unf-cY-Sc4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="evm-47-gll"/>

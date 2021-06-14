@@ -70,6 +70,7 @@ struct APIKeys {
     static let countryCode = "country_code"
     static let groupCode = "group_code"
     static let platformCode = "platform_code"
+    static let gameTypeCode = "game_type_code"
 }
 
 struct Platform {
