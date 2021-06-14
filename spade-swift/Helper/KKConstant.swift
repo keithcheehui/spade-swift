@@ -68,6 +68,8 @@ struct APIKeys {
     static let registrationPlatform = "register_platform"
     static let locale = "locale"
     static let countryCode = "country_code"
+    static let groupCode = "group_code"
+    static let platformCode = "platform_code"
 }
 
 struct Platform {

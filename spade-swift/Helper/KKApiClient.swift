@@ -105,7 +105,7 @@ class KKApiClient: NSObject {
                          APIKeys.phoneNumber            : phoneNumber,
                          APIKeys.registrationPlatform   : Platform.iOS,
                          APIKeys.type                   : RegistrationType.phoneNumber,
-                         APIKeys.countryCode            : "MYS"
+                         APIKeys.countryCode            : CountryCode.Malaysia
                         ] as [String : Any]
         
         return performRequest(route: .userAccountRegistration(parameter: parameter))
@@ -130,9 +130,12 @@ class KKApiClient: NSObject {
         return performRequest(route: .getGroupAndPlatformContent(parameter: parameter))
     }
     
-    static func getAllPlatformProduct() -> Future<KKPlatformProductResponse> {
+    static func getAllPlatformProduct(gCode: String = "", pCode: String = "") -> Future<KKPlatformProductResponse> {
         
-        let parameter = [APIKeys.locale    : LocaleCode.English,
+        let parameter = [APIKeys.locale         : LocaleCode.English,
+                         APIKeys.platformCode   : pCode,
+                         APIKeys.groupCode      : gCode,
+                         APIKeys.countryCode    : CountryCode.Malaysia
                         ] as [String : Any]
         
         return performRequest(route: .getPlatformProductsContent(parameter: parameter))

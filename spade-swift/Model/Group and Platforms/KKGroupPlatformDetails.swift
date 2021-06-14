@@ -9,23 +9,23 @@ import Foundation
 
 struct KKGroupPlatformDetails: Codable {
 
-  enum CodingKeys: String, CodingKey {
-    case name
-    case img
-    case code
-  }
+    enum CodingKeys: String, CodingKey {
+        case name
+        case img
+        case code
+        case type
+    }
 
-  var name: String?
-  var img: String?
-  var code: String?
+    var name: String?
+    var img: String?
+    var code: String?
+    var type: String?
 
-
-
-  init(from decoder: Decoder) throws {
-    let container = try decoder.container(keyedBy: CodingKeys.self)
-    name = try container.decodeIfPresent(String.self, forKey: .name)
-    img = try container.decodeIfPresent(String.self, forKey: .img)
-    code = try container.decodeIfPresent(String.self, forKey: .code)
-  }
-
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decodeIfPresent(String.self, forKey: .name)
+        img = try container.decodeIfPresent(String.self, forKey: .img)
+        code = try container.decodeIfPresent(String.self, forKey: .code)
+        type = try container.decodeIfPresent(String.self, forKey: .type)
+    }
 }
