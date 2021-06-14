@@ -22,6 +22,16 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Futura Bold font.ttf</string>
+		<string>FuturaBook.ttf</string>
+		<string>Haarlem Deco DEMO.ttf</string>
+		<string>Neutra Display Titling.ttf</string>
+		<string>NeutraDisp-Medium.otf</string>
+		<string>NeutraText-Bold.otf</string>
+		<string>futuraHeavy.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -63,15 +73,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>UIAppFonts</key>
-    <array>
-        <string>Futura Bold font.ttf</string>
-        <string>FuturaBook.ttf</string>
-        <string>Haarlem Deco DEMO.ttf</string>
-        <string>Neutra Display Titling.ttf</string>
-        <string>NeutraDisp-Medium.otf</string>
-        <string>NeutraText-Bold.otf</string>
-        <string>futuraHeavy.ttf</string>
-    </array>
 </dict>
 </plist>
