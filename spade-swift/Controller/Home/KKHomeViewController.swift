@@ -351,7 +351,7 @@ class KKHomeViewController: KKBaseViewController {
         flowLayout.minimumLineSpacing = 0
         flowLayout.scrollDirection = .vertical
         flowLayout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-        flowLayout.itemSize = CGSize(width: menuWidth.constant, height: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 40 : 50))
+        flowLayout.itemSize = CGSize(width: menuWidth.constant, height: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 40 : 40))
 
         menuCollectionView.collectionViewLayout = flowLayout
         menuCollectionView.register(UINib(nibName: "KKGameMenuItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.gameMenuItemCVCIdentifier)

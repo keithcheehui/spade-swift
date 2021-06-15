@@ -9,10 +9,11 @@ import Foundation
 import UIKit
 import WebKit
 
-class KKFaqViewController: KKBaseViewController {
+class KKFaqViewController: KKBaseViewController, WKNavigationDelegate {
     
     @IBOutlet weak var faqTableView: UITableView!
     @IBOutlet weak var faqWebView: WKWebView!
+    @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
 
     var faqArray: [KKFAQDetails]! = []
     
@@ -23,6 +24,12 @@ class KKFaqViewController: KKBaseViewController {
 //        faqTableView.backgroundColor = UIColor(white: 0, alpha: 0)
 //        faqTableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableCell")
         faqTableView.isHidden = true
+        
+        loadingActivity.color = .spade_white_FFFFFF
+        faqWebView.addSubview(loadingActivity)
+        loadingActivity.startAnimating()
+        faqWebView.navigationDelegate = self
+        loadingActivity.hidesWhenStopped = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +54,14 @@ class KKFaqViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             self.showAlertView(alertMessage: "Api Error. Currently api is updating")
         }
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        loadingActivity.stopAnimating()
+    }
+
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        loadingActivity.stopAnimating()
     }
 }
 
