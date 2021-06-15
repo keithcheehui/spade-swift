@@ -16,7 +16,7 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var contentContainer: UIView!
     @IBOutlet weak var lblBack: UILabel!
     @IBOutlet weak var contentView: UIView!
-    
+
     @IBOutlet weak var containerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var containerMarginBottom: NSLayoutConstraint!
     @IBOutlet weak var containerMarginLeft: NSLayoutConstraint!
@@ -32,19 +32,20 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
 
     @IBOutlet weak var backContainerHeight: NSLayoutConstraint!
     
-    let sideMenuItem = ["Slots", "Live Casino", "Fishing"]
+    var sideMenuItem: [KKBonusDetails]! = []
     var selectedMenuItem = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialLayout()
+        getBonusList()
         
         let size = KKUtil.ConvertSizeByDensity(size: 400)
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         flowLayout.itemSize = CGSize(width: size, height: size / 2.5)
-        
+
         bonusCollectionView.collectionViewLayout = flowLayout
         bonusCollectionView.register(UINib(nibName: "KKBonusItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.bonusItemCVCIdentifier)
         sideMenuTableView.register(UINib(nibName: "KKBonusMenuTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.bonusTVCIdentifier)
@@ -90,6 +91,20 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
         contentContainer.isHidden = true
     }
     
+    //MARK:- API Calls
+    
+    func getBonusList() {
+                
+        KKApiClient.getBonusList().execute { [self] bonusResponse in
+            
+            self.sideMenuItem = bonusResponse.results?.bonuses
+            self.sideMenuTableView.reloadData()
+            
+        } onFailure: { errorMessage in
+            self.showAlertView(alertMessage: "Api Error. Currently api is updating")
+        }
+    }
+    
     ///Side Menu Table View
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sideMenuItem.count
@@ -106,20 +121,21 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
             cell.imgHover.isHidden = true
         }
         
-        cell.lblMenuName.text = sideMenuItem[indexPath.row]
+        cell.lblMenuName.text = sideMenuItem[indexPath.item].button_name
         cell.selectionStyle = .none
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         selectedMenuItem = indexPath.row
         tableView.reloadData()
         
         for view in contentView.subviews{
             view.removeFromSuperview()
         }
-        
+
         bonusCollectionView.isHidden = false
         contentContainer.isHidden = true
     }
@@ -130,24 +146,27 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
     
     ///Bonus Collection View
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.bonusItemCVCIdentifier, for: indexPath) as? KKBonusItemCell
         else {
             fatalError("DequeueReusableCell failed while casting")
         }
+        
+//        cell.imgBonusBG.setUpImage(with: sideMenuItem[selectedMenuItem].img)
 
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         bonusCollectionView.isHidden = true
         contentContainer.isHidden = false
-        
-        let vc: KKBaseViewController = KKBonusContentViewController()
+
+        let vc = KKBonusContentViewController.init()
+        vc.htmlContent = sideMenuItem[selectedMenuItem].content!
         vc.tableContentView = contentView
         vc.displayViewController = self
         vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)

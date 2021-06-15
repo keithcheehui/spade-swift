@@ -27,13 +27,14 @@ class KKApiClient: NSObject {
                     print("success = \(value)")
                     completion(.success(value))
                 case .failure(let error):
-                    print("failure = \(error)")
 
                     guard let data = response.data else { return completion(.failure(error.localizedDescription)) }
                     
                     do {
                         
                         let apiErrorDetail = try decoder.decode(KKApiErrorDetails.self, from: data)
+                        print("failure data = \(apiErrorDetail)")
+
                         guard let apiError = apiErrorDetail.status
                             else {
                             
@@ -104,7 +105,7 @@ class KKApiClient: NSObject {
                          APIKeys.phoneNumber            : phoneNumber,
                          APIKeys.registrationPlatform   : Platform.iOS,
                          APIKeys.type                   : RegistrationType.phoneNumber,
-                         APIKeys.countryCode            : "MYS"
+                         APIKeys.countryCode            : CountryCode.Malaysia
                         ] as [String : Any]
         
         return performRequest(route: .userAccountRegistration(parameter: parameter))
@@ -129,9 +130,12 @@ class KKApiClient: NSObject {
         return performRequest(route: .getGroupAndPlatformContent(parameter: parameter))
     }
     
-    static func getAllPlatformProduct() -> Future<KKPlatformProductResponse> {
+    static func getAllPlatformProduct(gCode: String = "", gameTypeCode: String = "") -> Future<KKPlatformProductResponse> {
         
-        let parameter = [APIKeys.locale    : LocaleCode.English,
+        let parameter = [APIKeys.locale         : LocaleCode.English,
+                         APIKeys.gameTypeCode   : gameTypeCode,
+                         APIKeys.groupCode      : gCode,
+                         APIKeys.countryCode    : CountryCode.Malaysia
                         ] as [String : Any]
         
         return performRequest(route: .getPlatformProductsContent(parameter: parameter))

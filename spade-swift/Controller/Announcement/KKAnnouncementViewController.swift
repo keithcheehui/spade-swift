@@ -73,7 +73,7 @@ extension KKAnnouncementViewController: UITableViewDelegate, UITableViewDataSour
             fatalError("DequeueReusableCell failed while casting")
         }
         
-        cell.lblDate.text = KKSingleton.sharedInstance.announcementArray[indexPath.row].created_at
+        cell.lblDate.text = KKSingleton.sharedInstance.announcementArray[indexPath.row].updated_at
         cell.lblTitle.text = KKSingleton.sharedInstance.announcementArray[indexPath.row].title
         cell.selectionStyle = .none
         

@@ -106,8 +106,8 @@
                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                     <connections>
-                                        <outlet property="dataSource" destination="-1" id="kXO-wF-eGF"/>
-                                        <outlet property="delegate" destination="-1" id="As9-lU-E6Q"/>
+                                        <outlet property="dataSource" destination="-1" id="WzH-mJ-Ya9"/>
+                                        <outlet property="delegate" destination="-1" id="CeU-IY-wLP"/>
                                     </connections>
                                 </collectionView>
                             </subviews>
@@ -123,7 +123,7 @@
                             <rect key="frame" x="165" y="40" width="408" height="283"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rf9-Cc-cX8">
-                                    <rect key="frame" x="20" y="30" width="388" height="253"/>
+                                    <rect key="frame" x="20" y="30" width="388" height="243"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYa-EG-iwW">
@@ -168,7 +168,7 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="Rf9-Cc-cX8" secondAttribute="trailing" id="GMr-tM-iW4"/>
                                 <constraint firstAttribute="trailing" secondItem="gYa-EG-iwW" secondAttribute="trailing" id="NZU-ro-ZqZ"/>
-                                <constraint firstAttribute="bottom" secondItem="Rf9-Cc-cX8" secondAttribute="bottom" id="YqL-a7-v6X"/>
+                                <constraint firstAttribute="bottom" secondItem="Rf9-Cc-cX8" secondAttribute="bottom" constant="10" id="YqL-a7-v6X"/>
                                 <constraint firstItem="Rf9-Cc-cX8" firstAttribute="leading" secondItem="gYa-EG-iwW" secondAttribute="leading" id="ZVW-sW-bks"/>
                                 <constraint firstItem="Rf9-Cc-cX8" firstAttribute="top" secondItem="gYa-EG-iwW" secondAttribute="bottom" id="drj-5v-vlf"/>
                                 <constraint firstItem="gYa-EG-iwW" firstAttribute="leading" secondItem="zR9-ze-IVI" secondAttribute="leading" constant="20" id="od0-cH-cDt"/>

@@ -108,6 +108,8 @@
 		533CA6BB2631745C00768C08 /* KKHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533CA6BA2631745C00768C08 /* KKHomeViewController.xib */; };
 		533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CA6BD2631746800768C08 /* KKHomeViewController.swift */; };
 		5344FF61265E5E6B00313899 /* KKAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5344FF60265E5E6B00313899 /* KKAnimation.swift */; };
+		535934B526778E0D00498BBF /* KKPlatformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535934B326778E0D00498BBF /* KKPlatformViewController.swift */; };
+		535934B626778E0D00498BBF /* KKPlatformViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 535934B426778E0D00498BBF /* KKPlatformViewController.xib */; };
 		53602F63265A5EF700137AD6 /* KKMessageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53602F62265A5EF700137AD6 /* KKMessageTableCell.swift */; };
 		53602F68265A5F0400137AD6 /* KKMessageTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53602F67265A5F0400137AD6 /* KKMessageTableCell.xib */; };
 		5365E1F82651195C005CB297 /* KKLiveCasinoItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E1F72651195C005CB297 /* KKLiveCasinoItemCell.swift */; };
@@ -267,6 +269,8 @@
 		533CA6BA2631745C00768C08 /* KKHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKHomeViewController.xib; sourceTree = "<group>"; };
 		533CA6BD2631746800768C08 /* KKHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKHomeViewController.swift; sourceTree = "<group>"; };
 		5344FF60265E5E6B00313899 /* KKAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAnimation.swift; sourceTree = "<group>"; };
+		535934B326778E0D00498BBF /* KKPlatformViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPlatformViewController.swift; sourceTree = "<group>"; };
+		535934B426778E0D00498BBF /* KKPlatformViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKPlatformViewController.xib; sourceTree = "<group>"; };
 		53602F62265A5EF700137AD6 /* KKMessageTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKMessageTableCell.swift; sourceTree = "<group>"; };
 		53602F67265A5F0400137AD6 /* KKMessageTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKMessageTableCell.xib; sourceTree = "<group>"; };
 		5365E1F72651195C005CB297 /* KKLiveCasinoItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKLiveCasinoItemCell.swift; sourceTree = "<group>"; };
@@ -788,10 +792,20 @@
 			children = (
 				533CA6BD2631746800768C08 /* KKHomeViewController.swift */,
 				533CA6BA2631745C00768C08 /* KKHomeViewController.xib */,
+				535934B826778E2100498BBF /* Platform */,
 				5365E20D265124DD005CB297 /* Game Listing */,
 				532FF621264FF88400999512 /* Live Casino */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		535934B826778E2100498BBF /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				535934B326778E0D00498BBF /* KKPlatformViewController.swift */,
+				535934B426778E0D00498BBF /* KKPlatformViewController.xib */,
+			);
+			path = Platform;
 			sourceTree = "<group>";
 		};
 		53602F61265A5EDE00137AD6 /* Message Cell */ = {
@@ -1110,6 +1124,7 @@
 				06006E0526729AF400A2C8C9 /* Haarlem Deco DEMO.ttf in Resources */,
 				539A0FA4266343510098739E /* KKOTPViewController.xib in Resources */,
 				5317F246264C2B420076D69B /* KKBankListViewController.xib in Resources */,
+				535934B626778E0D00498BBF /* KKPlatformViewController.xib in Resources */,
 				5317F235264C223A0076D69B /* KKBankTableCell.xib in Resources */,
 				532FF616264FE03500999512 /* KKWithdrawCommissionViewController.xib in Resources */,
 				53363E47264ACE26001F6B48 /* KKMyAffiliateViewController.xib in Resources */,
@@ -1219,6 +1234,7 @@
 				5317F23B264C2A8E0076D69B /* KKAddBankViewController.swift in Sources */,
 				06BF5C352669814C00C10008 /* KKGroupPlatformGroups.swift in Sources */,
 				53E2FF182658C5A00017CA67 /* KKBonusContentViewController.swift in Sources */,
+				535934B526778E0D00498BBF /* KKPlatformViewController.swift in Sources */,
 				06BF5C2526697A1900C10008 /* KKUserCredentialData.swift in Sources */,
 				5317F22A264C10050076D69B /* KKWithdrawRequestViewController.swift in Sources */,
 				53963E0A2639A36C00D803D4 /* KKSettingsViewController.swift in Sources */,
@@ -1454,7 +1470,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = ZB74P7LU6H;
 				INFOPLIST_FILE = "$(SRCROOT)/spade-swift/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1479,7 +1495,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = ZB74P7LU6H;
 				INFOPLIST_FILE = "$(SRCROOT)/spade-swift/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

@@ -11,13 +11,15 @@ class KKMessageDetailsTableViewCell: UITableViewCell {
     
     struct CellViewConstant {
         
-        static let iconSize = CGFloat(24)
+        static let iconSize = KKUtil.ConvertSizeByDensity(size: 18)
+        static let dateLabelWidth = KKUtil.ConvertSizeByDensity(size: 120)
     }
     
     var messageDetailsView:     UIView!
     var messageIcon:            UIImageView!
     var messageExpandIcon:      UIImageView!
     var messageTitleLabel:      UILabel!
+    var messageDateLabel:      UILabel!
     var messageDescLabel:       UILabel!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -44,14 +46,21 @@ class KKMessageDetailsTableViewCell: UITableViewCell {
         messageDetailsView.addSubview(messageExpandIcon)
         
         messageTitleLabel = UILabel.init()
-        messageTitleLabel.font = UIFont.systemFont(ofSize: 12)
+        messageTitleLabel.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
         messageTitleLabel.textColor = .spade_white_FFFFFF
         messageTitleLabel.textAlignment = .left
         messageTitleLabel.numberOfLines = 1
         messageDetailsView.addSubview(messageTitleLabel)
         
+        messageDateLabel = UILabel.init()
+        messageDateLabel.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+        messageDateLabel.textColor = .spade_white_FFFFFF
+        messageDateLabel.textAlignment = .right
+        messageDateLabel.numberOfLines = 1
+        messageDetailsView.addSubview(messageDateLabel)
+        
         messageDescLabel = UILabel.init()
-        messageDescLabel.font = UIFont.systemFont(ofSize: 10)
+        messageDescLabel.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
         messageDescLabel.textColor = .spade_white_FFFFFF
         messageDescLabel.textAlignment = .left
         messageDescLabel.numberOfLines = 0
@@ -66,8 +75,11 @@ class KKMessageDetailsTableViewCell: UITableViewCell {
         
         messageExpandIcon.frame = CGRect(x: tableViewWidth - ConstantSize.paddingSecondaryHalf - CellViewConstant.iconSize, y: ConstantSize.paddingSecondaryHalf, width: CellViewConstant.iconSize, height: CellViewConstant.iconSize)
         
+        messageDateLabel.text = messageDetails.updated_at
+        messageDateLabel.frame = CGRect(x: messageExpandIcon.frame.origin.x - ConstantSize.paddingSecondaryHalf - CellViewConstant.dateLabelWidth, y: ConstantSize.paddingSecondaryHalf, width: CellViewConstant.dateLabelWidth, height: CellViewConstant.iconSize)
+        
         messageTitleLabel.text = messageDetails.title
-        messageTitleLabel.frame = CGRect(x: ConstantSize.paddingSecondary + CellViewConstant.iconSize, y: ConstantSize.paddingSecondaryHalf, width: tableViewWidth - ConstantSize.paddingSecondaryDouble + CellViewConstant.iconSize*2, height: CellViewConstant.iconSize)
+        messageTitleLabel.frame = CGRect(x: ConstantSize.paddingSecondary + CellViewConstant.iconSize, y: ConstantSize.paddingSecondaryHalf, width: tableViewWidth - ConstantSize.paddingSecondaryDouble + CellViewConstant.iconSize*2 - CellViewConstant.dateLabelWidth, height: CellViewConstant.iconSize)
         
         var height = ConstantSize.paddingSecondary + CellViewConstant.iconSize
         

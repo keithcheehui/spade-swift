@@ -12,17 +12,17 @@ struct KKAnnouncementDetails: Codable {
     enum CodingKeys: String, CodingKey {
         case descriptionValue = "description"
         case title = "title"
-        case created_at = "created_at"
+        case updated_at = "updated_at"
     }
 
     var descriptionValue: String?
     var title: String?
-    var created_at: String?
+    var updated_at: String?
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         descriptionValue = try container.decodeIfPresent(String.self, forKey: .descriptionValue)
         title = try container.decodeIfPresent(String.self, forKey: .title)
-        created_at = try container.decodeIfPresent(String.self, forKey: .created_at)
+        updated_at = try container.decodeIfPresent(String.self, forKey: .updated_at)
     }
 }

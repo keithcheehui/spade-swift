@@ -68,6 +68,9 @@ struct APIKeys {
     static let registrationPlatform = "register_platform"
     static let locale = "locale"
     static let countryCode = "country_code"
+    static let groupCode = "group_code"
+    static let platformCode = "platform_code"
+    static let gameTypeCode = "game_type_code"
 }
 
 struct Platform {
@@ -117,7 +120,7 @@ struct CellIdentifier {
 struct Spade {
     
     struct DevServer {
-        static let baseApiURL: String = "https://legend.fteg.dev/api/"
+        static let baseApiURL: String = "https://lg-api.fteg.app/api/" //"https://legend.fteg.dev/api/"
     }
     
     struct ProdServer {
