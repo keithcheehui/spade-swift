@@ -144,6 +144,7 @@ class KKHomeViewController: KKBaseViewController {
     }
     
     func setAnnouncementLabel() {
+        
         lblAnnouncement.fadeLength = 10.0
         lblAnnouncement.leadingBuffer = 30.0
         lblAnnouncement.trailingBuffer = 20.0

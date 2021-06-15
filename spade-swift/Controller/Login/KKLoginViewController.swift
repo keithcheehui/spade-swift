@@ -137,6 +137,8 @@ class KKLoginViewController: KKBaseViewController {
         KKApiClient.userAccountLogin(username: txtUsername.text!, password: txtPassword.text!).execute { userCredential in
             
             self.hideAnimatedLoader()
+            UserDefaults.standard.set(true, forKey: CacheKey.loginStatus)
+            UserDefaults.standard.synchronize()
             self.dismiss(animated: false, completion: nil)
             
         } onFailure: { errorMessage in
