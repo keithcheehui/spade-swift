@@ -22,6 +22,8 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var expBar: UIProgressView!
     @IBOutlet weak var moneyContainer: UIView!
     @IBOutlet weak var lblMoney: UILabel!
+    @IBOutlet weak var refreshWalletIcon: UIImageView!
+    @IBOutlet weak var refreshWalletBtn: UIButton!
     @IBOutlet weak var lblCountry: UILabel!
     @IBOutlet weak var lblMission: UILabel!
     @IBOutlet weak var lblBonus: UILabel!
@@ -268,7 +270,27 @@ class KKHomeViewController: KKBaseViewController {
     
     //MARK:- API Calls
     
-    
+    func getUserLatestWallet() {
+        
+        refreshWalletIcon.startRotate()
+        refreshWalletBtn.isEnabled = false
+        
+        KKApiClient.getUserLatestWallet().execute { userWalletResponse in
+            
+            self.refreshWalletIcon.removeRotate()
+            self.refreshWalletBtn.isEnabled = true
+            
+            let currentUserWallet = ""
+            self.lblMoney.text = currentUserWallet.addCurrencyFormat(currencyAmount: userWalletResponse.results!.walletBalance!)
+            
+            
+        } onFailure: { errorMessage in
+            
+            self.refreshWalletIcon.removeRotate()
+            self.refreshWalletBtn.isEnabled = true
+            self.showAlertView(alertMessage: "Api Error. Currently api is updating")
+        }
+    }
     
     //MARK:- Button Actions
     
@@ -291,6 +313,7 @@ class KKHomeViewController: KKBaseViewController {
 
     @IBAction func btnRefreshDidPressed(){
         
+        self.getUserLatestWallet()
     }
     
     @IBAction func btnCountryDidPressed(){

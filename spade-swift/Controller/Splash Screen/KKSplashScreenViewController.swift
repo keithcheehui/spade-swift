@@ -121,6 +121,7 @@ class KKSplashScreenViewController: KKBaseViewController {
             }
             catch {
                 
+                self.appVersionApiFailed()
             }
             
         } onFailure: { errorMessage in

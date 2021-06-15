@@ -24,6 +24,12 @@ enum ApiRouter: URLRequestConvertible {
     case customerLiveChat(parameter: [String: Any])
     case getBonusList(parameter: [String: Any])
     case getGuidelineList(parameter: [String: Any])
+    
+    
+    case getUserProfile
+    case getLatestWallet
+    case logOutUser
+
 
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
@@ -31,6 +37,8 @@ enum ApiRouter: URLRequestConvertible {
         switch self {
         
         case .appVersion,
+             .getUserProfile,
+             .getLatestWallet,
              .customerFAQ,
              .customerLiveChat,
              .getAnnouncementContent,
@@ -45,7 +53,8 @@ enum ApiRouter: URLRequestConvertible {
              .otpVerify,
              .userAccountLogin,
              .userAccountRegistration,
-             .userForgotPassword:
+             .userForgotPassword,
+             .logOutUser:
             return .post
             
         }
@@ -74,6 +83,12 @@ enum ApiRouter: URLRequestConvertible {
         case .userForgotPassword:
             return "password/forgot"
             
+        case .getUserProfile:
+            return "member/profile"
+            
+        case .getLatestWallet:
+            return "member/getLatestWalletBalance"
+            
         case .customerFAQ:
             return "customer_service/faqs"
             
@@ -97,6 +112,9 @@ enum ApiRouter: URLRequestConvertible {
             
         case .getGuidelineList:
             return "content/affiliate_guidelines"
+            
+        case .logOutUser:
+            return "logout"
         }
     }
     
@@ -146,6 +164,11 @@ enum ApiRouter: URLRequestConvertible {
 
         case .getGuidelineList(let parameter):
             return parameter
+            
+        case .getUserProfile,
+             .getLatestWallet,
+             .logOutUser:
+            return nil
         }
     }
     
@@ -167,6 +190,11 @@ enum ApiRouter: URLRequestConvertible {
         
         urlRequest.httpMethod = method.rawValue
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        
+        if (UserDefaults.standard.bool(forKey: CacheKey.loginStatus))
+        {
+            urlRequest.setValue(String(format: "Bearer %@", KKTokenManager.accessToken()), forHTTPHeaderField: HTTPHeaderField.authorization.rawValue)
+        }
 
         // Parameters
         if let parameters = parameters

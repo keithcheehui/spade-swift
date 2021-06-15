@@ -111,6 +111,18 @@ class KKApiClient: NSObject {
         return performRequest(route: .userAccountRegistration(parameter: parameter))
     }
     
+    //MARK:- User Profile
+    
+    static func getUserProfile() -> Future<KKUserProfileResponse> {
+        
+        return performRequest(route: .getUserProfile)
+    }
+    
+    static func getUserLatestWallet() -> Future<KKUserWalletResponse> {
+        
+        return performRequest(route: .getLatestWallet)
+    }
+
     //MARK:- Content
     
     static func getContentAnnouncement() ->  Future<KKAnnouncementResponse> {
@@ -187,6 +199,13 @@ class KKApiClient: NSObject {
                         ] as [String : Any]
         
         return performRequest(route: .getGuidelineList(parameter: parameter))
+    }
+    
+    //MARK:- Log Out
+    
+    static func logOutUser() -> Future<KKGeneralResponse> {
+        
+        return performRequest(route: .logOutUser)
     }
 }
 

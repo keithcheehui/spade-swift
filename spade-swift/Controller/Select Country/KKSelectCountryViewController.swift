@@ -92,7 +92,7 @@ extension KKSelectCountryViewController: UICollectionViewDelegate, UICollectionV
             KeychainSwift().set(try JSONEncoder().encode(KKSingleton.sharedInstance.countryArray[indexPath.item]), forKey: CacheKey.selectedCountry)
         }
         catch {
-            
+            self.showAlertView(alertMessage: error.localizedDescription)
         }
         
         collectionView.reloadData()

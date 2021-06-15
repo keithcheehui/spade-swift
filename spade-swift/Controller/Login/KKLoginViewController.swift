@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import KeychainSwift
 
 class KKLoginViewController: KKBaseViewController {
 
@@ -135,10 +136,34 @@ class KKLoginViewController: KKBaseViewController {
     @objc func userAccountLogin() {
         
         KKApiClient.userAccountLogin(username: txtUsername.text!, password: txtPassword.text!).execute { userCredential in
-            
-            self.hideAnimatedLoader()
+        
+            KKTokenManager.setUserCredential(userCredential: userCredential)
             UserDefaults.standard.set(true, forKey: CacheKey.loginStatus)
             UserDefaults.standard.synchronize()
+            
+            self.getUserProfile()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: "Api Error. Currently api is updating")
+        }
+    }
+    
+    @objc func getUserProfile() {
+        
+        KKApiClient.getUserProfile().execute { userProfileResponse in
+            
+            self.hideAnimatedLoader()
+            
+            do {
+                KeychainSwift().set(try JSONEncoder().encode(userProfileResponse.results?.user), forKey: CacheKey.userProfile)
+            }
+            catch {
+                self.hideAnimatedLoader()
+                self.showAlertView(alertMessage: error.localizedDescription)
+            }
+            
             self.dismiss(animated: false, completion: nil)
             
         } onFailure: { errorMessage in

@@ -137,6 +137,19 @@ class KKUtil: NSObject {
         return nil
     }
     
+    ///decode user profile
+    class func decodeUserProfileFromCache() -> KKUserProfileDetails? {
+        
+        if (KeychainSwift().getData(CacheKey.userProfile) != nil)
+        {
+            let userProfile = try! JSONDecoder().decode(KKUserProfileDetails.self, from: KeychainSwift().getData(CacheKey.userProfile)!)
+            
+            return userProfile
+        }
+        
+        return nil
+    }
+    
     ///redirect to home page
     class func redirectToHome() {
         KKUtil.proceedToPage(vc: KKHomeViewController.init())

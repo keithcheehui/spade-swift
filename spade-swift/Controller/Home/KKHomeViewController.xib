@@ -51,6 +51,8 @@
                 <outlet property="moneyContainer" destination="hRO-cZ-tBh" id="3pP-I6-NIb"/>
                 <outlet property="moneyContainerHeight" destination="Upe-kO-Bmr" id="wOu-yA-mva"/>
                 <outlet property="moneyContainerWidth" destination="hiK-HN-Kfd" id="Jfi-Gh-Xsj"/>
+                <outlet property="refreshWalletBtn" destination="d7J-Rw-Fnw" id="E9n-H8-VgX"/>
+                <outlet property="refreshWalletIcon" destination="Vj8-j7-KgQ" id="clg-6d-mm5"/>
                 <outlet property="topButtonsContainerHeight" destination="zJR-vM-dh5" id="kFF-hd-QS8"/>
                 <outlet property="topContainerHeight" destination="VaK-8m-4sy" id="Jgi-lU-5bb"/>
                 <outlet property="view" destination="iN0-l3-epB" id="un0-Wl-bne"/>
@@ -275,7 +277,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRO-cZ-tBh">
                                     <rect key="frame" x="16" y="15.666666666666668" width="164" height="25.000000000000004"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999,999,999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7j-PR-vSS">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999,999,999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7j-PR-vSS">
                                             <rect key="frame" x="34" y="4" width="94" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1014,6 +1016,11 @@
             <point key="canvasLocation" x="-145.3125" y="89.855072463768124"/>
         </view>
     </objects>
+    <designables>
+        <designable name="FhT-j7-giH">
+            <size key="intrinsicContentSize" width="31" height="14.333333333333334"/>
+        </designable>
+    </designables>
     <resources>
         <image name="bg_footer" width="2202" height="117"/>
         <image name="bg_p2p" width="2208" height="1242"/>

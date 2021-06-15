@@ -131,6 +131,15 @@ extension String {
         let char = self.cString(using: String.Encoding.utf8)!
         return strcmp(char, "\\b") == -92
     }
+    
+    func addCurrencyFormat(currencyAmount: Float) -> String {
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = ""
+        formatter.currencyGroupingSeparator = ","
+        return formatter.string(from: NSNumber(value: currencyAmount))!
+    }
 }
 
 extension UIImageView {
@@ -144,6 +153,32 @@ extension UIImageView {
         else if let image = placeholder
         {
             self.image = image
+        }
+    }
+}
+
+extension UIView{
+    
+    func startRotate() {
+        let rotation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotation.toValue = NSNumber(value: Double.pi * 2)
+        rotation.duration = 0.5
+        rotation.isCumulative = false
+        rotation.repeatCount = Float.greatestFiniteMagnitude
+        self.layer.add(rotation, forKey: "rotationAnimation")
+    }
+    
+    func removeRotate() {
+        let rotation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotation.toValue = NSNumber(value: Double.pi * 2)
+        rotation.duration = 0.5
+        rotation.isCumulative = false
+        rotation.repeatCount = 1
+        self.layer.add(rotation, forKey: "rotationAnimation")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            
+            self.layer.removeAllAnimations()
         }
     }
 }

@@ -53,6 +53,7 @@ struct CacheKey {
     static let loginStatus = "login_status"
     static let accessToken = "access_token"
     static let refreshToken = "refresh_token"
+    static let userProfile = "user_profile"
     static let appVersionDetails = "app_version_details"
     static let selectedCountry = "selected_country"
 }
@@ -142,6 +143,7 @@ struct GameType {
 enum HTTPHeaderField: String {
     
     case contentType = "Content-Type"
+    case authorization = "Authorization"
 }
 
 enum ContentType: String {

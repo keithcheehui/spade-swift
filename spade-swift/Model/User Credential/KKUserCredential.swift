@@ -19,8 +19,6 @@ struct KKUserCredential: Codable {
   var data: KKUserCredentialData?
   var code: Int?
 
-
-
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     status = try container.decodeIfPresent(String.self, forKey: .status)
