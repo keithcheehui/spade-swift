@@ -1,31 +1,33 @@
 //
-//  KKUserCredential.swift
+//  KKUserCashflowResponse.swift
 //
-//  Created by Keith CheeHui on 04/06/2021
+//  Created by Keith CheeHui on 18/06/2021
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 
-struct KKUserCredential: Codable {
+struct KKUserCashFlowResponse: Codable {
 
   enum CodingKeys: String, CodingKey {
+    case error
     case message
     case results
-    case error
     case code
   }
 
-  var message: String?
-  var results: KKUserCredentialData?
   var error: Bool?
+  var message: String?
+  var results: KKUserCashFlowResults?
   var code: Int?
+
+
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    message = try container.decodeIfPresent(String.self, forKey: .message)
     error = try container.decodeIfPresent(Bool.self, forKey: .error)
-    results = try container.decodeIfPresent(KKUserCredentialData.self, forKey: .results)
+    message = try container.decodeIfPresent(String.self, forKey: .message)
+    results = try container.decodeIfPresent(KKUserCashFlowResults.self, forKey: .results)
     code = try container.decodeIfPresent(Int.self, forKey: .code)
   }
 

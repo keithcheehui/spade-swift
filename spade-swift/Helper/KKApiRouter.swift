@@ -29,7 +29,14 @@ enum ApiRouter: URLRequestConvertible {
     
     // MARK: - User Profile
     case getUserProfile
+    case updateUserProfile(parameter: [String: Any])
+    case updateUserLanguagePreference(parameter: [String: Any])
+    
+    // MARK: - User Details
     case getLatestWallet
+    case getUserBettingGroupAndPlatform(parameter: [String: Any])
+    case getUserBettingRecord(parameter: [String: Any])
+    case getUserBettingCashflow(parameter: [String: Any])
     
     // MARK: - Content
     case getAnnouncementContent(parameter: [String: Any])
@@ -64,6 +71,9 @@ enum ApiRouter: URLRequestConvertible {
              .memberLandingDetails,
              .getUserProfile,
              .getLatestWallet,
+             .getUserBettingGroupAndPlatform,
+             .getUserBettingRecord,
+             .getUserBettingCashflow,
              .customerFAQ,
              .customerLiveChat,
              .getAnnouncementContent,
@@ -87,7 +97,9 @@ enum ApiRouter: URLRequestConvertible {
              .logOutUser:
             return .post
             
-        case .memberDeposit,
+        case .updateUserProfile,
+             .updateUserLanguagePreference,
+             .memberDeposit,
              .memberWithdrawal:
             return .put
         }
@@ -125,8 +137,23 @@ enum ApiRouter: URLRequestConvertible {
         case .getUserProfile:
             return "member/profile"
             
+        case .updateUserProfile:
+            return "member/updateUserProfile"
+            
+        case .updateUserLanguagePreference:
+            return "member/updateUserLanguagePreference"
+            
         case .getLatestWallet:
             return "member/latestWalletBalance"
+            
+        case .getUserBettingGroupAndPlatform:
+            return "member/betslipsPlatformsAndGroups"
+                
+        case .getUserBettingRecord:
+            return "member/betslips"
+                
+        case .getUserBettingCashflow:
+            return "member/cashflows"
             
         case .customerFAQ:
             return "customer_service/faqs"
@@ -205,6 +232,21 @@ enum ApiRouter: URLRequestConvertible {
             return parameter
             
         case .userForgotPassword(let parameter):
+            return parameter
+            
+        case .updateUserProfile(let parameter):
+            return parameter
+            
+        case .updateUserLanguagePreference(let parameter):
+            return parameter
+            
+        case .getUserBettingGroupAndPlatform(let parameter):
+            return parameter
+            
+        case .getUserBettingRecord(let parameter):
+            return parameter
+            
+        case .getUserBettingCashflow(let parameter):
             return parameter
             
         case .customerFAQ(let parameter):

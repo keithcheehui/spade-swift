@@ -288,7 +288,7 @@ class KKHomeViewController: KKBaseViewController {
             
             self.refreshWalletIcon.removeRotate()
             self.refreshWalletBtn.isEnabled = true
-            self.showAlertView(alertMessage: "Api Error. Currently api is updating")
+            self.showAlertView(alertMessage: errorMessage)
         }
     }
     
@@ -404,7 +404,7 @@ class KKHomeViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: "Api Error. Currently api is updating")
+            self.showAlertView(alertMessage: errorMessage)
         }
     }
 }

@@ -61,11 +61,15 @@ struct CacheKey {
 
 struct APIKeys {
     static let platform = "p"
+    static let code = "code"
     static let phoneNumber = "phone_number"
     static let OTPCode = "otp_code"
+    static let email = "email"
     static let username = "username"
     static let password = "password"
     static let confirmPassword = "confirm_password"
+    static let gender = "gender"
+    static let birthday = "birthday"
     static let type = "type"
     static let registrationPlatform = "register_platform"
     static let locale = "locale"
@@ -86,6 +90,11 @@ struct APIKeys {
     static let bankAccountNo = "bank_account_number"
     static let withdrawAmount = "withdraw_amount"
     static let withdrawAccountNo = "bank_account_number"
+    static let filterDuration = "filter_duration"
+}
+
+struct APIValue {
+    static let last90Days = "l90d"
 }
 
 struct Platform {
@@ -98,6 +107,11 @@ struct LoginType {
 
 struct RegistrationType {
     static let phoneNumber = "phone_number"
+}
+
+struct GenderType {
+    static let male = "Male"
+    static let female = "Female"
 }
 
 struct CountryCode {

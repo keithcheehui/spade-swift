@@ -253,7 +253,7 @@ class KKOTPViewController: KKBaseViewController {
             self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.timerUpdate), userInfo: nil, repeats: true)
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: "Api Error. Currently api is updating")
+            self.showAlertView(alertMessage: errorMessage)
         }
     }
     
@@ -273,7 +273,7 @@ class KKOTPViewController: KKBaseViewController {
                 self.closeOTPAndOpenRegistration()
             } onFailure: { errorMessage in
                 self.hideAnimatedLoader()
-                self.showAlertView(alertMessage: "Api Error. Currently api is updating")
+                self.showAlertView(alertMessage: errorMessage)
             }
         }
     }

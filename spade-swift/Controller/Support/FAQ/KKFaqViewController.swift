@@ -52,7 +52,7 @@ class KKFaqViewController: KKBaseViewController, WKNavigationDelegate {
             }
 
         } onFailure: { errorMessage in
-            self.showAlertView(alertMessage: "Api Error. Currently api is updating")
+            self.showAlertView(alertMessage: errorMessage)
         }
     }
     

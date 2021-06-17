@@ -9,16 +9,14 @@ import Foundation
 
 struct KKApiErrorDetails: Codable {
     
-    var status:         String?
     var code:           Int?
-    var errorDesc:      String?
+    var error:          Bool = true
     var message:        String?
     
     enum CodingKeys: String, CodingKey {
         
-        case status
         case code
-        case errorDesc          = "error_description"
+        case error
         case message
     }
 }

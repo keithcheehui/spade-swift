@@ -35,17 +35,12 @@ class KKApiClient: NSObject {
                         let apiErrorDetail = try decoder.decode(KKApiErrorDetails.self, from: data)
                         print("failure data = \(apiErrorDetail)")
 
-                        guard let apiError = apiErrorDetail.status
-                            else {
-                            
-                            guard let apiMessage = apiErrorDetail.message
-                                else {
-                                    return completion(.failure(error.localizedDescription))
-                                }
-                                
-                            return completion(.failure(apiMessage))
+                        guard let apiMessage = apiErrorDetail.message
+                        
+                        else {
+                            return completion(.failure(error.localizedDescription))
                         }
-                        completion(.failure(apiError))
+                        return completion(.failure(apiMessage))
                     }
                     catch
                     {
@@ -144,9 +139,56 @@ class KKApiClient: NSObject {
         return performRequest(route: .getUserProfile)
     }
     
+    static func updateUserProfile(email: String = KKUtil.decodeUserProfileFromCache()?.email ?? "",
+                                  gender: String = KKUtil.decodeUserProfileFromCache()?.gender ?? GenderType.male,
+                                  birthday: String = KKUtil.decodeUserProfileFromCache()?.dob ?? "") -> Future<KKGeneralResponse> {
+        
+        let parameter = [APIKeys.email      : email,
+                         APIKeys.gender     : gender,
+                         APIKeys.birthday   : birthday
+                        ] as [String : Any]
+        
+        return performRequest(route: .updateUserProfile(parameter: parameter))
+    }
+    
+    static func updateUserLanguagePreference(languageCode: String) -> Future<KKGeneralResponse> {
+     
+        let parameter = [APIKeys.locale     : languageCode
+                        ] as [String : Any]
+        
+        return performRequest(route: .updateUserLanguagePreference(parameter: parameter))
+    }
+    
+    //MARK:- User Details
+    
     static func getUserLatestWallet() -> Future<KKUserWalletResponse> {
         
         return performRequest(route: .getLatestWallet)
+    }
+    
+    static func getUserBettingGroupAndPlatform() -> Future<KKUserBettingResponse> {
+        
+        let parameter = [APIKeys.locale    : KKUtil.decodeSelectedLanguageFromCache().locale!,
+                        ] as [String : Any]
+        
+        return performRequest(route: .getUserBettingGroupAndPlatform(parameter: parameter))
+    }
+    
+    static func getUserBettingCashFlow() -> Future<KKUserCashFlowResponse> {
+        
+        let parameter = [APIKeys.filterDuration    : APIValue.last90Days
+                        ] as [String : Any]
+        
+        return performRequest(route: .getUserBettingCashflow(parameter: parameter))
+    }
+    
+    static func getUserBettingRecord() -> Future<KKUserBettingHistoryResponse> {
+        
+        let parameter = [APIKeys.code           : Platform.iOS,
+                         APIKeys.filterDuration : APIValue.last90Days
+                        ] as [String : Any]
+        
+        return performRequest(route: .getUserBettingRecord(parameter: parameter))
     }
 
     //MARK:- Content

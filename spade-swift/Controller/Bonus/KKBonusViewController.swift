@@ -101,7 +101,7 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
             self.sideMenuTableView.reloadData()
             
         } onFailure: { errorMessage in
-            self.showAlertView(alertMessage: "Api Error. Currently api is updating")
+            self.showAlertView(alertMessage: errorMessage)
         }
     }
     

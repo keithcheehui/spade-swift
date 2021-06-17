@@ -92,6 +92,16 @@
 		06BF5C3B2669833100C10008 /* KKPlatformProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C382669833100C10008 /* KKPlatformProductDetails.swift */; };
 		06BF5C3C2669833100C10008 /* KKPlatformProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C392669833100C10008 /* KKPlatformProductResponse.swift */; };
 		06BF5C3D2669833100C10008 /* KKPlatformProductResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C3A2669833100C10008 /* KKPlatformProductResults.swift */; };
+		06E4DEF4267BFF9500482979 /* KKUserBettingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DEF0267BFF9500482979 /* KKUserBettingResponse.swift */; };
+		06E4DEF5267BFF9500482979 /* KKUserBettingGroupDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DEF1267BFF9500482979 /* KKUserBettingGroupDetails.swift */; };
+		06E4DEF6267BFF9500482979 /* KKUserBettingPlatformDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DEF2267BFF9500482979 /* KKUserBettingPlatformDetails.swift */; };
+		06E4DEF7267BFF9500482979 /* KKUserBettingResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DEF3267BFF9500482979 /* KKUserBettingResults.swift */; };
+		06E4DEFB267C00C000482979 /* KKUserCashFlowDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DEF8267C00BF00482979 /* KKUserCashFlowDetails.swift */; };
+		06E4DEFC267C00C000482979 /* KKUserCashFlowResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DEF9267C00BF00482979 /* KKUserCashFlowResponse.swift */; };
+		06E4DEFD267C00C000482979 /* KKUserCashFlowResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DEFA267C00C000482979 /* KKUserCashFlowResults.swift */; };
+		06E4DF01267C02B500482979 /* KKUserBettingHistoryDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DEFE267C02B400482979 /* KKUserBettingHistoryDetails.swift */; };
+		06E4DF02267C02B500482979 /* KKUserBettingHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DEFF267C02B400482979 /* KKUserBettingHistoryResponse.swift */; };
+		06E4DF03267C02B500482979 /* KKUserBettingHistoryResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DF00267C02B500482979 /* KKUserBettingHistoryResults.swift */; };
 		3ED808A9A35A15A51B9CD1B0 /* Pods_spade_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */; };
 		5314289F2674978700801FD9 /* KKLiveChatDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5314289E2674978700801FD9 /* KKLiveChatDetails.swift */; };
 		531428A22674979500801FD9 /* KKLiveChatResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531428A12674979500801FD9 /* KKLiveChatResponse.swift */; };
@@ -275,6 +285,16 @@
 		06BF5C382669833100C10008 /* KKPlatformProductDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKPlatformProductDetails.swift; sourceTree = "<group>"; };
 		06BF5C392669833100C10008 /* KKPlatformProductResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKPlatformProductResponse.swift; sourceTree = "<group>"; };
 		06BF5C3A2669833100C10008 /* KKPlatformProductResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKPlatformProductResults.swift; sourceTree = "<group>"; };
+		06E4DEF0267BFF9500482979 /* KKUserBettingResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserBettingResponse.swift; sourceTree = "<group>"; };
+		06E4DEF1267BFF9500482979 /* KKUserBettingGroupDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserBettingGroupDetails.swift; sourceTree = "<group>"; };
+		06E4DEF2267BFF9500482979 /* KKUserBettingPlatformDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserBettingPlatformDetails.swift; sourceTree = "<group>"; };
+		06E4DEF3267BFF9500482979 /* KKUserBettingResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserBettingResults.swift; sourceTree = "<group>"; };
+		06E4DEF8267C00BF00482979 /* KKUserCashFlowDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserCashFlowDetails.swift; sourceTree = "<group>"; };
+		06E4DEF9267C00BF00482979 /* KKUserCashFlowResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserCashFlowResponse.swift; sourceTree = "<group>"; };
+		06E4DEFA267C00C000482979 /* KKUserCashFlowResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserCashFlowResults.swift; sourceTree = "<group>"; };
+		06E4DEFE267C02B400482979 /* KKUserBettingHistoryDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserBettingHistoryDetails.swift; sourceTree = "<group>"; };
+		06E4DEFF267C02B400482979 /* KKUserBettingHistoryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserBettingHistoryResponse.swift; sourceTree = "<group>"; };
+		06E4DF00267C02B500482979 /* KKUserBettingHistoryResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserBettingHistoryResults.swift; sourceTree = "<group>"; };
 		1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spade_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E2D902D25F2E5F3802521A0 /* Pods-spade-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spade-swift.release.xcconfig"; path = "Target Support Files/Pods-spade-swift/Pods-spade-swift.release.xcconfig"; sourceTree = "<group>"; };
 		5314289E2674978700801FD9 /* KKLiveChatDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKLiveChatDetails.swift; sourceTree = "<group>"; };
@@ -616,6 +636,7 @@
 				06BF5C0C2669774B00C10008 /* OTP */,
 				06BF5C1E266979BB00C10008 /* User Credential */,
 				0686830C2679486E0097E068 /* User Profile */,
+				06E4DEEF267BEF2900482979 /* User Details */,
 				06566B88267AE03D009FE072 /* Deposit */,
 				06566B89267AE04A009FE072 /* Withdraw */,
 				06BF5C272669802100C10008 /* Announcement */,
@@ -720,6 +741,23 @@
 				06BF5C3A2669833100C10008 /* KKPlatformProductResults.swift */,
 			);
 			path = "Platform Product";
+			sourceTree = "<group>";
+		};
+		06E4DEEF267BEF2900482979 /* User Details */ = {
+			isa = PBXGroup;
+			children = (
+				06E4DEF1267BFF9500482979 /* KKUserBettingGroupDetails.swift */,
+				06E4DEF2267BFF9500482979 /* KKUserBettingPlatformDetails.swift */,
+				06E4DEF0267BFF9500482979 /* KKUserBettingResponse.swift */,
+				06E4DEF3267BFF9500482979 /* KKUserBettingResults.swift */,
+				06E4DEF8267C00BF00482979 /* KKUserCashFlowDetails.swift */,
+				06E4DEF9267C00BF00482979 /* KKUserCashFlowResponse.swift */,
+				06E4DEFA267C00C000482979 /* KKUserCashFlowResults.swift */,
+				06E4DEFE267C02B400482979 /* KKUserBettingHistoryDetails.swift */,
+				06E4DEFF267C02B400482979 /* KKUserBettingHistoryResponse.swift */,
+				06E4DF00267C02B500482979 /* KKUserBettingHistoryResults.swift */,
+			);
+			path = "User Details";
 			sourceTree = "<group>";
 		};
 		1285A7FD2AD630CB1857867C /* Frameworks */ = {
@@ -1319,6 +1357,7 @@
 				531428AF2674A2C500801FD9 /* KKPromotionResponse.swift in Sources */,
 				531428B72674A51900801FD9 /* KKGuidelineDetails.swift in Sources */,
 				06BF5C16266977B200C10008 /* KKAppVersionResults.swift in Sources */,
+				06E4DF03267C02B500482979 /* KKUserBettingHistoryResults.swift in Sources */,
 				531428BA2674A52400801FD9 /* KKGuidelineResponse.swift in Sources */,
 				06566B97267AE477009FE072 /* KKDepositHistoryResponse.swift in Sources */,
 				067029DA2641326E00DFADAC /* KKSideMenuTableViewCell.swift in Sources */,
@@ -1326,10 +1365,12 @@
 				532FF613264FE02B00999512 /* KKWithdrawCommissionViewController.swift in Sources */,
 				532FF61C264FF76D00999512 /* KKLiveCasinoViewController.swift in Sources */,
 				06566B85267ADB94009FE072 /* KKLandingDetailsResponse.swift in Sources */,
+				06E4DEFB267C00C000482979 /* KKUserCashFlowDetails.swift in Sources */,
 				0676B612262FDAFE0023311F /* SKResult.swift in Sources */,
 				0676B5AC262FD6EF0023311F /* ViewController.swift in Sources */,
 				06BF5C3B2669833100C10008 /* KKPlatformProductDetails.swift in Sources */,
 				53E2FF282658CC730017CA67 /* KKBonusItemCell.swift in Sources */,
+				06E4DF01267C02B500482979 /* KKUserBettingHistoryDetails.swift in Sources */,
 				067029D62641278300DFADAC /* KKPersonalPageViewController.swift in Sources */,
 				0676B5F3262FD8520023311F /* KKConstant.swift in Sources */,
 				53AAAE2926401CA9004103F0 /* KKWithdrawViewController.swift in Sources */,
@@ -1340,6 +1381,7 @@
 				06BF5C352669814C00C10008 /* KKGroupPlatformGroups.swift in Sources */,
 				06868315267948980097E068 /* KKUserProfileTier.swift in Sources */,
 				53E2FF182658C5A00017CA67 /* KKBonusContentViewController.swift in Sources */,
+				06E4DEF6267BFF9500482979 /* KKUserBettingPlatformDetails.swift in Sources */,
 				535934B526778E0D00498BBF /* KKPlatformViewController.swift in Sources */,
 				06BF5C2526697A1900C10008 /* KKUserCredentialData.swift in Sources */,
 				5317F22A264C10050076D69B /* KKWithdrawRequestViewController.swift in Sources */,
@@ -1385,9 +1427,11 @@
 				06BF5C1A266977B200C10008 /* KKAppVersionAppVersion.swift in Sources */,
 				0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */,
 				06566B9E267AE9F2009FE072 /* KKWithdrawBankResults.swift in Sources */,
+				06E4DF02267C02B500482979 /* KKUserBettingHistoryResponse.swift in Sources */,
 				531428A5267497A300801FD9 /* KKLiveChatResults.swift in Sources */,
 				06BF5C0F2669776E00C10008 /* KKOTPRequestResponse.swift in Sources */,
 				06BF5C3D2669833100C10008 /* KKPlatformProductResults.swift in Sources */,
+				06E4DEF5267BFF9500482979 /* KKUserBettingGroupDetails.swift in Sources */,
 				06BF5C2B2669803300C10008 /* KKAnnouncementResults.swift in Sources */,
 				06290627266FFF4D00A26DC5 /* KKFAQResults.swift in Sources */,
 				06BF5C2D2669803300C10008 /* KKAnnouncementResponse.swift in Sources */,
@@ -1395,6 +1439,7 @@
 				06566BA5267AEAC5009FE072 /* KKAddWithdrawBankResponse.swift in Sources */,
 				0676B5FC262FD94A0023311F /* KKFont.swift in Sources */,
 				53602F63265A5EF700137AD6 /* KKMessageTableCell.swift in Sources */,
+				06E4DEFD267C00C000482979 /* KKUserCashFlowResults.swift in Sources */,
 				53DF81D1265028ED00BA6119 /* KKSelectCountryViewController.swift in Sources */,
 				53363E44264ACE0C001F6B48 /* KKMyAffiliateViewController.swift in Sources */,
 				53AAAE1626401BD0004103F0 /* KKSupportViewController.swift in Sources */,
@@ -1402,8 +1447,10 @@
 				53268C09263068EB00ECAAE2 /* KKLoginViewController.swift in Sources */,
 				06BF5C18266977B200C10008 /* KKAppVersionLanguages.swift in Sources */,
 				53DF81D926502F7200BA6119 /* KKCountryItemCell.swift in Sources */,
+				06E4DEF7267BFF9500482979 /* KKUserBettingResults.swift in Sources */,
 				06566B9F267AE9F2009FE072 /* KKWithdrawBankNames.swift in Sources */,
 				53E2FF202658CA2E0017CA67 /* KKBonusMenuTableCell.swift in Sources */,
+				06E4DEF4267BFF9500482979 /* KKUserBettingResponse.swift in Sources */,
 				06566B91267AE287009FE072 /* KKDepositBankResponse.swift in Sources */,
 				53268BFF2630604F00ECAAE2 /* KKOnBoardingViewController.swift in Sources */,
 				06006DF6267296DA00A2C8C9 /* KKCustomAlertViewController.swift in Sources */,
@@ -1435,6 +1482,7 @@
 				5314289F2674978700801FD9 /* KKLiveChatDetails.swift in Sources */,
 				06BF5C102669776E00C10008 /* KKOTPRequestData.swift in Sources */,
 				06868316267948980097E068 /* KKUserProfileResults.swift in Sources */,
+				06E4DEFC267C00C000482979 /* KKUserCashFlowResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
