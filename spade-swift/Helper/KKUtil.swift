@@ -124,19 +124,6 @@ class KKUtil: NSObject {
         return nil
     }
     
-    ///decode selected country
-    class func decodeSelectedCountryFromCache() -> KKAppVersionCountries? {
-        
-        if (KeychainSwift().getData(CacheKey.selectedCountry) != nil)
-        {
-            let countryDetails = try! JSONDecoder().decode(KKAppVersionCountries.self, from: KeychainSwift().getData(CacheKey.selectedCountry)!)
-            
-            return countryDetails
-        }
-        
-        return nil
-    }
-    
     ///decode user profile
     class func decodeUserProfileFromCache() -> KKUserProfileDetails? {
         
@@ -148,6 +135,64 @@ class KKUtil: NSObject {
         }
         
         return nil
+    }
+    
+    ///get selected country
+    class func decodeSelectedCountryFromCache() -> KKAppVersionCountries {
+        
+        if (KeychainSwift().getData(CacheKey.selectedCountry) != nil)
+        {
+            let countryDetails = try! JSONDecoder().decode(KKAppVersionCountries.self, from: KeychainSwift().getData(CacheKey.selectedCountry)!)
+            
+            return countryDetails
+        }
+        
+        if KKSingleton.sharedInstance.countryArray.count > 0 {
+            
+            return KKSingleton.sharedInstance.countryArray.first(where: {$0.currency == CurrencyCode.Malaysia})!
+        }
+        else
+        {
+            let jsonString = """
+            {
+                "code": "\(CountryCode.Malaysia)",
+                "name": "Malaysia",
+                "locale": "https://legend.fteg.dev/storage/upload/images/countries/malaysia.png",
+                "country_calling_code": "60",
+                "currency": "\(CurrencyCode.Malaysia)",
+                "currency_name": "Malaysia Ringgit"
+            }
+            """
+            
+            return try! JSONDecoder().decode(KKAppVersionCountries.self, from: jsonString.data(using: .utf8)!)
+        }
+    }
+    
+    ///get selected language
+    class func decodeSelectedLanguageFromCache() -> KKAppVersionLanguages {
+            
+        if (KeychainSwift().getData(CacheKey.selectedLanguage) != nil)
+        {
+            let appLanguage = try! JSONDecoder().decode(KKAppVersionLanguages.self, from: KeychainSwift().getData(CacheKey.selectedLanguage)!)
+            
+            return appLanguage
+        }
+        
+        if KKSingleton.sharedInstance.languageArray.count > 0 {
+            
+            return KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == LocaleCode.English})!
+        }
+        else
+        {
+            let jsonString = """
+            {
+                "locale": "\(LocaleCode.English)",
+                "name": "\(LocaleName.English)"
+            }
+            """
+            
+            return try! JSONDecoder().decode(KKAppVersionLanguages.self, from: jsonString.data(using: .utf8)!)
+        }
     }
     
     ///redirect to home page

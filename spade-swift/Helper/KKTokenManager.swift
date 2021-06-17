@@ -35,6 +35,6 @@ class KKTokenManager: NSObject {
     
     class func setUserCredential(userCredential: KKUserCredential) {
         
-        KeychainSwift().set(userCredential.data!.accessToken!, forKey: CacheKey.accessToken)
+        KeychainSwift().set(userCredential.results!.accessToken!, forKey: CacheKey.accessToken)
     }
 }

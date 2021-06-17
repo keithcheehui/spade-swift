@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct KKBonusResults: Codable {
+struct KKPromotionResults: Codable {
 
   enum CodingKeys: String, CodingKey {
-    case bonuses
+    case promotions
   }
 
-  var bonuses: [KKBonusDetails]?
+  var promotions: [KKPromotionDetails]?
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    bonuses = try container.decodeIfPresent([KKBonusDetails].self, forKey: .bonuses)
+    promotions = try container.decodeIfPresent([KKPromotionDetails].self, forKey: .promotions)
   }
 }

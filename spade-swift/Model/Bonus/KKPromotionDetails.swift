@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct KKBonusDetails: Codable {
+struct KKPromotionDetails: Codable {
 
     enum CodingKeys: String, CodingKey {
         case img

@@ -117,6 +117,8 @@ class KKOTPViewController: KKBaseViewController {
         digitContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 16)
         btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
         
+        let selectedCountryDetails = KKUtil.decodeSelectedCountryFromCache()
+        txtCountryCode.text = "\(selectedCountryDetails.code!.dropLast()) +\(selectedCountryDetails.countryPrefix!)"
         lblMobileNumber.text = KKUtil.languageSelectedStringForKey(key: "otp_mobile")
         lblOTPDigit.text = KKUtil.languageSelectedStringForKey(key: "otp_digit")
         lblNoReceive.text = KKUtil.languageSelectedStringForKey(key: "otp_did_you_receive")

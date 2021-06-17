@@ -56,6 +56,7 @@ struct CacheKey {
     static let userProfile = "user_profile"
     static let appVersionDetails = "app_version_details"
     static let selectedCountry = "selected_country"
+    static let selectedLanguage = "selected_language"
 }
 
 struct APIKeys {
@@ -72,6 +73,19 @@ struct APIKeys {
     static let groupCode = "group_code"
     static let platformCode = "platform_code"
     static let gameTypeCode = "game_type_code"
+    static let status = "status"
+    static let receipt = "receipt"
+    static let promotionCode = "promotion_code"
+    static let depositChannelCode = "deposit_channel_code"
+    static let referenceNumber = "reference_number"
+    static let depositAmount = "deposit_amount"
+    static let depositTime = "deposit_time"
+    static let companyBankID = "company_bank_id"
+    static let bankID = "bank_id"
+    static let bankAccountName = "bank_account_name"
+    static let bankAccountNo = "bank_account_number"
+    static let withdrawAmount = "withdraw_amount"
+    static let withdrawAccountNo = "bank_account_number"
 }
 
 struct Platform {
@@ -93,11 +107,25 @@ struct CountryCode {
     static let Indonesia    = "IDN"
 }
 
+struct CurrencyCode {
+    static let Malaysia     = "MYR"
+    static let Thailand     = "THB"
+    static let Singapore    = "SGD"
+    static let Indonesia    = "IDR"
+}
+
 struct LocaleCode {
     static let English = "en"
     static let Thailand = "th"
     static let Malay = "ms"
-    static let Mandarin = "zh-CN"
+    static let Mandarin = "zh"
+}
+
+struct LocaleName {
+    static let English = "English"
+    static let Thailand = "Thailand"
+    static let Malay = "Malay"
+    static let Mandarin = "Mandarin"
 }
 
 struct CellIdentifier {
@@ -121,7 +149,7 @@ struct CellIdentifier {
 struct Spade {
     
     struct DevServer {
-        static let baseApiURL: String = "https://lg-api.fteg.app/api/" //"https://legend.fteg.dev/api/"
+        static let baseApiURL: String = "https://legend.fteg.dev/api/" // "https://lg-api.fteg.app/api/" 
     }
     
     struct ProdServer {

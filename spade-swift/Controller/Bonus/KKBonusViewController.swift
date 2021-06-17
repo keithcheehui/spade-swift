@@ -32,14 +32,14 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
 
     @IBOutlet weak var backContainerHeight: NSLayoutConstraint!
     
-    var sideMenuItem: [KKBonusDetails]! = []
+    var sideMenuItem: [KKPromotionDetails]! = []
     var selectedMenuItem = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialLayout()
-        getBonusList()
+        getPromotionList()
         
         let size = KKUtil.ConvertSizeByDensity(size: 400)
         let flowLayout = UICollectionViewFlowLayout()
@@ -93,11 +93,11 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
     
     //MARK:- API Calls
     
-    func getBonusList() {
+    func getPromotionList() {
                 
-        KKApiClient.getBonusList().execute { [self] bonusResponse in
+        KKApiClient.getPromotionContent().execute { [self] promotionResponse in
             
-            self.sideMenuItem = bonusResponse.results?.bonuses
+            self.sideMenuItem = promotionResponse.results?.promotions
             self.sideMenuTableView.reloadData()
             
         } onFailure: { errorMessage in

@@ -55,7 +55,13 @@ class KKSelectCountryViewController: KKBaseViewController {
     ///Button Actions
     @IBAction func btnConfirmDidPressed(){
         
-        KKUtil.redirectToHome()
+        do {
+            KeychainSwift().set(try JSONEncoder().encode(KKSingleton.sharedInstance.countryArray[selectedIndex]), forKey: CacheKey.selectedCountry)
+            KKUtil.redirectToHome()
+        }
+        catch {
+            self.showAlertView(alertMessage: error.localizedDescription)
+        }
     }
 }
 
@@ -87,14 +93,6 @@ extension KKSelectCountryViewController: UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         selectedIndex = indexPath.item
-        
-        do {
-            KeychainSwift().set(try JSONEncoder().encode(KKSingleton.sharedInstance.countryArray[indexPath.item]), forKey: CacheKey.selectedCountry)
-        }
-        catch {
-            self.showAlertView(alertMessage: error.localizedDescription)
-        }
-        
         collectionView.reloadData()
     }
 }

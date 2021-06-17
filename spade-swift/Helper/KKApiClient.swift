@@ -61,9 +61,30 @@ class KKApiClient: NSObject {
     static func getAppVersion() -> Future<KKAppVersionResponse> {
         
         let parameter = [APIKeys.platform       : Platform.iOS,
+                         APIKeys.locale         : KKUtil.decodeSelectedLanguageFromCache().locale!
                         ] as [String : Any]
         
         return performRequest(route: .appVersion(parameter: parameter))
+    }
+    
+    //MARK:- Guest/Member Landing
+    
+    static func getGuestLandingDetails() -> Future<KKLandingDetailsResponse> {
+        
+        let parameter = [APIKeys.locale         : KKUtil.decodeSelectedLanguageFromCache().locale!,
+                         APIKeys.countryCode    : KKUtil.decodeSelectedCountryFromCache().code!
+                        ] as [String : Any]
+        
+        return performRequest(route: .guestLandingDetails(parameter: parameter))
+    }
+    
+    static func getMemberLandingDetails() -> Future<KKLandingDetailsResponse> {
+        
+        let parameter = [APIKeys.locale         : KKUtil.decodeSelectedLanguageFromCache().locale!,
+                         APIKeys.countryCode    : KKUtil.decodeSelectedCountryFromCache().code!
+                        ] as [String : Any]
+        
+        return performRequest(route: .guestLandingDetails(parameter: parameter))
     }
 
     //MARK:- OTP
@@ -85,7 +106,7 @@ class KKApiClient: NSObject {
         return performRequest(route: .otpVerify(parameter: parameter))
     }
     
-    //MARK:- User Authentication Flow
+    //MARK:- OAuth Flow
     
     static func userAccountLogin(username: String, password: String) -> Future<KKUserCredential> {
         
@@ -111,6 +132,11 @@ class KKApiClient: NSObject {
         return performRequest(route: .userAccountRegistration(parameter: parameter))
     }
     
+    static func logOutUser() -> Future<KKGeneralResponse> {
+        
+        return performRequest(route: .logOutUser)
+    }
+    
     //MARK:- User Profile
     
     static func getUserProfile() -> Future<KKUserProfileResponse> {
@@ -127,7 +153,7 @@ class KKApiClient: NSObject {
     
     static func getContentAnnouncement() ->  Future<KKAnnouncementResponse> {
         
-        let parameter = [APIKeys.locale    : LocaleCode.English,
+        let parameter = [APIKeys.locale    : KKUtil.decodeSelectedLanguageFromCache().locale!,
                         ] as [String : Any]
         
         return performRequest(route: .getAnnouncementContent(parameter: parameter))
@@ -135,8 +161,8 @@ class KKApiClient: NSObject {
     
     static func getContentGroupsAndPlatform() -> Future<KKGroupPlatformResponse> {
         
-        let parameter = [APIKeys.locale         : LocaleCode.English,
-                         APIKeys.countryCode    : CountryCode.Malaysia
+        let parameter = [APIKeys.locale         : KKUtil.decodeSelectedLanguageFromCache().locale!,
+                         APIKeys.countryCode    : KKUtil.decodeSelectedCountryFromCache().code!
                         ] as [String : Any]
         
         return performRequest(route: .getGroupAndPlatformContent(parameter: parameter))
@@ -144,7 +170,7 @@ class KKApiClient: NSObject {
     
     static func getAllPlatformProduct(gCode: String = "", gameTypeCode: String = "") -> Future<KKPlatformProductResponse> {
         
-        let parameter = [APIKeys.locale         : LocaleCode.English,
+        let parameter = [APIKeys.locale         : KKUtil.decodeSelectedLanguageFromCache().locale!,
                          APIKeys.gameTypeCode   : gameTypeCode,
                          APIKeys.groupCode      : gCode,
                          APIKeys.countryCode    : CountryCode.Malaysia
@@ -155,57 +181,91 @@ class KKApiClient: NSObject {
     
     static func getSystemMessages() -> Future<KKSystemMessageResponse> {
         
-        let parameter = [APIKeys.locale    : LocaleCode.English,
+        let parameter = [APIKeys.locale    : KKUtil.decodeSelectedLanguageFromCache().locale!,
                         ] as [String : Any]
         
         return performRequest(route: .getSystemMessageContent(parameter: parameter))
     }
     
-    //MARK:- FAQ
+    static func getPromotionContent() -> Future<KKPromotionResponse> {
+        
+        let parameter = [APIKeys.locale    : KKUtil.decodeSelectedLanguageFromCache().locale!,
+                        ] as [String : Any]
+        
+        return performRequest(route: .getPromotionContent(parameter: parameter))
+    }
+    
+    static func getAffiliateGuidelineContent() -> Future<KKGuidelineResponse> {
+        
+        let parameter = [APIKeys.locale    : KKUtil.decodeSelectedLanguageFromCache().locale!,
+                        ] as [String : Any]
+        
+        return performRequest(route: .getAffiliateGuidelineContent(parameter: parameter))
+    }
+    
+    //MARK:- Customer Service
     
     static func getCustomerFAQ() -> Future<KKFAQResponse> {
         
-        let parameter = [APIKeys.locale    : LocaleCode.English,
+        let parameter = [APIKeys.locale    : KKUtil.decodeSelectedLanguageFromCache().locale!,
                         ] as [String : Any]
         
         return performRequest(route: .customerFAQ(parameter: parameter))
     }
-    
-    //MARK:- Live Chat
-    
+        
     static func getCustomerLiveChat() -> Future<KKLiveChatResponse> {
         
-        let parameter = [APIKeys.locale    : LocaleCode.English,
+        let parameter = [APIKeys.locale    : KKUtil.decodeSelectedLanguageFromCache().locale!,
                         ] as [String : Any]
         
         return performRequest(route: .customerLiveChat(parameter: parameter))
     }
     
-    //MARK:- Bonus
+    //MARK:- Member Deposit
     
-    static func getBonusList() -> Future<KKBonusResponse> {
+    static func getMemberDepositBankAccount() -> Future<KKDepositBankResponse> {
         
-        let parameter = [APIKeys.locale    : LocaleCode.English,
-                        ] as [String : Any]
-        
-        return performRequest(route: .getBonusList(parameter: parameter))
-    }
-
-    //MARK:- Affiliate Guideline
-    
-    static func getGuidelineList() -> Future<KKGuidelineResponse> {
-        
-        let parameter = [APIKeys.locale    : LocaleCode.English,
-                        ] as [String : Any]
-        
-        return performRequest(route: .getGuidelineList(parameter: parameter))
+        return performRequest(route: .memberDepositBankAccount)
     }
     
-    //MARK:- Log Out
-    
-    static func logOutUser() -> Future<KKGeneralResponse> {
+    static func updateMemberDeposit(parameter: [String : Any]) -> Future<KKGeneralResponse> {
         
-        return performRequest(route: .logOutUser)
+        return performRequest(route: .memberDeposit(parameter: parameter))
+    }
+    
+    static func getMemberDepositHistory(historyStatus: String? = nil) -> Future<KKDepositHistoryResponse> {
+        
+        let parameter = [String : Any]()
+        
+        return performRequest(route: .memberDepositHistory(parameter: parameter))
+    }
+    
+    //MARK:- Member Withdraw
+    
+    static func getMemberWithdrawBankAccount() -> Future<KKWithdrawBankResponse> {
+        
+        return performRequest(route: .memberWithdrawBankAccount)
+    }
+    
+    static func addMemberWithdrawBankAccount(parameter: [String : Any]) -> Future<KKAddWithdrawBankResponse> {
+        
+        return performRequest(route: .addMemberWithdrawBankAccount(parameter: parameter))
+    }
+    
+    static func updateMemberWithdrawal(amount: Float, bankAcc: Int) -> Future<KKGeneralResponse> {
+        
+        let parameter = [APIKeys.withdrawAmount     : amount,
+                         APIKeys.withdrawAccountNo  : bankAcc
+                        ] as [String : Any]
+        
+        return performRequest(route: .memberWithdrawal(parameter: parameter))
+    }
+    
+    static func getMemberWithdrawHistory(historyStatus: String? = nil) -> Future<KKWithdrawHistoryResponse> {
+        
+        let parameter = [String : Any]()
+        
+        return performRequest(route: .memberWithdrawHistory(parameter: parameter))
     }
 }
 

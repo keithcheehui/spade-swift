@@ -14,7 +14,7 @@ struct KKPlatformProductDetails: Codable {
         case code
         case platform
         case groupCode = "group_code"
-        case platformCode = "platform_code"
+        case groupTypeCode = "game_type_code"
         case img
     }
   
@@ -22,7 +22,7 @@ struct KKPlatformProductDetails: Codable {
     var code: String?
     var platform: String?
     var groupCode: String?
-    var platformCode: String?
+    var groupTypeCode: String?
     var img: String?
 
     init(from decoder: Decoder) throws {
@@ -31,7 +31,7 @@ struct KKPlatformProductDetails: Codable {
         code = try container.decodeIfPresent(String.self, forKey: .code)
         platform = try container.decodeIfPresent(String.self, forKey: .platform)
         groupCode = try container.decodeIfPresent(String.self, forKey: .groupCode)
-        platformCode = try container.decodeIfPresent(String.self, forKey: .platformCode)
+        groupTypeCode = try container.decodeIfPresent(String.self, forKey: .groupTypeCode)
         img = try container.decodeIfPresent(String.self, forKey: .img)
     }
 }

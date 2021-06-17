@@ -11,18 +11,18 @@ struct KKUserCredential: Codable {
 
   enum CodingKeys: String, CodingKey {
     case status
-    case data
+    case results
     case code
   }
 
   var status: String?
-  var data: KKUserCredentialData?
+  var results: KKUserCredentialData?
   var code: Int?
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     status = try container.decodeIfPresent(String.self, forKey: .status)
-    data = try container.decodeIfPresent(KKUserCredentialData.self, forKey: .data)
+    results = try container.decodeIfPresent(KKUserCredentialData.self, forKey: .results)
     code = try container.decodeIfPresent(Int.self, forKey: .code)
   }
 

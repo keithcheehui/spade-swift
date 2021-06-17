@@ -156,8 +156,11 @@ class KKLoginViewController: KKBaseViewController {
             
             self.hideAnimatedLoader()
             
+            guard let userProfile = userProfileResponse.results?.user![0] else { return }
+            
             do {
-                KeychainSwift().set(try JSONEncoder().encode(userProfileResponse.results?.user), forKey: CacheKey.userProfile)
+                KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
+                KeychainSwift().set(try JSONEncoder().encode(KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == userProfile.locale})!), forKey: CacheKey.selectedLanguage)
             }
             catch {
                 self.hideAnimatedLoader()

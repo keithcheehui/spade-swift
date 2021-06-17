@@ -10,33 +10,58 @@ import Alamofire
 
 enum ApiRouter: URLRequestConvertible {
     
+    // MARK: - APP Version
     case appVersion(parameter: [String: Any])
+    
+    // MARK: - Guest/Member Landing
+    case guestLandingDetails(parameter: [String: Any])
+    case memberLandingDetails(parameter: [String: Any])
+    
+    // MARK: - OTP
     case otpRequest(parameter: [String: Any])
     case otpVerify(parameter: [String: Any])
+    
+    // MARK: - OAuth
     case userAccountLogin(parameter: [String: Any])
     case userAccountRegistration(parameter: [String: Any])
     case userForgotPassword(parameter: [String: Any])
+    case logOutUser
+    
+    // MARK: - User Profile
+    case getUserProfile
+    case getLatestWallet
+    
+    // MARK: - Content
     case getAnnouncementContent(parameter: [String: Any])
     case getGroupAndPlatformContent(parameter: [String: Any])
     case getPlatformProductsContent(parameter: [String: Any])
     case getSystemMessageContent(parameter: [String: Any])
+    case getPromotionContent(parameter: [String: Any])
+    case getAffiliateGuidelineContent(parameter: [String: Any])
+    
+    // MARK: - Customer Service
     case customerFAQ(parameter: [String: Any])
     case customerLiveChat(parameter: [String: Any])
-    case getBonusList(parameter: [String: Any])
-    case getGuidelineList(parameter: [String: Any])
     
+    // MARK:- Member Deposit
+    case memberDepositBankAccount
+    case memberDeposit(parameter: [String: Any])
+    case memberDepositHistory(parameter: [String: Any])
     
-    case getUserProfile
-    case getLatestWallet
-    case logOutUser
-
-
+    // MARK:- Member Withdraw
+    case addMemberWithdrawBankAccount(parameter: [String: Any])
+    case memberWithdrawBankAccount
+    case memberWithdrawal(parameter: [String: Any])
+    case memberWithdrawHistory(parameter: [String: Any])
+    
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         
         switch self {
         
         case .appVersion,
+             .guestLandingDetails,
+             .memberLandingDetails,
              .getUserProfile,
              .getLatestWallet,
              .customerFAQ,
@@ -45,8 +70,12 @@ enum ApiRouter: URLRequestConvertible {
              .getGroupAndPlatformContent,
              .getPlatformProductsContent,
              .getSystemMessageContent,
-             .getBonusList,
-             .getGuidelineList:
+             .getPromotionContent,
+             .getAffiliateGuidelineContent,
+             .memberDepositBankAccount,
+             .memberDepositHistory,
+             .memberWithdrawBankAccount,
+             .memberWithdrawHistory:
             return .get
         
         case .otpRequest,
@@ -54,9 +83,13 @@ enum ApiRouter: URLRequestConvertible {
              .userAccountLogin,
              .userAccountRegistration,
              .userForgotPassword,
+             .addMemberWithdrawBankAccount,
              .logOutUser:
             return .post
             
+        case .memberDeposit,
+             .memberWithdrawal:
+            return .put
         }
     }
     
@@ -67,6 +100,12 @@ enum ApiRouter: URLRequestConvertible {
         
         case .appVersion:
             return "version"
+            
+        case .guestLandingDetails:
+            return "content/guestLanding"
+            
+        case .memberLandingDetails:
+            return "member/memberLanding"
         
         case .otpRequest:
             return "otp/request"
@@ -87,7 +126,7 @@ enum ApiRouter: URLRequestConvertible {
             return "member/profile"
             
         case .getLatestWallet:
-            return "member/getLatestWalletBalance"
+            return "member/latestWalletBalance"
             
         case .customerFAQ:
             return "customer_service/faqs"
@@ -107,11 +146,32 @@ enum ApiRouter: URLRequestConvertible {
         case .getSystemMessageContent:
             return "content/system_messages"
             
-        case .getBonusList:
-            return "content/bonus"
+        case .getPromotionContent:
+            return "content/promotions"
             
-        case .getGuidelineList:
+        case .getAffiliateGuidelineContent:
             return "content/affiliate_guidelines"
+            
+        case .memberDepositBankAccount:
+            return "member/deposit/bankAccounts"
+            
+        case .memberDeposit:
+            return "member/deposit/deposit"
+        
+        case .memberDepositHistory:
+            return "depositHistory"
+            
+        case .addMemberWithdrawBankAccount:
+            return "member/withdraw/addUserBankAccount"
+            
+        case .memberWithdrawBankAccount:
+            return "member/withdraw/bankAccounts"
+            
+        case .memberWithdrawal:
+            return "member/withdraw/withdrawal"
+                
+        case .memberWithdrawHistory:
+            return "member/withdraw/withdrawHistory"
             
         case .logOutUser:
             return "logout"
@@ -124,6 +184,12 @@ enum ApiRouter: URLRequestConvertible {
         switch self {
         
         case .appVersion(let parameter):
+            return parameter
+            
+        case .guestLandingDetails(let parameter):
+            return parameter
+            
+        case .memberLandingDetails(let parameter):
             return parameter
             
         case .otpRequest(let parameter):
@@ -159,19 +225,37 @@ enum ApiRouter: URLRequestConvertible {
         case .getSystemMessageContent(let parameter):
             return parameter
             
-        case .getBonusList(let parameter):
+        case .getPromotionContent(let parameter):
             return parameter
 
-        case .getGuidelineList(let parameter):
+        case .getAffiliateGuidelineContent(let parameter):
+            return parameter
+            
+        case .memberDeposit(let parameter):
+            return parameter
+            
+        case .memberDepositHistory(let parameter):
+            return parameter
+            
+        case .addMemberWithdrawBankAccount(let parameter):
+            return parameter
+            
+        case .memberWithdrawal(let parameter):
+            return parameter
+            
+        case .memberWithdrawHistory(let parameter):
             return parameter
             
         case .getUserProfile,
              .getLatestWallet,
+             .memberDepositBankAccount,
+             .memberWithdrawBankAccount,
              .logOutUser:
             return nil
         }
     }
     
+    // MARK: - URL Request
     func asURLRequest() throws -> URLRequest {
         
         let url : URL = try Spade.DevServer.baseApiURL.asURL()

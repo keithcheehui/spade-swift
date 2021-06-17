@@ -22,6 +22,9 @@ struct KKUserProfileDetails: Codable {
     case gender
     case tier
     case phoneNo = "phone_no"
+    case locale = "locale_preference"
+    case walletBalance = "wallet_balance"
+    case systemMessageNotifications = "system_message_notifications"
   }
 
   var refCode: String?
@@ -36,8 +39,9 @@ struct KKUserProfileDetails: Codable {
   var gender: String?
   var tier: KKUserProfileTier?
   var phoneNo: String?
-
-
+  var locale: String?
+  var walletBalance: Float?
+  var systemMessageNotifications: Bool! = true
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -53,6 +57,8 @@ struct KKUserProfileDetails: Codable {
     gender = try container.decodeIfPresent(String.self, forKey: .gender)
     tier = try container.decodeIfPresent(KKUserProfileTier.self, forKey: .tier)
     phoneNo = try container.decodeIfPresent(String.self, forKey: .phoneNo)
+    locale = try container.decodeIfPresent(String.self, forKey: .locale)
+    walletBalance = try container.decodeIfPresent(Float.self, forKey: .walletBalance)
+    systemMessageNotifications = try container.decodeIfPresent(Bool.self, forKey: .systemMessageNotifications)
   }
-
 }
