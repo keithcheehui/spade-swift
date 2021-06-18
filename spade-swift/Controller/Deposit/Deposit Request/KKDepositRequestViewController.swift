@@ -176,7 +176,7 @@ class KKDepositRequestViewController: KKBaseViewController {
     }
     
     @IBAction func btnDepositHistoryDidPressed(){
-
+        self.present(KKGeneralPopUpTableViewController(), animated: false, completion: nil)
     }
     
     @IBAction func btnChannelDidPressed(){

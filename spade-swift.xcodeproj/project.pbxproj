@@ -155,6 +155,8 @@
 		5365E213265135C2005CB297 /* KKGameMenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5365E212265135C2005CB297 /* KKGameMenuItemCell.xib */; };
 		5380F107267CE95C003DC6CB /* KKGeneralTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5380F105267CE95C003DC6CB /* KKGeneralTableViewController.swift */; };
 		5380F108267CE95C003DC6CB /* KKGeneralTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5380F106267CE95C003DC6CB /* KKGeneralTableViewController.xib */; };
+		5380F10E267D02E7003DC6CB /* KKGeneralPopUpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5380F10C267D02E7003DC6CB /* KKGeneralPopUpTableViewController.swift */; };
+		5380F10F267D02E7003DC6CB /* KKGeneralPopUpTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5380F10D267D02E7003DC6CB /* KKGeneralPopUpTableViewController.xib */; };
 		5381676A26464B0F00FC96A6 /* KKUserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5381676926464B0F00FC96A6 /* KKUserInfoViewController.xib */; };
 		5381676D26464B3300FC96A6 /* KKUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5381676C26464B3300FC96A6 /* KKUserInfoViewController.swift */; };
 		5381D82C26495A94003BBD2A /* KKAnnouncementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5381D82B26495A94003BBD2A /* KKAnnouncementViewController.swift */; };
@@ -351,6 +353,8 @@
 		5365E212265135C2005CB297 /* KKGameMenuItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKGameMenuItemCell.xib; sourceTree = "<group>"; };
 		5380F105267CE95C003DC6CB /* KKGeneralTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKGeneralTableViewController.swift; sourceTree = "<group>"; };
 		5380F106267CE95C003DC6CB /* KKGeneralTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKGeneralTableViewController.xib; sourceTree = "<group>"; };
+		5380F10C267D02E7003DC6CB /* KKGeneralPopUpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKGeneralPopUpTableViewController.swift; sourceTree = "<group>"; };
+		5380F10D267D02E7003DC6CB /* KKGeneralPopUpTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKGeneralPopUpTableViewController.xib; sourceTree = "<group>"; };
 		5381676926464B0F00FC96A6 /* KKUserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKUserInfoViewController.xib; sourceTree = "<group>"; };
 		5381676C26464B3300FC96A6 /* KKUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKUserInfoViewController.swift; sourceTree = "<group>"; };
 		5381D82B26495A94003BBD2A /* KKAnnouncementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAnnouncementViewController.swift; sourceTree = "<group>"; };
@@ -1003,6 +1007,8 @@
 			children = (
 				5380F105267CE95C003DC6CB /* KKGeneralTableViewController.swift */,
 				5380F106267CE95C003DC6CB /* KKGeneralTableViewController.xib */,
+				5380F10C267D02E7003DC6CB /* KKGeneralPopUpTableViewController.swift */,
+				5380F10D267D02E7003DC6CB /* KKGeneralPopUpTableViewController.xib */,
 			);
 			path = "General Table View";
 			sourceTree = "<group>";
@@ -1303,6 +1309,7 @@
 				533CA6BB2631745C00768C08 /* KKHomeViewController.xib in Resources */,
 				06006DFD267299B000A2C8C9 /* Neutra Display Titling.ttf in Resources */,
 				06006E0626729AF400A2C8C9 /* futura medium bt.ttf in Resources */,
+				5380F10F267D02E7003DC6CB /* KKGeneralPopUpTableViewController.xib in Resources */,
 				06006E0726729AF400A2C8C9 /* FuturaBook.ttf in Resources */,
 				53E2FF2B2658CC820017CA67 /* KKBonusItemCell.xib in Resources */,
 				53C64EFA263700D00068F03E /* KKPersonalViewController.xib in Resources */,
@@ -1383,6 +1390,7 @@
 				06566B85267ADB94009FE072 /* KKLandingDetailsResponse.swift in Sources */,
 				06E4DEFB267C00C000482979 /* KKUserCashFlowDetails.swift in Sources */,
 				0676B612262FDAFE0023311F /* SKResult.swift in Sources */,
+				5380F10E267D02E7003DC6CB /* KKGeneralPopUpTableViewController.swift in Sources */,
 				0676B5AC262FD6EF0023311F /* ViewController.swift in Sources */,
 				06BF5C3B2669833100C10008 /* KKPlatformProductDetails.swift in Sources */,
 				53E2FF282658CC730017CA67 /* KKBonusItemCell.swift in Sources */,
