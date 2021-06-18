@@ -95,11 +95,11 @@ class KKPersonalViewController: KKBaseViewController {
         switch type {
         case viewType.bettingRecord.rawValue:
             imgHoverBettingRecord.isHidden = false
-            changeView(vc: KKOnBoardingViewController())
+            changeView(vc: KKGeneralTableViewController())
             break;
         case viewType.accountDetail.rawValue:
             imgHoverAccountDetails.isHidden = false
-            changeView(vc: KKOnBoardingViewController())
+            changeView(vc: KKGeneralTableViewController())
             break;
         case viewType.individualReport.rawValue:
             imgHoverIndividualReport.isHidden = false

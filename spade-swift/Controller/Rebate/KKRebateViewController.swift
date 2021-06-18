@@ -18,6 +18,12 @@ class KKRebateViewController: KKBaseViewController {
     @IBOutlet weak var imgHoverRebateRatio: UIImageView!
     @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet weak var redeemContainer: UIView!
+    @IBOutlet weak var imgProfile: UIImageView!
+    @IBOutlet weak var lblID: UILabel!
+    @IBOutlet weak var lblRebateAmountTitle: UILabel!
+    @IBOutlet weak var lblRebateAmount: UILabel!
+    
     @IBOutlet weak var imgBackWidth: NSLayoutConstraint!
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
     @IBOutlet weak var imgMenuIconWidth: NSLayoutConstraint!
@@ -27,6 +33,8 @@ class KKRebateViewController: KKBaseViewController {
     @IBOutlet weak var menuItemMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var separatorHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var redeemContainerHeight: NSLayoutConstraint!
+    @IBOutlet weak var redeemContainerMarginTop: NSLayoutConstraint!
     
     enum viewType: Int {
         case manualRebate = 0
@@ -59,6 +67,28 @@ class KKRebateViewController: KKBaseViewController {
         lblRebateRatio.font = lblManualRebate.font
     }
     
+    func showRedeemContainer(shouldShow: Bool) {
+        if (shouldShow) {
+            redeemContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 60)
+            redeemContainer.isHidden = false
+            
+            redeemContainer.backgroundColor = UIColor(white: 0, alpha: 0.1)
+            redeemContainer.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 1)
+            redeemContainer.layer.borderColor = UIColor(white: 1, alpha: 0.3).cgColor
+            redeemContainer.layer.cornerRadius = 8
+            
+            lblID.text = KKUtil.languageSelectedStringForKey(key: "rebate_rebate_profile_id") + String(80808080)
+            lblRebateAmountTitle.text = KKUtil.languageSelectedStringForKey(key: "rebate_rebate_amount")
+            lblRebateAmount.text = "0.00"
+            
+            lblID.font = lblManualRebate.font
+            lblRebateAmountTitle.font = lblManualRebate.font
+            lblRebateAmount.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 24))
+        } else {
+            redeemContainerHeight.constant = 0
+            redeemContainer.isHidden = true
+        }
+    }
     
     ///Button Actions
     @IBAction func btnBackDidPressed(){
@@ -82,18 +112,21 @@ class KKRebateViewController: KKBaseViewController {
         imgHoverRebateRecord.isHidden = true
         imgHoverRebateRatio.isHidden = true
                 
+        showRedeemContainer(shouldShow: false)
+
         switch type {
         case viewType.rebateRecord.rawValue:
             imgHoverRebateRecord.isHidden = false
-            changeView(vc: KKOnBoardingViewController())
+            changeView(vc: KKGeneralTableViewController())
             break;
         case viewType.rebateRatio.rawValue:
             imgHoverRebateRatio.isHidden = false
-            changeView(vc: KKOnBoardingViewController())
+            changeView(vc: KKGeneralTableViewController())
             break;
         default:
             imgHoverManualRebate.isHidden = false
-            changeView(vc: KKOnBoardingViewController())
+            changeView(vc: KKGeneralTableViewController())
+            showRedeemContainer(shouldShow: true)
             break;
         }
     }

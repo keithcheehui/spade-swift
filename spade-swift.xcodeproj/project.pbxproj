@@ -153,6 +153,8 @@
 		5365E20B265124D9005CB297 /* KKGameListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5365E20A265124D9005CB297 /* KKGameListViewController.xib */; };
 		5365E210265135B8005CB297 /* KKGameMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E20F265135B8005CB297 /* KKGameMenuItemCell.swift */; };
 		5365E213265135C2005CB297 /* KKGameMenuItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5365E212265135C2005CB297 /* KKGameMenuItemCell.xib */; };
+		5380F107267CE95C003DC6CB /* KKGeneralTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5380F105267CE95C003DC6CB /* KKGeneralTableViewController.swift */; };
+		5380F108267CE95C003DC6CB /* KKGeneralTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5380F106267CE95C003DC6CB /* KKGeneralTableViewController.xib */; };
 		5381676A26464B0F00FC96A6 /* KKUserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5381676926464B0F00FC96A6 /* KKUserInfoViewController.xib */; };
 		5381676D26464B3300FC96A6 /* KKUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5381676C26464B3300FC96A6 /* KKUserInfoViewController.swift */; };
 		5381D82C26495A94003BBD2A /* KKAnnouncementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5381D82B26495A94003BBD2A /* KKAnnouncementViewController.swift */; };
@@ -347,6 +349,8 @@
 		5365E20A265124D9005CB297 /* KKGameListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKGameListViewController.xib; sourceTree = "<group>"; };
 		5365E20F265135B8005CB297 /* KKGameMenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKGameMenuItemCell.swift; sourceTree = "<group>"; };
 		5365E212265135C2005CB297 /* KKGameMenuItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKGameMenuItemCell.xib; sourceTree = "<group>"; };
+		5380F105267CE95C003DC6CB /* KKGeneralTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKGeneralTableViewController.swift; sourceTree = "<group>"; };
+		5380F106267CE95C003DC6CB /* KKGeneralTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKGeneralTableViewController.xib; sourceTree = "<group>"; };
 		5381676926464B0F00FC96A6 /* KKUserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKUserInfoViewController.xib; sourceTree = "<group>"; };
 		5381676C26464B3300FC96A6 /* KKUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKUserInfoViewController.swift; sourceTree = "<group>"; };
 		5381D82B26495A94003BBD2A /* KKAnnouncementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAnnouncementViewController.swift; sourceTree = "<group>"; };
@@ -605,6 +609,7 @@
 				53E2FF142658BE0D0017CA67 /* Bonus */,
 				53963E062639A30A00D803D4 /* Settings */,
 				5381D83126495AA2003BBD2A /* Announcement */,
+				5380F10A267CF08E003DC6CB /* General Table View */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -993,6 +998,15 @@
 			path = "Game Menu Item";
 			sourceTree = "<group>";
 		};
+		5380F10A267CF08E003DC6CB /* General Table View */ = {
+			isa = PBXGroup;
+			children = (
+				5380F105267CE95C003DC6CB /* KKGeneralTableViewController.swift */,
+				5380F106267CE95C003DC6CB /* KKGeneralTableViewController.xib */,
+			);
+			path = "General Table View";
+			sourceTree = "<group>";
+		};
 		5381676F26464B3900FC96A6 /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -1266,6 +1280,7 @@
 				535934B626778E0D00498BBF /* KKPlatformViewController.xib in Resources */,
 				5317F235264C223A0076D69B /* KKBankTableCell.xib in Resources */,
 				532FF616264FE03500999512 /* KKWithdrawCommissionViewController.xib in Resources */,
+				5380F108267CE95C003DC6CB /* KKGeneralTableViewController.xib in Resources */,
 				53363E47264ACE26001F6B48 /* KKMyAffiliateViewController.xib in Resources */,
 				0676B5B1262FD6F30023311F /* Assets.xcassets in Resources */,
 				538FB090264825E000F3E823 /* KKLiveChatCollectionViewCell.xib in Resources */,
@@ -1352,6 +1367,7 @@
 			files = (
 				062C39812632C92C00E86EEA /* KKApiClient.swift in Sources */,
 				538FB07D2648012200F3E823 /* KKFaqViewController.swift in Sources */,
+				5380F107267CE95C003DC6CB /* KKGeneralTableViewController.swift in Sources */,
 				06290620266FFEE600A26DC5 /* KKSystemMessageResults.swift in Sources */,
 				5365E208265124D0005CB297 /* KKGameListViewController.swift in Sources */,
 				531428AF2674A2C500801FD9 /* KKPromotionResponse.swift in Sources */,

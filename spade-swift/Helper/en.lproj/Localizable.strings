@@ -117,6 +117,8 @@
 "rebate_manual_rebate"                      = "Manual Rebate";
 "rebate_rebate_record"                      = "Rebate Record";
 "rebate_rebate_ratio"                       = "Rebate Ratio";
+"rebate_rebate_amount"                      = "Rebate Amount";
+"rebate_rebate_profile_id"                  = "ID: ";
 
 //MARK: Message
 "message_system_mail"                       = "System Mail";

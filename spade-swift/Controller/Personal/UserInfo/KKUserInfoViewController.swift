@@ -41,9 +41,6 @@ class KKUserInfoViewController: KKBaseViewController, UITextFieldDelegate {
     @IBOutlet weak var txtIDView: UIView!
     @IBOutlet weak var txtGenderView: UIView!
     
-    @IBOutlet weak var contactSectionView: UIView!
-    @IBOutlet weak var lblContactSection: UILabel!
-    
     @IBOutlet weak var lblTitleEmail: UILabel!
     @IBOutlet weak var lblTtitlePhone: UILabel!
     @IBOutlet weak var txtEmail: UITextField!
@@ -77,12 +74,11 @@ class KKUserInfoViewController: KKBaseViewController, UITextFieldDelegate {
     func initialLayout(){
         levelSectionView.backgroundColor = UIColor(white: 0, alpha: 0.3)
         basicSectionView.backgroundColor = UIColor(white: 0, alpha: 0.3)
-        contactSectionView.backgroundColor = UIColor(white: 0, alpha: 0.3)
 
         sectionViewHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
         sectionIconWidth.constant = KKUtil.ConvertSizeByDensity(size: 12)
         
-        imgProfileWidth.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        imgProfileWidth.constant = KKUtil.ConvertSizeByDensity(size: 60)
         rankContainerViewHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
         
         viewMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 16 : 24)
@@ -92,7 +88,6 @@ class KKUserInfoViewController: KKBaseViewController, UITextFieldDelegate {
 
         lblLevelSection.text = KKUtil.languageSelectedStringForKey(key: "user_info_level_privilege")
         lblBasicSection.text = KKUtil.languageSelectedStringForKey(key: "user_info_basic_information")
-        lblContactSection.text = KKUtil.languageSelectedStringForKey(key: "user_info_contact_information")
         
         lblCurrentMembership.text = KKUtil.languageSelectedStringForKey(key: "user_info_current_membership")
         lblTitleAccount.text = KKUtil.languageSelectedStringForKey(key: "user_info_account")
@@ -105,7 +100,6 @@ class KKUserInfoViewController: KKBaseViewController, UITextFieldDelegate {
         
         lblLevelSection.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 14))
         lblBasicSection.font = lblLevelSection.font
-        lblContactSection.font = lblLevelSection.font
 
         lblCurrentMembership.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
         lblAccountNumber.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
