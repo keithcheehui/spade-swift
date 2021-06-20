@@ -184,8 +184,7 @@ class KKApiClient: NSObject {
     
     static func getUserBettingRecord() -> Future<KKUserBettingHistoryResponse> {
         
-        let parameter = [APIKeys.code           : Platform.iOS,
-                         APIKeys.filterDuration : APIValue.last90Days
+        let parameter = [APIKeys.filterDuration : APIValue.last90Days
                         ] as [String : Any]
         
         return performRequest(route: .getUserBettingRecord(parameter: parameter))

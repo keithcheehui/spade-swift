@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KKGeneralTableViewController: KKBaseViewController {
+class KKGeneralTableViewController: KKTableBaseViewController {
 
     @IBOutlet weak var topContainer: UIView!
     @IBOutlet weak var leftContainer: UIView!
@@ -22,8 +22,6 @@ class KKGeneralTableViewController: KKBaseViewController {
     
     @IBOutlet weak var topContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var pickerWidth: NSLayoutConstraint!
-    
-    @IBOutlet weak var contentTableView: UITableView!
 
     public var leftTitle: String = ""
     public var leftValue: String = ""

@@ -158,6 +158,9 @@ struct CellIdentifier {
     static let gameMenuItemCVCIdentifier = "KKGameMenuItemCell"
     static let bonusItemCVCIdentifier = "KKBonusItemCell"
     
+    static let generalHeaderViewIdentifier = "KKGeneralHeaderViewIdentifier"
+    static let generalItemCellIdentifier = "KKGeneralItemCellIdentifier"
+    
 }
 
 struct Spade {
@@ -191,4 +194,13 @@ enum HTTPHeaderField: String {
 enum ContentType: String {
     
     case json = "application/json"
+}
+
+enum TableViewType: Int {
+    
+    case ManualRebate = 1
+    case RebateRecord = 2
+    case RebateRatio = 3
+    case BettingRecord = 4
+    case AccountDetails = 5
 }

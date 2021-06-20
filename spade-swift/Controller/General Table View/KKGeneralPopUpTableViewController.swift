@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KKGeneralPopUpTableViewController: UIViewController {
+class KKGeneralPopUpTableViewController: KKBaseViewController {
 
     @IBOutlet weak var imgTitle: UIImageView!
     @IBOutlet weak var contentView: UIView!

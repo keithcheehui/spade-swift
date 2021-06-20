@@ -195,6 +195,27 @@ class KKUtil: NSObject {
         }
     }
     
+    class func getHeaderTitleViaTableViewType(tableViewType: TableViewType) -> [String] {
+        
+        switch tableViewType {
+        
+            case TableViewType.ManualRebate:
+                return ["Game Type", "Valid Bet Amount", "Highest Rebate Ratio", "Rebate Amount"]
+                
+            case TableViewType.RebateRecord:
+                return ["Game Type", "Stack", "Rebate Amount", "Details"]
+                
+            case TableViewType.RebateRatio:
+                return ["Game Time", "Valid Bet Amount", "Rebate Percent", "Rebate Amount"]
+                
+            case TableViewType.BettingRecord:
+                return ["Bet Time", "Bet No", "Game Name", "Bet Amount", "Results"]
+                
+            case TableViewType.AccountDetails:
+                return ["Transaction Time", "Status", "Out", "In", "Balance"]
+        }
+    }
+    
     ///redirect to home page
     class func redirectToHome() {
         KKUtil.proceedToPage(vc: KKHomeViewController.init())

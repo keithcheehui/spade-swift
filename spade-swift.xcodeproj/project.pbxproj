@@ -102,6 +102,9 @@
 		06E4DF01267C02B500482979 /* KKUserBettingHistoryDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DEFE267C02B400482979 /* KKUserBettingHistoryDetails.swift */; };
 		06E4DF02267C02B500482979 /* KKUserBettingHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DEFF267C02B400482979 /* KKUserBettingHistoryResponse.swift */; };
 		06E4DF03267C02B500482979 /* KKUserBettingHistoryResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DF00267C02B500482979 /* KKUserBettingHistoryResults.swift */; };
+		06FF0728267FCB250073BE8E /* KKTableBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF0727267FCB250073BE8E /* KKTableBaseViewController.swift */; };
+		06FF072B267FDD9B0073BE8E /* KKGeneralHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF072A267FDD9B0073BE8E /* KKGeneralHeaderView.swift */; };
+		06FF072D267FEF670073BE8E /* KKGeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF072C267FEF670073BE8E /* KKGeneralTableViewCell.swift */; };
 		3ED808A9A35A15A51B9CD1B0 /* Pods_spade_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */; };
 		5314289F2674978700801FD9 /* KKLiveChatDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5314289E2674978700801FD9 /* KKLiveChatDetails.swift */; };
 		531428A22674979500801FD9 /* KKLiveChatResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531428A12674979500801FD9 /* KKLiveChatResponse.swift */; };
@@ -299,6 +302,9 @@
 		06E4DEFE267C02B400482979 /* KKUserBettingHistoryDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserBettingHistoryDetails.swift; sourceTree = "<group>"; };
 		06E4DEFF267C02B400482979 /* KKUserBettingHistoryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserBettingHistoryResponse.swift; sourceTree = "<group>"; };
 		06E4DF00267C02B500482979 /* KKUserBettingHistoryResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserBettingHistoryResults.swift; sourceTree = "<group>"; };
+		06FF0727267FCB250073BE8E /* KKTableBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKTableBaseViewController.swift; sourceTree = "<group>"; };
+		06FF072A267FDD9B0073BE8E /* KKGeneralHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKGeneralHeaderView.swift; sourceTree = "<group>"; };
+		06FF072C267FEF670073BE8E /* KKGeneralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKGeneralTableViewCell.swift; sourceTree = "<group>"; };
 		1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spade_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E2D902D25F2E5F3802521A0 /* Pods-spade-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spade-swift.release.xcconfig"; path = "Target Support Files/Pods-spade-swift/Pods-spade-swift.release.xcconfig"; sourceTree = "<group>"; };
 		5314289E2674978700801FD9 /* KKLiveChatDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKLiveChatDetails.swift; sourceTree = "<group>"; };
@@ -621,6 +627,7 @@
 		0676B61E262FDC170023311F /* Custom Cell */ = {
 			isa = PBXGroup;
 			children = (
+				06FF0729267FDD7C0073BE8E /* General */,
 				53602F61265A5EDE00137AD6 /* Message Cell */,
 				067029D82641323500DFADAC /* Side Menu */,
 				538FB09526482B8000F3E823 /* Live Chat */,
@@ -665,6 +672,7 @@
 			isa = PBXGroup;
 			children = (
 				0676B623262FDC8F0023311F /* KKBaseViewController.swift */,
+				06FF0727267FCB250073BE8E /* KKTableBaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -767,6 +775,15 @@
 				06E4DF00267C02B500482979 /* KKUserBettingHistoryResults.swift */,
 			);
 			path = "User Details";
+			sourceTree = "<group>";
+		};
+		06FF0729267FDD7C0073BE8E /* General */ = {
+			isa = PBXGroup;
+			children = (
+				06FF072A267FDD9B0073BE8E /* KKGeneralHeaderView.swift */,
+				06FF072C267FEF670073BE8E /* KKGeneralTableViewCell.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 		1285A7FD2AD630CB1857867C /* Frameworks */ = {
@@ -1406,6 +1423,7 @@
 				06868315267948980097E068 /* KKUserProfileTier.swift in Sources */,
 				53E2FF182658C5A00017CA67 /* KKBonusContentViewController.swift in Sources */,
 				06E4DEF6267BFF9500482979 /* KKUserBettingPlatformDetails.swift in Sources */,
+				06FF0728267FCB250073BE8E /* KKTableBaseViewController.swift in Sources */,
 				535934B526778E0D00498BBF /* KKPlatformViewController.swift in Sources */,
 				06BF5C2526697A1900C10008 /* KKUserCredentialData.swift in Sources */,
 				5317F22A264C10050076D69B /* KKWithdrawRequestViewController.swift in Sources */,
@@ -1423,6 +1441,7 @@
 				06868314267948980097E068 /* KKUserProfileDetails.swift in Sources */,
 				0676B5A8262FD6EF0023311F /* AppDelegate.swift in Sources */,
 				06868312267948980097E068 /* KKUserProfileResponse.swift in Sources */,
+				06FF072D267FEF670073BE8E /* KKGeneralTableViewCell.swift in Sources */,
 				06566BA0267AE9F2009FE072 /* KKWithdrawBankResponse.swift in Sources */,
 				06566B99267AE477009FE072 /* KKDepositHistoryResults.swift in Sources */,
 				53AAAE3426401FF0004103F0 /* KKAffiliateViewController.swift in Sources */,
@@ -1433,6 +1452,7 @@
 				5365E210265135B8005CB297 /* KKGameMenuItemCell.swift in Sources */,
 				06BF5C17266977B200C10008 /* KKAppVersionCountries.swift in Sources */,
 				531428AC2674A2BB00801FD9 /* KKPromotionDetails.swift in Sources */,
+				06FF072B267FDD9B0073BE8E /* KKGeneralHeaderView.swift in Sources */,
 				06BF5C3C2669833100C10008 /* KKPlatformProductResponse.swift in Sources */,
 				5365E1F82651195C005CB297 /* KKLiveCasinoItemCell.swift in Sources */,
 				06A97230266C0B17002BFD01 /* KKTokenManager.swift in Sources */,

@@ -117,16 +117,23 @@ class KKRebateViewController: KKBaseViewController {
         switch type {
         case viewType.rebateRecord.rawValue:
             imgHoverRebateRecord.isHidden = false
-            changeView(vc: KKGeneralTableViewController())
+            let viewController = KKGeneralTableViewController()
+            viewController.tableViewType = .RebateRecord
+            changeView(vc: viewController)
             break;
         case viewType.rebateRatio.rawValue:
             imgHoverRebateRatio.isHidden = false
-            changeView(vc: KKGeneralTableViewController())
+            let viewController = KKGeneralTableViewController()
+            viewController.tableViewType = .RebateRatio
+            changeView(vc: viewController)
+
             break;
         default:
             imgHoverManualRebate.isHidden = false
-            changeView(vc: KKGeneralTableViewController())
-            showRedeemContainer(shouldShow: true)
+            let viewController = KKGeneralTableViewController()
+            viewController.tableViewType = .ManualRebate
+            changeView(vc: viewController)
+
             break;
         }
     }
