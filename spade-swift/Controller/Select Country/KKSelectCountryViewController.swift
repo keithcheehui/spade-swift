@@ -20,6 +20,8 @@ class KKSelectCountryViewController: KKBaseViewController {
     @IBOutlet weak var lblTitleMarginRight: NSLayoutConstraint!
     @IBOutlet weak var titleMarginTop: NSLayoutConstraint!
     @IBOutlet weak var titleHeight: NSLayoutConstraint!
+    @IBOutlet weak var btnConfirmMarginBottom: NSLayoutConstraint!
+    @IBOutlet weak var btnConfirmHeight: NSLayoutConstraint!
 
     var selectedIndex = 0
     
@@ -45,7 +47,9 @@ class KKSelectCountryViewController: KKBaseViewController {
         titleHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
         lblTitleMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 65)
         lblTitleMarginRight.constant = lblTitleMarginLeft.constant
-
+        btnConfirmMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
+        btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 45)
+        
         lblTitle.text = KKUtil.languageSelectedStringForKey(key: "country_title")
         lblTitle.textColor = UIColor.spade_white_FFFFFF
         lblTitle.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 14))

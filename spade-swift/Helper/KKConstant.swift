@@ -44,7 +44,7 @@ struct ConstantSize {
     static let sideMenuWidth = KKUtil.ConvertSizeByDensity(size: 150)
     static let imgMenuIconWidth = KKUtil.ConvertSizeByDensity(size: 25)
     static let menuItemHeight = KKUtil.ConvertSizeByDensity(size: 40)
-    static let separatorHeight = KKUtil.ConvertSizeByDensity(size: 10)
+    static let separatorHeight = KKUtil.ConvertSizeByDensity(size: 2)
     static let headerContainerMarginLeft = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 20 : 30)
     static let menuItemMarginLeft = KKUtil.ConvertSizeByDensity(size: 15)
 }

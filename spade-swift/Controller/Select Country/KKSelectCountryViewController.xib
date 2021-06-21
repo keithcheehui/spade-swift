@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKSelectCountryViewController" customModule="spade_swift" customModuleProvider="target">
             <connections>
+                <outlet property="btnConfirmHeight" destination="J6q-7r-tdN" id="hNC-iK-L21"/>
+                <outlet property="btnConfirmMarginBottom" destination="Fbu-f7-8GR" id="6ml-c3-qJT"/>
                 <outlet property="containerMarginLeft" destination="L4a-Ue-M4b" id="pHO-tF-pD2"/>
                 <outlet property="containerMarginRight" destination="bHT-xt-jXt" id="f79-56-eYb"/>
                 <outlet property="countryCollectionView" destination="Unx-Ca-erc" id="41H-oR-aiV"/>
@@ -45,19 +47,8 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FNO-Vr-sCM">
-                            <rect key="frame" x="234" y="294" width="140" height="35"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="FNO-Vr-sCM" secondAttribute="height" multiplier="4:1" id="0xB-jO-YUv"/>
-                                <constraint firstAttribute="height" constant="35" id="JZ3-Vj-qB4"/>
-                            </constraints>
-                            <state key="normal" backgroundImage="btn_confirm_sso"/>
-                            <connections>
-                                <action selector="btnConfirmDidPressed" destination="-1" eventType="touchUpInside" id="sha-d3-LNe"/>
-                            </connections>
-                        </button>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Unx-Ca-erc">
-                            <rect key="frame" x="65" y="131" width="478" height="143"/>
+                            <rect key="frame" x="65" y="131" width="478" height="138"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dSE-d7-DLi">
@@ -71,15 +62,43 @@
                                 <outlet property="delegate" destination="-1" id="C8d-kO-2Ec"/>
                             </connections>
                         </collectionView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DCd-Ew-Qwb">
+                            <rect key="frame" x="234" y="289" width="140" height="35"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_confirm_sso" translatesAutoresizingMaskIntoConstraints="NO" id="Yex-MU-Kp7">
+                                    <rect key="frame" x="0.0" y="0.0" width="140" height="35"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlg-8b-LZD">
+                                    <rect key="frame" x="0.0" y="0.0" width="140" height="35"/>
+                                    <connections>
+                                        <action selector="btnConfirmDidPressed" destination="-1" eventType="touchUpInside" id="6nC-Kl-r2A"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="Yex-MU-Kp7" firstAttribute="top" secondItem="DCd-Ew-Qwb" secondAttribute="top" id="4VK-8U-xVX"/>
+                                <constraint firstAttribute="width" secondItem="DCd-Ew-Qwb" secondAttribute="height" multiplier="4:1" id="Fnz-VI-4GB"/>
+                                <constraint firstAttribute="height" constant="35" id="J6q-7r-tdN"/>
+                                <constraint firstAttribute="bottom" secondItem="mlg-8b-LZD" secondAttribute="bottom" id="SX8-4V-Dec"/>
+                                <constraint firstItem="Yex-MU-Kp7" firstAttribute="leading" secondItem="DCd-Ew-Qwb" secondAttribute="leading" id="dri-Xx-RQc"/>
+                                <constraint firstAttribute="bottom" secondItem="Yex-MU-Kp7" secondAttribute="bottom" id="lAT-SL-HmW"/>
+                                <constraint firstAttribute="trailing" secondItem="mlg-8b-LZD" secondAttribute="trailing" id="meB-t5-Ha3"/>
+                                <constraint firstItem="mlg-8b-LZD" firstAttribute="leading" secondItem="DCd-Ew-Qwb" secondAttribute="leading" id="npB-It-9QZ"/>
+                                <constraint firstItem="mlg-8b-LZD" firstAttribute="top" secondItem="DCd-Ew-Qwb" secondAttribute="top" id="qUt-kf-r32"/>
+                                <constraint firstAttribute="trailing" secondItem="Yex-MU-Kp7" secondAttribute="trailing" id="wSW-qv-YbF"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="FNO-Vr-sCM" firstAttribute="top" secondItem="Unx-Ca-erc" secondAttribute="bottom" constant="20" id="1v3-hU-YAE"/>
                         <constraint firstItem="Unx-Ca-erc" firstAttribute="top" secondItem="JoW-YV-QAz" secondAttribute="bottom" constant="20" id="6JY-pf-Tzv"/>
+                        <constraint firstAttribute="bottom" secondItem="DCd-Ew-Qwb" secondAttribute="bottom" constant="50" id="Fbu-f7-8GR"/>
                         <constraint firstAttribute="trailing" secondItem="bef-qs-Jyw" secondAttribute="trailing" id="HGh-Xv-VLu"/>
+                        <constraint firstItem="DCd-Ew-Qwb" firstAttribute="top" secondItem="Unx-Ca-erc" secondAttribute="bottom" constant="20" id="Mww-2q-AgJ"/>
                         <constraint firstItem="JoW-YV-QAz" firstAttribute="leading" secondItem="SeE-Va-oe0" secondAttribute="leading" constant="65" id="Nu0-aW-y6v"/>
-                        <constraint firstAttribute="bottom" secondItem="FNO-Vr-sCM" secondAttribute="bottom" constant="45" id="O5O-iv-FYE"/>
                         <constraint firstItem="JoW-YV-QAz" firstAttribute="top" secondItem="c8b-g5-beD" secondAttribute="bottom" constant="40" id="SIz-2r-b3o"/>
+                        <constraint firstItem="DCd-Ew-Qwb" firstAttribute="centerX" secondItem="SeE-Va-oe0" secondAttribute="centerX" id="TI1-WG-g6v"/>
                         <constraint firstItem="Unx-Ca-erc" firstAttribute="leading" secondItem="JoW-YV-QAz" secondAttribute="leading" id="Ua1-Qb-YbM"/>
                         <constraint firstItem="c8b-g5-beD" firstAttribute="top" secondItem="SeE-Va-oe0" secondAttribute="top" constant="25" id="Uhr-vn-Nat"/>
                         <constraint firstItem="c8b-g5-beD" firstAttribute="leading" secondItem="SeE-Va-oe0" secondAttribute="leading" constant="25" id="Vp4-fU-7Rl"/>
@@ -88,7 +107,6 @@
                         <constraint firstItem="Unx-Ca-erc" firstAttribute="trailing" secondItem="JoW-YV-QAz" secondAttribute="trailing" id="Z9L-r3-gVB"/>
                         <constraint firstItem="bef-qs-Jyw" firstAttribute="leading" secondItem="SeE-Va-oe0" secondAttribute="leading" id="joH-52-7a9"/>
                         <constraint firstAttribute="trailing" secondItem="JoW-YV-QAz" secondAttribute="trailing" constant="65" id="oVr-wj-mKn"/>
-                        <constraint firstItem="FNO-Vr-sCM" firstAttribute="centerX" secondItem="SeE-Va-oe0" secondAttribute="centerX" id="s0g-HD-9F1"/>
                         <constraint firstAttribute="trailing" secondItem="c8b-g5-beD" secondAttribute="trailing" constant="25" id="sig-j8-n27"/>
                     </constraints>
                 </view>

@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="kxd-uw-pqQ">
-                    <rect key="frame" x="0.0" y="30" width="896" height="354"/>
+                    <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Kak-hp-Fma">
@@ -40,10 +40,10 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="kxd-uw-pqQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="6cb-xm-sxF"/>
+                <constraint firstItem="kxd-uw-pqQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6cb-xm-sxF"/>
                 <constraint firstAttribute="trailing" secondItem="kxd-uw-pqQ" secondAttribute="trailing" id="DHP-Lz-KVQ"/>
                 <constraint firstItem="kxd-uw-pqQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="OJ5-3q-Lyj"/>
-                <constraint firstAttribute="bottom" secondItem="kxd-uw-pqQ" secondAttribute="bottom" constant="30" id="frE-ut-q8b"/>
+                <constraint firstAttribute="bottom" secondItem="kxd-uw-pqQ" secondAttribute="bottom" id="frE-ut-q8b"/>
             </constraints>
             <point key="canvasLocation" x="139" y="88"/>
         </view>
