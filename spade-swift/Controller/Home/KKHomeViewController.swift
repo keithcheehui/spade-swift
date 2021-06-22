@@ -65,16 +65,24 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var btnWithdrawWidth: NSLayoutConstraint!
     @IBOutlet weak var menuWidth: NSLayoutConstraint!
     
-    var groupPlatformArray: [KKGroupPlatformGroups]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         initialLayout()
         initFlowLayout()
-        self.getContentGroupAndPlatform()
         
-        setupGuestView(isGuest: true)
+        self.menuCollectionView.reloadData()
+        
+        self.selectedGameType = 0
+        self.updateLobbyBackgroundImage(gameType: self.selectedGameType)
+        
+        let viewController = KKGameListViewController.init()
+        viewController.selectedGameType = self.selectedGameType
+        viewController.gameListArray = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].platforms
+        self.changeView(vc: viewController)
+        
+        setupGuestView(isGuest: !UserDefaults.standard.bool(forKey: CacheKey.loginStatus))
     }
     
     func initialLayout(){
@@ -380,39 +388,12 @@ class KKHomeViewController: KKBaseViewController {
         menuCollectionView.collectionViewLayout = flowLayout
         menuCollectionView.register(UINib(nibName: "KKGameMenuItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.gameMenuItemCVCIdentifier)
     }
-    
-    //MARK:- API Calls
-    
-    func getContentGroupAndPlatform() {
-        
-        self.showAnimatedLoader()
-        
-        KKApiClient.getContentGroupsAndPlatform().execute { groupPlatformResponse in
-            
-            self.hideAnimatedLoader()
-            self.groupPlatformArray = groupPlatformResponse.results!.groups!
-            self.menuCollectionView.reloadData()
-            
-            self.selectedGameType = 0
-            self.updateLobbyBackgroundImage(gameType: self.selectedGameType)
-            
-            let viewController = KKGameListViewController.init()
-            viewController.selectedGameType = self.selectedGameType
-            viewController.gameListArray = self.groupPlatformArray[self.selectedGameType].platforms
-            self.changeView(vc: viewController)
-            
-        } onFailure: { errorMessage in
-            
-            self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
-        }
-    }
 }
 
 extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return groupPlatformArray.count
+        return KKSingleton.sharedInstance.groupPlatformArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -428,8 +409,8 @@ extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
             cell.imgHover.isHidden = true
         }
         
-        cell.lblMenuName.text = groupPlatformArray[indexPath.item].name
-        cell.imgMenuIcon.setUpImage(with: groupPlatformArray[indexPath.item].img)
+        cell.lblMenuName.text = KKSingleton.sharedInstance.groupPlatformArray[indexPath.item].name
+        cell.imgMenuIcon.setUpImage(with: KKSingleton.sharedInstance.groupPlatformArray[indexPath.item].img)
         
         return cell
     }
@@ -442,13 +423,13 @@ extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
         case GameType.liveCasino:
             let viewController = KKLiveCasinoViewController.init()
             viewController.selectedGameType = selectedGameType
-            viewController.liveCasinoArray = groupPlatformArray[indexPath.item].platforms
+            viewController.liveCasinoArray = KKSingleton.sharedInstance.groupPlatformArray[indexPath.item].platforms
             changeView(vc: viewController)
             break;
         default:
             let viewController = KKGameListViewController.init()
             viewController.selectedGameType = selectedGameType
-            viewController.gameListArray = groupPlatformArray[indexPath.item].platforms
+            viewController.gameListArray = KKSingleton.sharedInstance.groupPlatformArray[indexPath.item].platforms
             changeView(vc: viewController)
             break;
         }

@@ -74,15 +74,17 @@ class KKUtil: NSObject {
         return expectLabelSize
     }
     
-    ///Add param for GET url
-    class func addQueryParams(url: URL, newParams: [URLQueryItem]) -> URL? {
+    /// Add param for GET url
+    class func addQueryParams(url: URL, parameters: [String: String]) -> URL? {
 
-        let urlComponents = NSURLComponents.init(url: url, resolvingAgainstBaseURL: false)
-        guard urlComponents != nil else { return nil }
-        if (urlComponents?.queryItems == nil) {
-            urlComponents!.queryItems = []
+        var urlComponents = URLComponents.init(url: url, resolvingAgainstBaseURL: false)
+        guard urlComponents != nil
+        else {
+            return nil
         }
-        urlComponents!.queryItems!.append(contentsOf: newParams)
+        
+        urlComponents?.setQueryItems(with: parameters)
+        
         return urlComponents?.url
     }
     

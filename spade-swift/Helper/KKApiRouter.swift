@@ -304,20 +304,25 @@ enum ApiRouter: URLRequestConvertible {
         
         var urlRequest : URLRequest = URLRequest(url: url.appendingPathComponent(path))
         
-        if (method.rawValue == "GET" && parameters != nil)
-        {
-            let dict: NSDictionary = parameters! as NSDictionary
-
-            for i in 0 ..< dict.allKeys.count {
-
-                urlRequest = URLRequest(url: KKUtil.addQueryParams(url: urlRequest.url!, newParams: [URLQueryItem.init(name: dict.allKeys[i] as! String, value: (dict.object(forKey: dict.allKeys[i]) as! String))])!)
+        if method.rawValue == "GET" && parameters != nil {
+            
+            if let dict = parameters as? [String: String] {
+            
+                if let url = KKUtil.addQueryParams(url: urlRequest.url!, parameters: dict) {
+                    
+                    urlRequest = URLRequest(url: url)
+                    
+                } else {
+                    
+                    urlRequest = URLRequest(url: url.appendingPathComponent(path))
+                }
             }
         }
         
         urlRequest.httpMethod = method.rawValue
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
         
-        if (UserDefaults.standard.bool(forKey: CacheKey.loginStatus))
+        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus)
         {
             urlRequest.setValue(String(format: "Bearer %@", KKTokenManager.accessToken()), forHTTPHeaderField: HTTPHeaderField.authorization.rawValue)
         }

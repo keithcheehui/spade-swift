@@ -33,7 +33,14 @@ class KKSplashScreenViewController: KKBaseViewController {
         
         if KKUtil.isConnectedToInternet() {
             
-            self.getAnnouncement()
+            if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+                
+                self.getMemberLandingDetails()
+            }
+            else {
+                
+                self.getGuestLandingDetails()
+            }
         }
         else
         {
@@ -88,11 +95,48 @@ class KKSplashScreenViewController: KKBaseViewController {
     
     //MARK:- API Calls
     
-    func getAnnouncement() {
+    func getGuestLandingDetails() {
         
-        KKApiClient.getContentAnnouncement().execute { announcementResponse in
+        KKApiClient.getGuestLandingDetails().execute { landingDetailsResponse in
             
-            KKSingleton.sharedInstance.announcementArray = announcementResponse.results!.announcements!
+            if let landingDetailsResults = landingDetailsResponse.results {
+                
+                KKSingleton.sharedInstance.announcementArray = landingDetailsResults.announcements!
+                KKSingleton.sharedInstance.groupPlatformArray = landingDetailsResults.groups!
+            }
+            
+            self.getAppVersion()
+            
+        } onFailure: { errorMessage in
+            
+            self.getAppVersion()
+        }
+    }
+    
+    func getMemberLandingDetails() {
+        
+        KKApiClient.getMemberLandingDetails().execute { landingDetailsResponse in
+            
+            if let landingDetailsResults = landingDetailsResponse.results {
+                
+                if var userProfile = KKUtil.decodeUserProfileFromCache(), let userInfo = landingDetailsResults.userInfo {
+                    userProfile.walletBalance = userInfo.walletBalance!
+                    userProfile.currencyCode = userInfo.currencyCode!
+                    userProfile.tier = userInfo.tier!
+                    
+                    do {
+                        KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
+                        KeychainSwift().set(try JSONEncoder().encode(KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == userProfile.locale})!), forKey: CacheKey.selectedLanguage)
+                    }
+                    catch {
+                        
+                    }
+                }
+                
+                KKSingleton.sharedInstance.announcementArray = landingDetailsResults.announcements!
+                KKSingleton.sharedInstance.groupPlatformArray = landingDetailsResults.groups!
+            }
+            
             self.getAppVersion()
             
         } onFailure: { errorMessage in
