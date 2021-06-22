@@ -78,15 +78,15 @@ class KKHomeViewController: KKBaseViewController {
         initialLayout()
         initFlowLayout()
         
-        self.menuCollectionView.reloadData()
-        
-        self.selectedGameType = 0
-        self.updateLobbyBackgroundImage(gameType: self.selectedGameType)
-        
-        let viewController = KKGameListViewController.init()
-        viewController.selectedGameType = self.selectedGameType
-        viewController.gameListArray = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].platforms
-        self.changeView(vc: viewController)
+        if KKSingleton.sharedInstance.groupPlatformArray.count > 0 {
+
+            self.menuCollectionView.reloadData()
+            self.selectedDefaultSideMenu()
+        }
+        else {
+
+            self.getContentGroupAndPlatform()
+        }
         
         setupGuestView(isGuest: !UserDefaults.standard.bool(forKey: CacheKey.loginStatus))
     }
@@ -317,6 +317,31 @@ class KKHomeViewController: KKBaseViewController {
         }
     }
     
+    func getContentGroupAndPlatform() {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.getContentGroupsAndPlatform().execute { groupPlatformResponse in
+            
+            self.hideAnimatedLoader()
+            KKSingleton.sharedInstance.groupPlatformArray = groupPlatformResponse.results!.groups!
+            self.menuCollectionView.reloadData()
+            
+            self.selectedGameType = 0
+            self.updateLobbyBackgroundImage(gameType: self.selectedGameType)
+            
+            let viewController = KKGameListViewController.init()
+            viewController.selectedGameType = self.selectedGameType
+            viewController.gameListArray = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].platforms
+            self.changeView(vc: viewController)
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: errorMessage)
+        }
+    }
+
     //MARK:- Button Actions
     
     @IBAction func btnProfileDidPressed(){
@@ -405,6 +430,19 @@ class KKHomeViewController: KKBaseViewController {
         menuCollectionView.collectionViewLayout = flowLayout
         menuCollectionView.register(UINib(nibName: "KKGameMenuItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.gameMenuItemCVCIdentifier)
     }
+    
+    //MARK:- Others
+    
+    func selectedDefaultSideMenu() {
+        
+        self.selectedGameType = 0
+        self.updateLobbyBackgroundImage(gameType: self.selectedGameType)
+        
+        let viewController = KKGameListViewController.init()
+        viewController.selectedGameType = self.selectedGameType
+        viewController.gameListArray = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].platforms
+        self.changeView(vc: viewController)
+    }
 }
 
 extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -457,7 +495,7 @@ extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if (indexPath.row == groupPlatformArray.count - 1) {
+        if (indexPath.row == KKSingleton.sharedInstance.groupPlatformArray.count - 1) {
 //            imgArrowUp.isHidden = false
 //            imgArrowDown.isHidden = true
             

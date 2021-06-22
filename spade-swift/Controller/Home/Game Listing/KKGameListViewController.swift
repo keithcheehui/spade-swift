@@ -29,6 +29,12 @@ class KKGameListViewController: KKBaseViewController {
         updateLayout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        gameCollectionView.reloadData()
+    }
+    
     public func updateLayout(){
         initFlowLayout()
         gameCollectionView.reloadData()
