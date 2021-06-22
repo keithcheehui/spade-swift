@@ -77,11 +77,10 @@ class KKMyAffiliateViewController: KKBaseViewController {
     func initialLayout(){
         myIDViewHeight.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 18 : 20))
         titleContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        iconWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 30 : 35))
-        btnCollectHeight.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 25 : 30))
+        iconWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 45 : 45))
         iconMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 20 : 30)
         iconMarginRight.constant = iconMarginLeft.constant
-        btnCollectHeight.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 20 : 25))
+        btnCollectHeight.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 25 : 25))
 
         lblMyIDView.backgroundColor = UIColor(white: 0, alpha: 0.3)
         lblReferrerIDView.backgroundColor = lblMyIDView.backgroundColor
@@ -148,7 +147,7 @@ class KKMyAffiliateViewController: KKBaseViewController {
         lblTitleAvailableCommision.font = lblTitleTotalCommission.font
         lblTitleShareReward.font = lblTitleTotalCommission.font
         
-        lblMyID.textColor = UIColor.spade_grey_B3C0E0
+        lblMyID.textColor = UIColor.spade_white_FFFFFF
         lblReferrerID.textColor = lblMyID.textColor
         lblMemberCount.textColor = lblMyID.textColor
         lblTurnover.textColor = lblMyID.textColor

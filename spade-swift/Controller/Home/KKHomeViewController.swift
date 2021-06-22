@@ -31,7 +31,9 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var lblLanguage: UILabel!
     @IBOutlet weak var announcementContainer: UIView!
     @IBOutlet weak var lblAnnouncement: MarqueeLabel!
-    
+    @IBOutlet weak var imgArrowUp: UIImageView!
+    @IBOutlet weak var imgArrowDown: UIImageView!
+
     ///Guest
     @IBOutlet weak var guestContainer: UIView!
 
@@ -48,6 +50,7 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var lblMore: UILabel!
     
     @IBOutlet weak var imgProfileWidth: NSLayoutConstraint!
+    @IBOutlet weak var imgProfileMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var lblProfileNameWidth: NSLayoutConstraint!
     @IBOutlet weak var lblCopyWidth: NSLayoutConstraint!
     @IBOutlet weak var expBarHeight: NSLayoutConstraint!
@@ -60,10 +63,13 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var announcementContainerWidth: NSLayoutConstraint!
     @IBOutlet weak var announcementContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var footerContainerHeight: NSLayoutConstraint!
+    @IBOutlet weak var footerButtonContainerMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var footerButtonContainerMarginRight: NSLayoutConstraint!
     @IBOutlet weak var imgAffiliateWidth: NSLayoutConstraint!
     @IBOutlet weak var btnWithdrawWidth: NSLayoutConstraint!
+    @IBOutlet weak var separaterHeight: NSLayoutConstraint!
     @IBOutlet weak var menuWidth: NSLayoutConstraint!
+    @IBOutlet weak var imgArrowUpHeight: NSLayoutConstraint!
     
     
     override func viewDidLoad() {
@@ -86,9 +92,10 @@ class KKHomeViewController: KKBaseViewController {
     }
     
     func initialLayout(){
-        topContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 70)
-        imgProfileWidth.constant = KKUtil.ConvertSizeByDensity(size: 50)
-        lblProfileNameWidth.constant = KKUtil.ConvertSizeByDensity(size: 70)
+        topContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 100)
+        imgProfileMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 20)
+        imgProfileWidth.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        lblProfileNameWidth.constant = KKUtil.ConvertSizeByDensity(size: 80)
         lblCopyWidth.constant = KKUtil.ConvertSizeByDensity(size: 60)
         expBarHeight.constant = KKUtil.ConvertSizeByDensity(size: 4)
         moneyContainerWidth.constant = KKUtil.ConvertSizeByDensity(size: 180)
@@ -98,11 +105,14 @@ class KKHomeViewController: KKBaseViewController {
         topButtonsContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         announcementContainerWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 350 : 400)
         announcementContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
-        footerContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        footerContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 50)
+        footerButtonContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 30 : 35)
         footerButtonContainerMarginRight.constant = KKUtil.ConvertSizeByDensity(size: 20)
-        imgAffiliateWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 18 : 22)
+        imgAffiliateWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 20 : 22)
         btnWithdrawWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 110 : 130)
+        separaterHeight.constant = KKUtil.ConvertSizeByDensity(size: 16)
         menuWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
+        imgArrowUpHeight.constant = KKUtil.ConvertSizeByDensity(size: 15)
 
         lblCopy.text = KKUtil.languageSelectedStringForKey(key: "home_copy_id")
         lblMission.text = KKUtil.languageSelectedStringForKey(key: "home_mission")
@@ -141,6 +151,13 @@ class KKHomeViewController: KKBaseViewController {
 
         setGradientBackground(colorTop: UIColor(white: 0, alpha: 0.0), colorCenter: UIColor(white: 0, alpha: 0.65), colorBottom: UIColor(white: 0, alpha: 0.0), view: menuContainer)
 
+        imgArrowUp.transform = imgArrowUp.transform.rotated(by: .pi)
+//        imgArrowUp.isHidden = true
+//        imgArrowDown.isHidden = false
+        
+        self.imgArrowUp.alpha = 0
+        self.imgArrowDown.alpha = 1
+        
         let ratio = Float(10) / Float(10)
         expBar.progress = Float(ratio)
         
@@ -382,8 +399,8 @@ class KKHomeViewController: KKBaseViewController {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 0
         flowLayout.scrollDirection = .vertical
-        flowLayout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-        flowLayout.itemSize = CGSize(width: menuWidth.constant, height: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 40 : 40))
+        flowLayout.sectionInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+        flowLayout.itemSize = CGSize(width: menuWidth.constant, height: KKUtil.ConvertSizeByDensity(size: 45))
 
         menuCollectionView.collectionViewLayout = flowLayout
         menuCollectionView.register(UINib(nibName: "KKGameMenuItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.gameMenuItemCVCIdentifier)
@@ -437,5 +454,25 @@ extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         collectionView.reloadData()
         return
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if (indexPath.row == groupPlatformArray.count - 1) {
+//            imgArrowUp.isHidden = false
+//            imgArrowDown.isHidden = true
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.imgArrowUp.alpha = 1
+                self.imgArrowDown.alpha = 0
+            })
+        } else if (indexPath.row == 0) {
+//            imgArrowUp.isHidden = true
+//            imgArrowDown.isHidden = false
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.imgArrowUp.alpha = 0
+                self.imgArrowDown.alpha = 1
+            })
+        }
     }
 }

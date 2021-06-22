@@ -10,6 +10,7 @@ import KeychainSwift
 
 class KKSplashScreenViewController: KKBaseViewController {
 
+    @IBOutlet weak var imgBG: UIImageView!
     @IBOutlet weak var loadingBar: UIView!
     @IBOutlet weak var imgBgloadingBar: UIImageView!
     @IBOutlet weak var lblLoading: UILabel!
@@ -54,6 +55,12 @@ class KKSplashScreenViewController: KKBaseViewController {
         loadingBarMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 130)
         loadingBarMarginRight.constant = loadingBarMarginLeft.constant
         lblLoadingMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
+        
+        if (KKUtil.isSmallerPhone()) {
+            imgBG.image = UIImage(named: "bg_sso")
+        } else {
+            imgBG.image = UIImage(named: "bg_sso2")
+        }
     }
 
     func drawLoadingProgress(){

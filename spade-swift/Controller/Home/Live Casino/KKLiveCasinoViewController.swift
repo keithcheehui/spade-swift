@@ -36,7 +36,7 @@ class KKLiveCasinoViewController: KKBaseViewController {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 0
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: 150), height: KKUtil.ConvertSizeByDensity(size: 60))
+        flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: 150), height: KKUtil.ConvertSizeByDensity(size: 70))
         
         gameCollectionView.collectionViewLayout = flowLayout
         gameCollectionView.register(UINib(nibName: "KKLiveCasinoItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.liveCasinoCVCIdentifier)
