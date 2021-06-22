@@ -186,7 +186,7 @@ enum ApiRouter: URLRequestConvertible {
             return "member/deposit/deposit"
         
         case .memberDepositHistory:
-            return "depositHistory"
+            return "member/deposit/depositHistory"
             
         case .addMemberWithdrawBankAccount:
             return "member/withdraw/addUserBankAccount"

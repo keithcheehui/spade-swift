@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +16,7 @@
                 <outlet property="contentMarginLeft" destination="iXG-sb-61e" id="TkA-Fa-hE7"/>
                 <outlet property="contentMarginRight" destination="75F-J2-0jY" id="Whq-Ba-rCh"/>
                 <outlet property="contentMarginTop" destination="cfr-Lf-mFu" id="gch-C2-ib7"/>
-                <outlet property="contentView" destination="ETv-fX-HPy" id="yqQ-eJ-6Ho"/>
+                <outlet property="contentTableView" destination="Emg-fe-jdV" id="Ysh-A1-Lab"/>
                 <outlet property="imgCloseWidth" destination="xwH-IO-GQj" id="SDK-SN-Pnx"/>
                 <outlet property="imgTitle" destination="qyc-Ik-ZkW" id="k3C-AA-s58"/>
                 <outlet property="lblNote" destination="7VX-QU-WMb" id="Djg-SI-tjO"/>
@@ -74,13 +75,18 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETv-fX-HPy">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETv-fX-HPy" customClass="UITableView">
                             <rect key="frame" x="15" y="61" width="578" height="271"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Emg-fe-jdV">
+                            <rect key="frame" x="15" y="61" width="578" height="271"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </tableView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="Emg-fe-jdV" firstAttribute="leading" secondItem="OsW-vy-Ibj" secondAttribute="leading" constant="15" id="0ew-zg-zQC"/>
                         <constraint firstItem="j9p-G0-jRp" firstAttribute="leading" secondItem="OsW-vy-Ibj" secondAttribute="leading" id="0zX-YT-ZR6"/>
                         <constraint firstItem="qyc-Ik-ZkW" firstAttribute="top" secondItem="OsW-vy-Ibj" secondAttribute="top" constant="25" id="4ME-kp-Dht"/>
                         <constraint firstAttribute="trailing" secondItem="ETv-fX-HPy" secondAttribute="trailing" constant="15" id="75F-J2-0jY"/>
@@ -90,10 +96,13 @@
                         <constraint firstItem="j9p-G0-jRp" firstAttribute="top" secondItem="OsW-vy-Ibj" secondAttribute="top" id="Hb2-rM-f7B"/>
                         <constraint firstItem="qyc-Ik-ZkW" firstAttribute="leading" secondItem="OsW-vy-Ibj" secondAttribute="leading" constant="25" id="HdK-C1-fSv"/>
                         <constraint firstItem="7VX-QU-WMb" firstAttribute="leading" secondItem="OsW-vy-Ibj" secondAttribute="leading" constant="25" id="KyJ-Gb-1uK"/>
+                        <constraint firstItem="7VX-QU-WMb" firstAttribute="top" secondItem="Emg-fe-jdV" secondAttribute="bottom" constant="5" id="PPp-L8-ZlK"/>
                         <constraint firstItem="7VX-QU-WMb" firstAttribute="top" secondItem="ETv-fX-HPy" secondAttribute="bottom" constant="5" id="VVQ-Pj-3RE"/>
                         <constraint firstItem="ETv-fX-HPy" firstAttribute="top" secondItem="qyc-Ik-ZkW" secondAttribute="bottom" constant="11" id="cfr-Lf-mFu"/>
                         <constraint firstAttribute="trailing" secondItem="j9p-G0-jRp" secondAttribute="trailing" id="cjE-fq-zQA"/>
+                        <constraint firstItem="Emg-fe-jdV" firstAttribute="top" secondItem="qyc-Ik-ZkW" secondAttribute="bottom" constant="11" id="dH8-AT-vQn"/>
                         <constraint firstItem="ETv-fX-HPy" firstAttribute="leading" secondItem="OsW-vy-Ibj" secondAttribute="leading" constant="15" id="iXG-sb-61e"/>
+                        <constraint firstAttribute="trailing" secondItem="Emg-fe-jdV" secondAttribute="trailing" constant="15" id="lFt-ot-C8S"/>
                         <constraint firstItem="fQI-Qw-oN2" firstAttribute="trailing" secondItem="qyc-Ik-ZkW" secondAttribute="trailing" constant="-5" id="qWM-LC-d1b"/>
                         <constraint firstItem="fQI-Qw-oN2" firstAttribute="top" secondItem="qyc-Ik-ZkW" secondAttribute="top" constant="-5" id="qsK-PH-AW9"/>
                         <constraint firstAttribute="bottom" secondItem="j9p-G0-jRp" secondAttribute="bottom" id="rSe-ut-2rp"/>
@@ -118,5 +127,8 @@
         <image name="bg_popup" width="1421" height="1013"/>
         <image name="ic_close" width="83" height="86"/>
         <image name="title_deposit_history" width="643" height="60"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

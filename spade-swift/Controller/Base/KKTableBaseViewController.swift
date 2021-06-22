@@ -14,7 +14,34 @@ class KKTableBaseViewController: KKBaseViewController {
     var tableViewType: TableViewType!
     var cashFlowArray: [KKUserCashFlowDetails]! = []
     var bettingRecordArray: [KKUserBettingHistoryDetails]! = []
+    var withdrawHistoryArray: [KKWithdrawHistoryDetails]! = []
+    var depositHistoryArray: [KKDepositHistoryDetails]! = []
 
+    var commissionTableArray = [
+        ["Bronze", "100-100K", "(RM 0.2+) 0.2%"],
+        ["Silver", "100K-500K", "(RM 300+) 0.3%"],
+        ["Gold", "500-1000K", "(RM 2000+) 0.4%"],
+        ["Platinum", "1000K+", "(RM 5000+) 0.5%"]
+    ]
+    
+    var manualRebateArray = [
+        ["P2P Game", "0.00", "0.00", "0.00"],
+        ["Slots", "0.00", "0.00", "0.00"],
+        ["Live Casino", "0.00", "0.00", "0.00"],
+        ["Sports", "0.00", "0.00", "0.00"],
+        ["Fishing", "0.00", "0.00", "0.00"]
+    ]
+    
+    var rebateRecordArray = [
+        ["2021-02-12 10:32:33", "0.00", "0.00", "-"],
+        ["2021-02-12 10:55:33", "0.00", "0.00", "-"]
+    ]
+    
+    var rebateRatioArray = [
+        ["CQ9 Poker", "0.00", "0.00", "0.00"],
+        ["KY Poker", "0.00", "0.00", "0.00"]
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +53,11 @@ class KKTableBaseViewController: KKBaseViewController {
         }
         else if tableViewType == .AccountDetails {
             
+            self.getUserCashFlow()
+        }
+        else if tableViewType == .WithdrawHistory {
+            
+            self.getUserWithdrawHistory()
         }
     }
     
@@ -39,6 +71,7 @@ class KKTableBaseViewController: KKBaseViewController {
         contentTableView.estimatedSectionHeaderHeight = CGFloat(0)
         contentTableView.estimatedSectionFooterHeight = CGFloat(0)
         contentTableView.separatorStyle = .none
+        contentTableView.clipsToBounds = true
         contentTableView.delegate = self
         contentTableView.dataSource = self
     }
@@ -62,17 +95,86 @@ class KKTableBaseViewController: KKBaseViewController {
         }
     }
     
+    func getUserCashFlow() {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.getUserBettingCashFlow().execute { cashFlowResponse in
+            
+            self.hideAnimatedLoader()
+            self.cashFlowArray = cashFlowResponse.results?.cashflows
+            self.contentTableView.reloadData()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: errorMessage)
+        }
+    }
+    
+    func getUserWithdrawHistory() {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.getMemberWithdrawHistory().execute { withdrawHistoryResponse in
+            
+            self.hideAnimatedLoader()
+            self.withdrawHistoryArray = withdrawHistoryResponse.results?.withdrawHistory
+            self.contentTableView.reloadData()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: errorMessage)
+        }
+    }
+    
     //MARK:- Others
     
     func returnCellDetails(indexPath: IndexPath) -> [String] {
         
-        if tableViewType == .BettingRecord {
+        switch tableViewType {
+        
+        case .AffliateDownline:
+            return ["873524213", "james012", "10.00", "100.00"]
             
+        case .AffliateTurnover:
+            return ["2021-02-23", "james012", "1000.00", "100.00"]
+            
+        case .CommissionTransaction:
+            return ["2021-02-21", "", "100.00"]
+            
+        case .ComissionTable:
+            return commissionTableArray[indexPath.row]
+            
+        case .ManualRebate:
+            return manualRebateArray[indexPath.row]
+            
+        case .RebateRecord:
+            return rebateRecordArray[indexPath.row]
+            
+        case .RebateRatio:
+            return rebateRatioArray[indexPath.row]
+            
+        case .BettingRecord:
             let bettingRecordDetails = bettingRecordArray[indexPath.row]
             return [bettingRecordDetails.trxTimestamp ?? "", bettingRecordDetails.refNo ?? "", bettingRecordDetails.gameName ?? "", bettingRecordDetails.stake ?? "", bettingRecordDetails.result ?? ""]
+            
+        case .AccountDetails:
+            let cashFlowDetails = cashFlowArray[indexPath.row]
+            return [cashFlowDetails.trxTimestamp ?? "", cashFlowDetails.type ?? "", cashFlowDetails.type!.contains("Deposit") ? cashFlowDetails.amount ?? "" : "", cashFlowDetails.type!.contains("Withdrawal") ? cashFlowDetails.amount ?? "" : "", "\(cashFlowDetails.balance ?? 0)"]
+            
+        case .DepositHistory:
+            let depositHistoryDetails = depositHistoryArray[indexPath.row]
+            return [depositHistoryDetails.trxTimestamp ?? "", depositHistoryDetails.amount ?? "", depositHistoryDetails.paymentMethod ?? "", depositHistoryDetails.status ?? "", ""]
+            
+        case .WithdrawHistory:
+            let withdrawHistoryDetails = withdrawHistoryArray[indexPath.row]
+            return [withdrawHistoryDetails.trxTimestamp ?? "", withdrawHistoryDetails.withdrawCode ?? "", withdrawHistoryDetails.amount ?? "", withdrawHistoryDetails.withdrawalMethod ?? "", withdrawHistoryDetails.status ?? ""]
+            
+        default:
+            return []
         }
-        
-        return []
     }
 }
 
@@ -109,14 +211,32 @@ extension KKTableBaseViewController: UITableViewDelegate, UITableViewDataSource 
         
         switch tableViewType {
         
-            case .BettingRecord:
-                return bettingRecordArray.count
-                
-            case .AccountDetails:
-                return cashFlowArray.count
-                
-            default:
-                return 0
+        case .ComissionTable:
+            return commissionTableArray.count
+            
+        case .ManualRebate:
+            return manualRebateArray.count
+            
+        case .RebateRecord:
+            return rebateRecordArray.count
+            
+        case .RebateRatio:
+            return rebateRatioArray.count
+        
+        case .BettingRecord:
+            return bettingRecordArray.count
+            
+        case .AccountDetails:
+            return cashFlowArray.count
+            
+        case .DepositHistory:
+            return depositHistoryArray.count
+            
+        case .WithdrawHistory:
+            return withdrawHistoryArray.count
+            
+        default:
+            return 1
         }
     }
     

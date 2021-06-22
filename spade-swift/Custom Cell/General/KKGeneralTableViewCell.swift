@@ -32,7 +32,6 @@ class KKGeneralTableViewCell: UITableViewCell {
             let label = UILabel.init()
             label.font = UIFont.systemFont(ofSize: 10)
             label.textColor = .spade_white_FFFFFF
-            label.adjustsFontSizeToFitWidth = true
             label.textAlignment = .center
             label.numberOfLines = 1
             label.tag = index

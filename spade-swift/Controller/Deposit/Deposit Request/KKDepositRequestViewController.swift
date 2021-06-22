@@ -166,6 +166,27 @@ class KKDepositRequestViewController: KKBaseViewController {
         }
     }
     
+    //MARK:- API Calls
+    
+    func getUserDepositHistory() {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.getMemberDepositHistory().execute { depositHistoryResponse in
+            
+            self.hideAnimatedLoader()
+            let viewController = KKGeneralPopUpTableViewController.init()
+            viewController.tableViewType = .DepositHistory
+            viewController.depositHistoryArray = depositHistoryResponse.results?.depositHistory
+            self.present(viewController, animated: false, completion: nil)
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: errorMessage)
+        }
+    }
+    
     ///Button Actions
     @IBAction func btnBankNameDidPressed(){
 
@@ -176,7 +197,7 @@ class KKDepositRequestViewController: KKBaseViewController {
     }
     
     @IBAction func btnDepositHistoryDidPressed(){
-        self.present(KKGeneralPopUpTableViewController(), animated: false, completion: nil)
+        self.getUserDepositHistory()
     }
     
     @IBAction func btnChannelDidPressed(){

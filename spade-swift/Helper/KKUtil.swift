@@ -201,20 +201,38 @@ class KKUtil: NSObject {
         
         switch tableViewType {
         
-            case TableViewType.ManualRebate:
+            case .AffliateDownline:
+                return ["ID", "Username", "Today's Bet", "Total Bet"]
+                
+            case .AffliateTurnover:
+                return ["Date", "New Affliate Member", "Total Turnover", "Commission"]
+                
+            case .CommissionTransaction:
+                return ["Time", "", "Amount"]
+                
+            case .ComissionTable:
+                return ["Agent Level", "Team Performance", "Return Commission"]
+        
+            case .ManualRebate:
                 return ["Game Type", "Valid Bet Amount", "Highest Rebate Ratio", "Rebate Amount"]
                 
-            case TableViewType.RebateRecord:
+            case .RebateRecord:
                 return ["Game Type", "Stack", "Rebate Amount", "Details"]
                 
-            case TableViewType.RebateRatio:
+            case .RebateRatio:
                 return ["Game Time", "Valid Bet Amount", "Rebate Percent", "Rebate Amount"]
                 
-            case TableViewType.BettingRecord:
+            case .BettingRecord:
                 return ["Bet Time", "Bet No", "Game Name", "Bet Amount", "Results"]
                 
-            case TableViewType.AccountDetails:
+            case .AccountDetails:
                 return ["Transaction Time", "Status", "Out", "In", "Balance"]
+                
+            case .DepositHistory:
+                return ["Time", "Amount", "Payment Method", "Status", "Details"]
+                
+            case .WithdrawHistory:
+                return ["Date & Time", "Withdraw ID", "Amount", "Withdrawal Method", "Status"]
         }
     }
     

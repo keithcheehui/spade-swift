@@ -181,10 +181,16 @@ class KKMyAffiliateViewController: KKBaseViewController {
     
     @IBAction func btnCommissionTransactionDidPressed(){
 
+        let viewController = KKGeneralPopUpTableViewController.init()
+        viewController.tableViewType = .CommissionTransaction
+        self.present(viewController, animated: false, completion: nil)
     }
     
     @IBAction func btnCommissionTableDidPressed(){
 
+        let viewController = KKGeneralPopUpTableViewController.init()
+        viewController.tableViewType = .ComissionTable
+        self.present(viewController, animated: false, completion: nil)
     }
 
     @IBAction func btnSaveQRDidPressed(){

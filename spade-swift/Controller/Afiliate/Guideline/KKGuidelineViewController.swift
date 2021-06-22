@@ -35,6 +35,9 @@ class KKGuidelineViewController: KKBaseViewController, UITableViewDataSource, UI
     
     @IBAction func btnCommissionTableDidPressed() {
         
+        let viewController = KKGeneralPopUpTableViewController.init()
+        viewController.tableViewType = .ComissionTable
+        self.present(viewController, animated: false, completion: nil)
     }
     
     //MARK:- API Calls

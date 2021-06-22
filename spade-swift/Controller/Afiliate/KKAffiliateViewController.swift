@@ -99,7 +99,9 @@ class KKAffiliateViewController: KKBaseViewController {
         switch type {
         case viewType.downline.rawValue:
             imgHoverDownline.isHidden = false
-            changeView(vc: KKOnBoardingViewController())
+            let viewController = KKGeneralTableViewController()
+            viewController.tableViewType = .AffliateDownline
+            changeView(vc: viewController)
             break;
         case viewType.guideline.rawValue:
             imgHoverGuideline.isHidden = false
@@ -107,7 +109,9 @@ class KKAffiliateViewController: KKBaseViewController {
             break;
         case viewType.turnover.rawValue:
             imgHoverTurnover.isHidden = false
-            changeView(vc: KKOnBoardingViewController())
+            let viewController = KKGeneralTableViewController()
+            viewController.tableViewType = .AffliateTurnover
+            changeView(vc: viewController)
             break;
         default:
             imgBG.isHidden = true
@@ -122,6 +126,8 @@ class KKAffiliateViewController: KKBaseViewController {
             view.removeFromSuperview()
         }
         
+        vc.tableContentView = contentView
+        vc.displayViewController = self
         vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
         contentView.addSubview(vc.view)
         self.addChild(vc)

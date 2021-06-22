@@ -85,25 +85,25 @@ class KKWithdrawViewController: KKBaseViewController {
         imgHoverWithdraw.isHidden = true
         imgHoverWithdrawHistory.isHidden = true
         imgHoverBankCard.isHidden = true
-
-        var viewController: KKBaseViewController = KKWithdrawRequestViewController()
         
         switch type {
         case viewType.withdrawHistory.rawValue:
             imgHoverWithdrawHistory.isHidden = false
-            viewController = KKOnBoardingViewController()
+            let viewController = KKGeneralTableViewController()
+            viewController.tableViewType = .WithdrawHistory
+            changeView(vc: viewController)
             break;
         case viewType.bankCard.rawValue:
             imgHoverBankCard.isHidden = false
-            viewController = KKBankListViewController()
+            let viewController = KKBankListViewController()
+            changeView(vc: viewController)
             break;
         default:
             imgHoverWithdraw.isHidden = false
-            viewController = KKWithdrawRequestViewController()
+            let viewController = KKWithdrawRequestViewController()
+            changeView(vc: viewController)
             break;
         }
-        
-        changeView(vc: viewController)
     }
     
     func changeView(vc: KKBaseViewController){
