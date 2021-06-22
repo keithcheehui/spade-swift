@@ -65,6 +65,9 @@ class KKSplashScreenViewController: KKBaseViewController {
 
     func drawLoadingProgress(){
         
+        loadingBar.layer.cornerRadius = loadingBar.frame.size.height/2 - 2
+        loadingBar.clipsToBounds = true
+        
         imgProgress = UIImageView.init()
         imgProgress.image = UIImage(named: "bg_loading_bar")
         imgProgress.contentMode = .scaleToFill
