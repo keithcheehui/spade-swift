@@ -156,7 +156,7 @@ class KKHomeViewController: KKBaseViewController {
         lblAnnouncementBubble.font = lblAffiliate.font
 
         copyContainer.backgroundColor = UIColor(white: 0, alpha: 0.8)
-        copyContainer.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 9 : 10)
+        copyContainer.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 7 : 8)
         copyContainer.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 1.0)
         copyContainer.layer.borderColor = UIColor.spade_white_FFFFFF.cgColor
         moneyContainer.backgroundColor = UIColor(white: 0, alpha: 0.3)
@@ -171,9 +171,6 @@ class KKHomeViewController: KKBaseViewController {
         
         self.imgArrowUp.alpha = 0
         self.imgArrowDown.alpha = 1
-        
-        let ratio = Float(10) / Float(10)
-        expBar.progress = Float(ratio)
         
         setAnnouncementLabel()
     }
@@ -310,33 +307,39 @@ class KKHomeViewController: KKBaseViewController {
         refreshWalletIcon.startRotate()
         refreshWalletBtn.isEnabled = false
         
-        KKApiClient.getUserLatestWallet().execute { userWalletResponse in
-            
-            self.refreshWalletIcon.removeRotate()
-            self.refreshWalletBtn.isEnabled = true
-            
-            if var userProfile = KKUtil.decodeUserProfileFromCache(), let userInfo = userWalletResponse.results {
-                userProfile.walletBalance = userInfo.walletBalance!
+        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+            KKApiClient.getUserLatestWallet().execute { userWalletResponse in
                 
-                do {
-                    KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
-                }
-                catch {
+                self.refreshWalletIcon.removeRotate()
+                self.refreshWalletBtn.isEnabled = true
+                
+                if var userProfile = KKUtil.decodeUserProfileFromCache(), let userInfo = userWalletResponse.results {
+                    userProfile.walletBalance = userInfo.walletBalance!
                     
+                    do {
+                        KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
+                    }
+                    catch {
+                        
+                    }
                 }
-            }
-            
-            if let userWalletResult = userWalletResponse.results {
                 
-                self.lblMoney.text = userWalletResult.walletBalance!.addCurrencyFormat()
+                if let userWalletResult = userWalletResponse.results {
+                    
+                    self.lblMoney.text = userWalletResult.walletBalance!.addCurrencyFormat()
+                }
+                
+            } onFailure: { errorMessage in
+                
+                self.refreshWalletIcon.removeRotate()
+                self.refreshWalletBtn.isEnabled = true
+                self.showAlertView(alertMessage: errorMessage)
             }
-            
-        } onFailure: { errorMessage in
-            
+        } else {
             self.refreshWalletIcon.removeRotate()
             self.refreshWalletBtn.isEnabled = true
-            self.showAlertView(alertMessage: errorMessage)
         }
+        
     }
     
     func getContentGroupAndPlatform() {
@@ -377,7 +380,9 @@ class KKHomeViewController: KKBaseViewController {
     }
     
     @IBAction func btnCopyDidPressed(){
-        
+        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus), let userProfile = KKUtil.decodeUserProfileFromCache() {
+            UIPasteboard.general.string = userProfile.code
+        }
     }
     
     @IBAction func btnLoginDidPressed(){
@@ -399,11 +404,7 @@ class KKHomeViewController: KKBaseViewController {
 
     @IBAction func btnRefreshDidPressed(){
         announcementBubble.isHidden = true
-
-        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
-            
-            self.getUserLatestWallet()
-        }
+        self.getUserLatestWallet()
     }
     
     @IBAction func btnCountryDidPressed(){
@@ -501,15 +502,20 @@ class KKHomeViewController: KKBaseViewController {
         
         if UserDefaults.standard.bool(forKey: CacheKey.loginStatus), let userProfile = KKUtil.decodeUserProfileFromCache() {
             
-            lblProfileName.text = userProfile.name
+            lblProfileName.text = userProfile.code
             lblVip.text = userProfile.tier?.currentLevelName!
             lblMoney.text = userProfile.walletBalance?.addCurrencyFormat()
+            
+            let balance = CGFloat(truncating: NumberFormatter().number(from: (userProfile.tier?.balance)!)!)
+            let next = CGFloat(truncating: NumberFormatter().number(from: (userProfile.tier?.totalAmountToNextLevel)!)!)
+
+            let ratio = balance / next
+            expBar.progress = Float(ratio)
         }
         else {
-            
             lblProfileName.text = KKUtil.languageSelectedStringForKey(key: "home_guest")
             lblVip.text = "VIP 1"
-            lblMoney.text = "999,999,999"
+            lblMoney.text = "0"
         }
         
         imgProfile.image = UIImage(named: "ic_profile")
