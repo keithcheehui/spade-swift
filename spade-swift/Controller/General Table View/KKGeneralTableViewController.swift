@@ -23,12 +23,12 @@ class KKGeneralTableViewController: KKTableBaseViewController {
     @IBOutlet weak var topContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var pickerWidth: NSLayoutConstraint!
 
-    var leftTitle: String = ""
-    var leftValue: String = ""
+    var leftTitle: String!
+    var leftValue: String!
     var leftDropdownOptions: [String] = []
     
-    var rightTitle: String = ""
-    var rightValue: String = ""
+    var rightTitle: String!
+    var rightValue: String!
     var rightDropdownOptions: [String] = []
 
     override func viewDidLoad() {
@@ -51,11 +51,43 @@ class KKGeneralTableViewController: KKTableBaseViewController {
         leftPickerValue.font = leftPickerTitle.font
         rightPickerTitle.font = leftPickerTitle.font
         rightPickerValue.font = leftPickerTitle.font
+        
+        switch tableViewType {
+        
+        case .BettingRecord:
+            leftTitle = "Bet Time"
+            leftValue = "All Time"
+            
+            rightTitle = "Gaming Platform"
+            rightValue = "All Provider"
+            self.showTopContainer(shouldShow: true, withRightPicker: true)
+            
+        case .AccountDetails:
+            leftTitle = "Transaction Time"
+            leftValue = "All Time"
+            
+            rightTitle = "Transaction Status"
+            rightValue = "All Status"
+            self.showTopContainer(shouldShow: true, withRightPicker: true)
+        
+        case .DepositHistory:
+            leftTitle = "Deposit Status"
+            leftValue = "All Status"
+            self.showTopContainer(shouldShow: true, withRightPicker: false)
+        
+        case .WithdrawHistory:
+            leftTitle = "Deposit Status"
+            leftValue = "All Status"
+            self.showTopContainer(shouldShow: true, withRightPicker: false)
+        
+        default:
+            self.showTopContainer(shouldShow: false, withRightPicker: false)
+        }
     }
 
     func showTopContainer(shouldShow: Bool, withRightPicker: Bool){
         if (shouldShow){
-            topContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 15)
+            topContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 35)
             topContainer.isHidden = false
             
             showDropdownOption(showRight: withRightPicker)
