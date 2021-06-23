@@ -43,6 +43,7 @@ class KKLoginViewController: KKBaseViewController {
     @IBOutlet weak var rememberMeContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmContainerMarginBottom: NSLayoutConstraint!
     
+    var homeViewController: KKHomeViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,8 +51,17 @@ class KKLoginViewController: KKBaseViewController {
         initialLayout()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animate(withDuration: 0.25) {
+            
+            self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        }
+    }
+    
     func initialLayout(){
-        self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        self.view.backgroundColor = UIColor(white: 0, alpha: 0)
         
         usernameView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         passwordView.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -183,7 +193,7 @@ class KKLoginViewController: KKBaseViewController {
             }
             
             self.hideAnimatedLoader()
-            self.dismiss(animated: false, completion: nil)
+            self.dismissPresentedViewWithBackgroundFaded()
             
         } onFailure: { errorMessage in
             
@@ -195,7 +205,8 @@ class KKLoginViewController: KKBaseViewController {
     //MARK:- Button Actions
     
     @IBAction func btnCloseDidPressed(){
-        self.dismiss(animated: false, completion: nil)
+        
+        self.dismissPresentedViewWithBackgroundFaded()
     }
     
     @IBAction func btnRememberMeDidPressed(){
@@ -213,6 +224,22 @@ class KKLoginViewController: KKBaseViewController {
     @IBAction func btnConfirmDidPressed(){
         
         self.runTextFieldValidation()
+    }
+    
+    //MARK:- Others
+    
+    @objc func dismissPresentedViewWithBackgroundFaded() {
+        
+        homeViewController.updateUserProfileDetails()
+        
+        UIView.animate(withDuration: 0.25) {
+            self.view.backgroundColor = UIColor(white: 0, alpha: 0)
+            
+        } completion: { complete in
+            
+            self.dismiss(animated: true, completion: nil)
+        }
+
     }
 }
 

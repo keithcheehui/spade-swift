@@ -94,8 +94,12 @@ class KKHomeViewController: KKBaseViewController {
 
             self.getContentGroupAndPlatform()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        setupGuestView(isGuest: true)
+        self.updateUserProfileDetails()
     }
     
     func initialLayout(){
@@ -171,13 +175,6 @@ class KKHomeViewController: KKBaseViewController {
         let ratio = Float(10) / Float(10)
         expBar.progress = Float(ratio)
         
-        lblProfileName.text = KKUtil.languageSelectedStringForKey(key: "home_guest")
-        lblVip.text = "VIP 1"
-        lblMoney.text = "999,999,999"
-        imgProfile.image = UIImage(named: "ic_profile")
-        lblLanguage.text = KKUtil.decodeSelectedLanguageFromCache().name
-        countryImageView.setUpImage(with: KKUtil.decodeSelectedCountryFromCache().img, placeholder: UIImage(named: "ic_malaysia"))
-        lblCountry.text = KKUtil.decodeSelectedCountryFromCache().name
         setAnnouncementLabel()
     }
     
@@ -385,7 +382,10 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnLoginDidPressed(){
         announcementBubble.isHidden = true
-        self.present(KKLoginViewController(), animated: false, completion: nil)
+        
+        let viewController = KKLoginViewController()
+        viewController.homeViewController = self
+        self.present(viewController, animated: true, completion: nil)
     }
     
     @IBAction func btnRegisterDidPressed(){
@@ -490,6 +490,29 @@ class KKHomeViewController: KKBaseViewController {
         viewController.selectedGameType = self.selectedGameType
         viewController.gameListArray = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].platforms
         self.changeView(vc: viewController)
+    }
+    
+    func updateUserProfileDetails() {
+        
+        setupGuestView(isGuest: !UserDefaults.standard.bool(forKey: CacheKey.loginStatus))
+        
+        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus), let userProfile = KKUtil.decodeUserProfileFromCache() {
+            
+            lblProfileName.text = userProfile.name
+            lblVip.text = userProfile.tier?.currentLevelName!
+            lblMoney.text = userProfile.walletBalance?.addCurrencyFormat()
+        }
+        else {
+            
+            lblProfileName.text = KKUtil.languageSelectedStringForKey(key: "home_guest")
+            lblVip.text = "VIP 1"
+            lblMoney.text = "999,999,999"
+        }
+        
+        imgProfile.image = UIImage(named: "ic_profile")
+        lblLanguage.text = KKUtil.decodeSelectedLanguageFromCache().name
+        countryImageView.setUpImage(with: KKUtil.decodeSelectedCountryFromCache().img, placeholder: UIImage(named: "ic_malaysia"))
+        lblCountry.text = KKUtil.decodeSelectedCountryFromCache().name
     }
 }
 

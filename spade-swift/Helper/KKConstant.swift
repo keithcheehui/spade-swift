@@ -39,7 +39,6 @@ struct ConstantSize {
     static let ssoLabelFont = KKUtil.ConvertSizeByDensity(size: 12)
     static let ssoLabelSmallFont = KKUtil.ConvertSizeByDensity(size: 10)
     
-    
     static let imgBackWidth = KKUtil.ConvertSizeByDensity(size: 35)
     static let sideMenuWidth = KKUtil.ConvertSizeByDensity(size: 150)
     static let imgMenuIconWidth = KKUtil.ConvertSizeByDensity(size: 25)
