@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import KeychainSwift
 import UIKit
 
 class KKRegistrationViewController: KKBaseViewController {
@@ -43,7 +44,7 @@ class KKRegistrationViewController: KKBaseViewController {
     @IBOutlet weak var btnConfirmContainerMarginBottom: NSLayoutConstraint!
     
     var verifiedPhoneNumber: String!
-    
+    var homeViewController: KKHomeViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +52,17 @@ class KKRegistrationViewController: KKBaseViewController {
         initialLayout()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animate(withDuration: 0.25) {
+            
+            self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        }
+    }
+    
     func initialLayout(){
-        self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        self.view.backgroundColor = UIColor(white: 0, alpha: 0.0)
         
         usernameView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         passwordView.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -165,8 +175,53 @@ class KKRegistrationViewController: KKBaseViewController {
         
         KKApiClient.userAccountLogin(username: txtUsername.text!, password: txtPassword.text!).execute { userCredential in
             
+            KKTokenManager.setUserCredential(userCredential: userCredential)
+            UserDefaults.standard.set(true, forKey: CacheKey.loginStatus)
+            UserDefaults.standard.synchronize()
+            
+            self.getUserLatestWallet()
+            
+        } onFailure: { errorMessage in
+            
             self.hideAnimatedLoader()
-            self.dismiss(animated: false, completion: nil)
+            self.showAlertView(alertMessage: errorMessage)
+        }
+    }
+    
+    func getUserLatestWallet() {
+        
+        KKApiClient.getUserLatestWallet().execute { userWalletResponse in
+            
+            if let userWalletResult = userWalletResponse.results {
+                
+                self.getUserProfile(walletBalance: userWalletResult.walletBalance!)
+            }
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: errorMessage)
+        }
+    }
+    
+    @objc func getUserProfile(walletBalance: String) {
+        
+        KKApiClient.getUserProfile().execute { userProfileResponse in
+            
+            guard var userProfile = userProfileResponse.results?.user![0] else { return }
+            userProfile.walletBalance = walletBalance
+            
+            do {
+                KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
+                KeychainSwift().set(try JSONEncoder().encode(KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == userProfile.locale})!), forKey: CacheKey.selectedLanguage)
+            }
+            catch {
+                self.hideAnimatedLoader()
+                self.showAlertView(alertMessage: error.localizedDescription)
+            }
+            
+            self.hideAnimatedLoader()
+            self.dismissPresentedViewWithBackgroundFaded()
             
         } onFailure: { errorMessage in
             
@@ -178,11 +233,26 @@ class KKRegistrationViewController: KKBaseViewController {
     //MARK:- Button Actions
     
     @IBAction func btnCloseDidPressed(){
-        self.dismiss(animated: false, completion: nil)
+        self.dismissPresentedViewWithBackgroundFaded()
     }
     
     @IBAction func btnConfirmDidPressed(){
         self.runTextFieldValidation()
+    }
+    
+    //MARK:- Others
+    
+    @objc func dismissPresentedViewWithBackgroundFaded() {
+        
+        homeViewController.updateUserProfileDetails()
+        
+        UIView.animate(withDuration: 0.25) {
+            self.view.backgroundColor = UIColor(white: 0, alpha: 0)
+            
+        } completion: { complete in
+            
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
 

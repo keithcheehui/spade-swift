@@ -239,7 +239,6 @@ class KKLoginViewController: KKBaseViewController {
             
             self.dismiss(animated: true, completion: nil)
         }
-
     }
 }
 

@@ -390,7 +390,10 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnRegisterDidPressed(){
         announcementBubble.isHidden = true
-        self.present(KKOTPViewController(), animated: false, completion: nil)
+        
+        let viewController = KKOTPViewController()
+        viewController.homeViewController = self
+        self.present(viewController, animated: true, completion: nil)
     }
     
 

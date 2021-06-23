@@ -68,6 +68,7 @@ class KKOTPViewController: KKBaseViewController {
     @IBOutlet weak var digitContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmContainerMarginBottom: NSLayoutConstraint!
     
+    var homeViewController: KKHomeViewController!
     var phoneNumber: String! = ""
     var otpTextField6NotEmpty = false
     var timerCountdown = 60
@@ -79,8 +80,17 @@ class KKOTPViewController: KKBaseViewController {
         initialLayout()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animate(withDuration: 0.25) {
+            
+            self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        }
+    }
+    
     func initialLayout(){
-        self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        self.view.backgroundColor = UIColor(white: 0, alpha: 0.0)
         
         countryCodeView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         mobileView.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -211,7 +221,7 @@ class KKOTPViewController: KKBaseViewController {
     
     ///Button Actions
     @IBAction func btnCloseDidPressed(){
-        self.dismiss(animated: false, completion: nil)
+        self.dismissPresentedViewWithBackgroundFaded()
     }
     
     @IBAction func btnSendDidPressed(){
@@ -308,16 +318,39 @@ class KKOTPViewController: KKBaseViewController {
         }
     }
     
+    //MARK:- Others
+    
+    @objc func dismissPresentedViewWithBackgroundFaded() {
+        
+        UIView.animate(withDuration: 0.25) {
+            
+            self.view.backgroundColor = UIColor(white: 0, alpha: 0)
+            
+        } completion: { complete in
+            
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     //MARK:- OTP and Registration
+    
     @objc func closeOTPAndOpenRegistration() {
 
         weak var pvc = self.presentingViewController
 
-        self.dismiss(animated: true, completion: {
-            let viewController = KKRegistrationViewController.init()
-            viewController.verifiedPhoneNumber = self.phoneNumber
-            pvc?.present(viewController, animated: true, completion: nil)
-        })
+        UIView.animate(withDuration: 0.25) {
+            
+            self.view.backgroundColor = UIColor(white: 0, alpha: 0)
+            
+        } completion: { complete in
+            
+            self.dismiss(animated: true, completion: {
+                let viewController = KKRegistrationViewController.init()
+                viewController.verifiedPhoneNumber = self.phoneNumber
+                viewController.homeViewController = self.homeViewController
+                pvc?.present(viewController, animated: true, completion: nil)
+            })
+        }
     }
 }
 
