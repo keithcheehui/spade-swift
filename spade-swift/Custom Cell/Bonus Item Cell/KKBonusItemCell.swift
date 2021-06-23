@@ -18,6 +18,7 @@ class KKBonusItemCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        imgBonusBG.backgroundColor = .spade_grey_BDBDBD
         imgButtonHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
     }
 }

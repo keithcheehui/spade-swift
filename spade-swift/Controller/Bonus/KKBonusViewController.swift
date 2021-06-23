@@ -99,6 +99,7 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
             
             self.sideMenuItem = promotionResponse.results?.promotions
             self.sideMenuTableView.reloadData()
+            self.bonusCollectionView.reloadData()
             
         } onFailure: { errorMessage in
             self.showAlertView(alertMessage: errorMessage)
@@ -131,6 +132,7 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
         
         selectedMenuItem = indexPath.row
         tableView.reloadData()
+        self.bonusCollectionView.reloadData()
         
         for view in contentView.subviews{
             view.removeFromSuperview()
@@ -146,7 +148,16 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
     
     ///Bonus Collection View
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        if (sideMenuItem.isEmpty) {
+            return 0
+        } else {
+            let promoItem: [KKPromotionItemDetails]! = sideMenuItem[selectedMenuItem].items
+            if (promoItem!.count > 0){
+                return promoItem!.count
+            }
+        }
+        
+        return 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -156,7 +167,13 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
             fatalError("DequeueReusableCell failed while casting")
         }
         
-//        cell.imgBonusBG.setUpImage(with: sideMenuItem[selectedMenuItem].img)
+        let promoItem: KKPromotionItemDetails! = sideMenuItem[selectedMenuItem].items?[indexPath.item]
+        if (promoItem.img == nil || promoItem.img!.isEmpty) {
+            //TODO: Keith, if the data is null, the imageview still showing previous image
+            cell.imgBonusBG.setUpImage(with: "")
+        } else {
+            cell.imgBonusBG.setUpImage(with: promoItem.img)
+        }
 
         return cell
     }
@@ -165,8 +182,10 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
         bonusCollectionView.isHidden = true
         contentContainer.isHidden = false
 
+        let promoItem: KKPromotionItemDetails! = sideMenuItem[selectedMenuItem].items?[indexPath.item]
+
         let vc = KKBonusContentViewController.init()
-        vc.htmlContent = sideMenuItem[selectedMenuItem].content!
+        vc.htmlContent = promoItem.htmlContent!.isEmpty ? "" : promoItem.htmlContent!
         vc.tableContentView = contentView
         vc.displayViewController = self
         vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKHomeViewController" customModule="spade_swift" customModuleProvider="target">
             <connections>
+                <outlet property="announcementBubble" destination="7Fx-bX-oMM" id="tpG-VZ-3O2"/>
+                <outlet property="announcementBubbleIconWidth" destination="IxY-xf-CeP" id="lws-pY-cME"/>
+                <outlet property="announcementBubbleMarginTop" destination="ZTt-LM-eHB" id="Abr-PV-fu3"/>
                 <outlet property="announcementContainer" destination="kwg-tf-4uS" id="NcO-jr-Scj"/>
                 <outlet property="announcementContainerHeight" destination="YGt-Nh-faR" id="OiD-g7-Bzd"/>
                 <outlet property="announcementContainerWidth" destination="GGM-cp-4ju" id="VAo-Y7-GnP"/>
@@ -36,6 +39,7 @@
                 <outlet property="imgRefreshWidth" destination="2LZ-go-mqz" id="yYv-hv-tlz"/>
                 <outlet property="lblAffiliate" destination="xjj-Kz-CTx" id="4p1-SP-sVS"/>
                 <outlet property="lblAnnouncement" destination="FhT-j7-giH" id="qpX-ZP-ZCy"/>
+                <outlet property="lblAnnouncementBubble" destination="Tki-X3-Xhw" id="IaJ-0A-nOa"/>
                 <outlet property="lblBonus" destination="nIA-9f-Vhr" id="0xb-0N-N5Q"/>
                 <outlet property="lblCopy" destination="lwm-rf-n2D" id="ZeH-vg-O0G"/>
                 <outlet property="lblCopyWidth" destination="DL6-yJ-89C" id="eaf-vG-Rho"/>
@@ -1015,6 +1019,62 @@
                         <constraint firstItem="7J4-hJ-Rn6" firstAttribute="top" secondItem="AR4-6P-MLd" secondAttribute="top" id="pih-jm-NSh"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Fx-bX-oMM">
+                    <rect key="frame" x="494.33333333333331" y="335" width="118.66666666666669" height="42"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_more_popup" translatesAutoresizingMaskIntoConstraints="NO" id="yec-ZC-rni">
+                            <rect key="frame" x="0.0" y="0.0" width="118.66666666666667" height="42"/>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xB-oA-iXx">
+                            <rect key="frame" x="5" y="6" width="108.66666666666667" height="20"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_announcement" translatesAutoresizingMaskIntoConstraints="NO" id="TN1-Rh-5T2">
+                                    <rect key="frame" x="0.0" y="4" width="12" height="12"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="TN1-Rh-5T2" secondAttribute="height" multiplier="1:1" id="DTl-Ef-p8E"/>
+                                        <constraint firstAttribute="width" constant="12" id="IxY-xf-CeP"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Announcement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tki-X3-Xhw">
+                                    <rect key="frame" x="18.000000000000057" y="0.0" width="90.666666666666671" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="Tki-X3-Xhw" secondAttribute="bottom" id="15Q-Dw-ccP"/>
+                                <constraint firstItem="TN1-Rh-5T2" firstAttribute="leading" secondItem="3xB-oA-iXx" secondAttribute="leading" id="2Yk-cv-gHN"/>
+                                <constraint firstItem="TN1-Rh-5T2" firstAttribute="centerY" secondItem="3xB-oA-iXx" secondAttribute="centerY" id="AVl-c7-gou"/>
+                                <constraint firstAttribute="height" constant="20" id="CER-R2-2K7"/>
+                                <constraint firstItem="Tki-X3-Xhw" firstAttribute="leading" secondItem="TN1-Rh-5T2" secondAttribute="trailing" constant="6" id="FzK-b5-e8r"/>
+                                <constraint firstItem="Tki-X3-Xhw" firstAttribute="top" secondItem="3xB-oA-iXx" secondAttribute="top" id="XM9-Gu-geq"/>
+                                <constraint firstAttribute="trailing" secondItem="Tki-X3-Xhw" secondAttribute="trailing" id="zY1-6V-9Od"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fK-tl-24l">
+                            <rect key="frame" x="0.0" y="0.0" width="118.66666666666667" height="42"/>
+                            <connections>
+                                <action selector="btnAnnouncementDidPressed" destination="-1" eventType="touchUpInside" id="5Pl-BY-T5N"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="5fK-tl-24l" firstAttribute="leading" secondItem="7Fx-bX-oMM" secondAttribute="leading" id="5Ir-lS-l4E"/>
+                        <constraint firstAttribute="trailing" secondItem="yec-ZC-rni" secondAttribute="trailing" id="F6v-bS-Fp6"/>
+                        <constraint firstItem="yec-ZC-rni" firstAttribute="leading" secondItem="7Fx-bX-oMM" secondAttribute="leading" id="Ioc-LS-IwE"/>
+                        <constraint firstItem="3xB-oA-iXx" firstAttribute="top" secondItem="7Fx-bX-oMM" secondAttribute="top" constant="6" id="ZTt-LM-eHB"/>
+                        <constraint firstItem="3xB-oA-iXx" firstAttribute="leading" secondItem="7Fx-bX-oMM" secondAttribute="leading" constant="5" id="lOt-xd-u9j"/>
+                        <constraint firstAttribute="bottom" secondItem="yec-ZC-rni" secondAttribute="bottom" id="oQD-xD-Bmi"/>
+                        <constraint firstAttribute="bottom" secondItem="5fK-tl-24l" secondAttribute="bottom" id="ove-ME-AwA"/>
+                        <constraint firstItem="5fK-tl-24l" firstAttribute="top" secondItem="7Fx-bX-oMM" secondAttribute="top" id="pD2-2L-rfL"/>
+                        <constraint firstItem="yec-ZC-rni" firstAttribute="top" secondItem="7Fx-bX-oMM" secondAttribute="top" id="tVY-0u-RjL"/>
+                        <constraint firstAttribute="trailing" secondItem="5fK-tl-24l" secondAttribute="trailing" id="weN-7N-DsN"/>
+                        <constraint firstAttribute="trailing" secondItem="3xB-oA-iXx" secondAttribute="trailing" constant="5" id="ydp-8d-plt"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1025,11 +1085,15 @@
                 <constraint firstAttribute="trailing" secondItem="P5n-aS-kDi" secondAttribute="trailing" id="DB4-3f-0hD"/>
                 <constraint firstItem="q8u-8V-R4n" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HM2-Xl-FO5"/>
                 <constraint firstAttribute="trailing" secondItem="WIb-Hr-phc" secondAttribute="trailing" id="I2h-NW-fGM"/>
+                <constraint firstItem="7Fx-bX-oMM" firstAttribute="leading" secondItem="Pd6-HY-JEf" secondAttribute="leading" id="PeZ-lD-Ek4"/>
                 <constraint firstItem="P5n-aS-kDi" firstAttribute="top" secondItem="q8u-8V-R4n" secondAttribute="bottom" constant="-5" id="XHD-lw-Lzj"/>
+                <constraint firstItem="7Fx-bX-oMM" firstAttribute="height" secondItem="Pd6-HY-JEf" secondAttribute="height" id="a4r-t5-MGD"/>
+                <constraint firstItem="7Fx-bX-oMM" firstAttribute="trailing" secondItem="Pd6-HY-JEf" secondAttribute="trailing" constant="25" id="aLT-2X-mYC"/>
                 <constraint firstItem="AR4-6P-MLd" firstAttribute="top" secondItem="P5n-aS-kDi" secondAttribute="bottom" id="czr-Je-Swr"/>
                 <constraint firstItem="q8u-8V-R4n" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dBA-rx-iiL"/>
                 <constraint firstItem="kwg-tf-4uS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dRu-la-hUe"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="q8u-8V-R4n" secondAttribute="trailing" constant="24" id="dcs-az-WXf"/>
+                <constraint firstItem="Pd6-HY-JEf" firstAttribute="top" secondItem="7Fx-bX-oMM" secondAttribute="bottom" constant="-5" id="fQs-Yx-fxU"/>
                 <constraint firstItem="kwg-tf-4uS" firstAttribute="top" secondItem="q8u-8V-R4n" secondAttribute="bottom" constant="-10" id="gSj-5r-rzp"/>
                 <constraint firstAttribute="bottom" secondItem="AR4-6P-MLd" secondAttribute="bottom" id="kHx-Oz-fhj"/>
                 <constraint firstAttribute="bottom" secondItem="WIb-Hr-phc" secondAttribute="bottom" id="kdP-VH-Ssh"/>
@@ -1046,6 +1110,7 @@
     </designables>
     <resources>
         <image name="bg_footer" width="2202" height="117"/>
+        <image name="bg_more_popup" width="320" height="109"/>
         <image name="bg_p2p" width="2208" height="1242"/>
         <image name="bg_profile" width="613" height="173"/>
         <image name="btn_deposit" width="352" height="136"/>
@@ -1053,6 +1118,7 @@
         <image name="btn_register" width="519" height="153"/>
         <image name="btn_withdraw" width="352" height="136"/>
         <image name="ic_affiliate" width="65" height="65"/>
+        <image name="ic_announcement" width="53" height="53"/>
         <image name="ic_arrow_down" width="42" height="29"/>
         <image name="ic_bonus" width="65" height="65"/>
         <image name="ic_coin" width="102" height="101"/>

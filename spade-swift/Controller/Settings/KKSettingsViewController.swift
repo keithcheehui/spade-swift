@@ -92,10 +92,10 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
         titleMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 25)
         titleHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
-        sideMenuWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
-        imgMenuIconWidth.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        menuItemHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        separatorHeight.constant = KKUtil.ConvertSizeByDensity(size: 10)
+        sideMenuWidth.constant = ConstantSize.sideMenuWidth
+        imgMenuIconWidth.constant = ConstantSize.imgMenuIconWidth
+        menuItemHeight.constant = ConstantSize.menuItemHeight
+        separatorHeight.constant = ConstantSize.separatorHeight
         menuItemMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 15)
         
         lblVolumeSetting.text = KKUtil.languageSelectedStringForKey(key: "settings_volume_setting")

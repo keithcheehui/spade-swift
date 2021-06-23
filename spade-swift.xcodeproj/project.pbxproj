@@ -144,6 +144,7 @@
 		533CA6BB2631745C00768C08 /* KKHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533CA6BA2631745C00768C08 /* KKHomeViewController.xib */; };
 		533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CA6BD2631746800768C08 /* KKHomeViewController.swift */; };
 		5344FF61265E5E6B00313899 /* KKAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5344FF60265E5E6B00313899 /* KKAnimation.swift */; };
+		534D032B2682D5A8005BC9BE /* KKPromotionItemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534D032A2682D5A8005BC9BE /* KKPromotionItemDetails.swift */; };
 		535934B526778E0D00498BBF /* KKPlatformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535934B326778E0D00498BBF /* KKPlatformViewController.swift */; };
 		535934B626778E0D00498BBF /* KKPlatformViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 535934B426778E0D00498BBF /* KKPlatformViewController.xib */; };
 		53602F63265A5EF700137AD6 /* KKMessageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53602F62265A5EF700137AD6 /* KKMessageTableCell.swift */; };
@@ -345,6 +346,7 @@
 		533CA6BA2631745C00768C08 /* KKHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKHomeViewController.xib; sourceTree = "<group>"; };
 		533CA6BD2631746800768C08 /* KKHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKHomeViewController.swift; sourceTree = "<group>"; };
 		5344FF60265E5E6B00313899 /* KKAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAnimation.swift; sourceTree = "<group>"; };
+		534D032A2682D5A8005BC9BE /* KKPromotionItemDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPromotionItemDetails.swift; sourceTree = "<group>"; };
 		535934B326778E0D00498BBF /* KKPlatformViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPlatformViewController.swift; sourceTree = "<group>"; };
 		535934B426778E0D00498BBF /* KKPlatformViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKPlatformViewController.xib; sourceTree = "<group>"; };
 		53602F62265A5EF700137AD6 /* KKMessageTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKMessageTableCell.swift; sourceTree = "<group>"; };
@@ -817,6 +819,7 @@
 			isa = PBXGroup;
 			children = (
 				531428AB2674A2BB00801FD9 /* KKPromotionDetails.swift */,
+				534D032A2682D5A8005BC9BE /* KKPromotionItemDetails.swift */,
 				531428AE2674A2C500801FD9 /* KKPromotionResponse.swift */,
 				531428A82674A2A900801FD9 /* KKPromotionResults.swift */,
 			);
@@ -1484,6 +1487,7 @@
 				0676B5FC262FD94A0023311F /* KKFont.swift in Sources */,
 				53602F63265A5EF700137AD6 /* KKMessageTableCell.swift in Sources */,
 				06E4DEFD267C00C000482979 /* KKUserCashFlowResults.swift in Sources */,
+				534D032B2682D5A8005BC9BE /* KKPromotionItemDetails.swift in Sources */,
 				53DF81D1265028ED00BA6119 /* KKSelectCountryViewController.swift in Sources */,
 				53363E44264ACE0C001F6B48 /* KKMyAffiliateViewController.swift in Sources */,
 				53AAAE1626401BD0004103F0 /* KKSupportViewController.swift in Sources */,

@@ -11,7 +11,7 @@ struct KKFAQDetails: Codable {
 
   enum CodingKeys: String, CodingKey {
     case title
-    case content
+    case content = "htmlContent"
   }
 
   var title: String?

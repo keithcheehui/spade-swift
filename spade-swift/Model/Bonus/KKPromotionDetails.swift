@@ -10,19 +10,16 @@ import Foundation
 struct KKPromotionDetails: Codable {
 
     enum CodingKeys: String, CodingKey {
-        case img
         case button_name = "group_name"
-        case content
+        case items
     }
 
-    var img: String?
     var button_name: String?
-    var content: String?
+    var items: [KKPromotionItemDetails]?
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        img = try container.decodeIfPresent(String.self, forKey: .img)
         button_name = try container.decodeIfPresent(String.self, forKey: .button_name)
-        content = try container.decodeIfPresent(String.self, forKey: .content)
+        items = try container.decodeIfPresent([KKPromotionItemDetails].self, forKey: .items)
     }
 }

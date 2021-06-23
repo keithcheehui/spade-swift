@@ -23,13 +23,13 @@ class KKGeneralTableViewController: KKTableBaseViewController {
     @IBOutlet weak var topContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var pickerWidth: NSLayoutConstraint!
 
-    public var leftTitle: String = ""
-    public var leftValue: String = ""
-    public var leftDropdownOptions: [String] = []
+    var leftTitle: String = ""
+    var leftValue: String = ""
+    var leftDropdownOptions: [String] = []
     
-    public var rightTitle: String = ""
-    public var rightValue: String = ""
-    public var rightDropdownOptions: [String] = []
+    var rightTitle: String = ""
+    var rightValue: String = ""
+    var rightDropdownOptions: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,7 @@ class KKGeneralTableViewController: KKTableBaseViewController {
 
     func showTopContainer(shouldShow: Bool, withRightPicker: Bool){
         if (shouldShow){
-            topContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 35)
+            topContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 15)
             topContainer.isHidden = false
             
             showDropdownOption(showRight: withRightPicker)

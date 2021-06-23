@@ -21,7 +21,7 @@
                 <outlet property="rightPickerValue" destination="wQP-12-Fwk" id="e72-By-oCe"/>
                 <outlet property="rightPickerValueView" destination="joj-U1-9KI" id="2Ur-7o-6BK"/>
                 <outlet property="topContainer" destination="NTM-8g-0Dw" id="6Gx-T1-N7g"/>
-                <outlet property="topContainerHeight" destination="rFk-DJ-deK" id="vqH-yc-dpH"/>
+                <outlet property="topContainerHeight" destination="rFk-DJ-deK" id="QVh-1T-ifP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

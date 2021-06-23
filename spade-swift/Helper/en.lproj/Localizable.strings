@@ -57,6 +57,7 @@
 "home_lottery"                              = "Lottery";
 "home_esports"                              = "Esports";
 "home_guest"                                = "Guest";
+"home_announcement"                         = "Announcement";
 
 //MARK: Personal Center
 "personal_user_info"                        = "User Info";

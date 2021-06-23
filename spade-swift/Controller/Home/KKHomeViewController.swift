@@ -51,6 +51,10 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var lblSupport: UILabel!
     @IBOutlet weak var lblMore: UILabel!
     
+    ///Announcement bubble
+    @IBOutlet weak var announcementBubble: UIView!
+    @IBOutlet weak var lblAnnouncementBubble: UILabel!
+    
     @IBOutlet weak var imgProfileWidth: NSLayoutConstraint!
     @IBOutlet weak var imgProfileMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var lblProfileNameWidth: NSLayoutConstraint!
@@ -72,7 +76,8 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var separaterHeight: NSLayoutConstraint!
     @IBOutlet weak var menuWidth: NSLayoutConstraint!
     @IBOutlet weak var imgArrowUpHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak var announcementBubbleMarginTop: NSLayoutConstraint!
+    @IBOutlet weak var announcementBubbleIconWidth: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,7 +120,9 @@ class KKHomeViewController: KKBaseViewController {
         separaterHeight.constant = KKUtil.ConvertSizeByDensity(size: 16)
         menuWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
         imgArrowUpHeight.constant = KKUtil.ConvertSizeByDensity(size: 15)
-
+        announcementBubbleMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 8)
+        announcementBubbleIconWidth.constant = KKUtil.ConvertSizeByDensity(size: 12)
+        
         lblCopy.text = KKUtil.languageSelectedStringForKey(key: "home_copy_id")
         lblMission.text = KKUtil.languageSelectedStringForKey(key: "home_mission")
         lblBonus.text = KKUtil.languageSelectedStringForKey(key: "home_bonus")
@@ -125,6 +132,7 @@ class KKHomeViewController: KKBaseViewController {
         lblMessage.text = KKUtil.languageSelectedStringForKey(key: "home_message")
         lblSupport.text = KKUtil.languageSelectedStringForKey(key: "home_support")
         lblMore.text = KKUtil.languageSelectedStringForKey(key: "home_more")
+        lblAnnouncementBubble.text = KKUtil.languageSelectedStringForKey(key: "home_announcement")
         
         lblProfileName.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
         lblVip.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 11))
@@ -141,7 +149,8 @@ class KKHomeViewController: KKBaseViewController {
         lblMessage.font = lblAffiliate.font
         lblSupport.font = lblAffiliate.font
         lblMore.font = lblAffiliate.font
-        
+        lblAnnouncementBubble.font = lblAffiliate.font
+
         copyContainer.backgroundColor = UIColor(white: 0, alpha: 0.8)
         copyContainer.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 9 : 10)
         copyContainer.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 1.0)
@@ -154,8 +163,7 @@ class KKHomeViewController: KKBaseViewController {
         setGradientBackground(colorTop: UIColor(white: 0, alpha: 0.0), colorCenter: UIColor(white: 0, alpha: 0.65), colorBottom: UIColor(white: 0, alpha: 0.0), view: menuContainer)
 
         imgArrowUp.transform = imgArrowUp.transform.rotated(by: .pi)
-//        imgArrowUp.isHidden = true
-//        imgArrowDown.isHidden = false
+        announcementBubble.isHidden = true
         
         self.imgArrowUp.alpha = 0
         self.imgArrowDown.alpha = 1
@@ -359,6 +367,12 @@ class KKHomeViewController: KKBaseViewController {
         }
     }
 
+    func animateHideBubble() {
+        UIView.animate(withDuration: 10.0, animations: {
+            self.announcementBubble.isHidden = true
+        })
+    }
+    
     //MARK:- Button Actions
     
     @IBAction func btnProfileDidPressed(){
@@ -370,16 +384,19 @@ class KKHomeViewController: KKBaseViewController {
     }
     
     @IBAction func btnLoginDidPressed(){
+        announcementBubble.isHidden = true
         self.present(KKLoginViewController(), animated: false, completion: nil)
     }
     
     @IBAction func btnRegisterDidPressed(){
+        announcementBubble.isHidden = true
         self.present(KKOTPViewController(), animated: false, completion: nil)
     }
     
 
     @IBAction func btnRefreshDidPressed(){
-        
+        announcementBubble.isHidden = true
+
         if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
             
             self.getUserLatestWallet()
@@ -387,54 +404,65 @@ class KKHomeViewController: KKBaseViewController {
     }
     
     @IBAction func btnCountryDidPressed(){
-        
+        announcementBubble.isHidden = true
+
     }
     
     @IBAction func btnMissionDidPressed(){
-        
+        announcementBubble.isHidden = true
+
     }
     
     @IBAction func btnBonusDidPressed(){
+        announcementBubble.isHidden = true
         self.present(KKBonusViewController(), animated: false, completion: nil)
     }
     
     @IBAction func btnSettingsDidPressed(){
+        announcementBubble.isHidden = true
         self.present(KKSettingsViewController(), animated: false, completion: nil)
     }
     
     @IBAction func btnLanguageDidPressed(){
-        
+        announcementBubble.isHidden = true
     }
     
     @IBAction func btnAnnouncementDidPressed(){
+        announcementBubble.isHidden = true
         self.present(KKAnnouncementViewController(), animated: false, completion: nil)
     }
     
     @IBAction func btnAffiliatesDidPressed(){
+        announcementBubble.isHidden = true
         self.navigationController?.pushViewController(KKAffiliateViewController(), animated: true)
     }
     
     @IBAction func btnRebateDidPressed(){
+        announcementBubble.isHidden = true
         self.navigationController?.pushViewController(KKRebateViewController(), animated: true)
     }
     
     @IBAction func btnMessageDidPressed(){
+        announcementBubble.isHidden = true
         self.navigationController?.pushViewController(KKMessageViewController(), animated: true)
     }
     
     @IBAction func btnSupportDidPressed(){
+        announcementBubble.isHidden = true
         self.navigationController?.pushViewController(KKSupportViewController(), animated: true)
     }
     
     @IBAction func btnMoreDidPressed(){
-        
+        announcementBubble.isHidden = !announcementBubble.isHidden
     }
     
     @IBAction func btnDepositDidPressed(){
+        announcementBubble.isHidden = true
         self.navigationController?.pushViewController(KKDepositViewController(), animated: true)
     }
     
     @IBAction func btnWithdrawDidPressed(){
+        announcementBubble.isHidden = true
         self.navigationController?.pushViewController(KKWithdrawViewController(), animated: true)
     }
     
@@ -491,6 +519,7 @@ extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        announcementBubble.isHidden = true
         selectedGameType = indexPath.item
         updateLobbyBackgroundImage(gameType: selectedGameType)
         
@@ -509,24 +538,19 @@ extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
             break;
         }
         
-        
         collectionView.reloadData()
         return
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        announcementBubble.isHidden = true
+        
         if (indexPath.row == KKSingleton.sharedInstance.groupPlatformArray.count - 1) {
-//            imgArrowUp.isHidden = false
-//            imgArrowDown.isHidden = true
-            
             UIView.animate(withDuration: 0.3, animations: {
                 self.imgArrowUp.alpha = 1
                 self.imgArrowDown.alpha = 0
             })
         } else if (indexPath.row == 0) {
-//            imgArrowUp.isHidden = true
-//            imgArrowDown.isHidden = false
-            
             UIView.animate(withDuration: 0.3, animations: {
                 self.imgArrowUp.alpha = 0
                 self.imgArrowDown.alpha = 1

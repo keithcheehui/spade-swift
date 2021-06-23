@@ -30,6 +30,8 @@ class KKFaqViewController: KKBaseViewController, WKNavigationDelegate {
         loadingActivity.startAnimating()
         faqWebView.navigationDelegate = self
         loadingActivity.hidesWhenStopped = true
+        
+        faqWebView.clipsToBounds = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

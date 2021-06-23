@@ -104,7 +104,6 @@ class KKPersonalViewController: KKBaseViewController {
             let viewController = KKGeneralTableViewController()
             viewController.tableViewType = .AccountDetails
             changeView(vc: viewController)
-
             break;
         case viewType.individualReport.rawValue:
             imgHoverIndividualReport.isHidden = false
