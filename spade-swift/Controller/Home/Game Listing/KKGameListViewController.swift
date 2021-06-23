@@ -64,32 +64,25 @@ class KKGameListViewController: KKBaseViewController {
                 flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 20)
             }
         } else {
-//            if (selectedGameType == GameType.fishing) {
-//                size = KKUtil.ConvertSizeByDensity(size: 125)
-//
-//                if (KKUtil.isSmallerPhone()){
-//                    flowLayout.sectionInset = UIEdgeInsets(top: -10, left: 10, bottom: -10, right: 10)
-//                } else {
-//                    flowLayout.sectionInset = UIEdgeInsets(top: -10, left: 30, bottom: -10, right: 20)
-//                }
-//            } else {
-//                size = KKUtil.ConvertSizeByDensity(size: 115)
-//
-//                if (KKUtil.isSmallerPhone()){
-//                    flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-//                } else {
-//                    flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 20)
-//                }
-//            }
-            size = KKUtil.ConvertSizeByDensity(size: 125)
+            if (selectedGameType == GameType.fishing) {
+                size = KKUtil.ConvertSizeByDensity(size: 120)
 
-            if (KKUtil.isSmallerPhone()){
-                flowLayout.sectionInset = UIEdgeInsets(top: -10, left: 15, bottom: -10, right: 15)
+                if (KKUtil.isSmallerPhone()){
+                    flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+                } else {
+                    flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 20)
+                }
             } else {
-                flowLayout.sectionInset = UIEdgeInsets(top: -10, left: 30, bottom: -10, right: 20)
+                size = KKUtil.ConvertSizeByDensity(size: 115)
+
+                if (KKUtil.isSmallerPhone()){
+                    flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+                } else {
+                    flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 20)
+                }
             }
             
-            flowLayout.minimumLineSpacing = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 40 : 60)
+            flowLayout.minimumLineSpacing = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 40 : 40)
             flowLayout.itemSize = CGSize(width: size, height: size)
         }
 
