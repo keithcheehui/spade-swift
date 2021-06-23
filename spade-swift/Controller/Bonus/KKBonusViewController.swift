@@ -34,6 +34,7 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
     
     var sideMenuItem: [KKPromotionDetails]! = []
     var selectedMenuItem = 0
+    var cacheImageURL = "https://lg-api.fteg.app/storage/upload/images/bonuses/bonus_1_banner.png"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -169,9 +170,10 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
         
         let promoItem: KKPromotionItemDetails! = sideMenuItem[selectedMenuItem].items?[indexPath.item]
         if (promoItem.img == nil || promoItem.img!.isEmpty) {
-            //TODO: Keith, if the data is null, the imageview still showing previous image
-            cell.imgBonusBG.setUpImage(with: "")
+            
+            cell.imgBonusBG.setUpImage(with: cacheImageURL)
         } else {
+//            cacheImageURL = promoItem.img!
             cell.imgBonusBG.setUpImage(with: promoItem.img)
         }
 

@@ -164,9 +164,9 @@ extension UIImageView {
     
     func setUpImage(with url: String?, placeholder: UIImage? = nil) {
         
-        if let urlString = url , let URL = URL(string: urlString) {
+        if let urlString = url, let urL = URL(string: urlString) {
                             
-            self.kf.setImage(with: URL, placeholder: placeholder)
+            self.kf.setImage(with: urL, placeholder: placeholder)
         }
         else if let image = placeholder
         {
