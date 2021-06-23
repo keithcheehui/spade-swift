@@ -186,6 +186,10 @@ class KKUserInfoViewController: KKBaseViewController, UITextFieldDelegate {
     
     
     ///Button Actions
+    @IBAction func btnAvatarDidPressed(){
+        
+    }
+    
     @IBAction func btnMyVipLevelDidPressed(){
         
     }

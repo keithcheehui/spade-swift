@@ -108,6 +108,13 @@
                                                 <constraint firstAttribute="width" constant="70" id="mGe-1F-zn3"/>
                                             </constraints>
                                         </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_edit_circle" translatesAutoresizingMaskIntoConstraints="NO" id="ue4-nZ-rHp">
+                                            <rect key="frame" x="52" y="52" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="F5V-yV-RHj"/>
+                                                <constraint firstAttribute="width" secondItem="ue4-nZ-rHp" secondAttribute="height" multiplier="1:1" id="a5b-qo-FJs"/>
+                                            </constraints>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80808080" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGw-hf-0iK">
                                             <rect key="frame" x="80" y="10" width="61" height="15"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -193,19 +200,31 @@
                                                 <constraint firstItem="7tB-sv-Dyw" firstAttribute="top" secondItem="D3P-KB-dCS" secondAttribute="top" id="xg4-TW-D3s"/>
                                             </constraints>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZyU-v0-JCN">
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                            <connections>
+                                                <action selector="btnAvatarDidPressed" destination="-1" eventType="touchUpInside" id="ndh-sH-o6P"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="IGw-hf-0iK" firstAttribute="leading" secondItem="WOH-mT-4d7" secondAttribute="trailing" constant="10" id="1AV-GS-kXK"/>
+                                        <constraint firstItem="ZyU-v0-JCN" firstAttribute="top" secondItem="hGA-Sj-CJx" secondAttribute="top" id="3FN-XV-e91"/>
+                                        <constraint firstItem="ue4-nZ-rHp" firstAttribute="trailing" secondItem="WOH-mT-4d7" secondAttribute="trailing" constant="2" id="6T6-d7-lZt"/>
+                                        <constraint firstItem="ZyU-v0-JCN" firstAttribute="width" secondItem="WOH-mT-4d7" secondAttribute="width" id="9Bh-sQ-eZW"/>
+                                        <constraint firstItem="ZyU-v0-JCN" firstAttribute="leading" secondItem="hGA-Sj-CJx" secondAttribute="leading" id="COJ-kc-Kcv"/>
                                         <constraint firstItem="D3P-KB-dCS" firstAttribute="leading" secondItem="uRe-9p-Yft" secondAttribute="trailing" constant="15" id="DYF-16-okx"/>
                                         <constraint firstAttribute="trailing" secondItem="D3P-KB-dCS" secondAttribute="trailing" id="DZO-4I-7cr"/>
                                         <constraint firstItem="uRe-9p-Yft" firstAttribute="top" secondItem="IGw-hf-0iK" secondAttribute="bottom" constant="10" id="JZB-ja-aEE"/>
                                         <constraint firstItem="WOH-mT-4d7" firstAttribute="leading" secondItem="hGA-Sj-CJx" secondAttribute="leading" id="VaE-no-VJl"/>
+                                        <constraint firstItem="ue4-nZ-rHp" firstAttribute="bottom" secondItem="WOH-mT-4d7" secondAttribute="bottom" constant="2" id="dkH-Xp-v6O"/>
                                         <constraint firstItem="WOH-mT-4d7" firstAttribute="top" secondItem="hGA-Sj-CJx" secondAttribute="top" id="eYh-9E-dwA"/>
                                         <constraint firstAttribute="bottom" secondItem="uRe-9p-Yft" secondAttribute="bottom" id="enJ-yE-5Eq"/>
                                         <constraint firstAttribute="bottom" secondItem="WOH-mT-4d7" secondAttribute="bottom" id="jfL-EN-iYf"/>
                                         <constraint firstItem="uRe-9p-Yft" firstAttribute="leading" secondItem="IGw-hf-0iK" secondAttribute="leading" id="rv8-pJ-aph"/>
                                         <constraint firstItem="D3P-KB-dCS" firstAttribute="bottom" secondItem="uRe-9p-Yft" secondAttribute="bottom" id="vKd-Sx-JHS"/>
+                                        <constraint firstAttribute="bottom" secondItem="ZyU-v0-JCN" secondAttribute="bottom" id="vlS-mk-QET"/>
                                         <constraint firstItem="D3P-KB-dCS" firstAttribute="top" secondItem="uRe-9p-Yft" secondAttribute="top" id="yV0-X6-a5R"/>
                                     </constraints>
                                 </view>
@@ -661,6 +680,7 @@
     <resources>
         <image name="btn_my_vip" width="194" height="83"/>
         <image name="ic_edit" width="31" height="31"/>
+        <image name="ic_edit_circle" width="52" height="52"/>
         <image name="ic_profile" width="111" height="111"/>
         <image name="ic_spade" width="21" height="21"/>
         <image name="ic_vip_gold" width="144" height="36"/>
