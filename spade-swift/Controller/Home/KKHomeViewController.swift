@@ -32,7 +32,7 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var lblSettings: UILabel!
     @IBOutlet weak var lblLanguage: UILabel!
     @IBOutlet weak var announcementContainer: UIView!
-    @IBOutlet weak var lblAnnouncement: MarqueeLabel!
+    @IBOutlet weak var lblAnnouncement: Marquee!
     @IBOutlet weak var imgArrowUp: UIImageView!
     @IBOutlet weak var imgArrowDown: UIImageView!
 
@@ -583,4 +583,8 @@ extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
             })
         }
     }
+}
+
+class Marquee: MarqueeLabel {
+    
 }
