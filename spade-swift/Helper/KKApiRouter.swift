@@ -156,10 +156,10 @@ enum ApiRouter: URLRequestConvertible {
             return "member/cashflows"
             
         case .customerFAQ:
-            return "customer_service/faqs"
+            return "customerService/faqs"
             
         case .customerLiveChat:
-            return "customer_service/live_chats"
+            return "customerService/liveChats"
             
         case .getAnnouncementContent:
             return "content/announcements"
@@ -171,7 +171,7 @@ enum ApiRouter: URLRequestConvertible {
             return "content/products"
             
         case .getSystemMessageContent:
-            return "content/system_messages"
+            return "content/systemMessages"
             
         case .getPromotionContent:
             return "content/promotions"

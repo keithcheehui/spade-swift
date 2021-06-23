@@ -38,6 +38,19 @@ class KKGeneralPopUpTableViewController: KKTableBaseViewController {
         contentMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 12)
         contentMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 14)
         contentMarginRight.constant = KKUtil.ConvertSizeByDensity(size: 14)
+        
+        if tableViewType == .ComissionTable {
+            
+            imgTitle.image = UIImage(named: "title_commission_table")
+        }
+        else if tableViewType == .CommissionTransaction {
+            
+            imgTitle.image = UIImage(named: "title_commission_transaction")
+        }
+        else if tableViewType == .DepositHistory {
+            
+            imgTitle.image = UIImage(named: "title_deposit_history")
+        }
     }
     
     ///Button Actions

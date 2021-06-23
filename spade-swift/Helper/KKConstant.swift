@@ -166,7 +166,7 @@ struct CellIdentifier {
 struct Spade {
     
     struct DevServer {
-        static let baseApiURL: String = "https://lg-api.fteg.app/api/" 
+        static let baseApiURL: String = "https://legend.fteg.dev/api/" //"https://lg-api.fteg.app/api/"
     }
     
     struct ProdServer {
@@ -198,9 +198,15 @@ enum ContentType: String {
 
 enum TableViewType: Int {
     
-    case ManualRebate = 1
-    case RebateRecord = 2
-    case RebateRatio = 3
-    case BettingRecord = 4
-    case AccountDetails = 5
+    case AffliateDownline = 1
+    case AffliateTurnover = 2
+    case CommissionTransaction = 3
+    case ComissionTable = 4
+    case ManualRebate = 5
+    case RebateRecord = 6
+    case RebateRatio = 7
+    case BettingRecord = 8
+    case AccountDetails = 9
+    case DepositHistory = 10
+    case WithdrawHistory = 11
 }

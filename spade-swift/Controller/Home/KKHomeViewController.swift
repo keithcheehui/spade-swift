@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import MarqueeLabel
+import KeychainSwift
 
 class KKHomeViewController: KKBaseViewController {
     
@@ -24,6 +25,7 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var lblMoney: UILabel!
     @IBOutlet weak var refreshWalletIcon: UIImageView!
     @IBOutlet weak var refreshWalletBtn: UIButton!
+    @IBOutlet weak var countryImageView: UIImageView!
     @IBOutlet weak var lblCountry: UILabel!
     @IBOutlet weak var lblMission: UILabel!
     @IBOutlet weak var lblBonus: UILabel!
@@ -88,7 +90,7 @@ class KKHomeViewController: KKBaseViewController {
             self.getContentGroupAndPlatform()
         }
         
-        setupGuestView(isGuest: !UserDefaults.standard.bool(forKey: CacheKey.loginStatus))
+        setupGuestView(isGuest: true)
     }
     
     func initialLayout(){
@@ -161,12 +163,13 @@ class KKHomeViewController: KKBaseViewController {
         let ratio = Float(10) / Float(10)
         expBar.progress = Float(ratio)
         
-        imgProfile.image = UIImage(named: "ic_profile")
         lblProfileName.text = KKUtil.languageSelectedStringForKey(key: "home_guest")
         lblVip.text = "VIP 1"
         lblMoney.text = "999,999,999"
-        lblLanguage.text = "English"
-        lblCountry.text = "Malaysia"
+        imgProfile.image = UIImage(named: "ic_profile")
+        lblLanguage.text = KKUtil.decodeSelectedLanguageFromCache().name
+        countryImageView.setUpImage(with: KKUtil.decodeSelectedCountryFromCache().img, placeholder: UIImage(named: "ic_malaysia"))
+        lblCountry.text = KKUtil.decodeSelectedCountryFromCache().name
         setAnnouncementLabel()
     }
     
@@ -288,6 +291,8 @@ class KKHomeViewController: KKBaseViewController {
             view.removeFromSuperview()
         }
         
+        vc.tableContentView = contentView
+        vc.displayViewController = self
         vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
         contentView.addSubview(vc.view)
         self.addChild(vc)
@@ -305,9 +310,21 @@ class KKHomeViewController: KKBaseViewController {
             self.refreshWalletIcon.removeRotate()
             self.refreshWalletBtn.isEnabled = true
             
-            let currentUserWallet = ""
-            self.lblMoney.text = currentUserWallet.addCurrencyFormat(currencyAmount: userWalletResponse.results!.walletBalance!)
+            if var userProfile = KKUtil.decodeUserProfileFromCache(), let userInfo = userWalletResponse.results {
+                userProfile.walletBalance = userInfo.walletBalance!
+                
+                do {
+                    KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
+                }
+                catch {
+                    
+                }
+            }
             
+            if let userWalletResult = userWalletResponse.results {
+                
+                self.lblMoney.text = userWalletResult.walletBalance!.addCurrencyFormat()
+            }
             
         } onFailure: { errorMessage in
             
@@ -363,7 +380,10 @@ class KKHomeViewController: KKBaseViewController {
 
     @IBAction func btnRefreshDidPressed(){
         
-        self.getUserLatestWallet()
+        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+            
+            self.getUserLatestWallet()
+        }
     }
     
     @IBAction func btnCountryDidPressed(){

@@ -34,14 +34,7 @@ class KKSplashScreenViewController: KKBaseViewController {
         
         if KKUtil.isConnectedToInternet() {
             
-            if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
-                
-                self.getMemberLandingDetails()
-            }
-            else {
-                
-                self.getGuestLandingDetails()
-            }
+            self.getAnnouncement()
         }
         else
         {
@@ -153,6 +146,23 @@ class KKSplashScreenViewController: KKBaseViewController {
             
             self.getAppVersion()
         }
+    }
+    
+    func getAnnouncement() {
+        
+        KKApiClient.getContentAnnouncement().execute { announcementResponse in
+            
+            if let announcementResults = announcementResponse.results {
+                KKSingleton.sharedInstance.announcementArray = announcementResults.announcements!
+            }
+            
+            self.getAppVersion()
+            
+        } onFailure: { errorMessage in
+            
+            self.getAppVersion()
+        }
+
     }
     
     func getAppVersion() {

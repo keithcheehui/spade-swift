@@ -29,7 +29,16 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         activityIndicator.alpha = CGFloat(0)
         activityIndicator.color = .spade_white_FFFFFF
         activityIndicator.backgroundColor = UIColor.spade_black_000000.withAlphaComponent(0.75)
-        activityIndicator.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.height)
+        
+        if tableContentView != nil {
+            
+            activityIndicator.frame = CGRect(x: 0, y: 0, width: tableContentView.frame.size.width, height: tableContentView.frame.size.height)
+        }
+        else {
+         
+            activityIndicator.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.height)
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -139,13 +148,15 @@ extension String {
         return strcmp(char, "\\b") == -92
     }
     
-    func addCurrencyFormat(currencyAmount: Float) -> String {
+    func addCurrencyFormat() -> String {
         
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencySymbol = ""
         formatter.currencyGroupingSeparator = ","
-        return formatter.string(from: NSNumber(value: currencyAmount))!
+        
+        let number = NumberFormatter().number(from: self)!
+        return formatter.string(from: number)!
     }
 }
 

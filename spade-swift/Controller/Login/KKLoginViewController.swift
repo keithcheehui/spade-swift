@@ -141,7 +141,7 @@ class KKLoginViewController: KKBaseViewController {
             UserDefaults.standard.set(true, forKey: CacheKey.loginStatus)
             UserDefaults.standard.synchronize()
             
-            self.getUserProfile()
+            self.getUserLatestWallet()
             
         } onFailure: { errorMessage in
             
@@ -150,13 +150,28 @@ class KKLoginViewController: KKBaseViewController {
         }
     }
     
-    @objc func getUserProfile() {
+    func getUserLatestWallet() {
+        
+        KKApiClient.getUserLatestWallet().execute { userWalletResponse in
+            
+            if let userWalletResult = userWalletResponse.results {
+                
+                self.getUserProfile(walletBalance: userWalletResult.walletBalance!)
+            }
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: errorMessage)
+        }
+    }
+    
+    @objc func getUserProfile(walletBalance: String) {
         
         KKApiClient.getUserProfile().execute { userProfileResponse in
             
-            self.hideAnimatedLoader()
-            
-            guard let userProfile = userProfileResponse.results?.user![0] else { return }
+            guard var userProfile = userProfileResponse.results?.user![0] else { return }
+            userProfile.walletBalance = walletBalance
             
             do {
                 KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
@@ -167,6 +182,7 @@ class KKLoginViewController: KKBaseViewController {
                 self.showAlertView(alertMessage: error.localizedDescription)
             }
             
+            self.hideAnimatedLoader()
             self.dismiss(animated: false, completion: nil)
             
         } onFailure: { errorMessage in

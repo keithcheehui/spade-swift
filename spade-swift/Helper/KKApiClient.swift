@@ -62,7 +62,7 @@ class KKApiClient: NSObject {
         return performRequest(route: .appVersion(parameter: parameter))
     }
     
-    //MARK:- Guest/Member Landing
+    //MARK:- Landing
     
     static func getGuestLandingDetails() -> Future<KKLandingDetailsResponse> {
         
@@ -79,7 +79,7 @@ class KKApiClient: NSObject {
                          APIKeys.countryCode    : KKUtil.decodeSelectedCountryFromCache().code!
                         ] as [String : Any]
         
-        return performRequest(route: .guestLandingDetails(parameter: parameter))
+        return performRequest(route: .memberLandingDetails(parameter: parameter))
     }
 
     //MARK:- OTP

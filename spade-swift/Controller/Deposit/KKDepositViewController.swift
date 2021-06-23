@@ -80,6 +80,8 @@ class KKDepositViewController: KKBaseViewController {
             view.removeFromSuperview()
         }
         
+        vc.tableContentView = contentView
+        vc.displayViewController = self
         vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
         contentView.addSubview(vc.view)
         self.addChild(vc)
