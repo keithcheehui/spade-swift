@@ -34,7 +34,7 @@ class KKSplashScreenViewController: KKBaseViewController {
         
         if KKUtil.isConnectedToInternet() {
             
-            self.getAnnouncement()
+            self.getLandingDetails()
         }
         else
         {
@@ -98,41 +98,34 @@ class KKSplashScreenViewController: KKBaseViewController {
     
     //MARK:- API Calls
     
-    func getGuestLandingDetails() {
-        
-        KKApiClient.getGuestLandingDetails().execute { landingDetailsResponse in
-            
-            if let landingDetailsResults = landingDetailsResponse.results {
-                
-                KKSingleton.sharedInstance.announcementArray = landingDetailsResults.announcements!
-                KKSingleton.sharedInstance.groupPlatformArray = landingDetailsResults.groups!
-            }
-            
-            self.getAppVersion()
-            
-        } onFailure: { errorMessage in
-            
-            self.getAppVersion()
-        }
-    }
-    
-    func getMemberLandingDetails() {
+    func getLandingDetails() {
         
         KKApiClient.getMemberLandingDetails().execute { landingDetailsResponse in
             
             if let landingDetailsResults = landingDetailsResponse.results {
                 
-                if var userProfile = KKUtil.decodeUserProfileFromCache(), let userInfo = landingDetailsResults.userInfo {
-                    userProfile.walletBalance = userInfo.walletBalance!
-                    userProfile.currencyCode = userInfo.currencyCode!
-                    userProfile.tier = userInfo.tier!
+                if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
                     
-                    do {
-                        KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
-                        KeychainSwift().set(try JSONEncoder().encode(KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == userProfile.locale})!), forKey: CacheKey.selectedLanguage)
-                    }
-                    catch {
+                    if var userProfile = KKUtil.decodeUserProfileFromCache(), let userInfo = landingDetailsResults.userInfo {
                         
+                        if let walletBalance = userInfo.walletBalance {
+                            userProfile.walletBalance = walletBalance
+                        }
+                        
+                        if let currencyCode = userInfo.currencyCode {
+                            userProfile.currencyCode = currencyCode
+                        }
+                        
+                        if let userTier = userInfo.tier {
+                            userProfile.tier = userTier
+                        }
+                        
+                        do {
+                            KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
+                        }
+                        catch {
+                            
+                        }
                     }
                 }
                 
