@@ -49,11 +49,11 @@ class KKSplashScreenViewController: KKBaseViewController {
         loadingBarMarginRight.constant = loadingBarMarginLeft.constant
         lblLoadingMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
         
-//        if (KKUtil.isSmallerPhone()) {
-//            imgBG.image = UIImage(named: "bg_sso")
-//        } else {
-//            imgBG.image = UIImage(named: "bg_sso2")
-//        }
+        if (ScreenSize.maxLength < 812.0) {
+            imgBG.image = UIImage(named: "bg_sso")
+        } else {
+            imgBG.image = UIImage(named: "bg_sso2")
+        }
     }
 
     func drawLoadingProgress(){

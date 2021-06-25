@@ -12,7 +12,7 @@
             <connections>
                 <outlet property="bankSectionView" destination="JpH-1x-3iL" id="j1h-0S-mTM"/>
                 <outlet property="bankSectionViewHeight" destination="p8F-Gw-nKk" id="M79-e3-AQr"/>
-                <outlet property="btnConfirmHeight" destination="BXs-To-CmH" id="FIi-cf-Ug2"/>
+                <outlet property="btnConfirmHeight" destination="Ghx-iT-WjS" id="5ik-sj-V2R"/>
                 <outlet property="btnCopyWidth" destination="kjH-5y-xgC" id="Vxw-13-6ic"/>
                 <outlet property="depositItemMargin" destination="Dzb-0y-jOJ" id="fr8-BR-ISX"/>
                 <outlet property="depositSectionView" destination="3pI-AY-pUB" id="1sb-c4-5Tn"/>
@@ -696,17 +696,33 @@
                                 <constraint firstItem="Pa9-vi-ssy" firstAttribute="top" secondItem="sLe-mp-TQB" secondAttribute="bottom" constant="10" id="zsa-vP-1Yy"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7QR-61-twQ">
-                            <rect key="frame" x="378" y="359" width="140" height="35"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojq-Gc-UTx">
+                            <rect key="frame" x="388" y="354" width="120" height="40"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_submit" translatesAutoresizingMaskIntoConstraints="NO" id="fuv-cG-tvf">
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKd-zq-aJg">
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
+                                    <connections>
+                                        <action selector="btnSubmitDidPressed" destination="-1" eventType="touchUpInside" id="aWr-Nf-2WP"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="35" id="BXs-To-CmH"/>
-                                <constraint firstAttribute="width" secondItem="7QR-61-twQ" secondAttribute="height" multiplier="4:1" id="qxX-DR-mIb"/>
+                                <constraint firstItem="fuv-cG-tvf" firstAttribute="leading" secondItem="ojq-Gc-UTx" secondAttribute="leading" id="4Ov-4e-lfg"/>
+                                <constraint firstAttribute="height" constant="40" id="Ghx-iT-WjS"/>
+                                <constraint firstAttribute="bottom" secondItem="CKd-zq-aJg" secondAttribute="bottom" id="OPb-qx-5PH"/>
+                                <constraint firstAttribute="width" secondItem="ojq-Gc-UTx" secondAttribute="height" multiplier="3:1" id="UMV-Io-mWB"/>
+                                <constraint firstItem="CKd-zq-aJg" firstAttribute="leading" secondItem="ojq-Gc-UTx" secondAttribute="leading" id="aPt-Cj-Teo"/>
+                                <constraint firstAttribute="bottom" secondItem="fuv-cG-tvf" secondAttribute="bottom" id="h1f-0m-HdM"/>
+                                <constraint firstItem="CKd-zq-aJg" firstAttribute="top" secondItem="ojq-Gc-UTx" secondAttribute="top" id="nTr-0I-Au7"/>
+                                <constraint firstItem="fuv-cG-tvf" firstAttribute="top" secondItem="ojq-Gc-UTx" secondAttribute="top" id="pQK-2i-Teu"/>
+                                <constraint firstAttribute="trailing" secondItem="CKd-zq-aJg" secondAttribute="trailing" id="r8x-4N-8fE"/>
+                                <constraint firstAttribute="trailing" secondItem="fuv-cG-tvf" secondAttribute="trailing" id="roO-D0-xp0"/>
                             </constraints>
-                            <state key="normal" backgroundImage="btn_submit"/>
-                            <connections>
-                                <action selector="btnSubmitDidPressed" destination="-1" eventType="touchUpInside" id="uTc-Qc-fiK"/>
-                            </connections>
-                        </button>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -716,12 +732,12 @@
                         <constraint firstItem="bF3-lK-hFb" firstAttribute="top" secondItem="JpH-1x-3iL" secondAttribute="bottom" constant="10" id="EF9-fk-ysr"/>
                         <constraint firstItem="3pI-AY-pUB" firstAttribute="trailing" secondItem="bF3-lK-hFb" secondAttribute="trailing" id="N9Y-2Q-0Oz"/>
                         <constraint firstItem="Cnl-fs-omB" firstAttribute="width" secondItem="OlA-k9-v13" secondAttribute="width" id="Nkz-s7-9kZ"/>
+                        <constraint firstAttribute="bottom" secondItem="ojq-Gc-UTx" secondAttribute="bottom" constant="20" id="SCL-xn-iR7"/>
                         <constraint firstItem="sLe-mp-TQB" firstAttribute="height" secondItem="ZPA-iN-nFd" secondAttribute="height" id="Sw1-yl-hSu"/>
-                        <constraint firstAttribute="bottom" secondItem="7QR-61-twQ" secondAttribute="bottom" constant="20" id="ctL-DM-Zt6"/>
-                        <constraint firstItem="7QR-61-twQ" firstAttribute="centerX" secondItem="Co8-da-bZ3" secondAttribute="centerX" id="dag-VA-8bP"/>
                         <constraint firstItem="JpH-1x-3iL" firstAttribute="top" secondItem="Co8-da-bZ3" secondAttribute="top" id="e0N-Hf-b99"/>
                         <constraint firstItem="JpH-1x-3iL" firstAttribute="leading" secondItem="Co8-da-bZ3" secondAttribute="leading" id="fqh-2i-Biv"/>
                         <constraint firstItem="3pI-AY-pUB" firstAttribute="top" secondItem="bF3-lK-hFb" secondAttribute="bottom" constant="10" id="gO0-U4-hOV"/>
+                        <constraint firstItem="ojq-Gc-UTx" firstAttribute="centerX" secondItem="Co8-da-bZ3" secondAttribute="centerX" id="lOf-OR-Vxe"/>
                         <constraint firstItem="3pI-AY-pUB" firstAttribute="leading" secondItem="bF3-lK-hFb" secondAttribute="leading" id="oIa-AB-upa"/>
                         <constraint firstItem="sLe-mp-TQB" firstAttribute="leading" secondItem="atM-o5-8QC" secondAttribute="leading" id="ofX-uR-l7H"/>
                         <constraint firstItem="thb-Tk-mVV" firstAttribute="leading" secondItem="Rox-oJ-qrd" secondAttribute="leading" id="pHk-jg-HfK"/>

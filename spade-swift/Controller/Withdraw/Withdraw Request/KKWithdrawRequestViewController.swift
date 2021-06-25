@@ -37,7 +37,7 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
     
     func initialLayout(){
         withdrawContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
-        btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 35)
+        btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         
         txtWithdrawAmountView.backgroundColor = UIColor(white: 0, alpha: 0.3)
         addBankContainer.backgroundColor = UIColor(white: 0, alpha: 0.3)

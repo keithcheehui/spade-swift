@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKWithdrawCommissionViewController" customModule="spade_swift" customModuleProvider="target">
             <connections>
-                <outlet property="btnSubmitHeight" destination="xXO-jz-zJg" id="sg2-cw-9tt"/>
+                <outlet property="btnSubmitHeight" destination="Jgy-pN-c3X" id="taa-wP-sri"/>
                 <outlet property="containerMarginLeft" destination="uiu-Fs-n6U" id="Jqn-d3-DHq"/>
                 <outlet property="containerMarginRight" destination="I6b-Ta-OQf" id="5de-PG-HS1"/>
                 <outlet property="imgCloseWidth" destination="Ifi-qP-hlr" id="3du-2x-AzR"/>
@@ -200,17 +200,33 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r48-pS-iyr">
-                            <rect key="frame" x="234" y="294" width="140" height="35"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SOj-GT-9pm">
+                            <rect key="frame" x="244" y="289" width="120" height="40"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_transfer" translatesAutoresizingMaskIntoConstraints="NO" id="9fp-wh-Gye">
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r48-pS-iyr">
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
+                                    <connections>
+                                        <action selector="btnTransferDidPressed" destination="-1" eventType="touchUpInside" id="wNx-2w-guq"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="r48-pS-iyr" secondAttribute="height" multiplier="4:1" id="YbA-sq-kgE"/>
-                                <constraint firstAttribute="height" constant="35" id="xXO-jz-zJg"/>
+                                <constraint firstItem="9fp-wh-Gye" firstAttribute="leading" secondItem="SOj-GT-9pm" secondAttribute="leading" id="0Qc-YX-igD"/>
+                                <constraint firstAttribute="bottom" secondItem="r48-pS-iyr" secondAttribute="bottom" id="4l7-aN-XsE"/>
+                                <constraint firstAttribute="height" constant="40" id="Jgy-pN-c3X"/>
+                                <constraint firstItem="9fp-wh-Gye" firstAttribute="top" secondItem="SOj-GT-9pm" secondAttribute="top" id="KRB-hI-zhg"/>
+                                <constraint firstAttribute="trailing" secondItem="r48-pS-iyr" secondAttribute="trailing" id="PLB-wk-TTb"/>
+                                <constraint firstAttribute="trailing" secondItem="9fp-wh-Gye" secondAttribute="trailing" id="Q9w-1l-cLe"/>
+                                <constraint firstAttribute="width" secondItem="SOj-GT-9pm" secondAttribute="height" multiplier="3:1" id="VVu-2u-HNk"/>
+                                <constraint firstItem="r48-pS-iyr" firstAttribute="leading" secondItem="SOj-GT-9pm" secondAttribute="leading" id="VgZ-ya-ssx"/>
+                                <constraint firstAttribute="bottom" secondItem="9fp-wh-Gye" secondAttribute="bottom" id="iau-Zq-fvm"/>
+                                <constraint firstItem="r48-pS-iyr" firstAttribute="top" secondItem="SOj-GT-9pm" secondAttribute="top" id="wdL-9A-R8P"/>
                             </constraints>
-                            <state key="normal" backgroundImage="btn_submit"/>
-                            <connections>
-                                <action selector="btnTransferDidPressed" destination="-1" eventType="touchUpInside" id="wNx-2w-guq"/>
-                            </connections>
-                        </button>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -218,20 +234,20 @@
                         <constraint firstItem="N3p-3X-U8W" firstAttribute="leading" secondItem="Tcc-wz-U71" secondAttribute="leading" constant="50" id="1K5-54-X38"/>
                         <constraint firstAttribute="trailing" secondItem="DWb-gU-2JP" secondAttribute="trailing" constant="25" id="1Mx-gt-DWe"/>
                         <constraint firstItem="JBQ-Yc-AJ6" firstAttribute="leading" secondItem="N3p-3X-U8W" secondAttribute="leading" id="3wr-wI-ewF"/>
+                        <constraint firstItem="SOj-GT-9pm" firstAttribute="centerX" secondItem="Tcc-wz-U71" secondAttribute="centerX" id="4nb-Vn-zao"/>
                         <constraint firstItem="N3p-3X-U8W" firstAttribute="top" secondItem="DWb-gU-2JP" secondAttribute="bottom" constant="40" id="Azm-r5-0tF"/>
                         <constraint firstItem="tdU-my-0Pe" firstAttribute="leading" secondItem="08d-j8-lQk" secondAttribute="leading" id="Bda-cI-Uma"/>
                         <constraint firstItem="08d-j8-lQk" firstAttribute="trailing" secondItem="N3p-3X-U8W" secondAttribute="trailing" id="Bln-X1-Ew1"/>
-                        <constraint firstAttribute="bottom" secondItem="r48-pS-iyr" secondAttribute="bottom" constant="45" id="Foe-Z8-02t"/>
                         <constraint firstItem="08d-j8-lQk" firstAttribute="leading" secondItem="N3p-3X-U8W" secondAttribute="leading" id="JzG-xy-DlK"/>
                         <constraint firstItem="tdU-my-0Pe" firstAttribute="trailing" secondItem="08d-j8-lQk" secondAttribute="trailing" id="KZw-ah-4cJ"/>
                         <constraint firstItem="08d-j8-lQk" firstAttribute="top" secondItem="JBQ-Yc-AJ6" secondAttribute="bottom" constant="8" id="MDf-e9-Kmp"/>
                         <constraint firstItem="9DH-bX-anR" firstAttribute="trailing" secondItem="DWb-gU-2JP" secondAttribute="trailing" constant="-5" id="OFr-oO-EYo"/>
-                        <constraint firstItem="r48-pS-iyr" firstAttribute="centerX" secondItem="Tcc-wz-U71" secondAttribute="centerX" id="bCC-Xc-nax"/>
                         <constraint firstItem="JBQ-Yc-AJ6" firstAttribute="top" secondItem="N3p-3X-U8W" secondAttribute="bottom" constant="20" id="cd7-8D-uKc"/>
                         <constraint firstItem="uqr-xx-XY3" firstAttribute="top" secondItem="Tcc-wz-U71" secondAttribute="top" id="cdO-7U-5wr"/>
                         <constraint firstAttribute="trailing" secondItem="uqr-xx-XY3" secondAttribute="trailing" id="nLM-SN-rI5"/>
                         <constraint firstAttribute="bottom" secondItem="uqr-xx-XY3" secondAttribute="bottom" id="njF-jS-4dg"/>
                         <constraint firstItem="9DH-bX-anR" firstAttribute="top" secondItem="DWb-gU-2JP" secondAttribute="top" constant="-5" id="oUu-sf-EK1"/>
+                        <constraint firstAttribute="bottom" secondItem="SOj-GT-9pm" secondAttribute="bottom" constant="45" id="rS8-No-T9K"/>
                         <constraint firstAttribute="trailing" secondItem="N3p-3X-U8W" secondAttribute="trailing" constant="50" id="rem-lo-7af"/>
                         <constraint firstItem="DWb-gU-2JP" firstAttribute="top" secondItem="Tcc-wz-U71" secondAttribute="top" constant="25" id="sKR-Gi-BDo"/>
                         <constraint firstItem="uqr-xx-XY3" firstAttribute="leading" secondItem="Tcc-wz-U71" secondAttribute="leading" id="xnH-BI-bl5"/>
@@ -256,7 +272,7 @@
     <resources>
         <image name="bg_popup" width="1421" height="1013"/>
         <image name="btn_copy" width="120" height="68"/>
-        <image name="btn_submit" width="310" height="103"/>
+        <image name="btn_transfer" width="329" height="109"/>
         <image name="ic_close" width="83" height="86"/>
         <image name="title_withdraw_commission" width="882" height="60"/>
         <systemColor name="systemBackgroundColor">

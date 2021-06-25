@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -209,13 +209,13 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Xa-8j-7zH">
-                            <rect key="frame" x="233.5" y="274" width="161" height="40"/>
+                            <rect key="frame" x="234" y="274" width="160" height="40"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_confirm_sso" translatesAutoresizingMaskIntoConstraints="NO" id="Fof-Bv-vVv">
-                                    <rect key="frame" x="0.0" y="0.0" width="161" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsh-sk-655">
-                                    <rect key="frame" x="0.0" y="0.0" width="161" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
                                     <connections>
                                         <action selector="btnConfirmDidPressed" destination="-1" eventType="touchUpInside" id="Jvg-vx-HDg"/>
                                     </connections>
@@ -231,7 +231,7 @@
                                 <constraint firstItem="wsh-sk-655" firstAttribute="leading" secondItem="6Xa-8j-7zH" secondAttribute="leading" id="eiP-Vt-3Ck"/>
                                 <constraint firstItem="wsh-sk-655" firstAttribute="top" secondItem="6Xa-8j-7zH" secondAttribute="top" id="iXu-Cj-D1p"/>
                                 <constraint firstAttribute="bottom" secondItem="Fof-Bv-vVv" secondAttribute="bottom" id="njd-Vq-EKE"/>
-                                <constraint firstAttribute="width" secondItem="6Xa-8j-7zH" secondAttribute="height" multiplier="4:1" constant="1" id="oZF-yp-km5"/>
+                                <constraint firstAttribute="width" secondItem="6Xa-8j-7zH" secondAttribute="height" multiplier="4:1" id="oZF-yp-km5"/>
                                 <constraint firstItem="Fof-Bv-vVv" firstAttribute="leading" secondItem="6Xa-8j-7zH" secondAttribute="leading" id="vHG-71-D19"/>
                             </constraints>
                         </view>

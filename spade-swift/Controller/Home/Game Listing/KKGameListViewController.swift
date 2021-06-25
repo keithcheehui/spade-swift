@@ -113,32 +113,33 @@ extension KKGameListViewController: UICollectionViewDelegate, UICollectionViewDa
             fatalError("DequeueReusableCell failed while casting")
         }
                         
-        var imageName = ""
-        var showBetButton = true
-
-        switch selectedGameType {
-        case GameType.hotGame:
-            imageName = getHotGameImage(index: indexPath.row)
-        case GameType.slots:
-            imageName = getSlotGameImage(index: indexPath.row)
-        case GameType.fishing:
-            imageName = getFishingGameImage(index: indexPath.row)
-        case GameType.p2pGame:
-            imageName = getP2PGameImage(index: indexPath.row)
-        case GameType.sports:
-            imageName = getSportGameImage(index: indexPath.row)
-            showBetButton = false
-        case GameType.lottery:
-            imageName = getLotteryGameImage(index: indexPath.row)
-        case GameType.esports:
-            imageName = getEsportGameImage(index: indexPath.row)
-        default:
-            break
-        }
-
-        cell.imgGameImage.image = UIImage(named: imageName)
-        //        cell.imgGameImage.setUpImage(with: gameListArray[indexPath.item].img)
-        cell.btnBetNow.isHidden = showBetButton
+//        var imageName = ""
+//        var showBetButton = true
+//
+//        switch selectedGameType {
+//        case GameType.hotGame:
+//            imageName = getHotGameImage(index: indexPath.row)
+//        case GameType.slots:
+//            imageName = getSlotGameImage(index: indexPath.row)
+//        case GameType.fishing:
+//            imageName = getFishingGameImage(index: indexPath.row)
+//        case GameType.p2pGame:
+//            imageName = getP2PGameImage(index: indexPath.row)
+//        case GameType.sports:
+//            imageName = getSportGameImage(index: indexPath.row)
+//            showBetButton = false
+//        case GameType.lottery:
+//            imageName = getLotteryGameImage(index: indexPath.row)
+//        case GameType.esports:
+//            imageName = getEsportGameImage(index: indexPath.row)
+//        default:
+//            break
+//        }
+//
+//        cell.imgGameImage.image = UIImage(named: imageName)
+        
+        cell.imgGameImage.setUpImage(with: gameListArray[indexPath.item].img)
+        cell.btnBetNow.isHidden = selectedGameType != GameType.sports
                 
         return cell
     }
@@ -154,65 +155,65 @@ extension KKGameListViewController: UICollectionViewDelegate, UICollectionViewDa
         }
     }
     
-    func getHotGameImage(index: Int) -> String {
-        let imageName = "ic_game_example"
-        return imageName
-    }
-
-    func getSlotGameImage(index: Int) -> String {
-        var imageName = ""
-
-        switch index {
-        case 0:
-            imageName = "bg_mega888"
-        case 1:
-            imageName = "bg_918"
-        case 2:
-            imageName = "bg_pussy888"
-        default:
-            imageName = "bg_sky1388"
-        }
-
-        return imageName
-    }
-
-    func getFishingGameImage(index: Int) -> String {
-        let imageName = "bg_fish_" + String(index + 1)
-        return imageName
-    }
-
-    func getP2PGameImage(index: Int) -> String {
-        let imageName = "bg_default"
-        return imageName
-    }
-
-    func getSportGameImage(index: Int) -> String {
-        var imageName = "bg_sport_" + String(index + 1)
-
-        if (index > 2) {
-            imageName = "bg_sport_3"
-        }
-
-        return imageName
-    }
-
-    func getLotteryGameImage(index: Int) -> String {
-        var imageName = "bg_lottery_" + String(index + 1)
-
-        if (index > 2) {
-            imageName = "bg_lottery_2"
-        }
-
-        return imageName
-    }
-
-    func getEsportGameImage(index: Int) -> String {
-        var imageName = "bg_esports_" + String(index + 1)
-
-        if (index > 2) {
-            imageName = "bg_esports_2"
-        }
-
-        return imageName
-    }
+//    func getHotGameImage(index: Int) -> String {
+//        let imageName = "ic_game_example"
+//        return imageName
+//    }
+//
+//    func getSlotGameImage(index: Int) -> String {
+//        var imageName = ""
+//
+//        switch index {
+//        case 0:
+//            imageName = "bg_mega888"
+//        case 1:
+//            imageName = "bg_918"
+//        case 2:
+//            imageName = "bg_pussy888"
+//        default:
+//            imageName = "bg_sky1388"
+//        }
+//
+//        return imageName
+//    }
+//
+//    func getFishingGameImage(index: Int) -> String {
+//        let imageName = "bg_fish_" + String(index + 1)
+//        return imageName
+//    }
+//
+//    func getP2PGameImage(index: Int) -> String {
+//        let imageName = "bg_default"
+//        return imageName
+//    }
+//
+//    func getSportGameImage(index: Int) -> String {
+//        var imageName = "bg_sport_" + String(index + 1)
+//
+//        if (index > 2) {
+//            imageName = "bg_sport_3"
+//        }
+//
+//        return imageName
+//    }
+//
+//    func getLotteryGameImage(index: Int) -> String {
+//        var imageName = "bg_lottery_" + String(index + 1)
+//
+//        if (index > 2) {
+//            imageName = "bg_lottery_2"
+//        }
+//
+//        return imageName
+//    }
+//
+//    func getEsportGameImage(index: Int) -> String {
+//        var imageName = "bg_esports_" + String(index + 1)
+//
+//        if (index > 2) {
+//            imageName = "bg_esports_2"
+//        }
+//
+//        return imageName
+//    }
 }

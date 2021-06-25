@@ -48,7 +48,7 @@ class KKSelectCountryViewController: KKBaseViewController {
         lblTitleMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 65)
         lblTitleMarginRight.constant = lblTitleMarginLeft.constant
         btnConfirmMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
-        btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 45)
+        btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         
         lblTitle.text = KKUtil.languageSelectedStringForKey(key: "country_title")
         lblTitle.textColor = UIColor.spade_white_FFFFFF

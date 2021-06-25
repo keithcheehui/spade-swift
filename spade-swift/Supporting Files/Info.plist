@@ -22,6 +22,10 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>The app requires to access your photo library</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>The app requires to access your photo library</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Futura Bold font.ttf</string>

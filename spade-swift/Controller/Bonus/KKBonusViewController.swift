@@ -169,13 +169,7 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
         }
         
         let promoItem: KKPromotionItemDetails! = sideMenuItem[selectedMenuItem].items?[indexPath.item]
-        if (promoItem.img == nil || promoItem.img!.isEmpty) {
-            
-            cell.imgBonusBG.image = nil
-        } else {
-//            cacheImageURL = promoItem.img!
-            cell.imgBonusBG.setUpImage(with: promoItem.img)
-        }
+        cell.imgBonusBG.setUpImage(with: promoItem.img)
 
         return cell
     }

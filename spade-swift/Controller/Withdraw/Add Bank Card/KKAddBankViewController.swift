@@ -35,7 +35,7 @@ class KKAddBankViewController: KKBaseViewController {
     
     func initialLayout(){
         textFieldHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
-        buttonHeight.constant = KKUtil.ConvertSizeByDensity(size: 35)
+        buttonHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         
         txtCardholderNameView.backgroundColor = UIColor(white: 0, alpha: 0.3)
         txtBankNameView.backgroundColor = UIColor(white: 0, alpha: 0.3)

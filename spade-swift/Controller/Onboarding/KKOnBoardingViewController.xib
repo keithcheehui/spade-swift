@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,20 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKOnBoardingViewController" customModule="spade_swift" customModuleProvider="target">
             <connections>
-                <outlet property="btnFB" destination="2BY-79-8B2" id="Fch-Bc-V2d"/>
-                <outlet property="btnLogin" destination="CTB-SK-Bv8" id="No8-Qy-BBp"/>
-                <outlet property="btnLoginMarginLeft" destination="gja-E3-lfx" id="ieM-ZY-yVd"/>
-                <outlet property="btnLoginMarginRight" destination="mO1-8U-XgY" id="Hco-CZ-pSN"/>
-                <outlet property="btnRegister" destination="GNd-Zz-MbP" id="eq5-K2-hE5"/>
-                <outlet property="buttonContainerMarginBottom" destination="RxJ-nb-rWE" id="eDF-qT-O3L"/>
-                <outlet property="buttonContainerMarginLeft" destination="0vu-YP-J5c" id="STr-4O-e9c"/>
-                <outlet property="buttonContainerMarginRight" destination="JQD-nf-vCQ" id="Vfk-te-D9n"/>
                 <outlet property="imgBG" destination="eD2-fF-oGt" id="jHp-yQ-SIH"/>
-                <outlet property="imgFB" destination="sM4-Oq-Psk" id="9th-Da-5Vc"/>
-                <outlet property="imgLogin" destination="oIP-bF-cwf" id="b3F-7p-3Ly"/>
                 <outlet property="imgLogo" destination="vIL-Eb-Nt9" id="03K-G6-4pp"/>
                 <outlet property="imgLogoWidth" destination="hMW-jv-GE7" id="hFe-60-rbO"/>
-                <outlet property="imgRegister" destination="LuF-Nq-hHm" id="fAT-Ry-xKp"/>
                 <outlet property="view" destination="iN0-l3-epB" id="xqf-b3-UKp"/>
             </connections>
         </placeholder>
@@ -43,113 +32,14 @@
                         <constraint firstAttribute="width" constant="450" id="hMW-jv-GE7"/>
                     </constraints>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gox-qQ-2CI" userLabel="buttonContainerView">
-                    <rect key="frame" x="120" y="295.66666666666669" width="656" height="68.333333333333314"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jod-4Q-Aua" userLabel="fbView">
-                            <rect key="frame" x="0.0" y="0.0" width="205.33333333333334" height="68.333333333333329"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_fb" translatesAutoresizingMaskIntoConstraints="NO" id="sM4-Oq-Psk" userLabel="imgFB">
-                                    <rect key="frame" x="0.0" y="0.0" width="205.33333333333334" height="68.333333333333329"/>
-                                </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2BY-79-8B2" userLabel="btnFB">
-                                    <rect key="frame" x="0.0" y="0.0" width="205.33333333333334" height="68.333333333333329"/>
-                                    <connections>
-                                        <action selector="btnFBDidPressed" destination="-1" eventType="touchUpInside" id="KLr-WF-Ua9"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="bottom" secondItem="2BY-79-8B2" secondAttribute="bottom" id="1kV-ro-YYA"/>
-                                <constraint firstItem="sM4-Oq-Psk" firstAttribute="top" secondItem="jod-4Q-Aua" secondAttribute="top" id="9JL-Xk-pts"/>
-                                <constraint firstAttribute="trailing" secondItem="2BY-79-8B2" secondAttribute="trailing" id="FZl-OV-O7V"/>
-                                <constraint firstAttribute="bottom" secondItem="sM4-Oq-Psk" secondAttribute="bottom" id="MPN-R4-LTi"/>
-                                <constraint firstItem="2BY-79-8B2" firstAttribute="top" secondItem="jod-4Q-Aua" secondAttribute="top" id="Rze-je-7Pp"/>
-                                <constraint firstItem="sM4-Oq-Psk" firstAttribute="leading" secondItem="jod-4Q-Aua" secondAttribute="leading" id="TsP-ZZ-nm1"/>
-                                <constraint firstItem="2BY-79-8B2" firstAttribute="leading" secondItem="jod-4Q-Aua" secondAttribute="leading" id="UHT-JM-mQj"/>
-                                <constraint firstAttribute="width" secondItem="jod-4Q-Aua" secondAttribute="height" multiplier="3:1" id="hIl-7d-n35"/>
-                                <constraint firstAttribute="trailing" secondItem="sM4-Oq-Psk" secondAttribute="trailing" id="vVi-eQ-e42"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qHC-BC-tJr" userLabel="loginView">
-                            <rect key="frame" x="225.33333333333331" y="0.0" width="205.33333333333331" height="68.333333333333329"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_login" translatesAutoresizingMaskIntoConstraints="NO" id="oIP-bF-cwf" userLabel="imgLogin">
-                                    <rect key="frame" x="0.0" y="0.0" width="205.33333333333334" height="68.333333333333329"/>
-                                </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTB-SK-Bv8" userLabel="btnLogin">
-                                    <rect key="frame" x="0.0" y="0.0" width="205.33333333333334" height="68.333333333333329"/>
-                                    <connections>
-                                        <action selector="btnLoginDidPressed" destination="-1" eventType="touchUpInside" id="jiD-hm-fQm"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="CTB-SK-Bv8" secondAttribute="trailing" id="L45-Qa-ReC"/>
-                                <constraint firstAttribute="trailing" secondItem="oIP-bF-cwf" secondAttribute="trailing" id="QqQ-ak-DPl"/>
-                                <constraint firstItem="oIP-bF-cwf" firstAttribute="top" secondItem="qHC-BC-tJr" secondAttribute="top" id="Y27-DX-Nax"/>
-                                <constraint firstItem="oIP-bF-cwf" firstAttribute="leading" secondItem="qHC-BC-tJr" secondAttribute="leading" id="i0Z-Hb-KMt"/>
-                                <constraint firstAttribute="bottom" secondItem="CTB-SK-Bv8" secondAttribute="bottom" id="i7l-H0-uE3"/>
-                                <constraint firstItem="CTB-SK-Bv8" firstAttribute="leading" secondItem="qHC-BC-tJr" secondAttribute="leading" id="lV8-1Q-nao"/>
-                                <constraint firstAttribute="bottom" secondItem="oIP-bF-cwf" secondAttribute="bottom" id="pYU-WU-3bB"/>
-                                <constraint firstItem="CTB-SK-Bv8" firstAttribute="top" secondItem="qHC-BC-tJr" secondAttribute="top" id="vYd-G9-zhV"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YkP-Xj-EUw" userLabel="registerView">
-                            <rect key="frame" x="450.66666666666657" y="0.0" width="205.33333333333331" height="68.333333333333329"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_register" translatesAutoresizingMaskIntoConstraints="NO" id="LuF-Nq-hHm" userLabel="imgRegister">
-                                    <rect key="frame" x="0.0" y="0.0" width="205.33333333333334" height="68.333333333333329"/>
-                                </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNd-Zz-MbP" userLabel="btnRegister">
-                                    <rect key="frame" x="0.0" y="0.0" width="205.33333333333334" height="68.333333333333329"/>
-                                    <connections>
-                                        <action selector="btnRegisterDidPressed" destination="-1" eventType="touchUpInside" id="SdQ-f4-kx6"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstItem="LuF-Nq-hHm" firstAttribute="leading" secondItem="YkP-Xj-EUw" secondAttribute="leading" id="7SC-8t-pKq"/>
-                                <constraint firstItem="LuF-Nq-hHm" firstAttribute="top" secondItem="YkP-Xj-EUw" secondAttribute="top" id="7qh-Gz-lll"/>
-                                <constraint firstItem="GNd-Zz-MbP" firstAttribute="top" secondItem="YkP-Xj-EUw" secondAttribute="top" id="Dm4-03-lvN"/>
-                                <constraint firstAttribute="trailing" secondItem="LuF-Nq-hHm" secondAttribute="trailing" id="LYV-Qd-wtc"/>
-                                <constraint firstAttribute="trailing" secondItem="GNd-Zz-MbP" secondAttribute="trailing" id="VCQ-p3-j8W"/>
-                                <constraint firstAttribute="bottom" secondItem="LuF-Nq-hHm" secondAttribute="bottom" id="au4-i3-Dcm"/>
-                                <constraint firstItem="GNd-Zz-MbP" firstAttribute="leading" secondItem="YkP-Xj-EUw" secondAttribute="leading" id="e5C-0M-WwG"/>
-                                <constraint firstAttribute="bottom" secondItem="GNd-Zz-MbP" secondAttribute="bottom" id="j4l-tv-6Ry"/>
-                            </constraints>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="jod-4Q-Aua" secondAttribute="bottom" id="5Ud-9M-aFr"/>
-                        <constraint firstItem="jod-4Q-Aua" firstAttribute="top" secondItem="gox-qQ-2CI" secondAttribute="top" id="8n8-vJ-cDW"/>
-                        <constraint firstItem="jod-4Q-Aua" firstAttribute="leading" secondItem="gox-qQ-2CI" secondAttribute="leading" id="9Ho-c3-hGD"/>
-                        <constraint firstAttribute="bottom" secondItem="qHC-BC-tJr" secondAttribute="bottom" id="GCD-ic-gDd"/>
-                        <constraint firstItem="qHC-BC-tJr" firstAttribute="width" secondItem="YkP-Xj-EUw" secondAttribute="width" id="NJ1-GG-SMX"/>
-                        <constraint firstItem="YkP-Xj-EUw" firstAttribute="top" secondItem="gox-qQ-2CI" secondAttribute="top" id="Qxd-ni-aL1"/>
-                        <constraint firstItem="jod-4Q-Aua" firstAttribute="width" secondItem="qHC-BC-tJr" secondAttribute="width" id="WhU-s5-s16"/>
-                        <constraint firstItem="qHC-BC-tJr" firstAttribute="top" secondItem="gox-qQ-2CI" secondAttribute="top" id="Z57-5r-7JR"/>
-                        <constraint firstAttribute="trailing" secondItem="YkP-Xj-EUw" secondAttribute="trailing" id="fMz-pC-qBR"/>
-                        <constraint firstItem="qHC-BC-tJr" firstAttribute="leading" secondItem="jod-4Q-Aua" secondAttribute="trailing" constant="20" id="gja-E3-lfx"/>
-                        <constraint firstItem="YkP-Xj-EUw" firstAttribute="leading" secondItem="qHC-BC-tJr" secondAttribute="trailing" constant="20" id="mO1-8U-XgY"/>
-                        <constraint firstAttribute="bottom" secondItem="YkP-Xj-EUw" secondAttribute="bottom" id="z8Z-ii-qYd"/>
-                    </constraints>
-                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="gox-qQ-2CI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="120" id="0vu-YP-J5c"/>
                 <constraint firstItem="eD2-fF-oGt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3qq-gf-1Np"/>
                 <constraint firstItem="vIL-Eb-Nt9" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="46" id="7Hv-VC-Hd3"/>
                 <constraint firstAttribute="bottom" secondItem="eD2-fF-oGt" secondAttribute="bottom" id="85K-zE-8Xr"/>
                 <constraint firstItem="vIL-Eb-Nt9" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="JOl-7Z-3hw"/>
-                <constraint firstAttribute="trailing" secondItem="gox-qQ-2CI" secondAttribute="trailing" constant="120" id="JQD-nf-vCQ"/>
-                <constraint firstAttribute="bottom" secondItem="gox-qQ-2CI" secondAttribute="bottom" constant="50" id="RxJ-nb-rWE"/>
                 <constraint firstItem="eD2-fF-oGt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="UmO-5p-FIM"/>
                 <constraint firstAttribute="trailing" secondItem="eD2-fF-oGt" secondAttribute="trailing" id="q3h-Wc-3xt"/>
             </constraints>
@@ -158,9 +48,6 @@
     </objects>
     <resources>
         <image name="bg_sso" width="2208" height="1242"/>
-        <image name="btn_fb" width="519" height="153"/>
-        <image name="btn_login" width="519" height="153"/>
-        <image name="btn_register" width="519" height="153"/>
         <image name="ic_logo" width="1148" height="671"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

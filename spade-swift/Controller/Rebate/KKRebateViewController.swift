@@ -130,6 +130,7 @@ class KKRebateViewController: KKBaseViewController {
             break;
         default:
             imgHoverManualRebate.isHidden = false
+            showRedeemContainer(shouldShow: true)
             let viewController = KKGeneralTableViewController()
             viewController.tableViewType = .ManualRebate
             changeView(vc: viewController)

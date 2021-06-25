@@ -44,8 +44,10 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
     @IBOutlet weak var txtReconfirmPassword: UITextField!
     
     @IBOutlet weak var containerHeight: NSLayoutConstraint!
+    @IBOutlet weak var passwordContentViewMarginLeft: NSLayoutConstraint!
+    @IBOutlet weak var passwordContentViewMarginRight: NSLayoutConstraint!
     @IBOutlet weak var lblCurrentPasswordWidth: NSLayoutConstraint!
-    @IBOutlet weak var btnConfirmWidth: NSLayoutConstraint!
+    @IBOutlet weak var btnConfirmHeight: NSLayoutConstraint!
     
     ///Version Subview
     @IBOutlet weak var versionContentView: UIView!
@@ -54,6 +56,7 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
     @IBOutlet weak var lblVersionH5: UILabel!
     
     @IBOutlet weak var lblVersionIOSHeight: NSLayoutConstraint!
+    @IBOutlet weak var lblVersionIOSMarginLeft: NSLayoutConstraint!
     
     ///Volume Setting Subview
     @IBOutlet weak var volumeContentView: UIView!
@@ -65,7 +68,9 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
     @IBOutlet weak var soundSlider: UISlider!
     
     @IBOutlet weak var titleViewHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak var volumeContentViewMarginLeft: NSLayoutConstraint!
+    @IBOutlet weak var volumeContentViewMarginRight: NSLayoutConstraint!
+
     enum viewType: Int {
         case volumeSetting = 0
         case changePassword = 1
@@ -114,13 +119,16 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
         newPasswordView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         reconfirmPasswordView.backgroundColor = UIColor(white: 0, alpha: 0.5)
 
+        passwordContentViewMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        passwordContentViewMarginRight.constant = passwordContentViewMarginLeft.constant
+
         currentPasswordView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
         newPasswordView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
         reconfirmPasswordView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
         
-        containerHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
+        containerHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
         lblCurrentPasswordWidth.constant = KKUtil.ConvertSizeByDensity(size: 100)
-        btnConfirmWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
+        btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         
         lblCurrentPassword.text = KKUtil.languageSelectedStringForKey(key: "settings_current_password")
         lblNewPassword.text = KKUtil.languageSelectedStringForKey(key: "settings_new_password")
@@ -147,8 +155,9 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
     }
     
     func versionLayout(){
-        lblVersionIOSHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
-        
+        lblVersionIOSHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
+        lblVersionIOSMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 30)
+
         lblVersionIOS.text = KKUtil.languageSelectedStringForKey(key: "settings_version_ios")
         lblVersionAndroid.text = KKUtil.languageSelectedStringForKey(key: "settings_version_android")
         lblVersionH5.text = KKUtil.languageSelectedStringForKey(key: "settings_version_h5")
@@ -160,6 +169,9 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
     
     func volumeLayout(){
         soundSectionView.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        titleViewHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        volumeContentViewMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        volumeContentViewMarginRight.constant = KKUtil.ConvertSizeByDensity(size: 50)
 
         lblSoundSettings.text = KKUtil.languageSelectedStringForKey(key: "settings_volume_title")
         lblMusic.text = KKUtil.languageSelectedStringForKey(key: "settings_volume_music")

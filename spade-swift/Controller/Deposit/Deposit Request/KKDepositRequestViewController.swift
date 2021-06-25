@@ -70,7 +70,7 @@ class KKDepositRequestViewController: KKBaseViewController {
         lblBankNameWidth.constant = KKUtil.ConvertSizeByDensity(size: 85)
         btnCopyWidth.constant = KKUtil.ConvertSizeByDensity(size: 50)
         depositItemMargin.constant = KKUtil.ConvertSizeByDensity(size: 30)
-        btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 35)
+        btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         
         bankSectionView.backgroundColor = UIColor(white: 0, alpha: 0.3)
         depositSectionView.backgroundColor = UIColor(white: 0, alpha: 0.3)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -255,13 +255,13 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E01-6Y-Zvv">
-                            <rect key="frame" x="207.66666666666669" y="274" width="161" height="40"/>
+                            <rect key="frame" x="208" y="284" width="160" height="40"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_confirm_sso" translatesAutoresizingMaskIntoConstraints="NO" id="S9X-Bg-ooE">
-                                    <rect key="frame" x="0.0" y="0.0" width="161" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHX-J6-8sk">
-                                    <rect key="frame" x="0.0" y="0.0" width="161" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
                                     <connections>
                                         <action selector="btnConfirmDidPressed" destination="-1" eventType="touchUpInside" id="H0R-2p-pim"/>
                                     </connections>
@@ -271,7 +271,7 @@
                             <constraints>
                                 <constraint firstItem="cHX-J6-8sk" firstAttribute="top" secondItem="E01-6Y-Zvv" secondAttribute="top" id="Dc1-TP-Iz2"/>
                                 <constraint firstAttribute="bottom" secondItem="cHX-J6-8sk" secondAttribute="bottom" id="GnY-k6-6gj"/>
-                                <constraint firstAttribute="width" secondItem="E01-6Y-Zvv" secondAttribute="height" multiplier="4:1" constant="1" id="JlT-Vr-iAh"/>
+                                <constraint firstAttribute="width" secondItem="E01-6Y-Zvv" secondAttribute="height" multiplier="4:1" id="JlT-Vr-iAh"/>
                                 <constraint firstAttribute="trailing" secondItem="cHX-J6-8sk" secondAttribute="trailing" id="Kew-ML-byI"/>
                                 <constraint firstItem="S9X-Bg-ooE" firstAttribute="top" secondItem="E01-6Y-Zvv" secondAttribute="top" id="QfG-7a-OCi"/>
                                 <constraint firstAttribute="bottom" secondItem="S9X-Bg-ooE" secondAttribute="bottom" id="d3L-9i-jcZ"/>
@@ -305,7 +305,7 @@
                         <constraint firstItem="x2k-pB-i17" firstAttribute="height" secondItem="qwF-ZP-wTN" secondAttribute="height" id="cqf-aV-RrA"/>
                         <constraint firstItem="x2k-pB-i17" firstAttribute="trailing" secondItem="qwF-ZP-wTN" secondAttribute="trailing" id="crD-bL-xZf"/>
                         <constraint firstItem="qwF-ZP-wTN" firstAttribute="leading" secondItem="cHn-d9-4Ky" secondAttribute="leading" constant="80" id="nMg-ox-ozc"/>
-                        <constraint firstAttribute="bottom" secondItem="E01-6Y-Zvv" secondAttribute="bottom" constant="60" id="ocD-6a-v3K"/>
+                        <constraint firstAttribute="bottom" secondItem="E01-6Y-Zvv" secondAttribute="bottom" constant="50" id="ocD-6a-v3K"/>
                         <constraint firstItem="UGO-OW-Bh3" firstAttribute="width" secondItem="XbX-0f-ZX5" secondAttribute="width" id="qwg-1F-o1A"/>
                         <constraint firstItem="hKN-hJ-LJe" firstAttribute="leading" secondItem="pmH-IY-LWV" secondAttribute="trailing" constant="24" id="sou-0P-Wxp"/>
                         <constraint firstItem="pmH-IY-LWV" firstAttribute="height" secondItem="hKN-hJ-LJe" secondAttribute="height" id="t3s-iI-v26"/>

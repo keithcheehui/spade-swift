@@ -48,7 +48,7 @@ class KKWithdrawCommissionViewController: KKBaseViewController {
         titleHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
         textFieldHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
-        btnSubmitHeight.constant = KKUtil.ConvertSizeByDensity(size: 35)
+        btnSubmitHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         
         lblCommissionAvailable.text = KKUtil.languageSelectedStringForKey(key: "withdraw_com_avaiable")
         lblCommissionAvailableValue.text = KKUtil.languageSelectedStringForKey(key: "withdraw_com_avaiable_value")

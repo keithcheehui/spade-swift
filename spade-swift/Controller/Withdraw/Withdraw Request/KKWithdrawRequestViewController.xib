@@ -14,7 +14,7 @@
                 <outlet property="addBankContainerHeight" destination="58a-8X-85q" id="bm2-a1-1Kl"/>
                 <outlet property="bankListContainer" destination="Clg-Mf-KuX" id="nKX-zO-C8O"/>
                 <outlet property="bankTableView" destination="QlC-JW-aXD" id="HnX-Fk-7zd"/>
-                <outlet property="btnConfirmHeight" destination="Zcn-XS-TyI" id="xtG-ez-8eO"/>
+                <outlet property="btnConfirmHeight" destination="uQF-z2-2Zq" id="50m-Q5-yti"/>
                 <outlet property="lblDescription" destination="9cP-9u-v8t" id="a3T-tK-hfM"/>
                 <outlet property="lblNotice" destination="u1Z-yR-Qlu" id="046-Gb-Z88"/>
                 <outlet property="lblSelectBank" destination="15K-e7-7A8" id="rWg-xT-yC3"/>
@@ -252,31 +252,47 @@
                                 <constraint firstItem="15K-e7-7A8" firstAttribute="leading" secondItem="Clg-Mf-KuX" secondAttribute="leading" id="zmp-6t-0g1"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ziZ-P2-tFO">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ges-2I-77l">
                             <rect key="frame" x="378" y="359" width="140" height="35"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_confirm" translatesAutoresizingMaskIntoConstraints="NO" id="ZqJ-We-RH1">
+                                    <rect key="frame" x="0.0" y="0.0" width="140" height="35"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ziZ-P2-tFO">
+                                    <rect key="frame" x="0.0" y="0.0" width="140" height="35"/>
+                                    <connections>
+                                        <action selector="btnConfirmDidPressed" destination="-1" eventType="touchUpInside" id="lJR-XJ-ZPW"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="35" id="Zcn-XS-TyI"/>
-                                <constraint firstAttribute="width" secondItem="ziZ-P2-tFO" secondAttribute="height" multiplier="4:1" id="hdT-IY-TRk"/>
+                                <constraint firstAttribute="trailing" secondItem="ziZ-P2-tFO" secondAttribute="trailing" id="33E-CS-T0R"/>
+                                <constraint firstItem="ziZ-P2-tFO" firstAttribute="top" secondItem="ges-2I-77l" secondAttribute="top" id="Bqi-aG-KkI"/>
+                                <constraint firstItem="ZqJ-We-RH1" firstAttribute="leading" secondItem="ges-2I-77l" secondAttribute="leading" id="DAw-Py-P9c"/>
+                                <constraint firstAttribute="bottom" secondItem="ZqJ-We-RH1" secondAttribute="bottom" id="KoR-Gp-bAc"/>
+                                <constraint firstAttribute="width" secondItem="ges-2I-77l" secondAttribute="height" multiplier="4:1" id="Qos-qh-5Pt"/>
+                                <constraint firstItem="ZqJ-We-RH1" firstAttribute="top" secondItem="ges-2I-77l" secondAttribute="top" id="Xgz-Gt-dmJ"/>
+                                <constraint firstAttribute="trailing" secondItem="ZqJ-We-RH1" secondAttribute="trailing" id="aTQ-vZ-thD"/>
+                                <constraint firstAttribute="bottom" secondItem="ziZ-P2-tFO" secondAttribute="bottom" id="d4P-L6-8Bl"/>
+                                <constraint firstAttribute="height" constant="35" id="uQF-z2-2Zq"/>
+                                <constraint firstItem="ziZ-P2-tFO" firstAttribute="leading" secondItem="ges-2I-77l" secondAttribute="leading" id="zKF-Eu-OPg"/>
                             </constraints>
-                            <state key="normal" backgroundImage="btn_confirm"/>
-                            <connections>
-                                <action selector="btnConfirmDidPressed" destination="-1" eventType="touchUpInside" id="lJR-XJ-ZPW"/>
-                            </connections>
-                        </button>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="ziZ-P2-tFO" firstAttribute="centerX" secondItem="RUe-nT-nxG" secondAttribute="centerX" id="33R-Dy-Yps"/>
                         <constraint firstItem="Clg-Mf-KuX" firstAttribute="trailing" secondItem="NiD-H4-y6N" secondAttribute="trailing" id="GMO-0O-oid"/>
                         <constraint firstItem="Clg-Mf-KuX" firstAttribute="leading" secondItem="NiD-H4-y6N" secondAttribute="leading" id="Gbb-bI-Zpr"/>
-                        <constraint firstAttribute="bottom" secondItem="ziZ-P2-tFO" secondAttribute="bottom" constant="20" id="MNU-Vb-sGQ"/>
+                        <constraint firstAttribute="bottom" secondItem="ges-2I-77l" secondAttribute="bottom" constant="20" id="Q1I-sz-TjL"/>
+                        <constraint firstItem="ges-2I-77l" firstAttribute="top" secondItem="Clg-Mf-KuX" secondAttribute="bottom" constant="10" id="QI7-Hr-phA"/>
                         <constraint firstItem="NiD-H4-y6N" firstAttribute="top" secondItem="RUe-nT-nxG" secondAttribute="top" constant="30" id="dNe-n0-9lM"/>
                         <constraint firstItem="1lE-Ew-siW" firstAttribute="trailing" secondItem="NiD-H4-y6N" secondAttribute="trailing" id="dY7-qh-bYR"/>
                         <constraint firstItem="Clg-Mf-KuX" firstAttribute="top" secondItem="1lE-Ew-siW" secondAttribute="bottom" constant="10" id="fSb-Kp-3y7"/>
+                        <constraint firstItem="ges-2I-77l" firstAttribute="centerX" secondItem="RUe-nT-nxG" secondAttribute="centerX" id="gr8-zq-GeO"/>
                         <constraint firstItem="1lE-Ew-siW" firstAttribute="leading" secondItem="NiD-H4-y6N" secondAttribute="leading" id="x2E-9C-L4G"/>
                         <constraint firstItem="NiD-H4-y6N" firstAttribute="leading" secondItem="RUe-nT-nxG" secondAttribute="leading" constant="30" id="ygn-Id-lkA"/>
                         <constraint firstItem="1lE-Ew-siW" firstAttribute="top" secondItem="NiD-H4-y6N" secondAttribute="bottom" constant="10" id="z2T-Kd-29h"/>
-                        <constraint firstItem="ziZ-P2-tFO" firstAttribute="top" secondItem="Clg-Mf-KuX" secondAttribute="bottom" constant="10" id="zAA-23-fek"/>
                         <constraint firstAttribute="trailing" secondItem="NiD-H4-y6N" secondAttribute="trailing" constant="30" id="zNK-Mw-hax"/>
                     </constraints>
                 </view>

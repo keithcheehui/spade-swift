@@ -162,7 +162,7 @@ extension String {
 
 extension UIImageView {
     
-    func setUpImage(with url: String?, placeholder: UIImage? = nil) {
+    func setUpImage(with url: String?, placeholder: UIImage? = UIImage(named: "img_placeholder")) {
         
         if let urlString = url, let urL = URL(string: urlString) {
                             

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Photos
 
 class KKMyAffiliateViewController: KKBaseViewController {
     
@@ -29,7 +30,9 @@ class KKMyAffiliateViewController: KKBaseViewController {
     @IBOutlet weak var lblTodayCommission: UILabel!
     @IBOutlet weak var lblTodayCommissionView: UIView!
     @IBOutlet weak var lblTodayCommissionValue: UILabel!
-    
+    @IBOutlet weak var imgRefresh: UIImageView!
+    @IBOutlet weak var btnRefresh: UIButton!
+
     @IBOutlet weak var lblYesterdayCommission: UILabel!
     @IBOutlet weak var lblYesterdayCommissionView: UIView!
     @IBOutlet weak var lblYesterdayCommissionValue: UILabel!
@@ -66,8 +69,11 @@ class KKMyAffiliateViewController: KKBaseViewController {
     @IBOutlet weak var iconWidth: NSLayoutConstraint!
     @IBOutlet weak var iconMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var iconMarginRight: NSLayoutConstraint!
+    @IBOutlet weak var buttonContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var btnCollectHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak var btnShareHeight: NSLayoutConstraint!
+    @IBOutlet weak var btnCopyHeight: NSLayoutConstraint!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -80,7 +86,10 @@ class KKMyAffiliateViewController: KKBaseViewController {
         iconWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 45 : 45))
         iconMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 20 : 30)
         iconMarginRight.constant = iconMarginLeft.constant
+        buttonContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 90)
         btnCollectHeight.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 25 : 25))
+        btnShareHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        btnCopyHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
 
         lblMyIDView.backgroundColor = UIColor(white: 0, alpha: 0.3)
         lblReferrerIDView.backgroundColor = lblMyIDView.backgroundColor
@@ -176,7 +185,16 @@ class KKMyAffiliateViewController: KKBaseViewController {
     
     ///Button Actions
     @IBAction func btnRefreshDidPressed(){
-
+        imgRefresh.startRotate()
+        btnRefresh.isEnabled = false
+        
+        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+            self.imgRefresh.removeRotate()
+            self.btnRefresh.isEnabled = true
+        } else {
+            self.imgRefresh.removeRotate()
+            self.btnRefresh.isEnabled = true
+        }
     }
     
     @IBAction func btnCommissionTransactionDidPressed(){
@@ -194,11 +212,27 @@ class KKMyAffiliateViewController: KKBaseViewController {
     }
 
     @IBAction func btnSaveQRDidPressed(){
+        writeToPhotoAlbum(image: UIImage(named: "ic_sample_qr")!)
+    }
+    
+    func writeToPhotoAlbum(image: UIImage) {
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError), nil)
+        }
 
+    @objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        print("Save finished!")
     }
     
     @IBAction func btnCopyURLDidPressed(){
-
+        UIPasteboard.general.string = "[Hardcode data] - this is a hard code text"
+    }
+    
+    @IBAction func btnShareDidPressed() {
+        let text = "[Hardcode data] - this is a hard code text"
+        let shareAll = [text]
+        let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     @IBAction func btnCollectCommissionDidPressed(){
