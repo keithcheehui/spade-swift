@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import KeychainSwift
 
 class KKPersonalViewController: KKBaseViewController {
     
@@ -42,6 +43,10 @@ class KKPersonalViewController: KKBaseViewController {
 
         initialLayout()
         buttonHover(type: viewType.userInfo.rawValue)
+        
+        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+            getUserLatestWallet()
+        }
     }
     
     func initialLayout(){
@@ -64,6 +69,46 @@ class KKPersonalViewController: KKBaseViewController {
         lblIndividualReport.font = lblUserInfo.font
     }
     
+    func getUserLatestWallet() {
+        
+        KKApiClient.getUserLatestWallet().execute { userWalletResponse in
+            
+            if let userWalletResult = userWalletResponse.results {
+                
+                self.getUserProfile(walletBalance: userWalletResult.walletBalance!)
+            }
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: errorMessage)
+        }
+    }
+    
+    @objc func getUserProfile(walletBalance: String) {
+        
+        KKApiClient.getUserProfile().execute { userProfileResponse in
+            
+            guard var userProfile = userProfileResponse.results?.user![0] else { return }
+            userProfile.walletBalance = walletBalance
+            
+            do {
+                KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
+                KeychainSwift().set(try JSONEncoder().encode(KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == userProfile.locale})!), forKey: CacheKey.selectedLanguage)
+            }
+            catch {
+                self.hideAnimatedLoader()
+                self.showAlertView(alertMessage: error.localizedDescription)
+            }
+            
+            self.hideAnimatedLoader()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: errorMessage)
+        }
+    }
     
     ///Button Actions
     @IBAction func btnBackDidPressed(){

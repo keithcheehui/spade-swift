@@ -63,6 +63,8 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var moneyContainerWidth: NSLayoutConstraint!
     @IBOutlet weak var moneyContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var imgCoinWidth: NSLayoutConstraint!
+    @IBOutlet weak var lblMoneyMarginLeft: NSLayoutConstraint!
+    @IBOutlet weak var lblMoneyMarginRight: NSLayoutConstraint!
     @IBOutlet weak var imgRefreshWidth: NSLayoutConstraint!
     @IBOutlet weak var topContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var topButtonsContainerHeight: NSLayoutConstraint!
@@ -109,11 +111,13 @@ class KKHomeViewController: KKBaseViewController {
         lblProfileNameWidth.constant = KKUtil.ConvertSizeByDensity(size: 80)
         lblCopyWidth.constant = KKUtil.ConvertSizeByDensity(size: 60)
         expBarHeight.constant = KKUtil.ConvertSizeByDensity(size: 4)
-        moneyContainerWidth.constant = KKUtil.ConvertSizeByDensity(size: 180)
+        moneyContainerWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 160 : 180)
         moneyContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        imgCoinWidth.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        imgCoinWidth.constant = KKUtil.ConvertSizeByDensity(size: 35)
+        lblMoneyMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 5)
+        lblMoneyMarginRight.constant = lblMoneyMarginLeft.constant
         imgRefreshWidth.constant = KKUtil.ConvertSizeByDensity(size: 18)
-        topButtonsContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        topButtonsContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 50)
         announcementContainerWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 350 : 400)
         announcementContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         footerContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 50)
@@ -409,12 +413,11 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnCountryDidPressed(){
         announcementBubble.isHidden = true
-
+        KKUtil.logOutUser()
     }
     
     @IBAction func btnMissionDidPressed(){
         announcementBubble.isHidden = true
-
     }
     
     @IBAction func btnBonusDidPressed(){

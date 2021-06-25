@@ -218,7 +218,28 @@ class KKLoginViewController: KKBaseViewController {
     }
     
     @IBAction func btnForgotPasswordDidPressed(){
-        
+        closeOTPAndOpenForgotPassword()
+    }
+    
+    //MARK:- OTP and Registration
+    
+    @objc func closeOTPAndOpenForgotPassword() {
+
+        weak var pvc = self.presentingViewController
+
+        UIView.animate(withDuration: 0.25) {
+            
+            self.view.backgroundColor = UIColor(white: 0, alpha: 0)
+            
+        } completion: { complete in
+            
+            self.dismiss(animated: true, completion: {
+                let viewController = KKOTPViewController.init()
+                viewController.isFromForgotPassword = true
+                viewController.homeViewController = self.homeViewController
+                pvc?.present(viewController, animated: true, completion: nil)
+            })
+        }
     }
     
     @IBAction func btnConfirmDidPressed(){

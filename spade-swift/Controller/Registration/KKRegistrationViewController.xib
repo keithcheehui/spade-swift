@@ -35,6 +35,7 @@
                 <outlet property="txtConfirmPassword" destination="0Qj-co-Hd9" id="brY-wT-Hu7"/>
                 <outlet property="txtPassword" destination="AGS-0X-K0b" id="Kjo-aK-AwY"/>
                 <outlet property="txtUsername" destination="85H-AY-JYQ" id="2Ix-6Y-Eca"/>
+                <outlet property="usernameContainer" destination="PlF-nf-H6J" id="h3M-B4-1EJ"/>
                 <outlet property="usernameContainerHeight" destination="AEa-HK-ql8" id="TnK-Zj-J7w"/>
                 <outlet property="usernameContainerMarginLeft" destination="IDX-Zp-dxS" id="Mn6-tp-g6f"/>
                 <outlet property="usernameContainerMarginRight" destination="HZX-wZ-Qrh" id="Ygm-Py-BWZ"/>

@@ -101,6 +101,23 @@ class KKApiClient: NSObject {
         return performRequest(route: .otpVerify(parameter: parameter))
     }
     
+    static func sendForgotPasswordOTPRequest(phoneNumber: String) -> Future<KKOTPRequestResponse> {
+        
+        let parameter = [APIKeys.phoneNumber    : phoneNumber,
+                        ] as [String : Any]
+     
+        return performRequest(route: .forgotPasswordOTPRequest(parameter: parameter))
+    }
+    
+    static func proceedForgotPasswordOTPVerification(phoneNumber: String, otpCode: String) -> Future<KKGeneralResponse> {
+        
+        let parameter = [APIKeys.phoneNumber    : phoneNumber,
+                         APIKeys.OTPCode        : otpCode
+                        ] as [String : Any]
+     
+        return performRequest(route: .forgotPasswordOTPVerify(parameter: parameter))
+    }
+    
     //MARK:- OAuth Flow
     
     static func userAccountLogin(username: String, password: String) -> Future<KKUserCredential> {
@@ -121,10 +138,23 @@ class KKApiClient: NSObject {
                          APIKeys.phoneNumber            : phoneNumber,
                          APIKeys.registrationPlatform   : Platform.iOS,
                          APIKeys.type                   : RegistrationType.phoneNumber,
-                         APIKeys.countryCode            : CountryCode.Malaysia
+                         APIKeys.countryCode            : KKUtil.decodeSelectedCountryFromCache().code!
                         ] as [String : Any]
         
         return performRequest(route: .userAccountRegistration(parameter: parameter))
+    }
+    
+    static func userForgotPassword(password: String, phoneNumber: String) -> Future<KKGeneralResponse> {
+        
+        let parameter = [APIKeys.newPassword            : password,
+                         APIKeys.confirmNewPassword     : password,
+                         APIKeys.phoneNumber            : phoneNumber,
+                         APIKeys.registrationPlatform   : Platform.iOS,
+                         APIKeys.type                   : RegistrationType.phoneNumber,
+                         APIKeys.countryCode            : KKUtil.decodeSelectedCountryFromCache().code!
+                        ] as [String : Any]
+        
+        return performRequest(route: .userForgotPassword(parameter: parameter))
     }
     
     static func logOutUser() -> Future<KKGeneralResponse> {
@@ -157,6 +187,16 @@ class KKApiClient: NSObject {
                         ] as [String : Any]
         
         return performRequest(route: .updateUserLanguagePreference(parameter: parameter))
+    }
+    
+    static func changePassword(currentPwd: String, newPwd: String) -> Future<KKGeneralResponse> {
+     
+        let parameter = [APIKeys.currentPassword : currentPwd,
+                         APIKeys.newPassword : newPwd,
+                         APIKeys.confirmNewPassword : newPwd
+                        ] as [String : Any]
+        
+        return performRequest(route: .changePassword(parameter: parameter))
     }
     
     //MARK:- User Details
@@ -214,7 +254,7 @@ class KKApiClient: NSObject {
         let parameter = [APIKeys.locale         : KKUtil.decodeSelectedLanguageFromCache().locale!,
                          APIKeys.gameTypeCode   : gameTypeCode,
                          APIKeys.groupCode      : gCode,
-                         APIKeys.countryCode    : CountryCode.Malaysia
+                         APIKeys.countryCode    : KKUtil.decodeSelectedCountryFromCache().code!
                         ] as [String : Any]
         
         return performRequest(route: .getPlatformProductsContent(parameter: parameter))

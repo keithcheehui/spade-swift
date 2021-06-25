@@ -20,7 +20,9 @@ enum ApiRouter: URLRequestConvertible {
     // MARK: - OTP
     case otpRequest(parameter: [String: Any])
     case otpVerify(parameter: [String: Any])
-    
+    case forgotPasswordOTPRequest(parameter: [String: Any])
+    case forgotPasswordOTPVerify(parameter: [String: Any])
+
     // MARK: - OAuth
     case userAccountLogin(parameter: [String: Any])
     case userAccountRegistration(parameter: [String: Any])
@@ -31,7 +33,8 @@ enum ApiRouter: URLRequestConvertible {
     case getUserProfile
     case updateUserProfile(parameter: [String: Any])
     case updateUserLanguagePreference(parameter: [String: Any])
-    
+    case changePassword(parameter: [String: Any])
+
     // MARK: - User Details
     case getLatestWallet
     case getUserBettingGroupAndPlatform(parameter: [String: Any])
@@ -90,11 +93,14 @@ enum ApiRouter: URLRequestConvertible {
         
         case .otpRequest,
              .otpVerify,
+             .forgotPasswordOTPRequest,
+             .forgotPasswordOTPVerify,
              .userAccountLogin,
              .userAccountRegistration,
              .userForgotPassword,
              .addMemberWithdrawBankAccount,
-             .logOutUser:
+             .logOutUser,
+             .changePassword:
             return .post
             
         case .updateUserProfile,
@@ -121,9 +127,15 @@ enum ApiRouter: URLRequestConvertible {
         
         case .otpRequest:
             return "otp/request"
-        
-        case .otpVerify:
-            return "otp/verify"
+            
+            case .otpVerify:
+                return "otp/verify"
+            
+        case .forgotPasswordOTPRequest:
+            return "otp/forgot/request"
+            
+        case .forgotPasswordOTPVerify:
+            return "otp/forgot/verify"
             
         case .userAccountLogin:
             return "login"
@@ -142,6 +154,9 @@ enum ApiRouter: URLRequestConvertible {
             
         case .updateUserLanguagePreference:
             return "member/updateUserLanguagePreference"
+            
+        case .changePassword:
+            return "member/password/change"
             
         case .getLatestWallet:
             return "member/latestWalletBalance"
@@ -225,6 +240,12 @@ enum ApiRouter: URLRequestConvertible {
         case .otpVerify(let parameter):
             return parameter
             
+        case .forgotPasswordOTPRequest(let parameter):
+            return parameter
+            
+        case .forgotPasswordOTPVerify(let parameter):
+            return parameter
+            
         case .userAccountLogin(let parameter):
             return parameter
             
@@ -238,6 +259,9 @@ enum ApiRouter: URLRequestConvertible {
             return parameter
             
         case .updateUserLanguagePreference(let parameter):
+            return parameter
+            
+        case .changePassword(let parameter):
             return parameter
             
         case .getUserBettingGroupAndPlatform(let parameter):

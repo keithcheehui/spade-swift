@@ -21,6 +21,10 @@
 "login_remember_me"                         = "Remember me";
 "login_forgot_password"                     = "Forgot Password?";
 
+//MARK: LOGIN
+"forgot_pwd_note"                           = "For security reason, please enter your mobile number and we will send you an OTP for verification before proceeding to change your password.";
+"forgot_pwd_new_pwd"                        = "New password";
+
 //MARK: REGISTRATION
 "register_username"                         = "Username:";
 "register_username_placeholder"             = "Username must be between 6-12 characters.";
@@ -86,9 +90,9 @@
 "settings_current_password"                 = "Current Password";
 "settings_new_password"                     = "New Password";
 "settings_reconfirm_password"               = "Reconfirm Password";
-"settings_version_ios"                      = "iOS Version: ";
-"settings_version_android"                  = "Android Version: ";
-"settings_version_h5"                       = "H5 Version: ";
+"settings_version_ios"                      = "iOS Version: %@";
+"settings_version_android"                  = "Android Version: %@";
+"settings_version_h5"                       = "H5 Version: %@";
 "settings_volume_title"                     = "Sound Settings";
 "settings_volume_music"                     = "Music";
 "settings_volume_sound"                     = "Sound";

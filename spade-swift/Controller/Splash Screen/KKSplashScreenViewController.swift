@@ -33,11 +33,8 @@ class KKSplashScreenViewController: KKBaseViewController {
         drawLoadingProgress()
         
         if KKUtil.isConnectedToInternet() {
-            
             self.getLandingDetails()
-        }
-        else
-        {
+        } else {
             self.appVersionApiFailed()
         }
     }
@@ -88,7 +85,11 @@ class KKSplashScreenViewController: KKBaseViewController {
         {
             timerStop = true
             lblLoading.text = "loading 100%..."
-            self.present(KKSelectCountryViewController(), animated: false, completion: nil)
+            if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+                self.present(KKHomeViewController(), animated: false, completion: nil)
+            } else {
+                self.present(KKSelectCountryViewController(), animated: false, completion: nil)
+            }
         }
         else
         {
@@ -168,7 +169,8 @@ class KKSplashScreenViewController: KKBaseViewController {
                 KeychainSwift().set(try JSONEncoder().encode(appVersionDetails), forKey: CacheKey.appVersionDetails)
                 KKSingleton.sharedInstance.countryArray = appVersionDetails.countries!
                 KKSingleton.sharedInstance.languageArray = appVersionDetails.languages!
-                
+                KKSingleton.sharedInstance.appVersion = appVersionDetails.appVersion!
+
                 self.stopProgress = 1
                 
                 if self.timerStop {
@@ -197,6 +199,7 @@ class KKSplashScreenViewController: KKBaseViewController {
             
             KKSingleton.sharedInstance.countryArray = appVersionDetails!.countries!
             KKSingleton.sharedInstance.languageArray = appVersionDetails!.languages!
+            KKSingleton.sharedInstance.appVersion = appVersionDetails!.appVersion!
         }
         
         self.stopProgress = 1

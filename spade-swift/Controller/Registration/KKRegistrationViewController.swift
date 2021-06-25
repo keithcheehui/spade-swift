@@ -15,6 +15,7 @@ class KKRegistrationViewController: KKBaseViewController {
     @IBOutlet weak var imgClose: UIImageView!
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var lblUsername: UILabel!
+    @IBOutlet weak var usernameContainer: UIView!
     @IBOutlet weak var usernameView: UIView!
     @IBOutlet weak var txtUsername: UITextField!
     @IBOutlet weak var lblPassword: UILabel!
@@ -45,7 +46,8 @@ class KKRegistrationViewController: KKBaseViewController {
     
     var verifiedPhoneNumber: String!
     var homeViewController: KKHomeViewController!
-    
+    var isFromForgotPassword = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -90,7 +92,7 @@ class KKRegistrationViewController: KKBaseViewController {
         btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
         
         lblUsername.text = KKUtil.languageSelectedStringForKey(key: "register_username")
-        lblPassword.text = KKUtil.languageSelectedStringForKey(key: "register_password")
+        lblPassword.text = isFromForgotPassword ? KKUtil.languageSelectedStringForKey(key: "forgot_pwd_new_pwd") : KKUtil.languageSelectedStringForKey(key: "register_password")
         lblConfirmPassword.text = KKUtil.languageSelectedStringForKey(key: "register_confirm_password")
 
         txtUsername.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "register_username_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
@@ -111,6 +113,18 @@ class KKRegistrationViewController: KKBaseViewController {
         txtUsername.returnKeyType = .next
         txtPassword.returnKeyType = .next
         txtConfirmPassword.returnKeyType = .done
+        
+        if (isFromForgotPassword) {
+            usernameContainer.isHidden = true
+            txtUsername.isUserInteractionEnabled = false
+            imgRegister.image = UIImage(named: "title_forgotpassword")
+
+        } else {
+            usernameContainer.isHidden = false
+            txtUsername.isUserInteractionEnabled = true
+            imgRegister.image = UIImage(named: "title_register")
+
+        }
     }
     
     //MARK:- Validation
@@ -119,39 +133,39 @@ class KKRegistrationViewController: KKBaseViewController {
         
         self.view.endEditing(true)
         
-        if txtUsername.text!.count == 0 {
-            
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_username_required"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_username_required_desc"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
-
+        if (!isFromForgotPassword) {
+            if txtUsername.text!.count == 0 {
+                self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_username_required"),
+                                               body: KKUtil.languageSelectedStringForKey(key: "error_username_required_desc"),
+                                               buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            }
         }
         
         if txtPassword.text!.count == 0 {
-            
             self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_required"),
                                            body: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"),
                                            buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
-
         }
         
         if txtConfirmPassword.text!.count == 0 {
-            
             self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_confirm_required"),
                                            body: KKUtil.languageSelectedStringForKey(key: "error_password_confirm_required_desc"),
                                            buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
-
         }
         
         if txtConfirmPassword.text != txtPassword.text {
-            
             self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_not_match"),
                                            body: KKUtil.languageSelectedStringForKey(key: "error_password_not_match_desc"),
                                            buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
         }
         
         self.showAnimatedLoader()
-        self.userAccountRegistration()
+        
+        if (isFromForgotPassword) {
+            self.userForgotPassword()
+        } else {
+            self.userAccountRegistration()
+        }
     }
     
     //MARK:- API Calls
@@ -163,6 +177,21 @@ class KKRegistrationViewController: KKBaseViewController {
         KKApiClient.userAccountRegistration(username: txtUsername.text!, password: txtPassword.text!, phoneNumber: verifiedPhoneNumber).execute { userCredential in
             
             self.userAccountLogin()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: errorMessage)
+        }
+    }
+    
+    @objc func userForgotPassword() {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.userForgotPassword(password: txtPassword.text!, phoneNumber: verifiedPhoneNumber).execute { userCredential in
+
+            self.dismissPresentedViewWithBackgroundFaded()
             
         } onFailure: { errorMessage in
             

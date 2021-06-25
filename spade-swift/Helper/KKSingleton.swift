@@ -15,7 +15,8 @@ class KKSingleton: NSObject {
     var countryArray:       [KKAppVersionCountries] = []
     var languageArray:      [KKAppVersionLanguages] = []
     var groupPlatformArray: [KKGroupPlatformGroups] = []
-    
+    var appVersion:         KKAppVersionAppVersion!
+
         
     private override init() {}
 

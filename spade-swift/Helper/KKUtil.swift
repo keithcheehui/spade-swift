@@ -42,11 +42,13 @@ class KKUtil: NSObject {
     class func languageSelectedStringForKey (key: String) -> String {
         
         let path : String = Bundle.main.path(forResource: "en", ofType: "lproj")!
-        
+
         let languageBundle = Bundle.init(path: path)
         let string : String = NSLocalizedString(key, tableName: "", bundle: languageBundle!, value: "", comment: "")
-        
+
         return string
+//        return NSLocalizedString(key, tableName: "", bundle: Bundle.main, value: "", comment: "")
+
     }
     
     ///Check email validation
@@ -108,6 +110,10 @@ class KKUtil: NSObject {
     ///logout user
     class func logOutUser() {
         UserDefaults.standard.set(false, forKey: CacheKey.loginStatus)
+        KeychainSwift().set("", forKey: CacheKey.accessToken)
+        KeychainSwift().set("", forKey: CacheKey.refreshToken)
+        KeychainSwift().set("", forKey: CacheKey.userProfile)
+
         UserDefaults.standard.synchronize()
         
         KKUtil.proceedToPage(vc: KKSplashScreenViewController.init())

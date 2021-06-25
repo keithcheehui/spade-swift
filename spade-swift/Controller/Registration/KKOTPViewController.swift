@@ -62,17 +62,25 @@ class KKOTPViewController: KKBaseViewController {
     @IBOutlet weak var containerMarginBottom: NSLayoutConstraint!
     @IBOutlet weak var containerMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var containerMarginRight: NSLayoutConstraint!
-    @IBOutlet weak var mobileContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var mobileContainerMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var mobileContainerMarginRight: NSLayoutConstraint!
     @IBOutlet weak var digitContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmContainerMarginBottom: NSLayoutConstraint!
     
+    @IBOutlet weak var lblNotes: UILabel!
+    @IBOutlet weak var lblNotesMarginTop: NSLayoutConstraint!
+    @IBOutlet weak var lblNotesMarginBottom: NSLayoutConstraint!
+    @IBOutlet weak var lblNotesMarginLeft: NSLayoutConstraint!
+    @IBOutlet weak var lblNotesMarginRight: NSLayoutConstraint!
+    @IBOutlet weak var lblNotesHeight: NSLayoutConstraint!
+
     var homeViewController: KKHomeViewController!
     var phoneNumber: String! = ""
     var otpTextField6NotEmpty = false
     var timerCountdown = 60
     var timer = Timer()
+    
+    var isFromForgotPassword = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,11 +129,13 @@ class KKOTPViewController: KKBaseViewController {
         containerMarginBottom.constant = containerMarginTop.constant
         containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 100 : 180)
         containerMarginRight.constant = containerMarginLeft.constant
-        mobileContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 50)
         mobileContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 50)
         mobileContainerMarginRight.constant = mobileContainerMarginLeft.constant
         digitContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 16)
         btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
+        
+        lblNotesMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 35)
+        lblNotesMarginRight.constant = KKUtil.ConvertSizeByDensity(size: -35)
         
         let selectedCountryDetails = KKUtil.decodeSelectedCountryFromCache()
         txtCountryCode.text = "\(selectedCountryDetails.code!.dropLast()) +\(selectedCountryDetails.countryPrefix!)"
@@ -203,6 +213,26 @@ class KKOTPViewController: KKBaseViewController {
         
         resendView.isHidden = true
         btnSend.isUserInteractionEnabled = true
+        
+        if (isFromForgotPassword) {
+            lblNotesMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 40)
+            lblNotesMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 15)
+            lblNotesHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
+            
+            imgRegister.image = UIImage(named: "title_forgotpassword")
+            lblNotes.isHidden = false
+            
+            lblNotes.font = UIFont.systemFont(ofSize: ConstantSize.ssoLabelSmallFont)
+            lblNotes.textColor = .spade_white_FFFFFF
+            lblNotes.text = KKUtil.languageSelectedStringForKey(key: "forgot_pwd_note")
+        } else {
+            lblNotesMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 50)
+            lblNotesMarginBottom.constant = 0
+            lblNotesHeight.constant = 0
+
+            imgRegister.image = UIImage(named: "title_register")
+            lblNotes.isHidden = true
+        }
     }
 
     @objc func timerUpdate() {
@@ -239,7 +269,11 @@ class KKOTPViewController: KKBaseViewController {
                 phoneNumber = "60\(txtMobile.text!)"
             }
             
-            self.requestPhoneNumberOTP()
+            if (isFromForgotPassword) {
+                self.requestForgotPasswordOTP()
+            } else {
+                self.requestPhoneNumberOTP()
+            }
         }
     }
     
@@ -267,6 +301,20 @@ class KKOTPViewController: KKBaseViewController {
         }
     }
     
+    @objc func requestForgotPasswordOTP() {
+        self.showAnimatedLoader()
+        
+        KKApiClient.sendForgotPasswordOTPRequest(phoneNumber: phoneNumber).execute { KKOTPRequestResponse in
+            self.hideAnimatedLoader()
+            self.resendView.isHidden = false
+            self.timerCountdown = 60
+            self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.timerUpdate), userInfo: nil, repeats: true)
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: errorMessage)
+        }
+    }
+    
     func verifyOTPAndProceed() {
         
         let OTPCode = "\(txtOTP1.text!)\(txtOTP2.text!)\(txtOTP3.text!)\(txtOTP4.text!)\(txtOTP5.text!)\(txtOTP6.text!)"
@@ -278,12 +326,22 @@ class KKOTPViewController: KKBaseViewController {
         } else {
             self.showAnimatedLoader()
             
-            KKApiClient.proceedOTPVerification(phoneNumber: phoneNumber, otpCode: OTPCode).execute { generalResponse in
-                self.hideAnimatedLoader()
-                self.closeOTPAndOpenRegistration()
-            } onFailure: { errorMessage in
-                self.hideAnimatedLoader()
-                self.showAlertView(alertMessage: errorMessage)
+            if (isFromForgotPassword) {
+                KKApiClient.proceedForgotPasswordOTPVerification(phoneNumber: phoneNumber, otpCode: OTPCode).execute { generalResponse in
+                    self.hideAnimatedLoader()
+                    self.closeOTPAndOpenRegistration()
+                } onFailure: { errorMessage in
+                    self.hideAnimatedLoader()
+                    self.showAlertView(alertMessage: errorMessage)
+                }
+            } else {
+                KKApiClient.proceedOTPVerification(phoneNumber: phoneNumber, otpCode: OTPCode).execute { generalResponse in
+                    self.hideAnimatedLoader()
+                    self.closeOTPAndOpenRegistration()
+                } onFailure: { errorMessage in
+                    self.hideAnimatedLoader()
+                    self.showAlertView(alertMessage: errorMessage)
+                }
             }
         }
     }
@@ -347,6 +405,7 @@ class KKOTPViewController: KKBaseViewController {
             self.dismiss(animated: true, completion: {
                 let viewController = KKRegistrationViewController.init()
                 viewController.verifiedPhoneNumber = self.phoneNumber
+                viewController.isFromForgotPassword = self.isFromForgotPassword
                 viewController.homeViewController = self.homeViewController
                 pvc?.present(viewController, animated: true, completion: nil)
             })

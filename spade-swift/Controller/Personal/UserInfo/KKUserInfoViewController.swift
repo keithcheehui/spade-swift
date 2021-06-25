@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import KeychainSwift
 
 class KKUserInfoViewController: KKBaseViewController, UITextFieldDelegate {
     
@@ -128,8 +129,8 @@ class KKUserInfoViewController: KKBaseViewController, UITextFieldDelegate {
 
         txtBirthday.returnKeyType = .next
         txtGender.returnKeyType = .next
-        txtEmail.returnKeyType = .next
-        txtPhone.returnKeyType = .done
+        txtEmail.returnKeyType = .done
+//        txtPhone.returnKeyType = .done
         
         txtBirthdayView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
         txtGenderView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
@@ -146,16 +147,47 @@ class KKUserInfoViewController: KKBaseViewController, UITextFieldDelegate {
     }
     
     func defaultLayoutValue(){
-        lblAccountNumber.text = "80808080"
-        lblProgress.text = "RM100 / RM10,000"
+        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus), let userProfile = KKUtil.decodeUserProfileFromCache() {
+            if let code = userProfile.code {
+                lblAccountNumber.text = code
+                txtAccount.text = code
+            }
+            
+            if let username = userProfile.username {
+                txtUsername.text = username
+            }
+            
+            if let gender = userProfile.gender {
+                txtGender.text = gender
+            }
+            
+            if let id = userProfile.id {
+                txtID.text = String(id)
+            }
+            
+            if let phone = userProfile.phoneNo {
+                txtPhone.text = String(format: "+\(phone)")
+            }
+            
+            if let dob = userProfile.dob {
+                txtBirthday.text = dob
+            }
+            
+            if let email = userProfile.email {
+                txtEmail.text = email
+            }
+        } else {
+            lblAccountNumber.text = ""
+            txtAccount.text = ""
+            txtUsername.text = ""
+            txtGender.text = ""
+            txtID.text = ""
+            txtPhone.text = ""
+            txtBirthday.text = ""
+            txtEmail.text = ""
+        }
         
-        txtAccount.text = "80808080"
-        txtUsername.text = "mag888"
-        txtBirthday.text = "12-09-1991"
-        txtID.text = "480921"
-        txtGender.text = "Male"
-        txtEmail.text = "mag@rmail.com"
-        txtPhone.text = "+60182287321"
+        lblProgress.text = "RM100 / RM10,000"
     }
     
     func displayView(){
@@ -163,12 +195,12 @@ class KKUserInfoViewController: KKBaseViewController, UITextFieldDelegate {
         txtBirthdayView.backgroundColor = UIColor(white: 0, alpha: 0)
         txtGenderView.backgroundColor = UIColor(white: 0, alpha: 0)
         txtEmailView.backgroundColor = UIColor(white: 0, alpha: 0)
-        txtPhoneView.backgroundColor = UIColor(white: 0, alpha: 0)
+//        txtPhoneView.backgroundColor = UIColor(white: 0, alpha: 0)
         
         txtBirthday.isUserInteractionEnabled = false
         txtGender.isUserInteractionEnabled = false
         txtEmail.isUserInteractionEnabled = false
-        txtPhone.isUserInteractionEnabled = false
+//        txtPhone.isUserInteractionEnabled = false
     }
     
     func editView(){
@@ -176,12 +208,12 @@ class KKUserInfoViewController: KKBaseViewController, UITextFieldDelegate {
         txtBirthdayView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         txtGenderView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         txtEmailView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        txtPhoneView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+//        txtPhoneView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         
         txtBirthday.isUserInteractionEnabled = true
         txtGender.isUserInteractionEnabled = true
         txtEmail.isUserInteractionEnabled = true
-        txtPhone.isUserInteractionEnabled = true
+//        txtPhone.isUserInteractionEnabled = true
     }
     
     
@@ -195,11 +227,36 @@ class KKUserInfoViewController: KKBaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func btnEditDidPressed(){
+        if !UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+            return
+        }
+        
         if (isEditMode){
-            //TODO: PENDING API. Before change to display mode, need to save the detail
-            
-            isEditMode = false
-            displayView()
+            showAnimatedLoader()
+
+            KKApiClient.updateUserProfile(email: txtEmail.text!, gender: txtGender.text!, birthday: txtBirthday.text!).execute { response in
+                self.hideAnimatedLoader()
+                
+                if var userProfile = KKUtil.decodeUserProfileFromCache() {
+                    userProfile.email = self.txtEmail.text!
+                    userProfile.gender = self.txtGender.text!
+                    userProfile.dob = self.txtBirthday.text!
+
+                    do {
+                        KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
+                        
+                        self.isEditMode = false
+                        self.displayView()
+                    }
+                    catch {
+                        
+                    }
+                }
+                
+            } onFailure: { errorMessage in
+                self.hideAnimatedLoader()
+                self.showAlertView(alertMessage: errorMessage)
+            }
         }else{
             isEditMode = true
             editView()

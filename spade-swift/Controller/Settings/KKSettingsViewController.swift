@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
+class KKSettingsViewController: KKBaseViewController {
     
     @IBOutlet weak var lblVolumeSetting: UILabel!
     @IBOutlet weak var lblChangePassword: UILabel!
@@ -158,13 +158,16 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
         lblVersionIOSHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
         lblVersionIOSMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 30)
 
-        lblVersionIOS.text = KKUtil.languageSelectedStringForKey(key: "settings_version_ios")
-        lblVersionAndroid.text = KKUtil.languageSelectedStringForKey(key: "settings_version_android")
-        lblVersionH5.text = KKUtil.languageSelectedStringForKey(key: "settings_version_h5")
-        
         lblVersionIOS.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
         lblVersionAndroid.font = lblVersionIOS.font
         lblVersionH5.font = lblVersionIOS.font
+        
+        let version = KKSingleton.sharedInstance.appVersion
+        if version != nil {
+            lblVersionIOS.text = String(format: KKUtil.languageSelectedStringForKey(key: "settings_version_ios"), version!.appVersion!.isEmpty ? "" : version!.appVersion!)
+            lblVersionAndroid.text = String(format: KKUtil.languageSelectedStringForKey(key: "settings_version_android"), "")
+            lblVersionH5.text = String(format: KKUtil.languageSelectedStringForKey(key: "settings_version_h5"), "")
+        }
     }
     
     func volumeLayout(){
@@ -207,7 +210,27 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func btnConfirmChangePasswordDidPressed(){
+        self.view.endEditing(true)
 
+        if txtCurrentPassword.text!.count == 0 {
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_required"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+        }
+        
+        if txtReconfirmPassword.text!.count == 0 {
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_confirm_required"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_password_confirm_required_desc"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+        }
+        
+        if txtReconfirmPassword.text != txtNewPassword.text {
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_not_match"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_password_not_match_desc"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+        }
+        
+        userChangePassword()
     }
     
     func buttonHover(image: UIImageView){
@@ -250,7 +273,27 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
         }
     }
     
-    ///TextField Delegate
+    //MARK:- API Calls
+    
+    @objc func userChangePassword() {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.changePassword(currentPwd: txtCurrentPassword.text!, newPwd: txtReconfirmPassword.text!).execute { userCredential in
+            self.hideAnimatedLoader()
+            self.txtCurrentPassword.text = ""
+            self.txtNewPassword.text = ""
+            self.txtReconfirmPassword.text = ""
+
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: errorMessage)
+        }
+    }
+}
+
+extension KKSettingsViewController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.switchBasedNextTextField(textField)
         return true
@@ -267,4 +310,3 @@ class KKSettingsViewController: KKBaseViewController, UITextFieldDelegate {
         }
     }
 }
-
