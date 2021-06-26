@@ -39,6 +39,7 @@ class KKSettingsViewController: KKBaseViewController {
     @IBOutlet weak var lblNewPassword: UILabel!
     @IBOutlet weak var newPasswordView: UIView!
     @IBOutlet weak var txtNewPassword: UITextField!
+    @IBOutlet weak var lblNote: UILabel!
     @IBOutlet weak var lblReconfirmPassword: UILabel!
     @IBOutlet weak var reconfirmPasswordView: UIView!
     @IBOutlet weak var txtReconfirmPassword: UITextField!
@@ -46,9 +47,9 @@ class KKSettingsViewController: KKBaseViewController {
     @IBOutlet weak var containerHeight: NSLayoutConstraint!
     @IBOutlet weak var passwordContentViewMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var passwordContentViewMarginRight: NSLayoutConstraint!
-    @IBOutlet weak var lblCurrentPasswordWidth: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak var btnConfirmMarginBottom: NSLayoutConstraint!
+
     ///Version Subview
     @IBOutlet weak var versionContentView: UIView!
     @IBOutlet weak var lblVersionIOS: UILabel!
@@ -127,12 +128,16 @@ class KKSettingsViewController: KKBaseViewController {
         reconfirmPasswordView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
         
         containerHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        lblCurrentPasswordWidth.constant = KKUtil.ConvertSizeByDensity(size: 100)
         btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        btnConfirmMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 20)
         
         lblCurrentPassword.text = KKUtil.languageSelectedStringForKey(key: "settings_current_password")
         lblNewPassword.text = KKUtil.languageSelectedStringForKey(key: "settings_new_password")
         lblReconfirmPassword.text = KKUtil.languageSelectedStringForKey(key: "settings_reconfirm_password")
+        lblNote.text = KKUtil.languageSelectedStringForKey(key: "settings_notes")
+        
+        lblNote.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 9))
+        lblNote.textColor = .spade_orange_FFBA00
         
         lblCurrentPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
         lblNewPassword.font = lblCurrentPassword.font
@@ -141,9 +146,9 @@ class KKSettingsViewController: KKBaseViewController {
         txtNewPassword.font = lblCurrentPassword.font
         txtReconfirmPassword.font = lblCurrentPassword.font
         
-        txtCurrentPassword.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "register_password_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
-        txtNewPassword.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "register_password_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
-        txtReconfirmPassword.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "register_password_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
+        txtCurrentPassword.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "settings_current_password_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
+        txtNewPassword.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "settings_new_password_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
+        txtReconfirmPassword.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "settings_reconfirm_password_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
         
         txtCurrentPassword.delegate = self
         txtNewPassword.delegate = self

@@ -18,7 +18,9 @@ extension UIColor {
     static let spade_blue_292969 = UIColor.init(hexCode: "#292969")
     static let spade_blue_4850C6 = UIColor.init(hexCode: "#4850C6")
     static let spade_blue_5CB5DE = UIColor.init(hexCode: "#5CB5DE")
-    
+    static let spade_yellow_FFFF99 = UIColor.init(hexCode: "#FFFF99")
+    static let spade_green_8AD942 = UIColor.init(hexCode: "#8AD942")
+
     convenience init(red: Int, green: Int, blue: Int, alphaValue: CGFloat = 1.0) {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")

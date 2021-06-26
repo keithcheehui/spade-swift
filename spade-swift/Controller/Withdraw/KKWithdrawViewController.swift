@@ -76,10 +76,6 @@ class KKWithdrawViewController: KKBaseViewController {
     @IBAction func btnBankCardDidPressed(){
         buttonHover(type: viewType.bankCard.rawValue)
     }
-
-    func btnAddBankDidPressed(){
-        changeView(vc: KKAddBankViewController())
-    }
     
     func buttonHover(type: Int){
         imgHoverWithdraw.isHidden = true
@@ -100,7 +96,8 @@ class KKWithdrawViewController: KKBaseViewController {
             break;
         default:
             imgHoverWithdraw.isHidden = false
-            let viewController = KKWithdrawRequestViewController()
+            let viewController = KKWithdrawRequestViewController.init()
+            viewController.parentVC = self
             changeView(vc: viewController)
             break;
         }
@@ -116,5 +113,13 @@ class KKWithdrawViewController: KKBaseViewController {
         vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
         contentView.addSubview(vc.view)
         self.addChild(vc)
+    }
+    
+    func changeToHoverBankCard() {
+        imgHoverWithdraw.isHidden = true
+        imgHoverWithdrawHistory.isHidden = true
+        imgHoverBankCard.isHidden = false
+        
+        changeView(vc: KKAddBankViewController())
     }
 }

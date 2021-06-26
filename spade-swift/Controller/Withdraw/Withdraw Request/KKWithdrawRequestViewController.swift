@@ -8,14 +8,13 @@
 import Foundation
 import UIKit
 
-class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSource, UITableViewDelegate {
+class KKWithdrawRequestViewController: KKBaseViewController {
     
     @IBOutlet weak var lblWithdrawAmount: UILabel!
     @IBOutlet weak var txtWithdrawAmountView: UIView!
     @IBOutlet weak var txtWithdrawAmount: UITextField!
     @IBOutlet weak var lblNotice: UILabel!
-
-
+    
     @IBOutlet weak var addBankContainer: UIView!
     @IBOutlet weak var lblTitleWithdraw: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
@@ -28,11 +27,17 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
     @IBOutlet weak var addBankContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmHeight: NSLayoutConstraint!
     
+    var parentVC: KKWithdrawViewController!
     
+    var userBankList: [KKWithdrawBankDetails]! = []
+    var bankItemList: [KKWithdrawBankNames]! = []
+    var selectedBankItem = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialLayout()
+        getBankListAPI()
     }
     
     func initialLayout(){
@@ -72,6 +77,9 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
         bankTableView.backgroundColor = UIColor(white: 0, alpha: 0)
         bankTableView.register(UINib(nibName: "KKBankTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.bankTVCIdentifier)
 
+        txtWithdrawAmount.keyboardType = .numberPad
+        txtWithdrawAmount.delegate = self
+        
         changeLayoutView(noBank: true)
     }
     
@@ -85,24 +93,76 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
         }
     }
     
+    func getBankListAPI() {
+        self.showAnimatedLoader()
+        
+        KKApiClient.getMemberWithdrawBankAccount().execute { withdrawBankResponse in
+            self.hideAnimatedLoader()
+            self.userBankList = withdrawBankResponse.results?.userBanks
+            self.bankItemList = withdrawBankResponse.results?.bankNames
+            
+            self.changeLayoutView(noBank: self.userBankList.isEmpty)
+
+            self.bankTableView.reloadData()
+            
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: errorMessage)
+            self.changeLayoutView(noBank: self.userBankList.isEmpty)
+        }
+    }
+    
+    func validateEnty() {
+        if (userBankList.isEmpty) {
+            return
+        }
+        
+        if txtWithdrawAmount.text!.count == 0 {
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_error_encountered"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_withdraw_empty"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            return
+        }
+        
+        performWithdrawAPI()
+    }
+    
+    func performWithdrawAPI(){
+        self.showAnimatedLoader()
+        
+        let amount: String = txtWithdrawAmount.text!
+        let amountFloat = Float(amount)
+        
+        let bankAccount = userBankList[selectedBankItem].bankAccountNumber!
+        
+        KKApiClient.updateMemberWithdrawal(amount: amountFloat!, bankAcc: bankAccount).execute { withdrawResponse in
+            self.hideAnimatedLoader()
+            self.txtWithdrawAmount.text = ""
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: errorMessage)
+        }
+    }
+    
     ///Button Actions
     @IBAction func btnClearDidPressed(){
         txtWithdrawAmount.text = ""
     }
     
     @IBAction func btnAddDidPressed(){
-        let viewController = KKAddBankViewController.init()
-        viewController.view.frame = CGRect(x: 0, y: 0, width: tableContentView.frame.width, height: tableContentView.frame.height)
-        tableContentView.addSubview(viewController.view)
-        displayViewController.addChild(viewController)
+        parentVC.changeToHoverBankCard()
     }
     
     @IBAction func btnConfirmDidPressed(){
-
+        validateEnty()
     }
     
+}
+
+extension KKWithdrawRequestViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return userBankList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,12 +171,39 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
             fatalError("DequeueReusableCell failed while casting")
         }
         
-        cell.lblBankName.text = "Maybank Berhad Maybank"
-        cell.lblBankAccount.text = "1111 **** **** 0000"
+        if (indexPath.row == selectedBankItem) {
+            cell.imgSelected.isHidden = false
+            cell.containerView.layer.borderWidth = 1
+            cell.containerView.layer.borderColor = UIColor.spade_green_8AD942.cgColor
+        } else {
+            cell.imgSelected.isHidden = true
+            cell.containerView.layer.borderWidth = 0
+        }
+ 
+        if let bankAccNumber = userBankList[indexPath.row].bankAccountNumber {
+            if bankAccNumber.isEmpty {
+                cell.lblBankAccount.text = ""
+            } else {
+                cell.lblBankAccount.text = userBankList[indexPath.row].bankAccountNumber!.bankAccountMasked
+            }
+        }
+            
+        for bankItem in bankItemList {
+            if bankItem.id == userBankList[indexPath.row].bankId {
+                cell.imgBank.setUpImage(with: bankItem.img)
+            }
+        }
+        
+        cell.lblBankName.text = userBankList[indexPath.row].bankName
         
         cell.selectionStyle = .none
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedBankItem = indexPath.row
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -124,3 +211,44 @@ class KKWithdrawRequestViewController: KKBaseViewController, UITableViewDataSour
     }
 }
 
+extension KKWithdrawRequestViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+         // Uses the number format corresponding to your Locale
+         let formatter = NumberFormatter()
+         formatter.numberStyle = .decimal
+         formatter.locale = Locale.current
+         formatter.maximumFractionDigits = 0
+
+
+        // Uses the grouping separator corresponding to your Locale
+        // e.g. "," in the US, a space in France, and so on
+        if let groupingSeparator = formatter.groupingSeparator {
+
+            if string == groupingSeparator {
+                return true
+            }
+
+
+            if let textWithoutGroupingSeparator = textField.text?.replacingOccurrences(of: groupingSeparator, with: "") {
+                var totalTextWithoutGroupingSeparators = textWithoutGroupingSeparator + string
+                if string.isEmpty { // pressed Backspace key
+                    totalTextWithoutGroupingSeparators.removeLast()
+                }
+                if let numberWithoutGroupingSeparator = formatter.number(from: totalTextWithoutGroupingSeparators),
+                    let formattedText = formatter.string(from: numberWithoutGroupingSeparator) {
+
+                    textField.text = formattedText
+                    return false
+                }
+            }
+        }
+        return true
+    }
+}

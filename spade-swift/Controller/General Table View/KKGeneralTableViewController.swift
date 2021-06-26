@@ -30,7 +30,7 @@ class KKGeneralTableViewController: KKTableBaseViewController {
     var rightTitle: String!
     var rightValue: String!
     var rightDropdownOptions: [String] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialLayout()
@@ -71,10 +71,7 @@ class KKGeneralTableViewController: KKTableBaseViewController {
         case .AccountDetails:
             leftTitle = "Transaction Time"
             leftValue = "All Time"
-            
-            rightTitle = "Transaction Status"
-            rightValue = "All Status"
-            self.showTopContainer(shouldShow: true, withRightPicker: true)
+            self.showTopContainer(shouldShow: true, withRightPicker: false)
         
         case .DepositHistory:
             leftTitle = "Deposit Status"
@@ -95,6 +92,7 @@ class KKGeneralTableViewController: KKTableBaseViewController {
         if (shouldShow){
             topContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 35)
             topContainer.isHidden = false
+            getLeftDropdownOptions()
             
             showDropdownOption(showRight: withRightPicker)
         } else {
@@ -114,6 +112,16 @@ class KKGeneralTableViewController: KKTableBaseViewController {
             
             rightPickerTitle.text = rightTitle
             rightPickerTxtValue.text = rightValue
+        }
+    }
+    
+    func getLeftDropdownOptions() {
+        switch tableViewType {
+            
+            case .WithdrawHistory:
+                leftDropdownOptions = KKBaseViewController().pickerStatusArray
+            default:
+                leftDropdownOptions = KKBaseViewController().pickerTimeArray
         }
     }
 }

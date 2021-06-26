@@ -44,7 +44,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UIControl">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -255,13 +255,13 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E01-6Y-Zvv">
-                            <rect key="frame" x="208" y="284" width="160" height="40"/>
+                            <rect key="frame" x="228" y="284" width="120" height="40"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_confirm_sso" translatesAutoresizingMaskIntoConstraints="NO" id="S9X-Bg-ooE">
-                                    <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHX-J6-8sk">
-                                    <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
                                     <connections>
                                         <action selector="btnConfirmDidPressed" destination="-1" eventType="touchUpInside" id="H0R-2p-pim"/>
                                     </connections>
@@ -271,7 +271,7 @@
                             <constraints>
                                 <constraint firstItem="cHX-J6-8sk" firstAttribute="top" secondItem="E01-6Y-Zvv" secondAttribute="top" id="Dc1-TP-Iz2"/>
                                 <constraint firstAttribute="bottom" secondItem="cHX-J6-8sk" secondAttribute="bottom" id="GnY-k6-6gj"/>
-                                <constraint firstAttribute="width" secondItem="E01-6Y-Zvv" secondAttribute="height" multiplier="4:1" id="JlT-Vr-iAh"/>
+                                <constraint firstAttribute="width" secondItem="E01-6Y-Zvv" secondAttribute="height" multiplier="3:1" id="JlT-Vr-iAh"/>
                                 <constraint firstAttribute="trailing" secondItem="cHX-J6-8sk" secondAttribute="trailing" id="Kew-ML-byI"/>
                                 <constraint firstItem="S9X-Bg-ooE" firstAttribute="top" secondItem="E01-6Y-Zvv" secondAttribute="top" id="QfG-7a-OCi"/>
                                 <constraint firstAttribute="bottom" secondItem="S9X-Bg-ooE" secondAttribute="bottom" id="d3L-9i-jcZ"/>
@@ -323,9 +323,6 @@
                 <constraint firstAttribute="bottom" secondItem="cHn-d9-4Ky" secondAttribute="bottom" constant="20" id="ejg-uY-BbX"/>
                 <constraint firstItem="cHn-d9-4Ky" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="iwa-Sk-4Dg"/>
             </constraints>
-            <connections>
-                <action selector="btnCloseDidPressed" destination="-1" eventType="touchUpInside" id="Bak-hQ-KHh"/>
-            </connections>
             <point key="canvasLocation" x="-146.65178571428569" y="84.057971014492765"/>
         </view>
     </objects>

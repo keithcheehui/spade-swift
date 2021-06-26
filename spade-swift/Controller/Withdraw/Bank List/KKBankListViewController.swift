@@ -8,14 +8,17 @@
 import Foundation
 import UIKit
 
-class KKBankListViewController: KKBaseViewController, UITableViewDataSource, UITableViewDelegate {
+class KKBankListViewController: KKBaseViewController {
     
     @IBOutlet weak var bankTableView: UITableView!
-    
+
+    var userBankList: [KKWithdrawBankDetails]! = []
+    var bankItemList: [KKWithdrawBankNames]! = []
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-
         initialLayout()
+        getBankListAPI()
     }
     
     func initialLayout(){
@@ -23,8 +26,39 @@ class KKBankListViewController: KKBaseViewController, UITableViewDataSource, UIT
         bankTableView.register(UINib(nibName: "KKBankTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.bankTVCIdentifier)
     }
     
+    func changeAddBankView() {
+        for view in self.view.subviews{
+            view.removeFromSuperview()
+        }
+        
+        let vc = KKAddBankViewController()
+        vc.tableContentView = self.view
+        vc.displayViewController = self
+        vc.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        self.view.addSubview(vc.view)
+        self.addChild(vc)
+    }
+    
+    func getBankListAPI() {
+        self.showAnimatedLoader()
+        
+        KKApiClient.getMemberWithdrawBankAccount().execute { withdrawBankResponse in
+            self.hideAnimatedLoader()
+            self.userBankList = withdrawBankResponse.results?.userBanks
+            self.bankItemList = withdrawBankResponse.results?.bankNames
+            
+            self.bankTableView.reloadData()
+            
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: errorMessage)
+        }
+    }
+}
+
+extension KKBankListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return userBankList.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -32,7 +66,8 @@ class KKBankListViewController: KKBaseViewController, UITableViewDataSource, UIT
         else {
             fatalError("DequeueReusableCell failed while casting")
         }
-        
+        cell.imgSelected.isHidden = true
+
         if (indexPath.row == 0) {
             cell.containerView.backgroundColor = UIColor(white: 0, alpha: 0.3)
             cell.lblBankName.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
@@ -42,15 +77,25 @@ class KKBankListViewController: KKBaseViewController, UITableViewDataSource, UIT
             cell.imgBank.image = UIImage(named: "ic_add")
         } else {
             cell.containerView.layer.borderWidth = 0
-
-            cell.imgBank.image = UIImage(named: "ic_bank_maybank")
-            cell.lblBankName.text = "Maybank Berhad Maybank"
-            cell.lblBankAccount.text = "1111 **** **** 0000"
+ 
+            if let bankAccNumber = userBankList[indexPath.row - 1].bankAccountNumber {
+                if bankAccNumber.isEmpty {
+                    cell.lblBankAccount.text = ""
+                } else {
+                    cell.lblBankAccount.text = userBankList[indexPath.row - 1].bankAccountNumber!.bankAccountMasked
+                }
+            }
+            
+            for bankItem in bankItemList {
+                if bankItem.id == userBankList[indexPath.row - 1].bankId {
+                    cell.imgBank.setUpImage(with: bankItem.img)
+                }
+            }
+            
+            cell.lblBankName.text = userBankList[indexPath.row - 1].bankName
             cell.lblBankAccount.isHidden = false
         }
         
-        
-        cell.imgSelected.isHidden = true
         cell.selectionStyle = .none
 
         return cell
@@ -58,10 +103,7 @@ class KKBankListViewController: KKBaseViewController, UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row == 0) {
-            let viewController = KKAddBankViewController.init()
-            viewController.view.frame = CGRect(x: 0, y: 0, width: tableContentView.frame.width, height: tableContentView.frame.height)
-            tableContentView.addSubview(viewController.view)
-            displayViewController.addChild(viewController)
+            changeAddBankView()
         }
     }
     
@@ -69,4 +111,3 @@ class KKBankListViewController: KKBaseViewController, UITableViewDataSource, UIT
         return KKUtil.ConvertSizeByDensity(size: 45)
     }
 }
-

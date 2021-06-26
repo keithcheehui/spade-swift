@@ -26,7 +26,7 @@ class KKCountryItemCell: UICollectionViewCell {
         imgCountry.clipsToBounds = true
         
         lblCountryName.textColor = UIColor.spade_white_FFFFFF
-        lblCountryName.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 14))
+        lblCountryName.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
     }
 }
 

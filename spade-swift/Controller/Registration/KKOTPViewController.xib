@@ -18,6 +18,7 @@
                 <outlet property="btnConfirmHeight" destination="k0J-nF-Nhj" id="CZK-RD-0mf"/>
                 <outlet property="btnResend" destination="QCn-PN-op3" id="A1B-TN-aSU"/>
                 <outlet property="btnSend" destination="iYw-Jt-obD" id="Bwu-ka-pwL"/>
+                <outlet property="btnSendContainer" destination="2Nw-Ft-TDl" id="gQe-Dm-1JA"/>
                 <outlet property="containerMarginBottom" destination="Nlk-6M-S9P" id="3CN-E1-MHA"/>
                 <outlet property="containerMarginLeft" destination="dU9-o3-2YF" id="r5M-zo-LhO"/>
                 <outlet property="containerMarginRight" destination="qxm-RK-xht" id="JDj-zy-Xzh"/>
@@ -65,7 +66,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UIControl">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -520,9 +521,6 @@
                 <constraint firstItem="MVN-Wd-4BF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="130" id="dU9-o3-2YF"/>
                 <constraint firstAttribute="trailing" secondItem="MVN-Wd-4BF" secondAttribute="trailing" constant="130" id="qxm-RK-xht"/>
             </constraints>
-            <connections>
-                <action selector="btnCloseDidPressed" destination="-1" eventType="touchUpInside" id="p9T-9V-dX3"/>
-            </connections>
             <point key="canvasLocation" x="138.61607142857142" y="89.855072463768124"/>
         </view>
     </objects>

@@ -333,7 +333,7 @@ class KKApiClient: NSObject {
         return performRequest(route: .addMemberWithdrawBankAccount(parameter: parameter))
     }
     
-    static func updateMemberWithdrawal(amount: Float, bankAcc: Int) -> Future<KKGeneralResponse> {
+    static func updateMemberWithdrawal(amount: Float, bankAcc: String) -> Future<KKGeneralResponse> {
         
         let parameter = [APIKeys.withdrawAmount     : amount,
                          APIKeys.withdrawAccountNo  : bankAcc

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,47 +12,60 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KKSingleRowGameItemCell" id="lOU-bs-r2l" customClass="KKSingleRowGameItemCell" customModule="spade_swift" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="150" height="235"/>
+            <rect key="frame" x="0.0" y="0.0" width="192" height="250"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Snr-ii-QZL">
-                <rect key="frame" x="0.0" y="0.0" width="150" height="235"/>
+                <rect key="frame" x="0.0" y="0.0" width="192" height="250"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_sport_1" translatesAutoresizingMaskIntoConstraints="NO" id="X8j-kk-ZFW">
-                        <rect key="frame" x="0.0" y="0.0" width="150" height="235"/>
+                        <rect key="frame" x="0.0" y="0.0" width="192" height="250"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byU-D6-u6P">
-                        <rect key="frame" x="37.5" y="185" width="75" height="30"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0F-eR-3ll">
+                        <rect key="frame" x="51" y="200" width="90" height="30"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_bet_now" translatesAutoresizingMaskIntoConstraints="NO" id="XRg-2N-1dx">
+                                <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="byU-D6-u6P" secondAttribute="height" multiplier="2.5:1" id="a4f-HC-UGq"/>
-                            <constraint firstAttribute="height" constant="30" id="kFW-9D-Q84"/>
+                            <constraint firstAttribute="trailing" secondItem="XRg-2N-1dx" secondAttribute="trailing" id="2Tx-uC-g6a"/>
+                            <constraint firstAttribute="bottom" secondItem="XRg-2N-1dx" secondAttribute="bottom" id="IGS-6X-cjn"/>
+                            <constraint firstAttribute="width" secondItem="b0F-eR-3ll" secondAttribute="height" multiplier="3:1" id="hRE-64-cpC"/>
+                            <constraint firstItem="XRg-2N-1dx" firstAttribute="top" secondItem="b0F-eR-3ll" secondAttribute="top" id="pHF-b1-nef"/>
+                            <constraint firstItem="XRg-2N-1dx" firstAttribute="leading" secondItem="b0F-eR-3ll" secondAttribute="leading" id="pnf-7k-6bW"/>
+                            <constraint firstAttribute="height" constant="30" id="rjN-yV-U1d"/>
                         </constraints>
-                        <state key="normal" backgroundImage="btn_bet_now"/>
-                    </button>
+                    </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" systemColor="systemTealColor"/>
                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="X8j-kk-ZFW" firstAttribute="leading" secondItem="Snr-ii-QZL" secondAttribute="leading" id="0Y3-Vb-bnY"/>
-                    <constraint firstAttribute="bottom" secondItem="byU-D6-u6P" secondAttribute="bottom" constant="20" id="9cm-T4-kX3"/>
+                    <constraint firstAttribute="bottom" secondItem="b0F-eR-3ll" secondAttribute="bottom" constant="20" id="10z-1O-EdN"/>
                     <constraint firstAttribute="trailing" secondItem="X8j-kk-ZFW" secondAttribute="trailing" id="HaG-2x-LRB"/>
                     <constraint firstItem="X8j-kk-ZFW" firstAttribute="top" secondItem="Snr-ii-QZL" secondAttribute="top" id="S0N-hy-fzI"/>
-                    <constraint firstItem="byU-D6-u6P" firstAttribute="centerX" secondItem="Snr-ii-QZL" secondAttribute="centerX" id="YLd-bn-w1u"/>
+                    <constraint firstItem="b0F-eR-3ll" firstAttribute="centerX" secondItem="Snr-ii-QZL" secondAttribute="centerX" id="U3k-9z-Qsk"/>
                     <constraint firstAttribute="bottom" secondItem="X8j-kk-ZFW" secondAttribute="bottom" id="bsj-EC-lXD"/>
                 </constraints>
             </collectionViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="btnBetNow" destination="byU-D6-u6P" id="U8f-kY-cs0"/>
-                <outlet property="btnBetNowMarginBottom" destination="9cm-T4-kX3" id="886-bI-ZF2"/>
+                <outlet property="btnBetNow" destination="b0F-eR-3ll" id="7B5-JN-hu3"/>
+                <outlet property="btnBetNowHeight" destination="rjN-yV-U1d" id="5TU-Jb-ezx"/>
+                <outlet property="btnBetNowMarginBottom" destination="10z-1O-EdN" id="kAw-yM-UEv"/>
                 <outlet property="imgGameImage" destination="X8j-kk-ZFW" id="xUl-z8-KKx"/>
             </connections>
-            <point key="canvasLocation" x="-104.34782608695653" y="48.883928571428569"/>
+            <point key="canvasLocation" x="-104.34782608695653" y="48.214285714285715"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="bg_sport_1" width="490" height="700"/>
         <image name="btn_bet_now" width="260" height="90"/>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

@@ -31,6 +31,9 @@ class KKSelectCountryViewController: KKBaseViewController {
         initialLayout()
         
         let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumLineSpacing = KKUtil.ConvertSizeByDensity(size: 10)
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.scrollDirection = .vertical
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: 130), height: KKUtil.ConvertSizeByDensity(size: 40))
         
@@ -45,7 +48,7 @@ class KKSelectCountryViewController: KKBaseViewController {
         containerMarginRight.constant = containerMarginLeft.constant
         titleMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 25)
         titleHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        lblTitleMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 65)
+        lblTitleMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 60)
         lblTitleMarginRight.constant = lblTitleMarginLeft.constant
         btnConfirmMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
         btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)

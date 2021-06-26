@@ -41,8 +41,8 @@ class KKGameListViewController: KKBaseViewController {
     }
     
     func initialLayout(){
-        containerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 20)
-        containerMarginBottom.constant = 0
+        containerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 10)
+        containerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 10)
     }
     
     func initFlowLayout(){
@@ -54,9 +54,11 @@ class KKGameListViewController: KKBaseViewController {
 //        size = KKUtil.ConvertSizeByDensity(size: gameCollectionView.frame.size.height / 2 - 75)
 
         if (isSingleRow()){
-            size = KKUtil.ConvertSizeByDensity(size: 150)
-            flowLayout.itemSize = CGSize(width: size, height: size * 1.56)
-            flowLayout.minimumLineSpacing = 0
+//            size = KKUtil.ConvertSizeByDensity(size: 170)
+//            flowLayout.itemSize = CGSize(width: size, height: size * 1.56)
+            size = KKUtil.ConvertSizeByDensity(size: 250)
+            flowLayout.itemSize = CGSize(width: size / 1.3, height: size)
+            flowLayout.minimumLineSpacing = 5
             
             if (KKUtil.isSmallerPhone()){
                 flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)

@@ -23,6 +23,12 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
                                KKUtil.languageSelectedStringForKey(key: "picker_fd_tm"),
                                KKUtil.languageSelectedStringForKey(key: "picker_fd_lm"),
                                KKUtil.languageSelectedStringForKey(key: "picker_fd_l90d")]
+    
+    var pickerStatusArray: [String] = [KKUtil.languageSelectedStringForKey(key: "picker_ws_all"),
+                                       KKUtil.languageSelectedStringForKey(key: "picker_ws_approved"),
+                                       KKUtil.languageSelectedStringForKey(key: "picker_ws_rejected"),
+                                       KKUtil.languageSelectedStringForKey(key: "picker_ws_pending")]
+
     var dataArray: [String] = []
     var pickerTextField: UITextField!
 
@@ -197,6 +203,26 @@ extension String {
         let number = NumberFormatter().number(from: self)!
         return formatter.string(from: number)!
     }
+    
+    var bankAccountMasked: String {
+        self.enumerated().map({ (index, ch) in
+            if index < 5 {
+                return String(ch)
+            }
+            
+            return "* "
+        }).joined()
+      }
+    
+//    var bankAccountMasked: String {
+//        self.enumerated().map({ (index, ch) in
+//            if index > self.count - 5 {
+//                return String(ch)
+//            }
+//            
+//            return "* "
+//        }).joined()
+//      }
 }
 
 extension UIImageView {

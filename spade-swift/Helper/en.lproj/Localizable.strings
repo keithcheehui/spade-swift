@@ -15,13 +15,13 @@
 
 //MARK: LOGIN
 "login_username"                            = "Username:";
-"login_username_placeholder"                = "Please enter login ID";
+"login_username_placeholder"                = "Please enter username";
 "login_password"                            = "Password:";
 "login_password_placeholder"                = "Please enter your password";
 "login_remember_me"                         = "Remember me";
 "login_forgot_password"                     = "Forgot Password?";
 
-//MARK: LOGIN
+//MARK: FORGOT PASSWORD
 "forgot_pwd_note"                           = "For security reason, please enter your mobile number and we will send you an OTP for verification before proceeding to change your password.";
 "forgot_pwd_new_pwd"                        = "New password";
 
@@ -35,7 +35,7 @@
 
 //MARK: OTP
 "otp_mobile"                                = "Mobile Number:";
-"otp_mobile_placeholder"                    = "Please enter your phone number";
+"otp_mobile_placeholder"                    = "Enter Mobile Number";
 "otp_digit"                                 = "Enter 6 digit OTP:";
 "otp_did_you_receive"                       = "Didn't receive the OTP?";
 "otp_resend"                                = "Resend in ";
@@ -69,6 +69,13 @@
 "personal_account_detail"                   = "Account Details";
 "personal_individual_report"                = "Individual Report";
 
+//MARK: Individual Report
+"ir_total_win"                              = "TOTAL WIN";
+"ir_total_bet"                              = "Total Valid Betting";
+"ir_total_amount"                           = "Total Amount";
+"ir_total_rebate"                           = "Total Rebate";
+"ir_total_value"                            = "RM %@";
+
 //MARK: USER INFO
 "user_info_level_privilege"                 = "Level Privilege";
 "user_info_current_membership"              = "Current membership level: ";
@@ -89,7 +96,11 @@
 "settings_logout"                           = "Logout";
 "settings_current_password"                 = "Current Password";
 "settings_new_password"                     = "New Password";
+"settings_notes"                            = "*Password must be between 6-12 characters";
 "settings_reconfirm_password"               = "Reconfirm Password";
+"settings_current_password_placeholder"     = "Enter current password";
+"settings_new_password_placeholder"         = "Enter new password";
+"settings_reconfirm_password_placeholder"   = "Enter reconfirm password";
 "settings_version_ios"                      = "iOS Version: %@";
 "settings_version_android"                  = "Android Version: %@";
 "settings_version_h5"                       = "H5 Version: %@";
@@ -163,7 +174,7 @@
 "withdraw_description"                      = "You have not add any bank account yet, please add bank account first before withdrawal";
 "withdraw_select_bank"                      = "Please select your bank account";
 "withdraw_add_bank"                         = "Add Bank Account";
-"withdraw_cardholder_name"                  = "Cardholder's Name";
+"withdraw_bank_account_name"                = "Bank Account Name";
 "withdraw_cardholder_name_placeholder"      = "Please enter real name. cannot be modified after submission";
 "withdraw_bank_name"                        = "Bank Name";
 "withdraw_bank_account"                     = "Bank Account Number";
@@ -208,6 +219,10 @@
 "error_password_not_match"                      = "Password Does Not Match";
 "error_password_not_match_desc"                 = "Password confirmation does not matches with your new password.";
 "error_error_encountered"                       = "Error Encountered";
+"error_account_name_empty"                      = "Bank account name cannot be empty.";
+"error_bank_name_empty"                         = "Please select a bank name.";
+"error_account_number_empty"                    = "Bank account number cannot be empty.";
+"error_withdraw_empty"                          = "Withdraw amount should not less than RM30 and exceeded RM10,000";
 "error_okay"                                    = "OKAY";
 
 //MARK: Picker
@@ -216,3 +231,7 @@
 "picker_fd_tm"                                  = "This month";
 "picker_fd_lm"                                  = "Last month";
 "picker_fd_l90d"                                = "Last 90 days";
+"picker_ws_all"                                 = "All Status";
+"picker_ws_approved"                            = "Approved";
+"picker_ws_rejected"                            = "Rejected";
+"picker_ws_pending"                             = "Pending";

@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class KKAddBankViewController: KKBaseViewController {
-    
     @IBOutlet weak var lblCardholderName: UILabel!
     @IBOutlet weak var txtCardholderNameView: UIView!
     @IBOutlet weak var txtCardholderName: UITextField!
@@ -26,6 +25,8 @@ class KKAddBankViewController: KKBaseViewController {
     
     @IBOutlet weak var textFieldHeight: NSLayoutConstraint!
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
+    
+    var bankList: [String]! = ["Maybank", "Hong Leong", "CIMB"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,7 @@ class KKAddBankViewController: KKBaseViewController {
         txtBankNameView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 8)
         txtBankAccountView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 8)
         
-        lblCardholderName.text = KKUtil.languageSelectedStringForKey(key: "withdraw_cardholder_name")
+        lblCardholderName.text = KKUtil.languageSelectedStringForKey(key: "withdraw_bank_account_name")
         lblBankName.text = KKUtil.languageSelectedStringForKey(key: "withdraw_bank_name")
         lblBankAccount.text = KKUtil.languageSelectedStringForKey(key: "withdraw_bank_account")
         lblDescription.text = KKUtil.languageSelectedStringForKey(key: "withdraw_add_bank_description")
@@ -69,21 +70,99 @@ class KKAddBankViewController: KKBaseViewController {
         txtCardholderName.textColor = lblCardholderName.textColor
         txtBankName.textColor = lblCardholderName.textColor
         txtBankAccount.textColor = lblCardholderName.textColor
-        txtBankAccount.textColor = UIColor.spade_blue_5CB5DE
+        lblDescription.textColor = UIColor.spade_blue_5CB5DE
+                
+        txtBankName.inputView = pickerView
+        txtBankName.inputAccessoryView = pickerToolBarView
+        
+        txtBankAccount.keyboardType = .numberPad
+        
+        txtCardholderName.delegate = self
+        txtBankName.delegate = self
+        txtBankAccount.delegate = self
     }
     
-    ///Button Actions
-    @IBAction func btnDropdownDidPressed(){
-
+    func validationField() {
+        if txtCardholderName.text!.count == 0 {
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_error_encountered"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_account_name_empty"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            return
+        }
+        
+        if txtBankName.text!.count == 0 {
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_error_encountered"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_bank_name_empty"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            return
+        }
+        
+        if txtBankAccount.text!.count == 0 {
+            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_error_encountered"),
+                                           body: KKUtil.languageSelectedStringForKey(key: "error_error_account_number_empty"),
+                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            return
+        }
+        
+        addBankAccountAPI()
+    }
+    
+    //MARK: - API
+    func addBankAccountAPI(){
+        self.showAnimatedLoader()
+        
+        let parameter = [APIKeys.bankAccountName: txtCardholderName.text!,
+                         APIKeys.bankAccountNo: txtBankAccount.text!,
+                         APIKeys.bankID: 1
+                        ] as [String : Any]
+        
+        KKApiClient.addMemberWithdrawBankAccount(parameter: parameter).execute { addBankResponse in
+            
+            self.hideAnimatedLoader()
+            self.backPreviousScreen()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: errorMessage)
+        }
     }
     
     @IBAction func btnBackDidPressed(){
-        self.willMove(toParent: nil)
-        self.removeFromParent()
-        self.view.removeFromSuperview()
+        backPreviousScreen()
+    }
+    
+    func backPreviousScreen() {
+        for view in self.view.subviews{
+            view.removeFromSuperview()
+        }
+        
+        let vc = KKBankListViewController()
+        vc.tableContentView = self.view
+        vc.displayViewController = self
+        vc.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        self.view.addSubview(vc.view)
+        self.addChild(vc)
     }
     
     @IBAction func btnConfirmDidPressed(){
+        validationField()
+    }
+}
 
+extension KKAddBankViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == txtBankName {
+            showPickerView(optionList: bankList)
+            pickerTextField = textField
+        }
+        
+        //TODO: KEITH, add the subclass, and add disable copy paste pop up
+        textField.tintColor = UIColor.clear
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

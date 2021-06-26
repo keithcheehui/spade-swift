@@ -49,6 +49,8 @@ class KKPersonalViewController: KKBaseViewController {
     var bettingRecordPlatfromsArray: [KKUserBettingPlatformDetails]! = []
     var bettingRecordPlatfromsNameArray: [String]! = []
 
+    var accountDetailTabArray: [String]! = ["Deposit/Withdraw", "Transfer", "Promotion"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -188,6 +190,7 @@ class KKPersonalViewController: KKBaseViewController {
     
     func buttonHover(type: Int){
         selectedViewType = type
+        selectedTabItem = 0
         
         imgHoverUserInfo.isHidden = true
         imgHoverBettingRecord.isHidden = true
@@ -202,7 +205,6 @@ class KKPersonalViewController: KKBaseViewController {
         case viewType.bettingRecord.rawValue:
             imgHoverBettingRecord.isHidden = false
             let viewController = KKGeneralTableViewController.init()
-            viewController.leftDropdownOptions = pickerTimeArray
             viewController.rightDropdownOptions = bettingRecordPlatfromsNameArray
             viewController.tableViewType = .BettingRecord
             changeView(vc: viewController)
@@ -215,7 +217,7 @@ class KKPersonalViewController: KKBaseViewController {
             break;
         case viewType.individualReport.rawValue:
             imgHoverIndividualReport.isHidden = false
-            changeView(vc: KKOnBoardingViewController())
+            changeView(vc: KKIndividualReportViewController())
             break;
         default:
             groupsCollectionView.isHidden = true
@@ -243,8 +245,10 @@ class KKPersonalViewController: KKBaseViewController {
 extension KKPersonalViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if (selectedViewType == viewType.bettingRecord.rawValue) {
+        if (selectedViewType == viewType.bettingRecord.rawValue || selectedViewType == viewType.individualReport.rawValue) {
             return bettingRecordGroupsArray.count
+        } else if (selectedViewType == viewType.accountDetail.rawValue) {
+            return accountDetailTabArray.count
         }
         
         return 0
@@ -263,7 +267,11 @@ extension KKPersonalViewController: UICollectionViewDelegate, UICollectionViewDa
             cell.imgHover.isHidden = true
         }
         
-        cell.lblTitle.text = bettingRecordGroupsArray[indexPath.item].name
+        if (selectedViewType == viewType.accountDetail.rawValue) {
+            cell.lblTitle.text = accountDetailTabArray[indexPath.item]
+        } else {
+            cell.lblTitle.text = bettingRecordGroupsArray[indexPath.item].name
+        }
         
         return cell
     }

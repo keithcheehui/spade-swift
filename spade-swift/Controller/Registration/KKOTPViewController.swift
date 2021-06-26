@@ -49,7 +49,8 @@ class KKOTPViewController: KKBaseViewController {
     @IBOutlet weak var btnResend: UIButton!
     @IBOutlet weak var btnConfirm: UIButton!
     @IBOutlet weak var OTPView: UIView!
-
+    @IBOutlet weak var btnSendContainer: UIView!
+    
     @IBOutlet weak var imgRegisterHeight: NSLayoutConstraint!
     @IBOutlet weak var imgCloseWidth: NSLayoutConstraint!
     @IBOutlet weak var titleContainerHeight: NSLayoutConstraint!
@@ -263,6 +264,7 @@ class KKOTPViewController: KKBaseViewController {
                 buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay")
             )
         } else {
+            //TODO: Keith this one need review again, ask not always selected Malaysia country
             if txtMobile.text!.first == "0" {
                 phoneNumber = "60\(txtMobile.text!.dropFirst())"
             } else {
@@ -295,6 +297,11 @@ class KKOTPViewController: KKBaseViewController {
             self.resendView.isHidden = false
             self.timerCountdown = 60
             self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.timerUpdate), userInfo: nil, repeats: true)
+            
+            self.txtOTP1.becomeFirstResponder()
+            self.txtMobile.isEnabled = false
+            self.txtMobile.isUserInteractionEnabled = false
+            self.btnSendContainer.isHidden = true
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
             self.showAlertView(alertMessage: errorMessage)
@@ -309,6 +316,11 @@ class KKOTPViewController: KKBaseViewController {
             self.resendView.isHidden = false
             self.timerCountdown = 60
             self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.timerUpdate), userInfo: nil, repeats: true)
+            
+            self.txtOTP1.becomeFirstResponder()
+            self.txtMobile.isEnabled = false
+            self.txtMobile.isUserInteractionEnabled = false
+            self.btnSendContainer.isHidden = true
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
             self.showAlertView(alertMessage: errorMessage)

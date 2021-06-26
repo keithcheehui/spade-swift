@@ -266,5 +266,4 @@ extension KKTableBaseViewController: UITableViewDelegate, UITableViewDataSource 
         
         return KKGeneralTableViewCell.calculateCellDetailsHeight()
     }
-    
 }

@@ -473,6 +473,44 @@ class KKHomeViewController: KKBaseViewController {
         self.navigationController?.pushViewController(KKWithdrawViewController(), animated: true)
     }
     
+    @IBAction func btnUpDidPressed(){
+        announcementBubble.isHidden = true
+        
+        let visibleItems: NSArray = self.menuCollectionView.indexPathsForVisibleItems as NSArray
+        let currentItem: IndexPath = visibleItems.object(at: 0) as! IndexPath
+        let nextItem: IndexPath = IndexPath(item: currentItem.item - 1, section: 0)
+
+        if nextItem.row > -1 {
+            self.menuCollectionView.scrollToItem(at: nextItem, at: .bottom, animated: true)
+        }
+        
+        if (currentItem.row <= 0) {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.imgArrowUp.alpha = 0
+                self.imgArrowDown.alpha = 1
+            })
+        }
+    }
+    
+    @IBAction func btnDownDidPressed(){
+        announcementBubble.isHidden = true
+        
+        let visibleItems: NSArray = self.menuCollectionView.indexPathsForVisibleItems as NSArray
+        let currentItem: IndexPath = visibleItems.object(at: 0) as! IndexPath
+        let nextItem: IndexPath = IndexPath(item: currentItem.item + 1, section: 0)
+
+        if nextItem.row < KKSingleton.sharedInstance.groupPlatformArray.count {
+            self.menuCollectionView.scrollToItem(at: nextItem, at: .top, animated: true)
+        }
+        
+        if (currentItem.row >= KKSingleton.sharedInstance.groupPlatformArray.count) {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.imgArrowUp.alpha = 1
+                self.imgArrowDown.alpha = 0
+            })
+        }
+    }
+    
     //MARK:- Collection View Flow Layout
     
     func initFlowLayout(){
@@ -480,7 +518,7 @@ class KKHomeViewController: KKBaseViewController {
         flowLayout.minimumLineSpacing = 0
         flowLayout.scrollDirection = .vertical
         flowLayout.sectionInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
-        flowLayout.itemSize = CGSize(width: menuWidth.constant, height: KKUtil.ConvertSizeByDensity(size: 45))
+        flowLayout.itemSize = CGSize(width: menuWidth.constant, height: KKUtil.ConvertSizeByDensity(size: 50))
 
         menuCollectionView.collectionViewLayout = flowLayout
         menuCollectionView.register(UINib(nibName: "KKGameMenuItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.gameMenuItemCVCIdentifier)
@@ -580,12 +618,12 @@ extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         announcementBubble.isHidden = true
         
-        if (indexPath.row == KKSingleton.sharedInstance.groupPlatformArray.count - 1) {
+        if (indexPath.row >= KKSingleton.sharedInstance.groupPlatformArray.count - 1) {
             UIView.animate(withDuration: 0.3, animations: {
                 self.imgArrowUp.alpha = 1
                 self.imgArrowDown.alpha = 0
             })
-        } else if (indexPath.row == 0) {
+        } else if (indexPath.row <= 0) {
             UIView.animate(withDuration: 0.3, animations: {
                 self.imgArrowUp.alpha = 0
                 self.imgArrowDown.alpha = 1

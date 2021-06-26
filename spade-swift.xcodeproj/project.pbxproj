@@ -205,6 +205,8 @@
 		53E2FF2B2658CC820017CA67 /* KKBonusItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E2FF2A2658CC820017CA67 /* KKBonusItemCell.xib */; };
 		53F21F962686E03500A44911 /* KKTabListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F21F942686E03500A44911 /* KKTabListItemCell.swift */; };
 		53F21F972686E03500A44911 /* KKTabListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F21F952686E03500A44911 /* KKTabListItemCell.xib */; };
+		53F21FB026871DDE00A44911 /* KKIndividualReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F21FAE26871DDE00A44911 /* KKIndividualReportViewController.swift */; };
+		53F21FB126871DDE00A44911 /* KKIndividualReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F21FAF26871DDE00A44911 /* KKIndividualReportViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -409,6 +411,8 @@
 		53E2FF2A2658CC820017CA67 /* KKBonusItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKBonusItemCell.xib; sourceTree = "<group>"; };
 		53F21F942686E03500A44911 /* KKTabListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKTabListItemCell.swift; sourceTree = "<group>"; };
 		53F21F952686E03500A44911 /* KKTabListItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKTabListItemCell.xib; sourceTree = "<group>"; };
+		53F21FAE26871DDE00A44911 /* KKIndividualReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKIndividualReportViewController.swift; sourceTree = "<group>"; };
+		53F21FAF26871DDE00A44911 /* KKIndividualReportViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKIndividualReportViewController.xib; sourceTree = "<group>"; };
 		DE9CF2AF875923073B28E1B7 /* Pods-spade-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spade-swift.debug.xcconfig"; path = "Target Support Files/Pods-spade-swift/Pods-spade-swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1171,6 +1175,7 @@
 				53C64EFC263700E10068F03E /* KKPersonalViewController.swift */,
 				53C64EF9263700D00068F03E /* KKPersonalViewController.xib */,
 				5381676F26464B3900FC96A6 /* UserInfo */,
+				53F21FB326871DE300A44911 /* IndividualReport */,
 				067029D52641278300DFADAC /* KKPersonalPageViewController.swift */,
 			);
 			path = Personal;
@@ -1238,6 +1243,15 @@
 				53F21F952686E03500A44911 /* KKTabListItemCell.xib */,
 			);
 			path = "Tab List Item Cell";
+			sourceTree = "<group>";
+		};
+		53F21FB326871DE300A44911 /* IndividualReport */ = {
+			isa = PBXGroup;
+			children = (
+				53F21FAE26871DDE00A44911 /* KKIndividualReportViewController.swift */,
+				53F21FAF26871DDE00A44911 /* KKIndividualReportViewController.xib */,
+			);
+			path = IndividualReport;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1313,6 +1327,7 @@
 				53E2FF1B2658C5B60017CA67 /* KKBonusContentViewController.xib in Resources */,
 				53268C0D263068F600ECAAE2 /* KKLoginViewController.xib in Resources */,
 				53268C062630612900ECAAE2 /* KKOnBoardingViewController.xib in Resources */,
+				53F21FB126871DDE00A44911 /* KKIndividualReportViewController.xib in Resources */,
 				0676B668263095EE0023311F /* Localizable.strings in Resources */,
 				06006E0526729AF400A2C8C9 /* Haarlem Deco DEMO.ttf in Resources */,
 				539A0FA4266343510098739E /* KKOTPViewController.xib in Resources */,
@@ -1439,6 +1454,7 @@
 				5317F23B264C2A8E0076D69B /* KKAddBankViewController.swift in Sources */,
 				06BF5C352669814C00C10008 /* KKGroupPlatformGroups.swift in Sources */,
 				06868315267948980097E068 /* KKUserProfileTier.swift in Sources */,
+				53F21FB026871DDE00A44911 /* KKIndividualReportViewController.swift in Sources */,
 				53E2FF182658C5A00017CA67 /* KKBonusContentViewController.swift in Sources */,
 				06E4DEF6267BFF9500482979 /* KKUserBettingPlatformDetails.swift in Sources */,
 				06FF0728267FCB250073BE8E /* KKTableBaseViewController.swift in Sources */,
