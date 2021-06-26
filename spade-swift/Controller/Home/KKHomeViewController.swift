@@ -184,7 +184,7 @@ class KKHomeViewController: KKBaseViewController {
         lblAnnouncement.fadeLength = 10.0
         lblAnnouncement.leadingBuffer = 30.0
         lblAnnouncement.trailingBuffer = 20.0
-        lblAnnouncement.speed = MarqueeLabel.SpeedLimit.duration(20)
+        lblAnnouncement.speed = MarqueeLabel.SpeedLimit.duration(25)
 
         var announcementString = ""
         for (_, announcementDetails) in KKSingleton.sharedInstance.announcementArray.reversed().enumerated() {

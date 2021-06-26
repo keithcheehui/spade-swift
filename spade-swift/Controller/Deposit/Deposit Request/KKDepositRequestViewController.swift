@@ -193,7 +193,8 @@ class KKDepositRequestViewController: KKBaseViewController {
     }
     
     @IBAction func btnCopyDidPressed(){
-
+        //TODO: add copy string
+        UIPasteboard.general.string = ""
     }
     
     @IBAction func btnDepositHistoryDidPressed(){

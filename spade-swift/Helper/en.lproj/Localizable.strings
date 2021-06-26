@@ -88,6 +88,8 @@
 "user_info_contact_information"             = "Contact Information";
 "user_info_email"                           = "Email";
 "user_info_phone"                           = "Phone";
+"user_info_gender_male"                     = "Male";
+"user_info_gender_female"                   = "Female";
 
 //MARK: Settings
 "settings_volume_setting"                   = "Volume Setting";
@@ -147,7 +149,7 @@
 
 //MARK: Deposit
 "deposit_bank_account"                      = "Bank Account";
-"deposit_artificial"                        = "Artificial";
+"deposit_support"                           = "Support";
 "deposit_bank_name"                         = "Bank Name";
 "deposit_account_name"                      = "Account Name";
 "deposit_account_number"                    = "Account Number";
@@ -160,7 +162,7 @@
 "deposit_amount_placeholder"                = "Min 20.00-Max 30000.00";
 "deposit_ref_no"                            = "Reference No.";
 "deposit_ref_no_placeholder"                = "Reference Number";
-"deposit_promotion"                         = "Promtion";
+"deposit_promotion"                         = "Promotion";
 "deposit_promotion_placeholder"             = "Select Activity";
 "deposit_receipt"                           = "Receipt";
 
@@ -219,11 +221,15 @@
 "error_password_not_match"                      = "Password Does Not Match";
 "error_password_not_match_desc"                 = "Password confirmation does not matches with your new password.";
 "error_error_encountered"                       = "Error Encountered";
-"error_account_name_empty"                      = "Bank account name cannot be empty.";
+"error_account_name_empty"                      = "Bank account name should not be empty.";
 "error_bank_name_empty"                         = "Please select a bank name.";
-"error_account_number_empty"                    = "Bank account number cannot be empty.";
+"error_account_number_empty"                    = "Bank account number should not be empty.";
 "error_withdraw_empty"                          = "Withdraw amount should not less than RM30 and exceeded RM10,000";
 "error_okay"                                    = "OKAY";
+"error_email_empty"                             = "Email should not be empty.";
+"error_email_invalid"                           = "Email format is invalid.";
+"error_gender_empty"                            = "Please select a gender.";
+"error_birthday_empty"                          = "Please select your birdthday.";
 
 //MARK: Picker
 "picker_fd_td"                                  = "Today";
@@ -235,3 +241,7 @@
 "picker_ws_approved"                            = "Approved";
 "picker_ws_rejected"                            = "Rejected";
 "picker_ws_pending"                             = "Pending";
+
+//MARK: Dialog Alert
+"alert_deposit"                                 = "Please set up your at least one bank card before deposit";
+"alert_logout"                                  = "Are you sure you want to log out?";

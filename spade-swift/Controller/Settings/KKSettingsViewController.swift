@@ -96,7 +96,7 @@ class KKSettingsViewController: KKBaseViewController {
         containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 100 : 130)
         containerMarginRight.constant = containerMarginLeft.constant
         titleMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        titleHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
+        titleHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
         sideMenuWidth.constant = ConstantSize.sideMenuWidth
         imgMenuIconWidth.constant = ConstantSize.imgMenuIconWidth
@@ -249,7 +249,7 @@ class KKSettingsViewController: KKBaseViewController {
     
     func buttonHover(type: Int){
         if (type == viewType.logout.rawValue){
-            KKUtil.logOutUser()
+            closeSettingsAndOpenDialog()
             return
         }
         
@@ -293,6 +293,26 @@ class KKSettingsViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
             self.showAlertView(alertMessage: errorMessage)
+        }
+    }
+    
+    //MARK:- OTP and Registration
+    
+    @objc func closeSettingsAndOpenDialog() {
+
+        weak var pvc = self.presentingViewController
+
+        UIView.animate(withDuration: 0.25) {
+            
+            self.view.backgroundColor = UIColor(white: 0, alpha: 0)
+            
+        } completion: { complete in
+            
+            self.dismiss(animated: true, completion: {
+                let viewController = KKDialogAlertViewController.init()
+                viewController.alertType = .Logout
+                pvc?.present(viewController, animated: true, completion: nil)
+            })
         }
     }
 }

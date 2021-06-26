@@ -119,7 +119,7 @@ class KKOTPViewController: KKBaseViewController {
         otpView5.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
         otpView6.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
 
-        imgRegisterHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
+        imgRegisterHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
         titleContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
         lblTitleWidth.constant = KKUtil.ConvertSizeByDensity(size: 110)

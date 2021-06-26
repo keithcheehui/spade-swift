@@ -10,9 +10,9 @@ import Foundation
 struct KKAnnouncementDetails: Codable {
 
     enum CodingKeys: String, CodingKey {
-        case type
+        case type = "articleable_type"
         case descriptionValue = "description"
-        case title = "title"
+        case title
         case created_at = "created_at"
         case updated_at = "updated_at"
     }

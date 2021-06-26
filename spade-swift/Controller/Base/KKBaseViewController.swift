@@ -16,6 +16,7 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     var selectedGameType: Int = 0
     
     var pickerView: UIPickerView = UIPickerView()
+    var datePickerView: UIDatePicker = UIDatePicker()
     var pickerToolBarView: UIToolbar = UIToolbar()
     
     var pickerTimeArray: [String] = [KKUtil.languageSelectedStringForKey(key: "picker_fd_td"),
@@ -31,6 +32,7 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
 
     var dataArray: [String] = []
     var pickerTextField: UITextField!
+    var datePickerTextField: UITextField!
 
     override var prefersHomeIndicatorAutoHidden: Bool {
         
@@ -54,6 +56,7 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         self.setupPickerView()
+        self.setupDatePickerView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,6 +94,33 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     func showPickerView(optionList: [String]) {
         dataArray = optionList
         pickerView.isHidden = false
+    }
+    
+    //MARK:- Date Picker View
+    func setupDatePickerView() {
+        datePickerView.date = Date()
+        datePickerView.locale = .current
+        datePickerView.datePickerMode = .date
+        datePickerView.addTarget(self, action: #selector(handleDateSelection), for: .valueChanged)
+
+        if let window = UIApplication.shared.keyWindow {
+            window.addSubview(datePickerView)
+        }
+        
+        datePickerView.isHidden = true
+    }
+    
+    //MARK:- Show Date Picker View
+    func showDatePickerView() {
+        datePickerView.isHidden = false
+    }
+    
+    @objc func handleDateSelection(picker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat =  "dd-MM-yyyy"
+        let dateString = dateFormatter.string(from: picker.date);
+
+        datePickerTextField.text = dateString
     }
     
     //MARK:- Show/Hide Animation Loader
@@ -204,6 +234,12 @@ extension String {
         return formatter.string(from: number)!
     }
     
+    func isValidEmail() -> Bool {
+            // here, `try!` will always succeed because the pattern is valid
+            let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
+            return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+        }
+    
     var bankAccountMasked: String {
         self.enumerated().map({ (index, ch) in
             if index < 5 {
@@ -219,7 +255,7 @@ extension String {
 //            if index > self.count - 5 {
 //                return String(ch)
 //            }
-//            
+//
 //            return "* "
 //        }).joined()
 //      }

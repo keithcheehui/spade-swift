@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import KeychainSwift
 
-class KKUserInfoViewController: KKBaseViewController, UITextFieldDelegate {
+class KKUserInfoViewController: KKBaseViewController {
     
     @IBOutlet weak var levelSectionView: UIView!
     @IBOutlet weak var lblLevelSection: UILabel!
@@ -214,6 +214,12 @@ class KKUserInfoViewController: KKBaseViewController, UITextFieldDelegate {
         txtGender.isUserInteractionEnabled = true
         txtEmail.isUserInteractionEnabled = true
 //        txtPhone.isUserInteractionEnabled = true
+        
+        txtBirthday.inputView = datePickerView
+        txtBirthday.inputAccessoryView = pickerToolBarView
+        
+        txtGender.inputView = pickerView
+        txtGender.inputAccessoryView = pickerToolBarView
     }
     
     
@@ -232,36 +238,91 @@ class KKUserInfoViewController: KKBaseViewController, UITextFieldDelegate {
         }
         
         if (isEditMode){
-            showAnimatedLoader()
-
-            KKApiClient.updateUserProfile(email: txtEmail.text!, gender: txtGender.text!, birthday: txtBirthday.text!).execute { response in
-                self.hideAnimatedLoader()
-                
-                if var userProfile = KKUtil.decodeUserProfileFromCache() {
-                    userProfile.email = self.txtEmail.text!
-                    userProfile.gender = self.txtGender.text!
-                    userProfile.dob = self.txtBirthday.text!
-
-                    do {
-                        KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
-                        
-                        self.isEditMode = false
-                        self.displayView()
-                    }
-                    catch {
-                        
-                    }
-                }
-                
-            } onFailure: { errorMessage in
-                self.hideAnimatedLoader()
-                self.showAlertView(alertMessage: errorMessage)
+            self.view.endEditing(true)
+            
+            if txtEmail.text!.count == 0 {
+                self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_error_encountered"),
+                                               body: KKUtil.languageSelectedStringForKey(key: "error_email_empty"),
+                                               buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+                return
             }
+            
+            if txtBirthday.text!.count == 0 {
+                self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_error_encountered"),
+                                               body: KKUtil.languageSelectedStringForKey(key: "error_birthday_empty"),
+                                               buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+                return
+            }
+            
+            if txtGender.text!.count == 0 {
+                self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_error_encountered"),
+                                               body: KKUtil.languageSelectedStringForKey(key: "error_gender_empty"),
+                                               buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+                return
+            }
+            
+            if KKUtil.isValidEmail(email: txtEmail.text!) {
+                editPersonalDataAPI()
+            } else {
+                self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_error_encountered"),
+                                               body: KKUtil.languageSelectedStringForKey(key: "error_email_invalid"),
+                                               buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            }
+            
         }else{
             isEditMode = true
             editView()
         }
     }
     
+    func editPersonalDataAPI(){
+        showAnimatedLoader()
+
+        KKApiClient.updateUserProfile(email: txtEmail.text!, gender: txtGender.text!, birthday: txtBirthday.text!).execute { response in
+            self.hideAnimatedLoader()
+            
+            if var userProfile = KKUtil.decodeUserProfileFromCache() {
+                userProfile.email = self.txtEmail.text!
+                userProfile.gender = self.txtGender.text!
+                userProfile.dob = self.txtBirthday.text!
+
+                do {
+                    KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
+                    
+                    self.isEditMode = false
+                    self.displayView()
+                }
+                catch {
+                    
+                }
+            }
+            
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.showAlertView(alertMessage: errorMessage)
+        }
+    }
+}
+
+extension KKUserInfoViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == txtGender {
+            showPickerView(optionList: [KKUtil.languageSelectedStringForKey(key: "user_info_gender_male"), KKUtil.languageSelectedStringForKey(key: "user_info_gender_female")])
+            pickerTextField = textField
+            
+            //TODO: KEITH, add the subclass, and add disable copy paste pop up
+            textField.tintColor = UIColor.clear
+        } else if textField == txtBirthday {
+            showDatePickerView()
+            datePickerTextField = textField
+            
+            //TODO: KEITH, add the subclass, and add disable copy paste pop up
+            textField.tintColor = UIColor.clear
+        }
+    }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

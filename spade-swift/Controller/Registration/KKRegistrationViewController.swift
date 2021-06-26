@@ -74,7 +74,7 @@ class KKRegistrationViewController: KKBaseViewController {
         passwordView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
         confirmPasswordView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
         
-        imgRegisterHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
+        imgRegisterHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
         usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
         lblUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 120)

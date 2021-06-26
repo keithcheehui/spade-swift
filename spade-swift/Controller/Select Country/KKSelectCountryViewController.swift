@@ -47,7 +47,7 @@ class KKSelectCountryViewController: KKBaseViewController {
         containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 90 : 130)
         containerMarginRight.constant = containerMarginLeft.constant
         titleMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        titleHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
+        titleHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         lblTitleMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 60)
         lblTitleMarginRight.constant = lblTitleMarginLeft.constant
         btnConfirmMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)

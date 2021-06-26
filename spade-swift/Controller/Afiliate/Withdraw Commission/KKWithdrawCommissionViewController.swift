@@ -45,7 +45,7 @@ class KKWithdrawCommissionViewController: KKBaseViewController {
         containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 100 : 130)
         containerMarginRight.constant = containerMarginLeft.constant
         titleMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        titleHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
+        titleHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
         textFieldHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
         btnSubmitHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)

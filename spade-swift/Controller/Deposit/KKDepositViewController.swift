@@ -48,7 +48,7 @@ class KKDepositViewController: KKBaseViewController {
         menuItemMarginLeft.constant = ConstantSize.menuItemMarginLeft
         
         lblBankAccount.text = KKUtil.languageSelectedStringForKey(key: "deposit_bank_account")
-        lblArtificial.text = KKUtil.languageSelectedStringForKey(key: "deposit_artificial")
+        lblArtificial.text = KKUtil.languageSelectedStringForKey(key: "deposit_support")
         
         lblBankAccount.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
         lblArtificial.font = lblBankAccount.font

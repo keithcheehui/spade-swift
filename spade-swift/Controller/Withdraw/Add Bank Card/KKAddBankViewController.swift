@@ -26,6 +26,7 @@ class KKAddBankViewController: KKBaseViewController {
     @IBOutlet weak var textFieldHeight: NSLayoutConstraint!
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
     
+    //TODO: remember change to get API
     var bankList: [String]! = ["Maybank", "Hong Leong", "CIMB"]
     
     override func viewDidLoad() {

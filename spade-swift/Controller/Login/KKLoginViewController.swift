@@ -71,7 +71,7 @@ class KKLoginViewController: KKBaseViewController {
         passwordView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
         rememberView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
         
-        imgLoginHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
+        imgLoginHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
         usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
         lblUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 80)

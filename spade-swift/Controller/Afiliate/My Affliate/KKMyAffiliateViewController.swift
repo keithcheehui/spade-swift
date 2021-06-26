@@ -88,7 +88,7 @@ class KKMyAffiliateViewController: KKBaseViewController {
         iconMarginRight.constant = iconMarginLeft.constant
         buttonContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 90)
         btnCollectHeight.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 25 : 25))
-        btnShareHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        btnShareHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         btnCopyHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
 
         lblMyIDView.backgroundColor = UIColor(white: 0, alpha: 0.3)

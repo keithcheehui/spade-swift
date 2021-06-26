@@ -220,3 +220,8 @@ enum FilterDuration: String {
     case lm = "lm"
     case l90d = "l90d"
 }
+
+enum DialogAlertType: Int {
+    case Logout = 1
+    case Deposit = 2
+}

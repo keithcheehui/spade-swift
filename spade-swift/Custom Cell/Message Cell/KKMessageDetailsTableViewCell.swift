@@ -29,14 +29,14 @@ class KKMessageDetailsTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = .clear
         
         messageDetailsView = UIView.init()
-        messageDetailsView.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        messageDetailsView.backgroundColor = .spade_white_FFFFFF
         messageDetailsView.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 1)
         messageDetailsView.layer.borderColor = UIColor(white: 1, alpha: 0.3).cgColor
         messageDetailsView.layer.cornerRadius = 8
         self.contentView.addSubview(messageDetailsView)
         
         messageIcon = UIImageView.init()
-        messageIcon.image = UIImage(named: "ic_message")
+        messageIcon.image = UIImage(named: "ic_mail_read")
         messageIcon.contentMode = .scaleAspectFit
         messageDetailsView.addSubview(messageIcon)
         

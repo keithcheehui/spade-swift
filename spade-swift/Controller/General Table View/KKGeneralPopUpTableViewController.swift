@@ -33,7 +33,7 @@ class KKGeneralPopUpTableViewController: KKTableBaseViewController {
         containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 100 : 130)
         containerMarginRight.constant = containerMarginLeft.constant
         titleMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        titleHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
+        titleHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
         contentMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 12)
         contentMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 14)
