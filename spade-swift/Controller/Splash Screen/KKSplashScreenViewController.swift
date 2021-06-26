@@ -86,7 +86,7 @@ class KKSplashScreenViewController: KKBaseViewController {
             timerStop = true
             lblLoading.text = "loading 100%..."
             if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
-                self.present(KKHomeViewController(), animated: false, completion: nil)
+                KKUtil.redirectToHome()
             } else {
                 self.present(KKSelectCountryViewController(), animated: false, completion: nil)
             }

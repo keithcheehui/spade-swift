@@ -15,6 +15,17 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     var displayViewController:  KKBaseViewController!
     var selectedGameType: Int = 0
     
+    var pickerView: UIPickerView = UIPickerView()
+    var pickerToolBarView: UIToolbar = UIToolbar()
+    
+    var pickerTimeArray: [String] = [KKUtil.languageSelectedStringForKey(key: "picker_fd_td"),
+                               KKUtil.languageSelectedStringForKey(key: "picker_fd_yd"),
+                               KKUtil.languageSelectedStringForKey(key: "picker_fd_tm"),
+                               KKUtil.languageSelectedStringForKey(key: "picker_fd_lm"),
+                               KKUtil.languageSelectedStringForKey(key: "picker_fd_l90d")]
+    var dataArray: [String] = []
+    var pickerTextField: UITextField!
+
     override var prefersHomeIndicatorAutoHidden: Bool {
         
         return true
@@ -31,14 +42,12 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         activityIndicator.backgroundColor = UIColor.spade_black_000000.withAlphaComponent(0.75)
         
         if tableContentView != nil {
-            
             activityIndicator.frame = CGRect(x: 0, y: 0, width: tableContentView.frame.size.width, height: tableContentView.frame.size.height)
-        }
-        else {
-         
+        } else {
             activityIndicator.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.height)
         }
         
+        self.setupPickerView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +55,36 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    //MARK:- Picker View
+    func setupPickerView() {
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        pickerView.showsSelectionIndicator = true
+        
+        pickerToolBarView.barStyle = UIBarStyle.default
+        pickerToolBarView.isTranslucent = true
+        pickerToolBarView.sizeToFit()
+
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil);
+        let flexibleSpace2 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil);
+
+        pickerToolBarView.setItems([flexibleSpace2, flexibleSpace, doneButton], animated: false)
+        pickerToolBarView.isUserInteractionEnabled = true
+
+        if let window = UIApplication.shared.keyWindow {
+            window.addSubview(pickerView)
+        }
+        
+        pickerView.isHidden = true
+    }
+    
+    //MARK:- Show Picker View
+    func showPickerView(optionList: [String]) {
+        dataArray = optionList
+        pickerView.isHidden = false
     }
     
     //MARK:- Show/Hide Animation Loader
@@ -198,5 +237,55 @@ extension UIView {
             
             self.layer.removeAllAnimations()
         }
+    }
+    
+    func maskedCornersWidthRadius(corners: CACornerMask, radius: CGFloat) {
+        layer.cornerRadius = radius
+        layer.maskedCorners = corners
+    }
+}
+
+extension KKBaseViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+       return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if dataArray.isEmpty {
+            return 0
+        }
+        
+        return dataArray.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if dataArray.isEmpty {
+            return ""
+        }
+        
+        let row = dataArray[row]
+        return row
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if dataArray.isEmpty {
+            pickerTextField.text = ""
+        } else {
+            pickerTextField.text = dataArray[row]
+        }
+    }
+}
+
+extension KKBaseViewController: UIToolbarDelegate {
+
+    @objc func didTapDone() {
+        view.endEditing(true)
+        pickerView.isHidden = true
+    }
+
+    @objc func didTapCancel() {
+        view.endEditing(true)
+        pickerView.isHidden = true
     }
 }

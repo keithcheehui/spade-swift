@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKPersonalViewController" customModule="spade_swift" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="QrB-Ni-mIw" id="kYF-ee-8lf"/>
+                <outlet property="groupsCollectionView" destination="7N0-8n-xxc" id="xbr-vD-AU6"/>
+                <outlet property="groupsCollectionViewHeight" destination="gJF-VM-jcR" id="qX2-cy-tBc"/>
                 <outlet property="headerContainerMarginLeft" destination="UCJ-eL-mGm" id="5oj-ot-9x3"/>
                 <outlet property="imgBackWidth" destination="zoH-8i-JIX" id="Joh-ya-0qe"/>
                 <outlet property="imgHoverAccountDetails" destination="UC5-Yc-mIK" id="URW-qF-6Ly"/>
@@ -271,14 +273,32 @@
                         <constraint firstAttribute="width" secondItem="lLN-NU-cSH" secondAttribute="height" multiplier="15:1" id="A1Y-9X-PJh"/>
                     </constraints>
                 </imageView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7N0-8n-xxc">
+                    <rect key="frame" x="214" y="60" width="662" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="gJF-VM-jcR"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="K90-Sl-e2p">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="SzV-VK-Xki"/>
+                        <outlet property="delegate" destination="-1" id="Z5u-1W-0Mo"/>
+                    </connections>
+                </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggt-l0-a5y">
-                    <rect key="frame" x="214" y="70" width="662" height="344"/>
+                    <rect key="frame" x="214" y="110" width="662" height="304"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_box" translatesAutoresizingMaskIntoConstraints="NO" id="72j-lD-7nQ">
-                            <rect key="frame" x="0.0" y="0.0" width="662" height="344"/>
+                            <rect key="frame" x="0.0" y="0.0" width="662" height="304"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QrB-Ni-mIw">
-                            <rect key="frame" x="0.0" y="0.0" width="662" height="344"/>
+                            <rect key="frame" x="0.0" y="0.0" width="662" height="304"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                     </subviews>
@@ -350,10 +370,12 @@
                 <constraint firstItem="07k-Gq-bf0" firstAttribute="top" secondItem="8oC-08-Q4z" secondAttribute="bottom" id="4QX-3W-bl0"/>
                 <constraint firstItem="msU-ae-7Yj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AC1-CZ-6GD"/>
                 <constraint firstAttribute="trailing" secondItem="8oC-08-Q4z" secondAttribute="trailing" id="DcF-JD-tLF"/>
-                <constraint firstItem="Ggt-l0-a5y" firstAttribute="top" secondItem="8oC-08-Q4z" secondAttribute="bottom" constant="10" id="Dnh-1O-Cs1"/>
+                <constraint firstItem="7N0-8n-xxc" firstAttribute="top" secondItem="8oC-08-Q4z" secondAttribute="bottom" id="FVd-g2-bjA"/>
+                <constraint firstItem="7N0-8n-xxc" firstAttribute="trailing" secondItem="Ggt-l0-a5y" secondAttribute="trailing" id="NvM-UY-dfS"/>
                 <constraint firstItem="07k-Gq-bf0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="OQ6-qo-E8L"/>
                 <constraint firstItem="Ggt-l0-a5y" firstAttribute="leading" secondItem="07k-Gq-bf0" secondAttribute="trailing" constant="20" id="Oee-S2-wxk"/>
                 <constraint firstItem="lLN-NU-cSH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Rbe-1Z-tVy"/>
+                <constraint firstItem="7N0-8n-xxc" firstAttribute="leading" secondItem="Ggt-l0-a5y" secondAttribute="leading" id="Ru3-Iw-o4g"/>
                 <constraint firstItem="8oC-08-Q4z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SSF-5Y-pro"/>
                 <constraint firstItem="8oC-08-Q4z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="UCJ-eL-mGm"/>
                 <constraint firstAttribute="bottom" secondItem="07k-Gq-bf0" secondAttribute="bottom" id="VK6-eb-1Gc"/>
@@ -366,6 +388,7 @@
                 <constraint firstItem="8oC-08-Q4z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="q2t-d9-EUX"/>
                 <constraint firstItem="lLN-NU-cSH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qnu-79-4wn"/>
                 <constraint firstItem="msU-ae-7Yj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sdJ-sn-jJm"/>
+                <constraint firstItem="Ggt-l0-a5y" firstAttribute="top" secondItem="7N0-8n-xxc" secondAttribute="bottom" constant="10" id="smk-RH-LGc"/>
                 <constraint firstItem="07k-Gq-bf0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="vz3-sw-xbN"/>
                 <constraint firstAttribute="trailing" secondItem="msU-ae-7Yj" secondAttribute="trailing" id="wPa-Xc-GDJ"/>
             </constraints>
@@ -377,7 +400,7 @@
         <image name="bg_header" width="2208" height="142"/>
         <image name="bg_hover" width="373" height="112"/>
         <image name="bg_mini_games" width="2208" height="1242"/>
-        <image name="bg_separator" width="382" height="2"/>
+        <image name="bg_separator" width="383" height="6"/>
         <image name="bg_sidemenu" width="426" height="1242"/>
         <image name="ic_account_detail" width="68" height="68"/>
         <image name="ic_back" width="97" height="81"/>

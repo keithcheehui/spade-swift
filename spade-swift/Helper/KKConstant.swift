@@ -162,7 +162,7 @@ struct CellIdentifier {
     
     static let generalHeaderViewIdentifier = "KKGeneralHeaderViewIdentifier"
     static let generalItemCellIdentifier = "KKGeneralItemCellIdentifier"
-    
+    static let tabListItemCVCIdentifier = "KKTabListItemCell"
 }
 
 struct Spade {
@@ -211,4 +211,12 @@ enum TableViewType: Int {
     case AccountDetails = 9
     case DepositHistory = 10
     case WithdrawHistory = 11
+}
+
+enum FilterDuration: String {
+    case td = "td"
+    case yd = "yd"
+    case tm = "tm"
+    case lm = "lm"
+    case l90d = "l90d"
 }

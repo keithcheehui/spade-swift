@@ -203,6 +203,8 @@
 		53E2FF232658CA3A0017CA67 /* KKBonusMenuTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E2FF222658CA3A0017CA67 /* KKBonusMenuTableCell.xib */; };
 		53E2FF282658CC730017CA67 /* KKBonusItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2FF272658CC730017CA67 /* KKBonusItemCell.swift */; };
 		53E2FF2B2658CC820017CA67 /* KKBonusItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E2FF2A2658CC820017CA67 /* KKBonusItemCell.xib */; };
+		53F21F962686E03500A44911 /* KKTabListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F21F942686E03500A44911 /* KKTabListItemCell.swift */; };
+		53F21F972686E03500A44911 /* KKTabListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F21F952686E03500A44911 /* KKTabListItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -405,6 +407,8 @@
 		53E2FF222658CA3A0017CA67 /* KKBonusMenuTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKBonusMenuTableCell.xib; sourceTree = "<group>"; };
 		53E2FF272658CC730017CA67 /* KKBonusItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKBonusItemCell.swift; sourceTree = "<group>"; };
 		53E2FF2A2658CC820017CA67 /* KKBonusItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKBonusItemCell.xib; sourceTree = "<group>"; };
+		53F21F942686E03500A44911 /* KKTabListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKTabListItemCell.swift; sourceTree = "<group>"; };
+		53F21F952686E03500A44911 /* KKTabListItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKTabListItemCell.xib; sourceTree = "<group>"; };
 		DE9CF2AF875923073B28E1B7 /* Pods-spade-swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spade-swift.debug.xcconfig"; path = "Target Support Files/Pods-spade-swift/Pods-spade-swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -641,6 +645,7 @@
 				5365E215265135C8005CB297 /* Game Menu Item */,
 				53E2FF252658CA3E0017CA67 /* Bonus Menu Cell */,
 				53E2FF2D2658CF5A0017CA67 /* Bonus Item Cell */,
+				53F21F992686E03A00A44911 /* Tab List Item Cell */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -1226,6 +1231,15 @@
 			path = "Bonus Item Cell";
 			sourceTree = "<group>";
 		};
+		53F21F992686E03A00A44911 /* Tab List Item Cell */ = {
+			isa = PBXGroup;
+			children = (
+				53F21F942686E03500A44911 /* KKTabListItemCell.swift */,
+				53F21F952686E03500A44911 /* KKTabListItemCell.xib */,
+			);
+			path = "Tab List Item Cell";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1329,6 +1343,7 @@
 				533CA6BB2631745C00768C08 /* KKHomeViewController.xib in Resources */,
 				06006DFD267299B000A2C8C9 /* Neutra Display Titling.ttf in Resources */,
 				06006E0626729AF400A2C8C9 /* futura medium bt.ttf in Resources */,
+				53F21F972686E03500A44911 /* KKTabListItemCell.xib in Resources */,
 				5380F10F267D02E7003DC6CB /* KKGeneralPopUpTableViewController.xib in Resources */,
 				06006E0726729AF400A2C8C9 /* FuturaBook.ttf in Resources */,
 				53E2FF2B2658CC820017CA67 /* KKBonusItemCell.xib in Resources */,
@@ -1434,6 +1449,7 @@
 				06566B98267AE477009FE072 /* KKDepositHistoryDetails.swift in Sources */,
 				06BF5C1D2669795500C10008 /* KKGeneralResponse.swift in Sources */,
 				06BF5C2426697A1900C10008 /* KKUserCredential.swift in Sources */,
+				53F21F962686E03500A44911 /* KKTabListItemCell.swift in Sources */,
 				5381676D26464B3300FC96A6 /* KKUserInfoViewController.swift in Sources */,
 				06BF5C332669814C00C10008 /* KKGroupPlatformResponse.swift in Sources */,
 				5381D837264961EC003BBD2A /* KKAnnouncementTableCell.swift in Sources */,

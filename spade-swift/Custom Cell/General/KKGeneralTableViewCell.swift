@@ -30,7 +30,7 @@ class KKGeneralTableViewCell: UITableViewCell {
         for index in 1...5 {
             
             let label = UILabel.init()
-            label.font = UIFont.systemFont(ofSize: 10)
+            label.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
             label.textColor = .spade_white_FFFFFF
             label.textAlignment = .center
             label.numberOfLines = 1

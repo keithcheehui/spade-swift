@@ -209,3 +209,10 @@
 "error_password_not_match_desc"                 = "Password confirmation does not matches with your new password.";
 "error_error_encountered"                       = "Error Encountered";
 "error_okay"                                    = "OKAY";
+
+//MARK: Picker
+"picker_fd_td"                                  = "Today";
+"picker_fd_yd"                                  = "Yesterday";
+"picker_fd_tm"                                  = "This month";
+"picker_fd_lm"                                  = "Last month";
+"picker_fd_l90d"                                = "Last 90 days";

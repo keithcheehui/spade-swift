@@ -27,7 +27,7 @@ class KKGeneralHeaderView: UITableViewHeaderFooterView {
         for index in 1...5 {
             
             let label = UILabel.init()
-            label.font = UIFont.systemFont(ofSize: 12)
+            label.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
             label.textColor = .spade_orange_FFBA00
             label.textAlignment = .center
             label.numberOfLines = 1
