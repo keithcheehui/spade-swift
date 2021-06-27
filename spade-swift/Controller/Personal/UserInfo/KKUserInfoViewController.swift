@@ -241,24 +241,24 @@ class KKUserInfoViewController: KKBaseViewController {
             self.view.endEditing(true)
             
             if txtEmail.text!.count == 0 {
-                self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_email_empty"))
+                self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_email_empty"))
                 return
             }
             
             if txtBirthday.text!.count == 0 {
-                self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_birthday_empty"))
+                self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_birthday_empty"))
                 return
             }
             
             if txtGender.text!.count == 0 {
-                self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_gender_empty"))
+                self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_gender_empty"))
                 return
             }
             
             if KKUtil.isValidEmail(email: txtEmail.text!) {
                 editPersonalDataAPI()
             } else {
-                self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_email_invalid"))
+                self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_email_invalid"))
             }
         }else{
             isEditMode = true
@@ -290,7 +290,7 @@ class KKUserInfoViewController: KKBaseViewController {
             
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
 }

@@ -67,7 +67,7 @@ class KKSelectCountryViewController: KKBaseViewController {
             KKUtil.redirectToHome()
         }
         catch {
-            self.showAlertView(alertMessage: error.localizedDescription)
+            self.showAlertView(type: .Error, alertMessage: error.localizedDescription)
         }
     }
 }

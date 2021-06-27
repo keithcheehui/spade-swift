@@ -337,7 +337,7 @@ class KKHomeViewController: KKBaseViewController {
                 
                 self.refreshWalletIcon.removeRotate()
                 self.refreshWalletBtn.isEnabled = true
-                self.showAlertView(alertMessage: errorMessage)
+                self.showAlertView(type: .Error, alertMessage: errorMessage)
             }
         } else {
             self.refreshWalletIcon.removeRotate()
@@ -367,7 +367,7 @@ class KKHomeViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
 
@@ -386,7 +386,7 @@ class KKHomeViewController: KKBaseViewController {
     @IBAction func btnCopyDidPressed(){
         if UserDefaults.standard.bool(forKey: CacheKey.loginStatus), let userProfile = KKUtil.decodeUserProfileFromCache() {
             UIPasteboard.general.string = userProfile.code
-            self.showToastMessage(title: .Success, body: KKUtil.languageSelectedStringForKey(key: "alert_copied"))
+            self.showAlertView(type: .Success, alertMessage: KKUtil.languageSelectedStringForKey(key: "alert_copied"))
         }
     }
     
@@ -419,6 +419,7 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnMissionDidPressed(){
         announcementBubble.isHidden = true
+        self.showAlertView(type: .Error, alertMessage: "Coming soon!")
     }
     
     @IBAction func btnBonusDidPressed(){

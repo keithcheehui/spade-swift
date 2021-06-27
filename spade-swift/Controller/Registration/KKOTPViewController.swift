@@ -258,7 +258,7 @@ class KKOTPViewController: KKBaseViewController {
     @IBAction func btnSendDidPressed(){
 
         if txtMobile.text!.isEmpty {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_mobile_required_desc"))
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_mobile_required_desc"))
         } else {
             //TODO: Keith this one need review again, ask not always selected Malaysia country
             if txtMobile.text!.first == "0" {
@@ -300,7 +300,7 @@ class KKOTPViewController: KKBaseViewController {
             self.btnSendContainer.isHidden = true
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
@@ -319,7 +319,7 @@ class KKOTPViewController: KKBaseViewController {
             self.btnSendContainer.isHidden = true
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
@@ -327,7 +327,7 @@ class KKOTPViewController: KKBaseViewController {
         
         let OTPCode = "\(txtOTP1.text!)\(txtOTP2.text!)\(txtOTP3.text!)\(txtOTP4.text!)\(txtOTP5.text!)\(txtOTP6.text!)"
         if OTPCode.count != 6 {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_otp_required_desc"))
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_otp_required_desc"))
         } else {
             self.showAnimatedLoader()
             
@@ -337,7 +337,7 @@ class KKOTPViewController: KKBaseViewController {
                     self.closeOTPAndOpenRegistration()
                 } onFailure: { errorMessage in
                     self.hideAnimatedLoader()
-                    self.showAlertView(alertMessage: errorMessage)
+                    self.showAlertView(type: .Error, alertMessage: errorMessage)
                 }
             } else {
                 KKApiClient.proceedOTPVerification(phoneNumber: phoneNumber, otpCode: OTPCode).execute { generalResponse in
@@ -345,7 +345,7 @@ class KKOTPViewController: KKBaseViewController {
                     self.closeOTPAndOpenRegistration()
                 } onFailure: { errorMessage in
                     self.hideAnimatedLoader()
-                    self.showAlertView(alertMessage: errorMessage)
+                    self.showAlertView(type: .Error, alertMessage: errorMessage)
                 }
             }
         }

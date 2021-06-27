@@ -29,8 +29,22 @@ class KKCustomToastViewController: KKBaseViewController {
         let alertMessageView = UIView()
         alertMessageView.clipsToBounds = true
         self.view.addSubview(alertMessageView)
+
+        let imgToastType = UIImageView()
+        imgToastType.contentMode = .scaleAspectFit
+        if (toastType == .Success){
+            imgToastType.image = UIImage(named: "ic_alert_success")
+        } else {
+            imgToastType.image = UIImage(named: "ic_alert_exclamation")
+        }
+        alertMessageView.addSubview(imgToastType)
         
-        let maximumLabelSize = CGSize(width: CustomToastViewConstant.maximumAlertViewWidth - (ConstantSize.paddingHalf * 3 + CustomToastViewConstant.imgToastTypeWidth), height: CGFloat.greatestFiniteMagnitude)
+        let alertSubtitle = UILabel()
+        alertSubtitle.textAlignment = .center
+        alertSubtitle.numberOfLines = 0
+        alertMessageView.addSubview(alertSubtitle)
+        
+        let maximumLabelSize = CGSize(width: CustomToastViewConstant.maximumAlertViewWidth - (ConstantSize.paddingStandard * 3 + CustomToastViewConstant.imgToastTypeWidth), height: CGFloat.greatestFiniteMagnitude)
 
         let bodyAttributes: [NSAttributedString.Key: Any] = [
             .font            : UIFont.systemFont(ofSize: CustomToastViewConstant.descriptionFontSize),
@@ -44,38 +58,25 @@ class KKCustomToastViewController: KKBaseViewController {
                                                             attributes: bodyAttributes)
 
         var height: CGFloat = 0.0
-        if (expectedAlertSubtitleSize.height * 1.5 < CustomToastViewConstant.imgToastTypeWidth + ConstantSize.paddingStandard) {
-            height = CustomToastViewConstant.imgToastTypeWidth + ConstantSize.paddingStandard
+        if (expectedAlertSubtitleSize.height * 1.5 < CustomToastViewConstant.imgToastTypeWidth + ConstantSize.paddingStandard * 1.5) {
+            height = CustomToastViewConstant.imgToastTypeWidth + ConstantSize.paddingStandard * 1.5
         } else {
             height = expectedAlertSubtitleSize.height * 1.5
         }
 
-        let imgToastTypeY = (height - CustomToastViewConstant.imgToastTypeWidth) / 2
-        
-        let imgToastType = UIImageView()
-        imgToastType.frame = CGRect(x: ConstantSize.paddingHalf, y: imgToastTypeY, width: CustomToastViewConstant.imgToastTypeWidth, height: CustomToastViewConstant.imgToastTypeWidth)
-        imgToastType.contentMode = .scaleAspectFit
-        if (toastType == .Success){
-            imgToastType.image = UIImage(named: "ic_alert_success")
-        } else {
-            imgToastType.image = UIImage(named: "ic_alert_exclamation")
-        }
-        alertMessageView.addSubview(imgToastType)
-        
-        let startingPoint: CGFloat = ConstantSize.paddingHalf * 2 + CustomToastViewConstant.imgToastTypeWidth
-        let alertSubtitleY = (height - expectedAlertSubtitleSize.height) / 2
-        let alertSubtitleWidth = CustomToastViewConstant.maximumAlertViewWidth - startingPoint - ConstantSize.paddingHalf
-
-        let alertSubtitle = UILabel()
-        alertSubtitle.attributedText = attributedSubtitleString
-        alertSubtitle.textAlignment = .left
-        alertSubtitle.numberOfLines = 0
-        alertSubtitle.frame = CGRect(x: startingPoint, y: alertSubtitleY, width: alertSubtitleWidth, height: expectedAlertSubtitleSize.height)
-        alertMessageView.addSubview(alertSubtitle)
-
         alertMessageView.frame = CGRect(x: 0, y: 0, width: CustomToastViewConstant.maximumAlertViewWidth, height: height)
         alertMessageView.center = self.view.center
         
+        let imgToastTypeY = (height - CustomToastViewConstant.imgToastTypeWidth) / 2
+        imgToastType.frame = CGRect(x: ConstantSize.paddingStandard, y: imgToastTypeY, width: CustomToastViewConstant.imgToastTypeWidth, height: CustomToastViewConstant.imgToastTypeWidth)
+
+        let startingPoint: CGFloat = ConstantSize.paddingStandard * 2 + CustomToastViewConstant.imgToastTypeWidth
+        let alertSubtitleY = (height - expectedAlertSubtitleSize.height) / 2
+        let alertSubtitleWidth = CustomToastViewConstant.maximumAlertViewWidth - startingPoint - ConstantSize.paddingStandard
+
+        alertSubtitle.attributedText = attributedSubtitleString
+        alertSubtitle.frame = CGRect(x: startingPoint, y: alertSubtitleY, width: alertSubtitleWidth, height: expectedAlertSubtitleSize.height)
+
         modalPresentationStyle = .custom
         transitioningDelegate = self
         

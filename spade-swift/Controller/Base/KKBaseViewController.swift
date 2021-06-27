@@ -154,22 +154,25 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     //MARK:- Alert View Setup
     
-    func showAlertView(alertMessage: String) {
-        
-        if alertMessage.contains("connection") && alertMessage.contains("offline") {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_internet_connection_desc"))
-        } else if alertMessage.contains("internal server error") {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_internal_server_error_desc"))
-        }else if (alertMessage.contains("invalid_grant") || alertMessage.contains("Invalid password")) {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_invalid_credential_desc"))
-        } else{
-            self.showToastMessage(title: .Error, body: alertMessage)
+    func showAlertView(type: ToastType, alertMessage: String) {
+        if (type == .Success) {
+            self.showToastMessage(type: .Success, body: alertMessage)
+        } else {
+            if alertMessage.contains("connection") && alertMessage.contains("offline") {
+                self.showToastMessage(type: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_internet_connection_desc"))
+            } else if alertMessage.contains("internal server error") {
+                self.showToastMessage(type: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_internal_server_error_desc"))
+            }else if (alertMessage.contains("invalid_grant") || alertMessage.contains("Invalid password")) {
+                self.showToastMessage(type: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_invalid_credential_desc"))
+            } else{
+                self.showToastMessage(type: .Error, body: alertMessage)
+            }
         }
     }
     
-    func showToastMessage(title: ToastType, body: String) {
+    func showToastMessage(type: ToastType, body: String) {
         
-        let alertView = KKCustomToastViewController.init(toastType: .Success, msgDesc: body)
+        let alertView = KKCustomToastViewController.init(toastType: type, msgDesc: body)
         self.present(alertView, animated: true, completion: nil)
 
         let when = DispatchTime.now() + 2

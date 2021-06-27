@@ -54,7 +54,7 @@ class KKFaqViewController: KKBaseViewController, WKNavigationDelegate {
             }
 
         } onFailure: { errorMessage in
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     

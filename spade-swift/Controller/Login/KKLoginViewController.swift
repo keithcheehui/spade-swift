@@ -122,12 +122,12 @@ class KKLoginViewController: KKBaseViewController {
         self.view.endEditing(true)
         
         if txtUsername.text!.count == 0 {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_username_required_desc"))
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_username_required_desc"))
             return
         }
         
         if txtPassword.text!.count == 0 {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"))
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"))
             return
         }
         
@@ -144,13 +144,14 @@ class KKLoginViewController: KKBaseViewController {
             KKTokenManager.setUserCredential(userCredential: userCredential)
             UserDefaults.standard.set(true, forKey: CacheKey.loginStatus)
             UserDefaults.standard.synchronize()
+            self.showAlertView(type: .Success, alertMessage: userCredential.message ?? "")
             
             self.getUserLatestWallet()
             
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
@@ -166,7 +167,7 @@ class KKLoginViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
@@ -183,7 +184,7 @@ class KKLoginViewController: KKBaseViewController {
             }
             catch {
                 self.hideAnimatedLoader()
-                self.showAlertView(alertMessage: error.localizedDescription)
+                self.showAlertView(type: .Error, alertMessage: error.localizedDescription)
             }
             
             self.hideAnimatedLoader()
@@ -192,7 +193,7 @@ class KKLoginViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
 

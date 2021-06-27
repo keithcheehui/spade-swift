@@ -135,23 +135,23 @@ class KKRegistrationViewController: KKBaseViewController {
         
         if (!isFromForgotPassword) {
             if txtUsername.text!.count == 0 {
-                self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_username_required_desc"))
+                self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_username_required_desc"))
                 return
             }
         }
         
         if txtPassword.text!.count == 0 {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"))
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"))
             return
         }
         
         if txtConfirmPassword.text!.count == 0 {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_password_confirm_required_desc"))
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_password_confirm_required_desc"))
             return
         }
         
         if txtConfirmPassword.text != txtPassword.text {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_password_not_match_desc"))
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_password_not_match_desc"))
             return
         }
                 
@@ -169,13 +169,14 @@ class KKRegistrationViewController: KKBaseViewController {
         self.showAnimatedLoader()
         
         KKApiClient.userAccountRegistration(username: txtUsername.text!, password: txtPassword.text!, phoneNumber: verifiedPhoneNumber).execute { userCredential in
-            
+            self.showAlertView(type: .Success, alertMessage: userCredential.message ?? "")
+
             self.userAccountLogin()
             
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
@@ -185,12 +186,14 @@ class KKRegistrationViewController: KKBaseViewController {
         
         KKApiClient.userForgotPassword(password: txtPassword.text!, phoneNumber: verifiedPhoneNumber).execute { userCredential in
             self.hideAnimatedLoader()
+            self.showAlertView(type: .Success, alertMessage: userCredential.message ?? "")
+
             self.dismissPresentedViewWithBackgroundFaded()
             
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
@@ -201,13 +204,13 @@ class KKRegistrationViewController: KKBaseViewController {
             KKTokenManager.setUserCredential(userCredential: userCredential)
             UserDefaults.standard.set(true, forKey: CacheKey.loginStatus)
             UserDefaults.standard.synchronize()
-            
+
             self.getUserLatestWallet()
             
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
@@ -223,7 +226,7 @@ class KKRegistrationViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
@@ -240,7 +243,7 @@ class KKRegistrationViewController: KKBaseViewController {
             }
             catch {
                 self.hideAnimatedLoader()
-                self.showAlertView(alertMessage: error.localizedDescription)
+                self.showAlertView(type: .Error, alertMessage: error.localizedDescription)
             }
             
             self.hideAnimatedLoader()
@@ -249,7 +252,7 @@ class KKRegistrationViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
 

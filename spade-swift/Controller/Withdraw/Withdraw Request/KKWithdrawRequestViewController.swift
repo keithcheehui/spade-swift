@@ -107,7 +107,7 @@ class KKWithdrawRequestViewController: KKBaseViewController {
             
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
             self.changeLayoutView(noBank: self.userBankList.isEmpty)
         }
     }
@@ -118,7 +118,7 @@ class KKWithdrawRequestViewController: KKBaseViewController {
         }
         
         if txtWithdrawAmount.text!.count == 0 {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_withdraw_empty"))
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_withdraw_empty"))
             return
         }
         
@@ -136,9 +136,10 @@ class KKWithdrawRequestViewController: KKBaseViewController {
         KKApiClient.updateMemberWithdrawal(amount: amountFloat!, bankAcc: bankAccount).execute { withdrawResponse in
             self.hideAnimatedLoader()
             self.txtWithdrawAmount.text = ""
+            self.showAlertView(type: .Success, alertMessage: withdrawResponse.message ?? "")
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     

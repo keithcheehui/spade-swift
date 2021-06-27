@@ -103,7 +103,7 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
             self.bonusCollectionView.reloadData()
             
         } onFailure: { errorMessage in
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     

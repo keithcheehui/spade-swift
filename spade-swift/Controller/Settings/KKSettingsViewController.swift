@@ -218,17 +218,17 @@ class KKSettingsViewController: KKBaseViewController {
         self.view.endEditing(true)
 
         if txtCurrentPassword.text!.count == 0 {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"))
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"))
             return
         }
         
         if txtReconfirmPassword.text!.count == 0 {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_password_confirm_required_desc"))
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_password_confirm_required_desc"))
             return
         }
         
         if txtReconfirmPassword.text != txtNewPassword.text {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_password_not_match_desc"))
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_password_not_match_desc"))
             return
         }
         
@@ -286,10 +286,11 @@ class KKSettingsViewController: KKBaseViewController {
             self.txtCurrentPassword.text = ""
             self.txtNewPassword.text = ""
             self.txtReconfirmPassword.text = ""
+            self.showAlertView(type: .Success, alertMessage: userCredential.message ?? "")
 
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     

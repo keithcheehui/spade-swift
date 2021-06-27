@@ -85,17 +85,17 @@ class KKAddBankViewController: KKBaseViewController {
     
     func validationField() {
         if txtCardholderName.text!.count == 0 {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_account_name_empty"))
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_account_name_empty"))
             return
         }
         
         if txtBankName.text!.count == 0 {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_bank_name_empty"))
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_bank_name_empty"))
             return
         }
         
         if txtBankAccount.text!.count == 0 {
-            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_error_account_number_empty"))
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_error_account_number_empty"))
             return
         }
         
@@ -115,11 +115,12 @@ class KKAddBankViewController: KKBaseViewController {
             
             self.hideAnimatedLoader()
             self.backPreviousScreen()
+            self.showAlertView(type: .Success, alertMessage: addBankResponse.message ?? "")
             
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     

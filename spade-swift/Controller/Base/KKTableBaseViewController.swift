@@ -91,7 +91,7 @@ class KKTableBaseViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
@@ -108,7 +108,7 @@ class KKTableBaseViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
@@ -125,7 +125,7 @@ class KKTableBaseViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     

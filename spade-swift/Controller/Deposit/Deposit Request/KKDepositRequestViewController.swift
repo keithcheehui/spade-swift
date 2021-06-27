@@ -183,7 +183,7 @@ class KKDepositRequestViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
@@ -195,7 +195,7 @@ class KKDepositRequestViewController: KKBaseViewController {
     @IBAction func btnCopyDidPressed(){
         //TODO: add copy string
         UIPasteboard.general.string = ""
-        self.showToastMessage(title: .Success, body: KKUtil.languageSelectedStringForKey(key: "alert_copied"))
+        self.showAlertView(type: .Success, alertMessage: KKUtil.languageSelectedStringForKey(key: "alert_copied"))
     }
     
     @IBAction func btnDepositHistoryDidPressed(){

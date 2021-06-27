@@ -225,6 +225,7 @@ class KKMyAffiliateViewController: KKBaseViewController {
     
     @IBAction func btnCopyURLDidPressed(){
         UIPasteboard.general.string = "[Hardcode data] - this is a hard code text"
+        self.showAlertView(type: .Success, alertMessage: KKUtil.languageSelectedStringForKey(key: "alert_copied"))
     }
     
     @IBAction func btnShareDidPressed() {
@@ -232,6 +233,14 @@ class KKMyAffiliateViewController: KKBaseViewController {
         let shareAll = [text]
         let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
+        
+        activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if !completed {
+                return
+            }
+            self.showAlertView(type: .Success, alertMessage: KKUtil.languageSelectedStringForKey(key: "alert_shared"))
+        }
+        
         self.present(activityViewController, animated: true, completion: nil)
     }
     

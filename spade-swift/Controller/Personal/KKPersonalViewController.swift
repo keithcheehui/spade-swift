@@ -112,7 +112,7 @@ class KKPersonalViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
@@ -129,7 +129,7 @@ class KKPersonalViewController: KKBaseViewController {
             }
             catch {
                 self.hideAnimatedLoader()
-                self.showAlertView(alertMessage: error.localizedDescription)
+                self.showAlertView(type: .Error, alertMessage: error.localizedDescription)
             }
             
             self.hideAnimatedLoader()
@@ -137,7 +137,7 @@ class KKPersonalViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
@@ -163,7 +163,7 @@ class KKPersonalViewController: KKBaseViewController {
             self.groupsCollectionView.reloadData()
             
         } onFailure: { errorMessage in
-            self.showAlertView(alertMessage: errorMessage)
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
