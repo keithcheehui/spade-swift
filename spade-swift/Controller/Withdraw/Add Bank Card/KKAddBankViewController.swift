@@ -85,23 +85,17 @@ class KKAddBankViewController: KKBaseViewController {
     
     func validationField() {
         if txtCardholderName.text!.count == 0 {
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_error_encountered"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_account_name_empty"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_account_name_empty"))
             return
         }
         
         if txtBankName.text!.count == 0 {
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_error_encountered"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_bank_name_empty"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_bank_name_empty"))
             return
         }
         
         if txtBankAccount.text!.count == 0 {
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_error_encountered"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_error_account_number_empty"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_error_account_number_empty"))
             return
         }
         

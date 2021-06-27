@@ -118,9 +118,7 @@ class KKWithdrawRequestViewController: KKBaseViewController {
         }
         
         if txtWithdrawAmount.text!.count == 0 {
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_error_encountered"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_withdraw_empty"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_withdraw_empty"))
             return
         }
         

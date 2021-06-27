@@ -245,3 +245,4 @@
 //MARK: Dialog Alert
 "alert_deposit"                                 = "Please set up your at least one bank card before deposit";
 "alert_logout"                                  = "Are you sure you want to log out?";
+"alert_copied"                                  = "Copied to clipboard";

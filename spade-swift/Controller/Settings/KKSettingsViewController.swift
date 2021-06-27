@@ -218,21 +218,18 @@ class KKSettingsViewController: KKBaseViewController {
         self.view.endEditing(true)
 
         if txtCurrentPassword.text!.count == 0 {
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_required"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"))
+            return
         }
         
         if txtReconfirmPassword.text!.count == 0 {
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_confirm_required"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_password_confirm_required_desc"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_password_confirm_required_desc"))
+            return
         }
         
         if txtReconfirmPassword.text != txtNewPassword.text {
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_not_match"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_password_not_match_desc"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_password_not_match_desc"))
+            return
         }
         
         userChangePassword()

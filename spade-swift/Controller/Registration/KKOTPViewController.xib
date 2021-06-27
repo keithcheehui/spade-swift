@@ -157,7 +157,7 @@
                                     <rect key="frame" x="262" y="0.0" width="193" height="30"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please enter your phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0rR-Mm-2Ym">
-                                            <rect key="frame" x="16" y="0.0" width="161" height="30"/>
+                                            <rect key="frame" x="8" y="0.0" width="177" height="30"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -168,9 +168,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="0rR-Mm-2Ym" firstAttribute="leading" secondItem="WTQ-W3-PRX" secondAttribute="leading" constant="16" id="JS2-q7-MY1"/>
+                                        <constraint firstItem="0rR-Mm-2Ym" firstAttribute="leading" secondItem="WTQ-W3-PRX" secondAttribute="leading" constant="8" id="JS2-q7-MY1"/>
                                         <constraint firstAttribute="bottom" secondItem="0rR-Mm-2Ym" secondAttribute="bottom" id="e3Q-U6-683"/>
-                                        <constraint firstAttribute="trailing" secondItem="0rR-Mm-2Ym" secondAttribute="trailing" constant="16" id="hUC-7r-SeF"/>
+                                        <constraint firstAttribute="trailing" secondItem="0rR-Mm-2Ym" secondAttribute="trailing" constant="8" id="hUC-7r-SeF"/>
                                         <constraint firstItem="0rR-Mm-2Ym" firstAttribute="top" secondItem="WTQ-W3-PRX" secondAttribute="top" id="viz-ju-1u9"/>
                                     </constraints>
                                 </view>

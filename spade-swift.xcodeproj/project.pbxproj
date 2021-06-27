@@ -191,6 +191,7 @@
 		53AAAE3726401FF7004103F0 /* KKAffiliateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53AAAE3626401FF7004103F0 /* KKAffiliateViewController.xib */; };
 		53C64EFA263700D00068F03E /* KKPersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53C64EF9263700D00068F03E /* KKPersonalViewController.xib */; };
 		53C64EFD263700E10068F03E /* KKPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C64EFC263700E10068F03E /* KKPersonalViewController.swift */; };
+		53D008D626888BC900FDE9D7 /* KKCustomToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D008D526888BC800FDE9D7 /* KKCustomToastViewController.swift */; };
 		53DF81D1265028ED00BA6119 /* KKSelectCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF81D0265028ED00BA6119 /* KKSelectCountryViewController.swift */; };
 		53DF81D4265028FC00BA6119 /* KKSelectCountryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53DF81D3265028FC00BA6119 /* KKSelectCountryViewController.xib */; };
 		53DF81D926502F7200BA6119 /* KKCountryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF81D826502F7200BA6119 /* KKCountryItemCell.swift */; };
@@ -400,6 +401,7 @@
 		53AAAE3626401FF7004103F0 /* KKAffiliateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKAffiliateViewController.xib; sourceTree = "<group>"; };
 		53C64EF9263700D00068F03E /* KKPersonalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKPersonalViewController.xib; sourceTree = "<group>"; };
 		53C64EFC263700E10068F03E /* KKPersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPersonalViewController.swift; sourceTree = "<group>"; };
+		53D008D526888BC800FDE9D7 /* KKCustomToastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKCustomToastViewController.swift; sourceTree = "<group>"; };
 		53DF81D0265028ED00BA6119 /* KKSelectCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSelectCountryViewController.swift; sourceTree = "<group>"; };
 		53DF81D3265028FC00BA6119 /* KKSelectCountryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKSelectCountryViewController.xib; sourceTree = "<group>"; };
 		53DF81D826502F7200BA6119 /* KKCountryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKCountryItemCell.swift; sourceTree = "<group>"; };
@@ -611,6 +613,7 @@
 			isa = PBXGroup;
 			children = (
 				06006DF5267296DA00A2C8C9 /* KKCustomAlertViewController.swift */,
+				53D008D526888BC800FDE9D7 /* KKCustomToastViewController.swift */,
 				0676B615262FDB790023311F /* KKAlertControllerTransition.swift */,
 			);
 			path = AlertView;
@@ -1541,6 +1544,7 @@
 				534D032B2682D5A8005BC9BE /* KKPromotionItemDetails.swift in Sources */,
 				53DF81D1265028ED00BA6119 /* KKSelectCountryViewController.swift in Sources */,
 				53363E44264ACE0C001F6B48 /* KKMyAffiliateViewController.swift in Sources */,
+				53D008D626888BC900FDE9D7 /* KKCustomToastViewController.swift in Sources */,
 				53AAAE1626401BD0004103F0 /* KKSupportViewController.swift in Sources */,
 				531D3432264E7EE60070BB3A /* KKAnnoucementContentViewController.swift in Sources */,
 				53268C09263068EB00ECAAE2 /* KKLoginViewController.swift in Sources */,

@@ -135,32 +135,26 @@ class KKRegistrationViewController: KKBaseViewController {
         
         if (!isFromForgotPassword) {
             if txtUsername.text!.count == 0 {
-                self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_username_required"),
-                                               body: KKUtil.languageSelectedStringForKey(key: "error_username_required_desc"),
-                                               buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+                self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_username_required_desc"))
+                return
             }
         }
         
         if txtPassword.text!.count == 0 {
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_required"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"))
+            return
         }
         
         if txtConfirmPassword.text!.count == 0 {
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_confirm_required"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_password_confirm_required_desc"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_password_confirm_required_desc"))
+            return
         }
         
         if txtConfirmPassword.text != txtPassword.text {
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_not_match"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_password_not_match_desc"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_password_not_match_desc"))
+            return
         }
-        
-        self.showAnimatedLoader()
-        
+                
         if (isFromForgotPassword) {
             self.userForgotPassword()
         } else {
@@ -190,7 +184,7 @@ class KKRegistrationViewController: KKBaseViewController {
         self.showAnimatedLoader()
         
         KKApiClient.userForgotPassword(password: txtPassword.text!, phoneNumber: verifiedPhoneNumber).execute { userCredential in
-
+            self.hideAnimatedLoader()
             self.dismissPresentedViewWithBackgroundFaded()
             
         } onFailure: { errorMessage in

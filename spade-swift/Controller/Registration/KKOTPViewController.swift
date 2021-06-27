@@ -258,11 +258,7 @@ class KKOTPViewController: KKBaseViewController {
     @IBAction func btnSendDidPressed(){
 
         if txtMobile.text!.isEmpty {
-            self.showPopUpWithSingleButton(
-                title: KKUtil.languageSelectedStringForKey(key: "error_mobile_required"),
-                body: KKUtil.languageSelectedStringForKey(key: "error_mobile_required_desc"),
-                buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay")
-            )
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_mobile_required_desc"))
         } else {
             //TODO: Keith this one need review again, ask not always selected Malaysia country
             if txtMobile.text!.first == "0" {
@@ -331,10 +327,7 @@ class KKOTPViewController: KKBaseViewController {
         
         let OTPCode = "\(txtOTP1.text!)\(txtOTP2.text!)\(txtOTP3.text!)\(txtOTP4.text!)\(txtOTP5.text!)\(txtOTP6.text!)"
         if OTPCode.count != 6 {
-            self.showPopUpWithSingleButton(
-                title: KKUtil.languageSelectedStringForKey(key: "error_otp_required"),
-                body: KKUtil.languageSelectedStringForKey(key: "error_otp_required_desc"),
-                buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_otp_required_desc"))
         } else {
             self.showAnimatedLoader()
             

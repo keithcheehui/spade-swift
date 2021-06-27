@@ -195,6 +195,7 @@ class KKDepositRequestViewController: KKBaseViewController {
     @IBAction func btnCopyDidPressed(){
         //TODO: add copy string
         UIPasteboard.general.string = ""
+        self.showToastMessage(title: .Success, body: KKUtil.languageSelectedStringForKey(key: "alert_copied"))
     }
     
     @IBAction func btnDepositHistoryDidPressed(){

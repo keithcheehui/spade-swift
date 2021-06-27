@@ -104,7 +104,7 @@
                                     <rect key="frame" x="166" y="0.0" width="302" height="30"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username must be between 6-12 characters." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="85H-AY-JYQ">
-                                            <rect key="frame" x="16" y="0.0" width="270" height="30"/>
+                                            <rect key="frame" x="8" y="0.0" width="286" height="30"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no"/>
@@ -112,8 +112,8 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="85H-AY-JYQ" secondAttribute="trailing" constant="16" id="A2Q-6s-6Gk"/>
-                                        <constraint firstItem="85H-AY-JYQ" firstAttribute="leading" secondItem="ith-4v-wuf" secondAttribute="leading" constant="16" id="Dzx-wJ-lXC"/>
+                                        <constraint firstAttribute="trailing" secondItem="85H-AY-JYQ" secondAttribute="trailing" constant="8" id="A2Q-6s-6Gk"/>
+                                        <constraint firstItem="85H-AY-JYQ" firstAttribute="leading" secondItem="ith-4v-wuf" secondAttribute="leading" constant="8" id="Dzx-wJ-lXC"/>
                                         <constraint firstItem="85H-AY-JYQ" firstAttribute="top" secondItem="ith-4v-wuf" secondAttribute="top" id="J5F-eA-C0j"/>
                                         <constraint firstAttribute="bottom" secondItem="85H-AY-JYQ" secondAttribute="bottom" id="UZi-hZ-h5V"/>
                                     </constraints>
@@ -144,7 +144,7 @@
                                     <rect key="frame" x="166" y="0.0" width="302" height="30"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password must be between 6-12 characters." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AGS-0X-K0b">
-                                            <rect key="frame" x="16" y="0.0" width="270" height="30"/>
+                                            <rect key="frame" x="8" y="0.0" width="286" height="30"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -154,8 +154,8 @@
                                     <constraints>
                                         <constraint firstItem="AGS-0X-K0b" firstAttribute="top" secondItem="hsm-IE-mNd" secondAttribute="top" id="Szf-7Y-JYb"/>
                                         <constraint firstAttribute="bottom" secondItem="AGS-0X-K0b" secondAttribute="bottom" id="XY8-0S-Zcg"/>
-                                        <constraint firstAttribute="trailing" secondItem="AGS-0X-K0b" secondAttribute="trailing" constant="16" id="awH-ut-2gq"/>
-                                        <constraint firstItem="AGS-0X-K0b" firstAttribute="leading" secondItem="hsm-IE-mNd" secondAttribute="leading" constant="16" id="fqj-R6-dIc"/>
+                                        <constraint firstAttribute="trailing" secondItem="AGS-0X-K0b" secondAttribute="trailing" constant="8" id="awH-ut-2gq"/>
+                                        <constraint firstItem="AGS-0X-K0b" firstAttribute="leading" secondItem="hsm-IE-mNd" secondAttribute="leading" constant="8" id="fqj-R6-dIc"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -183,7 +183,7 @@
                                     <rect key="frame" x="166" y="0.0" width="302" height="30"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please re-enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Qj-co-Hd9">
-                                            <rect key="frame" x="16" y="0.0" width="270" height="30"/>
+                                            <rect key="frame" x="8" y="0.0" width="286" height="30"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -192,9 +192,9 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="0Qj-co-Hd9" firstAttribute="top" secondItem="4PP-73-43f" secondAttribute="top" id="G2C-wU-aKZ"/>
-                                        <constraint firstItem="0Qj-co-Hd9" firstAttribute="leading" secondItem="4PP-73-43f" secondAttribute="leading" constant="16" id="H5G-4x-4Yy"/>
+                                        <constraint firstItem="0Qj-co-Hd9" firstAttribute="leading" secondItem="4PP-73-43f" secondAttribute="leading" constant="8" id="H5G-4x-4Yy"/>
                                         <constraint firstAttribute="bottom" secondItem="0Qj-co-Hd9" secondAttribute="bottom" id="KGN-8a-j3d"/>
-                                        <constraint firstAttribute="trailing" secondItem="0Qj-co-Hd9" secondAttribute="trailing" constant="16" id="Xso-ci-lSP"/>
+                                        <constraint firstAttribute="trailing" secondItem="0Qj-co-Hd9" secondAttribute="trailing" constant="8" id="Xso-ci-lSP"/>
                                     </constraints>
                                 </view>
                             </subviews>

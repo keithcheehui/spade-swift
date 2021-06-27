@@ -386,6 +386,7 @@ class KKHomeViewController: KKBaseViewController {
     @IBAction func btnCopyDidPressed(){
         if UserDefaults.standard.bool(forKey: CacheKey.loginStatus), let userProfile = KKUtil.decodeUserProfileFromCache() {
             UIPasteboard.general.string = userProfile.code
+            self.showToastMessage(title: .Success, body: KKUtil.languageSelectedStringForKey(key: "alert_copied"))
         }
     }
     

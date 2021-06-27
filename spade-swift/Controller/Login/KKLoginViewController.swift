@@ -122,18 +122,12 @@ class KKLoginViewController: KKBaseViewController {
         self.view.endEditing(true)
         
         if txtUsername.text!.count == 0 {
-            
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_username_required"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_username_required_desc"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_username_required_desc"))
             return
         }
         
         if txtPassword.text!.count == 0 {
-            
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_password_required"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"))
             return
         }
         

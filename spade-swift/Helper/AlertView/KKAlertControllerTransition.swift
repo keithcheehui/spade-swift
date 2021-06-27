@@ -50,7 +50,7 @@ class KKAlertControllerPresentTransition: KKViewControllerAnimatedTransition {
     
     override func animateTransition(_ from: UIViewController, to: UIViewController, container: UIView, completion: @escaping (Bool) -> Void) {
         to.view.frame = container.bounds
-        to.view.backgroundColor = backgroundColor.withAlphaComponent(0.4)
+        to.view.backgroundColor = UIColor.clear //backgroundColor.withAlphaComponent(0.4)
         to.view.transform = from.view.transform.concatenating(CGAffineTransform(scaleX: 1.2, y: 1.2))
         to.view.alpha = 0
         container.addSubview(to.view)

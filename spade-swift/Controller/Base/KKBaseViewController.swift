@@ -157,35 +157,25 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     func showAlertView(alertMessage: String) {
         
         if alertMessage.contains("connection") && alertMessage.contains("offline") {
-            
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_internet_connection"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_internet_connection_desc"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
-        }
-        else if alertMessage.contains("internal server error") {
-            
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_internal_server_error"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_internal_server_error_desc"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
-        }
-        else if (alertMessage.contains("invalid_grant") || alertMessage.contains("Invalid password")) {
-            
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_invalid_credential"),
-                                           body: KKUtil.languageSelectedStringForKey(key: "error_invalid_credential_desc"),
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
-        }
-        else
-        {
-            self.showPopUpWithSingleButton(title: KKUtil.languageSelectedStringForKey(key: "error_error_encountered"),
-                                           body: alertMessage,
-                                           buttonTitle: KKUtil.languageSelectedStringForKey(key: "error_okay"))
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_internet_connection_desc"))
+        } else if alertMessage.contains("internal server error") {
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_internal_server_error_desc"))
+        }else if (alertMessage.contains("invalid_grant") || alertMessage.contains("Invalid password")) {
+            self.showToastMessage(title: .Error, body: KKUtil.languageSelectedStringForKey(key: "error_invalid_credential_desc"))
+        } else{
+            self.showToastMessage(title: .Error, body: alertMessage)
         }
     }
     
-    func showPopUpWithSingleButton(title: String, body: String, buttonTitle: String) {
+    func showToastMessage(title: ToastType, body: String) {
         
-        let alertView = KKCustomAlertViewController.init(title: title, body: body, buttonTitle: buttonTitle)
+        let alertView = KKCustomToastViewController.init(toastType: .Success, msgDesc: body)
         self.present(alertView, animated: true, completion: nil)
+
+        let when = DispatchTime.now() + 2
+        DispatchQueue.main.asyncAfter(deadline: when){
+            alertView.dismiss(animated: true, completion: nil)
+        }
     }
     
     //MARK:- General Method

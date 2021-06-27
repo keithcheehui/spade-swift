@@ -225,3 +225,8 @@ enum DialogAlertType: Int {
     case Logout = 1
     case Deposit = 2
 }
+
+enum ToastType: String {
+    case Success = "success"
+    case Error = "error"
+}
