@@ -43,7 +43,7 @@ class KKSupportViewController: KKBaseViewController {
         let itemSizeWidth = liveChatCollectionView.frame.size.width/4 - ConstantSize.paddingStandard
         
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: itemSizeWidth, height: KKUtil.ConvertSizeByDensity(size: 180))
+        flowLayout.itemSize = CGSize(width: itemSizeWidth, height: KKUtil.ConvertSizeByDensity(size: 200))
         flowLayout.scrollDirection = .vertical
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: ConstantSize.paddingSecondaryHalf, bottom: ConstantSize.paddingSecondaryHalf, right: ConstantSize.paddingSecondaryHalf)
         flowLayout.minimumInteritemSpacing = ConstantSize.paddingSecondaryHalf
@@ -149,7 +149,7 @@ extension KKSupportViewController: UICollectionViewDelegate, UICollectionViewDat
             fatalError("DequeueReusableCell failed while casting")
         }
         
-        cell.lblHotline.text = liveChatArray[indexPath.item].platform
+        cell.lblHotline.text = liveChatArray[indexPath.item].name
         
         return cell
     }

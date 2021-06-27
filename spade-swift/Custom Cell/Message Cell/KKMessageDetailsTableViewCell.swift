@@ -29,9 +29,9 @@ class KKMessageDetailsTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = .clear
         
         messageDetailsView = UIView.init()
-        messageDetailsView.backgroundColor = .spade_white_FFFFFF
+        messageDetailsView.backgroundColor = UIColor(white: 0, alpha: 0.3)
         messageDetailsView.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 1)
-        messageDetailsView.layer.borderColor = UIColor(white: 1, alpha: 0.3).cgColor
+        messageDetailsView.layer.borderColor = UIColor(white: 1, alpha: 1).cgColor
         messageDetailsView.layer.cornerRadius = 8
         self.contentView.addSubview(messageDetailsView)
         

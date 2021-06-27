@@ -84,7 +84,7 @@ class KKGameListViewController: KKBaseViewController {
                 }
             }
             
-            flowLayout.minimumLineSpacing = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 40 : 40)
+            flowLayout.minimumLineSpacing = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 60 : 60)
             flowLayout.itemSize = CGSize(width: size, height: size)
         }
 

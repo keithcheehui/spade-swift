@@ -13,7 +13,6 @@ class KKMessageListViewController: KKBaseViewController {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var messageTableView: UITableView!
 
-    let messageList = [{},{},{}]
     var selectedMessageIndex = -1
     var systemMessageArray: [KKSystemMessageDetails]! = []
     
