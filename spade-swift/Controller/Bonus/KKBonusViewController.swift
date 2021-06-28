@@ -96,13 +96,18 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
     
     func getPromotionList() {
                 
+        self.showAnimatedLoader()
+        
         KKApiClient.getPromotionContent().execute { [self] promotionResponse in
             
+            self.hideAnimatedLoader()
+
             self.sideMenuItem = promotionResponse.results?.promotions
             self.sideMenuTableView.reloadData()
             self.bonusCollectionView.reloadData()
             
         } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
             self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }

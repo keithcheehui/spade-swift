@@ -447,7 +447,11 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnCountryDidPressed(){
         announcementBubble.isHidden = true
-        KKUtil.logOutUser()
+        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+            return
+        }
+        
+        self.present(KKSelectCountryViewController(), animated: false, completion: nil)
     }
     
     @IBAction func btnMissionDidPressed(){

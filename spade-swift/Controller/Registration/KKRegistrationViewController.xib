@@ -17,10 +17,8 @@
                 <outlet property="btnConfirmHeight" destination="GTb-qr-88L" id="2KT-v8-8Xc"/>
                 <outlet property="confirmPasswordContainerMarginTop" destination="tiA-aX-pfb" id="3Vp-v5-4St"/>
                 <outlet property="confirmPasswordView" destination="4PP-73-43f" id="UaO-2I-jpY"/>
-                <outlet property="containerMarginBottom" destination="wTa-cv-aTG" id="Zag-dK-rFQ"/>
-                <outlet property="containerMarginLeft" destination="At2-wh-atv" id="z5a-ir-Ehy"/>
-                <outlet property="containerMarginRight" destination="d3l-tP-sat" id="zFK-vh-qyb"/>
-                <outlet property="containerMarginTop" destination="KIM-TA-kNC" id="xUq-pC-kXa"/>
+                <outlet property="containerHeight" destination="ZbH-AP-Rti" id="Set-A5-Nho"/>
+                <outlet property="containerWidth" destination="5ki-xE-g1D" id="6Mk-Yp-PDy"/>
                 <outlet property="imgClose" destination="X8g-x0-flF" id="YOO-0S-9te"/>
                 <outlet property="imgCloseWidth" destination="RKZ-5p-4oC" id="8hj-p5-dRf"/>
                 <outlet property="imgConfirm" destination="Fof-Bv-vVv" id="1IX-IL-3qI"/>
@@ -241,6 +239,7 @@
                     <constraints>
                         <constraint firstItem="PlF-nf-H6J" firstAttribute="top" secondItem="0HL-63-HQY" secondAttribute="bottom" constant="50" id="0p3-0Y-LEK"/>
                         <constraint firstItem="n5S-af-SIA" firstAttribute="width" secondItem="H0Q-UL-OvZ" secondAttribute="width" id="4Bs-Ox-WzH"/>
+                        <constraint firstAttribute="width" constant="628" id="5ki-xE-g1D"/>
                         <constraint firstItem="dHm-MK-Qfd" firstAttribute="top" secondItem="MVN-Wd-4BF" secondAttribute="top" constant="20" id="8NP-Ws-XQm"/>
                         <constraint firstItem="0HL-63-HQY" firstAttribute="top" secondItem="MVN-Wd-4BF" secondAttribute="top" constant="20" id="A0a-Sx-I9O"/>
                         <constraint firstAttribute="trailing" secondItem="0HL-63-HQY" secondAttribute="trailing" constant="25" id="De1-A2-Tyl"/>
@@ -254,6 +253,7 @@
                         <constraint firstItem="xWo-rY-8Uq" firstAttribute="top" secondItem="PlF-nf-H6J" secondAttribute="bottom" constant="16" id="VXc-xA-ecw"/>
                         <constraint firstAttribute="bottom" secondItem="6Xa-8j-7zH" secondAttribute="bottom" constant="60" id="X2f-rz-RUi"/>
                         <constraint firstItem="gpO-me-tCb" firstAttribute="height" secondItem="xWo-rY-8Uq" secondAttribute="height" multiplier="1:1" id="YPc-Fa-EZl"/>
+                        <constraint firstAttribute="height" constant="374" id="ZbH-AP-Rti"/>
                         <constraint firstAttribute="bottom" secondItem="kI8-Kg-dMq" secondAttribute="bottom" id="e3z-Vx-pO2"/>
                         <constraint firstItem="gpO-me-tCb" firstAttribute="leading" secondItem="xWo-rY-8Uq" secondAttribute="leading" id="e8d-RQ-jCf"/>
                         <constraint firstItem="6Xa-8j-7zH" firstAttribute="centerX" secondItem="MVN-Wd-4BF" secondAttribute="centerX" id="kui-3q-UJM"/>
@@ -269,10 +269,8 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="MVN-Wd-4BF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="90" id="At2-wh-atv"/>
-                <constraint firstItem="MVN-Wd-4BF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="KIM-TA-kNC"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MVN-Wd-4BF" secondAttribute="trailing" constant="90" id="d3l-tP-sat"/>
-                <constraint firstAttribute="bottom" secondItem="MVN-Wd-4BF" secondAttribute="bottom" constant="20" id="wTa-cv-aTG"/>
+                <constraint firstItem="MVN-Wd-4BF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KN4-76-nWz"/>
+                <constraint firstItem="MVN-Wd-4BF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="caw-bp-Cgw"/>
             </constraints>
             <point key="canvasLocation" x="138.61607142857142" y="89.855072463768124"/>
         </view>

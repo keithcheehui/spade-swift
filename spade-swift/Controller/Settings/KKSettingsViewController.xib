@@ -14,8 +14,6 @@
                 <outlet property="btnConfirmHeight" destination="ICI-a2-cgc" id="fas-5z-Cs6"/>
                 <outlet property="btnConfirmMarginBottom" destination="bIm-bj-heQ" id="BM7-FX-Stw"/>
                 <outlet property="containerHeight" destination="efe-I0-bKA" id="aiu-K3-U8L"/>
-                <outlet property="containerMarginLeft" destination="IyT-VG-4Jv" id="RCW-Nm-3Zh"/>
-                <outlet property="containerMarginRight" destination="gAw-oy-uzh" id="bFC-q2-gd8"/>
                 <outlet property="currentPasswordView" destination="9wC-P8-ahk" id="mRy-gx-RGY"/>
                 <outlet property="imgCloseWidth" destination="RS3-kF-Buq" id="RtJ-d9-Zm5"/>
                 <outlet property="imgHoverChangePassword" destination="zbi-kE-z2L" id="wQA-mq-h8K"/>
@@ -60,6 +58,8 @@
                 <outlet property="passwordContentViewMarginRight" destination="Bd1-vG-das" id="D5o-5X-ecq"/>
                 <outlet property="reconfirmPasswordView" destination="WIh-o3-xcc" id="wwJ-eb-gIT"/>
                 <outlet property="separatorHeight" destination="JSx-92-sZm" id="1Pp-WH-rXJ"/>
+                <outlet property="settingContainerHeight" destination="RBh-SG-pG6" id="vh8-w8-L1y"/>
+                <outlet property="settingContainerWidth" destination="kHJ-RK-LgA" id="R4K-XB-gHb"/>
                 <outlet property="sideMenuWidth" destination="D7y-90-2kw" id="Mrd-fn-Akg"/>
                 <outlet property="soundSectionView" destination="Q4P-Az-wpI" id="RwM-W4-SY0"/>
                 <outlet property="soundToggleMarginLeft" destination="HlW-Cl-oZy" id="eEP-oN-yZq"/>
@@ -827,6 +827,7 @@
                         <constraint firstItem="8KQ-bS-Hob" firstAttribute="bottom" secondItem="HxG-Ce-che" secondAttribute="bottom" id="GPn-r9-IU3"/>
                         <constraint firstItem="hYb-as-Onj" firstAttribute="leading" secondItem="0oK-xg-e9G" secondAttribute="leading" constant="15" id="GaV-Xy-4kl"/>
                         <constraint firstItem="wVc-Il-0XV" firstAttribute="bottom" secondItem="hYb-as-Onj" secondAttribute="bottom" id="P5c-E6-aHg"/>
+                        <constraint firstAttribute="height" constant="374" id="RBh-SG-pG6"/>
                         <constraint firstItem="rjo-Hn-9nx" firstAttribute="top" secondItem="0oK-xg-e9G" secondAttribute="top" constant="25" id="Ta1-57-zTs"/>
                         <constraint firstItem="Pvp-0v-bTz" firstAttribute="top" secondItem="rjo-Hn-9nx" secondAttribute="bottom" constant="10" id="W9L-p4-8aV"/>
                         <constraint firstItem="8KQ-bS-Hob" firstAttribute="leading" secondItem="hYb-as-Onj" secondAttribute="trailing" constant="-4" id="WMe-Li-5DG"/>
@@ -834,6 +835,7 @@
                         <constraint firstAttribute="trailing" secondItem="rjo-Hn-9nx" secondAttribute="trailing" constant="25" id="Xkn-zt-77d"/>
                         <constraint firstItem="8KQ-bS-Hob" firstAttribute="top" secondItem="rjo-Hn-9nx" secondAttribute="bottom" constant="10" id="erR-LW-3zQ"/>
                         <constraint firstItem="iIu-WF-Dk9" firstAttribute="trailing" secondItem="rjo-Hn-9nx" secondAttribute="trailing" constant="-5" id="eyO-6j-ukq"/>
+                        <constraint firstAttribute="width" constant="608" id="kHJ-RK-LgA"/>
                         <constraint firstAttribute="trailing" secondItem="8KQ-bS-Hob" secondAttribute="trailing" constant="15" id="lDe-OA-O3H"/>
                         <constraint firstItem="hYb-as-Onj" firstAttribute="top" secondItem="rjo-Hn-9nx" secondAttribute="bottom" constant="10" id="pZK-UU-9us"/>
                         <constraint firstItem="iIu-WF-Dk9" firstAttribute="top" secondItem="rjo-Hn-9nx" secondAttribute="top" constant="-5" id="r6g-2M-aVy"/>
@@ -847,16 +849,14 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="0oK-xg-e9G" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="3oq-3K-yoE"/>
-                <constraint firstItem="0oK-xg-e9G" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="100" id="IyT-VG-4Jv"/>
-                <constraint firstAttribute="bottom" secondItem="0oK-xg-e9G" secondAttribute="bottom" constant="20" id="J4J-YG-CeU"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0oK-xg-e9G" secondAttribute="trailing" constant="100" id="gAw-oy-uzh"/>
+                <constraint firstItem="0oK-xg-e9G" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Qal-Yx-0Tc"/>
+                <constraint firstItem="0oK-xg-e9G" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="tnn-yz-Q5Z"/>
             </constraints>
             <point key="canvasLocation" x="137.94642857142856" y="134.78260869565219"/>
         </view>
     </objects>
     <resources>
-        <image name="bg_hover" width="373" height="112"/>
+        <image name="bg_hover" width="416" height="114"/>
         <image name="bg_popup" width="1421" height="1013"/>
         <image name="bg_separator" width="383" height="6"/>
         <image name="bg_sidemenu" width="426" height="1242"/>

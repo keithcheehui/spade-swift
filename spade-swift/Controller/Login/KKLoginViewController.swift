@@ -31,10 +31,9 @@ class KKLoginViewController: KKBaseViewController {
     @IBOutlet weak var lblUsernameWidth: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmHeight: NSLayoutConstraint!
     
-    @IBOutlet weak var containerMarginTop: NSLayoutConstraint!
-    @IBOutlet weak var containerMarginBottom: NSLayoutConstraint!
-    @IBOutlet weak var containerMarginLeft: NSLayoutConstraint!
-    @IBOutlet weak var containerMarginRight: NSLayoutConstraint!
+    @IBOutlet weak var containerWidth: NSLayoutConstraint!
+    @IBOutlet weak var containerHeight: NSLayoutConstraint!
+
     @IBOutlet weak var rememberMeCheckboxWidth: NSLayoutConstraint!
     @IBOutlet weak var usernameContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var usernameContainerMarginLeft: NSLayoutConstraint!
@@ -76,11 +75,9 @@ class KKLoginViewController: KKBaseViewController {
         usernameContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
         lblUsernameWidth.constant = KKUtil.ConvertSizeByDensity(size: 80)
         btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        
-        containerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 20)
-        containerMarginBottom.constant = containerMarginTop.constant
-        containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 100 : 130)
-        containerMarginRight.constant = containerMarginLeft.constant
+    
+        containerWidth.constant = ConstantSize.ssoPopUpWidth
+        containerHeight.constant = ConstantSize.ssoPopUpHeight
         rememberMeCheckboxWidth.constant = KKUtil.ConvertSizeByDensity(size: 20)
         usernameContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 50)
         usernameContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 60)

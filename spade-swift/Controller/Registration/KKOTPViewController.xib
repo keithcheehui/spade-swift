@@ -19,10 +19,8 @@
                 <outlet property="btnResend" destination="QCn-PN-op3" id="A1B-TN-aSU"/>
                 <outlet property="btnSend" destination="iYw-Jt-obD" id="Bwu-ka-pwL"/>
                 <outlet property="btnSendContainer" destination="2Nw-Ft-TDl" id="gQe-Dm-1JA"/>
-                <outlet property="containerMarginBottom" destination="Nlk-6M-S9P" id="3CN-E1-MHA"/>
-                <outlet property="containerMarginLeft" destination="dU9-o3-2YF" id="r5M-zo-LhO"/>
-                <outlet property="containerMarginRight" destination="qxm-RK-xht" id="JDj-zy-Xzh"/>
-                <outlet property="containerMarginTop" destination="VjR-li-POd" id="yi3-X1-oKk"/>
+                <outlet property="containerHeight" destination="hsR-fi-RKb" id="JgU-Hg-n9x"/>
+                <outlet property="containerWidth" destination="FRg-ON-iLp" id="4jO-OK-UQ2"/>
                 <outlet property="countryCodeView" destination="ith-4v-wuf" id="yME-g0-13o"/>
                 <outlet property="digitContainerMarginTop" destination="VXc-xA-ecw" id="QaE-9v-01f"/>
                 <outlet property="imgClose" destination="X8g-x0-flF" id="YOO-0S-9te"/>
@@ -494,6 +492,7 @@
                         <constraint firstAttribute="trailing" secondItem="0HL-63-HQY" secondAttribute="trailing" constant="25" id="De1-A2-Tyl"/>
                         <constraint firstItem="lsU-B4-4W5" firstAttribute="top" secondItem="MVN-Wd-4BF" secondAttribute="top" id="EGI-y7-lVw"/>
                         <constraint firstItem="DHD-I6-ctj" firstAttribute="top" secondItem="dHm-MK-Qfd" secondAttribute="bottom" constant="50" id="FLd-AQ-s5z"/>
+                        <constraint firstAttribute="width" constant="636" id="FRg-ON-iLp"/>
                         <constraint firstItem="lsU-B4-4W5" firstAttribute="leading" secondItem="MVN-Wd-4BF" secondAttribute="leading" id="Gn2-Am-sUh"/>
                         <constraint firstAttribute="trailing" secondItem="PlF-nf-H6J" secondAttribute="trailing" constant="60" id="HZX-wZ-Qrh"/>
                         <constraint firstItem="PlF-nf-H6J" firstAttribute="leading" secondItem="MVN-Wd-4BF" secondAttribute="leading" constant="60" id="IDX-Zp-dxS"/>
@@ -504,6 +503,7 @@
                         <constraint firstItem="dIR-xe-jVW" firstAttribute="top" secondItem="xWo-rY-8Uq" secondAttribute="bottom" constant="5" id="VHF-DO-tXX"/>
                         <constraint firstItem="xWo-rY-8Uq" firstAttribute="top" secondItem="PlF-nf-H6J" secondAttribute="bottom" constant="16" id="VXc-xA-ecw"/>
                         <constraint firstItem="DHD-I6-ctj" firstAttribute="trailing" secondItem="PlF-nf-H6J" secondAttribute="trailing" constant="-40" id="WIJ-RV-ScV"/>
+                        <constraint firstAttribute="height" constant="374" id="hsR-fi-RKb"/>
                         <constraint firstItem="DHD-I6-ctj" firstAttribute="leading" secondItem="PlF-nf-H6J" secondAttribute="leading" constant="40" id="jTj-yh-Rri"/>
                         <constraint firstItem="xWo-rY-8Uq" firstAttribute="trailing" secondItem="PlF-nf-H6J" secondAttribute="trailing" id="n8D-aX-uIQ"/>
                         <constraint firstItem="dIR-xe-jVW" firstAttribute="leading" secondItem="ith-4v-wuf" secondAttribute="leading" id="ofE-v4-dVs"/>
@@ -516,10 +516,8 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="MVN-Wd-4BF" secondAttribute="bottom" constant="20" id="Nlk-6M-S9P"/>
-                <constraint firstItem="MVN-Wd-4BF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="VjR-li-POd"/>
-                <constraint firstItem="MVN-Wd-4BF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="130" id="dU9-o3-2YF"/>
-                <constraint firstAttribute="trailing" secondItem="MVN-Wd-4BF" secondAttribute="trailing" constant="130" id="qxm-RK-xht"/>
+                <constraint firstItem="MVN-Wd-4BF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ohN-aE-SYD"/>
+                <constraint firstItem="MVN-Wd-4BF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ulR-IT-GxG"/>
             </constraints>
             <point key="canvasLocation" x="138.61607142857142" y="89.855072463768124"/>
         </view>

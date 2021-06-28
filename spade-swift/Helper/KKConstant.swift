@@ -47,6 +47,9 @@ struct ConstantSize {
     static let headerContainerMarginLeft = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 20 : 30)
     static let menuItemMarginLeft = KKUtil.ConvertSizeByDensity(size: 15)
     static let sideMenuFont = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
+    
+    static let ssoPopUpWidth = KKUtil.isSmallerPhone() ? ScreenSize.maxLength * 0.75 : ScreenSize.maxLength * 0.6
+    static let ssoPopUpHeight = ScreenSize.minLength - paddingStandard * 2
 }
 
 struct CacheKey {

@@ -25,6 +25,11 @@ class KKLiveCasinoViewController: KKBaseViewController {
     @IBOutlet weak var btnBetNowHeight: NSLayoutConstraint!
     @IBOutlet weak var gameCollectionViewWidth: NSLayoutConstraint!
     
+    enum itemType: String {
+        case product = "Product"
+        case gameType = "Game type"
+    }
+    
     var selectedLiveCasinoIndex = 0
     var liveCasinoArray: [KKGroupPlatformDetails]! = []
     
@@ -36,14 +41,14 @@ class KKLiveCasinoViewController: KKBaseViewController {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 0
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: 200), height: KKUtil.ConvertSizeByDensity(size: 65))
+        flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: 200), height: KKUtil.ConvertSizeByDensity(size: 75))
         
         gameCollectionView.collectionViewLayout = flowLayout
         gameCollectionView.register(UINib(nibName: "KKLiveCasinoItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.liveCasinoCVCIdentifier)
     }
     
     func initialLayout(){
-        containerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        containerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 10)
         containerMarginBottom.constant = containerMarginTop.constant
         containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 50)
         containerMarginRight.constant = containerMarginLeft.constant
@@ -68,7 +73,14 @@ class KKLiveCasinoViewController: KKBaseViewController {
     
     ///Button Actions
     @IBAction func btnBetNowDidPressed(){
-        
+        if liveCasinoArray[selectedLiveCasinoIndex].type == itemType.gameType.rawValue {
+            let vc = KKPlatformViewController()
+            vc.selectedMenuItem = selectedLiveCasinoIndex
+            vc.platformCode = selectedGroupCode
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            //TODO: PUT Web view for game redirect url
+        }
     }
 }
 

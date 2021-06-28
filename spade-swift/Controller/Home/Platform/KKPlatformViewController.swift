@@ -24,12 +24,7 @@ class KKPlatformViewController: KKBaseViewController {
     @IBOutlet weak var searchContainerWidth: NSLayoutConstraint!
     @IBOutlet weak var searchContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var searchContainerMarginRight: NSLayoutConstraint!
-    
-    enum itemType: String {
-        case product = "Product"
-        case gameType = "Game type"
-    }
-    
+   
     var platformCode: String? = ""
     var menuListArray: [KKGameTypeListing]! = []
     var gameListArray: [KKGameTypeItems]! = []
@@ -68,6 +63,7 @@ class KKPlatformViewController: KKBaseViewController {
         txtSearch.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "platform_search_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
         txtSearch.delegate = self
         txtSearch.returnKeyType = .search
+        txtSearch.addTarget(self, action: #selector(textfieldDidChange(_:)), for: .editingChanged)
 
         platformTableView.register(UINib(nibName: "KKSideMenuTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.sideMenuTVCIdentifier)
     }
@@ -75,13 +71,13 @@ class KKPlatformViewController: KKBaseViewController {
     func initFlowLayout(){
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
-        flowLayout.minimumInteritemSpacing = KKUtil.ConvertSizeByDensity(size: 25)
+        flowLayout.minimumInteritemSpacing = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 25 : 25)
         flowLayout.minimumLineSpacing = KKUtil.ConvertSizeByDensity(size: 45)
 
         let insets = KKUtil.ConvertSizeByDensity(size: 20)
         flowLayout.sectionInset = UIEdgeInsets(top: insets, left: insets, bottom: insets, right: insets)
         
-        flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: 100), height: KKUtil.ConvertSizeByDensity(size: 120))
+        flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 100 : 110), height: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 120 : 130))
 
         gameCollectionView.collectionViewLayout = flowLayout
         gameCollectionView.register(UINib(nibName: "KKPlatfromGameItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.platformGameItemCVCIdentifier)
@@ -113,10 +109,13 @@ class KKPlatformViewController: KKBaseViewController {
         if (txtSearch.text!.isEmpty) {
             searchArray = gameListArray
         } else {
-            searchArray = gameListArray.filter { game in
-                return game.name == txtSearch.text!
+            let pattern = "\\b" + NSRegularExpression.escapedPattern(for: txtSearch.text!)
+            searchArray = gameListArray.filter {
+                $0.name!.range(of: pattern, options: [.regularExpression, .caseInsensitive]) != nil
             }
         }
+        
+        gameCollectionView.reloadData()
     }
     
     ///Button Actions
@@ -193,14 +192,14 @@ extension KKPlatformViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension KKPlatformViewController: UITextFieldDelegate {
     
-//    func textfieldDidChange(_ sender: UITextField) {
-//        searchGame()
-//    }
+    @objc func textfieldDidChange(_ sender: UITextField) {
+        searchGame()
+    }
     
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        searchGame()
-//        view.endEditing(true)
-//        return true
-//    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchGame()
+        view.endEditing(true)
+        return true
+    }
 }
 

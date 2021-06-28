@@ -26,8 +26,8 @@ class KKSettingsViewController: KKBaseViewController {
     @IBOutlet weak var menuItemHeight: NSLayoutConstraint!
     @IBOutlet weak var separatorHeight: NSLayoutConstraint!
 
-    @IBOutlet weak var containerMarginLeft: NSLayoutConstraint!
-    @IBOutlet weak var containerMarginRight: NSLayoutConstraint!
+    @IBOutlet weak var settingContainerWidth: NSLayoutConstraint!
+    @IBOutlet weak var settingContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var titleMarginTop: NSLayoutConstraint!
     @IBOutlet weak var menuItemMarginLeft: NSLayoutConstraint!
     
@@ -121,8 +121,8 @@ class KKSettingsViewController: KKBaseViewController {
     func initialLayout(){
         self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
         
-        containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 100 : 130)
-        containerMarginRight.constant = containerMarginLeft.constant
+        settingContainerWidth.constant = ConstantSize.ssoPopUpWidth
+        settingContainerHeight.constant = ConstantSize.ssoPopUpHeight
         titleMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 25)
         titleHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)

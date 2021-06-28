@@ -59,10 +59,8 @@ class KKOTPViewController: KKBaseViewController {
     @IBOutlet weak var btnConfirmHeight: NSLayoutConstraint!
     @IBOutlet weak var lblSendWidth: NSLayoutConstraint!
 
-    @IBOutlet weak var containerMarginTop: NSLayoutConstraint!
-    @IBOutlet weak var containerMarginBottom: NSLayoutConstraint!
-    @IBOutlet weak var containerMarginLeft: NSLayoutConstraint!
-    @IBOutlet weak var containerMarginRight: NSLayoutConstraint!
+    @IBOutlet weak var containerWidth: NSLayoutConstraint!
+    @IBOutlet weak var containerHeight: NSLayoutConstraint!
     @IBOutlet weak var mobileContainerMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var mobileContainerMarginRight: NSLayoutConstraint!
     @IBOutlet weak var digitContainerMarginTop: NSLayoutConstraint!
@@ -126,10 +124,8 @@ class KKOTPViewController: KKBaseViewController {
         txtCountryCodeWidth.constant = KKUtil.ConvertSizeByDensity(size: 80)
         btnConfirmHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         
-        containerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 20)
-        containerMarginBottom.constant = containerMarginTop.constant
-        containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 100 : 180)
-        containerMarginRight.constant = containerMarginLeft.constant
+        containerWidth.constant = ConstantSize.ssoPopUpWidth
+        containerHeight.constant = ConstantSize.ssoPopUpHeight
         mobileContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 50)
         mobileContainerMarginRight.constant = mobileContainerMarginLeft.constant
         digitContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 16)
