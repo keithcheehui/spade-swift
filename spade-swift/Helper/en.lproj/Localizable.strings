@@ -247,3 +247,8 @@
 "alert_logout"                                  = "Are you sure you want to log out?";
 "alert_copied"                                  = "Copied to clipboard.";
 "alert_shared"                                  = "Shared successfully.";
+
+//MARK: Platforms
+"platform_total_game"                           = "Total %d Games";
+"platform_search_placeholder"                  = "Enter game name";
+

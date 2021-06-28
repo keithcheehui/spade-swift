@@ -393,6 +393,7 @@ class KKHomeViewController: KKBaseViewController {
             
             let viewController = KKGameListViewController.init()
             viewController.selectedGameType = self.selectedGameType
+            viewController.selectedGroupCode = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].code!
             viewController.gameListArray = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].platforms
             self.changeView(vc: viewController)
             
@@ -571,6 +572,7 @@ class KKHomeViewController: KKBaseViewController {
         
         let viewController = KKGameListViewController.init()
         viewController.selectedGameType = self.selectedGameType
+        viewController.selectedGroupCode = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].code!
         viewController.gameListArray = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].platforms
         self.changeView(vc: viewController)
     }
@@ -638,12 +640,14 @@ extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
         case GameType.liveCasino:
             let viewController = KKLiveCasinoViewController.init()
             viewController.selectedGameType = selectedGameType
+            viewController.selectedGroupCode = KKSingleton.sharedInstance.groupPlatformArray[indexPath.item].code!
             viewController.liveCasinoArray = KKSingleton.sharedInstance.groupPlatformArray[indexPath.item].platforms
             changeView(vc: viewController)
             break;
         default:
             let viewController = KKGameListViewController.init()
             viewController.selectedGameType = selectedGameType
+            viewController.selectedGroupCode = KKSingleton.sharedInstance.groupPlatformArray[indexPath.item].code!
             viewController.gameListArray = KKSingleton.sharedInstance.groupPlatformArray[indexPath.item].platforms
             changeView(vc: viewController)
             break;

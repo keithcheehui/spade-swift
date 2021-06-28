@@ -249,12 +249,10 @@ class KKApiClient: NSObject {
         return performRequest(route: .getGroupAndPlatformContent(parameter: parameter))
     }
     
-    static func getAllPlatformProduct(gCode: String = "", gameTypeCode: String = "") -> Future<KKPlatformProductResponse> {
+    static func getAllPlatformProduct(gCode: String = "") -> Future<KKPlatformProductResponse> {
         
         let parameter = [APIKeys.locale         : KKUtil.decodeSelectedLanguageFromCache().locale!,
-                         APIKeys.gameTypeCode   : gameTypeCode,
                          APIKeys.groupCode      : gCode,
-                         APIKeys.countryCode    : KKUtil.decodeSelectedCountryFromCache().code!
                         ] as [String : Any]
         
         return performRequest(route: .getPlatformProductsContent(parameter: parameter))
@@ -266,6 +264,14 @@ class KKApiClient: NSObject {
                         ] as [String : Any]
         
         return performRequest(route: .getSystemMessageContent(parameter: parameter))
+    }
+    
+    static func updateInboxReadStatus(msgId: Int) -> Future<KKGeneralResponse> {
+        
+        let parameter = [APIKeys.inboxMessageId    : msgId
+                        ] as [String : Any]
+        
+        return performRequest(route: .updateInboxReadStatus(parameter: parameter))
     }
     
     static func getPromotionContent() -> Future<KKPromotionResponse> {

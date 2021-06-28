@@ -9,17 +9,14 @@ import Foundation
 
 struct KKPlatformProductResults: Codable {
 
-  enum CodingKeys: String, CodingKey {
-    case products
-  }
+    enum CodingKeys: String, CodingKey {
+      case gameTypeListing = "game_type_listing"
+    }
 
-  var products: [KKPlatformProductDetails]?
+    var gameTypeListing: [KKGameTypeListing]?
 
-
-
-  init(from decoder: Decoder) throws {
-    let container = try decoder.container(keyedBy: CodingKeys.self)
-    products = try container.decodeIfPresent([KKPlatformProductDetails].self, forKey: .products)
-  }
-
+    init(from decoder: Decoder) throws {
+      let container = try decoder.container(keyedBy: CodingKeys.self)
+      gameTypeListing = try container.decodeIfPresent([KKGameTypeListing].self, forKey: .gameTypeListing)
+    }
 }

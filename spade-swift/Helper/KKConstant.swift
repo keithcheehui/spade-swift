@@ -46,6 +46,7 @@ struct ConstantSize {
     static let separatorHeight = KKUtil.ConvertSizeByDensity(size: 2)
     static let headerContainerMarginLeft = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 20 : 30)
     static let menuItemMarginLeft = KKUtil.ConvertSizeByDensity(size: 15)
+    static let sideMenuFont = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
 }
 
 struct CacheKey {
@@ -93,6 +94,7 @@ struct APIKeys {
     static let withdrawAmount = "withdraw_amount"
     static let withdrawAccountNo = "bank_account_number"
     static let filterDuration = "filter_duration"
+    static let inboxMessageId = "inbox_message_id"
 }
 
 struct APIValue {
@@ -146,7 +148,7 @@ struct LocaleName {
 
 struct CellIdentifier {
     
-    static let sideMenuTVCIdentifier = "SIDE_MENU_TABLE_CELL_IDENTIFIER"
+    static let sideMenuTVCIdentifier = "KKSideMenuTableCell"
     static let announcementTVCIdentifier = "KKAnnouncementTableCell"
     static let bankTVCIdentifier = "KKBankTableCell"
     static let bonusTVCIdentifier = "KKBonusMenuTableCell"
@@ -163,6 +165,7 @@ struct CellIdentifier {
     static let generalHeaderViewIdentifier = "KKGeneralHeaderViewIdentifier"
     static let generalItemCellIdentifier = "KKGeneralItemCellIdentifier"
     static let tabListItemCVCIdentifier = "KKTabListItemCell"
+    static let platformGameItemCVCIdentifier = "KKPlatfromGameItemCell"
 }
 
 struct Spade {

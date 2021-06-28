@@ -45,8 +45,6 @@
 		06566BA9267AEC29009FE072 /* KKWithdrawHistoryDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566BA6267AEC28009FE072 /* KKWithdrawHistoryDetails.swift */; };
 		06566BAA267AEC29009FE072 /* KKWithdrawHistoryResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566BA7267AEC29009FE072 /* KKWithdrawHistoryResults.swift */; };
 		06566BAB267AEC29009FE072 /* KKWithdrawHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566BA8267AEC29009FE072 /* KKWithdrawHistoryResponse.swift */; };
-		067029D62641278300DFADAC /* KKPersonalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067029D52641278300DFADAC /* KKPersonalPageViewController.swift */; };
-		067029DA2641326E00DFADAC /* KKSideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067029D92641326E00DFADAC /* KKSideMenuTableViewCell.swift */; };
 		0676B5A8262FD6EF0023311F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5A7262FD6EF0023311F /* AppDelegate.swift */; };
 		0676B5AA262FD6EF0023311F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5A9262FD6EF0023311F /* SceneDelegate.swift */; };
 		0676B5AC262FD6EF0023311F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5AB262FD6EF0023311F /* ViewController.swift */; };
@@ -89,7 +87,6 @@
 		06BF5C342669814C00C10008 /* KKGroupPlatformDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C302669814C00C10008 /* KKGroupPlatformDetails.swift */; };
 		06BF5C352669814C00C10008 /* KKGroupPlatformGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C312669814C00C10008 /* KKGroupPlatformGroups.swift */; };
 		06BF5C362669814C00C10008 /* KKGroupPlatformResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C322669814C00C10008 /* KKGroupPlatformResults.swift */; };
-		06BF5C3B2669833100C10008 /* KKPlatformProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C382669833100C10008 /* KKPlatformProductDetails.swift */; };
 		06BF5C3C2669833100C10008 /* KKPlatformProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C392669833100C10008 /* KKPlatformProductResponse.swift */; };
 		06BF5C3D2669833100C10008 /* KKPlatformProductResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BF5C3A2669833100C10008 /* KKPlatformProductResults.swift */; };
 		06E4DEF4267BFF9500482979 /* KKUserBettingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DEF0267BFF9500482979 /* KKUserBettingResponse.swift */; };
@@ -143,6 +140,12 @@
 		53363E47264ACE26001F6B48 /* KKMyAffiliateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53363E46264ACE26001F6B48 /* KKMyAffiliateViewController.xib */; };
 		533CA6BB2631745C00768C08 /* KKHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533CA6BA2631745C00768C08 /* KKHomeViewController.xib */; };
 		533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CA6BD2631746800768C08 /* KKHomeViewController.swift */; };
+		533F2B1D268A299800209F9D /* KKSideMenuTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533F2B1B268A299800209F9D /* KKSideMenuTableCell.swift */; };
+		533F2B1E268A299800209F9D /* KKSideMenuTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533F2B1C268A299800209F9D /* KKSideMenuTableCell.xib */; };
+		533F2B26268A379100209F9D /* KKGameTypeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533F2B24268A379100209F9D /* KKGameTypeItems.swift */; };
+		533F2B27268A379100209F9D /* KKGameTypeListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533F2B25268A379100209F9D /* KKGameTypeListing.swift */; };
+		533F2B2D268A435E00209F9D /* KKPlatfromGameItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533F2B2B268A435E00209F9D /* KKPlatfromGameItemCell.swift */; };
+		533F2B2E268A435E00209F9D /* KKPlatfromGameItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533F2B2C268A435E00209F9D /* KKPlatfromGameItemCell.xib */; };
 		5344FF61265E5E6B00313899 /* KKAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5344FF60265E5E6B00313899 /* KKAnimation.swift */; };
 		534D032B2682D5A8005BC9BE /* KKPromotionItemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534D032A2682D5A8005BC9BE /* KKPromotionItemDetails.swift */; };
 		535934B526778E0D00498BBF /* KKPlatformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535934B326778E0D00498BBF /* KKPlatformViewController.swift */; };
@@ -252,8 +255,6 @@
 		06566BA6267AEC28009FE072 /* KKWithdrawHistoryDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKWithdrawHistoryDetails.swift; sourceTree = "<group>"; };
 		06566BA7267AEC29009FE072 /* KKWithdrawHistoryResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKWithdrawHistoryResults.swift; sourceTree = "<group>"; };
 		06566BA8267AEC29009FE072 /* KKWithdrawHistoryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKWithdrawHistoryResponse.swift; sourceTree = "<group>"; };
-		067029D52641278300DFADAC /* KKPersonalPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPersonalPageViewController.swift; sourceTree = "<group>"; };
-		067029D92641326E00DFADAC /* KKSideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		0676B5A4262FD6EF0023311F /* spade-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "spade-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0676B5A7262FD6EF0023311F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0676B5A9262FD6EF0023311F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -298,7 +299,6 @@
 		06BF5C302669814C00C10008 /* KKGroupPlatformDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKGroupPlatformDetails.swift; sourceTree = "<group>"; };
 		06BF5C312669814C00C10008 /* KKGroupPlatformGroups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKGroupPlatformGroups.swift; sourceTree = "<group>"; };
 		06BF5C322669814C00C10008 /* KKGroupPlatformResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKGroupPlatformResults.swift; sourceTree = "<group>"; };
-		06BF5C382669833100C10008 /* KKPlatformProductDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKPlatformProductDetails.swift; sourceTree = "<group>"; };
 		06BF5C392669833100C10008 /* KKPlatformProductResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKPlatformProductResponse.swift; sourceTree = "<group>"; };
 		06BF5C3A2669833100C10008 /* KKPlatformProductResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKPlatformProductResults.swift; sourceTree = "<group>"; };
 		06E4DEF0267BFF9500482979 /* KKUserBettingResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserBettingResponse.swift; sourceTree = "<group>"; };
@@ -353,6 +353,12 @@
 		53363E46264ACE26001F6B48 /* KKMyAffiliateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKMyAffiliateViewController.xib; sourceTree = "<group>"; };
 		533CA6BA2631745C00768C08 /* KKHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKHomeViewController.xib; sourceTree = "<group>"; };
 		533CA6BD2631746800768C08 /* KKHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKHomeViewController.swift; sourceTree = "<group>"; };
+		533F2B1B268A299800209F9D /* KKSideMenuTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSideMenuTableCell.swift; sourceTree = "<group>"; };
+		533F2B1C268A299800209F9D /* KKSideMenuTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKSideMenuTableCell.xib; sourceTree = "<group>"; };
+		533F2B24268A379100209F9D /* KKGameTypeItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKGameTypeItems.swift; sourceTree = "<group>"; };
+		533F2B25268A379100209F9D /* KKGameTypeListing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKGameTypeListing.swift; sourceTree = "<group>"; };
+		533F2B2B268A435E00209F9D /* KKPlatfromGameItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPlatfromGameItemCell.swift; sourceTree = "<group>"; };
+		533F2B2C268A435E00209F9D /* KKPlatfromGameItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKPlatfromGameItemCell.xib; sourceTree = "<group>"; };
 		5344FF60265E5E6B00313899 /* KKAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAnimation.swift; sourceTree = "<group>"; };
 		534D032A2682D5A8005BC9BE /* KKPromotionItemDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPromotionItemDetails.swift; sourceTree = "<group>"; };
 		535934B326778E0D00498BBF /* KKPlatformViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPlatformViewController.swift; sourceTree = "<group>"; };
@@ -528,14 +534,6 @@
 			path = Withdraw;
 			sourceTree = "<group>";
 		};
-		067029D82641323500DFADAC /* Side Menu */ = {
-			isa = PBXGroup;
-			children = (
-				067029D92641326E00DFADAC /* KKSideMenuTableViewCell.swift */,
-			);
-			path = "Side Menu";
-			sourceTree = "<group>";
-		};
 		0676B59B262FD6EF0023311F = {
 			isa = PBXGroup;
 			children = (
@@ -650,7 +648,6 @@
 			children = (
 				06FF0729267FDD7C0073BE8E /* General */,
 				53602F61265A5EDE00137AD6 /* Message Cell */,
-				067029D82641323500DFADAC /* Side Menu */,
 				538FB09526482B8000F3E823 /* Live Chat */,
 				5381D839264961F1003BBD2A /* Announcement */,
 				5317F237264C223E0076D69B /* Bank Cell */,
@@ -661,6 +658,8 @@
 				53E2FF252658CA3E0017CA67 /* Bonus Menu Cell */,
 				53E2FF2D2658CF5A0017CA67 /* Bonus Item Cell */,
 				53F21F992686E03A00A44911 /* Tab List Item Cell */,
+				533F2B22268A29C300209F9D /* Side Menu Cell */,
+				533F2B30268A4A7000209F9D /* Platform Game Item Cell */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -775,9 +774,10 @@
 		06BF5C372669831E00C10008 /* Platform Product */ = {
 			isa = PBXGroup;
 			children = (
-				06BF5C382669833100C10008 /* KKPlatformProductDetails.swift */,
 				06BF5C392669833100C10008 /* KKPlatformProductResponse.swift */,
 				06BF5C3A2669833100C10008 /* KKPlatformProductResults.swift */,
+				533F2B25268A379100209F9D /* KKGameTypeListing.swift */,
+				533F2B24268A379100209F9D /* KKGameTypeItems.swift */,
 			);
 			path = "Platform Product";
 			sourceTree = "<group>";
@@ -987,6 +987,24 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		533F2B22268A29C300209F9D /* Side Menu Cell */ = {
+			isa = PBXGroup;
+			children = (
+				533F2B1B268A299800209F9D /* KKSideMenuTableCell.swift */,
+				533F2B1C268A299800209F9D /* KKSideMenuTableCell.xib */,
+			);
+			path = "Side Menu Cell";
+			sourceTree = "<group>";
+		};
+		533F2B30268A4A7000209F9D /* Platform Game Item Cell */ = {
+			isa = PBXGroup;
+			children = (
+				533F2B2B268A435E00209F9D /* KKPlatfromGameItemCell.swift */,
+				533F2B2C268A435E00209F9D /* KKPlatfromGameItemCell.xib */,
+			);
+			path = "Platform Game Item Cell";
+			sourceTree = "<group>";
+		};
 		535934B826778E2100498BBF /* Platform */ = {
 			isa = PBXGroup;
 			children = (
@@ -1187,7 +1205,6 @@
 				53C64EF9263700D00068F03E /* KKPersonalViewController.xib */,
 				5381676F26464B3900FC96A6 /* UserInfo */,
 				53F21FB326871DE300A44911 /* IndividualReport */,
-				067029D52641278300DFADAC /* KKPersonalPageViewController.swift */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -1332,6 +1349,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				533F2B1E268A299800209F9D /* KKSideMenuTableCell.xib in Resources */,
 				06006DFB267299B000A2C8C9 /* NeutraText-Bold.otf in Resources */,
 				53AAAE1126401B12004103F0 /* KKMessageViewController.xib in Resources */,
 				5381D82F26495A9D003BBD2A /* KKAnnouncementViewController.xib in Resources */,
@@ -1385,6 +1403,7 @@
 				53C64EFA263700D00068F03E /* KKPersonalViewController.xib in Resources */,
 				53E2FF122658BDEB0017CA67 /* KKBonusViewController.xib in Resources */,
 				53DF81DC26502F8100BA6119 /* KKCountryItemCell.xib in Resources */,
+				533F2B2E268A435E00209F9D /* KKPlatfromGameItemCell.xib in Resources */,
 				532FF60E264FD0B300999512 /* KKGuidelineViewController.xib in Resources */,
 				53AAAE092640191A004103F0 /* KKRebateViewController.xib in Resources */,
 				53963E0D2639A37400D803D4 /* KKSettingsViewController.xib in Resources */,
@@ -1454,7 +1473,6 @@
 				06E4DF03267C02B500482979 /* KKUserBettingHistoryResults.swift in Sources */,
 				531428BA2674A52400801FD9 /* KKGuidelineResponse.swift in Sources */,
 				06566B97267AE477009FE072 /* KKDepositHistoryResponse.swift in Sources */,
-				067029DA2641326E00DFADAC /* KKSideMenuTableViewCell.swift in Sources */,
 				06566BA4267AEAC5009FE072 /* KKAddWithdrawBankResults.swift in Sources */,
 				532FF613264FE02B00999512 /* KKWithdrawCommissionViewController.swift in Sources */,
 				532FF61C264FF76D00999512 /* KKLiveCasinoViewController.swift in Sources */,
@@ -1464,10 +1482,8 @@
 				0676B612262FDAFE0023311F /* SKResult.swift in Sources */,
 				5380F10E267D02E7003DC6CB /* KKGeneralPopUpTableViewController.swift in Sources */,
 				0676B5AC262FD6EF0023311F /* ViewController.swift in Sources */,
-				06BF5C3B2669833100C10008 /* KKPlatformProductDetails.swift in Sources */,
 				53E2FF282658CC730017CA67 /* KKBonusItemCell.swift in Sources */,
 				06E4DF01267C02B500482979 /* KKUserBettingHistoryDetails.swift in Sources */,
-				067029D62641278300DFADAC /* KKPersonalPageViewController.swift in Sources */,
 				0676B5F3262FD8520023311F /* KKConstant.swift in Sources */,
 				53AAAE2926401CA9004103F0 /* KKWithdrawViewController.swift in Sources */,
 				06868319267953420097E068 /* KKUserWalletResponse.swift in Sources */,
@@ -1545,6 +1561,7 @@
 				53DF81D1265028ED00BA6119 /* KKSelectCountryViewController.swift in Sources */,
 				53363E44264ACE0C001F6B48 /* KKMyAffiliateViewController.swift in Sources */,
 				53D008D626888BC900FDE9D7 /* KKCustomToastViewController.swift in Sources */,
+				533F2B26268A379100209F9D /* KKGameTypeItems.swift in Sources */,
 				53AAAE1626401BD0004103F0 /* KKSupportViewController.swift in Sources */,
 				531D3432264E7EE60070BB3A /* KKAnnoucementContentViewController.swift in Sources */,
 				53268C09263068EB00ECAAE2 /* KKLoginViewController.swift in Sources */,
@@ -1554,6 +1571,7 @@
 				06566B9F267AE9F2009FE072 /* KKWithdrawBankNames.swift in Sources */,
 				53E2FF202658CA2E0017CA67 /* KKBonusMenuTableCell.swift in Sources */,
 				06E4DEF4267BFF9500482979 /* KKUserBettingResponse.swift in Sources */,
+				533F2B1D268A299800209F9D /* KKSideMenuTableCell.swift in Sources */,
 				06566B91267AE287009FE072 /* KKDepositBankResponse.swift in Sources */,
 				53268BFF2630604F00ECAAE2 /* KKOnBoardingViewController.swift in Sources */,
 				06006DF6267296DA00A2C8C9 /* KKCustomAlertViewController.swift in Sources */,
@@ -1564,6 +1582,7 @@
 				53268C1526307FB800ECAAE2 /* KKRegistrationViewController.swift in Sources */,
 				06566BA9267AEC29009FE072 /* KKWithdrawHistoryDetails.swift in Sources */,
 				06051B2926371E7900130057 /* KKSplashScreenViewController.swift in Sources */,
+				533F2B27268A379100209F9D /* KKGameTypeListing.swift in Sources */,
 				0676B616262FDB790023311F /* KKAlertControllerTransition.swift in Sources */,
 				53C64EFD263700E10068F03E /* KKPersonalViewController.swift in Sources */,
 				5344FF61265E5E6B00313899 /* KKAnimation.swift in Sources */,
@@ -1573,6 +1592,7 @@
 				53F21FB82687AD4500A44911 /* KKDialogAlertViewController.swift in Sources */,
 				06BF5C342669814C00C10008 /* KKGroupPlatformDetails.swift in Sources */,
 				062C397D2632C74200E86EEA /* KKApiRouter.swift in Sources */,
+				533F2B2D268A435E00209F9D /* KKPlatfromGameItemCell.swift in Sources */,
 				06868313267948980097E068 /* KKUserProfileAllTiers.swift in Sources */,
 				539A0FA1266343440098739E /* KKOTPViewController.swift in Sources */,
 				0676B5F0262FD7F20023311F /* KKUtil.swift in Sources */,

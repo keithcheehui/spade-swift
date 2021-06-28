@@ -150,7 +150,8 @@ extension KKGameListViewController: UICollectionViewDelegate, UICollectionViewDa
         
         if gameListArray[indexPath.item].type == itemType.gameType.rawValue {
             let vc = KKPlatformViewController()
-            vc.platformCode = gameListArray[indexPath.item].code
+            vc.selectedMenuItem = indexPath.item
+            vc.platformCode = selectedGroupCode
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             //TODO: PUT Web view for game redirect url

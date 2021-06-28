@@ -14,6 +14,7 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     var tableContentView:       UIView!
     var displayViewController:  KKBaseViewController!
     var selectedGameType: Int = 0
+    var selectedGroupCode = ""
     
     var pickerView: UIPickerView = UIPickerView()
     var datePickerView: UIDatePicker = UIDatePicker()
