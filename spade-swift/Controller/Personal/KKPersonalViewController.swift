@@ -84,12 +84,12 @@ class KKPersonalViewController: KKBaseViewController {
                 
             case .wallet:
                 details.id = item.rawValue
-                details.title = KKUtil.languageSelectedStringForKey(key: "personal_user_info")
+                details.title = KKUtil.languageSelectedStringForKey(key: "personal_wallet")
                 details.imgIcon = "ic_user_info"
                 
             case .history:
                 details.id = item.rawValue
-                details.title = KKUtil.languageSelectedStringForKey(key: "personal_user_info")
+                details.title = KKUtil.languageSelectedStringForKey(key: "personal_history")
                 details.imgIcon = "ic_user_info"
             }
            

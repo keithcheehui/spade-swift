@@ -68,6 +68,8 @@
 "personal_betting_record"                   = "Betting Record";
 "personal_account_detail"                   = "Account Details";
 "personal_individual_report"                = "Individual Report";
+"personal_wallet"                           = "Wallet";
+"personal_history"                          = "History";
 
 //MARK: Individual Report
 "ir_total_win"                              = "TOTAL WIN";

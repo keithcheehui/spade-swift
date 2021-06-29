@@ -113,6 +113,8 @@ class KKUtil: NSObject {
         KeychainSwift().set("", forKey: CacheKey.accessToken)
         KeychainSwift().set("", forKey: CacheKey.refreshToken)
         KeychainSwift().set("", forKey: CacheKey.userProfile)
+        KeychainSwift().set("", forKey: CacheKey.username)
+        KeychainSwift().set("", forKey: CacheKey.secret)
 
         UserDefaults.standard.synchronize()
         

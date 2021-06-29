@@ -7,6 +7,7 @@
 
 import UIKit
 import KeychainSwift
+import Kingfisher
 
 class KKSplashScreenViewController: KKBaseViewController {
 
@@ -28,13 +29,25 @@ class KKSplashScreenViewController: KKBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        KingfisherManager.shared.cache.clearMemoryCache()
+        KingfisherManager.shared.cache.clearDiskCache()
+        KingfisherManager.shared.cache.cleanExpiredDiskCache()
+        
         initialLayout()
         drawLoadingProgress()
         
         if KKUtil.isConnectedToInternet() {
-            self.getLandingDetails()
+            
+            if (KeychainSwift().get(CacheKey.username) == nil || KeychainSwift().get(CacheKey.secret) == nil) {
+                clearSet()
+            } else if (KeychainSwift().get(CacheKey.username)!.isEmpty || KeychainSwift().get(CacheKey.secret)!.isEmpty) {
+                clearSet()
+            } else {
+                self.userAccountLogin(username: KeychainSwift().get(CacheKey.username)!, password: KeychainSwift().get(CacheKey.secret)!)
+            }
         } else {
+            self.showAlertView(type: .Error, alertMessage: "error_internet_connection_desc")
             self.appVersionApiFailed()
         }
     }
@@ -97,7 +110,35 @@ class KKSplashScreenViewController: KKBaseViewController {
         }
     }
     
+    func clearSet() {
+        UserDefaults.standard.set(false, forKey: CacheKey.loginStatus)
+        KeychainSwift().set("", forKey: CacheKey.accessToken)
+        KeychainSwift().set("", forKey: CacheKey.refreshToken)
+        KeychainSwift().set("", forKey: CacheKey.userProfile)
+        KeychainSwift().set("", forKey: CacheKey.username)
+        KeychainSwift().set("", forKey: CacheKey.secret)
+
+        UserDefaults.standard.synchronize()
+        
+        self.getLandingDetails()
+    }
+    
     //MARK:- API Calls
+    
+    func userAccountLogin(username: String, password: String) {
+        
+        KKApiClient.userAccountLogin(username: username, password: password).execute { userCredential in
+        
+            KKTokenManager.setUserCredential(userCredential: userCredential)
+            UserDefaults.standard.set(true, forKey: CacheKey.loginStatus)
+            UserDefaults.standard.synchronize()
+            
+            self.getLandingDetails()
+            
+        } onFailure: { errorMessage in
+            self.clearSet()
+        }
+    }
     
     func getLandingDetails() {
         

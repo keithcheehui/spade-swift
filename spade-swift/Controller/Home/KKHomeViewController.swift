@@ -243,57 +243,57 @@ class KKHomeViewController: KKBaseViewController {
         }
     }
     
-    func getMenuIcon(index: Int) -> String{
-        var menuIcon = ""
-        switch index {
-        case GameType.hotGame:
-            menuIcon = "ic_hot"
-        case GameType.slots:
-            menuIcon = "ic_slots"
-        case GameType.fishing:
-            menuIcon = "ic_fishing"
-        case GameType.liveCasino:
-            menuIcon = "ic_live_casino"
-        case GameType.p2pGame:
-            menuIcon = "ic_p2p"
-        case GameType.sports:
-            menuIcon = "ic_sports"
-        case GameType.lottery:
-            menuIcon = "ic_lottery"
-        case GameType.esports:
-            menuIcon = "ic_esports"
-        default:
-            break
-        }
-        
-        return menuIcon
-    }
+//    func getMenuIcon(index: Int) -> String{
+//        var menuIcon = ""
+//        switch index {
+//        case GameType.hotGame:
+//            menuIcon = "ic_hot"
+//        case GameType.slots:
+//            menuIcon = "ic_slots"
+//        case GameType.fishing:
+//            menuIcon = "ic_fishing"
+//        case GameType.liveCasino:
+//            menuIcon = "ic_live_casino"
+//        case GameType.p2pGame:
+//            menuIcon = "ic_p2p"
+//        case GameType.sports:
+//            menuIcon = "ic_sports"
+//        case GameType.lottery:
+//            menuIcon = "ic_lottery"
+//        case GameType.esports:
+//            menuIcon = "ic_esports"
+//        default:
+//            break
+//        }
+//
+//        return menuIcon
+//    }
     
-    func getMenuName(index: Int) -> String{
-        var menuName = ""
-        switch index {
-        case GameType.hotGame:
-            menuName = "home_hot_game"
-        case GameType.slots:
-            menuName = "home_slots"
-        case GameType.fishing:
-            menuName = "home_fishing"
-        case GameType.liveCasino:
-            menuName = "home_live_casino"
-        case GameType.p2pGame:
-            menuName = "home_p2p_game"
-        case GameType.sports:
-            menuName = "home_sports"
-        case GameType.lottery:
-            menuName = "home_lottery"
-        case GameType.esports:
-            menuName = "home_esports"
-        default:
-            break
-        }
-        
-        return menuName
-    }
+//    func getMenuName(index: Int) -> String{
+//        var menuName = ""
+//        switch index {
+//        case GameType.hotGame:
+//            menuName = "home_hot_game"
+//        case GameType.slots:
+//            menuName = "home_slots"
+//        case GameType.fishing:
+//            menuName = "home_fishing"
+//        case GameType.liveCasino:
+//            menuName = "home_live_casino"
+//        case GameType.p2pGame:
+//            menuName = "home_p2p_game"
+//        case GameType.sports:
+//            menuName = "home_sports"
+//        case GameType.lottery:
+//            menuName = "home_lottery"
+//        case GameType.esports:
+//            menuName = "home_esports"
+//        default:
+//            break
+//        }
+//
+//        return menuName
+//    }
     
     func setupGuestView(isGuest: Bool){
         if isGuest {

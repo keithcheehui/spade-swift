@@ -137,8 +137,12 @@ class KKLoginViewController: KKBaseViewController {
     @objc func userAccountLogin() {
         
         KKApiClient.userAccountLogin(username: txtUsername.text!, password: txtPassword.text!).execute { userCredential in
-        
+            
+            KeychainSwift().set(self.txtUsername.text!, forKey: CacheKey.username)
+            KeychainSwift().set(self.txtPassword.text!, forKey: CacheKey.secret)
+            
             KKTokenManager.setUserCredential(userCredential: userCredential)
+            
             UserDefaults.standard.set(true, forKey: CacheKey.loginStatus)
             UserDefaults.standard.synchronize()
             self.showAlertView(type: .Success, alertMessage: userCredential.message ?? "")

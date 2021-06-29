@@ -62,6 +62,8 @@ struct CacheKey {
     static let appVersionDetails = "app_version_details"
     static let selectedCountry = "selected_country"
     static let selectedLanguage = "selected_language"
+    static let username = "username"
+    static let secret = "secret"
 }
 
 struct APIKeys {
