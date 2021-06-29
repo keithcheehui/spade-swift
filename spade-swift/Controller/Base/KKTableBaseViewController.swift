@@ -16,6 +16,7 @@ class KKTableBaseViewController: KKBaseViewController {
     var bettingRecordArray: [KKUserBettingHistoryDetails]! = []
     var withdrawHistoryArray: [KKWithdrawHistoryDetails]! = []
     var depositHistoryArray: [KKDepositHistoryDetails]! = []
+    var selectedTabItem: String!
 
     var commissionTableArray = [
         ["Bronze", "100-100K", "(RM 0.2+) 0.2%"],
@@ -48,16 +49,11 @@ class KKTableBaseViewController: KKBaseViewController {
         self.setUpContentTableView()
         
         if tableViewType == .BettingRecord {
-            
-            self.getUserBettingRecord()
-        }
-        else if tableViewType == .AccountDetails {
-            
-            self.getUserCashFlow()
-        }
-        else if tableViewType == .WithdrawHistory {
-            
-            self.getUserWithdrawHistory()
+            getUserBettingRecord(leftPicker: "", rightPicker: "", tabItem: selectedTabItem)
+        } else if tableViewType == .AccountDetails {
+            getUserCashFlow(leftPicker: "", tabItem: selectedTabItem)
+        } else if tableViewType == .WithdrawHistory {
+            getUserWithdrawHistory(leftPicker: "")
         }
     }
     
@@ -74,59 +70,6 @@ class KKTableBaseViewController: KKBaseViewController {
         contentTableView.clipsToBounds = true
         contentTableView.delegate = self
         contentTableView.dataSource = self
-    }
-    
-    //MARK:- API Calls
-
-    func getUserBettingRecord() {
-        
-        self.showAnimatedLoader()
-        
-        KKApiClient.getUserBettingRecord().execute { bettingHistoryResponse in
-            
-            self.hideAnimatedLoader()
-            self.bettingRecordArray = bettingHistoryResponse.results?.betslips
-            self.contentTableView.reloadData()
-            
-        } onFailure: { errorMessage in
-            
-            self.hideAnimatedLoader()
-            self.showAlertView(type: .Error, alertMessage: errorMessage)
-        }
-    }
-    
-    func getUserCashFlow() {
-        
-        self.showAnimatedLoader()
-        
-        KKApiClient.getUserBettingCashFlow().execute { cashFlowResponse in
-            
-            self.hideAnimatedLoader()
-            self.cashFlowArray = cashFlowResponse.results?.cashflows
-            self.contentTableView.reloadData()
-            
-        } onFailure: { errorMessage in
-            
-            self.hideAnimatedLoader()
-            self.showAlertView(type: .Error, alertMessage: errorMessage)
-        }
-    }
-    
-    func getUserWithdrawHistory() {
-        
-        self.showAnimatedLoader()
-        
-        KKApiClient.getMemberWithdrawHistory().execute { withdrawHistoryResponse in
-            
-            self.hideAnimatedLoader()
-            self.withdrawHistoryArray = withdrawHistoryResponse.results?.withdrawHistory
-            self.contentTableView.reloadData()
-            
-        } onFailure: { errorMessage in
-            
-            self.hideAnimatedLoader()
-            self.showAlertView(type: .Error, alertMessage: errorMessage)
-        }
     }
     
     //MARK:- Others
@@ -174,6 +117,59 @@ class KKTableBaseViewController: KKBaseViewController {
             
         default:
             return []
+        }
+    }
+    
+    //MARK:- API Calls
+
+    func getUserBettingRecord(leftPicker: String, rightPicker: String, tabItem: String)   {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.getUserBettingRecord(filter: leftPicker, code: rightPicker).execute { bettingHistoryResponse in
+            
+            self.hideAnimatedLoader()
+            self.bettingRecordArray = bettingHistoryResponse.results?.betslips
+            self.contentTableView.reloadData()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
+        }
+    }
+    
+    func getUserCashFlow(leftPicker: String, tabItem: String) {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.getUserBettingCashFlow(filter: leftPicker, tabItem: tabItem).execute { cashFlowResponse in
+            
+            self.hideAnimatedLoader()
+            self.cashFlowArray = cashFlowResponse.results?.cashflows
+            self.contentTableView.reloadData()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
+        }
+    }
+    
+    func getUserWithdrawHistory(leftPicker: String) {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.getMemberWithdrawHistory(historyStatus: leftPicker).execute { withdrawHistoryResponse in
+            
+            self.hideAnimatedLoader()
+            self.withdrawHistoryArray = withdrawHistoryResponse.results?.withdrawHistory
+            self.contentTableView.reloadData()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
 }

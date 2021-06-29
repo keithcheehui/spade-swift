@@ -25,11 +25,17 @@ class KKGeneralTableViewController: KKTableBaseViewController {
 
     var leftTitle: String!
     var leftValue: String!
-    var leftDropdownOptions: [String] = []
+    var leftDropdownOptions: [PickerDetails] = []
     
     var rightTitle: String!
     var rightValue: String!
-    var rightDropdownOptions: [String] = []
+    var rightDropdownOptions: [PickerDetails] = []
+    
+    var leftItem: String!
+    var rightItem: String!
+    
+    var isLeft = false
+    var isRight = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,26 +67,31 @@ class KKGeneralTableViewController: KKTableBaseViewController {
         switch tableViewType {
         
         case .BettingRecord:
-            leftTitle = "Bet Time"
-            leftValue = "All Time"
+            leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_bet_time")
+            leftValue = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
+            leftItem = ""
             
-            rightTitle = "Gaming Platform"
-            rightValue = "All Provider"
+            rightTitle = KKUtil.languageSelectedStringForKey(key: "picker_game_platform")
+            rightValue = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
+            rightItem = ""
             self.showTopContainer(shouldShow: true, withRightPicker: true)
             
         case .AccountDetails:
-            leftTitle = "Transaction Time"
-            leftValue = "All Time"
+            leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
+            leftValue = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
+            leftItem = ""
             self.showTopContainer(shouldShow: true, withRightPicker: false)
         
         case .DepositHistory:
-            leftTitle = "Deposit Status"
-            leftValue = "All Status"
+            leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_deposit_status")
+            leftValue = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
+            leftItem = ""
             self.showTopContainer(shouldShow: true, withRightPicker: false)
         
         case .WithdrawHistory:
-            leftTitle = "Deposit Status"
-            leftValue = "All Status"
+            leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_withdraw_status")
+            leftValue = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
+            leftItem = ""
             self.showTopContainer(shouldShow: true, withRightPicker: false)
         
         default:
@@ -119,10 +130,45 @@ class KKGeneralTableViewController: KKTableBaseViewController {
         switch tableViewType {
             
             case .WithdrawHistory:
-                leftDropdownOptions = KKBaseViewController().pickerStatusArray
+                leftDropdownOptions = pickerStatusArray
             default:
-                leftDropdownOptions = KKBaseViewController().pickerTimeArray
+                leftDropdownOptions = pickerTimeArray
         }
+    }
+    
+    func updateTable() {
+        if (isLeft && !isRight) {
+            leftItem = ""
+            for item in leftDropdownOptions {
+                if (item.name == pickerTextField.text!) {
+                    leftItem = item.id
+                    break;
+                }
+            }
+        } else if (!isLeft && isRight) {
+            rightItem = ""
+            for item in rightDropdownOptions {
+                if (item.name == pickerTextField.text!) {
+                    rightItem = item.id
+                    break;
+                }
+            }
+        }
+        
+        if tableViewType == .BettingRecord {
+            self.getUserBettingRecord(leftPicker: leftItem, rightPicker: rightItem, tabItem: selectedTabItem)
+        } else if tableViewType == .AccountDetails {
+            self.getUserCashFlow(leftPicker: leftItem, tabItem: selectedTabItem)
+        } else if tableViewType == .WithdrawHistory {
+            self.getUserWithdrawHistory(leftPicker: leftItem)
+        }
+    }
+    
+    @objc
+    override func didTapDone() {
+        view.endEditing(true)
+        pickerView.isHidden = true
+        updateTable()
     }
 }
 
@@ -131,9 +177,13 @@ extension KKGeneralTableViewController: UITextFieldDelegate {
         if textField == rightPickerTxtValue {
             showPickerView(optionList: rightDropdownOptions)
             pickerTextField = textField
+            isRight = true
+            isLeft = false
         } else {
             showPickerView(optionList: leftDropdownOptions)
             pickerTextField = textField
+            isRight = false
+            isLeft = true
         }
         
         //TODO: KEITH, add the subclass, and add disable copy paste pop up

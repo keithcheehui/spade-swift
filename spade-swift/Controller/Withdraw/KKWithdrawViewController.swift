@@ -74,6 +74,7 @@ class KKWithdrawViewController: KKBaseViewController {
         switch type {
         case WithdrawSideMenu.withdrawHistory.rawValue:
             let viewController = KKGeneralTableViewController()
+            viewController.leftDropdownOptions = pickerStatusArray
             viewController.tableViewType = .WithdrawHistory
             changeView(vc: viewController)
             break;

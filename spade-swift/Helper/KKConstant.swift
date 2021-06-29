@@ -100,6 +100,7 @@ struct APIKeys {
     static let withdrawAccountNo = "bank_account_number"
     static let filterDuration = "filter_duration"
     static let inboxMessageId = "inbox_message_id"
+    static let transStatus = "trans_status"
 }
 
 struct APIValue {
@@ -116,11 +117,6 @@ struct LoginType {
 
 struct RegistrationType {
     static let phoneNumber = "phone_number"
-}
-
-struct GenderType {
-    static let male = "Male"
-    static let female = "Female"
 }
 
 struct CountryCode {
@@ -222,13 +218,33 @@ enum TableViewType: Int {
     case WithdrawHistory = 11
 }
 
-enum FilterDuration: String {
+enum FilterDuration: String, CaseIterable {
+    case all = "all"
     case td = "td"
     case yd = "yd"
     case tm = "tm"
     case lm = "lm"
     case l90d = "l90d"
 }
+
+enum HistoryStatus: String, CaseIterable {
+    case all = "all"
+    case approved = "approved"
+    case rejected = "rejected"
+    case pending = "pending"
+}
+
+enum CashflowStatus: String, CaseIterable {
+    case deposit = "Deposit"
+    case depositPromotion = "Deposit promotion"
+    case withdrawal = "Withdrawal"
+}
+
+enum GenderType: String, CaseIterable {
+    case male = "Male"
+    case female = "Female"
+}
+
 
 enum DialogAlertType: Int {
     case Logout = 1

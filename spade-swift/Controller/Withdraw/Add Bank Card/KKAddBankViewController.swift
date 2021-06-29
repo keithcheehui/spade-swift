@@ -27,7 +27,7 @@ class KKAddBankViewController: KKBaseViewController {
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
     
     //TODO: remember change to get API
-    var bankList: [String]! = ["Maybank", "Hong Leong", "CIMB"]
+    var bankItemList: [PickerDetails]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,7 +149,7 @@ class KKAddBankViewController: KKBaseViewController {
 extension KKAddBankViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == txtBankName {
-            showPickerView(optionList: bankList)
+            showPickerView(optionList: bankItemList)
             pickerTextField = textField
         }
         

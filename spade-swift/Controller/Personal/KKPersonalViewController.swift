@@ -28,9 +28,9 @@ class KKPersonalViewController: KKBaseViewController {
     var bettingRecordGroupsNameArray: [String]! = []
 
     var bettingRecordPlatfromsArray: [KKUserBettingPlatformDetails]! = []
-    var bettingRecordPlatfromsNameArray: [String]! = []
+    var bettingRecordPlatfromsNameArray: [PickerDetails]! = []
 
-    var accountDetailTabArray: [String]! = ["Deposit/Withdraw", "Transfer", "Promotion"]
+//    var accountDetailTabArray: [String]! = ["Deposit/Withdraw", "Transfer", "Promotion"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class KKPersonalViewController: KKBaseViewController {
         initFlowLayout()
         getTabArrayAPI()
         
-        buttonHover(type: selectedViewType)
+        buttonHover(type: selectedViewType, needRefresh: true)
         
         if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
             getUserLatestWallet()
@@ -170,7 +170,10 @@ class KKPersonalViewController: KKBaseViewController {
                 self.bettingRecordPlatfromsArray = platforms
                 self.bettingRecordPlatfromsNameArray.removeAll()
                 for platform in platforms {
-                    self.bettingRecordPlatfromsNameArray.append(platform.name ?? "")
+                    var detail = PickerDetails()
+                    detail.id = platform.code ?? ""
+                    detail.name = platform.name ?? ""
+                    self.bettingRecordPlatfromsNameArray.append(detail)
                 }
             }
             self.groupsCollectionView.reloadData()
@@ -185,9 +188,11 @@ class KKPersonalViewController: KKBaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func buttonHover(type: Int){
+    func buttonHover(type: Int, needRefresh: Bool? = false){
         selectedViewType = type
-        selectedTabItem = 0
+        if needRefresh! {
+            selectedTabItem = 0
+        }
         
         groupsCollectionView.isHidden = false
         groupsCollectionViewHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
@@ -197,11 +202,13 @@ class KKPersonalViewController: KKBaseViewController {
         case PersonalSideMenu.bettingRecord.rawValue:
             let viewController = KKGeneralTableViewController.init()
             viewController.rightDropdownOptions = bettingRecordPlatfromsNameArray
+            viewController.selectedTabItem = bettingRecordGroupsArray[selectedTabItem].code
             viewController.tableViewType = .BettingRecord
             changeView(vc: viewController)
             break;
         case PersonalSideMenu.accountDetail.rawValue:
             let viewController = KKGeneralTableViewController()
+            viewController.selectedTabItem = pickerCashflowArray[selectedTabItem].id
             viewController.tableViewType = .AccountDetails
             changeView(vc: viewController)
             break;
@@ -236,7 +243,7 @@ extension KKPersonalViewController: UICollectionViewDelegate, UICollectionViewDa
         if (selectedViewType == PersonalSideMenu.bettingRecord.rawValue || selectedViewType == PersonalSideMenu.individualReport.rawValue) {
             return bettingRecordGroupsArray.count
         } else if (selectedViewType == PersonalSideMenu.accountDetail.rawValue) {
-            return accountDetailTabArray.count
+            return pickerCashflowArray.count
         }
         
         return 0
@@ -256,7 +263,7 @@ extension KKPersonalViewController: UICollectionViewDelegate, UICollectionViewDa
         }
         
         if (selectedViewType == PersonalSideMenu.accountDetail.rawValue) {
-            cell.lblTitle.text = accountDetailTabArray[indexPath.item]
+            cell.lblTitle.text = pickerCashflowArray[indexPath.item].name
         } else {
             cell.lblTitle.text = bettingRecordGroupsArray[indexPath.item].name
         }
@@ -267,6 +274,7 @@ extension KKPersonalViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedTabItem = indexPath.item
         collectionView.reloadData()
+        buttonHover(type: selectedViewType)
         return
     }
 }
@@ -299,7 +307,7 @@ extension KKPersonalViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedViewType = indexPath.row
-        buttonHover(type: selectedViewType)
+        buttonHover(type: selectedViewType, needRefresh: true)
         sideMenuTableView.reloadData()
     }
     

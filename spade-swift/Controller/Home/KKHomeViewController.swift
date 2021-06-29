@@ -85,7 +85,7 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var messageUnreadViewWidth: NSLayoutConstraint!
     @IBOutlet weak var messageUnreadViewMarginRight: NSLayoutConstraint!
 
-    var messageUnread = true
+    var messageUnread = false
     
     override func viewDidLoad() {
         super.viewDidLoad()

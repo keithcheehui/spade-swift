@@ -20,19 +20,14 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     var datePickerView: UIDatePicker = UIDatePicker()
     var pickerToolBarView: UIToolbar = UIToolbar()
     
-    var pickerTimeArray: [String] = [KKUtil.languageSelectedStringForKey(key: "picker_fd_td"),
-                               KKUtil.languageSelectedStringForKey(key: "picker_fd_yd"),
-                               KKUtil.languageSelectedStringForKey(key: "picker_fd_tm"),
-                               KKUtil.languageSelectedStringForKey(key: "picker_fd_lm"),
-                               KKUtil.languageSelectedStringForKey(key: "picker_fd_l90d")]
-    
-    var pickerStatusArray: [String] = [KKUtil.languageSelectedStringForKey(key: "picker_ws_all"),
-                                       KKUtil.languageSelectedStringForKey(key: "picker_ws_approved"),
-                                       KKUtil.languageSelectedStringForKey(key: "picker_ws_rejected"),
-                                       KKUtil.languageSelectedStringForKey(key: "picker_ws_pending")]
+    var pickerTimeArray: [PickerDetails] = []
+    var pickerStatusArray: [PickerDetails] = []
+    var pickerCashflowArray: [PickerDetails] = []
+    var pickerGenderArray: [PickerDetails] = []
 
-    var dataArray: [String] = []
+    var dataArray: [PickerDetails] = []
     var pickerTextField: UITextField!
+    var selectedPickerItem: PickerDetails!
     var datePickerTextField: UITextField!
 
     override var prefersHomeIndicatorAutoHidden: Bool {
@@ -56,6 +51,11 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
             activityIndicator.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.height)
         }
         
+        self.setupPickerTimeOptions()
+        self.setupWithdrawStatusOptions()
+        self.setupCashflowOptions()
+        self.setupGenderOptions()
+        
         self.setupPickerView()
         self.setupDatePickerView()
     }
@@ -65,6 +65,111 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    func setupPickerTimeOptions() {
+        pickerTimeArray.removeAll()
+        
+        var details = PickerDetails.init()
+        for item in FilterDuration.allCases {
+            switch item {
+            case .all:
+                details.id = ""
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
+                
+            case .td:
+                details.id = item.rawValue
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_td")
+                
+            case .yd:
+                details.id = item.rawValue
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_yd")
+                
+            case .tm:
+                details.id = item.rawValue
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_tm")
+                
+                
+            case .lm:
+                details.id = item.rawValue
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_lm")
+                
+                
+            case .l90d:
+                details.id = item.rawValue
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_l90d")
+            }
+           
+            pickerTimeArray.append(details)
+        }
+    }
+    
+    func setupWithdrawStatusOptions() {
+        pickerStatusArray.removeAll()
+        
+        var details = PickerDetails.init()
+        for item in HistoryStatus.allCases {
+            switch item {
+            case .all:
+                details.id = ""
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
+                
+            case .approved:
+                details.id = item.rawValue
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_approved")
+                
+            case .rejected:
+                details.id = item.rawValue
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_rejected")
+                
+                
+            case .pending:
+                details.id = item.rawValue
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_pending")
+            }
+            pickerStatusArray.append(details)
+        }
+    }
+    
+    func setupCashflowOptions() {
+        pickerCashflowArray.removeAll()
+        
+        var details = PickerDetails.init()
+        for item in CashflowStatus.allCases {
+            switch item {
+            case .deposit:
+                details.id = item.rawValue
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_cf_deposit")
+                
+            case .depositPromotion:
+                details.id = item.rawValue
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_cf_deposit_promo")
+                
+                
+            case .withdrawal:
+                details.id = item.rawValue
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_cf_withdrawal")
+            }
+            pickerCashflowArray.append(details)
+        }
+    }
+    
+    func setupGenderOptions() {
+        pickerGenderArray.removeAll()
+        
+        var details = PickerDetails.init()
+        for item in GenderType.allCases {
+            switch item {
+            case .male:
+                details.id = item.rawValue
+                details.name = item.rawValue
+                
+            case .female:
+                details.id = item.rawValue
+                details.name = item.rawValue
+            }
+            pickerGenderArray.append(details)
+        }
     }
     
     //MARK:- Picker View
@@ -92,7 +197,7 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     //MARK:- Show Picker View
-    func showPickerView(optionList: [String]) {
+    func showPickerView(optionList: [PickerDetails]) {
         dataArray = optionList
         pickerView.isHidden = false
     }
@@ -190,19 +295,6 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @objc func dismissBtnClicked() {
         self.dismiss(animated: true, completion: nil)
-    }
-}
-
-struct SideMenuDetails {
-    
-    var imgIcon: String
-    var id: Int
-    var title: String
-    
-    init(imgIcon: String = "", id: Int = 0, title: String = "") {
-        self.imgIcon = imgIcon
-        self.id = id
-        self.title = title
     }
 }
 
@@ -332,15 +424,15 @@ extension KKBaseViewController: UIPickerViewDelegate, UIPickerViewDataSource {
             return ""
         }
         
-        let row = dataArray[row]
-        return row
+        return dataArray[row].name
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if dataArray.isEmpty {
-            pickerTextField.text = ""
+            return
         } else {
-            pickerTextField.text = dataArray[row]
+            pickerTextField.text = dataArray[row].name
+            selectedPickerItem = dataArray[row]
         }
     }
 }
@@ -355,5 +447,29 @@ extension KKBaseViewController: UIToolbarDelegate {
     @objc func didTapCancel() {
         view.endEditing(true)
         pickerView.isHidden = true
+    }
+}
+
+struct SideMenuDetails {
+    
+    var imgIcon: String
+    var id: Int
+    var title: String
+    
+    init(imgIcon: String = "", id: Int = 0, title: String = "") {
+        self.imgIcon = imgIcon
+        self.id = id
+        self.title = title
+    }
+}
+
+struct PickerDetails {
+    
+    var id: String
+    var name: String
+    
+    init(id: String = "", name: String = "") {
+        self.id = id
+        self.name = name
     }
 }

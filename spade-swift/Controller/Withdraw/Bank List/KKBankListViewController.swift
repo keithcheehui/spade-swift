@@ -14,7 +14,8 @@ class KKBankListViewController: KKBaseViewController {
 
     var userBankList: [KKWithdrawBankDetails]! = []
     var bankItemList: [KKWithdrawBankNames]! = []
-        
+    var bankListOptions: [PickerDetails]! = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initialLayout()
@@ -31,8 +32,9 @@ class KKBankListViewController: KKBaseViewController {
             view.removeFromSuperview()
         }
         
-        let vc = KKAddBankViewController()
+        let vc = KKAddBankViewController.init()
         vc.tableContentView = self.view
+        vc.bankItemList = bankListOptions
         vc.displayViewController = self
         vc.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         self.view.addSubview(vc.view)
@@ -46,6 +48,16 @@ class KKBankListViewController: KKBaseViewController {
             self.hideAnimatedLoader()
             self.userBankList = withdrawBankResponse.results?.userBanks
             self.bankItemList = withdrawBankResponse.results?.bankNames
+            
+            if (self.bankItemList.count > 0) {
+                for bank in self.bankItemList {
+                    var bankDetail = PickerDetails()
+                    bankDetail.id = String(bank.id ?? -1)
+                    bankDetail.name = bank.name ?? ""
+                    
+                    self.bankListOptions.append(bankDetail)
+                }
+            }
             
             self.bankTableView.reloadData()
             

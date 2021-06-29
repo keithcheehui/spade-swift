@@ -239,10 +239,18 @@
 "picker_fd_tm"                                  = "This month";
 "picker_fd_lm"                                  = "Last month";
 "picker_fd_l90d"                                = "Last 90 days";
-"picker_ws_all"                                 = "All Status";
+"picker_ws_all"                                 = "All";
 "picker_ws_approved"                            = "Approved";
 "picker_ws_rejected"                            = "Rejected";
 "picker_ws_pending"                             = "Pending";
+"picker_cf_deposit"                             = "Deposit";
+"picker_cf_deposit_promo"                       = "Deposit Promotion";
+"picker_cf_withdrawal"                          = "Withdrawal";
+"picker_bet_time"                               = "Bet Time";
+"picker_game_platform"                          = "Gaming Platform";
+"picker_trans_time"                             = "Transaction Time";
+"picker_deposit_status"                         = "Deposit Status";
+"picker_withdraw_status"                        = "Withdrawal Status";
 
 //MARK: Dialog Alert
 "alert_deposit"                                 = "Please set up your at least one bank card before deposit";
@@ -252,5 +260,5 @@
 
 //MARK: Platforms
 "platform_total_game"                           = "Total %d Games";
-"platform_search_placeholder"                  = "Enter game name";
+"platform_search_placeholder"                   = "Enter game name";
 

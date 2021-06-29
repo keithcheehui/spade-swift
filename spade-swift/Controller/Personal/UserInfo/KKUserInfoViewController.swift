@@ -314,7 +314,7 @@ class KKUserInfoViewController: KKBaseViewController {
 extension KKUserInfoViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == txtGender {
-            showPickerView(optionList: [KKUtil.languageSelectedStringForKey(key: "user_info_gender_male"), KKUtil.languageSelectedStringForKey(key: "user_info_gender_female")])
+            showPickerView(optionList: pickerGenderArray)
             pickerTextField = textField
             
             //TODO: KEITH, add the subclass, and add disable copy paste pop up

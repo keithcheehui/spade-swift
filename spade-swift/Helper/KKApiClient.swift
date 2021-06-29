@@ -170,7 +170,7 @@ class KKApiClient: NSObject {
     }
     
     static func updateUserProfile(email: String = KKUtil.decodeUserProfileFromCache()?.email ?? "",
-                                  gender: String = KKUtil.decodeUserProfileFromCache()?.gender ?? GenderType.male,
+                                  gender: String = KKUtil.decodeUserProfileFromCache()?.gender ?? GenderType.male.rawValue,
                                   birthday: String = KKUtil.decodeUserProfileFromCache()?.dob ?? "") -> Future<KKGeneralResponse> {
         
         let parameter = [APIKeys.email      : email,
@@ -214,18 +214,20 @@ class KKApiClient: NSObject {
         return performRequest(route: .getUserBettingGroupAndPlatform(parameter: parameter))
     }
     
-    static func getUserBettingCashFlow() -> Future<KKUserCashFlowResponse> {
+    static func getUserBettingCashFlow(filter: String, tabItem: String) -> Future<KKUserCashFlowResponse> {
         
-        let parameter = [APIKeys.filterDuration    : APIValue.last90Days
+        let parameter = [APIKeys.filterDuration    : filter,
+                         APIKeys.transStatus       : tabItem
                         ] as [String : Any]
         
         return performRequest(route: .getUserBettingCashflow(parameter: parameter))
     }
     
-    static func getUserBettingRecord() -> Future<KKUserBettingHistoryResponse> {
+    static func getUserBettingRecord(filter: String, code: String) -> Future<KKUserBettingHistoryResponse> {
         
-        let parameter = [APIKeys.filterDuration : APIValue.last90Days
-                        ] as [String : Any]
+        let parameter = [APIKeys.filterDuration : filter,
+                         APIKeys.code : code
+        ] as [String : Any]
         
         return performRequest(route: .getUserBettingRecord(parameter: parameter))
     }
@@ -348,9 +350,10 @@ class KKApiClient: NSObject {
         return performRequest(route: .memberWithdrawal(parameter: parameter))
     }
     
-    static func getMemberWithdrawHistory(historyStatus: String? = nil) -> Future<KKWithdrawHistoryResponse> {
+    static func getMemberWithdrawHistory(historyStatus: String) -> Future<KKWithdrawHistoryResponse> {
         
-        let parameter = [String : Any]()
+        let parameter = [APIKeys.status     : historyStatus
+                        ] as [String : Any]
         
         return performRequest(route: .memberWithdrawHistory(parameter: parameter))
     }
