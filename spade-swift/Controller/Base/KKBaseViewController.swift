@@ -193,6 +193,19 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 }
 
+struct SideMenuDetails {
+    
+    var imgIcon: String
+    var id: Int
+    var title: String
+    
+    init(imgIcon: String = "", id: Int = 0, title: String = "") {
+        self.imgIcon = imgIcon
+        self.id = id
+        self.title = title
+    }
+}
+
 extension UIDevice {
     
     var hasNotch: Bool {
@@ -228,11 +241,10 @@ extension String {
         return formatter.string(from: number)!
     }
     
-    func isValidEmail() -> Bool {
-            // here, `try!` will always succeed because the pattern is valid
-            let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
-            return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
-        }
+//    func isValidEmail() -> Bool {
+//        let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
+//        return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+//    }
     
     var bankAccountMasked: String {
         self.enumerated().map({ (index, ch) in

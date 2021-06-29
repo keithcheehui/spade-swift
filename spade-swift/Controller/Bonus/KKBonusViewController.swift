@@ -124,8 +124,10 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
         }
         if (selectedMenuItem == indexPath.row){
             cell.imgHover.isHidden = false
+            cell.lblMenuName.font = ConstantSize.sideMenuSelectedFont
         } else {
             cell.imgHover.isHidden = true
+            cell.lblMenuName.font = ConstantSize.sideMenuFont
         }
         
         cell.lblMenuName.text = sideMenuItem[indexPath.item].button_name

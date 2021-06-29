@@ -15,12 +15,13 @@ class KKMessageDetailsTableViewCell: UITableViewCell {
         static let dateLabelWidth = KKUtil.ConvertSizeByDensity(size: 120)
     }
     
-    var messageDetailsView:     UIView!
-    var messageIcon:            UIImageView!
-    var messageExpandIcon:      UIImageView!
-    var messageTitleLabel:      UILabel!
-    var messageDateLabel:      UILabel!
-    var messageDescLabel:       UILabel!
+    var messageDetailsView: UIView!
+    var unreadDot: UIView!
+    var messageIcon: UIImageView!
+    var messageExpandIcon: UIImageView!
+    var messageTitleLabel: UILabel!
+    var messageDateLabel: UILabel!
+    var messageDescLabel: UILabel!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -40,6 +41,11 @@ class KKMessageDetailsTableViewCell: UITableViewCell {
         messageIcon.contentMode = .scaleAspectFit
         messageDetailsView.addSubview(messageIcon)
         
+        unreadDot = UIView.init()
+        unreadDot.backgroundColor = .red
+        unreadDot.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
+        messageDetailsView.addSubview(unreadDot)
+
         messageExpandIcon = UIImageView.init()
         messageExpandIcon.image = UIImage(named: "ic_arrow_down")
         messageExpandIcon.contentMode = .scaleAspectFit
@@ -67,15 +73,25 @@ class KKMessageDetailsTableViewCell: UITableViewCell {
         messageDetailsView.addSubview(messageDescLabel)
     }
     
-    func setUpMessageDetails(messageDetails: KKSystemMessageDetails, isHidden: Bool, tableViewWidth: CGFloat) {
+    func setUpMessageDetails(messageDetails: KKInboxMessageDetails, isHidden: Bool, tableViewWidth: CGFloat) {
         
         let maximumLabelSize = CGSize(width: tableViewWidth - ConstantSize.paddingSecondaryDouble, height: .greatestFiniteMagnitude)
         
         messageIcon.frame = CGRect(x: ConstantSize.paddingSecondaryHalf, y: ConstantSize.paddingSecondaryHalf, width: CellViewConstant.iconSize, height: CellViewConstant.iconSize)
         
+        unreadDot.frame = CGRect(x: messageIcon.frame.origin.x + messageIcon.frame.size.width - KKUtil.ConvertSizeByDensity(size: 4), y: messageIcon.frame.origin.y, width: KKUtil.ConvertSizeByDensity(size: 8), height: KKUtil.ConvertSizeByDensity(size: 8))
+        
+        if messageDetails.status == "Read" {
+            messageIcon.image = UIImage(named: "ic_mail_read")
+            unreadDot.isHidden = true
+        } else {
+            messageIcon.image = UIImage(named: "ic_mail_unread")
+            unreadDot.isHidden = false
+        }
+        
         messageExpandIcon.frame = CGRect(x: tableViewWidth - ConstantSize.paddingSecondaryHalf - CellViewConstant.iconSize, y: ConstantSize.paddingSecondaryHalf, width: CellViewConstant.iconSize, height: CellViewConstant.iconSize)
         
-        messageDateLabel.text = messageDetails.updated_at
+        messageDateLabel.text = messageDetails.updatedAt
         messageDateLabel.frame = CGRect(x: messageExpandIcon.frame.origin.x - ConstantSize.paddingSecondaryHalf - CellViewConstant.dateLabelWidth, y: ConstantSize.paddingSecondaryHalf, width: CellViewConstant.dateLabelWidth, height: CellViewConstant.iconSize)
         
         messageTitleLabel.text = messageDetails.title
@@ -111,7 +127,7 @@ class KKMessageDetailsTableViewCell: UITableViewCell {
         }
     }
     
-    class func calculateMessageDetailsHeight(messageDetails: KKSystemMessageDetails, isHidden: Bool, tableViewWidth: CGFloat)  -> CGFloat {
+    class func calculateMessageDetailsHeight(messageDetails: KKInboxMessageDetails, isHidden: Bool, tableViewWidth: CGFloat)  -> CGFloat {
         
         let maximumLabelSize = CGSize(width: tableViewWidth - ConstantSize.paddingSecondaryDouble, height: .greatestFiniteMagnitude)
 

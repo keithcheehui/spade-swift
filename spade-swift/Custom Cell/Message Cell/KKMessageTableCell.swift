@@ -40,12 +40,12 @@ class KKMessageTableCell: UITableViewCell {
         lblMsgContent.textColor = lblMsgTitle.textColor
     }
     
-    func setUpMessageDetails(messageDetails: KKSystemMessageDetails, isHidden: Bool)  -> CGFloat {
+    func setUpMessageDetails(messageDetails: KKInboxMessageDetails, isHidden: Bool)  -> CGFloat {
         
         let maximumLabelSize = CGSize(width: ScreenSize.width*0.6, height: .greatestFiniteMagnitude)
         
         lblMsgTitle.text = messageDetails.title
-        lblDate.text = messageDetails.updated_at
+        lblDate.text = messageDetails.updatedAt
         lblMsgContent.text = messageDetails.content
         
         let msgContentLabelAttributes: [NSAttributedString.Key: Any] = [
@@ -64,7 +64,7 @@ class KKMessageTableCell: UITableViewCell {
         return CGFloat(0)
     }
     
-    class func calculateMessageDetailsHeight(messageDetails: KKSystemMessageDetails, isHidden: Bool)  -> CGFloat {
+    class func calculateMessageDetailsHeight(messageDetails: KKInboxMessageDetails, isHidden: Bool)  -> CGFloat {
         
         let maximumLabelSize = CGSize(width: ScreenSize.width*0.6, height: .greatestFiniteMagnitude)
         

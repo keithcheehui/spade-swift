@@ -10,13 +10,8 @@ import UIKit
 
 class KKRebateViewController: KKBaseViewController {
     
-    @IBOutlet weak var lblManualRebate: UILabel!
-    @IBOutlet weak var lblRebateRecord: UILabel!
-    @IBOutlet weak var lblRebateRatio: UILabel!
-    @IBOutlet weak var imgHoverManualRebate: UIImageView!
-    @IBOutlet weak var imgHoverRebateRecord: UIImageView!
-    @IBOutlet weak var imgHoverRebateRatio: UIImageView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var sideMenuTableView: UITableView!
     
     @IBOutlet weak var redeemContainer: UIView!
     @IBOutlet weak var imgProfile: UIImageView!
@@ -26,45 +21,56 @@ class KKRebateViewController: KKBaseViewController {
     
     @IBOutlet weak var imgBackWidth: NSLayoutConstraint!
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
-    @IBOutlet weak var imgMenuIconWidth: NSLayoutConstraint!
-    @IBOutlet weak var menuItemHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var headerContainerMarginLeft: NSLayoutConstraint!
-    @IBOutlet weak var menuItemMarginLeft: NSLayoutConstraint!
-    @IBOutlet weak var separatorHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var redeemContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var redeemContainerMarginTop: NSLayoutConstraint!
     
-    enum viewType: Int {
-        case manualRebate = 0
-        case rebateRecord = 1
-        case rebateRatio = 2
-    }
+    var sideMenuList: [SideMenuDetails] = []
+    var selectedViewType = AffiliatteSideMenu.myAffiliate.rawValue
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialLayout()
-        buttonHover(type: viewType.manualRebate.rawValue)
+        appendSideMenuList()
+        
+        buttonHover(type: RebateSideMenu.manualRebate.rawValue)
     }
     
     func initialLayout(){
         imgBackWidth.constant = ConstantSize.imgBackWidth
         sideMenuWidth.constant = ConstantSize.sideMenuWidth
-        imgMenuIconWidth.constant = ConstantSize.imgMenuIconWidth
-        menuItemHeight.constant = ConstantSize.menuItemHeight
-        separatorHeight.constant = ConstantSize.separatorHeight
         headerContainerMarginLeft.constant = ConstantSize.headerContainerMarginLeft
-        menuItemMarginLeft.constant = ConstantSize.menuItemMarginLeft
+    }
+    
+    func appendSideMenuList() {
+        sideMenuTableView.register(UINib(nibName: "KKSideMenuTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.sideMenuTVCIdentifier)
+
+        sideMenuList.removeAll()
         
-        lblManualRebate.text = KKUtil.languageSelectedStringForKey(key: "rebate_manual_rebate")
-        lblRebateRecord.text = KKUtil.languageSelectedStringForKey(key: "rebate_rebate_record")
-        lblRebateRatio.text = KKUtil.languageSelectedStringForKey(key: "rebate_rebate_ratio")
+        var details = SideMenuDetails.init()
+        for item in RebateSideMenu.allCases {
+            switch item {
+            case .manualRebate:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "rebate_manual_rebate")
+                details.imgIcon = "ic_manual_rebate"
+                
+            case .rebateRecord:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "rebate_rebate_record")
+                details.imgIcon = "ic_rebate_record"
+                
+            case .rebateRatio:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "rebate_rebate_ratio")
+                details.imgIcon = "ic_rebate_ratio"
+            }
+           
+            sideMenuList.append(details)
+        }
         
-        lblManualRebate.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
-        lblRebateRecord.font = lblManualRebate.font
-        lblRebateRatio.font = lblManualRebate.font
+        sideMenuTableView.reloadData()
     }
     
     func showRedeemContainer(shouldShow: Bool) {
@@ -81,8 +87,8 @@ class KKRebateViewController: KKBaseViewController {
             lblRebateAmountTitle.text = KKUtil.languageSelectedStringForKey(key: "rebate_rebate_amount")
             lblRebateAmount.text = "0.00"
             
-            lblID.font = lblManualRebate.font
-            lblRebateAmountTitle.font = lblManualRebate.font
+            lblID.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+            lblRebateAmountTitle.font = lblID.font
             lblRebateAmount.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 24))
         } else {
             redeemContainerHeight.constant = 0
@@ -95,46 +101,27 @@ class KKRebateViewController: KKBaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func btnManualRebateDidPressed(){
-        buttonHover(type: viewType.manualRebate.rawValue)
-    }
-    
-    @IBAction func btnRebateRecordDidPressed(){
-        buttonHover(type: viewType.rebateRecord.rawValue)
-    }
-
-    @IBAction func btnRebateRatioDidPressed(){
-        buttonHover(type: viewType.rebateRatio.rawValue)
-    }
-    
     func buttonHover(type: Int){
-        imgHoverManualRebate.isHidden = true
-        imgHoverRebateRecord.isHidden = true
-        imgHoverRebateRatio.isHidden = true
-                
         showRedeemContainer(shouldShow: false)
 
         switch type {
-        case viewType.rebateRecord.rawValue:
-            imgHoverRebateRecord.isHidden = false
+        case RebateSideMenu.rebateRecord.rawValue:
             let viewController = KKGeneralTableViewController()
             viewController.tableViewType = .RebateRecord
             changeView(vc: viewController)
             break;
-        case viewType.rebateRatio.rawValue:
-            imgHoverRebateRatio.isHidden = false
+            
+        case RebateSideMenu.rebateRatio.rawValue:
             let viewController = KKGeneralTableViewController()
             viewController.tableViewType = .RebateRatio
             changeView(vc: viewController)
-
             break;
+            
         default:
-            imgHoverManualRebate.isHidden = false
             showRedeemContainer(shouldShow: true)
             let viewController = KKGeneralTableViewController()
             viewController.tableViewType = .ManualRebate
             changeView(vc: viewController)
-
             break;
         }
     }
@@ -151,3 +138,41 @@ class KKRebateViewController: KKBaseViewController {
         self.addChild(vc)
     }
 }
+
+extension KKRebateViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sideMenuList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.sideMenuTVCIdentifier, for: indexPath) as? KKSideMenuTableCell
+        else {
+            fatalError("DequeueReusableCell failed while casting")
+        }
+        if (selectedViewType == indexPath.row){
+            cell.imgHover.isHidden = false
+            cell.lblName.font = ConstantSize.sideMenuSelectedFont
+        } else {
+            cell.imgHover.isHidden = true
+            cell.lblName.font = ConstantSize.sideMenuFont
+        }
+        
+        cell.imgIcon.image = UIImage(named: sideMenuList[indexPath.row].imgIcon)
+        cell.lblName.text = sideMenuList[indexPath.row].title
+        
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedViewType = indexPath.row
+        buttonHover(type: selectedViewType)
+        sideMenuTableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return ConstantSize.menuItemHeight
+    }
+}
+

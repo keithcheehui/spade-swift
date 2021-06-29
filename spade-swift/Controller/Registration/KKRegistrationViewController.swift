@@ -134,10 +134,20 @@ class KKRegistrationViewController: KKBaseViewController {
                 self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_username_required_desc"))
                 return
             }
+            
+            if !KKUtil.isValidInput(testStr: txtUsername.text!){
+                self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_username_text_length"))
+                return
+            }
         }
         
         if txtPassword.text!.count == 0 {
             self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_password_required_desc"))
+            return
+        }
+        
+        if !KKUtil.isValidInput(testStr: txtPassword.text!){
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_password_text_length"))
             return
         }
         
@@ -150,6 +160,8 @@ class KKRegistrationViewController: KKBaseViewController {
             self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_password_not_match_desc"))
             return
         }
+        
+        
                 
         if (isFromForgotPassword) {
             self.userForgotPassword()
@@ -184,8 +196,10 @@ class KKRegistrationViewController: KKBaseViewController {
             self.hideAnimatedLoader()
             self.showAlertView(type: .Success, alertMessage: userCredential.message ?? "")
 
-            self.dismissPresentedViewWithBackgroundFaded()
-            
+            let when = DispatchTime.now() + 2
+            DispatchQueue.main.asyncAfter(deadline: when){
+                self.dismissPresentedViewWithBackgroundFaded()
+            }
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
@@ -243,8 +257,10 @@ class KKRegistrationViewController: KKBaseViewController {
             }
             
             self.hideAnimatedLoader()
-            self.dismissPresentedViewWithBackgroundFaded()
-            
+            let when = DispatchTime.now() + 2
+            DispatchQueue.main.asyncAfter(deadline: when){
+                self.dismissPresentedViewWithBackgroundFaded()
+            }
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()

@@ -518,39 +518,15 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnUpDidPressed(){
         announcementBubble.isHidden = true
-        
-        let visibleItems: NSArray = self.menuCollectionView.indexPathsForVisibleItems as NSArray
-        let currentItem: IndexPath = visibleItems.object(at: 0) as! IndexPath
-        let nextItem: IndexPath = IndexPath(item: currentItem.item - 1, section: 0)
-
-        if nextItem.row > -1 {
-            self.menuCollectionView.scrollToItem(at: nextItem, at: .bottom, animated: true)
-        }
-        
-        if (currentItem.row <= 0) {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.imgArrowUp.alpha = 0
-                self.imgArrowDown.alpha = 1
-            })
+        if (KKSingleton.sharedInstance.groupPlatformArray.count > 0) {
+            self.menuCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .bottom, animated: true)
         }
     }
     
     @IBAction func btnDownDidPressed(){
         announcementBubble.isHidden = true
-        
-        let visibleItems: NSArray = self.menuCollectionView.indexPathsForVisibleItems as NSArray
-        let currentItem: IndexPath = visibleItems.object(at: 0) as! IndexPath
-        let nextItem: IndexPath = IndexPath(item: currentItem.item + 1, section: 0)
-
-        if nextItem.row < KKSingleton.sharedInstance.groupPlatformArray.count {
-            self.menuCollectionView.scrollToItem(at: nextItem, at: .top, animated: true)
-        }
-        
-        if (currentItem.row >= KKSingleton.sharedInstance.groupPlatformArray.count) {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.imgArrowUp.alpha = 1
-                self.imgArrowDown.alpha = 0
-            })
+        if (KKSingleton.sharedInstance.groupPlatformArray.count > 0) {
+            self.menuCollectionView.scrollToItem(at: IndexPath(item: KKSingleton.sharedInstance.groupPlatformArray.count - 1, section: 0), at: .top, animated: true)
         }
     }
     
@@ -605,8 +581,8 @@ class KKHomeViewController: KKBaseViewController {
         
         imgProfile.image = UIImage(named: "ic_profile")
         lblLanguage.text = KKUtil.decodeSelectedLanguageFromCache().name
-        countryImageView.setUpImage(with: KKUtil.decodeSelectedCountryFromCache().img, placeholder: UIImage(named: "ic_malaysia"))
-        lblCountry.text = KKUtil.decodeSelectedCountryFromCache().name
+        countryImageView.setUpImage(with: KKUtil.decodeSelectedCountryFromCache().img)
+        lblCountry.text = KKUtil.decodeSelectedCountryFromCache().code
     }
 }
 

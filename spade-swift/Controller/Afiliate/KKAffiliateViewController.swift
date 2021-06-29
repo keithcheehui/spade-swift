@@ -10,61 +10,67 @@ import UIKit
 
 class KKAffiliateViewController: KKBaseViewController {
     
-    @IBOutlet weak var lblMyAffiliate: UILabel!
-    @IBOutlet weak var lblDownline: UILabel!
-    @IBOutlet weak var lblGuideline: UILabel!
-    @IBOutlet weak var lblTurnover: UILabel!
-    @IBOutlet weak var imgHoverMyAffiliate: UIImageView!
-    @IBOutlet weak var imgHoverDownline: UIImageView!
-    @IBOutlet weak var imgHoverGuideline: UIImageView!
-    @IBOutlet weak var imgHoverTurnover: UIImageView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var imgBG: UIImageView!
+    @IBOutlet weak var sideMenuTableView: UITableView!
 
     @IBOutlet weak var imgBackWidth: NSLayoutConstraint!
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
-    @IBOutlet weak var imgMenuIconWidth: NSLayoutConstraint!
-    @IBOutlet weak var menuItemHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var headerContainerMarginLeft: NSLayoutConstraint!
-    @IBOutlet weak var menuItemMarginLeft: NSLayoutConstraint!
-    @IBOutlet weak var separatorHeight: NSLayoutConstraint!
 
-    enum viewType: Int {
-        case myAffiliate = 0
-        case downline = 1
-        case guideline = 2
-        case turnover = 3
-    }
+    var sideMenuList: [SideMenuDetails] = []
+    var selectedViewType = AffiliatteSideMenu.myAffiliate.rawValue
+    var selectedTabItem = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialLayout()
-        buttonHover(type: viewType.myAffiliate.rawValue)
+        appendSideMenuList()
+        
+        buttonHover(type: selectedViewType)
     }
     
     func initialLayout(){
         imgBackWidth.constant = ConstantSize.imgBackWidth
         sideMenuWidth.constant = ConstantSize.sideMenuWidth
-        imgMenuIconWidth.constant = ConstantSize.imgMenuIconWidth
-        menuItemHeight.constant = ConstantSize.menuItemHeight
-        separatorHeight.constant = ConstantSize.separatorHeight
         headerContainerMarginLeft.constant = ConstantSize.headerContainerMarginLeft
-        menuItemMarginLeft.constant = ConstantSize.menuItemMarginLeft
-
         headerContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 20 : 30)
-        menuItemMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 15)
+    }
+    
+    func appendSideMenuList() {
+        sideMenuTableView.register(UINib(nibName: "KKSideMenuTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.sideMenuTVCIdentifier)
+
+        sideMenuList.removeAll()
         
-        lblMyAffiliate.text = KKUtil.languageSelectedStringForKey(key: "affiliates_my_affiliate")
-        lblDownline.text = KKUtil.languageSelectedStringForKey(key: "affiliates_downline")
-        lblGuideline.text = KKUtil.languageSelectedStringForKey(key: "affiliates_guideline")
-        lblTurnover.text = KKUtil.languageSelectedStringForKey(key: "affiliates_turnover")
+        var details = SideMenuDetails.init()
+        for item in AffiliatteSideMenu.allCases {
+            switch item {
+            case .myAffiliate:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "affiliates_my_affiliate")
+                details.imgIcon = "ic_my_affiliate"
+                
+            case .downline:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "affiliates_downline")
+                details.imgIcon = "ic_downline"
+                
+            case .guideline:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "affiliates_guideline")
+                details.imgIcon = "ic_information"
+                
+            case .turnover:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "affiliates_turnover")
+                details.imgIcon = "ic_turnover"
+            }
+           
+            sideMenuList.append(details)
+        }
         
-        lblMyAffiliate.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
-        lblDownline.font = lblMyAffiliate.font
-        lblGuideline.font = lblMyAffiliate.font
-        lblTurnover.font = lblMyAffiliate.font
+        sideMenuTableView.reloadData()
     }
     
     ///Button Actions
@@ -72,50 +78,25 @@ class KKAffiliateViewController: KKBaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func btnMyAffiliateDidPressed(){
-        buttonHover(type: viewType.myAffiliate.rawValue)
-    }
-    
-    @IBAction func btnDownlineDidPressed(){
-        buttonHover(type: viewType.downline.rawValue)
-    }
-
-    @IBAction func btnGuidelineDetailsDidPressed(){
-        buttonHover(type: viewType.guideline.rawValue)
-    }
-    
-    @IBAction func btnTurnoverDidPressed(){
-        buttonHover(type: viewType.turnover.rawValue)
-    }
-    
     func buttonHover(type: Int){
         imgBG.isHidden = false
 
-        imgHoverMyAffiliate.isHidden = true
-        imgHoverDownline.isHidden = true
-        imgHoverGuideline.isHidden = true
-        imgHoverTurnover.isHidden = true
-        
         switch type {
-        case viewType.downline.rawValue:
-            imgHoverDownline.isHidden = false
+        case AffiliatteSideMenu.downline.rawValue:
             let viewController = KKGeneralTableViewController()
             viewController.tableViewType = .AffliateDownline
             changeView(vc: viewController)
             break;
-        case viewType.guideline.rawValue:
-            imgHoverGuideline.isHidden = false
+        case AffiliatteSideMenu.guideline.rawValue:
             changeView(vc: KKGuidelineViewController())
             break;
-        case viewType.turnover.rawValue:
-            imgHoverTurnover.isHidden = false
+        case AffiliatteSideMenu.turnover.rawValue:
             let viewController = KKGeneralTableViewController()
             viewController.tableViewType = .AffliateTurnover
             changeView(vc: viewController)
             break;
         default:
             imgBG.isHidden = true
-            imgHoverMyAffiliate.isHidden = false
             changeView(vc: KKMyAffiliateViewController())
             break;
         }
@@ -131,5 +112,42 @@ class KKAffiliateViewController: KKBaseViewController {
         vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
         contentView.addSubview(vc.view)
         self.addChild(vc)
+    }
+}
+
+extension KKAffiliateViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sideMenuList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.sideMenuTVCIdentifier, for: indexPath) as? KKSideMenuTableCell
+        else {
+            fatalError("DequeueReusableCell failed while casting")
+        }
+        if (selectedViewType == indexPath.row){
+            cell.imgHover.isHidden = false
+            cell.lblName.font = ConstantSize.sideMenuSelectedFont
+        } else {
+            cell.imgHover.isHidden = true
+            cell.lblName.font = ConstantSize.sideMenuFont
+        }
+        
+        cell.imgIcon.image = UIImage(named: sideMenuList[indexPath.row].imgIcon)
+        cell.lblName.text = sideMenuList[indexPath.row].title
+        
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedViewType = indexPath.row
+        buttonHover(type: selectedViewType)
+        sideMenuTableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return ConstantSize.menuItemHeight
     }
 }

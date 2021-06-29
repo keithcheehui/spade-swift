@@ -258,12 +258,12 @@ class KKApiClient: NSObject {
         return performRequest(route: .getPlatformProductsContent(parameter: parameter))
     }
     
-    static func getSystemMessages() -> Future<KKSystemMessageResponse> {
+    static func getInboxMessageContent() -> Future<KKInboxMessageResponse> {
         
         let parameter = [APIKeys.locale    : KKUtil.decodeSelectedLanguageFromCache().locale!,
                         ] as [String : Any]
         
-        return performRequest(route: .getSystemMessageContent(parameter: parameter))
+        return performRequest(route: .getInboxMessageContent(parameter: parameter))
     }
     
     static func updateInboxReadStatus(msgId: Int) -> Future<KKGeneralResponse> {

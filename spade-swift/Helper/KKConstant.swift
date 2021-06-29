@@ -39,14 +39,16 @@ struct ConstantSize {
     static let ssoLabelFont = KKUtil.ConvertSizeByDensity(size: 12)
     static let ssoLabelSmallFont = KKUtil.ConvertSizeByDensity(size: 10)
     
-    static let imgBackWidth = KKUtil.ConvertSizeByDensity(size: 35)
-    static let sideMenuWidth = KKUtil.ConvertSizeByDensity(size: 150)
-    static let imgMenuIconWidth = KKUtil.ConvertSizeByDensity(size: 25)
-    static let menuItemHeight = KKUtil.ConvertSizeByDensity(size: 40)
-    static let separatorHeight = KKUtil.ConvertSizeByDensity(size: 2)
-    static let headerContainerMarginLeft = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 20 : 30)
+    static let sideMenuWidth = KKUtil.ConvertSizeByDensity(size: 160)
+    static let menuItemHeight = KKUtil.ConvertSizeByDensity(size: 45)
+    static let imgMenuIconWidth = KKUtil.ConvertSizeByDensity(size: 20)
     static let menuItemMarginLeft = KKUtil.ConvertSizeByDensity(size: 15)
-    static let sideMenuFont = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
+    static let separatorHeight = KKUtil.ConvertSizeByDensity(size: 2)
+    static let sideMenuSelectedFont = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
+    static let sideMenuFont = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
+
+    static let imgBackWidth = KKUtil.ConvertSizeByDensity(size: 35)
+    static let headerContainerMarginLeft = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 20 : 30)
     
     static let ssoPopUpWidth = KKUtil.isSmallerPhone() ? ScreenSize.maxLength * 0.75 : ScreenSize.maxLength * 0.6
     static let ssoPopUpHeight = ScreenSize.minLength - paddingStandard * 2
@@ -169,6 +171,7 @@ struct CellIdentifier {
     static let generalItemCellIdentifier = "KKGeneralItemCellIdentifier"
     static let tabListItemCVCIdentifier = "KKTabListItemCell"
     static let platformGameItemCVCIdentifier = "KKPlatfromGameItemCell"
+    static let avatarItemCVCIdentifier = "KKAvatarItemCell"
 }
 
 struct Spade {
@@ -235,4 +238,55 @@ enum DialogAlertType: Int {
 enum ToastType: String {
     case Success = "success"
     case Error = "error"
+}
+
+///Side Menu
+enum PersonalSideMenu: Int, CaseIterable {
+    case userInfo = 0
+    case bettingRecord = 1
+    case accountDetail = 2
+    case individualReport = 3
+    case wallet = 4
+    case history = 5
+}
+
+enum AffiliatteSideMenu: Int, CaseIterable {
+    case myAffiliate = 0
+    case downline = 1
+    case guideline = 2
+    case turnover = 3
+}
+
+enum RebateSideMenu: Int, CaseIterable {
+    case manualRebate = 0
+    case rebateRecord = 1
+    case rebateRatio = 2
+}
+
+enum MessageSideMenu: Int, CaseIterable {
+    case systemMail = 0
+    case notification = 1
+}
+
+enum SupportSideMenu: Int, CaseIterable {
+    case liveChat = 0
+    case faq = 1
+}
+
+enum DepositSideMenu: Int, CaseIterable {
+    case bankAccount = 0
+    case artificial = 1
+}
+
+enum WithdrawSideMenu: Int, CaseIterable {
+    case withdraw = 0
+    case withdrawHistory = 1
+    case bankCard = 2
+}
+
+enum SettingsSideMenu: Int, CaseIterable {
+    case volumeSetting = 0
+    case changePassword = 1
+    case version = 2
+    case logout = 3
 }

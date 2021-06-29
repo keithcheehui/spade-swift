@@ -14,12 +14,16 @@ struct KKUserProfileTier: Codable {
     case balance
     case nextLevelName = "next_level_name"
     case currentLevelName = "current_level_name"
+    case nextLevelImg = "next_level_img"
+    case currentLevelImg = "current_level_img"
   }
 
-  var totalAmountToNextLevel: String?
-  var balance: String?
-  var nextLevelName: String?
-  var currentLevelName: String?
+    var totalAmountToNextLevel: String?
+    var balance: String?
+    var nextLevelName: String?
+    var currentLevelName: String?
+    var nextLevelImg: String?
+    var currentLevelImg: String?
 
 
 
@@ -29,6 +33,8 @@ struct KKUserProfileTier: Codable {
     balance = try container.decodeIfPresent(String.self, forKey: .balance)
     nextLevelName = try container.decodeIfPresent(String.self, forKey: .nextLevelName)
     currentLevelName = try container.decodeIfPresent(String.self, forKey: .currentLevelName)
+    nextLevelImg = try container.decodeIfPresent(String.self, forKey: .nextLevelImg)
+    currentLevelImg = try container.decodeIfPresent(String.self, forKey: .currentLevelImg)
   }
 
 }

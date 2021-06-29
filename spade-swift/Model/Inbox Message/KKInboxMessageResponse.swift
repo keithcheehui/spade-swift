@@ -1,34 +1,34 @@
 //
-//  KKSystemMessageResponse.swift
+//  KKInboxMessageResponse.swift
 //
-//  Created by Keith CheeHui on 09/06/2021
+//  Created by Wong Sai Khong on 29/06/2021
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 
-struct KKSystemMessageResponse: Codable {
+struct KKInboxMessageResponse: Codable {
 
   enum CodingKeys: String, CodingKey {
     case code
-    case message
-    case results
     case error
+    case results
+    case message
   }
 
   var code: Int?
-  var message: String?
-  var results: KKSystemMessageResults?
   var error: Bool?
+  var results: KKInboxMessageResults?
+  var message: String?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     code = try container.decodeIfPresent(Int.self, forKey: .code)
-    message = try container.decodeIfPresent(String.self, forKey: .message)
-    results = try container.decodeIfPresent(KKSystemMessageResults.self, forKey: .results)
     error = try container.decodeIfPresent(Bool.self, forKey: .error)
+    results = try container.decodeIfPresent(KKInboxMessageResults.self, forKey: .results)
+    message = try container.decodeIfPresent(String.self, forKey: .message)
   }
 
 }

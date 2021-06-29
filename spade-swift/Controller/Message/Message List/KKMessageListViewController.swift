@@ -14,13 +14,13 @@ class KKMessageListViewController: KKBaseViewController {
     @IBOutlet weak var messageTableView: UITableView!
 
     var selectedMessageIndex = -1
-    var systemMessageArray: [KKSystemMessageDetails]! = []
+    var inboxMessageArray: [KKInboxMessageDetails]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialLayout()
-        self.getSystemMessageContent()
+        self.getInboxMessageContent()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,20 +43,29 @@ class KKMessageListViewController: KKBaseViewController {
 
     //MARK:- API Calls
     
-    func getSystemMessageContent() {
+    func getInboxMessageContent() {
         
         self.showAnimatedLoader()
         
-        KKApiClient.getSystemMessages().execute { systemMessageResponse in
+        KKApiClient.getInboxMessageContent().execute { systemMessageResponse in
             
             self.hideAnimatedLoader()
-            self.systemMessageArray = systemMessageResponse.results?.systemMessages
+            self.inboxMessageArray = systemMessageResponse.results?.inboxMessages
             self.messageTableView.reloadData()
             
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
             self.showAlertView(type: .Error, alertMessage: errorMessage)
+        }
+    }
+    
+    func updateInboxReadStatus(messageId: Int) {
+        KKApiClient.updateInboxReadStatus(msgId: messageId).execute { systemMessageResponse in
+            self.inboxMessageArray[self.selectedMessageIndex].status = "Read"
+            self.messageTableView.reloadData()
+        } onFailure: { errorMessage in
+            self.messageTableView.reloadData()
         }
 
     }
@@ -65,7 +74,7 @@ class KKMessageListViewController: KKBaseViewController {
 extension KKMessageListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return systemMessageArray.count
+        return inboxMessageArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,9 +84,9 @@ extension KKMessageListViewController: UITableViewDelegate, UITableViewDataSourc
         }
         
         if (selectedMessageIndex == indexPath.row) {
-            cell.setUpMessageDetails(messageDetails: systemMessageArray[indexPath.row], isHidden: false, tableViewWidth: tableView.frame.size.width)
+            cell.setUpMessageDetails(messageDetails: inboxMessageArray[indexPath.row], isHidden: false, tableViewWidth: tableView.frame.size.width)
         } else {
-            cell.setUpMessageDetails(messageDetails: systemMessageArray[indexPath.row], isHidden: true, tableViewWidth: tableView.frame.size.width)
+            cell.setUpMessageDetails(messageDetails: inboxMessageArray[indexPath.row], isHidden: true, tableViewWidth: tableView.frame.size.width)
         }
         
         cell.selectionStyle = .none
@@ -91,15 +100,22 @@ extension KKMessageListViewController: UITableViewDelegate, UITableViewDataSourc
         } else {
             selectedMessageIndex = indexPath.row
         }
+        
+        if (selectedMessageIndex > -1) {
+            if (inboxMessageArray[selectedMessageIndex].status != "Read") {
+                updateInboxReadStatus(messageId: inboxMessageArray[selectedMessageIndex].id!)
+            }
+        }
+        
         tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
         if (selectedMessageIndex == indexPath.row) {
-            return KKMessageDetailsTableViewCell.calculateMessageDetailsHeight(messageDetails: systemMessageArray[indexPath.row], isHidden: false, tableViewWidth: tableView.frame.size.width)
+            return KKMessageDetailsTableViewCell.calculateMessageDetailsHeight(messageDetails: inboxMessageArray[indexPath.row], isHidden: false, tableViewWidth: tableView.frame.size.width)
         } else {
-            return KKMessageDetailsTableViewCell.calculateMessageDetailsHeight(messageDetails: systemMessageArray[indexPath.row], isHidden: true, tableViewWidth: tableView.frame.size.width)
+            return KKMessageDetailsTableViewCell.calculateMessageDetailsHeight(messageDetails: inboxMessageArray[indexPath.row], isHidden: true, tableViewWidth: tableView.frame.size.width)
         }
     }
 }

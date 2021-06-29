@@ -11,36 +11,17 @@ import KeychainSwift
 
 class KKPersonalViewController: KKBaseViewController {
     
-    @IBOutlet weak var lblUserInfo: UILabel!
-    @IBOutlet weak var lblBettingRecord: UILabel!
-    @IBOutlet weak var lblAccountDetails: UILabel!
-    @IBOutlet weak var lblIndividualReport: UILabel!
-    @IBOutlet weak var imgHoverUserInfo: UIImageView!
-    @IBOutlet weak var imgHoverBettingRecord: UIImageView!
-    @IBOutlet weak var imgHoverAccountDetails: UIImageView!
-    @IBOutlet weak var imgHoverIndividualReport: UIImageView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var sideMenuTableView: UITableView!
+    @IBOutlet weak var groupsCollectionView: UICollectionView!
 
     @IBOutlet weak var imgBackWidth: NSLayoutConstraint!
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
-    @IBOutlet weak var imgMenuIconWidth: NSLayoutConstraint!
-    @IBOutlet weak var menuItemHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var headerContainerMarginLeft: NSLayoutConstraint!
-    @IBOutlet weak var menuItemMarginLeft: NSLayoutConstraint!
-    @IBOutlet weak var separatorHeight: NSLayoutConstraint!
-    
-    @IBOutlet weak var groupsCollectionView: UICollectionView!
     @IBOutlet weak var groupsCollectionViewHeight: NSLayoutConstraint!
     
-    enum viewType: Int {
-        case userInfo = 0
-        case bettingRecord = 1
-        case accountDetail = 2
-        case individualReport = 3
-    }
-    
-    var selectedViewType = viewType.userInfo.rawValue
+    var sideMenuList: [SideMenuDetails] = []
+    var selectedViewType = PersonalSideMenu.userInfo.rawValue
     var selectedTabItem = 0
 
     var bettingRecordGroupsArray: [KKUserBettingGroupDetails]! = []
@@ -55,6 +36,7 @@ class KKPersonalViewController: KKBaseViewController {
         super.viewDidLoad()
 
         initialLayout()
+        appendSideMenuList()
         
         initFlowLayout()
         getTabArrayAPI()
@@ -69,21 +51,52 @@ class KKPersonalViewController: KKBaseViewController {
     func initialLayout(){
         imgBackWidth.constant = ConstantSize.imgBackWidth
         sideMenuWidth.constant = ConstantSize.sideMenuWidth
-        imgMenuIconWidth.constant = ConstantSize.imgMenuIconWidth
-        menuItemHeight.constant = ConstantSize.menuItemHeight
-        separatorHeight.constant = ConstantSize.separatorHeight
         headerContainerMarginLeft.constant = ConstantSize.headerContainerMarginLeft
-        menuItemMarginLeft.constant = ConstantSize.menuItemMarginLeft
+    }
+    
+    func appendSideMenuList() {
+        sideMenuTableView.register(UINib(nibName: "KKSideMenuTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.sideMenuTVCIdentifier)
+
+        sideMenuList.removeAll()
         
-        lblUserInfo.text = KKUtil.languageSelectedStringForKey(key: "personal_user_info")
-        lblBettingRecord.text = KKUtil.languageSelectedStringForKey(key: "personal_betting_record")
-        lblAccountDetails.text = KKUtil.languageSelectedStringForKey(key: "personal_account_detail")
-        lblIndividualReport.text = KKUtil.languageSelectedStringForKey(key: "personal_individual_report")
+        var details = SideMenuDetails.init()
+        for item in PersonalSideMenu.allCases {
+            switch item {
+            case .userInfo:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "personal_user_info")
+                details.imgIcon = "ic_user_info"
+                
+            case .bettingRecord:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "personal_betting_record")
+                details.imgIcon = "ic_betting_record"
+                
+            case .accountDetail:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "personal_account_detail")
+                details.imgIcon = "ic_account_detail"
+                
+            case .individualReport:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "personal_individual_report")
+                details.imgIcon = "ic_report"
+                
+            case .wallet:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "personal_user_info")
+                details.imgIcon = "ic_user_info"
+                
+            case .history:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "personal_user_info")
+                details.imgIcon = "ic_user_info"
+            }
+           
+            sideMenuList.append(details)
+        }
         
-        lblUserInfo.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
-        lblBettingRecord.font = lblUserInfo.font
-        lblAccountDetails.font = lblUserInfo.font
-        lblIndividualReport.font = lblUserInfo.font
+        sideMenuTableView.reloadData()
     }
         
     func initFlowLayout(){
@@ -172,58 +185,33 @@ class KKPersonalViewController: KKBaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func btnUserInfoDidPressed(){
-        buttonHover(type: viewType.userInfo.rawValue)
-    }
-    
-    @IBAction func btnBettingRecordDidPressed(){
-        buttonHover(type: viewType.bettingRecord.rawValue)
-    }
-
-    @IBAction func btnAccountDetailsDidPressed(){
-        buttonHover(type: viewType.accountDetail.rawValue)
-    }
-    
-    @IBAction func btnIndividualReportDidPressed(){
-        buttonHover(type: viewType.individualReport.rawValue)
-    }
-    
     func buttonHover(type: Int){
         selectedViewType = type
         selectedTabItem = 0
         
-        imgHoverUserInfo.isHidden = true
-        imgHoverBettingRecord.isHidden = true
-        imgHoverAccountDetails.isHidden = true
-        imgHoverIndividualReport.isHidden = true
-                
         groupsCollectionView.isHidden = false
         groupsCollectionViewHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         groupsCollectionView.reloadData()
         
         switch type {
-        case viewType.bettingRecord.rawValue:
-            imgHoverBettingRecord.isHidden = false
+        case PersonalSideMenu.bettingRecord.rawValue:
             let viewController = KKGeneralTableViewController.init()
             viewController.rightDropdownOptions = bettingRecordPlatfromsNameArray
             viewController.tableViewType = .BettingRecord
             changeView(vc: viewController)
             break;
-        case viewType.accountDetail.rawValue:
-            imgHoverAccountDetails.isHidden = false
+        case PersonalSideMenu.accountDetail.rawValue:
             let viewController = KKGeneralTableViewController()
             viewController.tableViewType = .AccountDetails
             changeView(vc: viewController)
             break;
-        case viewType.individualReport.rawValue:
-            imgHoverIndividualReport.isHidden = false
+        case PersonalSideMenu.individualReport.rawValue:
             changeView(vc: KKIndividualReportViewController())
             break;
         default:
             groupsCollectionView.isHidden = true
             groupsCollectionViewHeight.constant = 0
             
-            imgHoverUserInfo.isHidden = false
             changeView(vc: KKUserInfoViewController())
             break;
         }
@@ -245,9 +233,9 @@ class KKPersonalViewController: KKBaseViewController {
 extension KKPersonalViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if (selectedViewType == viewType.bettingRecord.rawValue || selectedViewType == viewType.individualReport.rawValue) {
+        if (selectedViewType == PersonalSideMenu.bettingRecord.rawValue || selectedViewType == PersonalSideMenu.individualReport.rawValue) {
             return bettingRecordGroupsArray.count
-        } else if (selectedViewType == viewType.accountDetail.rawValue) {
+        } else if (selectedViewType == PersonalSideMenu.accountDetail.rawValue) {
             return accountDetailTabArray.count
         }
         
@@ -267,7 +255,7 @@ extension KKPersonalViewController: UICollectionViewDelegate, UICollectionViewDa
             cell.imgHover.isHidden = true
         }
         
-        if (selectedViewType == viewType.accountDetail.rawValue) {
+        if (selectedViewType == PersonalSideMenu.accountDetail.rawValue) {
             cell.lblTitle.text = accountDetailTabArray[indexPath.item]
         } else {
             cell.lblTitle.text = bettingRecordGroupsArray[indexPath.item].name
@@ -280,5 +268,42 @@ extension KKPersonalViewController: UICollectionViewDelegate, UICollectionViewDa
         selectedTabItem = indexPath.item
         collectionView.reloadData()
         return
+    }
+}
+
+extension KKPersonalViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sideMenuList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.sideMenuTVCIdentifier, for: indexPath) as? KKSideMenuTableCell
+        else {
+            fatalError("DequeueReusableCell failed while casting")
+        }
+        if (selectedViewType == indexPath.row){
+            cell.imgHover.isHidden = false
+            cell.lblName.font = ConstantSize.sideMenuSelectedFont
+        } else {
+            cell.imgHover.isHidden = true
+            cell.lblName.font = ConstantSize.sideMenuFont
+        }
+        
+        cell.imgIcon.image = UIImage(named: sideMenuList[indexPath.row].imgIcon)
+        cell.lblName.text = sideMenuList[indexPath.row].title
+        
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedViewType = indexPath.row
+        buttonHover(type: selectedViewType)
+        sideMenuTableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return ConstantSize.menuItemHeight
     }
 }

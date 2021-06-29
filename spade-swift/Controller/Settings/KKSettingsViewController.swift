@@ -10,22 +10,12 @@ import UIKit
 
 class KKSettingsViewController: KKBaseViewController {
     
-    @IBOutlet weak var lblVolumeSetting: UILabel!
-    @IBOutlet weak var lblChangePassword: UILabel!
-    @IBOutlet weak var lblVersion: UILabel!
-    @IBOutlet weak var lblLogout: UILabel!
-    @IBOutlet weak var imgHoverVolumeSetting: UIImageView!
-    @IBOutlet weak var imgHoverChangePassword: UIImageView!
-    @IBOutlet weak var imgHoverVersion: UIImageView!
-    @IBOutlet weak var imgHoverLogout: UIImageView!
-
+    @IBOutlet weak var sideMenuTableView: UITableView!
+    
     @IBOutlet weak var titleHeight: NSLayoutConstraint!
     @IBOutlet weak var imgCloseWidth: NSLayoutConstraint!
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
-    @IBOutlet weak var imgMenuIconWidth: NSLayoutConstraint!
-    @IBOutlet weak var menuItemHeight: NSLayoutConstraint!
-    @IBOutlet weak var separatorHeight: NSLayoutConstraint!
-
+   
     @IBOutlet weak var settingContainerWidth: NSLayoutConstraint!
     @IBOutlet weak var settingContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var titleMarginTop: NSLayoutConstraint!
@@ -96,22 +86,20 @@ class KKSettingsViewController: KKBaseViewController {
     var soundToggleisOn = true
     var muteToggleisOn = false
     
-    enum viewType: Int {
-        case volumeSetting = 0
-        case changePassword = 1
-        case version = 2
-        case logout = 3
-    }
+    var sideMenuList: [SideMenuDetails] = []
+    var selectedViewType = SettingsSideMenu.volumeSetting.rawValue
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialLayout()
+        appendSideMenuList()
+        
         volumeLayout()
         versionLayout()
         changePasswordLayout()
         
-        buttonHover(type: viewType.volumeSetting.rawValue)
+        buttonHover(type: selectedViewType)
         
         muteToggleOnChanged()
         musicToggleOnChanged()
@@ -127,22 +115,44 @@ class KKSettingsViewController: KKBaseViewController {
         titleHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
         sideMenuWidth.constant = ConstantSize.sideMenuWidth
-        imgMenuIconWidth.constant = ConstantSize.imgMenuIconWidth
-        menuItemHeight.constant = ConstantSize.menuItemHeight
-        separatorHeight.constant = ConstantSize.separatorHeight
         menuItemMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 15)
-        
-        lblVolumeSetting.text = KKUtil.languageSelectedStringForKey(key: "settings_volume_setting")
-        lblChangePassword.text = KKUtil.languageSelectedStringForKey(key: "settings_change_password")
-        lblVersion.text = KKUtil.languageSelectedStringForKey(key: "settings_version")
-        lblLogout.text = KKUtil.languageSelectedStringForKey(key: "settings_logout")
-        
-        lblVolumeSetting.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
-        lblChangePassword.font = lblVolumeSetting.font
-        lblVersion.font = lblVolumeSetting.font
-        lblLogout.font = lblVolumeSetting.font
     }
+    
+    func appendSideMenuList() {
+        sideMenuTableView.register(UINib(nibName: "KKSideMenuTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.sideMenuTVCIdentifier)
 
+        sideMenuList.removeAll()
+        
+        var details = SideMenuDetails.init()
+        for item in SettingsSideMenu.allCases {
+            switch item {
+            case .volumeSetting:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "settings_volume_setting")
+                details.imgIcon = "ic_volume"
+                
+            case .changePassword:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "settings_change_password")
+                details.imgIcon = "ic_password"
+                
+            case .version:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "settings_version")
+                details.imgIcon = "ic_information"
+                
+            case .logout:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "settings_logout")
+                details.imgIcon = "ic_logout"
+            }
+           
+            sideMenuList.append(details)
+        }
+        
+        sideMenuTableView.reloadData()
+    }
+    
     func changePasswordLayout(){
         currentPasswordView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         newPasswordView.backgroundColor = UIColor(white: 0, alpha: 0.5)
@@ -330,22 +340,6 @@ class KKSettingsViewController: KKBaseViewController {
         self.dismiss(animated: false, completion: nil)
     }
     
-    @IBAction func btnVolumeSettingDidPressed(){
-        buttonHover(type: viewType.volumeSetting.rawValue)
-    }
-    
-    @IBAction func btnChangePasswordDidPressed(){
-        buttonHover(type: viewType.changePassword.rawValue)
-    }
-
-    @IBAction func btnVersionDidPressed(){
-        buttonHover(type: viewType.version.rawValue)
-    }
-    
-    @IBAction func btnLogoutDidPressed(){
-        buttonHover(type: viewType.logout.rawValue)
-    }
-    
     @IBAction func btnConfirmChangePasswordDidPressed(){
         self.view.endEditing(true)
 
@@ -367,41 +361,23 @@ class KKSettingsViewController: KKBaseViewController {
         userChangePassword()
     }
     
-    func buttonHover(image: UIImageView){
-        imgHoverVolumeSetting.isHidden = true
-        imgHoverChangePassword.isHidden = true
-        imgHoverVersion.isHidden = true
-        imgHoverLogout.isHidden = true
-        
-        image.isHidden = false
-    }
-    
     func buttonHover(type: Int){
-        if (type == viewType.logout.rawValue){
-            closeSettingsAndOpenDialog()
+        if (type == SettingsSideMenu.logout.rawValue){
             return
         }
         
-        imgHoverVolumeSetting.isHidden = true
-        imgHoverChangePassword.isHidden = true
-        imgHoverVersion.isHidden = true
-        imgHoverLogout.isHidden = true
-                
         volumeContentView.isHidden = true
         versionContentView.isHidden = true
         passwordContentView.isHidden = true
 
         switch type {
-        case viewType.changePassword.rawValue:
-            imgHoverChangePassword.isHidden = false
+        case SettingsSideMenu.changePassword.rawValue:
             passwordContentView.isHidden = false
             break;
-        case viewType.version.rawValue:
-            imgHoverVersion.isHidden = false
+        case SettingsSideMenu.version.rawValue:
             versionContentView.isHidden = false
             break;
         default:
-            imgHoverVolumeSetting.isHidden = false
             volumeContentView.isHidden = false
             break;
         }
@@ -463,5 +439,45 @@ extension KKSettingsViewController: UITextFieldDelegate {
         default:
             txtReconfirmPassword.resignFirstResponder()
         }
+    }
+}
+
+extension KKSettingsViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sideMenuList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.sideMenuTVCIdentifier, for: indexPath) as? KKSideMenuTableCell
+        else {
+            fatalError("DequeueReusableCell failed while casting")
+        }
+        if (selectedViewType == indexPath.row){
+            cell.imgHover.isHidden = false
+        } else {
+            cell.imgHover.isHidden = true
+        }
+        
+        cell.imgIcon.image = UIImage(named: sideMenuList[indexPath.row].imgIcon)
+        cell.lblName.text = sideMenuList[indexPath.row].title
+        
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.row == SettingsSideMenu.logout.rawValue){
+            closeSettingsAndOpenDialog()
+            return
+        } else {
+            selectedViewType = indexPath.row
+            buttonHover(type: selectedViewType)
+            sideMenuTableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return ConstantSize.menuItemHeight
     }
 }

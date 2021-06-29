@@ -10,75 +10,65 @@ import UIKit
 
 class KKMessageViewController: KKBaseViewController {
     
-    @IBOutlet weak var lblSystemMail: UILabel!
-    @IBOutlet weak var lblNotification: UILabel!
-    @IBOutlet weak var imgHoverSystemMail: UIImageView!
-    @IBOutlet weak var imgHoverNotification: UIImageView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var sideMenuTableView: UITableView!
 
     @IBOutlet weak var imgBackWidth: NSLayoutConstraint!
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
-    @IBOutlet weak var imgMenuIconWidth: NSLayoutConstraint!
-    @IBOutlet weak var menuItemHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var headerContainerMarginLeft: NSLayoutConstraint!
-    @IBOutlet weak var menuItemMarginLeft: NSLayoutConstraint!
-    @IBOutlet weak var separatorHeight: NSLayoutConstraint!
     
-    
-    enum viewType: Int {
-        case systemMail = 0
-        case notification = 1
-    }
+    var sideMenuList: [SideMenuDetails] = []
+    var selectedViewType = MessageSideMenu.systemMail.rawValue
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialLayout()
-        buttonHover(type: viewType.systemMail.rawValue)
+        appendSideMenuList()
+        
+        buttonHover(type: MessageSideMenu.systemMail.rawValue)
     }
     
     func initialLayout(){
         imgBackWidth.constant = ConstantSize.imgBackWidth
         sideMenuWidth.constant = ConstantSize.sideMenuWidth
-        imgMenuIconWidth.constant = ConstantSize.imgMenuIconWidth
-        menuItemHeight.constant = ConstantSize.menuItemHeight
-        separatorHeight.constant = ConstantSize.separatorHeight
         headerContainerMarginLeft.constant = ConstantSize.headerContainerMarginLeft
-        menuItemMarginLeft.constant = ConstantSize.menuItemMarginLeft
-        
-        lblSystemMail.text = KKUtil.languageSelectedStringForKey(key: "message_system_mail")
-        lblNotification.text = KKUtil.languageSelectedStringForKey(key: "message_notification")
-        
-        lblSystemMail.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
-        lblNotification.font = lblSystemMail.font
     }
     
+    func appendSideMenuList() {
+        sideMenuTableView.register(UINib(nibName: "KKSideMenuTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.sideMenuTVCIdentifier)
+
+        sideMenuList.removeAll()
+        
+        var details = SideMenuDetails.init()
+        for item in MessageSideMenu.allCases {
+            switch item {
+            case .systemMail:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "message_system_mail")
+                details.imgIcon = "ic_system_mail"
+                
+            case .notification:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "message_notification")
+                details.imgIcon = "ic_notification"
+            }
+            sideMenuList.append(details)
+        }
+        sideMenuTableView.reloadData()
+    }
     
     ///Button Actions
     @IBAction func btnBackDidPressed(){
         self.navigationController?.popViewController(animated: true)
     }
-    
-    @IBAction func btnSystemMailDidPressed(){
-        buttonHover(type: viewType.systemMail.rawValue)
-    }
-    
-    @IBAction func btnNotificationDidPressed(){
-        buttonHover(type: viewType.notification.rawValue)
-    }
 
     func buttonHover(type: Int){
-        imgHoverSystemMail.isHidden = true
-        imgHoverNotification.isHidden = true
-                
         switch type {
-        case viewType.notification.rawValue:
-            imgHoverNotification.isHidden = false
+        case MessageSideMenu.notification.rawValue:
             changeView(vc: KKOnBoardingViewController())
             break;
         default:
-            imgHoverSystemMail.isHidden = false
             changeView(vc: KKMessageListViewController())
             break;
         }
@@ -94,5 +84,42 @@ class KKMessageViewController: KKBaseViewController {
         vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
         contentView.addSubview(vc.view)
         self.addChild(vc)
+    }
+}
+
+extension KKMessageViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sideMenuList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.sideMenuTVCIdentifier, for: indexPath) as? KKSideMenuTableCell
+        else {
+            fatalError("DequeueReusableCell failed while casting")
+        }
+        if (selectedViewType == indexPath.row){
+            cell.imgHover.isHidden = false
+            cell.lblName.font = ConstantSize.sideMenuSelectedFont
+        } else {
+            cell.imgHover.isHidden = true
+            cell.lblName.font = ConstantSize.sideMenuFont
+        }
+        
+        cell.imgIcon.image = UIImage(named: sideMenuList[indexPath.row].imgIcon)
+        cell.lblName.text = sideMenuList[indexPath.row].title
+        
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedViewType = indexPath.row
+        buttonHover(type: selectedViewType)
+        sideMenuTableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return ConstantSize.menuItemHeight
     }
 }

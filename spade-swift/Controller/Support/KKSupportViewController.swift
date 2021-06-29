@@ -10,36 +10,37 @@ import UIKit
 
 class KKSupportViewController: KKBaseViewController {
     
-    @IBOutlet weak var lblLiveChat: UILabel!
-    @IBOutlet weak var lblFaq: UILabel!
-    @IBOutlet weak var imgHoverLiveChat: UIImageView!
-    @IBOutlet weak var imgHoverFaq: UIImageView!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var liveChatCollectionView: UICollectionView!
+    @IBOutlet weak var sideMenuTableView: UITableView!
 
     @IBOutlet weak var imgBackWidth: NSLayoutConstraint!
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
-    @IBOutlet weak var imgMenuIconWidth: NSLayoutConstraint!
-    @IBOutlet weak var menuItemHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var headerContainerMarginLeft: NSLayoutConstraint!
-    @IBOutlet weak var menuItemMarginLeft: NSLayoutConstraint!
-    @IBOutlet weak var separatorHeight: NSLayoutConstraint!
     
     var liveChatArray: [KKLiveChatDetails]! = []
-
-    enum viewType: Int {
-        case liveChat = 0
-        case faq = 1
-    }
+    var sideMenuList: [SideMenuDetails] = []
+    var selectedViewType = SupportSideMenu.liveChat.rawValue
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialLayout()
-        buttonHover(type: viewType.liveChat.rawValue)
+        setupFlowLayout()
+        appendSideMenuList()
         
+        buttonHover(type: SupportSideMenu.liveChat.rawValue)
+        getCustomerLiveChat()
+    }
+    
+    func initialLayout(){
+        imgBackWidth.constant = ConstantSize.imgBackWidth
+        sideMenuWidth.constant = ConstantSize.sideMenuWidth
+        headerContainerMarginLeft.constant = ConstantSize.headerContainerMarginLeft
+    }
+    
+    func setupFlowLayout() {
         let itemSizeWidth = liveChatCollectionView.frame.size.width/4 - ConstantSize.paddingStandard
         
         let flowLayout = UICollectionViewFlowLayout()
@@ -51,24 +52,29 @@ class KKSupportViewController: KKBaseViewController {
         
         liveChatCollectionView.collectionViewLayout = flowLayout
         liveChatCollectionView.register(UINib(nibName: "KKLiveChatCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.liveChatCVCIdentifier)
-        
-        getCustomerLiveChat()
     }
     
-    func initialLayout(){
-        imgBackWidth.constant = ConstantSize.imgBackWidth
-        sideMenuWidth.constant = ConstantSize.sideMenuWidth
-        imgMenuIconWidth.constant = ConstantSize.imgMenuIconWidth
-        menuItemHeight.constant = ConstantSize.menuItemHeight
-        separatorHeight.constant = ConstantSize.separatorHeight
-        headerContainerMarginLeft.constant = ConstantSize.headerContainerMarginLeft
-        menuItemMarginLeft.constant = ConstantSize.menuItemMarginLeft
+    func appendSideMenuList() {
+        sideMenuTableView.register(UINib(nibName: "KKSideMenuTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.sideMenuTVCIdentifier)
+
+        sideMenuList.removeAll()
         
-        lblLiveChat.text = KKUtil.languageSelectedStringForKey(key: "support_live_chat")
-        lblFaq.text = KKUtil.languageSelectedStringForKey(key: "support_faq")
-        
-        lblLiveChat.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
-        lblFaq.font = lblLiveChat.font
+        var details = SideMenuDetails.init()
+        for item in SupportSideMenu.allCases {
+            switch item {
+            case .liveChat:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "support_live_chat")
+                details.imgIcon = "ic_livechat"
+                
+            case .faq:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "support_faq")
+                details.imgIcon = "ic_faq"
+            }
+            sideMenuList.append(details)
+        }
+        sideMenuTableView.reloadData()
     }
     
     //MARK:- API Calls
@@ -95,29 +101,16 @@ class KKSupportViewController: KKBaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func btnLiveChatDidPressed(){
-        buttonHover(type: viewType.liveChat.rawValue)
-    }
-    
-    @IBAction func btnFaqDidPressed(){
-        buttonHover(type: viewType.faq.rawValue)
-    }
-
     func buttonHover(type: Int){
-        imgHoverLiveChat.isHidden = true
-        imgHoverFaq.isHidden = true
-        
         mainView.isHidden = true
         liveChatCollectionView.isHidden = true
                 
         switch type {
-        case viewType.faq.rawValue:
-            imgHoverFaq.isHidden = false
+        case SupportSideMenu.faq.rawValue:
             mainView.isHidden = false
             changeView(vc: KKFaqViewController())
             break;
         default:
-            imgHoverLiveChat.isHidden = false
             liveChatCollectionView.isHidden = false
             break;
         }
@@ -160,5 +153,42 @@ extension KKSupportViewController: UICollectionViewDelegate, UICollectionViewDat
         if let url = URL(string: link!) {
             UIApplication.shared.open(url)
         }
+    }
+}
+
+extension KKSupportViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sideMenuList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.sideMenuTVCIdentifier, for: indexPath) as? KKSideMenuTableCell
+        else {
+            fatalError("DequeueReusableCell failed while casting")
+        }
+        if (selectedViewType == indexPath.row){
+            cell.imgHover.isHidden = false
+            cell.lblName.font = ConstantSize.sideMenuSelectedFont
+        } else {
+            cell.imgHover.isHidden = true
+            cell.lblName.font = ConstantSize.sideMenuFont
+        }
+        
+        cell.imgIcon.image = UIImage(named: sideMenuList[indexPath.row].imgIcon)
+        cell.lblName.text = sideMenuList[indexPath.row].title
+        
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedViewType = indexPath.row
+        buttonHover(type: selectedViewType)
+        sideMenuTableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return ConstantSize.menuItemHeight
     }
 }

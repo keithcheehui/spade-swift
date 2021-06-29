@@ -165,6 +165,11 @@ class KKLoginViewController: KKBaseViewController {
             
             self.hideAnimatedLoader()
             self.showAlertView(type: .Error, alertMessage: errorMessage)
+            
+            let when = DispatchTime.now() + 2
+            DispatchQueue.main.asyncAfter(deadline: when){
+                self.dismissPresentedViewWithBackgroundFaded()
+            }
         }
     }
     
@@ -185,19 +190,27 @@ class KKLoginViewController: KKBaseViewController {
             }
             
             self.hideAnimatedLoader()
-            self.dismissPresentedViewWithBackgroundFaded()
+
+            let when = DispatchTime.now() + 2
+            DispatchQueue.main.asyncAfter(deadline: when){
+                self.dismissPresentedViewWithBackgroundFaded()
+            }
             
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
             self.showAlertView(type: .Error, alertMessage: errorMessage)
+
+            let when = DispatchTime.now() + 2
+            DispatchQueue.main.asyncAfter(deadline: when){
+                self.dismissPresentedViewWithBackgroundFaded()
+            }
         }
     }
 
     //MARK:- Button Actions
     
     @IBAction func btnCloseDidPressed(){
-        
         self.dismissPresentedViewWithBackgroundFaded()
     }
     

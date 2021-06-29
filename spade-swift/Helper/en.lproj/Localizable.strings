@@ -78,7 +78,7 @@
 
 //MARK: USER INFO
 "user_info_level_privilege"                 = "Level Privilege";
-"user_info_current_membership"              = "Current membership level: ";
+"user_info_current_membership"              = "Current membership level: %@";
 "user_info_basic_information"               = "Basic Information";
 "user_info_account"                         = "Account";
 "user_info_id"                              = "ID";
@@ -230,6 +230,8 @@
 "error_email_invalid"                           = "Email format is invalid.";
 "error_gender_empty"                            = "Please select a gender.";
 "error_birthday_empty"                          = "Please select your birdthday.";
+"error_username_text_length"                    = "Username must be between 6-12 characters.";
+"error_password_text_length"                    = "Password must be between 6-12 characters.";
 
 //MARK: Picker
 "picker_fd_td"                                  = "Today";

@@ -90,7 +90,6 @@ class KKUserInfoViewController: KKBaseViewController {
         lblLevelSection.text = KKUtil.languageSelectedStringForKey(key: "user_info_level_privilege")
         lblBasicSection.text = KKUtil.languageSelectedStringForKey(key: "user_info_basic_information")
         
-        lblCurrentMembership.text = KKUtil.languageSelectedStringForKey(key: "user_info_current_membership")
         lblTitleAccount.text = KKUtil.languageSelectedStringForKey(key: "user_info_account")
         lblTitleUsername.text = KKUtil.languageSelectedStringForKey(key: "user_info_username")
         lblTitleBirthday.text = KKUtil.languageSelectedStringForKey(key: "user_info_birthday")
@@ -176,8 +175,26 @@ class KKUserInfoViewController: KKBaseViewController {
             if let email = userProfile.email {
                 txtEmail.text = email
             }
+            
+            if let tier = userProfile.tier {
+                if let currentTier = tier.currentLevelName {
+                    lblCurrentMembership.text = String(format: KKUtil.languageSelectedStringForKey(key: "user_info_current_membership"), currentTier)
+                }
+                if let balance = tier.balance, let next = tier.totalAmountToNextLevel, let currency = userProfile.currencyCode {
+                    lblProgress.text = String(format: "%@%@ / %@%@", currency, balance, currency, next)
+                    
+                    let progress = Float(balance)!/Float(next)!
+                    rankProgressBar.setProgress(progress, animated: false)
+                }
+                if let imgCurrent = tier.currentLevelImg, let imgNext = tier.nextLevelImg {
+                    imgCurrentRank.setUpImage(with: imgCurrent)
+                    imgNextRank.setUpImage(with: imgNext)
+                }
+            }
         } else {
             lblAccountNumber.text = ""
+            lblCurrentMembership.text = String(format: KKUtil.languageSelectedStringForKey(key: "user_info_current_membership"), "")
+
             txtAccount.text = ""
             txtUsername.text = ""
             txtGender.text = ""
@@ -185,9 +202,8 @@ class KKUserInfoViewController: KKBaseViewController {
             txtPhone.text = ""
             txtBirthday.text = ""
             txtEmail.text = ""
+            lblProgress.text = ""
         }
-        
-        lblProgress.text = "RM100 / RM10,000"
     }
     
     func displayView(){
@@ -225,7 +241,7 @@ class KKUserInfoViewController: KKBaseViewController {
     
     ///Button Actions
     @IBAction func btnAvatarDidPressed(){
-        
+        self.present(KKAvatarViewController(), animated: false, completion: nil)
     }
     
     @IBAction func btnMyVipLevelDidPressed(){
@@ -255,7 +271,7 @@ class KKUserInfoViewController: KKBaseViewController {
                 return
             }
             
-            if KKUtil.isValidEmail(email: txtEmail.text!) {
+            if KKUtil.isValidEmail(testStr: txtEmail.text!) {
                 editPersonalDataAPI()
             } else {
                 self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_email_invalid"))

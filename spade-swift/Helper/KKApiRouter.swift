@@ -45,7 +45,7 @@ enum ApiRouter: URLRequestConvertible {
     case getAnnouncementContent(parameter: [String: Any])
     case getGroupAndPlatformContent(parameter: [String: Any])
     case getPlatformProductsContent(parameter: [String: Any])
-    case getSystemMessageContent(parameter: [String: Any])
+    case getInboxMessageContent(parameter: [String: Any])
     case updateInboxReadStatus(parameter: [String: Any])
     case getPromotionContent(parameter: [String: Any])
     case getAffiliateGuidelineContent(parameter: [String: Any])
@@ -83,7 +83,7 @@ enum ApiRouter: URLRequestConvertible {
              .getAnnouncementContent,
              .getGroupAndPlatformContent,
              .getPlatformProductsContent,
-             .getSystemMessageContent,
+             .getInboxMessageContent,
              .getPromotionContent,
              .getAffiliateGuidelineContent,
              .memberDepositBankAccount,
@@ -187,7 +187,7 @@ enum ApiRouter: URLRequestConvertible {
         case .getPlatformProductsContent:
             return "content/gameTypeListing"
             
-        case .getSystemMessageContent:
+        case .getInboxMessageContent:
             return "member/inbox"
             
         case .updateInboxReadStatus:
@@ -293,7 +293,7 @@ enum ApiRouter: URLRequestConvertible {
         case .getPlatformProductsContent(let parameter):
             return parameter
             
-        case .getSystemMessageContent(let parameter):
+        case .getInboxMessageContent(let parameter):
             return parameter
             
         case .updateInboxReadStatus(let parameter):
