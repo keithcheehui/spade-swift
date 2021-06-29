@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import KeychainSwift
 
 class KKMessageListViewController: KKBaseViewController {
     
@@ -52,7 +53,7 @@ class KKMessageListViewController: KKBaseViewController {
             self.hideAnimatedLoader()
             self.inboxMessageArray = systemMessageResponse.results?.inboxMessages
             self.messageTableView.reloadData()
-            
+
         } onFailure: { errorMessage in
             
             self.hideAnimatedLoader()
@@ -64,10 +65,38 @@ class KKMessageListViewController: KKBaseViewController {
         KKApiClient.updateInboxReadStatus(msgId: messageId).execute { systemMessageResponse in
             self.inboxMessageArray[self.selectedMessageIndex].status = "Read"
             self.messageTableView.reloadData()
+            self.checkifGotUnreadMessage()
+
         } onFailure: { errorMessage in
             self.messageTableView.reloadData()
         }
+    }
+    
+    func checkifGotUnreadMessage() {
+        if (inboxMessageArray.count > 0) {
+            var gotUnread = false
 
+            for inbox in inboxMessageArray {
+                if inbox.status != "Read" {
+                    gotUnread = true
+                    break
+                }
+            }
+            
+            if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+                if var userProfile = KKUtil.decodeUserProfileFromCache() {
+                    userProfile.inboxUnreadMessages = gotUnread
+                    
+                    
+                    do {
+                        KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
+                    }
+                    catch {
+                        
+                    }
+                }
+            }
+        }
     }
 }
 

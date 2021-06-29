@@ -81,14 +81,10 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var announcementBubbleMarginTop: NSLayoutConstraint!
     @IBOutlet weak var announcementBubbleIconWidth: NSLayoutConstraint!
     
-    @IBOutlet weak var bonusUnreadView: UIView!
-    @IBOutlet weak var bonusUnreadViewWidth: NSLayoutConstraint!
-    
     @IBOutlet weak var messageUnreadView: UIView!
     @IBOutlet weak var messageUnreadViewWidth: NSLayoutConstraint!
     @IBOutlet weak var messageUnreadViewMarginRight: NSLayoutConstraint!
 
-    var bonusUnread = true
     var messageUnread = true
     
     override func viewDidLoad() {
@@ -96,8 +92,6 @@ class KKHomeViewController: KKBaseViewController {
         // Do any additional setup after loading the view.
         initialLayout()
         initFlowLayout()
-        
-        updateUnreadStatus()
         
         if KKSingleton.sharedInstance.groupPlatformArray.count > 0 {
 
@@ -190,20 +184,12 @@ class KKHomeViewController: KKBaseViewController {
         
         setAnnouncementLabel()
         
-        bonusUnreadViewWidth.constant = KKUtil.ConvertSizeByDensity(size: 10)
-        bonusUnreadView.layer.cornerRadius = bonusUnreadViewWidth.constant / 2
-        
         messageUnreadViewMarginRight.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? -1 : -5)
         messageUnreadViewWidth.constant = KKUtil.ConvertSizeByDensity(size: 7)
         messageUnreadView.layer.cornerRadius = messageUnreadViewWidth.constant / 2
     }
     
     func updateUnreadStatus() {
-        if (bonusUnread){
-            bonusUnreadView.isHidden = false
-        } else {
-            bonusUnreadView.isHidden = true
-        }
         if (messageUnread){
             messageUnreadView.isHidden = false
         } else {
@@ -461,8 +447,6 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnBonusDidPressed(){
         announcementBubble.isHidden = true
-        bonusUnread = false
-        updateUnreadStatus()
         self.present(KKBonusViewController(), animated: false, completion: nil)
     }
     
@@ -492,8 +476,6 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnMessageDidPressed(){
         announcementBubble.isHidden = true
-        messageUnread = false
-        updateUnreadStatus()
         self.navigationController?.pushViewController(KKMessageViewController(), animated: true)
     }
     
@@ -572,6 +554,9 @@ class KKHomeViewController: KKBaseViewController {
 
             let ratio = balance / next
             expBar.progress = Float(ratio)
+            
+            messageUnread = userProfile.inboxUnreadMessages!
+            updateUnreadStatus()
         }
         else {
             lblProfileName.text = KKUtil.languageSelectedStringForKey(key: "home_guest")

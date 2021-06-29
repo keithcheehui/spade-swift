@@ -17,8 +17,6 @@
                 <outlet property="announcementContainer" destination="kwg-tf-4uS" id="NcO-jr-Scj"/>
                 <outlet property="announcementContainerHeight" destination="YGt-Nh-faR" id="OiD-g7-Bzd"/>
                 <outlet property="announcementContainerWidth" destination="GGM-cp-4ju" id="VAo-Y7-GnP"/>
-                <outlet property="bonusUnreadView" destination="dwG-4m-nzR" id="uo6-qk-nPd"/>
-                <outlet property="bonusUnreadViewWidth" destination="kQJ-ZZ-rdX" id="vTG-Cy-Ovf"/>
                 <outlet property="btnWithdrawWidth" destination="6Qq-eT-Czd" id="wf4-As-3Qp"/>
                 <outlet property="contentView" destination="Qwe-En-JUw" id="GAP-Kj-aIz"/>
                 <outlet property="copyContainer" destination="JQB-B9-hJe" id="omX-HS-4mg"/>
@@ -443,13 +441,6 @@
                                                 <constraint firstAttribute="width" secondItem="Ujm-4J-qvP" secondAttribute="height" multiplier="1:1" id="1uG-nL-naR"/>
                                             </constraints>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dwG-4m-nzR">
-                                            <rect key="frame" x="31.666666666666742" y="0.0" width="7" height="7"/>
-                                            <color key="backgroundColor" systemColor="systemRedColor"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="7" id="kQJ-ZZ-rdX"/>
-                                            </constraints>
-                                        </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdM-Tq-Gpn">
                                             <rect key="frame" x="0.0" y="0.0" width="48.666666666666664" height="44"/>
                                             <connections>
@@ -462,16 +453,13 @@
                                         <constraint firstItem="nIA-9f-Vhr" firstAttribute="leading" secondItem="Tw8-xv-oDs" secondAttribute="leading" id="0jj-l3-kqA"/>
                                         <constraint firstItem="QdM-Tq-Gpn" firstAttribute="top" secondItem="Tw8-xv-oDs" secondAttribute="top" id="4cf-OV-VkY"/>
                                         <constraint firstItem="Ujm-4J-qvP" firstAttribute="width" secondItem="Ujm-4J-qvP" secondAttribute="height" multiplier="1:1" id="9Oa-T2-8M4"/>
-                                        <constraint firstItem="dwG-4m-nzR" firstAttribute="top" secondItem="Ujm-4J-qvP" secondAttribute="top" id="9uV-Ec-Xzi"/>
                                         <constraint firstAttribute="bottom" secondItem="nIA-9f-Vhr" secondAttribute="bottom" id="AOY-h4-zuT"/>
                                         <constraint firstItem="Ujm-4J-qvP" firstAttribute="top" secondItem="Tw8-xv-oDs" secondAttribute="top" id="AlN-Zx-nwa"/>
                                         <constraint firstItem="QdM-Tq-Gpn" firstAttribute="leading" secondItem="Tw8-xv-oDs" secondAttribute="leading" id="FVZ-dU-4Zc"/>
                                         <constraint firstItem="nIA-9f-Vhr" firstAttribute="top" secondItem="Ujm-4J-qvP" secondAttribute="bottom" id="hFW-e4-gmQ"/>
                                         <constraint firstAttribute="trailing" secondItem="Ujm-4J-qvP" secondAttribute="trailing" constant="10" id="hQ9-uh-O82"/>
-                                        <constraint firstItem="dwG-4m-nzR" firstAttribute="width" secondItem="dwG-4m-nzR" secondAttribute="height" multiplier="1:1" id="lAY-pv-u67"/>
                                         <constraint firstItem="Ujm-4J-qvP" firstAttribute="leading" secondItem="Tw8-xv-oDs" secondAttribute="leading" constant="10" id="ly0-bC-OJq"/>
                                         <constraint firstAttribute="bottom" secondItem="QdM-Tq-Gpn" secondAttribute="bottom" id="oFh-j4-asq"/>
-                                        <constraint firstItem="dwG-4m-nzR" firstAttribute="trailing" secondItem="Ujm-4J-qvP" secondAttribute="trailing" id="qFr-bD-x4s"/>
                                         <constraint firstAttribute="trailing" secondItem="nIA-9f-Vhr" secondAttribute="trailing" id="u51-LO-wu8"/>
                                         <constraint firstAttribute="trailing" secondItem="QdM-Tq-Gpn" secondAttribute="trailing" id="zk8-pC-V6N"/>
                                     </constraints>
