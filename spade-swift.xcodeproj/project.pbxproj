@@ -151,6 +151,8 @@
 		533F2B2D268A435E00209F9D /* KKPlatfromGameItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533F2B2B268A435E00209F9D /* KKPlatfromGameItemCell.swift */; };
 		533F2B2E268A435E00209F9D /* KKPlatfromGameItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 533F2B2C268A435E00209F9D /* KKPlatfromGameItemCell.xib */; };
 		5344FF61265E5E6B00313899 /* KKAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5344FF60265E5E6B00313899 /* KKAnimation.swift */; };
+		534B80A8268C9F0300F4B4F0 /* KKNoBankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534B80A6268C9F0300F4B4F0 /* KKNoBankViewController.swift */; };
+		534B80A9268C9F0300F4B4F0 /* KKNoBankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 534B80A7268C9F0300F4B4F0 /* KKNoBankViewController.xib */; };
 		534D032B2682D5A8005BC9BE /* KKPromotionItemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534D032A2682D5A8005BC9BE /* KKPromotionItemDetails.swift */; };
 		535934B526778E0D00498BBF /* KKPlatformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535934B326778E0D00498BBF /* KKPlatformViewController.swift */; };
 		535934B626778E0D00498BBF /* KKPlatformViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 535934B426778E0D00498BBF /* KKPlatformViewController.xib */; };
@@ -368,6 +370,8 @@
 		533F2B2B268A435E00209F9D /* KKPlatfromGameItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPlatfromGameItemCell.swift; sourceTree = "<group>"; };
 		533F2B2C268A435E00209F9D /* KKPlatfromGameItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKPlatfromGameItemCell.xib; sourceTree = "<group>"; };
 		5344FF60265E5E6B00313899 /* KKAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKAnimation.swift; sourceTree = "<group>"; };
+		534B80A6268C9F0300F4B4F0 /* KKNoBankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKNoBankViewController.swift; sourceTree = "<group>"; };
+		534B80A7268C9F0300F4B4F0 /* KKNoBankViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKNoBankViewController.xib; sourceTree = "<group>"; };
 		534D032A2682D5A8005BC9BE /* KKPromotionItemDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPromotionItemDetails.swift; sourceTree = "<group>"; };
 		535934B326778E0D00498BBF /* KKPlatformViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPlatformViewController.swift; sourceTree = "<group>"; };
 		535934B426778E0D00498BBF /* KKPlatformViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKPlatformViewController.xib; sourceTree = "<group>"; };
@@ -1032,6 +1036,15 @@
 			path = "Platform Game Item Cell";
 			sourceTree = "<group>";
 		};
+		534B80AA268C9F0800F4B4F0 /* No Bank */ = {
+			isa = PBXGroup;
+			children = (
+				534B80A6268C9F0300F4B4F0 /* KKNoBankViewController.swift */,
+				534B80A7268C9F0300F4B4F0 /* KKNoBankViewController.xib */,
+			);
+			path = "No Bank";
+			sourceTree = "<group>";
+		};
 		535934B826778E2100498BBF /* Platform */ = {
 			isa = PBXGroup;
 			children = (
@@ -1209,6 +1222,7 @@
 				53AAAE1F26401C40004103F0 /* KKDepositViewController.swift */,
 				53AAAE2226401C4A004103F0 /* KKDepositViewController.xib */,
 				531D3441264EA9340070BB3A /* Deposit Request */,
+				534B80AA268C9F0800F4B4F0 /* No Bank */,
 			);
 			path = Deposit;
 			sourceTree = "<group>";
@@ -1402,6 +1416,7 @@
 				535934B626778E0D00498BBF /* KKPlatformViewController.xib in Resources */,
 				5317F235264C223A0076D69B /* KKBankTableCell.xib in Resources */,
 				532FF616264FE03500999512 /* KKWithdrawCommissionViewController.xib in Resources */,
+				534B80A9268C9F0300F4B4F0 /* KKNoBankViewController.xib in Resources */,
 				5380F108267CE95C003DC6CB /* KKGeneralTableViewController.xib in Resources */,
 				53363E47264ACE26001F6B48 /* KKMyAffiliateViewController.xib in Resources */,
 				0676B5B1262FD6F30023311F /* Assets.xcassets in Resources */,
@@ -1633,6 +1648,7 @@
 				0676B5F9262FD8E40023311F /* KKColor.swift in Sources */,
 				53AAAE0E26401B09004103F0 /* KKMessageViewController.swift in Sources */,
 				5317F243264C2B390076D69B /* KKBankListViewController.swift in Sources */,
+				534B80A8268C9F0300F4B4F0 /* KKNoBankViewController.swift in Sources */,
 				53AAAE06264018E3004103F0 /* KKRebateViewController.swift in Sources */,
 				06B1AD0726759FD400D2D574 /* KKMessageDetailsTableViewCell.swift in Sources */,
 				5314289F2674978700801FD9 /* KKLiveChatDetails.swift in Sources */,
