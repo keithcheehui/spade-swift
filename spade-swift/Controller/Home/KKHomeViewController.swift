@@ -94,19 +94,15 @@ class KKHomeViewController: KKBaseViewController {
         initFlowLayout()
         
         if KKSingleton.sharedInstance.groupPlatformArray.count > 0 {
-
             self.menuCollectionView.reloadData()
             self.selectedDefaultSideMenu()
-        }
-        else {
-
+        } else {
             self.getContentGroupAndPlatform()
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.updateUserProfileDetails()
     }
     
@@ -243,58 +239,6 @@ class KKHomeViewController: KKBaseViewController {
         }
     }
     
-//    func getMenuIcon(index: Int) -> String{
-//        var menuIcon = ""
-//        switch index {
-//        case GameType.hotGame:
-//            menuIcon = "ic_hot"
-//        case GameType.slots:
-//            menuIcon = "ic_slots"
-//        case GameType.fishing:
-//            menuIcon = "ic_fishing"
-//        case GameType.liveCasino:
-//            menuIcon = "ic_live_casino"
-//        case GameType.p2pGame:
-//            menuIcon = "ic_p2p"
-//        case GameType.sports:
-//            menuIcon = "ic_sports"
-//        case GameType.lottery:
-//            menuIcon = "ic_lottery"
-//        case GameType.esports:
-//            menuIcon = "ic_esports"
-//        default:
-//            break
-//        }
-//
-//        return menuIcon
-//    }
-    
-//    func getMenuName(index: Int) -> String{
-//        var menuName = ""
-//        switch index {
-//        case GameType.hotGame:
-//            menuName = "home_hot_game"
-//        case GameType.slots:
-//            menuName = "home_slots"
-//        case GameType.fishing:
-//            menuName = "home_fishing"
-//        case GameType.liveCasino:
-//            menuName = "home_live_casino"
-//        case GameType.p2pGame:
-//            menuName = "home_p2p_game"
-//        case GameType.sports:
-//            menuName = "home_sports"
-//        case GameType.lottery:
-//            menuName = "home_lottery"
-//        case GameType.esports:
-//            menuName = "home_esports"
-//        default:
-//            break
-//        }
-//
-//        return menuName
-//    }
-    
     func setupGuestView(isGuest: Bool){
         if isGuest {
             guestContainer.isHidden = false
@@ -338,17 +282,11 @@ class KKHomeViewController: KKBaseViewController {
                 if var userProfile = KKUtil.decodeUserProfileFromCache(), let userInfo = userWalletResponse.results {
                     userProfile.walletBalance = userInfo.walletBalance!
                     
-                    do {
-                        KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
-                    }
-                    catch {
-                        
-                    }
+                    KKUtil.encodeUserProfile(object: userProfile)
                 }
                 
                 if let userWalletResult = userWalletResponse.results {
-                    
-                    self.lblMoney.text = userWalletResult.walletBalance!.addCurrencyFormat()
+                    self.lblMoney.text = KKUtil.addCurrencyFormat(value: userWalletResult.walletBalance!)
                 }
                 
             } onFailure: { errorMessage in
@@ -547,7 +485,10 @@ class KKHomeViewController: KKBaseViewController {
             
             lblProfileName.text = userProfile.code
             lblVip.text = userProfile.tier?.currentLevelName!
-            lblMoney.text = userProfile.walletBalance?.addCurrencyFormat()
+            
+            if let userWallet = userProfile.walletBalance {
+                self.lblMoney.text = KKUtil.addCurrencyFormat(value: userWallet)
+            }
             
             let balance = CGFloat(truncating: NumberFormatter().number(from: (userProfile.tier?.balance)!)!)
             let next = CGFloat(truncating: NumberFormatter().number(from: (userProfile.tier?.totalAmountToNextLevel)!)!)
@@ -565,9 +506,9 @@ class KKHomeViewController: KKBaseViewController {
         }
         
         imgProfile.image = UIImage(named: "ic_profile")
-        lblLanguage.text = KKUtil.decodeSelectedLanguageFromCache().name
-        countryImageView.setUpImage(with: KKUtil.decodeSelectedCountryFromCache().img)
-        lblCountry.text = KKUtil.decodeSelectedCountryFromCache().code
+        lblLanguage.text = KKUtil.decodeUserLanguageFromCache().name
+        countryImageView.setUpImage(with: KKUtil.decodeUserCountryFromCache().img)
+        lblCountry.text = KKUtil.decodeUserCountryFromCache().code
     }
 }
 

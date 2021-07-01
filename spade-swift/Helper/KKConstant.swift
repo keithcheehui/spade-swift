@@ -251,6 +251,7 @@ enum GenderType: String, CaseIterable {
 enum DialogAlertType: Int {
     case Logout = 1
     case Deposit = 2
+    case Withdraw = 3
 }
 
 enum ToastType: String {

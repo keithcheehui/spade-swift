@@ -34,7 +34,6 @@ class KKMessageListViewController: KKBaseViewController {
     
     func initialLayout(){
         messageTableView.backgroundColor = UIColor(white: 0, alpha: 0)
-//        messageTableView.register(UINib(nibName: "KKMessageTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.messageTVCIdentifier)
         messageTableView.register(KKMessageDetailsTableViewCell.self, forCellReuseIdentifier: CellIdentifier.messageTVCIdentifier)
         
         lblTitle.text = KKUtil.languageSelectedStringForKey(key: "message_title")
@@ -86,14 +85,7 @@ class KKMessageListViewController: KKBaseViewController {
             if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
                 if var userProfile = KKUtil.decodeUserProfileFromCache() {
                     userProfile.inboxUnreadMessages = gotUnread
-                    
-                    
-                    do {
-                        KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
-                    }
-                    catch {
-                        
-                    }
+                    KKUtil.encodeUserProfile(object: userProfile)
                 }
             }
         }

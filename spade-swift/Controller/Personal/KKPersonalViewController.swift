@@ -29,8 +29,6 @@ class KKPersonalViewController: KKBaseViewController {
 
     var bettingRecordPlatfromsArray: [KKUserBettingPlatformDetails]! = []
     var bettingRecordPlatfromsNameArray: [PickerDetails]! = []
-
-//    var accountDetailTabArray: [String]! = ["Deposit/Withdraw", "Transfer", "Promotion"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,26 +127,17 @@ class KKPersonalViewController: KKBaseViewController {
         }
     }
     
-    @objc func getUserProfile(walletBalance: String) {
+    @objc func getUserProfile(walletBalance: Float) {
         
         KKApiClient.getUserProfile().execute { userProfileResponse in
             
             guard var userProfile = userProfileResponse.results?.user![0] else { return }
             userProfile.walletBalance = walletBalance
             
-            do {
-                KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
-                KeychainSwift().set(try JSONEncoder().encode(KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == userProfile.locale})!), forKey: CacheKey.selectedLanguage)
-            }
-            catch {
-                self.hideAnimatedLoader()
-                self.showAlertView(type: .Error, alertMessage: error.localizedDescription)
-            }
-            
+            KKUtil.encodeUserProfile(object: userProfile)
+            KKUtil.encodeUserLanguage(object: KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == userProfile.locale}))
             self.hideAnimatedLoader()
-            
         } onFailure: { errorMessage in
-            
             self.hideAnimatedLoader()
             self.showAlertView(type: .Error, alertMessage: errorMessage)
         }

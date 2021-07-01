@@ -56,7 +56,7 @@ class KKApiClient: NSObject {
     static func getAppVersion() -> Future<KKAppVersionResponse> {
         
         let parameter = [APIKeys.platform       : Platform.iOS,
-                         APIKeys.locale         : KKUtil.decodeSelectedLanguageFromCache().locale!
+                         APIKeys.locale         : KKUtil.decodeUserLanguageFromCache().locale!
                         ] as [String : Any]
         
         return performRequest(route: .appVersion(parameter: parameter))
@@ -66,8 +66,8 @@ class KKApiClient: NSObject {
     
     static func getGuestLandingDetails() -> Future<KKLandingDetailsResponse> {
         
-        let parameter = [APIKeys.locale         : KKUtil.decodeSelectedLanguageFromCache().locale!,
-                         APIKeys.countryCode    : KKUtil.decodeSelectedCountryFromCache().code!
+        let parameter = [APIKeys.locale         : KKUtil.decodeUserLanguageFromCache().locale!,
+                         APIKeys.countryCode    : KKUtil.decodeUserCountryFromCache().code!
                         ] as [String : Any]
         
         return performRequest(route: .guestLandingDetails(parameter: parameter))
@@ -75,8 +75,8 @@ class KKApiClient: NSObject {
     
     static func getMemberLandingDetails() -> Future<KKLandingDetailsResponse> {
         
-        let parameter = [APIKeys.locale         : KKUtil.decodeSelectedLanguageFromCache().locale!,
-                         APIKeys.countryCode    : KKUtil.decodeSelectedCountryFromCache().code!
+        let parameter = [APIKeys.locale         : KKUtil.decodeUserLanguageFromCache().locale!,
+                         APIKeys.countryCode    : KKUtil.decodeUserCountryFromCache().code!
                         ] as [String : Any]
         
         return performRequest(route: .memberLandingDetails(parameter: parameter))
@@ -138,7 +138,7 @@ class KKApiClient: NSObject {
                          APIKeys.phoneNumber            : phoneNumber,
                          APIKeys.registrationPlatform   : Platform.iOS,
                          APIKeys.type                   : RegistrationType.phoneNumber,
-                         APIKeys.countryCode            : KKUtil.decodeSelectedCountryFromCache().code!
+                         APIKeys.countryCode            : KKUtil.decodeUserCountryFromCache().code!
                         ] as [String : Any]
         
         return performRequest(route: .userAccountRegistration(parameter: parameter))
@@ -151,7 +151,7 @@ class KKApiClient: NSObject {
                          APIKeys.phoneNumber            : phoneNumber,
                          APIKeys.registrationPlatform   : Platform.iOS,
                          APIKeys.type                   : RegistrationType.phoneNumber,
-                         APIKeys.countryCode            : KKUtil.decodeSelectedCountryFromCache().code!
+                         APIKeys.countryCode            : KKUtil.decodeUserCountryFromCache().code!
                         ] as [String : Any]
         
         return performRequest(route: .userForgotPassword(parameter: parameter))
@@ -208,7 +208,7 @@ class KKApiClient: NSObject {
     
     static func getUserBettingGroupAndPlatform() -> Future<KKUserBettingResponse> {
         
-        let parameter = [APIKeys.locale    : KKUtil.decodeSelectedLanguageFromCache().locale!,
+        let parameter = [APIKeys.locale    : KKUtil.decodeUserLanguageFromCache().locale!,
                         ] as [String : Any]
         
         return performRequest(route: .getUserBettingGroupAndPlatform(parameter: parameter))
@@ -236,7 +236,7 @@ class KKApiClient: NSObject {
     
     static func getContentAnnouncement() ->  Future<KKAnnouncementResponse> {
         
-        let parameter = [APIKeys.locale    : KKUtil.decodeSelectedLanguageFromCache().locale!,
+        let parameter = [APIKeys.locale    : KKUtil.decodeUserLanguageFromCache().locale!,
                         ] as [String : Any]
         
         return performRequest(route: .getAnnouncementContent(parameter: parameter))
@@ -244,8 +244,8 @@ class KKApiClient: NSObject {
     
     static func getContentGroupsAndPlatform() -> Future<KKGroupPlatformResponse> {
         
-        let parameter = [APIKeys.locale         : KKUtil.decodeSelectedLanguageFromCache().locale!,
-                         APIKeys.countryCode    : KKUtil.decodeSelectedCountryFromCache().code!
+        let parameter = [APIKeys.locale         : KKUtil.decodeUserLanguageFromCache().locale!,
+                         APIKeys.countryCode    : KKUtil.decodeUserCountryFromCache().code!
                         ] as [String : Any]
         
         return performRequest(route: .getGroupAndPlatformContent(parameter: parameter))
@@ -253,7 +253,7 @@ class KKApiClient: NSObject {
     
     static func getAllPlatformProduct(gCode: String = "") -> Future<KKPlatformProductResponse> {
         
-        let parameter = [APIKeys.locale         : KKUtil.decodeSelectedLanguageFromCache().locale!,
+        let parameter = [APIKeys.locale         : KKUtil.decodeUserLanguageFromCache().locale!,
                          APIKeys.groupCode      : gCode,
                         ] as [String : Any]
         
@@ -262,7 +262,7 @@ class KKApiClient: NSObject {
     
     static func getInboxMessageContent() -> Future<KKInboxMessageResponse> {
         
-        let parameter = [APIKeys.locale    : KKUtil.decodeSelectedLanguageFromCache().locale!,
+        let parameter = [APIKeys.locale    : KKUtil.decodeUserLanguageFromCache().locale!,
                         ] as [String : Any]
         
         return performRequest(route: .getInboxMessageContent(parameter: parameter))
@@ -278,7 +278,7 @@ class KKApiClient: NSObject {
     
     static func getPromotionContent() -> Future<KKPromotionResponse> {
         
-        let parameter = [APIKeys.locale    : KKUtil.decodeSelectedLanguageFromCache().locale!,
+        let parameter = [APIKeys.locale    : KKUtil.decodeUserLanguageFromCache().locale!,
                         ] as [String : Any]
         
         return performRequest(route: .getPromotionContent(parameter: parameter))
@@ -286,7 +286,7 @@ class KKApiClient: NSObject {
     
     static func getAffiliateGuidelineContent() -> Future<KKGuidelineResponse> {
         
-        let parameter = [APIKeys.locale    : KKUtil.decodeSelectedLanguageFromCache().locale!,
+        let parameter = [APIKeys.locale    : KKUtil.decodeUserLanguageFromCache().locale!,
                         ] as [String : Any]
         
         return performRequest(route: .getAffiliateGuidelineContent(parameter: parameter))
@@ -296,7 +296,7 @@ class KKApiClient: NSObject {
     
     static func getCustomerFAQ() -> Future<KKFAQResponse> {
         
-        let parameter = [APIKeys.locale    : KKUtil.decodeSelectedLanguageFromCache().locale!,
+        let parameter = [APIKeys.locale    : KKUtil.decodeUserLanguageFromCache().locale!,
                         ] as [String : Any]
         
         return performRequest(route: .customerFAQ(parameter: parameter))
@@ -304,7 +304,7 @@ class KKApiClient: NSObject {
         
     static func getCustomerLiveChat() -> Future<KKLiveChatResponse> {
         
-        let parameter = [APIKeys.locale    : KKUtil.decodeSelectedLanguageFromCache().locale!,
+        let parameter = [APIKeys.locale    : KKUtil.decodeUserLanguageFromCache().locale!,
                         ] as [String : Any]
         
         return performRequest(route: .customerLiveChat(parameter: parameter))

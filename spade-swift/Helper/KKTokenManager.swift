@@ -11,30 +11,19 @@ import KeychainSwift
 class KKTokenManager: NSObject {
     
     struct TokenManagerConstant {
-        
         static let expireTimeBuffer: Double = 60*5
     }
     
     class func accessToken() -> String {
-        
-        let token = KeychainSwift().get(CacheKey.accessToken)
-        return token!
+        return UserDefaults.standard.string(forKey: CacheKey.accessToken) ?? ""
     }
     
     class func refreshToken() -> String {
-        
-        let token = KeychainSwift().get(CacheKey.refreshToken)
-        
-        if token == nil {
-            
-            return ""
-        }
-        
-        return token!
+        return UserDefaults.standard.string(forKey: CacheKey.refreshToken) ?? ""
     }
     
     class func setUserCredential(userCredential: KKUserCredential) {
-        
-        KeychainSwift().set(userCredential.results!.accessToken!, forKey: CacheKey.accessToken)
+        UserDefaults.standard.set(userCredential.results!.accessToken!, forKey: CacheKey.accessToken)
+        UserDefaults.standard.synchronize()
     }
 }

@@ -134,7 +134,7 @@ class KKOTPViewController: KKBaseViewController {
         lblNotesMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 35)
         lblNotesMarginRight.constant = KKUtil.ConvertSizeByDensity(size: -35)
         
-        let selectedCountryDetails = KKUtil.decodeSelectedCountryFromCache()
+        let selectedCountryDetails = KKUtil.decodeUserCountryFromCache()
         txtCountryCode.text = "\(selectedCountryDetails.code!.dropLast()) +\(selectedCountryDetails.countryPrefix!)"
         lblMobileNumber.text = KKUtil.languageSelectedStringForKey(key: "otp_mobile")
         lblOTPDigit.text = KKUtil.languageSelectedStringForKey(key: "otp_digit")

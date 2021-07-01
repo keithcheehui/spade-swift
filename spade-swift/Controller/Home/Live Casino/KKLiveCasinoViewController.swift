@@ -101,27 +101,6 @@ extension KKLiveCasinoViewController: UICollectionViewDelegate, UICollectionView
         cell.imgGirlIcon.setUpImage(with: liveCasinoArray[indexPath.item].img2)
         cell.imgGameIcon.setUpImage(with: liveCasinoArray[indexPath.item].img)
         cell.lblGameName.text = liveCasinoArray[indexPath.item].name!
-        
-//        switch indexPath.row {
-//        case 0:
-////            cell.imgGirlIcon.image = UIImage(named: "ic_girl_ag")
-//            cell.imgGameIcon.image = UIImage(named: "ic_ag")
-////            cell.lblGameName.text = KKUtil.languageSelectedStringForKey(key: "live_casino_ag")
-//        case 1:
-////            cell.imgGirlIcon.image = UIImage(named: "ic_girl_sa")
-//            cell.imgGameIcon.image = UIImage(named: "ic_sa")
-////            cell.lblGameName.text = KKUtil.languageSelectedStringForKey(key: "live_casino_sa")
-//        case 2:
-////            cell.imgGirlIcon.image = UIImage(named: "ic_girl_dg")
-//            cell.imgGameIcon.image = UIImage(named: "ic_dg")
-////            cell.lblGameName.text = KKUtil.languageSelectedStringForKey(key: "live_casino_dg")
-//        case 3:
-////            cell.imgGirlIcon.image = UIImage(named: "ic_girl_bg")
-//            cell.imgGameIcon.image = UIImage(named: "ic_bg")
-////            cell.lblGameName.text = KKUtil.languageSelectedStringForKey(key: "live_casino_bg")
-//        default:
-//            break;
-//        }
 
         if (selectedLiveCasinoIndex == indexPath.row){
             cell.imgHover.isHidden = false

@@ -137,6 +137,10 @@ class KKWithdrawRequestViewController: KKBaseViewController {
             self.hideAnimatedLoader()
             self.txtWithdrawAmount.text = ""
             self.showAlertView(type: .Success, alertMessage: withdrawResponse.message ?? "")
+            
+            let viewController = KKDialogAlertViewController.init()
+            viewController.alertType = .Withdraw
+            self.present(viewController, animated: true, completion: nil)
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
             self.showAlertView(type: .Error, alertMessage: errorMessage)

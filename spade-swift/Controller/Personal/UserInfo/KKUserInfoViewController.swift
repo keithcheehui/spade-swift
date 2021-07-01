@@ -129,7 +129,6 @@ class KKUserInfoViewController: KKBaseViewController {
         txtBirthday.returnKeyType = .next
         txtGender.returnKeyType = .next
         txtEmail.returnKeyType = .done
-//        txtPhone.returnKeyType = .done
         
         txtBirthdayView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
         txtGenderView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
@@ -211,12 +210,10 @@ class KKUserInfoViewController: KKBaseViewController {
         txtBirthdayView.backgroundColor = UIColor(white: 0, alpha: 0)
         txtGenderView.backgroundColor = UIColor(white: 0, alpha: 0)
         txtEmailView.backgroundColor = UIColor(white: 0, alpha: 0)
-//        txtPhoneView.backgroundColor = UIColor(white: 0, alpha: 0)
         
         txtBirthday.isUserInteractionEnabled = false
         txtGender.isUserInteractionEnabled = false
         txtEmail.isUserInteractionEnabled = false
-//        txtPhone.isUserInteractionEnabled = false
     }
     
     func editView(){
@@ -224,12 +221,10 @@ class KKUserInfoViewController: KKBaseViewController {
         txtBirthdayView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         txtGenderView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         txtEmailView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-//        txtPhoneView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         
         txtBirthday.isUserInteractionEnabled = true
         txtGender.isUserInteractionEnabled = true
         txtEmail.isUserInteractionEnabled = true
-//        txtPhone.isUserInteractionEnabled = true
         
         txtBirthday.inputView = datePickerView
         txtBirthday.inputAccessoryView = pickerToolBarView
@@ -293,15 +288,9 @@ class KKUserInfoViewController: KKBaseViewController {
                 userProfile.gender = self.txtGender.text!
                 userProfile.dob = self.txtBirthday.text!
 
-                do {
-                    KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
-                    
-                    self.isEditMode = false
-                    self.displayView()
-                }
-                catch {
-                    
-                }
+                KKUtil.encodeUserProfile(object: userProfile)
+                self.isEditMode = false
+                self.displayView()
             }
             
         } onFailure: { errorMessage in

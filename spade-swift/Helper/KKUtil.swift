@@ -47,12 +47,11 @@ class KKUtil: NSObject {
         let string : String = NSLocalizedString(key, tableName: "", bundle: languageBundle!, value: "", comment: "")
 
         return string
-//        return NSLocalizedString(key, tableName: "", bundle: Bundle.main, value: "", comment: "")
 
     }
     
     ///Check email validation
-    class func isValidEmail (testStr: String) -> Bool {
+    class func isValidEmail(testStr: String) -> Bool {
         
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         
@@ -61,12 +60,17 @@ class KKUtil: NSObject {
     }
     
     ///Check input validation
-    class func isValidInput (testStr: String) -> Bool {
-        
-        let inputRegEx = "{6,12}"
-        
-        let inputTest = NSPredicate(format:"SELF MATCHES %@", inputRegEx)
-        return inputTest.evaluate(with: testStr)
+    class func isValidInput(testStr: String) -> Bool {
+        let inputRegEx = "^.{8,}$"
+        let inputCheck = NSPredicate(format: "SELF MATCHES %@",inputRegEx)
+        return inputCheck.evaluate(with: testStr)
+    }
+    
+    ///Check password input validation
+    class func isValidPasswordInput (testStr: String) -> Bool {
+        let inputRegEx = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[d$@$!%*?&#])[A-Za-z\\dd$@$!%*?&#]{8,}"
+        let passwordCheck = NSPredicate(format: "SELF MATCHES %@",inputRegEx)
+        return passwordCheck.evaluate(with: testStr)
     }
     
     ///Get Label Height according to its text with font
@@ -109,99 +113,163 @@ class KKUtil: NSObject {
     
     ///logout user
     class func logOutUser() {
+        cleanSet()
+        KKUtil.proceedToPage(vc: KKSplashScreenViewController.init())
+    }
+    
+    class func cleanSet() {
         UserDefaults.standard.set(false, forKey: CacheKey.loginStatus)
-        KeychainSwift().set("", forKey: CacheKey.accessToken)
-        KeychainSwift().set("", forKey: CacheKey.refreshToken)
-        KeychainSwift().set("", forKey: CacheKey.userProfile)
+        UserDefaults.standard.set(nil, forKey: CacheKey.userProfile)
+        UserDefaults.standard.set("", forKey: CacheKey.accessToken)
+        UserDefaults.standard.set("", forKey: CacheKey.refreshToken)
+        UserDefaults.standard.set(nil, forKey: CacheKey.selectedLanguage)
+        UserDefaults.standard.set(nil, forKey: CacheKey.selectedCountry)
+
         KeychainSwift().set("", forKey: CacheKey.username)
         KeychainSwift().set("", forKey: CacheKey.secret)
-
-        UserDefaults.standard.synchronize()
         
-        KKUtil.proceedToPage(vc: KKSplashScreenViewController.init())
+        UserDefaults.standard.synchronize()
+    }
+    
+    //MARK: APP VERSION
+    ///encode app version
+    class func encodeAppVersion(object: KKAppVersionResults?) {
+        if object == nil {
+            return
+        }
+        
+        if let jsonString = try? JSONEncoder().encode(object) {
+            let jsonStringData = String(data: jsonString, encoding: .utf8)!
+            UserDefaults.standard.set(jsonStringData, forKey: CacheKey.appVersionDetails)
+        }
+        UserDefaults.standard.synchronize()
     }
     
     ///decode app version
     class func decodeAppVersionFromCache() -> KKAppVersionResults? {
-        
-        if (KeychainSwift().getData(CacheKey.appVersionDetails) != nil)
-        {
-            let appVersionDetails = try! JSONDecoder().decode(KKAppVersionResults.self, from: KeychainSwift().getData(CacheKey.appVersionDetails)!)
-            
-            return appVersionDetails
+        let jsonString = UserDefaults.standard.string(forKey: CacheKey.appVersionDetails)
+        if (jsonString == nil || jsonString!.isEmpty) {
+            return nil
         }
         
-        return nil
+        do {
+            let object = try JSONDecoder().decode(KKAppVersionResults.self, from: Data(jsonString!.utf8))
+            return object
+        } catch {
+            return nil
+        }
+    }
+    
+    //MARK: USER PROFILE
+    ///encode user profile
+    class func encodeUserProfile(object: KKUserProfileDetails?) {
+        if object == nil {
+            return
+        }
+        
+        if let jsonString = try? JSONEncoder().encode(object) {
+            let jsonStringData = String(data: jsonString, encoding: .utf8)!
+            UserDefaults.standard.set(jsonStringData, forKey: CacheKey.userProfile)
+        }
+        UserDefaults.standard.synchronize()
     }
     
     ///decode user profile
     class func decodeUserProfileFromCache() -> KKUserProfileDetails? {
-        
-        if (KeychainSwift().getData(CacheKey.userProfile) != nil)
-        {
-            let userProfile = try! JSONDecoder().decode(KKUserProfileDetails.self, from: KeychainSwift().getData(CacheKey.userProfile)!)
-            
-            return userProfile
+        let jsonString = UserDefaults.standard.string(forKey: CacheKey.userProfile)
+        if (jsonString == nil || jsonString!.isEmpty) {
+            return nil
         }
         
-        return nil
+        do {
+            let object = try JSONDecoder().decode(KKUserProfileDetails.self, from: Data(jsonString!.utf8))
+            return object
+        } catch {
+            return nil
+        }
     }
     
-    ///get selected country
-    class func decodeSelectedCountryFromCache() -> KKAppVersionCountries {
+    //MARK: USER COUNTRY
+    ///encode user country
+    class func encodeUserCountry(object: KKAppVersionCountries?) {
+        if object == nil {
+            return
+        }
         
-        if (KeychainSwift().getData(CacheKey.selectedCountry) != nil)
+        if let jsonString = try? JSONEncoder().encode(object) {
+            let jsonStringData = String(data: jsonString, encoding: .utf8)!
+            UserDefaults.standard.set(jsonStringData, forKey: CacheKey.selectedCountry)
+        }
+        UserDefaults.standard.synchronize()
+    }
+    
+    ///decode user country
+    class func decodeUserCountryFromCache() -> KKAppVersionCountries {
+        let defaultString = """
         {
-            let countryDetails = try! JSONDecoder().decode(KKAppVersionCountries.self, from: KeychainSwift().getData(CacheKey.selectedCountry)!)
-            
-            return countryDetails
+            "code": "\(CountryCode.Malaysia)",
+            "name": "Malaysia",
+            "locale": "https://legend.fteg.dev/storage/upload/images/countries/malaysia.png",
+            "country_calling_code": "60",
+            "currency": "\(CurrencyCode.Malaysia)",
+            "currency_name": "Malaysia Ringgit"
+        }
+        """
+        
+        let jsonString = UserDefaults.standard.string(forKey: CacheKey.selectedCountry)
+        if (jsonString != nil) {
+            do {
+                let object = try JSONDecoder().decode(KKAppVersionCountries.self, from: Data(jsonString!.utf8))
+                return object
+            } catch {
+                return try! JSONDecoder().decode(KKAppVersionCountries.self, from: Data(defaultString.utf8))
+            }
         }
         
         if KKSingleton.sharedInstance.countryArray.count > 0 {
-            
             return KKSingleton.sharedInstance.countryArray.first(where: {$0.currency == CurrencyCode.Malaysia})!
-        }
-        else
-        {
-            let jsonString = """
-            {
-                "code": "\(CountryCode.Malaysia)",
-                "name": "Malaysia",
-                "locale": "https://legend.fteg.dev/storage/upload/images/countries/malaysia.png",
-                "country_calling_code": "60",
-                "currency": "\(CurrencyCode.Malaysia)",
-                "currency_name": "Malaysia Ringgit"
-            }
-            """
-            
-            return try! JSONDecoder().decode(KKAppVersionCountries.self, from: jsonString.data(using: .utf8)!)
+        } else {
+            return try! JSONDecoder().decode(KKAppVersionCountries.self, from: Data(defaultString.utf8))
         }
     }
     
-    ///get selected language
-    class func decodeSelectedLanguageFromCache() -> KKAppVersionLanguages {
-            
-        if (KeychainSwift().getData(CacheKey.selectedLanguage) != nil)
-        {
-            let appLanguage = try! JSONDecoder().decode(KKAppVersionLanguages.self, from: KeychainSwift().getData(CacheKey.selectedLanguage)!)
-            
-            return appLanguage
+    //MARK: USER LANGUAGE
+    ///encode user language
+    class func encodeUserLanguage(object: KKAppVersionLanguages?) {
+        if object == nil {
+            return
         }
         
-        if KKSingleton.sharedInstance.languageArray.count > 0 {
-            
-            return KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == LocaleCode.English})!
+        if let jsonString = try? JSONEncoder().encode(object) {
+            let jsonStringData = String(data: jsonString, encoding: .utf8)!
+            UserDefaults.standard.set(jsonStringData, forKey: CacheKey.selectedLanguage)
         }
-        else
+        UserDefaults.standard.synchronize()
+    }
+    
+    ///decode user language
+    class func decodeUserLanguageFromCache() -> KKAppVersionLanguages {
+        let defaultString = """
         {
-            let jsonString = """
-            {
-                "locale": "\(LocaleCode.English)",
-                "name": "\(LocaleName.English)"
+            "locale": "\(LocaleCode.English)",
+            "name": "\(LocaleName.English)"
+        }
+        """
+        
+        let jsonString = UserDefaults.standard.string(forKey: CacheKey.selectedLanguage)
+        if (jsonString != nil) {
+            do {
+                let object = try JSONDecoder().decode(KKAppVersionLanguages.self, from: Data(jsonString!.utf8))
+                return object
+            } catch {
+                return try! JSONDecoder().decode(KKAppVersionLanguages.self, from: Data(defaultString.utf8))
             }
-            """
-            
-            return try! JSONDecoder().decode(KKAppVersionLanguages.self, from: jsonString.data(using: .utf8)!)
+        }
+        
+        if KKSingleton.sharedInstance.countryArray.count > 0 {
+            return KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == LocaleCode.English})!
+        } else {
+            return try! JSONDecoder().decode(KKAppVersionLanguages.self, from: Data(defaultString.utf8))
         }
     }
     
@@ -274,5 +342,17 @@ class KKUtil: NSObject {
                 
             }, completion: nil)
         }
+    }
+    
+    class func addCurrencyFormat(value: Float) -> String {
+        let valueStr = String(format: "%.02f", value)
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = ""
+        formatter.currencyGroupingSeparator = ","
+        
+        let number = NumberFormatter().number(from: valueStr)!
+        return formatter.string(from: number)!
     }
 }

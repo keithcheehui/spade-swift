@@ -322,22 +322,6 @@ extension String {
         return strcmp(char, "\\b") == -92
     }
     
-    func addCurrencyFormat() -> String {
-        
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencySymbol = ""
-        formatter.currencyGroupingSeparator = ","
-        
-        let number = NumberFormatter().number(from: self)!
-        return formatter.string(from: number)!
-    }
-    
-//    func isValidEmail() -> Bool {
-//        let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
-//        return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
-//    }
-    
     var bankAccountMasked: String {
         self.enumerated().map({ (index, ch) in
             if index < 5 {

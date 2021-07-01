@@ -9,19 +9,19 @@ import UIKit
 
 class KKDialogAlertViewController: KKBaseViewController {
 
-    @IBOutlet weak var lblMessage: UILabel!
+    @IBOutlet weak var lblMessageTitle: UILabel!
+    @IBOutlet weak var lblMessageDesc: UILabel!
     @IBOutlet weak var leftButtonContainer: UIView!
     @IBOutlet weak var imgLeftButton: UIImageView!
 
     @IBOutlet weak var rightButtonContainer: UIView!
     @IBOutlet weak var imgRightButton: UIImageView!
     
+    @IBOutlet weak var imgTitleMarginTop: NSLayoutConstraint!
     @IBOutlet weak var imgTitleHeight: NSLayoutConstraint!
     @IBOutlet weak var imgCloseWidth: NSLayoutConstraint!
-    @IBOutlet weak var containerMarginTop: NSLayoutConstraint!
-    @IBOutlet weak var containerMarginBottom: NSLayoutConstraint!
-    @IBOutlet weak var containerMarginLeft: NSLayoutConstraint!
-    @IBOutlet weak var containerMarginRight: NSLayoutConstraint!
+    @IBOutlet weak var containerHeight: NSLayoutConstraint!
+    @IBOutlet weak var containerWidth: NSLayoutConstraint!
     @IBOutlet weak var lblMessageMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var lblMessageMarginRight: NSLayoutConstraint!
     @IBOutlet weak var lblMessageMarginTop: NSLayoutConstraint!
@@ -41,33 +41,36 @@ class KKDialogAlertViewController: KKBaseViewController {
     
     func initialLayout() {
         self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
-
+        
+        containerWidth.constant = KKUtil.isSmallerPhone() ? ScreenSize.maxLength * 0.65 : ScreenSize.maxLength * 0.5
+        containerHeight.constant = KKUtil.isSmallerPhone() ? ScreenSize.minLength * 0.7 : ScreenSize.minLength * 0.65
+        imgTitleMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 15)
         imgTitleHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
         imgCloseWidth.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        containerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 70)
-        containerMarginBottom.constant = containerMarginTop.constant
-        containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 140 : 160)
-        containerMarginRight.constant = containerMarginLeft.constant
         lblMessageMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 30)
         lblMessageMarginRight.constant = lblMessageMarginLeft.constant
-        lblMessageMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        lblMessageMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 30)
         btnContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 30)
         btnContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         
-        lblMessage.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 20))
-        lblMessage.text = setupTextLabel()
+        lblMessageTitle.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 20))
+        lblMessageTitle.text = setupTitleLabel()
+        lblMessageDesc.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
+        lblMessageDesc.text = setupDescLabel()
     }
     
     func showDialogType() {
         switch alertType {
-        case .Deposit:
+        case .Deposit,
+             .Withdraw:
             btnLeftWidth.constant = 0
             btnLeftMarginRight.constant = 0
-            
-
+            imgRightButton.image = UIImage(named: "btn_ok")
+        
         default:
             btnLeftWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 180 : 200)
             btnLeftMarginRight.constant = KKUtil.ConvertSizeByDensity(size: 20)
+            imgRightButton.image = UIImage(named: "btn_yes")
         }
     }
     
@@ -76,41 +79,45 @@ class KKDialogAlertViewController: KKBaseViewController {
     }
     
     @IBAction func btnLeftDidPressed() {
-        functionForLeftButton()
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func btnRightDidPressed() {
         functionForRightButton()
     }
     
-    func functionForLeftButton(){
-        switch alertType {
-        
-        default:
-            self.dismiss(animated: true, completion: nil)
-
-        }
-    }
-    
     func functionForRightButton(){
         switch alertType {
         case .Logout:
             KKUtil.logOutUser()
-            
-        case .Deposit:
-            break
         
-        default: break
+        default:
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
-    func setupTextLabel() -> String {
+    func setupTitleLabel() -> String {
         switch alertType {
         case .Logout:
             return KKUtil.languageSelectedStringForKey(key: "alert_logout")
             
         case .Deposit:
-            return KKUtil.languageSelectedStringForKey(key: "alert_deposit")
+            return KKUtil.languageSelectedStringForKey(key: "alert_title_deposit")
+            
+        case .Withdraw:
+            return KKUtil.languageSelectedStringForKey(key: "alert_title_withdraw")
+        
+        default: return ""
+        }
+    }
+    
+    func setupDescLabel() -> String {
+        switch alertType {
+        case .Deposit:
+            return KKUtil.languageSelectedStringForKey(key: "alert_desc_deposit")
+            
+        case .Withdraw:
+            return KKUtil.languageSelectedStringForKey(key: "alert_desc_withdraw")
         
         default: return ""
         }

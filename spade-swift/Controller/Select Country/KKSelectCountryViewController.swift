@@ -61,13 +61,25 @@ class KKSelectCountryViewController: KKBaseViewController {
     
     ///Button Actions
     @IBAction func btnConfirmDidPressed(){
+        getGuestLandingDetails()
+    }
+    
+    func getGuestLandingDetails() {
+        self.showAnimatedLoader()
         
-        do {
-            KeychainSwift().set(try JSONEncoder().encode(KKSingleton.sharedInstance.countryArray[selectedIndex]), forKey: CacheKey.selectedCountry)
-            KKUtil.redirectToHome()
-        }
-        catch {
-            self.showAlertView(type: .Error, alertMessage: error.localizedDescription)
+        KKApiClient.getGuestLandingDetails().execute { landingDetailsResponse in
+            self.hideAnimatedLoader()
+
+            if let landingDetailsResults = landingDetailsResponse.results {
+                KKSingleton.sharedInstance.announcementArray = landingDetailsResults.announcements!
+                KKSingleton.sharedInstance.groupPlatformArray = landingDetailsResults.groups!
+            }
+            
+            KKUtil.encodeUserCountry(object: KKSingleton.sharedInstance.countryArray[self.selectedIndex])
+            KKUtil.redirectToHome() 
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
 }

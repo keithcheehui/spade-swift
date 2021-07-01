@@ -255,7 +255,10 @@
 "picker_withdraw_status"                        = "Withdrawal Status";
 
 //MARK: Dialog Alert
-"alert_deposit"                                 = "Please set up your at least one bank card before deposit";
+"alert_title_withdraw"                          = "Withdrawal Request Status";
+"alert_title_deposit"                           = "Deposit Request Status";
+"alert_desc_withdraw"                           = "Your withdrawal request has been submitted successfully.\nYou can check the processing status in History page.\nYour transaction id is %@";
+"alert_desc_deposit"                            = "Your deposit request has been submitted successfully.\nYou can check the processing status in History page.\nYour transaction id is %@";
 "alert_logout"                                  = "Are you sure you want to log out?";
 "alert_copied"                                  = "Copied to clipboard.";
 "alert_shared"                                  = "Shared successfully.";

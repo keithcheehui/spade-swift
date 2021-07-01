@@ -34,7 +34,6 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
     
     var sideMenuItem: [KKPromotionDetails]! = []
     var selectedMenuItem = 0
-//    var cacheImageURL = "https://lg-api.fteg.app/storage/upload/images/bonuses/bonus_1_banner.png"
     
     override func viewDidLoad() {
         super.viewDidLoad()

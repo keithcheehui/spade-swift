@@ -135,38 +135,28 @@ class KKLoginViewController: KKBaseViewController {
     //MARK:- API Calls
     
     @objc func userAccountLogin() {
-        
         KKApiClient.userAccountLogin(username: txtUsername.text!, password: txtPassword.text!).execute { userCredential in
-            
             KeychainSwift().set(self.txtUsername.text!, forKey: CacheKey.username)
             KeychainSwift().set(self.txtPassword.text!, forKey: CacheKey.secret)
             
             KKTokenManager.setUserCredential(userCredential: userCredential)
-            
             UserDefaults.standard.set(true, forKey: CacheKey.loginStatus)
             UserDefaults.standard.synchronize()
             self.showAlertView(type: .Success, alertMessage: userCredential.message ?? "")
             
             self.getUserLatestWallet()
-            
         } onFailure: { errorMessage in
-            
             self.hideAnimatedLoader()
             self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
     func getUserLatestWallet() {
-        
         KKApiClient.getUserLatestWallet().execute { userWalletResponse in
-            
             if let userWalletResult = userWalletResponse.results {
-                
                 self.getUserProfile(walletBalance: userWalletResult.walletBalance!)
             }
-            
         } onFailure: { errorMessage in
-            
             self.hideAnimatedLoader()
             self.showAlertView(type: .Error, alertMessage: errorMessage)
             
@@ -177,24 +167,15 @@ class KKLoginViewController: KKBaseViewController {
         }
     }
     
-    @objc func getUserProfile(walletBalance: String) {
-        
+    @objc func getUserProfile(walletBalance: Float) {
         KKApiClient.getUserProfile().execute { userProfileResponse in
-            
             guard var userProfile = userProfileResponse.results?.user![0] else { return }
             userProfile.walletBalance = walletBalance
             
-            do {
-                KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
-                KeychainSwift().set(try JSONEncoder().encode(KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == userProfile.locale})!), forKey: CacheKey.selectedLanguage)
-            }
-            catch {
-                self.hideAnimatedLoader()
-                self.showAlertView(type: .Error, alertMessage: error.localizedDescription)
-            }
-            
+            KKUtil.encodeUserProfile(object: userProfile)
+            KKUtil.encodeUserLanguage(object: KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == userProfile.locale})!)
             self.hideAnimatedLoader()
-
+            
             let when = DispatchTime.now() + 2
             DispatchQueue.main.asyncAfter(deadline: when){
                 self.dismissPresentedViewWithBackgroundFaded()

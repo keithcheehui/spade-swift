@@ -13,13 +13,13 @@ struct KKUserWalletResults: Codable {
     case walletBalance = "wallet_balance"
   }
 
-  var walletBalance: String?
+  var walletBalance: Float?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    walletBalance = try container.decodeIfPresent(String.self, forKey: .walletBalance)
+    walletBalance = try container.decodeIfPresent(Float.self, forKey: .walletBalance) ?? 0.00
   }
 
 }

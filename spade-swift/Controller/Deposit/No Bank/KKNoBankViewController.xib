@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RmH-pb-dxe">
-                    <rect key="frame" x="100" y="169" width="696" height="76"/>
+                    <rect key="frame" x="100" y="166.5" width="696" height="81"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ecq-ci-cdL">
                             <rect key="frame" x="0.0" y="0.0" width="696" height="41"/>
@@ -36,23 +36,23 @@ bank card before proceeding for deposit</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9AK-J0-BDg">
-                            <rect key="frame" x="136" y="51" width="424.5" height="25"/>
+                            <rect key="frame" x="133.5" y="51" width="429.5" height="30"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click upper right corner bank cad icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFu-9O-Gtk">
-                                    <rect key="frame" x="0.0" y="4" width="247" height="17"/>
+                                    <rect key="frame" x="0.0" y="6.5" width="247" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_bank_card" translatesAutoresizingMaskIntoConstraints="NO" id="Bai-zs-Suo">
-                                    <rect key="frame" x="257" y="0.0" width="25" height="25"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_bankcard" translatesAutoresizingMaskIntoConstraints="NO" id="Bai-zs-Suo">
+                                    <rect key="frame" x="257" y="0.0" width="30" height="30"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="25" id="0Gp-6Y-GyO"/>
+                                        <constraint firstAttribute="width" constant="30" id="0Gp-6Y-GyO"/>
                                         <constraint firstAttribute="width" secondItem="Bai-zs-Suo" secondAttribute="height" multiplier="1:1" id="LZS-2F-D7L"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to setup a bank card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qy-Hq-mJa">
-                                    <rect key="frame" x="292" y="4" width="132.5" height="17"/>
+                                    <rect key="frame" x="297" y="6.5" width="132.5" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -94,6 +94,6 @@ bank card before proceeding for deposit</string>
         </view>
     </objects>
     <resources>
-        <image name="ic_bank_card" width="68" height="68"/>
+        <image name="ic_bankcard" width="183" height="183"/>
     </resources>
 </document>

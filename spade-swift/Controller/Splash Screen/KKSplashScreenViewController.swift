@@ -29,20 +29,20 @@ class KKSplashScreenViewController: KKBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         KingfisherManager.shared.cache.clearMemoryCache()
         KingfisherManager.shared.cache.clearDiskCache()
         KingfisherManager.shared.cache.cleanExpiredDiskCache()
         
         initialLayout()
         drawLoadingProgress()
-        
+                
         if KKUtil.isConnectedToInternet() {
-            
             if (KeychainSwift().get(CacheKey.username) == nil || KeychainSwift().get(CacheKey.secret) == nil) {
-                clearSet()
+                KKUtil.cleanSet()
+                self.getAppVersion()
             } else if (KeychainSwift().get(CacheKey.username)!.isEmpty || KeychainSwift().get(CacheKey.secret)!.isEmpty) {
-                clearSet()
+                KKUtil.cleanSet()
+                self.getAppVersion()
             } else {
                 self.userAccountLogin(username: KeychainSwift().get(CacheKey.username)!, password: KeychainSwift().get(CacheKey.secret)!)
             }
@@ -110,19 +110,6 @@ class KKSplashScreenViewController: KKBaseViewController {
         }
     }
     
-    func clearSet() {
-        UserDefaults.standard.set(false, forKey: CacheKey.loginStatus)
-        KeychainSwift().set("", forKey: CacheKey.accessToken)
-        KeychainSwift().set("", forKey: CacheKey.refreshToken)
-        KeychainSwift().set("", forKey: CacheKey.userProfile)
-        KeychainSwift().set("", forKey: CacheKey.username)
-        KeychainSwift().set("", forKey: CacheKey.secret)
-
-        UserDefaults.standard.synchronize()
-        
-        self.getLandingDetails()
-    }
-    
     //MARK:- API Calls
     
     func userAccountLogin(username: String, password: String) {
@@ -136,7 +123,8 @@ class KKSplashScreenViewController: KKBaseViewController {
             self.getLandingDetails()
             
         } onFailure: { errorMessage in
-            self.clearSet()
+            KKUtil.cleanSet()
+            self.getAppVersion()
         }
     }
     
@@ -162,12 +150,7 @@ class KKSplashScreenViewController: KKBaseViewController {
                             userProfile.tier = userTier
                         }
                         
-                        do {
-                            KeychainSwift().set(try JSONEncoder().encode(userProfile), forKey: CacheKey.userProfile)
-                        }
-                        catch {
-                            
-                        }
+                        KKUtil.encodeUserProfile(object: userProfile)
                     }
                 }
                 
@@ -183,31 +166,14 @@ class KKSplashScreenViewController: KKBaseViewController {
         }
     }
     
-    func getAnnouncement() {
-        
-        KKApiClient.getContentAnnouncement().execute { announcementResponse in
-            
-            if let announcementResults = announcementResponse.results {
-                KKSingleton.sharedInstance.announcementArray = announcementResults.announcements!
-            }
-            
-            self.getAppVersion()
-            
-        } onFailure: { errorMessage in
-            
-            self.getAppVersion()
-        }
-
-    }
-    
     func getAppVersion() {
         
         KKApiClient.getAppVersion().execute { appVersionResponse in
-            
+                        
             guard let appVersionDetails = appVersionResponse.results else { return }
             
             do {
-                KeychainSwift().set(try JSONEncoder().encode(appVersionDetails), forKey: CacheKey.appVersionDetails)
+                KKUtil.encodeAppVersion(object: appVersionDetails)
                 KKSingleton.sharedInstance.countryArray = appVersionDetails.countries!
                 KKSingleton.sharedInstance.languageArray = appVersionDetails.languages!
                 KKSingleton.sharedInstance.appVersion = appVersionDetails.appVersion!
@@ -220,7 +186,6 @@ class KKSplashScreenViewController: KKBaseViewController {
                 }
             }
             catch {
-                
                 self.appVersionApiFailed()
             }
             

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import KeychainSwift
 
 class KKSettingsViewController: KKBaseViewController {
     
@@ -391,6 +392,8 @@ class KKSettingsViewController: KKBaseViewController {
         
         KKApiClient.changePassword(currentPwd: txtCurrentPassword.text!, newPwd: txtReconfirmPassword.text!).execute { userCredential in
             self.hideAnimatedLoader()
+            KeychainSwift().set(self.txtCurrentPassword.text!, forKey: CacheKey.secret)
+            
             self.txtCurrentPassword.text = ""
             self.txtNewPassword.text = ""
             self.txtReconfirmPassword.text = ""
