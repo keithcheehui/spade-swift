@@ -61,13 +61,13 @@ class KKSelectCountryViewController: KKBaseViewController {
     
     ///Button Actions
     @IBAction func btnConfirmDidPressed(){
-        getGuestLandingDetails()
+        guestLandingDataAPI()
     }
     
-    func getGuestLandingDetails() {
+    func guestLandingDataAPI() {
         self.showAnimatedLoader()
         
-        KKApiClient.getGuestLandingDetails().execute { landingDetailsResponse in
+        KKApiClient.guestLandingData().execute { landingDetailsResponse in
             self.hideAnimatedLoader()
 
             if let landingDetailsResults = landingDetailsResponse.results {

@@ -28,7 +28,8 @@ class KKAddBankViewController: KKBaseViewController {
     
     //TODO: remember change to get API
     var bankItemList: [PickerDetails]! = []
-    
+    var selectedBankItem: PickerDetails!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -99,19 +100,14 @@ class KKAddBankViewController: KKBaseViewController {
             return
         }
         
-        addBankAccountAPI()
+        addUserBankCardAPI()
     }
     
     //MARK: - API
-    func addBankAccountAPI(){
+    func addUserBankCardAPI(){
         self.showAnimatedLoader()
-        
-        let parameter = [APIKeys.bankAccountName: txtCardholderName.text!,
-                         APIKeys.bankAccountNo: txtBankAccount.text!,
-                         APIKeys.bankID: 1
-                        ] as [String : Any]
-        
-        KKApiClient.addMemberWithdrawBankAccount(parameter: parameter).execute { addBankResponse in
+        //TODO: change bank id
+        KKApiClient.addUserBankCard(bankAccountNo: txtCardholderName.text!, bankAccountName: txtBankAccount.text!, bankId: selectedBankItem.id).execute { addBankResponse in
             
             self.hideAnimatedLoader()
             self.backPreviousScreen()
@@ -143,6 +139,13 @@ class KKAddBankViewController: KKBaseViewController {
     
     @IBAction func btnConfirmDidPressed(){
         validationField()
+    }
+    
+    @objc
+    override func didTapDone() {
+        view.endEditing(true)
+        pickerView.isHidden = true
+        selectedBankItem = selectedPickerItem
     }
 }
 

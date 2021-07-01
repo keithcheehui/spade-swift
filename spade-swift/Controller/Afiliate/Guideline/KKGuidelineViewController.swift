@@ -30,7 +30,7 @@ class KKGuidelineViewController: KKBaseViewController, UITableViewDataSource, UI
         lblCommission.textColor = UIColor.spade_white_FFFFFF
         lblCommission.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
         
-        getGuidelinesList()
+        getAffiliateGuidelineAPI()
     }
     
     @IBAction func btnCommissionTableDidPressed() {
@@ -42,11 +42,11 @@ class KKGuidelineViewController: KKBaseViewController, UITableViewDataSource, UI
     
     //MARK:- API Calls
     
-    func getGuidelinesList() {
+    func getAffiliateGuidelineAPI() {
         
         self.showAnimatedLoader()
         
-        KKApiClient.getAffiliateGuidelineContent().execute { GuidelineResponse in
+        KKApiClient.getAffiliateGuideline().execute { GuidelineResponse in
             
             self.hideAnimatedLoader()
             self.guidelineArray = GuidelineResponse.results?.affiliate_guidelines

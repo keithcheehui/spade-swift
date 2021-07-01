@@ -162,22 +162,22 @@ class KKRegistrationViewController: KKBaseViewController {
         }
         
         if (isFromForgotPassword) {
-            self.userForgotPassword()
+            self.forgotPasswordAPI()
         } else {
-            self.userAccountRegistration()
+            self.registrationAPI()
         }
     }
     
     //MARK:- API Calls
     
-    @objc func userAccountRegistration() {
+    @objc func registrationAPI() {
         
         self.showAnimatedLoader()
         
-        KKApiClient.userAccountRegistration(username: txtUsername.text!, password: txtPassword.text!, phoneNumber: verifiedPhoneNumber).execute { userCredential in
+        KKApiClient.registration(username: txtUsername.text!, password: txtPassword.text!, phoneNumber: verifiedPhoneNumber).execute { userCredential in
             self.showAlertView(type: .Success, alertMessage: userCredential.message ?? "")
 
-            self.userAccountLogin()
+            self.loginAPI()
             
         } onFailure: { errorMessage in
             
@@ -186,11 +186,11 @@ class KKRegistrationViewController: KKBaseViewController {
         }
     }
     
-    @objc func userForgotPassword() {
+    @objc func forgotPasswordAPI() {
         
         self.showAnimatedLoader()
         
-        KKApiClient.userForgotPassword(password: txtPassword.text!, phoneNumber: verifiedPhoneNumber).execute { userCredential in
+        KKApiClient.forgotPassword(password: txtPassword.text!, phoneNumber: verifiedPhoneNumber).execute { userCredential in
             self.hideAnimatedLoader()
             self.showAlertView(type: .Success, alertMessage: userCredential.message ?? "")
 
@@ -205,9 +205,9 @@ class KKRegistrationViewController: KKBaseViewController {
         }
     }
     
-    @objc func userAccountLogin() {
+    @objc func loginAPI() {
         
-        KKApiClient.userAccountLogin(username: txtUsername.text!, password: txtPassword.text!).execute { userCredential in
+        KKApiClient.login(username: txtUsername.text!, password: txtPassword.text!).execute { userCredential in
             KeychainSwift().set(self.txtUsername.text!, forKey: CacheKey.username)
             KeychainSwift().set(self.txtPassword.text!, forKey: CacheKey.secret)
             
@@ -229,7 +229,7 @@ class KKRegistrationViewController: KKBaseViewController {
             
             if let userWalletResult = userWalletResponse.results {
                 
-                self.getUserProfile(walletBalance: userWalletResult.walletBalance!)
+                self.getUserProfilAPI(walletBalance: userWalletResult.walletBalance!)
             }
             
         } onFailure: { errorMessage in
@@ -239,7 +239,7 @@ class KKRegistrationViewController: KKBaseViewController {
         }
     }
     
-    @objc func getUserProfile(walletBalance: Float) {
+    @objc func getUserProfilAPI(walletBalance: Float) {
         
         KKApiClient.getUserProfile().execute { userProfileResponse in
             

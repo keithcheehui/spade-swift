@@ -61,7 +61,7 @@ class KKUtil: NSObject {
     
     ///Check input validation
     class func isValidInput(testStr: String) -> Bool {
-        let inputRegEx = "^.{8,}$"
+        let inputRegEx = "^.{6,12}$"
         let inputCheck = NSPredicate(format: "SELF MATCHES %@",inputRegEx)
         return inputCheck.evaluate(with: testStr)
     }
@@ -113,8 +113,13 @@ class KKUtil: NSObject {
     
     ///logout user
     class func logOutUser() {
-        cleanSet()
-        KKUtil.proceedToPage(vc: KKSplashScreenViewController.init())
+        KKApiClient.logOutUser().execute { res in
+            cleanSet()
+            KKUtil.proceedToPage(vc: KKSplashScreenViewController.init())
+        } onFailure: { errorMessage in
+            cleanSet()
+            KKUtil.proceedToPage(vc: KKSplashScreenViewController.init())
+        }
     }
     
     class func cleanSet() {

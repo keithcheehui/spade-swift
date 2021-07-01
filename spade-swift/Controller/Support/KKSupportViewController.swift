@@ -31,7 +31,7 @@ class KKSupportViewController: KKBaseViewController {
         appendSideMenuList()
         
         buttonHover(type: SupportSideMenu.liveChat.rawValue)
-        getCustomerLiveChat()
+        getLiveChatAPI()
     }
     
     func initialLayout(){
@@ -79,11 +79,11 @@ class KKSupportViewController: KKBaseViewController {
     
     //MARK:- API Calls
     
-    func getCustomerLiveChat() {
+    func getLiveChatAPI() {
         
         self.showAnimatedLoader()
         
-        KKApiClient.getCustomerLiveChat().execute { LiveChatResponse in
+        KKApiClient.getLiveChat().execute { LiveChatResponse in
             
             self.hideAnimatedLoader()
             self.liveChatArray = LiveChatResponse.results?.live_chats

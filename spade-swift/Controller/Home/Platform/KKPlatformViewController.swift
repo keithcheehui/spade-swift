@@ -39,7 +39,7 @@ class KKPlatformViewController: KKBaseViewController {
         initFlowLayout()
         
         if (!platformCode!.isEmpty){
-            getProductList(pCode: platformCode!)
+            getGameTypeListingAPI(pCode: platformCode!)
         }
     }
     
@@ -83,10 +83,10 @@ class KKPlatformViewController: KKBaseViewController {
         gameCollectionView.register(UINib(nibName: "KKPlatfromGameItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.platformGameItemCVCIdentifier)
     }
     
-    func getProductList(pCode: String) {
+    func getGameTypeListingAPI(pCode: String) {
         self.showAnimatedLoader()
         
-        KKApiClient.getAllPlatformProduct(gCode: pCode).execute { groupPlatformResponse in
+        KKApiClient.getGameTypeListing(gCode: pCode).execute { groupPlatformResponse in
             
             self.hideAnimatedLoader()
             self.menuListArray = groupPlatformResponse.results!.gameTypeListing!

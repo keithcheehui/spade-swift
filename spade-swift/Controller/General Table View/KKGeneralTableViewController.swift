@@ -156,11 +156,11 @@ class KKGeneralTableViewController: KKTableBaseViewController {
         }
         
         if tableViewType == .BettingRecord {
-            self.getUserBettingRecord(leftPicker: leftItem, rightPicker: rightItem, tabItem: selectedTabItem)
+            self.getUserBettingRecordAPI(leftPicker: leftItem, rightPicker: rightItem, tabItem: selectedTabItem)
         } else if tableViewType == .AccountDetails {
-            self.getUserCashFlow(leftPicker: leftItem, tabItem: selectedTabItem)
+            self.getUserAccountDetailsAPI(leftPicker: leftItem, tabItem: selectedTabItem)
         } else if tableViewType == .WithdrawHistory {
-            self.getUserWithdrawHistory(leftPicker: leftItem)
+            self.withdrawHistoryAPI(leftPicker: leftItem)
         }
     }
     

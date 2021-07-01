@@ -39,7 +39,7 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
 
         initialLayout()
-        getPromotionList()
+        getPromotionAPI()
         
         let size = KKUtil.ConvertSizeByDensity(size: 400)
         let flowLayout = UICollectionViewFlowLayout()
@@ -93,11 +93,11 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
     
     //MARK:- API Calls
     
-    func getPromotionList() {
+    func getPromotionAPI() {
                 
         self.showAnimatedLoader()
         
-        KKApiClient.getPromotionContent().execute { [self] promotionResponse in
+        KKApiClient.getPromotion().execute { [self] promotionResponse in
             
             self.hideAnimatedLoader()
 

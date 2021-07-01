@@ -21,7 +21,7 @@ class KKMessageListViewController: KKBaseViewController {
         super.viewDidLoad()
 
         initialLayout()
-        self.getInboxMessageContent()
+        self.getInboxAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,11 +43,11 @@ class KKMessageListViewController: KKBaseViewController {
 
     //MARK:- API Calls
     
-    func getInboxMessageContent() {
+    func getInboxAPI() {
         
         self.showAnimatedLoader()
         
-        KKApiClient.getInboxMessageContent().execute { systemMessageResponse in
+        KKApiClient.getInbox().execute { systemMessageResponse in
             
             self.hideAnimatedLoader()
             self.inboxMessageArray = systemMessageResponse.results?.inboxMessages
@@ -60,7 +60,7 @@ class KKMessageListViewController: KKBaseViewController {
         }
     }
     
-    func updateInboxReadStatus(messageId: Int) {
+    func updateInboxReadStatusAPI(messageId: Int) {
         KKApiClient.updateInboxReadStatus(msgId: messageId).execute { systemMessageResponse in
             self.inboxMessageArray[self.selectedMessageIndex].status = "Read"
             self.messageTableView.reloadData()
@@ -124,7 +124,7 @@ extension KKMessageListViewController: UITableViewDelegate, UITableViewDataSourc
         
         if (selectedMessageIndex > -1) {
             if (inboxMessageArray[selectedMessageIndex].status != "Read") {
-                updateInboxReadStatus(messageId: inboxMessageArray[selectedMessageIndex].id!)
+                updateInboxReadStatusAPI(messageId: inboxMessageArray[selectedMessageIndex].id!)
             }
         }
         

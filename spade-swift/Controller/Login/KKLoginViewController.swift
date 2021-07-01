@@ -129,13 +129,13 @@ class KKLoginViewController: KKBaseViewController {
         }
         
         self.showAnimatedLoader()
-        self.userAccountLogin()
+        self.loginAPI()
     }
     
     //MARK:- API Calls
     
-    @objc func userAccountLogin() {
-        KKApiClient.userAccountLogin(username: txtUsername.text!, password: txtPassword.text!).execute { userCredential in
+    @objc func loginAPI() {
+        KKApiClient.login(username: txtUsername.text!, password: txtPassword.text!).execute { userCredential in
             KeychainSwift().set(self.txtUsername.text!, forKey: CacheKey.username)
             KeychainSwift().set(self.txtPassword.text!, forKey: CacheKey.secret)
             
@@ -154,7 +154,7 @@ class KKLoginViewController: KKBaseViewController {
     func getUserLatestWallet() {
         KKApiClient.getUserLatestWallet().execute { userWalletResponse in
             if let userWalletResult = userWalletResponse.results {
-                self.getUserProfile(walletBalance: userWalletResult.walletBalance!)
+                self.getUserProfilAPI(walletBalance: userWalletResult.walletBalance!)
             }
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
@@ -167,7 +167,7 @@ class KKLoginViewController: KKBaseViewController {
         }
     }
     
-    @objc func getUserProfile(walletBalance: Float) {
+    @objc func getUserProfilAPI(walletBalance: Float) {
         KKApiClient.getUserProfile().execute { userProfileResponse in
             guard var userProfile = userProfileResponse.results?.user![0] else { return }
             userProfile.walletBalance = walletBalance

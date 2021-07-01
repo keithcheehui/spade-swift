@@ -49,11 +49,11 @@ class KKTableBaseViewController: KKBaseViewController {
         self.setUpContentTableView()
         
         if tableViewType == .BettingRecord {
-            getUserBettingRecord(leftPicker: "", rightPicker: "", tabItem: selectedTabItem)
+            getUserBettingRecordAPI(leftPicker: "", rightPicker: "", tabItem: selectedTabItem)
         } else if tableViewType == .AccountDetails {
-            getUserCashFlow(leftPicker: "", tabItem: selectedTabItem)
+            getUserAccountDetailsAPI(leftPicker: "", tabItem: selectedTabItem)
         } else if tableViewType == .WithdrawHistory {
-            getUserWithdrawHistory(leftPicker: "")
+            withdrawHistoryAPI(leftPicker: "")
         }
     }
     
@@ -122,7 +122,7 @@ class KKTableBaseViewController: KKBaseViewController {
     
     //MARK:- API Calls
 
-    func getUserBettingRecord(leftPicker: String, rightPicker: String, tabItem: String)   {
+    func getUserBettingRecordAPI(leftPicker: String, rightPicker: String, tabItem: String)   {
         
         self.showAnimatedLoader()
         
@@ -139,11 +139,11 @@ class KKTableBaseViewController: KKBaseViewController {
         }
     }
     
-    func getUserCashFlow(leftPicker: String, tabItem: String) {
+    func getUserAccountDetailsAPI(leftPicker: String, tabItem: String) {
         
         self.showAnimatedLoader()
         
-        KKApiClient.getUserBettingCashFlow(filter: leftPicker, tabItem: tabItem).execute { cashFlowResponse in
+        KKApiClient.getUserAccountDetails(filter: leftPicker, tabItem: tabItem).execute { cashFlowResponse in
             
             self.hideAnimatedLoader()
             self.cashFlowArray = cashFlowResponse.results?.cashflows
@@ -156,11 +156,11 @@ class KKTableBaseViewController: KKBaseViewController {
         }
     }
     
-    func getUserWithdrawHistory(leftPicker: String) {
+    func withdrawHistoryAPI(leftPicker: String) {
         
         self.showAnimatedLoader()
         
-        KKApiClient.getMemberWithdrawHistory(historyStatus: leftPicker).execute { withdrawHistoryResponse in
+        KKApiClient.withdrawHistory(historyStatus: leftPicker).execute { withdrawHistoryResponse in
             
             self.hideAnimatedLoader()
             self.withdrawHistoryArray = withdrawHistoryResponse.results?.withdrawHistory

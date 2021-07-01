@@ -37,7 +37,7 @@ class KKPersonalViewController: KKBaseViewController {
         appendSideMenuList()
         
         initFlowLayout()
-        getTabArrayAPI()
+        getUserBettingPlatformsAndGroupsAPI()
         
         buttonHover(type: selectedViewType, needRefresh: true)
         
@@ -117,7 +117,7 @@ class KKPersonalViewController: KKBaseViewController {
             
             if let userWalletResult = userWalletResponse.results {
                 
-                self.getUserProfile(walletBalance: userWalletResult.walletBalance!)
+                self.getUserProfilAPI(walletBalance: userWalletResult.walletBalance!)
             }
             
         } onFailure: { errorMessage in
@@ -127,7 +127,7 @@ class KKPersonalViewController: KKBaseViewController {
         }
     }
     
-    @objc func getUserProfile(walletBalance: Float) {
+    @objc func getUserProfilAPI(walletBalance: Float) {
         
         KKApiClient.getUserProfile().execute { userProfileResponse in
             
@@ -143,8 +143,8 @@ class KKPersonalViewController: KKBaseViewController {
         }
     }
     
-    func getTabArrayAPI() {
-        KKApiClient.getUserBettingGroupAndPlatform().execute { response in
+    func getUserBettingPlatformsAndGroupsAPI() {
+        KKApiClient.getUserBettingPlatformsAndGroups().execute { response in
             guard let groups = response.results?.groups else { return }
             guard let platforms = response.results?.platforms else { return }
 

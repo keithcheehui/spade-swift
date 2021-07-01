@@ -19,7 +19,7 @@ class KKFaqViewController: KKBaseViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.getCustomerFAQ()
+        self.getFAQAPI()
         
         faqTableView.isHidden = true
         
@@ -34,9 +34,9 @@ class KKFaqViewController: KKBaseViewController, WKNavigationDelegate {
     
     //MARK:- API Calls
     
-    func getCustomerFAQ() {
+    func getFAQAPI() {
                 
-        KKApiClient.getCustomerFAQ().execute { [self] FAQResponse in
+        KKApiClient.getFAQ().execute { [self] FAQResponse in
             
             self.faqArray = FAQResponse.results?.faqs
             

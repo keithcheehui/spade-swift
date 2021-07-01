@@ -39,12 +39,12 @@ class KKSplashScreenViewController: KKBaseViewController {
         if KKUtil.isConnectedToInternet() {
             if (KeychainSwift().get(CacheKey.username) == nil || KeychainSwift().get(CacheKey.secret) == nil) {
                 KKUtil.cleanSet()
-                self.getAppVersion()
+                self.getAppVersionAPI()
             } else if (KeychainSwift().get(CacheKey.username)!.isEmpty || KeychainSwift().get(CacheKey.secret)!.isEmpty) {
                 KKUtil.cleanSet()
-                self.getAppVersion()
+                self.getAppVersionAPI()
             } else {
-                self.userAccountLogin(username: KeychainSwift().get(CacheKey.username)!, password: KeychainSwift().get(CacheKey.secret)!)
+                self.loginAPI(username: KeychainSwift().get(CacheKey.username)!, password: KeychainSwift().get(CacheKey.secret)!)
             }
         } else {
             self.showAlertView(type: .Error, alertMessage: "error_internet_connection_desc")
@@ -112,9 +112,9 @@ class KKSplashScreenViewController: KKBaseViewController {
     
     //MARK:- API Calls
     
-    func userAccountLogin(username: String, password: String) {
+    func loginAPI(username: String, password: String) {
         
-        KKApiClient.userAccountLogin(username: username, password: password).execute { userCredential in
+        KKApiClient.login(username: username, password: password).execute { userCredential in
         
             KKTokenManager.setUserCredential(userCredential: userCredential)
             UserDefaults.standard.set(true, forKey: CacheKey.loginStatus)
@@ -124,13 +124,13 @@ class KKSplashScreenViewController: KKBaseViewController {
             
         } onFailure: { errorMessage in
             KKUtil.cleanSet()
-            self.getAppVersion()
+            self.getAppVersionAPI()
         }
     }
     
     func getLandingDetails() {
         
-        KKApiClient.getMemberLandingDetails().execute { landingDetailsResponse in
+        KKApiClient.memberLandingData().execute { landingDetailsResponse in
             
             if let landingDetailsResults = landingDetailsResponse.results {
                 
@@ -158,17 +158,17 @@ class KKSplashScreenViewController: KKBaseViewController {
                 KKSingleton.sharedInstance.groupPlatformArray = landingDetailsResults.groups!
             }
             
-            self.getAppVersion()
+            self.getAppVersionAPI()
             
         } onFailure: { errorMessage in
             
-            self.getAppVersion()
+            self.getAppVersionAPI()
         }
     }
     
-    func getAppVersion() {
+    func getAppVersionAPI() {
         
-        KKApiClient.getAppVersion().execute { appVersionResponse in
+        KKApiClient.appVersion().execute { appVersionResponse in
                         
             guard let appVersionDetails = appVersionResponse.results else { return }
             

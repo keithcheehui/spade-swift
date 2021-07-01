@@ -103,6 +103,7 @@ struct APIKeys {
     static let filterDuration = "filter_duration"
     static let inboxMessageId = "inbox_message_id"
     static let transStatus = "trans_status"
+    static let bankAccountCardId = "bank_account_card_id"
 }
 
 struct APIValue {
@@ -198,11 +199,11 @@ enum HTTPHeaderField: String {
     
     case contentType = "Content-Type"
     case authorization = "Authorization"
+    case accept = "Accept"
 }
 
-enum ContentType: String {
-    
-    case json = "application/json"
+enum HTTPHeaderFieldValue: String {
+    case contentType = "application/json"
 }
 
 enum TableViewType: Int {

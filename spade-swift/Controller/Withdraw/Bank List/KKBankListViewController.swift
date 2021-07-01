@@ -44,7 +44,7 @@ class KKBankListViewController: KKBaseViewController {
     func getBankListAPI() {
         self.showAnimatedLoader()
         
-        KKApiClient.getMemberWithdrawBankAccount().execute { withdrawBankResponse in
+        KKApiClient.getWithdrawPageData().execute { withdrawBankResponse in
             self.hideAnimatedLoader()
             self.userBankList = withdrawBankResponse.results?.userBanks
             self.bankItemList = withdrawBankResponse.results?.bankNames

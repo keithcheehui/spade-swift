@@ -264,9 +264,9 @@ class KKOTPViewController: KKBaseViewController {
             }
             
             if (isFromForgotPassword) {
-                self.requestForgotPasswordOTP()
+                self.forgotPasswordOTPRequestAPI()
             } else {
-                self.requestPhoneNumberOTP()
+                self.registerOTPRequestAPI()
             }
         }
     }
@@ -281,10 +281,10 @@ class KKOTPViewController: KKBaseViewController {
     
     //MARK:- API Calls
     
-    @objc func requestPhoneNumberOTP() {
+    @objc func registerOTPRequestAPI() {
         self.showAnimatedLoader()
         
-        KKApiClient.sendOTPRequest(phoneNumber: phoneNumber).execute { KKOTPRequestResponse in
+        KKApiClient.registerOTPRequest(phoneNumber: phoneNumber).execute { KKOTPRequestResponse in
             self.hideAnimatedLoader()
             self.resendView.isHidden = false
             self.timerCountdown = 60
@@ -300,10 +300,10 @@ class KKOTPViewController: KKBaseViewController {
         }
     }
     
-    @objc func requestForgotPasswordOTP() {
+    @objc func forgotPasswordOTPRequestAPI() {
         self.showAnimatedLoader()
         
-        KKApiClient.sendForgotPasswordOTPRequest(phoneNumber: phoneNumber).execute { KKOTPRequestResponse in
+        KKApiClient.forgotPasswordOTPRequest(phoneNumber: phoneNumber).execute { KKOTPRequestResponse in
             self.hideAnimatedLoader()
             self.resendView.isHidden = false
             self.timerCountdown = 60
@@ -328,7 +328,7 @@ class KKOTPViewController: KKBaseViewController {
             self.showAnimatedLoader()
             
             if (isFromForgotPassword) {
-                KKApiClient.proceedForgotPasswordOTPVerification(phoneNumber: phoneNumber, otpCode: OTPCode).execute { generalResponse in
+                KKApiClient.forgotPasswordOTPVerify(phoneNumber: phoneNumber, otpCode: OTPCode).execute { generalResponse in
                     self.hideAnimatedLoader()
                     self.closeOTPAndOpenRegistration()
                 } onFailure: { errorMessage in
@@ -336,7 +336,7 @@ class KKOTPViewController: KKBaseViewController {
                     self.showAlertView(type: .Error, alertMessage: errorMessage)
                 }
             } else {
-                KKApiClient.proceedOTPVerification(phoneNumber: phoneNumber, otpCode: OTPCode).execute { generalResponse in
+                KKApiClient.registerOTPVerify(phoneNumber: phoneNumber, otpCode: OTPCode).execute { generalResponse in
                     self.hideAnimatedLoader()
                     self.closeOTPAndOpenRegistration()
                 } onFailure: { errorMessage in

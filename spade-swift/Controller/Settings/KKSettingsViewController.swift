@@ -359,7 +359,7 @@ class KKSettingsViewController: KKBaseViewController {
             return
         }
         
-        userChangePassword()
+        changePasswordAPI()
     }
     
     func buttonHover(type: Int){
@@ -386,7 +386,7 @@ class KKSettingsViewController: KKBaseViewController {
     
     //MARK:- API Calls
     
-    @objc func userChangePassword() {
+    @objc func changePasswordAPI() {
         
         self.showAnimatedLoader()
         

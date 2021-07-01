@@ -96,7 +96,7 @@ class KKWithdrawRequestViewController: KKBaseViewController {
     func getBankListAPI() {
         self.showAnimatedLoader()
         
-        KKApiClient.getMemberWithdrawBankAccount().execute { withdrawBankResponse in
+        KKApiClient.getWithdrawPageData().execute { withdrawBankResponse in
             self.hideAnimatedLoader()
             self.userBankList = withdrawBankResponse.results?.userBanks
             self.bankItemList = withdrawBankResponse.results?.bankNames
@@ -122,10 +122,10 @@ class KKWithdrawRequestViewController: KKBaseViewController {
             return
         }
         
-        performWithdrawAPI()
+        withdrawAPI()
     }
     
-    func performWithdrawAPI(){
+    func withdrawAPI(){
         self.showAnimatedLoader()
         
         let amount: String = txtWithdrawAmount.text!
@@ -133,7 +133,7 @@ class KKWithdrawRequestViewController: KKBaseViewController {
         
         let bankAccount = userBankList[selectedBankItem].bankAccountNumber!
         
-        KKApiClient.updateMemberWithdrawal(amount: amountFloat!, bankAcc: bankAccount).execute { withdrawResponse in
+        KKApiClient.withdraw(amount: amountFloat!, bankAcc: bankAccount).execute { withdrawResponse in
             self.hideAnimatedLoader()
             self.txtWithdrawAmount.text = ""
             self.showAlertView(type: .Success, alertMessage: withdrawResponse.message ?? "")

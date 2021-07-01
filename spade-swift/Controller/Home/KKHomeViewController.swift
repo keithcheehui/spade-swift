@@ -97,7 +97,7 @@ class KKHomeViewController: KKBaseViewController {
             self.menuCollectionView.reloadData()
             self.selectedDefaultSideMenu()
         } else {
-            self.getContentGroupAndPlatform()
+            self.getGroupAndPlatformAPI()
         }
     }
     
@@ -302,11 +302,11 @@ class KKHomeViewController: KKBaseViewController {
         
     }
     
-    func getContentGroupAndPlatform() {
+    func getGroupAndPlatformAPI() {
         
         self.showAnimatedLoader()
         
-        KKApiClient.getContentGroupsAndPlatform().execute { groupPlatformResponse in
+        KKApiClient.getGroupAndPlatform().execute { groupPlatformResponse in
             
             self.hideAnimatedLoader()
             KKSingleton.sharedInstance.groupPlatformArray = groupPlatformResponse.results!.groups!
@@ -495,16 +495,15 @@ class KKHomeViewController: KKBaseViewController {
 
             let ratio = balance / next
             expBar.progress = Float(ratio)
-            
             messageUnread = userProfile.inboxUnreadMessages!
-            updateUnreadStatus()
         }
         else {
             lblProfileName.text = KKUtil.languageSelectedStringForKey(key: "home_guest")
             lblVip.text = "VIP 1"
             lblMoney.text = "0"
         }
-        
+        updateUnreadStatus()
+
         imgProfile.image = UIImage(named: "ic_profile")
         lblLanguage.text = KKUtil.decodeUserLanguageFromCache().name
         countryImageView.setUpImage(with: KKUtil.decodeUserCountryFromCache().img)

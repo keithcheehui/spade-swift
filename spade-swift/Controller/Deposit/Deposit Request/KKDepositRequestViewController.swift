@@ -168,11 +168,11 @@ class KKDepositRequestViewController: KKBaseViewController {
     
     //MARK:- API Calls
     
-    func getUserDepositHistory() {
+    func depositHistoryAPI() {
         
         self.showAnimatedLoader()
         
-        KKApiClient.getMemberDepositHistory().execute { depositHistoryResponse in
+        KKApiClient.depositHistory(historyStatus: "").execute { depositHistoryResponse in
             
             self.hideAnimatedLoader()
             let viewController = KKGeneralPopUpTableViewController.init()
@@ -199,7 +199,7 @@ class KKDepositRequestViewController: KKBaseViewController {
     }
     
     @IBAction func btnDepositHistoryDidPressed(){
-        self.getUserDepositHistory()
+        self.depositHistoryAPI()
     }
     
     @IBAction func btnChannelDidPressed(){

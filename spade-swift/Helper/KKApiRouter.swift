@@ -10,60 +10,55 @@ import Alamofire
 
 enum ApiRouter: URLRequestConvertible {
     
-    // MARK: - APP Version
-    case appVersion(parameter: [String: Any])
-    
-    // MARK: - Guest/Member Landing
-    case guestLandingDetails(parameter: [String: Any])
-    case memberLandingDetails(parameter: [String: Any])
-    
-    // MARK: - OTP
-    case otpRequest(parameter: [String: Any])
-    case otpVerify(parameter: [String: Any])
+    //MARK: - Auth
+    case registerOTPRequest(parameter: [String: Any])
+    case registerOTPVerify(parameter: [String: Any])
+    case registration(parameter: [String: Any])
+    case login(parameter: [String: Any])
     case forgotPasswordOTPRequest(parameter: [String: Any])
     case forgotPasswordOTPVerify(parameter: [String: Any])
+    case forgotPassword(parameter: [String: Any])
 
-    // MARK: - OAuth
-    case userAccountLogin(parameter: [String: Any])
-    case userAccountRegistration(parameter: [String: Any])
-    case userForgotPassword(parameter: [String: Any])
-    case logOutUser
+    //MARK: - Public
+    case appVersion(parameter: [String: Any])
+    case guestLandingData(parameter: [String: Any])
+    case getGroupAndPlatform(parameter: [String: Any])
+    case getGameTypeListing(parameter: [String: Any])
+    case getAnnouncement(parameter: [String: Any])
+    case getFAQ(parameter: [String: Any])
+    case getLiveChat(parameter: [String: Any])
+    case getPromotion(parameter: [String: Any])
+    case getAffiliateGuideline(parameter: [String: Any])
     
-    // MARK: - User Profile
+    //MARK: - Private
+    //MARK: - Deposit / Withdrawal
+    case addUserBankCard(parameter: [String: Any])
+    case deleteUserBankCard(parameter: [String: Any])
+    case depositPageData
+    case deposit(parameter: [String: Any])
+    case depositHistory(parameter: [String: Any])
+    case withdrawPageData
+    case withdraw(parameter: [String: Any])
+    case withdrawHistory(parameter: [String: Any])
+
+    //MARK: - Personal Center
     case getUserProfile
     case updateUserProfile(parameter: [String: Any])
+    case getUserBettingPlatformsAndGroups(parameter: [String: Any])
+    case getUserAccountDetails(parameter: [String: Any])
+    case getUserBettingRecord(parameter: [String: Any])
+    
+    //MARK: - Inbox
+    case getInbox(parameter: [String: Any])
+    case getInboxReadStatus
+    case updateInboxReadStatus(parameter: [String: Any])
+    
+    case memberLandingData(parameter: [String: Any])
+    case getLatestWallet
     case updateUserLanguagePreference(parameter: [String: Any])
     case changePassword(parameter: [String: Any])
-
-    // MARK: - User Details
-    case getLatestWallet
-    case getUserBettingGroupAndPlatform(parameter: [String: Any])
-    case getUserBettingRecord(parameter: [String: Any])
-    case getUserBettingCashflow(parameter: [String: Any])
+    case logOutUser
     
-    // MARK: - Content
-    case getAnnouncementContent(parameter: [String: Any])
-    case getGroupAndPlatformContent(parameter: [String: Any])
-    case getPlatformProductsContent(parameter: [String: Any])
-    case getInboxMessageContent(parameter: [String: Any])
-    case updateInboxReadStatus(parameter: [String: Any])
-    case getPromotionContent(parameter: [String: Any])
-    case getAffiliateGuidelineContent(parameter: [String: Any])
-    
-    // MARK: - Customer Service
-    case customerFAQ(parameter: [String: Any])
-    case customerLiveChat(parameter: [String: Any])
-    
-    // MARK:- Member Deposit
-    case memberDepositBankAccount
-    case memberDeposit(parameter: [String: Any])
-    case memberDepositHistory(parameter: [String: Any])
-    
-    // MARK:- Member Withdraw
-    case addMemberWithdrawBankAccount(parameter: [String: Any])
-    case memberWithdrawBankAccount
-    case memberWithdrawal(parameter: [String: Any])
-    case memberWithdrawHistory(parameter: [String: Any])
     
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
@@ -71,45 +66,49 @@ enum ApiRouter: URLRequestConvertible {
         switch self {
         
         case .appVersion,
-             .guestLandingDetails,
-             .memberLandingDetails,
+             .guestLandingData,
+             .getGroupAndPlatform,
+             .getGameTypeListing,
+             .getAnnouncement,
+             .getFAQ,
+             .getLiveChat,
+             .getPromotion,
+             .getAffiliateGuideline,
+             .depositPageData,
+             .depositHistory,
+             .withdrawPageData,
+             .withdrawHistory,
              .getUserProfile,
-             .getLatestWallet,
-             .getUserBettingGroupAndPlatform,
+             .getUserBettingPlatformsAndGroups,
+             .getUserAccountDetails,
              .getUserBettingRecord,
-             .getUserBettingCashflow,
-             .customerFAQ,
-             .customerLiveChat,
-             .getAnnouncementContent,
-             .getGroupAndPlatformContent,
-             .getPlatformProductsContent,
-             .getInboxMessageContent,
-             .getPromotionContent,
-             .getAffiliateGuidelineContent,
-             .memberDepositBankAccount,
-             .memberDepositHistory,
-             .memberWithdrawBankAccount,
-             .memberWithdrawHistory:
+             .getInbox,
+             .getInboxReadStatus,
+             .memberLandingData,
+             .getLatestWallet:
             return .get
         
-        case .otpRequest,
-             .otpVerify,
+        case .registerOTPRequest,
+             .registerOTPVerify,
+             .registration,
+             .login,
              .forgotPasswordOTPRequest,
              .forgotPasswordOTPVerify,
-             .userAccountLogin,
-             .userAccountRegistration,
-             .userForgotPassword,
-             .addMemberWithdrawBankAccount,
-             .logOutUser,
+             .forgotPassword,
+             .addUserBankCard,
+             .deposit,
+             .withdraw,
+             .updateInboxReadStatus,
              .changePassword,
-             .updateInboxReadStatus:
+             .logOutUser:
             return .post
             
         case .updateUserProfile,
-             .updateUserLanguagePreference,
-             .memberDeposit,
-             .memberWithdrawal:
+             .updateUserLanguagePreference:
             return .put
+            
+        case .deleteUserBankCard:
+            return .delete
         }
     }
     
@@ -118,35 +117,77 @@ enum ApiRouter: URLRequestConvertible {
         
         switch self {
         
-        case .appVersion:
-            return "version"
-            
-        case .guestLandingDetails:
-            return "content/guestLanding"
-            
-        case .memberLandingDetails:
-            return "member/memberLanding"
-        
-        case .otpRequest:
+        case .registerOTPRequest:
             return "otp/request"
             
-            case .otpVerify:
-                return "otp/verify"
+        case .registerOTPVerify:
+            return "otp/verify"
             
+        case .registration:
+            return "register"
+            
+        case .login:
+            return "login"
+
         case .forgotPasswordOTPRequest:
             return "otp/forgot/request"
             
         case .forgotPasswordOTPVerify:
             return "otp/forgot/verify"
             
-        case .userAccountLogin:
-            return "login"
-            
-        case .userAccountRegistration:
-            return "register"
-            
-        case .userForgotPassword:
+        case .forgotPassword:
             return "password/forgot"
+            
+        case .appVersion:
+            return "version"
+        
+        case .guestLandingData:
+            return "content/guestLanding"
+            
+        case .getGroupAndPlatform:
+            return "content/groups"
+            
+        case .getGameTypeListing:
+            return "content/gameTypeListing"
+            
+        case .getAnnouncement:
+            return "content/announcements"
+            
+        case .getFAQ:
+            return "customerService/faqs"
+            
+        case .getLiveChat:
+            return "customerService/liveChats"
+            
+        case .getPromotion:
+            return "content/promotions"
+            
+        case .getAffiliateGuideline:
+            return "content/affiliate_guidelines"
+            
+        case .addUserBankCard:
+            return "member/finance/addUserBankCard"
+            
+        case .deleteUserBankCard:
+            return "member/finance/removeUserBankCard"
+            
+        case .depositPageData:
+            return "member/deposit/depositPageData"
+            
+        case .deposit:
+            return "member/deposit/deposit"
+        
+        case .depositHistory:
+            return "member/deposit/depositHistory"
+            
+        case .withdrawPageData:
+            return "member/withdraw/withdrawPageData"
+            
+        case .withdraw:
+            return "member/withdraw/withdrawal"
+                
+        case .withdrawHistory:
+            return "member/withdraw/withdrawHistory"
             
         case .getUserProfile:
             return "member/profile"
@@ -154,71 +195,35 @@ enum ApiRouter: URLRequestConvertible {
         case .updateUserProfile:
             return "member/updateUserProfile"
             
+        case .getUserBettingPlatformsAndGroups:
+            return "member/betslipsPlatformsAndGroups"
+            
+        case .getUserAccountDetails:
+            return "member/cashflows"
+            
+        case .getUserBettingRecord:
+            return "member/betslips"
+            
+        case .getInbox:
+            return "member/inbox"
+            
+        case .getInboxReadStatus:
+            return "member/inboxUnreadMsgsBoolean"
+            
+        case .updateInboxReadStatus:
+            return "member/updateInboxReadStatus"
+            
+        case .memberLandingData:
+            return "member/memberLanding"
+            
+        case .getLatestWallet:
+            return "member/latestWalletBalance"
+        
         case .updateUserLanguagePreference:
             return "member/updateUserLanguagePreference"
             
         case .changePassword:
             return "member/password/change"
-            
-        case .getLatestWallet:
-            return "member/latestWalletBalance"
-            
-        case .getUserBettingGroupAndPlatform:
-            return "member/betslipsPlatformsAndGroups"
-                
-        case .getUserBettingRecord:
-            return "member/betslips"
-                
-        case .getUserBettingCashflow:
-            return "member/cashflows"
-            
-        case .customerFAQ:
-            return "customerService/faqs"
-            
-        case .customerLiveChat:
-            return "customerService/liveChats"
-            
-        case .getAnnouncementContent:
-            return "content/announcements"
-            
-        case .getGroupAndPlatformContent:
-            return "content/groups"
-            
-        case .getPlatformProductsContent:
-            return "content/gameTypeListing"
-            
-        case .getInboxMessageContent:
-            return "member/inbox"
-            
-        case .updateInboxReadStatus:
-            return "member/updateInboxReadStatus"
-            
-        case .getPromotionContent:
-            return "content/promotions"
-            
-        case .getAffiliateGuidelineContent:
-            return "content/affiliate_guidelines"
-            
-        case .memberDepositBankAccount:
-            return "member/deposit/bankAccounts"
-            
-        case .memberDeposit:
-            return "member/deposit/deposit"
-        
-        case .memberDepositHistory:
-            return "member/deposit/depositHistory"
-            
-        case .addMemberWithdrawBankAccount:
-            return "member/withdraw/addUserBankAccount"
-            
-        case .memberWithdrawBankAccount:
-            return "member/withdraw/bankAccounts"
-            
-        case .memberWithdrawal:
-            return "member/withdraw/withdrawal"
-                
-        case .memberWithdrawHistory:
-            return "member/withdraw/withdrawHistory"
             
         case .logOutUser:
             return "logout"
@@ -229,20 +234,16 @@ enum ApiRouter: URLRequestConvertible {
     private var parameters: Parameters? {
            
         switch self {
+        case .registerOTPRequest(let parameter):
+            return parameter
         
-        case .appVersion(let parameter):
+        case .registerOTPVerify(let parameter):
             return parameter
             
-        case .guestLandingDetails(let parameter):
+        case .registration(let parameter):
             return parameter
             
-        case .memberLandingDetails(let parameter):
-            return parameter
-            
-        case .otpRequest(let parameter):
-            return parameter
-            
-        case .otpVerify(let parameter):
+        case .login(let parameter):
             return parameter
             
         case .forgotPasswordOTPRequest(let parameter):
@@ -251,16 +252,73 @@ enum ApiRouter: URLRequestConvertible {
         case .forgotPasswordOTPVerify(let parameter):
             return parameter
             
-        case .userAccountLogin(let parameter):
+        case .forgotPassword(let parameter):
             return parameter
             
-        case .userAccountRegistration(let parameter):
+        case .appVersion(let parameter):
+            return parameter
+        
+        case .guestLandingData(let parameter):
             return parameter
             
-        case .userForgotPassword(let parameter):
+        case .getGroupAndPlatform(let parameter):
+            return parameter
+
+        case .getGameTypeListing(let parameter):
+            return parameter
+            
+        case .getAnnouncement(let parameter):
+            return parameter
+            
+        case .getFAQ(let parameter):
+            return parameter
+            
+        case .getLiveChat(let parameter):
+            return parameter
+            
+        case .getPromotion(let parameter):
+            return parameter
+            
+        case .getAffiliateGuideline(let parameter):
+            return parameter
+            
+        case .addUserBankCard(let parameter):
+            return parameter
+            
+        case .deleteUserBankCard(let parameter):
+            return parameter
+            
+        case .deposit(let parameter):
+            return parameter
+            
+        case .depositHistory(let parameter):
+            return parameter
+            
+        case .withdraw(let parameter):
+            return parameter
+            
+        case .withdrawHistory(let parameter):
             return parameter
             
         case .updateUserProfile(let parameter):
+            return parameter
+            
+        case .getUserBettingPlatformsAndGroups(let parameter):
+            return parameter
+            
+        case .getUserAccountDetails(let parameter):
+            return parameter
+            
+        case .getUserBettingRecord(let parameter):
+            return parameter
+            
+        case .getInbox(let parameter):
+            return parameter
+            
+        case .updateInboxReadStatus(let parameter):
+            return parameter
+            
+        case .memberLandingData(let parameter):
             return parameter
             
         case .updateUserLanguagePreference(let parameter):
@@ -269,61 +327,11 @@ enum ApiRouter: URLRequestConvertible {
         case .changePassword(let parameter):
             return parameter
             
-        case .getUserBettingGroupAndPlatform(let parameter):
-            return parameter
-            
-        case .getUserBettingRecord(let parameter):
-            return parameter
-            
-        case .getUserBettingCashflow(let parameter):
-            return parameter
-            
-        case .customerFAQ(let parameter):
-            return parameter
-            
-        case .customerLiveChat(let parameter):
-            return parameter
-            
-        case .getAnnouncementContent(let parameter):
-            return parameter
-            
-        case .getGroupAndPlatformContent(let parameter):
-            return parameter
-            
-        case .getPlatformProductsContent(let parameter):
-            return parameter
-            
-        case .getInboxMessageContent(let parameter):
-            return parameter
-            
-        case .updateInboxReadStatus(let parameter):
-            return parameter
-            
-        case .getPromotionContent(let parameter):
-            return parameter
-
-        case .getAffiliateGuidelineContent(let parameter):
-            return parameter
-            
-        case .memberDeposit(let parameter):
-            return parameter
-            
-        case .memberDepositHistory(let parameter):
-            return parameter
-            
-        case .addMemberWithdrawBankAccount(let parameter):
-            return parameter
-            
-        case .memberWithdrawal(let parameter):
-            return parameter
-            
-        case .memberWithdrawHistory(let parameter):
-            return parameter
-            
-        case .getUserProfile,
+        case .getInboxReadStatus,
+             .depositPageData,
+             .withdrawPageData,
+             .getUserProfile,
              .getLatestWallet,
-             .memberDepositBankAccount,
-             .memberWithdrawBankAccount,
              .logOutUser:
             return nil
         }
@@ -352,8 +360,9 @@ enum ApiRouter: URLRequestConvertible {
         }
         
         urlRequest.httpMethod = method.rawValue
-        urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
-        
+        urlRequest.setValue(HTTPHeaderFieldValue.contentType.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        urlRequest.setValue(HTTPHeaderFieldValue.contentType.rawValue, forHTTPHeaderField: HTTPHeaderField.accept.rawValue)
+
         if UserDefaults.standard.bool(forKey: CacheKey.loginStatus)
         {
             urlRequest.setValue(String(format: "Bearer %@", KKTokenManager.accessToken()), forHTTPHeaderField: HTTPHeaderField.authorization.rawValue)
