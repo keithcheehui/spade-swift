@@ -329,6 +329,10 @@ class KKDepositRequestViewController: KKBaseViewController {
     }
     
     func depositAPI() {
+        return;
+        
+        self.showAnimatedLoader()
+        
         let parameter = [
             APIKeys.depositTime: txtDepositTime.text!,
             APIKeys.depositAmount: txtDepositAmount.text!,
@@ -341,7 +345,16 @@ class KKDepositRequestViewController: KKBaseViewController {
         ] as [String : Any]
         
         KKApiClient.deposit(parameter: parameter).execute { response in
+            self.hideAnimatedLoader()
             
+            let viewController = KKDialogAlertViewController.init()
+            viewController.alertType = .Deposit
+            viewController.transactionId = ""
+            self.present(viewController, animated: true, completion: nil)
+            
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
