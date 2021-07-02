@@ -69,6 +69,7 @@
 "personal_account_detail"                   = "Account Details";
 "personal_individual_report"                = "Individual Report";
 "personal_wallet"                           = "Wallet";
+"personal_bank_card"                        = "Bank Card";
 "personal_history"                          = "History";
 
 //MARK: Individual Report
@@ -141,7 +142,7 @@
 "rebate_rebate_profile_id"                  = "ID: ";
 
 //MARK: Message
-"message_system_mail"                       = "System Mail";
+"message_inbox"                             = "Inbox";
 "message_notification"                      = "Notification";
 "message_title"                             = "0/1 Message will be deleted after 1 month";
 
@@ -151,6 +152,7 @@
 
 //MARK: Deposit
 "deposit_bank_account"                      = "Bank Account";
+"deposit_history"                           = "History";
 "deposit_support"                           = "Support";
 "deposit_bank_name"                         = "Bank Name";
 "deposit_account_name"                      = "Account Name";
@@ -170,7 +172,7 @@
 
 //MARK: Withdraw
 "withdraw_withdraw"                         = "Withdraw";
-"withdraw_withdraw_history"                 = "Withdraw History";
+"withdraw_history"                          = "History";
 "withdraw_bank_card"                        = "Bank Card";
 "withdraw_withdraw_amount"                  = "Withdraw Amount";
 "withdraw_withdraw_placeholder"             = "Please enter withdraw amount";
@@ -178,12 +180,18 @@
 "withdraw_description"                      = "You have not add any bank account yet, please add bank account first before withdrawal";
 "withdraw_select_bank"                      = "Please select your bank account";
 "withdraw_add_bank"                         = "Add Bank Account";
-"withdraw_bank_account_name"                = "Bank Account Name";
-"withdraw_cardholder_name_placeholder"      = "Please enter real name. cannot be modified after submission";
-"withdraw_bank_name"                        = "Bank Name";
-"withdraw_bank_account"                     = "Bank Account Number";
-"withdraw_bank_account_placeholder"         = "Please enter the bank account number";
-"withdraw_add_bank_description"             = "Prompt: Please select the correct bank and fill with real name. When submit withdrawal, you will be transferred directly to this account. For security reason, you can't change it after adding the bank account. If you need to modify it, please contact customer service.";
+
+//MARK: Add Bank
+"add_bank_add_bank_account"                 = "Add Bank Account";
+"add_bank_all_bank_account"                 = "All Bank Account:";
+"add_bank_prompt"                           = "Prompt: Only 2 bank account are allowed to set up";
+"add_bank_bank_name"                        = "Bank Name";
+"add_bank_bank_name_placeholder"            = "Select Bank";
+"add_bank_bank_account_name"                = "Bank Account Name";
+"add_bank_bank_account_name_placeholder"    = "Please enter bank account name";
+"add_bank_bank_account_number"              = "Bank Account Number";
+"add_bank_bank_account_number_placeholder"  = "Please enter the bank account number";
+"add_bank_description"                      = "Prompt: Please select the correct bank and fill with REAL name. When submit withdrawal, you will be transferred directly to this account. For security reason, you CANT'T CHANGE or DELETE it after adding the bank account. If you need to modify it, please contact customer service.";
 
 //MARK: Announcement
 "announcement_back"                         = "BACK";
@@ -238,21 +246,22 @@
 //MARK: Picker
 "picker_fd_td"                                  = "Today";
 "picker_fd_yd"                                  = "Yesterday";
+"picker_fd_l7d"                                 = "Last 7 days";
 "picker_fd_tm"                                  = "This month";
 "picker_fd_lm"                                  = "Last month";
 "picker_fd_l90d"                                = "Last 90 days";
 "picker_ws_all"                                 = "All";
 "picker_ws_approved"                            = "Approved";
-"picker_ws_rejected"                            = "Rejected";
+"picker_ws_fail"                                = "Fail";
 "picker_ws_pending"                             = "Pending";
 "picker_cf_deposit"                             = "Deposit";
 "picker_cf_deposit_promo"                       = "Deposit Promotion";
 "picker_cf_withdrawal"                          = "Withdrawal";
 "picker_bet_time"                               = "Bet Time";
 "picker_game_platform"                          = "Gaming Platform";
-"picker_trans_time"                             = "Transaction Time";
-"picker_deposit_status"                         = "Deposit Status";
-"picker_withdraw_status"                        = "Withdrawal Status";
+"picker_trans_time"                             = "Transaction Date";
+"picker_deposit_status"                         = "Status";
+"picker_withdraw_status"                        = "Status";
 
 //MARK: Dialog Alert
 "alert_title_withdraw"                          = "Withdrawal Request Status";

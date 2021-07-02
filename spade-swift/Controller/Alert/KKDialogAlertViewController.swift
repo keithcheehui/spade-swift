@@ -32,6 +32,7 @@ class KKDialogAlertViewController: KKBaseViewController {
     @IBOutlet weak var btnLeftMarginRight: NSLayoutConstraint!
 
     var alertType: DialogAlertType!
+    var transactionId: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()

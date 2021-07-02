@@ -24,7 +24,6 @@ class KKDepositRequestViewController: KKBaseViewController {
 
     @IBOutlet weak var depositSectionView: UIView!
     @IBOutlet weak var lblDepositSection: UILabel!
-    @IBOutlet weak var lblDepositHistory: UILabel!
     
     @IBOutlet weak var lblDepositTime: UILabel!
     @IBOutlet weak var lblDepositTimeView: UIView!
@@ -57,6 +56,8 @@ class KKDepositRequestViewController: KKBaseViewController {
     @IBOutlet weak var depositItemMargin: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmHeight: NSLayoutConstraint!
     
+    var userBankList: [KKUserBankCards]! = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -95,7 +96,6 @@ class KKDepositRequestViewController: KKBaseViewController {
         lblAccountNumber.text = KKUtil.languageSelectedStringForKey(key: "deposit_account_number")
         lblCopy.text = KKUtil.languageSelectedStringForKey(key: "deposit_copy")
         lblDepositSection.text = KKUtil.languageSelectedStringForKey(key: "deposit_information")
-        lblDepositHistory.text = KKUtil.languageSelectedStringForKey(key: "deposit_history")
         lblDepositTime.text = KKUtil.languageSelectedStringForKey(key: "deposit_time")
         lblDepositChannel.text = KKUtil.languageSelectedStringForKey(key: "deposit_channel")
         lblDepositAmount.text = KKUtil.languageSelectedStringForKey(key: "deposit_amount")
@@ -109,7 +109,6 @@ class KKDepositRequestViewController: KKBaseViewController {
         
         lblBankSection.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
         lblDepositSection.font = lblBankSection.font
-        lblDepositHistory.font = lblBankSection.font
 
         lblBankName.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
         lblBankNameValue.font = lblBankName.font
@@ -147,7 +146,6 @@ class KKDepositRequestViewController: KKBaseViewController {
         lblAccountNameValue.textColor = lblBankNameValue.textColor
         lblAccountNumberValue.textColor = lblBankNameValue.textColor
         lblCopy.textColor = lblBankNameValue.textColor
-        lblDepositHistory.textColor = lblBankNameValue.textColor
         txtDepositTime.textColor = lblBankNameValue.textColor
         lblDepositChannelValue.textColor = lblBankNameValue.textColor
         txtDepositAmount.textColor = lblBankNameValue.textColor
@@ -168,24 +166,26 @@ class KKDepositRequestViewController: KKBaseViewController {
     
     //MARK:- API Calls
     
-    func depositHistoryAPI() {
-        
-        self.showAnimatedLoader()
-        
-        KKApiClient.depositHistory(historyStatus: "").execute { depositHistoryResponse in
-            
-            self.hideAnimatedLoader()
-            let viewController = KKGeneralPopUpTableViewController.init()
-            viewController.tableViewType = .DepositHistory
-            viewController.depositHistoryArray = depositHistoryResponse.results?.depositHistory
-            self.present(viewController, animated: false, completion: nil)
-            
-        } onFailure: { errorMessage in
-            
-            self.hideAnimatedLoader()
-            self.showAlertView(type: .Error, alertMessage: errorMessage)
-        }
-    }
+//    func depositHistoryAPI() {
+//
+//        self.showAnimatedLoader()
+//
+//        KKApiClient.depositHistory(historyStatus: "").execute { depositHistoryResponse in
+//
+//            self.hideAnimatedLoader()
+//            let viewController = KKGeneralPopUpTableViewController.init()
+//            viewController.leftDropdownOptions = pickerTimeArray
+//            viewController.rightDropdownOptions = pickerStatusArray
+//            viewController.tableViewType = .DepositHistory
+//            viewController.depositHistoryArray = depositHistoryResponse.results?.depositHistory
+//            self.present(viewController, animated: false, completion: nil)
+//
+//        } onFailure: { errorMessage in
+//
+//            self.hideAnimatedLoader()
+//            self.showAlertView(type: .Error, alertMessage: errorMessage)
+//        }
+//    }
     
     ///Button Actions
     @IBAction func btnBankNameDidPressed(){
@@ -198,9 +198,9 @@ class KKDepositRequestViewController: KKBaseViewController {
         self.showAlertView(type: .Success, alertMessage: KKUtil.languageSelectedStringForKey(key: "alert_copied"))
     }
     
-    @IBAction func btnDepositHistoryDidPressed(){
-        self.depositHistoryAPI()
-    }
+//    @IBAction func btnDepositHistoryDidPressed(){
+//        self.depositHistoryAPI()
+//    }
     
     @IBAction func btnChannelDidPressed(){
 

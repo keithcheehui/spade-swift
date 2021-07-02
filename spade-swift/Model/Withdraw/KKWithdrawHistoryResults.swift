@@ -1,7 +1,7 @@
 //
 //  KKWithdrawHistoryResults.swift
 //
-//  Created by Keith CheeHui on 17/06/2021
+//  Created by Wong Sai Khong on 02/07/2021
 //  Copyright (c) . All rights reserved.
 //
 
@@ -13,13 +13,13 @@ struct KKWithdrawHistoryResults: Codable {
     case withdrawHistory = "withdraw_history"
   }
 
-  var withdrawHistory: [KKWithdrawHistoryDetails]?
+  var withdrawHistory: [KKHistoryDetails]?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    withdrawHistory = try container.decodeIfPresent([KKWithdrawHistoryDetails].self, forKey: .withdrawHistory)
+    withdrawHistory = try container.decodeIfPresent([KKHistoryDetails].self, forKey: .withdrawHistory)
   }
 
 }

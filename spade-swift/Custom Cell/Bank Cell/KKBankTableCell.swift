@@ -13,9 +13,11 @@ class KKBankTableCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var imgBank: UIImageView!
     @IBOutlet weak var lblBankName: UILabel!
+    @IBOutlet weak var lblAccountName: UILabel!
     @IBOutlet weak var lblBankAccount: UILabel!
     @IBOutlet weak var imgSelected: UIImageView!
     @IBOutlet weak var imgSelectedWidth: NSLayoutConstraint!
+    @IBOutlet weak var lblAccountNameHeight: NSLayoutConstraint!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,9 +30,11 @@ class KKBankTableCell: UITableViewCell {
         imgSelectedWidth.constant = KKUtil.ConvertSizeByDensity(size: 20)
 
         lblBankName.textColor = UIColor.spade_white_FFFFFF
-        lblBankAccount.textColor = UIColor.spade_white_FFFFFF
-        
-        lblBankName.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
-        lblBankAccount.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
+        lblAccountName.textColor = lblBankName.textColor
+        lblBankAccount.textColor = lblBankName.textColor
+
+        lblBankName.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 14))
+        lblAccountName.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+        lblBankAccount.font = lblBankName.font
     }
 }

@@ -27,10 +27,9 @@ class KKWithdrawRequestViewController: KKBaseViewController {
     @IBOutlet weak var addBankContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmHeight: NSLayoutConstraint!
     
-    var parentVC: KKWithdrawViewController!
+//    var parentVC: KKWithdrawViewController!
     
-    var userBankList: [KKWithdrawBankDetails]! = []
-    var bankItemList: [KKWithdrawBankNames]! = []
+    var userBankList: [KKUserBankCards]! = []
     var selectedBankItem = 0
 
     override func viewDidLoad() {
@@ -96,10 +95,9 @@ class KKWithdrawRequestViewController: KKBaseViewController {
     func getBankListAPI() {
         self.showAnimatedLoader()
         
-        KKApiClient.getWithdrawPageData().execute { withdrawBankResponse in
+        KKApiClient.withdrawPageData().execute { withdrawBankResponse in
             self.hideAnimatedLoader()
-            self.userBankList = withdrawBankResponse.results?.userBanks
-            self.bankItemList = withdrawBankResponse.results?.bankNames
+            self.userBankList = withdrawBankResponse.results?.userBankCards
             
             self.changeLayoutView(noBank: self.userBankList.isEmpty)
 
@@ -136,10 +134,10 @@ class KKWithdrawRequestViewController: KKBaseViewController {
         KKApiClient.withdraw(amount: amountFloat!, bankAcc: bankAccount).execute { withdrawResponse in
             self.hideAnimatedLoader()
             self.txtWithdrawAmount.text = ""
-            self.showAlertView(type: .Success, alertMessage: withdrawResponse.message ?? "")
             
             let viewController = KKDialogAlertViewController.init()
             viewController.alertType = .Withdraw
+            viewController.transactionId = ""
             self.present(viewController, animated: true, completion: nil)
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
@@ -152,9 +150,9 @@ class KKWithdrawRequestViewController: KKBaseViewController {
         txtWithdrawAmount.text = ""
     }
     
-    @IBAction func btnAddDidPressed(){
-        parentVC.changeToHoverBankCard()
-    }
+//    @IBAction func btnAddDidPressed(){
+//        parentVC.changeToHoverBankCard()
+//    }
     
     @IBAction func btnConfirmDidPressed(){
         validateEnty()
@@ -190,13 +188,8 @@ extension KKWithdrawRequestViewController: UITableViewDataSource, UITableViewDel
                 cell.lblBankAccount.text = userBankList[indexPath.row].bankAccountNumber!.bankAccountMasked
             }
         }
-            
-        for bankItem in bankItemList {
-            if bankItem.id == userBankList[indexPath.row].bankId {
-                cell.imgBank.setUpImage(with: bankItem.img)
-            }
-        }
         
+        cell.imgBank.setUpImage(with: userBankList[indexPath.row].bankImg)
         cell.lblBankName.text = userBankList[indexPath.row].bankName
         
         cell.selectionStyle = .none

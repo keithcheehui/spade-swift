@@ -13,12 +13,18 @@ class KKCountryItemCell: UICollectionViewCell {
     @IBOutlet weak var imgCountry: UIImageView!
     @IBOutlet weak var lblCountryName: UILabel!
     @IBOutlet weak var imgCountryWidth: NSLayoutConstraint!
+    @IBOutlet weak var imgCountrMarginLeft: NSLayoutConstraint!
+    @IBOutlet weak var imgCountrMarginRight: NSLayoutConstraint!
+    @IBOutlet weak var lblCountryNameMarginRight: NSLayoutConstraint!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        imgCountryWidth.constant = KKUtil.ConvertSizeByDensity(size: 35)
-        
+        imgCountrMarginRight.constant = KKUtil.ConvertSizeByDensity(size: 5)
+//        imgCountrMarginLeft.constant = imgCountrMarginLeft.constant
+//        lblCountryNameMarginRight.constant = imgCountrMarginLeft.constant
+        imgCountryWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
+
         imgCountry.layer.masksToBounds = true
         imgCountry.layer.cornerRadius = imgCountryWidth.constant / 2
         imgCountry.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 0)

@@ -19,14 +19,18 @@ class KKWithdrawViewController: KKBaseViewController {
     
     var sideMenuList: [SideMenuDetails] = []
     var selectedViewType = WithdrawSideMenu.withdraw.rawValue
-    
+    var userBankList: [KKUserBankCards]! = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialLayout()
         appendSideMenuList()
-        
-        buttonHover(type: selectedViewType)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getBankListAPI()
     }
     
     func initialLayout(){
@@ -50,7 +54,7 @@ class KKWithdrawViewController: KKBaseViewController {
                 
             case .withdrawHistory:
                 details.id = item.rawValue
-                details.title = KKUtil.languageSelectedStringForKey(key: "withdraw_withdraw_history")
+                details.title = KKUtil.languageSelectedStringForKey(key: "withdraw_history")
                 details.imgIcon = "ic_withdraw_history"
                 
             case .bankCard:
@@ -65,6 +69,20 @@ class KKWithdrawViewController: KKBaseViewController {
         sideMenuTableView.reloadData()
     }
     
+    func getBankListAPI() {
+        self.showAnimatedLoader()
+        
+        KKApiClient.withdrawPageData().execute { withdrawBankResponse in
+            self.hideAnimatedLoader()
+            self.userBankList = withdrawBankResponse.results?.userBankCards
+            self.buttonHover(type: self.selectedViewType)
+                        
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.buttonHover(type: self.selectedViewType)
+        }
+    }
+    
     ///Button Actions
     @IBAction func btnBackDidPressed(){
         self.navigationController?.popViewController(animated: true)
@@ -74,7 +92,8 @@ class KKWithdrawViewController: KKBaseViewController {
         switch type {
         case WithdrawSideMenu.withdrawHistory.rawValue:
             let viewController = KKGeneralTableViewController()
-            viewController.leftDropdownOptions = pickerStatusArray
+            viewController.leftDropdownOptions = pickerTimeArray
+            viewController.rightDropdownOptions = pickerStatusArray
             viewController.tableViewType = .WithdrawHistory
             changeView(vc: viewController)
             break;
@@ -83,9 +102,15 @@ class KKWithdrawViewController: KKBaseViewController {
             changeView(vc: viewController)
             break;
         default:
-            let viewController = KKWithdrawRequestViewController.init()
-            viewController.parentVC = self
-            changeView(vc: viewController)
+            if userBankList.isEmpty {
+                let viewController = KKNoBankViewController()
+                viewController.isFromDeposit = false
+                changeView(vc: viewController)
+            } else {
+                let viewController = KKWithdrawRequestViewController.init()
+                viewController.userBankList = userBankList
+                changeView(vc: viewController)
+            }
             break;
         }
     }

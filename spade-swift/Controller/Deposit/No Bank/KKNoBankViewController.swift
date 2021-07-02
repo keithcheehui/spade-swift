@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KKNoBankViewController: UIViewController {
+class KKNoBankViewController: KKBaseViewController {
 
     @IBOutlet weak var lblSetup: UILabel!
     @IBOutlet weak var lblStep1: UILabel!
@@ -21,12 +21,12 @@ class KKNoBankViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 100)
+        containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 50)
         containerMarginRight.constant = containerMarginLeft.constant
         imgBankCardWidth.constant = KKUtil.ConvertSizeByDensity(size: 30)
 
-        lblSetup.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 24))
-        lblStep1.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 18))
+        lblSetup.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 16))
+        lblStep1.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
         lblStep2.font = lblStep1.font
         
         

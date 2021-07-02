@@ -45,7 +45,7 @@ class KKMessageViewController: KKBaseViewController {
             switch item {
             case .systemMail:
                 details.id = item.rawValue
-                details.title = KKUtil.languageSelectedStringForKey(key: "message_system_mail")
+                details.title = KKUtil.languageSelectedStringForKey(key: "message_inbox")
                 details.imgIcon = "ic_system_mail"
                 
             case .notification:

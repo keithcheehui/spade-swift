@@ -1,5 +1,5 @@
 //
-//  KKResults.swift
+//  KKDepositRange.swift
 //
 //  Created by Wong Sai Khong on 02/07/2021
 //  Copyright (c) . All rights reserved.
@@ -7,19 +7,22 @@
 
 import Foundation
 
-struct KKDepositHistoryResults: Codable {
+struct KKRange: Codable {
 
   enum CodingKeys: String, CodingKey {
-    case depositHistory = "deposit_history"
+    case max
+    case min
   }
 
-  var depositHistory: [KKHistoryDetails]?
+  var max: Int?
+  var min: Int?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    depositHistory = try container.decodeIfPresent([KKHistoryDetails].self, forKey: .depositHistory)
+    max = try container.decodeIfPresent(Int.self, forKey: .max)
+    min = try container.decodeIfPresent(Int.self, forKey: .min)
   }
 
 }

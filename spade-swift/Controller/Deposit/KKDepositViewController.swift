@@ -19,14 +19,18 @@ class KKDepositViewController: KKBaseViewController {
     
     var sideMenuList: [SideMenuDetails] = []
     var selectedViewType = DepositSideMenu.bankAccount.rawValue
-    
+    var userBankList: [KKUserBankCards]! = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialLayout()
         appendSideMenuList()
-        
-        buttonHover(type: selectedViewType)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getBankListAPI()
     }
     
     func initialLayout(){
@@ -48,6 +52,11 @@ class KKDepositViewController: KKBaseViewController {
                 details.title = KKUtil.languageSelectedStringForKey(key: "deposit_bank_account")
                 details.imgIcon = "ic_password"
                 
+            case .depositHistory:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "deposit_history")
+                details.imgIcon = "ic_withdraw_history"
+                
             case .artificial:
                 details.id = item.rawValue
                 details.title = KKUtil.languageSelectedStringForKey(key: "deposit_support")
@@ -58,14 +67,45 @@ class KKDepositViewController: KKBaseViewController {
         sideMenuTableView.reloadData()
     }
     
+    func getBankListAPI() {
+        self.showAnimatedLoader()
+        
+        KKApiClient.depositPageData().execute { depositPageDataResponse in
+            self.hideAnimatedLoader()
+            self.userBankList = depositPageDataResponse.results?.userBankCards
+            self.buttonHover(type: self.selectedViewType)
+
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.buttonHover(type: self.selectedViewType)
+        }
+    }
+    
     ///Button Actions
     @IBAction func btnBackDidPressed(){
         self.navigationController?.popViewController(animated: true)
     }
     
     func buttonHover(type: Int){
-        if (type == DepositSideMenu.bankAccount.rawValue) {
-            changeView(vc: KKDepositRequestViewController())
+        switch type {
+        case DepositSideMenu.depositHistory.rawValue:
+            let viewController = KKGeneralTableViewController()
+            viewController.leftDropdownOptions = pickerTimeArray
+            viewController.rightDropdownOptions = pickerStatusArray
+            viewController.tableViewType = .DepositHistory
+            changeView(vc: viewController)
+            break;
+        default:
+            if userBankList.isEmpty {
+                let viewController = KKNoBankViewController()
+                viewController.isFromDeposit = true
+                changeView(vc: viewController)
+            } else {
+                let viewController = KKDepositRequestViewController.init()
+                viewController.userBankList = userBankList
+                changeView(vc: viewController)
+            }
+            break;
         }
     }
     

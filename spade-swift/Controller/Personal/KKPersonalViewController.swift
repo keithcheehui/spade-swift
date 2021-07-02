@@ -85,10 +85,15 @@ class KKPersonalViewController: KKBaseViewController {
                 details.title = KKUtil.languageSelectedStringForKey(key: "personal_wallet")
                 details.imgIcon = "ic_user_info"
                 
+            case .bankCard:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "personal_bank_card")
+                details.imgIcon = "ic_bank_card"
+                
             case .history:
                 details.id = item.rawValue
                 details.title = KKUtil.languageSelectedStringForKey(key: "personal_history")
-                details.imgIcon = "ic_user_info"
+                details.imgIcon = "ic_withdraw_history"
             }
            
             sideMenuList.append(details)
@@ -202,6 +207,17 @@ class KKPersonalViewController: KKBaseViewController {
             changeView(vc: viewController)
             break;
         case PersonalSideMenu.individualReport.rawValue:
+            changeView(vc: KKIndividualReportViewController())
+            break;
+        case PersonalSideMenu.wallet.rawValue:
+            changeView(vc: KKIndividualReportViewController())
+            break;
+        case PersonalSideMenu.bankCard.rawValue:
+            groupsCollectionView.isHidden = true
+            groupsCollectionViewHeight.constant = 0
+            changeView(vc: KKBankListViewController())
+            break;
+        case PersonalSideMenu.history.rawValue:
             changeView(vc: KKIndividualReportViewController())
             break;
         default:

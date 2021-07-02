@@ -83,16 +83,24 @@ class KKGeneralTableViewController: KKTableBaseViewController {
             self.showTopContainer(shouldShow: true, withRightPicker: false)
         
         case .DepositHistory:
-            leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_deposit_status")
+            leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
             leftValue = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
             leftItem = ""
-            self.showTopContainer(shouldShow: true, withRightPicker: false)
+            
+            rightTitle = KKUtil.languageSelectedStringForKey(key: "picker_withdraw_status")
+            rightValue = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
+            rightItem = ""
+            self.showTopContainer(shouldShow: true, withRightPicker: true)
         
         case .WithdrawHistory:
-            leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_withdraw_status")
+            leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
             leftValue = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
             leftItem = ""
-            self.showTopContainer(shouldShow: true, withRightPicker: false)
+            
+            rightTitle = KKUtil.languageSelectedStringForKey(key: "picker_withdraw_status")
+            rightValue = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
+            rightItem = ""
+            self.showTopContainer(shouldShow: true, withRightPicker: true)
         
         default:
             self.showTopContainer(shouldShow: false, withRightPicker: false)
@@ -129,8 +137,8 @@ class KKGeneralTableViewController: KKTableBaseViewController {
     func getLeftDropdownOptions() {
         switch tableViewType {
             
-            case .WithdrawHistory:
-                leftDropdownOptions = pickerStatusArray
+//            case .WithdrawHistory:
+//                leftDropdownOptions = pickerStatusArray
             default:
                 leftDropdownOptions = pickerTimeArray
         }
@@ -160,7 +168,7 @@ class KKGeneralTableViewController: KKTableBaseViewController {
         } else if tableViewType == .AccountDetails {
             self.getUserAccountDetailsAPI(leftPicker: leftItem, tabItem: selectedTabItem)
         } else if tableViewType == .WithdrawHistory {
-            self.withdrawHistoryAPI(leftPicker: leftItem)
+            self.withdrawHistoryAPI(leftPicker: leftItem, rightPicker: rightItem)
         }
     }
     

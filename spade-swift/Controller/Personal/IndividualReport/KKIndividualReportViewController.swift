@@ -115,7 +115,7 @@ class KKIndividualReportViewController: KKBaseViewController {
 
         lblTotalWinAmount.textColor = .spade_blue_5CB5DE
         
-        lblTotalBettingAmount.textColor = .spade_yellow_FFFF99
+        lblTotalBettingAmount.textColor = .spade_yellow_FFFF00
         lblTotalAmount.textColor = lblTotalBettingAmount.textColor
         lblTotalRebateAmount.textColor = lblTotalBettingAmount.textColor
 

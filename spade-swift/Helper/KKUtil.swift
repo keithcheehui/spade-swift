@@ -310,10 +310,10 @@ class KKUtil: NSObject {
                 return ["Transaction Time", "Status", "Out", "In", "Balance"]
                 
             case .DepositHistory:
-                return ["Time", "Amount", "Payment Method", "Status", "Details"]
+                return ["Time", "Deposit ID", "Amount", "Status"]
                 
             case .WithdrawHistory:
-                return ["Date & Time", "Withdraw ID", "Amount", "Withdrawal Method", "Status"]
+                return ["Date & Time", "Withdraw ID", "Amount", "Status"]
         }
     }
     

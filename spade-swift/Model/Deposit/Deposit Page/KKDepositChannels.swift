@@ -1,34 +1,34 @@
 //
-//  KKDepositBankDepositChannels.swift
+//  KKDepositChannels.swift
 //
-//  Created by Keith CheeHui on 17/06/2021
+//  Created by Wong Sai Khong on 02/07/2021
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 
-struct KKDepositBankDepositChannels: Codable {
+struct KKDepositChannels: Codable {
 
   enum CodingKeys: String, CodingKey {
-    case max
+    case name
     case min
     case code
-    case name
+    case max
   }
 
-  var max: String?
+  var name: String?
   var min: String?
   var code: String?
-  var name: String?
+  var max: String?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    max = try container.decodeIfPresent(String.self, forKey: .max)
+    name = try container.decodeIfPresent(String.self, forKey: .name)
     min = try container.decodeIfPresent(String.self, forKey: .min)
     code = try container.decodeIfPresent(String.self, forKey: .code)
-    name = try container.decodeIfPresent(String.self, forKey: .name)
+    max = try container.decodeIfPresent(String.self, forKey: .max)
   }
 
 }

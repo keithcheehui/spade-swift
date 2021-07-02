@@ -48,14 +48,14 @@ class KKAddBankViewController: KKBaseViewController {
         txtBankNameView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 8)
         txtBankAccountView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 8)
         
-        lblCardholderName.text = KKUtil.languageSelectedStringForKey(key: "withdraw_bank_account_name")
-        lblBankName.text = KKUtil.languageSelectedStringForKey(key: "withdraw_bank_name")
-        lblBankAccount.text = KKUtil.languageSelectedStringForKey(key: "withdraw_bank_account")
-        lblDescription.text = KKUtil.languageSelectedStringForKey(key: "withdraw_add_bank_description")
+        lblCardholderName.text = KKUtil.languageSelectedStringForKey(key: "add_bank_bank_account_name")
+        lblBankName.text = KKUtil.languageSelectedStringForKey(key: "add_bank_bank_name")
+        lblBankAccount.text = KKUtil.languageSelectedStringForKey(key: "add_bank_bank_account_number")
+        lblDescription.text = KKUtil.languageSelectedStringForKey(key: "add_bank_description")
 
-        txtCardholderName.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "withdraw_cardholder_name_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
-        txtBankName.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "withdraw_bank_name"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
-        txtBankAccount.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "withdraw_bank_account_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
+        txtCardholderName.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "add_bank_bank_account_name_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
+        txtBankName.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "add_bank_bank_name_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
+        txtBankAccount.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "add_bank_bank_account_number_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
         
         lblCardholderName.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
         lblBankName.font = lblCardholderName.font
@@ -72,7 +72,7 @@ class KKAddBankViewController: KKBaseViewController {
         txtCardholderName.textColor = lblCardholderName.textColor
         txtBankName.textColor = lblCardholderName.textColor
         txtBankAccount.textColor = lblCardholderName.textColor
-        lblDescription.textColor = UIColor.spade_blue_5CB5DE
+        lblDescription.textColor = UIColor.spade_yellow_FFFF00
                 
         txtBankName.inputView = pickerView
         txtBankName.inputAccessoryView = pickerToolBarView

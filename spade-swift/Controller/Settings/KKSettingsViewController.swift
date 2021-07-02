@@ -57,6 +57,9 @@ class KKSettingsViewController: KKBaseViewController {
     @IBOutlet weak var volumeContentView: UIView!
     @IBOutlet weak var soundSectionView: UIView!
     @IBOutlet weak var lblSoundSettings: UILabel!
+    
+    @IBOutlet weak var greyContainer: UIView!
+    @IBOutlet weak var greyContainer2: UIView!
     @IBOutlet weak var lblMusic: UILabel!
     @IBOutlet weak var musicToggleView: UIView!
     @IBOutlet weak var lblMusicToggleStatus: UILabel!
@@ -74,10 +77,12 @@ class KKSettingsViewController: KKBaseViewController {
 
     @IBOutlet weak var toggleMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var toggleMarginRight: NSLayoutConstraint!
-    @IBOutlet weak var soundToggleMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var toggleContainerWidth: NSLayoutConstraint!
     @IBOutlet weak var toggleViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var greyContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var imgToggleWidth: NSLayoutConstraint!
+    @IBOutlet weak var musicGap: NSLayoutConstraint!
+    @IBOutlet weak var soundGap: NSLayoutConstraint!
     
     @IBOutlet weak var imgMusicToggleMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var imgSoundToggleMarginLeft: NSLayoutConstraint!
@@ -178,7 +183,7 @@ class KKSettingsViewController: KKBaseViewController {
         lblNote.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 9))
         lblNote.textColor = .spade_orange_FFBA00
         
-        lblCurrentPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+        lblCurrentPassword.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
         lblNewPassword.font = lblCurrentPassword.font
         lblReconfirmPassword.font = lblCurrentPassword.font
         txtCurrentPassword.font = lblCurrentPassword.font
@@ -202,7 +207,7 @@ class KKSettingsViewController: KKBaseViewController {
         lblVersionIOSHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
         lblVersionIOSMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 30)
 
-        lblVersionIOS.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+        lblVersionIOS.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
         lblVersionAndroid.font = lblVersionIOS.font
         lblVersionH5.font = lblVersionIOS.font
         
@@ -227,29 +232,40 @@ class KKSettingsViewController: KKBaseViewController {
         lblMusic.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
         lblSound.font = lblMusic.font
         
-        toggleMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 90)
-        toggleMarginRight.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        soundToggleMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        greyContainer.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        greyContainer2.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        greyContainer.layer.borderColor = UIColor(white: 1, alpha: 0.3).cgColor
+        greyContainer2.layer.borderColor = UIColor(white: 1, alpha: 0.3).cgColor
+        greyContainer.layer.borderWidth = 1
+        greyContainer2.layer.borderWidth = 1
+        greyContainer.layer.cornerRadius = 8
+        greyContainer2.layer.cornerRadius = 8
+
+        greyContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 60)
+        toggleMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 15)
+        toggleMarginRight.constant = KKUtil.ConvertSizeByDensity(size: 15)
+        musicGap.constant = KKUtil.ConvertSizeByDensity(size: 15)
+        soundGap.constant = KKUtil.ConvertSizeByDensity(size: 15)
         toggleContainerWidth.constant = KKUtil.ConvertSizeByDensity(size: 60)
         toggleViewHeight.constant = KKUtil.ConvertSizeByDensity(size: 17)
         imgToggleWidth.constant = KKUtil.ConvertSizeByDensity(size: 25)
         
         musicToggleView.layer.cornerRadius = toggleViewHeight.constant / 2
-        imgMusicToggle.image = UIImage(named: "ic_spade")
+        imgMusicToggle.image = UIImage(named: "ic_toggle")
         lblMusicToggleStatus.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
         
         soundToggleView.layer.cornerRadius = toggleViewHeight.constant / 2
-        imgSoundToggle.image = UIImage(named: "ic_spade")
+        imgSoundToggle.image = UIImage(named: "ic_toggle")
         lblSoundToggleStatus.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
         
         muteToggleView.layer.cornerRadius = toggleViewHeight.constant / 2
-        imgMuteToggle.image = UIImage(named: "ic_spade")
+        imgMuteToggle.image = UIImage(named: "ic_toggle")
         lblMuteToggleStatus.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
     }
     
     func musicToggleOnChanged(){
         if (musicToggleisOn) {
-            musicToggleView.backgroundColor = .green
+            musicToggleView.backgroundColor = .spade_green_74f56b
             lblMusicToggleStatus.text = "On"
             lblMusicToggleStatus.textAlignment = .left
             lblMusicToggleStatus.textColor = .spade_black_000000
@@ -265,7 +281,7 @@ class KKSettingsViewController: KKBaseViewController {
     
     func soundToggleOnChanged(){
         if (soundToggleisOn) {
-            soundToggleView.backgroundColor = .green
+            soundToggleView.backgroundColor = .spade_green_74f56b
             lblSoundToggleStatus.text = "On"
             lblSoundToggleStatus.textAlignment = .left
             lblSoundToggleStatus.textColor = .spade_black_000000
@@ -281,7 +297,7 @@ class KKSettingsViewController: KKBaseViewController {
     
     func muteToggleOnChanged(){
         if (muteToggleisOn) {
-            muteToggleView.backgroundColor = .green
+            muteToggleView.backgroundColor = .spade_green_74f56b
             lblMuteToggleStatus.text = "On"
             lblMuteToggleStatus.textAlignment = .left
             lblMuteToggleStatus.textColor = .spade_black_000000
@@ -455,10 +471,13 @@ extension KKSettingsViewController: UITableViewDataSource, UITableViewDelegate {
         else {
             fatalError("DequeueReusableCell failed while casting")
         }
+ 
         if (selectedViewType == indexPath.row){
             cell.imgHover.isHidden = false
+            cell.lblName.font = ConstantSize.sideMenuSelectedFont
         } else {
             cell.imgHover.isHidden = true
+            cell.lblName.font = ConstantSize.sideMenuFont
         }
         
         cell.imgIcon.image = UIImage(named: sideMenuList[indexPath.row].imgIcon)

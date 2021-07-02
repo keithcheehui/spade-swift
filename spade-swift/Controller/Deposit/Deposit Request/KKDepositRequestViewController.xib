@@ -31,7 +31,6 @@
                 <outlet property="lblDepositChannel" destination="J7P-c4-0Km" id="G4b-Qg-IIT"/>
                 <outlet property="lblDepositChannelValue" destination="H6N-y2-HVn" id="Rxi-T0-3KB"/>
                 <outlet property="lblDepositChannelView" destination="LKb-LH-UhD" id="GgB-Gy-tns"/>
-                <outlet property="lblDepositHistory" destination="bib-Up-HWW" id="Jg1-tc-vEj"/>
                 <outlet property="lblDepositSection" destination="atM-o5-8QC" id="1C7-Eb-N3L"/>
                 <outlet property="lblDepositTime" destination="Cnl-fs-omB" id="ovh-9y-lfZ"/>
                 <outlet property="lblDepositTimeView" destination="Idz-h9-be0" id="iUa-E3-YEY"/>
@@ -287,39 +286,18 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MkV-V4-jnW">
-                                    <rect key="frame" x="724.33333333333337" y="0.0" width="151.66666666666663" height="30"/>
+                                    <rect key="frame" x="876" y="0.0" width="0.0" height="30"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_withdraw_history" translatesAutoresizingMaskIntoConstraints="NO" id="prA-TR-MgW">
-                                            <rect key="frame" x="0.0" y="3" width="24" height="24"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="prA-TR-MgW" secondAttribute="height" multiplier="1:1" id="971-rd-Bas"/>
-                                                <constraint firstAttribute="width" constant="24" id="VzL-v8-1LO"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deposit History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bib-Up-HWW">
-                                            <rect key="frame" x="34.000000000000007" y="4.6666666666666572" width="117.66666666666669" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bib-Up-HWW">
+                                            <rect key="frame" x="0.0" y="15" width="0.0" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKP-47-RW3">
-                                            <rect key="frame" x="0.0" y="0.0" width="151.66666666666666" height="30"/>
-                                            <connections>
-                                                <action selector="btnDepositHistoryDidPressed" destination="-1" eventType="touchUpInside" id="5s4-O7-17D"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="prA-TR-MgW" secondAttribute="bottom" constant="3" id="BFX-g5-PfJ"/>
-                                        <constraint firstItem="prA-TR-MgW" firstAttribute="leading" secondItem="MkV-V4-jnW" secondAttribute="leading" id="CJU-GR-XNg"/>
-                                        <constraint firstItem="OKP-47-RW3" firstAttribute="leading" secondItem="MkV-V4-jnW" secondAttribute="leading" id="FhO-gl-y6Z"/>
-                                        <constraint firstItem="prA-TR-MgW" firstAttribute="top" secondItem="MkV-V4-jnW" secondAttribute="top" constant="3" id="Izb-LB-M2g"/>
-                                        <constraint firstItem="OKP-47-RW3" firstAttribute="top" secondItem="MkV-V4-jnW" secondAttribute="top" id="KNb-95-hbN"/>
-                                        <constraint firstAttribute="bottom" secondItem="OKP-47-RW3" secondAttribute="bottom" id="LfL-ZO-vol"/>
-                                        <constraint firstItem="prA-TR-MgW" firstAttribute="centerY" secondItem="MkV-V4-jnW" secondAttribute="centerY" id="aZK-hL-kSy"/>
-                                        <constraint firstItem="bib-Up-HWW" firstAttribute="leading" secondItem="prA-TR-MgW" secondAttribute="trailing" constant="10" id="cSa-A4-ARS"/>
-                                        <constraint firstAttribute="trailing" secondItem="OKP-47-RW3" secondAttribute="trailing" id="mZ6-u7-xie"/>
+                                        <constraint firstItem="bib-Up-HWW" firstAttribute="leading" secondItem="MkV-V4-jnW" secondAttribute="leading" id="Rdy-HO-gNm"/>
                                         <constraint firstAttribute="trailing" secondItem="bib-Up-HWW" secondAttribute="trailing" id="w5g-6z-DIY"/>
                                         <constraint firstItem="bib-Up-HWW" firstAttribute="centerY" secondItem="MkV-V4-jnW" secondAttribute="centerY" id="zf5-JZ-5hl"/>
                                     </constraints>
@@ -765,6 +743,5 @@
         <image name="btn_submit" width="310" height="103"/>
         <image name="btn_upload" width="233" height="59"/>
         <image name="ic_spade" width="21" height="21"/>
-        <image name="ic_withdraw_history" width="68" height="68"/>
     </resources>
 </document>

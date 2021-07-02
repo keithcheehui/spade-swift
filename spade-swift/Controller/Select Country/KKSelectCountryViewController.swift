@@ -35,7 +35,7 @@ class KKSelectCountryViewController: KKBaseViewController {
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.scrollDirection = .vertical
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: 130), height: KKUtil.ConvertSizeByDensity(size: 40))
+        flowLayout.itemSize = CGSize(width: KKUtil.ConvertSizeByDensity(size: 130), height: KKUtil.ConvertSizeByDensity(size: 45))
         
         countryCollectionView.collectionViewLayout = flowLayout
         countryCollectionView.register(UINib(nibName: "KKCountryItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.countryCVCIdentifier)
@@ -101,9 +101,13 @@ extension KKSelectCountryViewController: UICollectionViewDelegate, UICollectionV
         cell.imgCountry.setUpImage(with: KKSingleton.sharedInstance.countryArray[indexPath.item].img)
         
         if (indexPath.row == selectedIndex) {
-            cell.imgCountry.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 2)
+            cell.contentView.layer.cornerRadius = 4
+            cell.contentView.layer.borderWidth = 1
+            cell.contentView.layer.borderColor = UIColor.spade_white_FFFFFF.cgColor
+            cell.contentView.backgroundColor = UIColor(white: 0, alpha: 0.5)
         } else {
-            cell.imgCountry.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 0)
+            cell.contentView.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 0)
+            cell.contentView.backgroundColor = UIColor(white: 0, alpha: 0.0)
         }
         
         return cell

@@ -29,22 +29,6 @@
 		062C39852632C98600E86EEA /* KKApiErrorDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062C39842632C98600E86EEA /* KKApiErrorDetails.swift */; };
 		06566B85267ADB94009FE072 /* KKLandingDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566B84267ADB94009FE072 /* KKLandingDetailsResponse.swift */; };
 		06566B87267ADBA2009FE072 /* KKLandingDetailsResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566B86267ADBA2009FE072 /* KKLandingDetailsResults.swift */; };
-		06566B8F267AE287009FE072 /* KKDepositBankDepositChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566B8A267AE286009FE072 /* KKDepositBankDepositChannels.swift */; };
-		06566B91267AE287009FE072 /* KKDepositBankResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566B8C267AE286009FE072 /* KKDepositBankResponse.swift */; };
-		06566B92267AE287009FE072 /* KKDepositBankCompanyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566B8D267AE287009FE072 /* KKDepositBankCompanyDetails.swift */; };
-		06566B93267AE287009FE072 /* KKDepositBankResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566B8E267AE287009FE072 /* KKDepositBankResults.swift */; };
-		06566B97267AE477009FE072 /* KKDepositHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566B94267AE477009FE072 /* KKDepositHistoryResponse.swift */; };
-		06566B98267AE477009FE072 /* KKDepositHistoryDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566B95267AE477009FE072 /* KKDepositHistoryDetails.swift */; };
-		06566B99267AE477009FE072 /* KKDepositHistoryResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566B96267AE477009FE072 /* KKDepositHistoryResults.swift */; };
-		06566B9E267AE9F2009FE072 /* KKWithdrawBankResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566B9A267AE9F2009FE072 /* KKWithdrawBankResults.swift */; };
-		06566B9F267AE9F2009FE072 /* KKWithdrawBankNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566B9B267AE9F2009FE072 /* KKWithdrawBankNames.swift */; };
-		06566BA0267AE9F2009FE072 /* KKWithdrawBankResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566B9C267AE9F2009FE072 /* KKWithdrawBankResponse.swift */; };
-		06566BA1267AE9F2009FE072 /* KKWithdrawBankDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566B9D267AE9F2009FE072 /* KKWithdrawBankDetails.swift */; };
-		06566BA4267AEAC5009FE072 /* KKAddWithdrawBankResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566BA2267AEAC5009FE072 /* KKAddWithdrawBankResults.swift */; };
-		06566BA5267AEAC5009FE072 /* KKAddWithdrawBankResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566BA3267AEAC5009FE072 /* KKAddWithdrawBankResponse.swift */; };
-		06566BA9267AEC29009FE072 /* KKWithdrawHistoryDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566BA6267AEC28009FE072 /* KKWithdrawHistoryDetails.swift */; };
-		06566BAA267AEC29009FE072 /* KKWithdrawHistoryResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566BA7267AEC29009FE072 /* KKWithdrawHistoryResults.swift */; };
-		06566BAB267AEC29009FE072 /* KKWithdrawHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06566BA8267AEC29009FE072 /* KKWithdrawHistoryResponse.swift */; };
 		0676B5A8262FD6EF0023311F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5A7262FD6EF0023311F /* AppDelegate.swift */; };
 		0676B5AA262FD6EF0023311F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5A9262FD6EF0023311F /* SceneDelegate.swift */; };
 		0676B5AC262FD6EF0023311F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0676B5AB262FD6EF0023311F /* ViewController.swift */; };
@@ -201,6 +185,22 @@
 		53C64EFA263700D00068F03E /* KKPersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53C64EF9263700D00068F03E /* KKPersonalViewController.xib */; };
 		53C64EFD263700E10068F03E /* KKPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C64EFC263700E10068F03E /* KKPersonalViewController.swift */; };
 		53D008D626888BC900FDE9D7 /* KKCustomToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D008D526888BC800FDE9D7 /* KKCustomToastViewController.swift */; };
+		53D30188268EC76E00BF909D /* KKAddBankResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D30185268EC76E00BF909D /* KKAddBankResponse.swift */; };
+		53D30189268EC76E00BF909D /* KKAddBankResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D30186268EC76E00BF909D /* KKAddBankResults.swift */; };
+		53D30192268EC86400BF909D /* KKDepositChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3018B268EC86200BF909D /* KKDepositChannels.swift */; };
+		53D30193268EC86400BF909D /* KKDepositDataResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3018C268EC86300BF909D /* KKDepositDataResults.swift */; };
+		53D30194268EC86400BF909D /* KKDepositDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3018D268EC86300BF909D /* KKDepositDataResponse.swift */; };
+		53D30195268EC86400BF909D /* KKCompanyBanks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3018E268EC86300BF909D /* KKCompanyBanks.swift */; };
+		53D30196268EC86400BF909D /* KKUserBankCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3018F268EC86300BF909D /* KKUserBankCards.swift */; };
+		53D30197268EC86400BF909D /* KKRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D30190268EC86400BF909D /* KKRange.swift */; };
+		53D30198268EC86400BF909D /* KKDepositDataPromotions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D30191268EC86400BF909D /* KKDepositDataPromotions.swift */; };
+		53D301A0268EC95200BF909D /* KKDepositHistoryResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3019D268EC95200BF909D /* KKDepositHistoryResults.swift */; };
+		53D301A1268EC95200BF909D /* KKHistoryDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3019E268EC95200BF909D /* KKHistoryDetails.swift */; };
+		53D301A2268EC95200BF909D /* KKDepositHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3019F268EC95200BF909D /* KKDepositHistoryResponse.swift */; };
+		53D301A9268ECA1D00BF909D /* KKWithdrawDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D301A5268ECA1D00BF909D /* KKWithdrawDataResponse.swift */; };
+		53D301AA268ECA1D00BF909D /* KKWithdrawDataResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D301A6268ECA1D00BF909D /* KKWithdrawDataResults.swift */; };
+		53D301B6268ECB5100BF909D /* KKWithdrawHistoryResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D301B3268ECB5100BF909D /* KKWithdrawHistoryResults.swift */; };
+		53D301B8268ECB5100BF909D /* KKWithdrawHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D301B5268ECB5100BF909D /* KKWithdrawHistoryResponse.swift */; };
 		53DF81D1265028ED00BA6119 /* KKSelectCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF81D0265028ED00BA6119 /* KKSelectCountryViewController.swift */; };
 		53DF81D4265028FC00BA6119 /* KKSelectCountryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53DF81D3265028FC00BA6119 /* KKSelectCountryViewController.xib */; };
 		53DF81D926502F7200BA6119 /* KKCountryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF81D826502F7200BA6119 /* KKCountryItemCell.swift */; };
@@ -245,22 +245,6 @@
 		062C39842632C98600E86EEA /* KKApiErrorDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKApiErrorDetails.swift; sourceTree = "<group>"; };
 		06566B84267ADB94009FE072 /* KKLandingDetailsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKLandingDetailsResponse.swift; sourceTree = "<group>"; };
 		06566B86267ADBA2009FE072 /* KKLandingDetailsResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKLandingDetailsResults.swift; sourceTree = "<group>"; };
-		06566B8A267AE286009FE072 /* KKDepositBankDepositChannels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKDepositBankDepositChannels.swift; sourceTree = "<group>"; };
-		06566B8C267AE286009FE072 /* KKDepositBankResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKDepositBankResponse.swift; sourceTree = "<group>"; };
-		06566B8D267AE287009FE072 /* KKDepositBankCompanyDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKDepositBankCompanyDetails.swift; sourceTree = "<group>"; };
-		06566B8E267AE287009FE072 /* KKDepositBankResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKDepositBankResults.swift; sourceTree = "<group>"; };
-		06566B94267AE477009FE072 /* KKDepositHistoryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKDepositHistoryResponse.swift; sourceTree = "<group>"; };
-		06566B95267AE477009FE072 /* KKDepositHistoryDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKDepositHistoryDetails.swift; sourceTree = "<group>"; };
-		06566B96267AE477009FE072 /* KKDepositHistoryResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKDepositHistoryResults.swift; sourceTree = "<group>"; };
-		06566B9A267AE9F2009FE072 /* KKWithdrawBankResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKWithdrawBankResults.swift; sourceTree = "<group>"; };
-		06566B9B267AE9F2009FE072 /* KKWithdrawBankNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKWithdrawBankNames.swift; sourceTree = "<group>"; };
-		06566B9C267AE9F2009FE072 /* KKWithdrawBankResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKWithdrawBankResponse.swift; sourceTree = "<group>"; };
-		06566B9D267AE9F2009FE072 /* KKWithdrawBankDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKWithdrawBankDetails.swift; sourceTree = "<group>"; };
-		06566BA2267AEAC5009FE072 /* KKAddWithdrawBankResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKAddWithdrawBankResults.swift; sourceTree = "<group>"; };
-		06566BA3267AEAC5009FE072 /* KKAddWithdrawBankResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKAddWithdrawBankResponse.swift; sourceTree = "<group>"; };
-		06566BA6267AEC28009FE072 /* KKWithdrawHistoryDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKWithdrawHistoryDetails.swift; sourceTree = "<group>"; };
-		06566BA7267AEC29009FE072 /* KKWithdrawHistoryResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKWithdrawHistoryResults.swift; sourceTree = "<group>"; };
-		06566BA8267AEC29009FE072 /* KKWithdrawHistoryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKWithdrawHistoryResponse.swift; sourceTree = "<group>"; };
 		0676B5A4262FD6EF0023311F /* spade-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "spade-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0676B5A7262FD6EF0023311F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0676B5A9262FD6EF0023311F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -420,6 +404,22 @@
 		53C64EF9263700D00068F03E /* KKPersonalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKPersonalViewController.xib; sourceTree = "<group>"; };
 		53C64EFC263700E10068F03E /* KKPersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPersonalViewController.swift; sourceTree = "<group>"; };
 		53D008D526888BC800FDE9D7 /* KKCustomToastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKCustomToastViewController.swift; sourceTree = "<group>"; };
+		53D30185268EC76E00BF909D /* KKAddBankResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKAddBankResponse.swift; sourceTree = "<group>"; };
+		53D30186268EC76E00BF909D /* KKAddBankResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKAddBankResults.swift; sourceTree = "<group>"; };
+		53D3018B268EC86200BF909D /* KKDepositChannels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKDepositChannels.swift; sourceTree = "<group>"; };
+		53D3018C268EC86300BF909D /* KKDepositDataResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKDepositDataResults.swift; sourceTree = "<group>"; };
+		53D3018D268EC86300BF909D /* KKDepositDataResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKDepositDataResponse.swift; sourceTree = "<group>"; };
+		53D3018E268EC86300BF909D /* KKCompanyBanks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKCompanyBanks.swift; sourceTree = "<group>"; };
+		53D3018F268EC86300BF909D /* KKUserBankCards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserBankCards.swift; sourceTree = "<group>"; };
+		53D30190268EC86400BF909D /* KKRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKRange.swift; sourceTree = "<group>"; };
+		53D30191268EC86400BF909D /* KKDepositDataPromotions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKDepositDataPromotions.swift; sourceTree = "<group>"; };
+		53D3019D268EC95200BF909D /* KKDepositHistoryResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKDepositHistoryResults.swift; sourceTree = "<group>"; };
+		53D3019E268EC95200BF909D /* KKHistoryDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKHistoryDetails.swift; sourceTree = "<group>"; };
+		53D3019F268EC95200BF909D /* KKDepositHistoryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKDepositHistoryResponse.swift; sourceTree = "<group>"; };
+		53D301A5268ECA1D00BF909D /* KKWithdrawDataResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKWithdrawDataResponse.swift; sourceTree = "<group>"; };
+		53D301A6268ECA1D00BF909D /* KKWithdrawDataResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKWithdrawDataResults.swift; sourceTree = "<group>"; };
+		53D301B3268ECB5100BF909D /* KKWithdrawHistoryResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKWithdrawHistoryResults.swift; sourceTree = "<group>"; };
+		53D301B5268ECB5100BF909D /* KKWithdrawHistoryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKWithdrawHistoryResponse.swift; sourceTree = "<group>"; };
 		53DF81D0265028ED00BA6119 /* KKSelectCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSelectCountryViewController.swift; sourceTree = "<group>"; };
 		53DF81D3265028FC00BA6119 /* KKSelectCountryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKSelectCountryViewController.xib; sourceTree = "<group>"; };
 		53DF81D826502F7200BA6119 /* KKCountryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKCountryItemCell.swift; sourceTree = "<group>"; };
@@ -519,13 +519,10 @@
 		06566B88267AE03D009FE072 /* Deposit */ = {
 			isa = PBXGroup;
 			children = (
-				06566B8D267AE287009FE072 /* KKDepositBankCompanyDetails.swift */,
-				06566B8A267AE286009FE072 /* KKDepositBankDepositChannels.swift */,
-				06566B8C267AE286009FE072 /* KKDepositBankResponse.swift */,
-				06566B8E267AE287009FE072 /* KKDepositBankResults.swift */,
-				06566B95267AE477009FE072 /* KKDepositHistoryDetails.swift */,
-				06566B94267AE477009FE072 /* KKDepositHistoryResponse.swift */,
-				06566B96267AE477009FE072 /* KKDepositHistoryResults.swift */,
+				53D3019F268EC95200BF909D /* KKDepositHistoryResponse.swift */,
+				53D3019D268EC95200BF909D /* KKDepositHistoryResults.swift */,
+				53D3019E268EC95200BF909D /* KKHistoryDetails.swift */,
+				53D3019A268EC86900BF909D /* Deposit Page */,
 			);
 			path = Deposit;
 			sourceTree = "<group>";
@@ -533,15 +530,9 @@
 		06566B89267AE04A009FE072 /* Withdraw */ = {
 			isa = PBXGroup;
 			children = (
-				06566B9B267AE9F2009FE072 /* KKWithdrawBankNames.swift */,
-				06566B9C267AE9F2009FE072 /* KKWithdrawBankResponse.swift */,
-				06566B9A267AE9F2009FE072 /* KKWithdrawBankResults.swift */,
-				06566B9D267AE9F2009FE072 /* KKWithdrawBankDetails.swift */,
-				06566BA3267AEAC5009FE072 /* KKAddWithdrawBankResponse.swift */,
-				06566BA2267AEAC5009FE072 /* KKAddWithdrawBankResults.swift */,
-				06566BA8267AEC29009FE072 /* KKWithdrawHistoryResponse.swift */,
-				06566BA7267AEC29009FE072 /* KKWithdrawHistoryResults.swift */,
-				06566BA6267AEC28009FE072 /* KKWithdrawHistoryDetails.swift */,
+				53D301B5268ECB5100BF909D /* KKWithdrawHistoryResponse.swift */,
+				53D301B3268ECB5100BF909D /* KKWithdrawHistoryResults.swift */,
+				53D301AE268ECA2800BF909D /* Withdraw Page */,
 			);
 			path = Withdraw;
 			sourceTree = "<group>";
@@ -689,6 +680,7 @@
 				06E4DEEF267BEF2900482979 /* User Details */,
 				06566B88267AE03D009FE072 /* Deposit */,
 				06566B89267AE04A009FE072 /* Withdraw */,
+				53D3019C268EC8E500BF909D /* Add Bank */,
 				06BF5C272669802100C10008 /* Announcement */,
 				06BF5C2E2669813900C10008 /* Group and Platforms */,
 				06BF5C372669831E00C10008 /* Platform Product */,
@@ -1251,6 +1243,38 @@
 			path = Personal;
 			sourceTree = "<group>";
 		};
+		53D3019A268EC86900BF909D /* Deposit Page */ = {
+			isa = PBXGroup;
+			children = (
+				53D3018D268EC86300BF909D /* KKDepositDataResponse.swift */,
+				53D3018C268EC86300BF909D /* KKDepositDataResults.swift */,
+				53D30190268EC86400BF909D /* KKRange.swift */,
+				53D3018F268EC86300BF909D /* KKUserBankCards.swift */,
+				53D3018E268EC86300BF909D /* KKCompanyBanks.swift */,
+				53D3018B268EC86200BF909D /* KKDepositChannels.swift */,
+				53D30191268EC86400BF909D /* KKDepositDataPromotions.swift */,
+			);
+			path = "Deposit Page";
+			sourceTree = "<group>";
+		};
+		53D3019C268EC8E500BF909D /* Add Bank */ = {
+			isa = PBXGroup;
+			children = (
+				53D30185268EC76E00BF909D /* KKAddBankResponse.swift */,
+				53D30186268EC76E00BF909D /* KKAddBankResults.swift */,
+			);
+			path = "Add Bank";
+			sourceTree = "<group>";
+		};
+		53D301AE268ECA2800BF909D /* Withdraw Page */ = {
+			isa = PBXGroup;
+			children = (
+				53D301A5268ECA1D00BF909D /* KKWithdrawDataResponse.swift */,
+				53D301A6268ECA1D00BF909D /* KKWithdrawDataResults.swift */,
+			);
+			path = "Withdraw Page";
+			sourceTree = "<group>";
+		};
 		53DF81D62650290000BA6119 /* Select Country */ = {
 			isa = PBXGroup;
 			children = (
@@ -1513,13 +1537,12 @@
 				06290620266FFEE600A26DC5 /* KKInboxMessageResults.swift in Sources */,
 				5365E208265124D0005CB297 /* KKGameListViewController.swift in Sources */,
 				531428AF2674A2C500801FD9 /* KKPromotionResponse.swift in Sources */,
+				53D30189268EC76E00BF909D /* KKAddBankResults.swift in Sources */,
 				531428B72674A51900801FD9 /* KKGuidelineDetails.swift in Sources */,
 				06BF5C16266977B200C10008 /* KKAppVersionResults.swift in Sources */,
 				06E4DF03267C02B500482979 /* KKUserBettingHistoryResults.swift in Sources */,
 				53036EBE268AD43E004592CE /* KKAvatarViewController.swift in Sources */,
 				531428BA2674A52400801FD9 /* KKGuidelineResponse.swift in Sources */,
-				06566B97267AE477009FE072 /* KKDepositHistoryResponse.swift in Sources */,
-				06566BA4267AEAC5009FE072 /* KKAddWithdrawBankResults.swift in Sources */,
 				532FF613264FE02B00999512 /* KKWithdrawCommissionViewController.swift in Sources */,
 				532FF61C264FF76D00999512 /* KKLiveCasinoViewController.swift in Sources */,
 				06566B85267ADB94009FE072 /* KKLandingDetailsResponse.swift in Sources */,
@@ -1531,12 +1554,14 @@
 				53E2FF282658CC730017CA67 /* KKBonusItemCell.swift in Sources */,
 				06E4DF01267C02B500482979 /* KKUserBettingHistoryDetails.swift in Sources */,
 				0676B5F3262FD8520023311F /* KKConstant.swift in Sources */,
+				53D301B8268ECB5100BF909D /* KKWithdrawHistoryResponse.swift in Sources */,
 				53AAAE2926401CA9004103F0 /* KKWithdrawViewController.swift in Sources */,
 				06868319267953420097E068 /* KKUserWalletResponse.swift in Sources */,
 				533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */,
 				5381D82C26495A94003BBD2A /* KKAnnouncementViewController.swift in Sources */,
 				5317F23B264C2A8E0076D69B /* KKAddBankViewController.swift in Sources */,
 				06BF5C352669814C00C10008 /* KKGroupPlatformGroups.swift in Sources */,
+				53D30197268EC86400BF909D /* KKRange.swift in Sources */,
 				06868315267948980097E068 /* KKUserProfileTier.swift in Sources */,
 				53F21FB026871DDE00A44911 /* KKIndividualReportViewController.swift in Sources */,
 				53E2FF182658C5A00017CA67 /* KKBonusContentViewController.swift in Sources */,
@@ -1546,29 +1571,26 @@
 				06BF5C2526697A1900C10008 /* KKUserCredentialData.swift in Sources */,
 				5317F22A264C10050076D69B /* KKWithdrawRequestViewController.swift in Sources */,
 				53963E0A2639A36C00D803D4 /* KKSettingsViewController.swift in Sources */,
-				06566B98267AE477009FE072 /* KKDepositHistoryDetails.swift in Sources */,
 				06BF5C1D2669795500C10008 /* KKGeneralResponse.swift in Sources */,
 				06BF5C2426697A1900C10008 /* KKUserCredential.swift in Sources */,
 				53F21F962686E03500A44911 /* KKTabListItemCell.swift in Sources */,
 				5381676D26464B3300FC96A6 /* KKUserInfoViewController.swift in Sources */,
 				06BF5C332669814C00C10008 /* KKGroupPlatformResponse.swift in Sources */,
+				53D30194268EC86400BF909D /* KKDepositDataResponse.swift in Sources */,
 				5381D837264961EC003BBD2A /* KKAnnouncementTableCell.swift in Sources */,
 				532FF60B264FD0AA00999512 /* KKGuidelineViewController.swift in Sources */,
 				531D343C264EA9170070BB3A /* KKDepositRequestViewController.swift in Sources */,
 				531428A92674A2A900801FD9 /* KKPromotionResults.swift in Sources */,
-				06566B93267AE287009FE072 /* KKDepositBankResults.swift in Sources */,
 				06868314267948980097E068 /* KKUserProfileDetails.swift in Sources */,
 				0676B5A8262FD6EF0023311F /* AppDelegate.swift in Sources */,
 				06868312267948980097E068 /* KKUserProfileResponse.swift in Sources */,
 				06FF072D267FEF670073BE8E /* KKGeneralTableViewCell.swift in Sources */,
-				06566BA0267AE9F2009FE072 /* KKWithdrawBankResponse.swift in Sources */,
-				06566B99267AE477009FE072 /* KKDepositHistoryResults.swift in Sources */,
 				53AAAE3426401FF0004103F0 /* KKAffiliateViewController.swift in Sources */,
 				5317F232264C222A0076D69B /* KKBankTableCell.swift in Sources */,
 				0676B5F6262FD8BD0023311F /* KKSingleton.swift in Sources */,
 				06290628266FFF4D00A26DC5 /* KKFAQDetails.swift in Sources */,
-				06566BAA267AEC29009FE072 /* KKWithdrawHistoryResults.swift in Sources */,
 				5365E210265135B8005CB297 /* KKGameMenuItemCell.swift in Sources */,
+				53D30192268EC86400BF909D /* KKDepositChannels.swift in Sources */,
 				06BF5C17266977B200C10008 /* KKAppVersionCountries.swift in Sources */,
 				531428AC2674A2BB00801FD9 /* KKPromotionDetails.swift in Sources */,
 				06FF072B267FDD9B0073BE8E /* KKGeneralHeaderView.swift in Sources */,
@@ -1576,30 +1598,30 @@
 				5365E1F82651195C005CB297 /* KKLiveCasinoItemCell.swift in Sources */,
 				06A97230266C0B17002BFD01 /* KKTokenManager.swift in Sources */,
 				06566B87267ADBA2009FE072 /* KKLandingDetailsResults.swift in Sources */,
-				06566BAB267AEC29009FE072 /* KKWithdrawHistoryResponse.swift in Sources */,
 				0686831A267953420097E068 /* KKUserWalletResults.swift in Sources */,
-				06566BA1267AE9F2009FE072 /* KKWithdrawBankDetails.swift in Sources */,
+				53D30188268EC76E00BF909D /* KKAddBankResponse.swift in Sources */,
 				53AAAE2026401C40004103F0 /* KKDepositViewController.swift in Sources */,
 				06290629266FFF4D00A26DC5 /* KKFAQResponse.swift in Sources */,
+				53D30198268EC86400BF909D /* KKDepositDataPromotions.swift in Sources */,
 				538FB09326482B3500F3E823 /* KKLiveChatCollectionViewCell.swift in Sources */,
 				06290622266FFEE600A26DC5 /* KKInboxMessageResponse.swift in Sources */,
 				531428B42674A50800801FD9 /* KKGuidelineResults.swift in Sources */,
-				06566B92267AE287009FE072 /* KKDepositBankCompanyDetails.swift in Sources */,
+				53D301AA268ECA1D00BF909D /* KKWithdrawDataResults.swift in Sources */,
 				538A5888265A5BB800F0B03B /* KKMessageListViewController.swift in Sources */,
 				06BF5C2C2669803300C10008 /* KKAnnouncementDetails.swift in Sources */,
 				06BF5C1A266977B200C10008 /* KKAppVersionAppVersion.swift in Sources */,
 				0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */,
-				06566B9E267AE9F2009FE072 /* KKWithdrawBankResults.swift in Sources */,
 				06E4DF02267C02B500482979 /* KKUserBettingHistoryResponse.swift in Sources */,
 				531428A5267497A300801FD9 /* KKLiveChatResults.swift in Sources */,
 				06BF5C0F2669776E00C10008 /* KKOTPRequestResponse.swift in Sources */,
 				06BF5C3D2669833100C10008 /* KKPlatformProductResults.swift in Sources */,
+				53D301A2268EC95200BF909D /* KKDepositHistoryResponse.swift in Sources */,
+				53D30196268EC86400BF909D /* KKUserBankCards.swift in Sources */,
 				06E4DEF5267BFF9500482979 /* KKUserBettingGroupDetails.swift in Sources */,
 				06BF5C2B2669803300C10008 /* KKAnnouncementResults.swift in Sources */,
 				06290627266FFF4D00A26DC5 /* KKFAQResults.swift in Sources */,
 				06BF5C2D2669803300C10008 /* KKAnnouncementResponse.swift in Sources */,
 				06290621266FFEE600A26DC5 /* KKInboxMessageDetails.swift in Sources */,
-				06566BA5267AEAC5009FE072 /* KKAddWithdrawBankResponse.swift in Sources */,
 				0676B5FC262FD94A0023311F /* KKFont.swift in Sources */,
 				53602F63265A5EF700137AD6 /* KKMessageTableCell.swift in Sources */,
 				06E4DEFD267C00C000482979 /* KKUserCashFlowResults.swift in Sources */,
@@ -1615,35 +1637,35 @@
 				53036EC5268ADDD7004592CE /* KKAvatarItemCell.swift in Sources */,
 				53DF81D926502F7200BA6119 /* KKCountryItemCell.swift in Sources */,
 				06E4DEF7267BFF9500482979 /* KKUserBettingResults.swift in Sources */,
-				06566B9F267AE9F2009FE072 /* KKWithdrawBankNames.swift in Sources */,
 				53E2FF202658CA2E0017CA67 /* KKBonusMenuTableCell.swift in Sources */,
 				06E4DEF4267BFF9500482979 /* KKUserBettingResponse.swift in Sources */,
 				533F2B1D268A299800209F9D /* KKSideMenuTableCell.swift in Sources */,
-				06566B91267AE287009FE072 /* KKDepositBankResponse.swift in Sources */,
 				53268BFF2630604F00ECAAE2 /* KKOnBoardingViewController.swift in Sources */,
 				06006DF6267296DA00A2C8C9 /* KKCustomAlertViewController.swift in Sources */,
 				06BF5C362669814C00C10008 /* KKGroupPlatformResults.swift in Sources */,
 				5365E200265122FC005CB297 /* KKSingleRowGameItemCell.swift in Sources */,
+				53D30195268EC86400BF909D /* KKCompanyBanks.swift in Sources */,
 				06BF5C19266977B200C10008 /* KKAppVersionResponse.swift in Sources */,
 				0676B60E262FDAF40023311F /* SKFuture.swift in Sources */,
 				53268C1526307FB800ECAAE2 /* KKRegistrationViewController.swift in Sources */,
-				06566BA9267AEC29009FE072 /* KKWithdrawHistoryDetails.swift in Sources */,
 				06051B2926371E7900130057 /* KKSplashScreenViewController.swift in Sources */,
 				533F2B27268A379100209F9D /* KKGameTypeListing.swift in Sources */,
 				0676B616262FDB790023311F /* KKAlertControllerTransition.swift in Sources */,
 				53C64EFD263700E10068F03E /* KKPersonalViewController.swift in Sources */,
 				5344FF61265E5E6B00313899 /* KKAnimation.swift in Sources */,
+				53D301A0268EC95200BF909D /* KKDepositHistoryResults.swift in Sources */,
 				531428A22674979500801FD9 /* KKLiveChatResponse.swift in Sources */,
-				06566B8F267AE287009FE072 /* KKDepositBankDepositChannels.swift in Sources */,
 				0676B5AA262FD6EF0023311F /* SceneDelegate.swift in Sources */,
 				53F21FB82687AD4500A44911 /* KKDialogAlertViewController.swift in Sources */,
 				06BF5C342669814C00C10008 /* KKGroupPlatformDetails.swift in Sources */,
+				53D301A9268ECA1D00BF909D /* KKWithdrawDataResponse.swift in Sources */,
 				062C397D2632C74200E86EEA /* KKApiRouter.swift in Sources */,
 				533F2B2D268A435E00209F9D /* KKPlatfromGameItemCell.swift in Sources */,
 				06868313267948980097E068 /* KKUserProfileAllTiers.swift in Sources */,
 				539A0FA1266343440098739E /* KKOTPViewController.swift in Sources */,
 				0676B5F0262FD7F20023311F /* KKUtil.swift in Sources */,
 				53E2FF0F2658BDE00017CA67 /* KKBonusViewController.swift in Sources */,
+				53D301B6268ECB5100BF909D /* KKWithdrawHistoryResults.swift in Sources */,
 				062C39852632C98600E86EEA /* KKApiErrorDetails.swift in Sources */,
 				0676B5F9262FD8E40023311F /* KKColor.swift in Sources */,
 				53AAAE0E26401B09004103F0 /* KKMessageViewController.swift in Sources */,
@@ -1655,6 +1677,8 @@
 				06BF5C102669776E00C10008 /* KKOTPRequestData.swift in Sources */,
 				06868316267948980097E068 /* KKUserProfileResults.swift in Sources */,
 				06E4DEFC267C00C000482979 /* KKUserCashFlowResponse.swift in Sources */,
+				53D301A1268EC95200BF909D /* KKHistoryDetails.swift in Sources */,
+				53D30193268EC86400BF909D /* KKDepositDataResults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,34 +1,34 @@
 //
-//  KKWithdrawBankResponse.swift
+//  KKAddBankResponse.swift
 //
-//  Created by Keith CheeHui on 17/06/2021
+//  Created by Wong Sai Khong on 02/07/2021
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 
-struct KKWithdrawBankResponse: Codable {
+struct KKAddBankResponse: Codable {
 
   enum CodingKeys: String, CodingKey {
-    case code
-    case message
     case results
+    case message
     case error
+    case code
   }
 
-  var code: Int?
+  var results: KKAddBankResults?
   var message: String?
-  var results: KKWithdrawBankResults?
   var error: Bool?
+  var code: Int?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    code = try container.decodeIfPresent(Int.self, forKey: .code)
+    results = try container.decodeIfPresent(KKAddBankResults.self, forKey: .results)
     message = try container.decodeIfPresent(String.self, forKey: .message)
-    results = try container.decodeIfPresent(KKWithdrawBankResults.self, forKey: .results)
     error = try container.decodeIfPresent(Bool.self, forKey: .error)
+    code = try container.decodeIfPresent(Int.self, forKey: .code)
   }
 
 }

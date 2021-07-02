@@ -1,25 +1,25 @@
 //
-//  KKAddWithdrawBankResults.swift
+//  KKResults.swift
 //
-//  Created by Keith CheeHui on 17/06/2021
+//  Created by Wong Sai Khong on 02/07/2021
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 
-struct KKAddWithdrawBankResults: Codable {
+struct KKAddBankResults: Codable {
 
   enum CodingKeys: String, CodingKey {
     case userBanks = "user_banks"
   }
 
-  var userBanks: [KKWithdrawBankDetails]?
+  var userBanks: [KKUserBankCards]?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    userBanks = try container.decodeIfPresent([KKWithdrawBankDetails].self, forKey: .userBanks)
+    userBanks = try container.decodeIfPresent([KKUserBankCards].self, forKey: .userBanks)
   }
 
 }

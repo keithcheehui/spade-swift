@@ -223,17 +223,18 @@ enum TableViewType: Int {
 
 enum FilterDuration: String, CaseIterable {
     case all = "all"
-    case td = "td"
-    case yd = "yd"
+//    case td = "td"
+//    case yd = "yd"
+    case l7d = "l7d"
     case tm = "tm"
-    case lm = "lm"
-    case l90d = "l90d"
+//    case lm = "lm"
+//    case l90d = "l90d"
 }
 
 enum HistoryStatus: String, CaseIterable {
     case all = "all"
     case approved = "approved"
-    case rejected = "rejected"
+    case rejected = "fail"
     case pending = "pending"
 }
 
@@ -267,7 +268,8 @@ enum PersonalSideMenu: Int, CaseIterable {
     case accountDetail = 2
     case individualReport = 3
     case wallet = 4
-    case history = 5
+    case bankCard = 5
+    case history = 6
 }
 
 enum AffiliatteSideMenu: Int, CaseIterable {
@@ -295,7 +297,8 @@ enum SupportSideMenu: Int, CaseIterable {
 
 enum DepositSideMenu: Int, CaseIterable {
     case bankAccount = 0
-    case artificial = 1
+    case depositHistory = 1
+    case artificial = 2
 }
 
 enum WithdrawSideMenu: Int, CaseIterable {

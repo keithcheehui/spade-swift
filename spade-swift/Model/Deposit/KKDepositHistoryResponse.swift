@@ -1,7 +1,7 @@
 //
 //  KKDepositHistoryResponse.swift
 //
-//  Created by Keith CheeHui on 17/06/2021
+//  Created by Wong Sai Khong on 02/07/2021
 //  Copyright (c) . All rights reserved.
 //
 
@@ -10,24 +10,24 @@ import Foundation
 struct KKDepositHistoryResponse: Codable {
 
   enum CodingKeys: String, CodingKey {
-    case results
-    case error
     case code
+    case error
+    case results
     case message
   }
 
-  var results: KKDepositHistoryResults?
-  var error: Bool?
   var code: Int?
+  var error: Bool?
+  var results: KKDepositHistoryResults?
   var message: String?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    results = try container.decodeIfPresent(KKDepositHistoryResults.self, forKey: .results)
-    error = try container.decodeIfPresent(Bool.self, forKey: .error)
     code = try container.decodeIfPresent(Int.self, forKey: .code)
+    error = try container.decodeIfPresent(Bool.self, forKey: .error)
+    results = try container.decodeIfPresent(KKDepositHistoryResults.self, forKey: .results)
     message = try container.decodeIfPresent(String.self, forKey: .message)
   }
 

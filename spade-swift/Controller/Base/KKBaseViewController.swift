@@ -77,27 +77,31 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
                 details.id = ""
                 details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
                 
-            case .td:
-                details.id = item.rawValue
-                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_td")
+//            case .td:
+//                details.id = item.rawValue
+//                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_td")
+//
+//            case .yd:
+//                details.id = item.rawValue
+//                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_yd")
                 
-            case .yd:
+            case .l7d:
                 details.id = item.rawValue
-                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_yd")
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_l7d")
                 
             case .tm:
                 details.id = item.rawValue
                 details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_tm")
                 
                 
-            case .lm:
-                details.id = item.rawValue
-                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_lm")
-                
-                
-            case .l90d:
-                details.id = item.rawValue
-                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_l90d")
+//            case .lm:
+//                details.id = item.rawValue
+//                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_lm")
+//
+//
+//            case .l90d:
+//                details.id = item.rawValue
+//                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_l90d")
             }
            
             pickerTimeArray.append(details)
@@ -120,7 +124,7 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
                 
             case .rejected:
                 details.id = item.rawValue
-                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_rejected")
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_fail")
                 
                 
             case .pending:
@@ -322,25 +326,25 @@ extension String {
         return strcmp(char, "\\b") == -92
     }
     
-    var bankAccountMasked: String {
-        self.enumerated().map({ (index, ch) in
-            if index < 5 {
-                return String(ch)
-            }
-            
-            return "* "
-        }).joined()
-      }
-    
 //    var bankAccountMasked: String {
 //        self.enumerated().map({ (index, ch) in
-//            if index > self.count - 5 {
+//            if index < 5 {
 //                return String(ch)
 //            }
 //
 //            return "* "
 //        }).joined()
 //      }
+    
+    var bankAccountMasked: String {
+        self.enumerated().map({ (index, ch) in
+            if index > self.count - 5 {
+                return String(ch)
+            }
+
+            return "* "
+        }).joined()
+      }
 }
 
 extension UIImageView {

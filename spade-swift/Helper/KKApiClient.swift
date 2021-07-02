@@ -198,7 +198,7 @@ class KKApiClient: NSObject {
     
     //MARK: - Private
     //MARK: - Deposit / Withdrawal
-    static func addUserBankCard(bankAccountNo: String, bankAccountName: String, bankId: String) -> Future<KKWithdrawBankResponse> {
+    static func addUserBankCard(bankAccountNo: String, bankAccountName: String, bankId: String) -> Future<KKAddBankResponse> {
         let parameter = [
             APIKeys.bankAccountNo: bankAccountNo,
             APIKeys.bankAccountName: bankAccountName,
@@ -209,7 +209,7 @@ class KKApiClient: NSObject {
     }
     
     //TODO: Havent implement
-    static func deleteUserBankCard(bankId: Int) -> Future<KKWithdrawBankResponse> {
+    static func deleteUserBankCard(bankId: Int) -> Future<KKGeneralResponse> {
         let parameter = [
             APIKeys.bankAccountCardId: bankId
         ] as [String : Any]
@@ -218,7 +218,7 @@ class KKApiClient: NSObject {
     }
     
     //TODO: Havent implement
-    static func depositPageData() -> Future<KKDepositBankResponse> {
+    static func depositPageData() -> Future<KKDepositDataResponse> {
         return performRequest(route: .depositPageData)
     }
     
@@ -235,7 +235,7 @@ class KKApiClient: NSObject {
         return performRequest(route: .depositHistory(parameter: parameter))
     }
         
-    static func getWithdrawPageData() -> Future<KKWithdrawBankResponse> {
+    static func withdrawPageData() -> Future<KKWithdrawDataResponse> {
         return performRequest(route: .withdrawPageData)
     }
     
@@ -248,8 +248,9 @@ class KKApiClient: NSObject {
         return performRequest(route: .withdraw(parameter: parameter))
     }
     
-    static func withdrawHistory(historyStatus: String) -> Future<KKWithdrawHistoryResponse> {
+    static func withdrawHistory(filter: String, historyStatus: String) -> Future<KKWithdrawHistoryResponse> {
         let parameter = [
+            APIKeys.filterDuration: filter,
             APIKeys.status: historyStatus
         ] as [String : Any]
         

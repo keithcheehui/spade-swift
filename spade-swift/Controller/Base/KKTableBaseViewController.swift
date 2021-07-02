@@ -14,8 +14,8 @@ class KKTableBaseViewController: KKBaseViewController {
     var tableViewType: TableViewType!
     var cashFlowArray: [KKUserCashFlowDetails]! = []
     var bettingRecordArray: [KKUserBettingHistoryDetails]! = []
-    var withdrawHistoryArray: [KKWithdrawHistoryDetails]! = []
-    var depositHistoryArray: [KKDepositHistoryDetails]! = []
+    var withdrawHistoryArray: [KKHistoryDetails]! = []
+    var depositHistoryArray: [KKHistoryDetails]! = []
     var selectedTabItem: String!
 
     var commissionTableArray = [
@@ -53,7 +53,7 @@ class KKTableBaseViewController: KKBaseViewController {
         } else if tableViewType == .AccountDetails {
             getUserAccountDetailsAPI(leftPicker: "", tabItem: selectedTabItem)
         } else if tableViewType == .WithdrawHistory {
-            withdrawHistoryAPI(leftPicker: "")
+            withdrawHistoryAPI(leftPicker: "", rightPicker: "")
         }
     }
     
@@ -109,11 +109,11 @@ class KKTableBaseViewController: KKBaseViewController {
             
         case .DepositHistory:
             let depositHistoryDetails = depositHistoryArray[indexPath.row]
-            return [depositHistoryDetails.trxTimestamp ?? "", depositHistoryDetails.amount ?? "", depositHistoryDetails.paymentMethod ?? "", depositHistoryDetails.status ?? "", ""]
-            
+            return [depositHistoryDetails.trxTimestamp ?? "", String(depositHistoryDetails.transactionId ?? 0), depositHistoryDetails.amount ?? "", depositHistoryDetails.status ?? ""]
+
         case .WithdrawHistory:
             let withdrawHistoryDetails = withdrawHistoryArray[indexPath.row]
-            return [withdrawHistoryDetails.trxTimestamp ?? "", withdrawHistoryDetails.withdrawCode ?? "", withdrawHistoryDetails.amount ?? "", withdrawHistoryDetails.withdrawalMethod ?? "", withdrawHistoryDetails.status ?? ""]
+            return [withdrawHistoryDetails.trxTimestamp ?? "", String(withdrawHistoryDetails.transactionId ?? 0) , withdrawHistoryDetails.amount ?? "", withdrawHistoryDetails.status ?? ""]
             
         default:
             return []
@@ -156,11 +156,11 @@ class KKTableBaseViewController: KKBaseViewController {
         }
     }
     
-    func withdrawHistoryAPI(leftPicker: String) {
+    func withdrawHistoryAPI(leftPicker: String, rightPicker: String) {
         
         self.showAnimatedLoader()
         
-        KKApiClient.withdrawHistory(historyStatus: leftPicker).execute { withdrawHistoryResponse in
+        KKApiClient.withdrawHistory(filter: leftPicker, historyStatus: rightPicker).execute { withdrawHistoryResponse in
             
             self.hideAnimatedLoader()
             self.withdrawHistoryArray = withdrawHistoryResponse.results?.withdrawHistory

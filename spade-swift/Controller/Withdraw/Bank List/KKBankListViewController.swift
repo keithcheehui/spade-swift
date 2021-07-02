@@ -10,10 +10,14 @@ import UIKit
 
 class KKBankListViewController: KKBaseViewController {
     
+    @IBOutlet weak var addContainer: UIView!
+    @IBOutlet weak var lblAddBank: UILabel!
+    @IBOutlet weak var addContainerHeight: NSLayoutConstraint!
+
     @IBOutlet weak var bankTableView: UITableView!
 
-    var userBankList: [KKWithdrawBankDetails]! = []
-    var bankItemList: [KKWithdrawBankNames]! = []
+    var userBankList: [KKUserBankCards]! = []
+    var bankItemList: [KKCompanyBanks]! = []
     var bankListOptions: [PickerDetails]! = []
 
     override func viewDidLoad() {
@@ -23,6 +27,16 @@ class KKBankListViewController: KKBaseViewController {
     }
     
     func initialLayout(){
+        addContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 50)
+        addContainer.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        addContainer.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 1)
+        addContainer.layer.borderColor = UIColor(white: 1, alpha: 0.3).cgColor
+        addContainer.layer.cornerRadius = 8
+        
+        lblAddBank.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
+        lblAddBank.text = KKUtil.languageSelectedStringForKey(key: "withdraw_add_bank")
+        lblAddBank.textColor = .spade_white_FFFFFF
+            
         bankTableView.backgroundColor = UIColor(white: 0, alpha: 0)
         bankTableView.register(UINib(nibName: "KKBankTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.bankTVCIdentifier)
     }
@@ -44,16 +58,16 @@ class KKBankListViewController: KKBaseViewController {
     func getBankListAPI() {
         self.showAnimatedLoader()
         
-        KKApiClient.getWithdrawPageData().execute { withdrawBankResponse in
+        KKApiClient.depositPageData().execute { depositPageDataResponse in
             self.hideAnimatedLoader()
-            self.userBankList = withdrawBankResponse.results?.userBanks
-            self.bankItemList = withdrawBankResponse.results?.bankNames
+            self.userBankList = depositPageDataResponse.results?.userBankCards
+            self.bankItemList = depositPageDataResponse.results?.companyBanks
             
             if (self.bankItemList.count > 0) {
                 for bank in self.bankItemList {
                     var bankDetail = PickerDetails()
-                    bankDetail.id = String(bank.id ?? -1)
-                    bankDetail.name = bank.name ?? ""
+                    bankDetail.id = String(bank.companyBankId ?? -1)
+                    bankDetail.name = bank.bankName ?? ""
                     
                     self.bankListOptions.append(bankDetail)
                 }
@@ -66,11 +80,37 @@ class KKBankListViewController: KKBaseViewController {
             self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
+    
+    @IBAction func btnAddDidPressed() {
+        changeAddBankView()
+    }
 }
 
 extension KKBankListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userBankList.count + 1
+        return userBankList.count //+ 1
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = KKUtil.languageSelectedStringForKey(key: "add_bank_all_bank_account")
+        label.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
+        label.textColor = .spade_white_FFFFFF
+        label.backgroundColor = .clear
+        label.frame = CGRect(x: 22, y: 0, width: addContainer.frame.size.width, height: KKUtil.ConvertSizeByDensity(size: 20))
+        
+        return label
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = KKUtil.languageSelectedStringForKey(key: "add_bank_prompt")
+        label.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
+        label.textColor = .spade_yellow_FFFF00
+        label.backgroundColor = .clear
+        label.frame = CGRect(x: 22, y: 10, width: addContainer.frame.size.width, height: KKUtil.ConvertSizeByDensity(size: 20))
+        
+        return label
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,46 +120,53 @@ extension KKBankListViewController: UITableViewDataSource, UITableViewDelegate {
         }
         cell.imgSelected.isHidden = true
 
-        if (indexPath.row == 0) {
-            cell.containerView.backgroundColor = UIColor(white: 0, alpha: 0.3)
-            cell.lblBankName.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
-
-            cell.lblBankName.text = KKUtil.languageSelectedStringForKey(key: "withdraw_add_bank")
-            cell.lblBankAccount.isHidden = true
-            cell.imgBank.image = UIImage(named: "ic_add")
-        } else {
+//        if (indexPath.row == 0) {
+//            cell.containerView.backgroundColor = UIColor(white: 0, alpha: 0.3)
+//            cell.lblBankName.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
+//
+//            cell.lblBankName.text = KKUtil.languageSelectedStringForKey(key: "withdraw_add_bank")
+//            cell.lblBankAccount.isHidden = true
+//            cell.lblAccountName.isHidden = true
+//            cell.lblAccountNameHeight.constant = 0
+//            cell.imgBank.image = UIImage(named: "ic_add")
+//        } else {
             cell.containerView.layer.borderWidth = 0
  
-            if let bankAccNumber = userBankList[indexPath.row - 1].bankAccountNumber {
+            if let bankAccNumber = userBankList[indexPath.row].bankAccountNumber {
                 if bankAccNumber.isEmpty {
                     cell.lblBankAccount.text = ""
                 } else {
-                    cell.lblBankAccount.text = userBankList[indexPath.row - 1].bankAccountNumber!.bankAccountMasked
+                    cell.lblBankAccount.text = userBankList[indexPath.row].bankAccountNumber!.bankAccountMasked
                 }
             }
-            
-            for bankItem in bankItemList {
-                if bankItem.id == userBankList[indexPath.row - 1].bankId {
-                    cell.imgBank.setUpImage(with: bankItem.img)
-                }
-            }
-            
-            cell.lblBankName.text = userBankList[indexPath.row - 1].bankName
+            cell.imgBank.setUpImage(with: userBankList[indexPath.row].bankImg)
+            cell.lblBankName.text = userBankList[indexPath.row].bankName
+            cell.lblAccountName.text = userBankList[indexPath.row].bankAccountName
             cell.lblBankAccount.isHidden = false
-        }
+            cell.lblAccountName.isHidden = false
+            cell.lblAccountNameHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
+//        }
         
         cell.selectionStyle = .none
 
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.row == 0) {
-            changeAddBankView()
-        }
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if (indexPath.row == 0) {
+//            changeAddBankView()
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return KKUtil.ConvertSizeByDensity(size: 45)
+        return KKUtil.ConvertSizeByDensity(size: 60)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return KKUtil.ConvertSizeByDensity(size: 30)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return KKUtil.ConvertSizeByDensity(size: 20)
     }
 }
