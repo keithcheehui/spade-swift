@@ -16,8 +16,8 @@ class KKBankListViewController: KKBaseViewController {
 
     @IBOutlet weak var bankTableView: UITableView!
 
-    var userBankList: [KKUserBankCards]! = []
-    var bankItemList: [KKCompanyBanks]! = []
+    var userBankList: [KKPageDataUserBankCards]! = []
+    var bankItemList: [KKPageDataUserBankCards]! = []
     var bankListOptions: [PickerDetails]! = []
 
     override func viewDidLoad() {
@@ -66,7 +66,7 @@ class KKBankListViewController: KKBaseViewController {
             if (self.bankItemList.count > 0) {
                 for bank in self.bankItemList {
                     var bankDetail = PickerDetails()
-                    bankDetail.id = String(bank.companyBankId ?? -1)
+                    bankDetail.id = String(bank.bankId ?? -1)
                     bankDetail.name = bank.bankName ?? ""
                     
                     self.bankListOptions.append(bankDetail)

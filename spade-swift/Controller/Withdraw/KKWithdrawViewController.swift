@@ -19,7 +19,7 @@ class KKWithdrawViewController: KKBaseViewController {
     
     var sideMenuList: [SideMenuDetails] = []
     var selectedViewType = WithdrawSideMenu.withdraw.rawValue
-    var userBankList: [KKUserBankCards]! = []
+    var userBankList: [KKPageDataUserBankCards]! = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,10 +57,10 @@ class KKWithdrawViewController: KKBaseViewController {
                 details.title = KKUtil.languageSelectedStringForKey(key: "withdraw_history")
                 details.imgIcon = "ic_withdraw_history"
                 
-            case .bankCard:
-                details.id = item.rawValue
-                details.title = KKUtil.languageSelectedStringForKey(key: "withdraw_bank_card")
-                details.imgIcon = "ic_bank_card"
+//            case .bankCard:
+//                details.id = item.rawValue
+//                details.title = KKUtil.languageSelectedStringForKey(key: "withdraw_bank_card")
+//                details.imgIcon = "ic_bank_card"
             }
            
             sideMenuList.append(details)
@@ -97,10 +97,10 @@ class KKWithdrawViewController: KKBaseViewController {
             viewController.tableViewType = .WithdrawHistory
             changeView(vc: viewController)
             break;
-        case WithdrawSideMenu.bankCard.rawValue:
-            let viewController = KKBankListViewController()
-            changeView(vc: viewController)
-            break;
+//        case WithdrawSideMenu.bankCard.rawValue:
+//            let viewController = KKBankListViewController()
+//            changeView(vc: viewController)
+//            break;
         default:
             if userBankList.isEmpty {
                 let viewController = KKNoBankViewController()
@@ -127,11 +127,11 @@ class KKWithdrawViewController: KKBaseViewController {
         self.addChild(vc)
     }
     
-    func changeToHoverBankCard() {
-        selectedViewType = WithdrawSideMenu.bankCard.rawValue
-        buttonHover(type: selectedViewType)
-        changeView(vc: KKAddBankViewController())
-    }
+//    func changeToHoverBankCard() {
+//        selectedViewType = WithdrawSideMenu.bankCard.rawValue
+//        buttonHover(type: selectedViewType)
+//        changeView(vc: KKAddBankViewController())
+//    }
 }
 
 extension KKWithdrawViewController: UITableViewDataSource, UITableViewDelegate {

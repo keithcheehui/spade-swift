@@ -54,6 +54,8 @@ class KKTableBaseViewController: KKBaseViewController {
             getUserAccountDetailsAPI(leftPicker: "", tabItem: selectedTabItem)
         } else if tableViewType == .WithdrawHistory {
             withdrawHistoryAPI(leftPicker: "", rightPicker: "")
+        } else if tableViewType == .DepositHistory {
+            depositHistoryAPI(leftPicker: "", rightPicker: "")
         }
     }
     
@@ -164,6 +166,23 @@ class KKTableBaseViewController: KKBaseViewController {
             
             self.hideAnimatedLoader()
             self.withdrawHistoryArray = withdrawHistoryResponse.results?.withdrawHistory
+            self.contentTableView.reloadData()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
+        }
+    }
+    
+    func depositHistoryAPI(leftPicker: String, rightPicker: String) {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.depositHistory(filter: leftPicker, historyStatus: rightPicker).execute { depositHistoryResponse in
+            
+            self.hideAnimatedLoader()
+            self.depositHistoryArray = depositHistoryResponse.results?.depositHistory
             self.contentTableView.reloadData()
             
         } onFailure: { errorMessage in

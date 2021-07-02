@@ -349,9 +349,17 @@ class KKUtil: NSObject {
         }
     }
     
-    class func addCurrencyFormat(value: Float) -> String {
+    class func addCurrencyFormatWithFloat(value: Float) -> String {
         let valueStr = String(format: "%.02f", value)
-        
+        return converter(valueStr: valueStr)
+    }
+    
+    class func addCurrencyFormatWithInt(value: Int) -> String {
+        let valueStr = String(format: "%ld", value)
+        return converter(valueStr: valueStr)
+    }
+    
+    private class func converter(valueStr: String) -> String{
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencySymbol = ""

@@ -29,14 +29,17 @@ class KKWithdrawRequestViewController: KKBaseViewController {
     
 //    var parentVC: KKWithdrawViewController!
     
-    var userBankList: [KKUserBankCards]! = []
+    var userBankList: [KKPageDataUserBankCards]! = []
     var selectedBankItem = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialLayout()
-        getBankListAPI()
+        changeLayoutView(noBank: userBankList.isEmpty)
+        setNoticeLabel(min: userBankList[selectedBankItem].bankMinWithdrawal, max: userBankList[selectedBankItem].bankMaxWithdrawal)
+
+//        getBankListAPI()
     }
     
     func initialLayout(){
@@ -52,7 +55,6 @@ class KKWithdrawRequestViewController: KKBaseViewController {
         addBankContainer.layer.borderColor = UIColor(white: 1, alpha: 0.3).cgColor
         
         lblWithdrawAmount.text = KKUtil.languageSelectedStringForKey(key: "withdraw_withdraw_amount")
-        lblNotice.text = KKUtil.languageSelectedStringForKey(key: "withdraw_notice")
         lblTitleWithdraw.text = KKUtil.languageSelectedStringForKey(key: "withdraw_withdraw")
         lblDescription.text = KKUtil.languageSelectedStringForKey(key: "withdraw_description")
         lblSelectBank.text = KKUtil.languageSelectedStringForKey(key: "withdraw_select_bank")
@@ -82,6 +84,16 @@ class KKWithdrawRequestViewController: KKBaseViewController {
         changeLayoutView(noBank: true)
     }
     
+    func setNoticeLabel(min: Int?, max: Int?) {
+        if let minWithdraw = min, let maxWithdraw = max {
+            let minFloat = KKUtil.addCurrencyFormatWithInt(value: minWithdraw)
+            let maxFloat = KKUtil.addCurrencyFormatWithInt(value: maxWithdraw)
+            lblNotice.text = String(format: KKUtil.languageSelectedStringForKey(key: "withdraw_notice"), minFloat, maxFloat)
+        } else {
+            lblNotice.text = String(format: KKUtil.languageSelectedStringForKey(key: "withdraw_notice"), 0, 0)
+        }
+    }
+    
     func changeLayoutView(noBank: Bool) {
         if (noBank){
             bankListContainer.isHidden = true
@@ -92,23 +104,22 @@ class KKWithdrawRequestViewController: KKBaseViewController {
         }
     }
     
-    func getBankListAPI() {
-        self.showAnimatedLoader()
-        
-        KKApiClient.withdrawPageData().execute { withdrawBankResponse in
-            self.hideAnimatedLoader()
-            self.userBankList = withdrawBankResponse.results?.userBankCards
-            
-            self.changeLayoutView(noBank: self.userBankList.isEmpty)
-
-            self.bankTableView.reloadData()
-            
-        } onFailure: { errorMessage in
-            self.hideAnimatedLoader()
-            self.showAlertView(type: .Error, alertMessage: errorMessage)
-            self.changeLayoutView(noBank: self.userBankList.isEmpty)
-        }
-    }
+//    func getBankListAPI() {
+//        self.showAnimatedLoader()
+//
+//        KKApiClient.withdrawPageData().execute { withdrawBankResponse in
+//            self.hideAnimatedLoader()
+//            self.userBankList = withdrawBankResponse.results?.userBankCards
+//
+//            self.changeLayoutView(noBank: self.userBankList.isEmpty)
+//            self.bankTableView.reloadData()
+//
+//        } onFailure: { errorMessage in
+//            self.hideAnimatedLoader()
+//            self.showAlertView(type: .Error, alertMessage: errorMessage)
+//            self.changeLayoutView(noBank: self.userBankList.isEmpty)
+//        }
+//    }
     
     func validateEnty() {
         if (userBankList.isEmpty) {
@@ -191,6 +202,7 @@ extension KKWithdrawRequestViewController: UITableViewDataSource, UITableViewDel
         
         cell.imgBank.setUpImage(with: userBankList[indexPath.row].bankImg)
         cell.lblBankName.text = userBankList[indexPath.row].bankName
+        cell.lblAccountName.text = userBankList[indexPath.row].bankAccountName
         
         cell.selectionStyle = .none
         
@@ -199,11 +211,12 @@ extension KKWithdrawRequestViewController: UITableViewDataSource, UITableViewDel
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedBankItem = indexPath.row
+        setNoticeLabel(min: userBankList[selectedBankItem].bankMinWithdrawal, max: userBankList[selectedBankItem].bankMaxWithdrawal)
         tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return KKUtil.ConvertSizeByDensity(size: 45)
+        return KKUtil.ConvertSizeByDensity(size: 60)
     }
 }
 

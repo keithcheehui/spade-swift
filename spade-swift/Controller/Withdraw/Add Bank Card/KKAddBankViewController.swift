@@ -145,6 +145,9 @@ class KKAddBankViewController: KKBaseViewController {
     override func didTapDone() {
         view.endEditing(true)
         pickerView.isHidden = true
+        if (selectedPickerItem == nil) {
+            return
+        }
         selectedBankItem = selectedPickerItem
     }
 }

@@ -1,5 +1,5 @@
 //
-//  KKPromotions.swift
+//  KKDepositPageDataPromotions.swift
 //
 //  Created by Wong Sai Khong on 02/07/2021
 //  Copyright (c) . All rights reserved.
@@ -7,34 +7,34 @@
 
 import Foundation
 
-struct KKDepositDataPromotions: Codable {
+struct KKDepositPageDataPromotions: Codable {
 
   enum CodingKeys: String, CodingKey {
+    case name
     case amount
-    case startDate = "start_date"
+    case type
     case endDate = "end_date"
     case promoCode = "promo_code"
-    case name
-    case type
+    case startDate = "start_date"
   }
 
+  var name: String?
   var amount: String?
-  var startDate: String?
+  var type: String?
   var endDate: String?
   var promoCode: String?
-  var name: String?
-  var type: String?
+  var startDate: String?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
+    name = try container.decodeIfPresent(String.self, forKey: .name)
     amount = try container.decodeIfPresent(String.self, forKey: .amount)
-    startDate = try container.decodeIfPresent(String.self, forKey: .startDate)
+    type = try container.decodeIfPresent(String.self, forKey: .type)
     endDate = try container.decodeIfPresent(String.self, forKey: .endDate)
     promoCode = try container.decodeIfPresent(String.self, forKey: .promoCode)
-    name = try container.decodeIfPresent(String.self, forKey: .name)
-    type = try container.decodeIfPresent(String.self, forKey: .type)
+    startDate = try container.decodeIfPresent(String.self, forKey: .startDate)
   }
 
 }

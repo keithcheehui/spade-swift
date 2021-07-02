@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct KKWithdrawDataResponse: Codable {
+struct KKWithdrawPageDataResponse: Codable {
 
   enum CodingKeys: String, CodingKey {
     case results
@@ -16,7 +16,7 @@ struct KKWithdrawDataResponse: Codable {
     case code
   }
 
-  var results: KKWithdrawDataResults?
+  var results: KKWithdrawPageDataResults?
   var message: String?
   var error: Bool?
   var code: Int?
@@ -25,7 +25,7 @@ struct KKWithdrawDataResponse: Codable {
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    results = try container.decodeIfPresent(KKWithdrawDataResults.self, forKey: .results)
+    results = try container.decodeIfPresent(KKWithdrawPageDataResults.self, forKey: .results)
     message = try container.decodeIfPresent(String.self, forKey: .message)
     error = try container.decodeIfPresent(Bool.self, forKey: .error)
     code = try container.decodeIfPresent(Int.self, forKey: .code)

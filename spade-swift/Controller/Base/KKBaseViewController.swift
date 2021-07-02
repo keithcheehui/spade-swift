@@ -89,16 +89,19 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
                 details.id = item.rawValue
                 details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_l7d")
                 
-            case .tm:
-                details.id = item.rawValue
-                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_tm")
+//            case .tm:
+//                details.id = item.rawValue
+//                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_tm")
                 
                 
 //            case .lm:
 //                details.id = item.rawValue
 //                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_lm")
-//
-//
+            
+            case .l30d:
+                details.id = item.rawValue
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_l30d")
+
 //            case .l90d:
 //                details.id = item.rawValue
 //                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_l90d")
@@ -118,11 +121,11 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
                 details.id = ""
                 details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
                 
-            case .approved:
+            case .success:
                 details.id = item.rawValue
-                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_approved")
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_success")
                 
-            case .rejected:
+            case .fail:
                 details.id = item.rawValue
                 details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_fail")
                 
@@ -210,9 +213,9 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     func setupDatePickerView() {
         datePickerView.date = Date()
         datePickerView.locale = .current
-        datePickerView.datePickerMode = .date
+        datePickerView.datePickerMode = .dateAndTime
         datePickerView.addTarget(self, action: #selector(handleDateSelection), for: .valueChanged)
-
+        
         if let window = UIApplication.shared.keyWindow {
             window.addSubview(datePickerView)
         }
@@ -221,8 +224,15 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     //MARK:- Show Date Picker View
-    func showDatePickerView() {
+    func showDatePickerView(showTime: Bool) {
         datePickerView.isHidden = false
+        
+        if (showTime) {
+            datePickerView.locale = Locale(identifier: "en_GB")
+            datePickerView.datePickerMode = .dateAndTime
+        } else {
+            datePickerView.datePickerMode = .date
+        }
     }
     
     @objc func handleDateSelection(picker: UIDatePicker) {
@@ -438,6 +448,13 @@ extension KKBaseViewController: UIToolbarDelegate {
     }
 }
 
+extension UITextField {
+
+    open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        return false
+    }
+}
+
 struct SideMenuDetails {
     
     var imgIcon: String
@@ -461,3 +478,4 @@ struct PickerDetails {
         self.name = name
     }
 }
+

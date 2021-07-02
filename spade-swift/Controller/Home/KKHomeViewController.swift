@@ -104,6 +104,7 @@ class KKHomeViewController: KKBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.updateUserProfileDetails()
+        self.getInboxReadStatusAPI()
     }
     
     func initialLayout(){
@@ -286,7 +287,7 @@ class KKHomeViewController: KKBaseViewController {
                 }
                 
                 if let userWalletResult = userWalletResponse.results {
-                    self.lblMoney.text = KKUtil.addCurrencyFormat(value: userWalletResult.walletBalance!)
+                    self.lblMoney.text = KKUtil.addCurrencyFormatWithFloat(value: userWalletResult.walletBalance!)
                 }
                 
             } onFailure: { errorMessage in
@@ -487,7 +488,7 @@ class KKHomeViewController: KKBaseViewController {
             lblVip.text = userProfile.tier?.currentLevelName!
             
             if let userWallet = userProfile.walletBalance {
-                self.lblMoney.text = KKUtil.addCurrencyFormat(value: userWallet)
+                self.lblMoney.text = KKUtil.addCurrencyFormatWithFloat(value: userWallet)
             }
             
             let balance = CGFloat(truncating: NumberFormatter().number(from: (userProfile.tier?.balance)!)!)
@@ -502,12 +503,22 @@ class KKHomeViewController: KKBaseViewController {
             lblVip.text = "VIP 1"
             lblMoney.text = "0"
         }
-        updateUnreadStatus()
 
         imgProfile.image = UIImage(named: "ic_profile")
         lblLanguage.text = KKUtil.decodeUserLanguageFromCache().name
         countryImageView.setUpImage(with: KKUtil.decodeUserCountryFromCache().img)
         lblCountry.text = KKUtil.decodeUserCountryFromCache().code
+    }
+    
+    func getInboxReadStatusAPI() {
+        KKApiClient.getInboxReadStatus().execute { response in
+            if let unread = response.results?.inboxUnreadMessages {
+                self.messageUnread = unread
+                self.updateUnreadStatus()
+            }
+        } onFailure: { errorMessage in
+            self.updateUnreadStatus()
+        }
     }
 }
 

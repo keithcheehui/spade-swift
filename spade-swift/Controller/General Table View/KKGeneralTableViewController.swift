@@ -169,6 +169,8 @@ class KKGeneralTableViewController: KKTableBaseViewController {
             self.getUserAccountDetailsAPI(leftPicker: leftItem, tabItem: selectedTabItem)
         } else if tableViewType == .WithdrawHistory {
             self.withdrawHistoryAPI(leftPicker: leftItem, rightPicker: rightItem)
+        } else if tableViewType == .DepositHistory {
+            self.depositHistoryAPI(leftPicker: leftItem, rightPicker: rightItem)
         }
     }
     
@@ -176,6 +178,14 @@ class KKGeneralTableViewController: KKTableBaseViewController {
     override func didTapDone() {
         view.endEditing(true)
         pickerView.isHidden = true
+        if (isRight && rightItem == nil) {
+            return
+        }
+        
+        if (isLeft && leftItem == nil) {
+            return
+        }
+        
         updateTable()
     }
 }

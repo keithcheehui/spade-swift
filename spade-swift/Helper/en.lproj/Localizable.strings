@@ -160,15 +160,16 @@
 "deposit_copy"                              = "COPY";
 "deposit_information"                       = "Deposit Information";
 "deposit_history"                           = "Deposit History";
-"deposit_time"                              = "Deposit Time";
+"deposit_date"                              = "Deposit Date";
 "deposit_channel"                           = "Deposit Channel";
 "deposit_amount"                            = "Deposit Amount";
-"deposit_amount_placeholder"                = "Min 20.00-Max 30000.00";
+"deposit_amount_placeholder"                = "Min %@-Max %@";
 "deposit_ref_no"                            = "Reference No.";
 "deposit_ref_no_placeholder"                = "Reference Number";
 "deposit_promotion"                         = "Promotion";
 "deposit_promotion_placeholder"             = "Select Activity";
 "deposit_receipt"                           = "Receipt";
+"deposit_select_date"                       = "Select date";
 
 //MARK: Withdraw
 "withdraw_withdraw"                         = "Withdraw";
@@ -176,7 +177,7 @@
 "withdraw_bank_card"                        = "Bank Card";
 "withdraw_withdraw_amount"                  = "Withdraw Amount";
 "withdraw_withdraw_placeholder"             = "Please enter withdraw amount";
-"withdraw_notice"                           = "Notice: Withdraw only from RM30-Rm10,000 only";
+"withdraw_notice"                           = "Notice: Withdraw only from RM%@-Rm%@ only";
 "withdraw_description"                      = "You have not add any bank account yet, please add bank account first before withdrawal";
 "withdraw_select_bank"                      = "Please select your bank account";
 "withdraw_add_bank"                         = "Add Bank Account";
@@ -249,9 +250,10 @@
 "picker_fd_l7d"                                 = "Last 7 days";
 "picker_fd_tm"                                  = "This month";
 "picker_fd_lm"                                  = "Last month";
+"picker_fd_l30d"                                = "Last 30 days";
 "picker_fd_l90d"                                = "Last 90 days";
 "picker_ws_all"                                 = "All";
-"picker_ws_approved"                            = "Approved";
+"picker_ws_success"                             = "Success";
 "picker_ws_fail"                                = "Fail";
 "picker_ws_pending"                             = "Pending";
 "picker_cf_deposit"                             = "Deposit";

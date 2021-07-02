@@ -309,7 +309,7 @@ extension KKUserInfoViewController: UITextFieldDelegate {
             //TODO: KEITH, add the subclass, and add disable copy paste pop up
             textField.tintColor = UIColor.clear
         } else if textField == txtBirthday {
-            showDatePickerView()
+            showDatePickerView(showTime: false)
             datePickerTextField = textField
             
             //TODO: KEITH, add the subclass, and add disable copy paste pop up

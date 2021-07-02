@@ -1,5 +1,5 @@
 //
-//  KKDepositRange.swift
+//  KKInboxUnreadResults.swift
 //
 //  Created by Wong Sai Khong on 02/07/2021
 //  Copyright (c) . All rights reserved.
@@ -7,22 +7,19 @@
 
 import Foundation
 
-struct KKRange: Codable {
+struct KKInboxUnreadResults: Codable {
 
   enum CodingKeys: String, CodingKey {
-    case max
-    case min
+    case inboxUnreadMessages = "inbox_unread_messages"
   }
 
-  var max: Int?
-  var min: Int?
+  var inboxUnreadMessages: Bool?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    max = try container.decodeIfPresent(Int.self, forKey: .max)
-    min = try container.decodeIfPresent(Int.self, forKey: .min)
+    inboxUnreadMessages = try container.decodeIfPresent(Bool.self, forKey: .inboxUnreadMessages) ?? false
   }
 
 }

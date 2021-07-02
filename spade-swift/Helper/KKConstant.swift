@@ -176,11 +176,11 @@ struct CellIdentifier {
 struct Spade {
     
     struct DevServer {
-        static let baseApiURL: String = "https://lg-api.fteg.app/api/"
+        static let baseApiURL: String = "https://legend.fteg.dev/api/"
     }
     
-    struct ProdServer {
-        static let baseApiURL: String = "https://legend.fteg.dev/api/"
+    struct StagingServer {
+        static let baseApiURL: String = "https://lg-api.fteg.app/api/"
     }
 }
 
@@ -226,15 +226,16 @@ enum FilterDuration: String, CaseIterable {
 //    case td = "td"
 //    case yd = "yd"
     case l7d = "l7d"
-    case tm = "tm"
+//    case tm = "tm"
 //    case lm = "lm"
+    case l30d = "l30d"
 //    case l90d = "l90d"
 }
 
 enum HistoryStatus: String, CaseIterable {
     case all = "all"
-    case approved = "approved"
-    case rejected = "fail"
+    case success = "success"
+    case fail = "fail"
     case pending = "pending"
 }
 
@@ -304,7 +305,7 @@ enum DepositSideMenu: Int, CaseIterable {
 enum WithdrawSideMenu: Int, CaseIterable {
     case withdraw = 0
     case withdrawHistory = 1
-    case bankCard = 2
+//    case bankCard = 2
 }
 
 enum SettingsSideMenu: Int, CaseIterable {

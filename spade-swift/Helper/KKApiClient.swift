@@ -218,7 +218,7 @@ class KKApiClient: NSObject {
     }
     
     //TODO: Havent implement
-    static func depositPageData() -> Future<KKDepositDataResponse> {
+    static func depositPageData() -> Future<KKDepositPageDataResponse> {
         return performRequest(route: .depositPageData)
     }
     
@@ -227,15 +227,15 @@ class KKApiClient: NSObject {
         return performRequest(route: .deposit(parameter: parameter))
     }
     
-    static func depositHistory(historyStatus: String) -> Future<KKDepositHistoryResponse> {
+    static func depositHistory(filter: String, historyStatus: String) -> Future<KKDepositHistoryResponse> {
         let parameter = [
+            APIKeys.filterDuration: filter,
             APIKeys.status: historyStatus
         ] as [String : Any]
-
         return performRequest(route: .depositHistory(parameter: parameter))
     }
         
-    static func withdrawPageData() -> Future<KKWithdrawDataResponse> {
+    static func withdrawPageData() -> Future<KKWithdrawPageDataResponse> {
         return performRequest(route: .withdrawPageData)
     }
     
@@ -309,7 +309,7 @@ class KKApiClient: NSObject {
         return performRequest(route: .getInbox(parameter: parameter))
     }
     
-    static func getInboxReadStatus() -> Future<KKInboxMessageResponse> {
+    static func getInboxReadStatus() -> Future<KKInboxUnreadResponse> {
         return performRequest(route: .getInboxReadStatus)
     }
     
