@@ -9,6 +9,9 @@ import UIKit
 
 class KKIndividualReportViewController: KKBaseViewController {
     
+    @IBOutlet weak var groupsCollectionView: UICollectionView!
+    @IBOutlet weak var groupsCollectionViewHeight: NSLayoutConstraint!
+
     @IBOutlet weak var topContainer: UIView!
     @IBOutlet weak var leftPickerTitle: UILabel!
     @IBOutlet weak var leftPickerValueView: UIView!
@@ -41,13 +44,36 @@ class KKIndividualReportViewController: KKBaseViewController {
     @IBOutlet weak var bottomContainerMarginBottom: NSLayoutConstraint!
     
     var leftTitle: String!
-    var leftValue: String!
+    var selectedLeftItem: PickerDetails!
+    
+    var tabGroupArray: [KKUserBettingGroupDetails]! = []
+    var selectedTabItem = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectedLeftItem = pickerTimeArray[selectedTabItem]
+
+        
         setupTopContainer()
         contentLayout()
         setLabelValue()
+        initFlowLayout()
+    }
+    
+    func initFlowLayout(){
+        groupsCollectionViewHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        
+        let size = KKUtil.ConvertSizeByDensity(size: 40)
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumLineSpacing = KKUtil.ConvertSizeByDensity(size: 5)
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        flowLayout.itemSize = CGSize(width: size * 3, height: size)
+        
+        groupsCollectionView.register(UINib(nibName: "KKTabListItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.tabListItemCVCIdentifier)
+        groupsCollectionView.collectionViewLayout = flowLayout
     }
     
     func setupTopContainer() {
@@ -66,7 +92,8 @@ class KKIndividualReportViewController: KKBaseViewController {
         leftPickerTxtValue.inputAccessoryView = pickerToolBarView
         
         leftPickerTitle.text = "Transaction Time"
-        leftPickerTxtValue.text = "All Time"
+        leftPickerTxtValue.text = selectedLeftItem.name
+        leftPickerTxtValue.delegate = self
     }
     
     func contentLayout() {
@@ -135,14 +162,58 @@ class KKIndividualReportViewController: KKBaseViewController {
     func getIndividualReportAPI() {
         //TODO: Pending API
     }
+    
+    @objc
+    override func didTapDone() {
+        view.endEditing(true)
+        pickerView.isHidden = true
+        if selectedLeftItem == nil {
+            return
+        }
+        
+        leftPickerTxtValue.text = selectedLeftItem.name
+    }
 }
 
 extension KKIndividualReportViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         showPickerView(optionList: pickerTimeArray)
         pickerTextField = textField
-        
+        selectedLeftItem = selectedPickerItem
+
         //TODO: KEITH, add the subclass, and add disable copy paste pop up
         textField.tintColor = UIColor.clear
+    }
+}
+
+extension KKIndividualReportViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return tabGroupArray.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.tabListItemCVCIdentifier, for: indexPath) as? KKTabListItemCell
+        else {
+            fatalError("DequeueReusableCell failed while casting")
+        }
+        
+        if (indexPath.row == selectedTabItem) {
+            cell.imgHover.isHidden = false
+        } else {
+            cell.imgHover.isHidden = true
+        }
+        
+        cell.lblTitle.text = tabGroupArray[indexPath.item].name
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedTabItem = indexPath.item
+        collectionView.reloadData()
+        
+        return
     }
 }

@@ -11,6 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKGeneralTableViewController" customModule="spade_swift" customModuleProvider="target">
             <connections>
                 <outlet property="contentTableView" destination="1fk-dc-tAv" id="eFR-FD-qXc"/>
+                <outlet property="groupsCollectionMarginBottom" destination="8hc-fS-zL2" id="5sf-2P-3Si"/>
+                <outlet property="groupsCollectionView" destination="Ib3-Ut-7XK" id="nhS-O7-Ee3"/>
+                <outlet property="groupsCollectionViewHeight" destination="Jaw-kM-LA3" id="iQB-RT-r7Q"/>
                 <outlet property="leftContainer" destination="BGK-fb-SRN" id="ESL-gP-g69"/>
                 <outlet property="leftPickerTitle" destination="2fz-S8-AME" id="XdK-l1-uet"/>
                 <outlet property="leftPickerTxtValue" destination="9sY-zQ-LTJ" id="k4s-9a-Kcj"/>
@@ -30,8 +33,11 @@
             <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_box" translatesAutoresizingMaskIntoConstraints="NO" id="V7M-6D-bEA">
+                    <rect key="frame" x="0.0" y="45" width="896" height="369"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NTM-8g-0Dw">
-                    <rect key="frame" x="0.0" y="0.0" width="896" height="44"/>
+                    <rect key="frame" x="0.0" y="45" width="896" height="44"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BGK-fb-SRN">
                             <rect key="frame" x="20" y="7" width="276" height="30"/>
@@ -169,26 +175,56 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1fk-dc-tAv">
-                    <rect key="frame" x="0.0" y="44" width="896" height="370"/>
+                    <rect key="frame" x="0.0" y="89" width="896" height="325"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Z8w-TM-6UA"/>
+                        <outlet property="delegate" destination="-1" id="qAR-tr-ufS"/>
+                    </connections>
                 </tableView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Ib3-Ut-7XK">
+                    <rect key="frame" x="0.0" y="0.0" width="896" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Jaw-kM-LA3"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cgN-jR-BjG">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="t2K-CA-rEW"/>
+                        <outlet property="delegate" destination="-1" id="x7g-Ar-CAb"/>
+                    </connections>
+                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="NTM-8g-0Dw" secondAttribute="trailing" id="1dC-tL-mPB"/>
                 <constraint firstItem="1fk-dc-tAv" firstAttribute="top" secondItem="NTM-8g-0Dw" secondAttribute="bottom" id="6qG-cO-8pn"/>
+                <constraint firstItem="NTM-8g-0Dw" firstAttribute="top" secondItem="Ib3-Ut-7XK" secondAttribute="bottom" constant="5" id="8hc-fS-zL2"/>
                 <constraint firstAttribute="bottom" secondItem="1fk-dc-tAv" secondAttribute="bottom" id="IlH-tr-gcG"/>
-                <constraint firstItem="NTM-8g-0Dw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Nay-ZR-1Kc"/>
+                <constraint firstAttribute="trailing" secondItem="Ib3-Ut-7XK" secondAttribute="trailing" id="Jjc-lh-Cse"/>
+                <constraint firstItem="V7M-6D-bEA" firstAttribute="top" secondItem="NTM-8g-0Dw" secondAttribute="top" id="UcA-aB-5y8"/>
                 <constraint firstItem="1fk-dc-tAv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UeX-e2-noS"/>
+                <constraint firstAttribute="bottom" secondItem="V7M-6D-bEA" secondAttribute="bottom" id="WCw-Pu-LG4"/>
+                <constraint firstItem="Ib3-Ut-7XK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Xha-ET-bkC"/>
+                <constraint firstItem="V7M-6D-bEA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aHM-r6-0a6"/>
                 <constraint firstItem="NTM-8g-0Dw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qwo-v9-OZN"/>
                 <constraint firstAttribute="trailing" secondItem="1fk-dc-tAv" secondAttribute="trailing" id="rTE-8D-E9D"/>
+                <constraint firstItem="Ib3-Ut-7XK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vPN-3C-XmU"/>
+                <constraint firstAttribute="trailing" secondItem="V7M-6D-bEA" secondAttribute="trailing" id="wXY-lu-2Kc"/>
             </constraints>
             <point key="canvasLocation" x="138.61607142857142" y="102.89855072463769"/>
         </view>
     </objects>
     <resources>
+        <image name="bg_box" width="1615" height="1015"/>
         <image name="btn_dropdown" width="53" height="53"/>
     </resources>
 </document>

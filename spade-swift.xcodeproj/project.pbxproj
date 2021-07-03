@@ -83,7 +83,6 @@
 		06E4DF01267C02B500482979 /* KKUserBettingHistoryDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DEFE267C02B400482979 /* KKUserBettingHistoryDetails.swift */; };
 		06E4DF02267C02B500482979 /* KKUserBettingHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DEFF267C02B400482979 /* KKUserBettingHistoryResponse.swift */; };
 		06E4DF03267C02B500482979 /* KKUserBettingHistoryResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4DF00267C02B500482979 /* KKUserBettingHistoryResults.swift */; };
-		06FF0728267FCB250073BE8E /* KKTableBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF0727267FCB250073BE8E /* KKTableBaseViewController.swift */; };
 		06FF072B267FDD9B0073BE8E /* KKGeneralHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF072A267FDD9B0073BE8E /* KKGeneralHeaderView.swift */; };
 		06FF072D267FEF670073BE8E /* KKGeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06FF072C267FEF670073BE8E /* KKGeneralTableViewCell.swift */; };
 		3ED808A9A35A15A51B9CD1B0 /* Pods_spade_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */; };
@@ -303,7 +302,6 @@
 		06E4DEFE267C02B400482979 /* KKUserBettingHistoryDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserBettingHistoryDetails.swift; sourceTree = "<group>"; };
 		06E4DEFF267C02B400482979 /* KKUserBettingHistoryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserBettingHistoryResponse.swift; sourceTree = "<group>"; };
 		06E4DF00267C02B500482979 /* KKUserBettingHistoryResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserBettingHistoryResults.swift; sourceTree = "<group>"; };
-		06FF0727267FCB250073BE8E /* KKTableBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKTableBaseViewController.swift; sourceTree = "<group>"; };
 		06FF072A267FDD9B0073BE8E /* KKGeneralHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKGeneralHeaderView.swift; sourceTree = "<group>"; };
 		06FF072C267FEF670073BE8E /* KKGeneralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKGeneralTableViewCell.swift; sourceTree = "<group>"; };
 		1CAD1294FBEFF302B7020970 /* Pods_spade_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spade_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -702,7 +700,6 @@
 			isa = PBXGroup;
 			children = (
 				0676B623262FDC8F0023311F /* KKBaseViewController.swift */,
-				06FF0727267FCB250073BE8E /* KKTableBaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1599,7 +1596,6 @@
 				53F21FB026871DDE00A44911 /* KKIndividualReportViewController.swift in Sources */,
 				53E2FF182658C5A00017CA67 /* KKBonusContentViewController.swift in Sources */,
 				06E4DEF6267BFF9500482979 /* KKUserBettingPlatformDetails.swift in Sources */,
-				06FF0728267FCB250073BE8E /* KKTableBaseViewController.swift in Sources */,
 				535934B526778E0D00498BBF /* KKPlatformViewController.swift in Sources */,
 				06BF5C2526697A1900C10008 /* KKUserCredentialData.swift in Sources */,
 				5317F22A264C10050076D69B /* KKWithdrawRequestViewController.swift in Sources */,

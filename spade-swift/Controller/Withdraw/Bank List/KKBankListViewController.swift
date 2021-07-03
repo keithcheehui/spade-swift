@@ -87,6 +87,11 @@ class KKBankListViewController: KKBaseViewController {
     }
     
     @IBAction func btnAddDidPressed() {
+        if (userBankList.count >= 2) {
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_bank_limit"))
+            return
+        }
+        
         changeAddBankView()
     }
 }

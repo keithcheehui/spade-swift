@@ -13,18 +13,15 @@ class KKPersonalViewController: KKBaseViewController {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var sideMenuTableView: UITableView!
-    @IBOutlet weak var groupsCollectionView: UICollectionView!
 
     @IBOutlet weak var imgBackWidth: NSLayoutConstraint!
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
     @IBOutlet weak var headerContainerMarginLeft: NSLayoutConstraint!
-    @IBOutlet weak var groupsCollectionViewHeight: NSLayoutConstraint!
     
     var sideMenuList: [SideMenuDetails] = []
     var selectedViewType = PersonalSideMenu.userInfo.rawValue
-    var selectedTabItem = 0
 
-    var bettingRecordGroupsArray: [KKUserBettingGroupDetails]! = []
+    var tabGroupArray: [KKUserBettingGroupDetails]! = []
     var bettingRecordGroupsNameArray: [String]! = []
 
     var bettingRecordPlatfromsArray: [KKUserBettingPlatformDetails]! = []
@@ -36,10 +33,9 @@ class KKPersonalViewController: KKBaseViewController {
         initialLayout()
         appendSideMenuList()
         
-        initFlowLayout()
         getUserBettingPlatformsAndGroupsAPI()
         
-        buttonHover(type: selectedViewType, needRefresh: true)
+        buttonHover(type: selectedViewType)
         
         if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
             getUserLatestWallet()
@@ -102,20 +98,6 @@ class KKPersonalViewController: KKBaseViewController {
         sideMenuTableView.reloadData()
     }
         
-    func initFlowLayout(){
-        let size = KKUtil.ConvertSizeByDensity(size: 40)
-        
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumLineSpacing = KKUtil.ConvertSizeByDensity(size: 5)
-        flowLayout.minimumInteritemSpacing = 0
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        flowLayout.itemSize = CGSize(width: size * 3, height: size)
-
-        groupsCollectionView.collectionViewLayout = flowLayout
-        groupsCollectionView.register(UINib(nibName: "KKTabListItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.tabListItemCVCIdentifier)
-    }
-    
     func getUserLatestWallet() {
         
         KKApiClient.getUserLatestWallet().execute { userWalletResponse in
@@ -154,7 +136,7 @@ class KKPersonalViewController: KKBaseViewController {
             guard let platforms = response.results?.platforms else { return }
 
             if !groups.isEmpty {
-                self.bettingRecordGroupsArray = groups
+                self.tabGroupArray = groups
                 self.bettingRecordGroupsNameArray.removeAll()
                 for group in groups {
                     self.bettingRecordGroupsNameArray.append(group.name ?? "")
@@ -163,14 +145,18 @@ class KKPersonalViewController: KKBaseViewController {
             if !platforms.isEmpty {
                 self.bettingRecordPlatfromsArray = platforms
                 self.bettingRecordPlatfromsNameArray.removeAll()
+                var detail = PickerDetails()
+                detail.id = ""
+                detail.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
+                self.bettingRecordPlatfromsNameArray.append(detail)
+
                 for platform in platforms {
-                    var detail = PickerDetails()
+                    detail = PickerDetails()
                     detail.id = platform.code ?? ""
                     detail.name = platform.name ?? ""
                     self.bettingRecordPlatfromsNameArray.append(detail)
                 }
             }
-            self.groupsCollectionView.reloadData()
             
         } onFailure: { errorMessage in
             self.showAlertView(type: .Error, alertMessage: errorMessage)
@@ -182,47 +168,48 @@ class KKPersonalViewController: KKBaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func buttonHover(type: Int, needRefresh: Bool? = false){
+    func buttonHover(type: Int){
         selectedViewType = type
-        if needRefresh! {
-            selectedTabItem = 0
-        }
-        
-        groupsCollectionView.isHidden = false
-        groupsCollectionViewHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        groupsCollectionView.reloadData()
         
         switch type {
         case PersonalSideMenu.bettingRecord.rawValue:
             let viewController = KKGeneralTableViewController.init()
+            viewController.tabGroupArray = tabGroupArray
             viewController.rightDropdownOptions = bettingRecordPlatfromsNameArray
-            viewController.selectedTabItem = bettingRecordGroupsArray[selectedTabItem].code
+//            viewController.selectedTabItem = tabGroupArray[selectedTabItem].code
             viewController.tableViewType = .BettingRecord
             changeView(vc: viewController)
             break;
         case PersonalSideMenu.accountDetail.rawValue:
             let viewController = KKGeneralTableViewController()
-            viewController.selectedTabItem = pickerCashflowArray[selectedTabItem].id
+            viewController.tabGroupArray = tabGroupArray
+//            viewController.selectedTabItem = pickerCashflowArray[selectedTabItem].id
             viewController.tableViewType = .AccountDetails
             changeView(vc: viewController)
             break;
         case PersonalSideMenu.individualReport.rawValue:
-            changeView(vc: KKIndividualReportViewController())
+            let viewController = KKIndividualReportViewController.init()
+            viewController.tabGroupArray = tabGroupArray
+            changeView(vc: viewController)
             break;
         case PersonalSideMenu.wallet.rawValue:
-            changeView(vc: KKIndividualReportViewController())
+            let viewController = KKIndividualReportViewController.init()
+            viewController.tabGroupArray = tabGroupArray
+            changeView(vc: viewController)
             break;
         case PersonalSideMenu.bankCard.rawValue:
-            groupsCollectionView.isHidden = true
-            groupsCollectionViewHeight.constant = 0
+//            groupsCollectionView.isHidden = true
+//            groupsCollectionViewHeight.constant = 0
             changeView(vc: KKBankListViewController())
             break;
         case PersonalSideMenu.history.rawValue:
-            changeView(vc: KKIndividualReportViewController())
+            let viewController = KKIndividualReportViewController.init()
+            viewController.tabGroupArray = tabGroupArray
+            changeView(vc: viewController)
             break;
         default:
-            groupsCollectionView.isHidden = true
-            groupsCollectionViewHeight.constant = 0
+//            groupsCollectionView.isHidden = true
+//            groupsCollectionViewHeight.constant = 0
             
             changeView(vc: KKUserInfoViewController())
             break;
@@ -239,48 +226,6 @@ class KKPersonalViewController: KKBaseViewController {
         vc.view.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
         contentView.addSubview(vc.view)
         self.addChild(vc)
-    }
-}
-
-extension KKPersonalViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if (selectedViewType == PersonalSideMenu.bettingRecord.rawValue || selectedViewType == PersonalSideMenu.individualReport.rawValue) {
-            return bettingRecordGroupsArray.count
-        } else if (selectedViewType == PersonalSideMenu.accountDetail.rawValue) {
-            return pickerCashflowArray.count
-        }
-        
-        return 0
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.tabListItemCVCIdentifier, for: indexPath) as? KKTabListItemCell
-        else {
-            fatalError("DequeueReusableCell failed while casting")
-        }
-        
-        if (indexPath.row == selectedTabItem) {
-            cell.imgHover.isHidden = false
-        } else {
-            cell.imgHover.isHidden = true
-        }
-        
-        if (selectedViewType == PersonalSideMenu.accountDetail.rawValue) {
-            cell.lblTitle.text = pickerCashflowArray[indexPath.item].name
-        } else {
-            cell.lblTitle.text = bettingRecordGroupsArray[indexPath.item].name
-        }
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedTabItem = indexPath.item
-        collectionView.reloadData()
-        buttonHover(type: selectedViewType)
-        return
     }
 }
 
@@ -312,7 +257,7 @@ extension KKPersonalViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedViewType = indexPath.row
-        buttonHover(type: selectedViewType, needRefresh: true)
+        buttonHover(type: selectedViewType)
         sideMenuTableView.reloadData()
     }
     

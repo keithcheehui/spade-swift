@@ -31,6 +31,9 @@
             <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_box" translatesAutoresizingMaskIntoConstraints="NO" id="f6e-i9-Rji">
+                    <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RUe-nT-nxG">
                     <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                     <subviews>
@@ -300,8 +303,12 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="f6e-i9-Rji" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AgS-HJ-X80"/>
+                <constraint firstAttribute="bottom" secondItem="f6e-i9-Rji" secondAttribute="bottom" id="RwE-eE-vMS"/>
                 <constraint firstAttribute="trailing" secondItem="RUe-nT-nxG" secondAttribute="trailing" id="a7c-mg-oqH"/>
+                <constraint firstAttribute="trailing" secondItem="f6e-i9-Rji" secondAttribute="trailing" id="dAP-Al-WZK"/>
                 <constraint firstItem="RUe-nT-nxG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kXg-X0-Ywn"/>
+                <constraint firstItem="f6e-i9-Rji" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mdB-YI-eNK"/>
                 <constraint firstAttribute="bottom" secondItem="RUe-nT-nxG" secondAttribute="bottom" id="rK2-pJ-jhP"/>
                 <constraint firstItem="RUe-nT-nxG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="tcR-4Y-hTi"/>
             </constraints>
@@ -309,6 +316,7 @@
         </view>
     </objects>
     <resources>
+        <image name="bg_box" width="1615" height="1015"/>
         <image name="btn_add_bank" width="270" height="85"/>
         <image name="btn_confirm" width="329" height="109"/>
         <image name="ic_add" width="104" height="104"/>

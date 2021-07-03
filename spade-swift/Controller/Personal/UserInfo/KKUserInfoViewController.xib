@@ -63,6 +63,9 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0T-mO-sjU">
                     <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                     <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_box" translatesAutoresizingMaskIntoConstraints="NO" id="R70-hi-f5c">
+                            <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dy6-4E-EJA">
                             <rect key="frame" x="0.0" y="0.0" width="896" height="40"/>
                             <subviews>
@@ -666,14 +669,18 @@
                         <constraint firstItem="MxL-2J-8TF" firstAttribute="top" secondItem="Af6-zf-AN1" secondAttribute="bottom" constant="14" id="Sf8-H1-fKO"/>
                         <constraint firstItem="uWE-cs-XxH" firstAttribute="width" secondItem="2LF-Oq-yNB" secondAttribute="height" multiplier="1:1" id="TNu-Zs-NH4"/>
                         <constraint firstItem="dy6-4E-EJA" firstAttribute="top" secondItem="A0T-mO-sjU" secondAttribute="top" id="XYr-bw-zlO"/>
+                        <constraint firstItem="R70-hi-f5c" firstAttribute="top" secondItem="A0T-mO-sjU" secondAttribute="top" id="bOh-kz-wZk"/>
                         <constraint firstItem="MxL-2J-8TF" firstAttribute="leading" secondItem="uWE-cs-XxH" secondAttribute="leading" id="fjg-I8-6Sz"/>
                         <constraint firstItem="LTR-X8-zpI" firstAttribute="leading" secondItem="DgK-Fh-oVU" secondAttribute="leading" id="hYa-Y4-LFW"/>
                         <constraint firstItem="gCc-dp-8PQ" firstAttribute="height" secondItem="yNX-ba-iKU" secondAttribute="height" id="kFF-bt-Wcn"/>
                         <constraint firstItem="Af6-zf-AN1" firstAttribute="height" secondItem="dy6-4E-EJA" secondAttribute="height" id="kN5-E2-F0U"/>
+                        <constraint firstAttribute="trailing" secondItem="R70-hi-f5c" secondAttribute="trailing" id="nJo-Yw-fyp"/>
+                        <constraint firstItem="R70-hi-f5c" firstAttribute="leading" secondItem="A0T-mO-sjU" secondAttribute="leading" id="nqb-lE-jC6"/>
                         <constraint firstItem="MxL-2J-8TF" firstAttribute="trailing" secondItem="z0I-cj-BJy" secondAttribute="trailing" id="pdH-kR-Ftb"/>
                         <constraint firstItem="hGA-Sj-CJx" firstAttribute="trailing" secondItem="y9x-KV-eEl" secondAttribute="trailing" constant="-10" id="uo7-MK-EfY"/>
                         <constraint firstItem="Quc-wM-X3G" firstAttribute="top" secondItem="dy6-4E-EJA" secondAttribute="bottom" constant="14" id="yAs-cO-Tih"/>
                         <constraint firstItem="Af6-zf-AN1" firstAttribute="leading" secondItem="dy6-4E-EJA" secondAttribute="leading" id="yGo-Wh-fhx"/>
+                        <constraint firstAttribute="bottom" secondItem="R70-hi-f5c" secondAttribute="bottom" id="zNY-Qe-LaA"/>
                     </constraints>
                 </view>
             </subviews>
@@ -689,6 +696,7 @@
         </view>
     </objects>
     <resources>
+        <image name="bg_box" width="1615" height="1015"/>
         <image name="btn_my_vip" width="194" height="83"/>
         <image name="ic_edit" width="31" height="31"/>
         <image name="ic_edit_circle" width="52" height="52"/>

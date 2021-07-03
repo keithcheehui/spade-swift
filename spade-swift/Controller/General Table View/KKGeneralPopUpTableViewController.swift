@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KKGeneralPopUpTableViewController: KKTableBaseViewController {
+class KKGeneralPopUpTableViewController: KKGeneralTableViewController {
 
     @IBOutlet weak var imgTitle: UIImageView!
     @IBOutlet weak var lblNote: UILabel!
@@ -27,7 +27,7 @@ class KKGeneralPopUpTableViewController: KKTableBaseViewController {
         initialLayout()
     }
     
-    func initialLayout() {
+    override func initialLayout() {
         self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
 
         containerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 100 : 130)

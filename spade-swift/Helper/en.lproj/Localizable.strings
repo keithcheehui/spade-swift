@@ -243,6 +243,7 @@
 "error_birthday_empty"                          = "Please select your birdthday.";
 "error_username_text_length"                    = "Username must be between 6-12 characters.";
 "error_password_text_length"                    = "Password must be minimum 8 characters, 1 uppercase, 1 lowercase, 1 numeric and 1 special character.";
+"error_bank_limit"                              = "Only 2 bank account are allowed to set up";
 
 //MARK: Picker
 "picker_fd_td"                                  = "Today";

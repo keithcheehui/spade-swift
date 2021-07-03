@@ -30,7 +30,7 @@
             <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YfM-b6-03o">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_box" translatesAutoresizingMaskIntoConstraints="NO" id="cdd-VE-aNB">
                     <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvg-7H-sfJ">
@@ -273,19 +273,20 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="YfM-b6-03o" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4W1-x0-gor"/>
+                <constraint firstItem="cdd-VE-aNB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="IbK-LN-cAe"/>
                 <constraint firstItem="mvg-7H-sfJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="RFJ-Jw-Kfc"/>
-                <constraint firstAttribute="bottom" secondItem="YfM-b6-03o" secondAttribute="bottom" id="arp-T5-Jqk"/>
-                <constraint firstItem="YfM-b6-03o" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ceS-Lz-pZk"/>
+                <constraint firstAttribute="trailing" secondItem="cdd-VE-aNB" secondAttribute="trailing" id="cWq-8J-OsW"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mvg-7H-sfJ" secondAttribute="trailing" constant="30" id="dzV-rT-xGI"/>
                 <constraint firstItem="mvg-7H-sfJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="qUp-UH-109"/>
-                <constraint firstAttribute="trailing" secondItem="YfM-b6-03o" secondAttribute="trailing" id="vUP-DV-Q13"/>
+                <constraint firstItem="cdd-VE-aNB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="svm-qJ-nnf"/>
+                <constraint firstAttribute="bottom" secondItem="cdd-VE-aNB" secondAttribute="bottom" id="tiG-fV-76C"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="mvg-7H-sfJ" secondAttribute="bottom" id="yka-V4-pE1"/>
             </constraints>
             <point key="canvasLocation" x="140.625" y="134.78260869565219"/>
         </view>
     </objects>
     <resources>
+        <image name="bg_box" width="1615" height="1015"/>
         <image name="btn_back" width="329" height="109"/>
         <image name="btn_confirm" width="329" height="109"/>
         <image name="btn_dropdown" width="53" height="53"/>
