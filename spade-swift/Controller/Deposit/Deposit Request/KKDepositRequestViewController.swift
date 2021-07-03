@@ -499,8 +499,10 @@ extension KKDepositRequestViewController: UITextFieldDelegate {
             datePickerTextField = textField
         }
         
-        //TODO: KEITH, add the subclass, and add disable copy paste pop up
-        textField.tintColor = UIColor.clear
+        if (textField == txtBankName || textField == txtDepositChannel || textField == txtPromotion || textField == txtDepositTime) {
+            //TODO: KEITH, add the subclass, and add disable copy paste pop up
+            textField.tintColor = UIColor.clear
+        }
     }
     
     private func textFieldShouldBeginEditing(textField: UITextField) -> Bool {

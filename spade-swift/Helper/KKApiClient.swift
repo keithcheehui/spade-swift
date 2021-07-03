@@ -217,7 +217,6 @@ class KKApiClient: NSObject {
         return performRequest(route: .deleteUserBankCard(parameter: parameter))
     }
     
-    //TODO: Havent implement
     static func depositPageData() -> Future<KKDepositPageDataResponse> {
         return performRequest(route: .depositPageData)
     }

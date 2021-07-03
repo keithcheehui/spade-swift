@@ -26,14 +26,18 @@ class KKAddBankViewController: KKBaseViewController {
     @IBOutlet weak var textFieldHeight: NSLayoutConstraint!
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
     
-    //TODO: remember change to get API
-    var bankItemList: [PickerDetails]! = []
+    var bankListOptions: [PickerDetails]! = []
     var selectedBankItem: PickerDetails!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialLayout()
+        
+        if (selectedBankItem == nil && bankListOptions.count > 0) {
+            selectedBankItem = bankListOptions[0]
+            updateLayout()
+        }
     }
     
     func initialLayout(){
@@ -79,9 +83,18 @@ class KKAddBankViewController: KKBaseViewController {
         
         txtBankAccount.keyboardType = .numberPad
         
-        txtCardholderName.delegate = self
         txtBankName.delegate = self
+        txtCardholderName.delegate = self
         txtBankAccount.delegate = self
+        
+        txtCardholderName.returnKeyType = .next
+        txtBankAccount.returnKeyType = .done
+    }
+    
+    func updateLayout() {
+        if (selectedBankItem != nil && bankListOptions.count > 0) {
+            txtBankName.text = selectedBankItem.name
+        }
     }
     
     func validationField() {
@@ -106,8 +119,7 @@ class KKAddBankViewController: KKBaseViewController {
     //MARK: - API
     func addUserBankCardAPI(){
         self.showAnimatedLoader()
-        //TODO: change bank id
-        KKApiClient.addUserBankCard(bankAccountNo: txtCardholderName.text!, bankAccountName: txtBankAccount.text!, bankId: selectedBankItem.id).execute { addBankResponse in
+        KKApiClient.addUserBankCard(bankAccountNo: txtBankAccount.text!, bankAccountName: txtCardholderName.text!, bankId: selectedBankItem.id).execute { addBankResponse in
             
             self.hideAnimatedLoader()
             self.backPreviousScreen()
@@ -149,22 +161,37 @@ class KKAddBankViewController: KKBaseViewController {
             return
         }
         selectedBankItem = selectedPickerItem
+        updateLayout()
     }
 }
 
 extension KKAddBankViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == txtBankName {
-            showPickerView(optionList: bankItemList)
+            showPickerView(optionList: bankListOptions)
             pickerTextField = textField
+            
+            //TODO: KEITH, add the subclass, and add disable copy paste pop up
+            textField.tintColor = UIColor.clear
         }
-        
-        //TODO: KEITH, add the subclass, and add disable copy paste pop up
-        textField.tintColor = UIColor.clear
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        if textField == txtBankName {
+            textField.resignFirstResponder()
+        } else {
+            switchBasedNextTextField(textField)
+        }
+        
         return true
+    }
+    
+    private func switchBasedNextTextField(_ textField: UITextField) {
+        switch textField {
+        case txtCardholderName:
+            txtBankAccount.becomeFirstResponder()
+        default:
+            txtBankAccount.resignFirstResponder()
+        }
     }
 }

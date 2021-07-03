@@ -17,7 +17,7 @@ class KKBankListViewController: KKBaseViewController {
     @IBOutlet weak var bankTableView: UITableView!
 
     var userBankList: [KKPageDataUserBankCards]! = []
-    var bankItemList: [KKPageDataUserBankCards]! = []
+    var companyBankList: [KKPageDataUserBankCards]! = []
     var bankListOptions: [PickerDetails]! = []
 
     override func viewDidLoad() {
@@ -47,8 +47,9 @@ class KKBankListViewController: KKBaseViewController {
         }
         
         let vc = KKAddBankViewController.init()
+        vc.bankListOptions = bankListOptions
+
         vc.tableContentView = self.view
-        vc.bankItemList = bankListOptions
         vc.displayViewController = self
         vc.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         self.view.addSubview(vc.view)
@@ -61,7 +62,7 @@ class KKBankListViewController: KKBaseViewController {
         KKApiClient.depositPageData().execute { depositPageDataResponse in
             self.hideAnimatedLoader()
             self.userBankList = depositPageDataResponse.results?.userBankCards
-            self.bankItemList = depositPageDataResponse.results?.companyBanks
+            self.companyBankList = depositPageDataResponse.results?.companyBanks
             self.updateView()
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
@@ -71,8 +72,8 @@ class KKBankListViewController: KKBaseViewController {
     }
     
     func updateView() {
-        if (self.bankItemList.count > 0) {
-            for bank in self.bankItemList {
+        if (self.companyBankList.count > 0) {
+            for bank in self.companyBankList {
                 var bankDetail = PickerDetails()
                 bankDetail.id = String(bank.bankId ?? -1)
                 bankDetail.name = bank.bankName ?? ""
