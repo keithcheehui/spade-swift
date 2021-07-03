@@ -277,15 +277,19 @@ enum PersonalSideMenu: Int, CaseIterable {
 
 enum AffiliatteSideMenu: Int, CaseIterable {
     case myAffiliate = 0
-    case downline = 1
-    case guideline = 2
+    case guideline = 1
+    case downline = 2
     case turnover = 3
+    case payout = 4
+    case commissionTrans = 5
+    case commissionTable = 6
 }
 
 enum RebateSideMenu: Int, CaseIterable {
-    case manualRebate = 0
-    case rebateRecord = 1
-    case rebateRatio = 2
+    case myRebate = 0
+    case payout = 1
+    case transaction = 2
+    case rebateTable = 3
 }
 
 enum MessageSideMenu: Int, CaseIterable {

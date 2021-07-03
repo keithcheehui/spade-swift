@@ -59,20 +59,35 @@ class KKAffiliateViewController: KKBaseViewController {
                 details.title = KKUtil.languageSelectedStringForKey(key: "affiliates_my_affiliate")
                 details.imgIcon = "ic_my_affiliate"
                 
-            case .downline:
-                details.id = item.rawValue
-                details.title = KKUtil.languageSelectedStringForKey(key: "affiliates_downline")
-                details.imgIcon = "ic_downline"
-                
             case .guideline:
                 details.id = item.rawValue
                 details.title = KKUtil.languageSelectedStringForKey(key: "affiliates_guideline")
                 details.imgIcon = "ic_information"
                 
+            case .downline:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "affiliates_downline")
+                details.imgIcon = "ic_downline"
+                
             case .turnover:
                 details.id = item.rawValue
                 details.title = KKUtil.languageSelectedStringForKey(key: "affiliates_turnover")
                 details.imgIcon = "ic_turnover"
+                
+            case .payout:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "affiliates_payout")
+                details.imgIcon = "ic_payout"
+                
+            case .commissionTrans:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "affiliates_comm_trans")
+                details.imgIcon = "ic_commtran"
+                
+            case .commissionTable:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "affiliates_comm_table")
+                details.imgIcon = "ic_commtable"
             }
            
             sideMenuList.append(details)

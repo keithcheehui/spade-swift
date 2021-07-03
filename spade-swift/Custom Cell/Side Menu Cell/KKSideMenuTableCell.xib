@@ -36,8 +36,8 @@
                                     <constraint firstAttribute="width" constant="25" id="uSZ-FG-Ci2"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KY Poker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFG-wh-c08">
-                                <rect key="frame" x="48" y="14" width="87" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KY Poker" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFG-wh-c08">
+                                <rect key="frame" x="48" y="0.0" width="87" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -47,6 +47,8 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Tas-Ix-t1d" secondAttribute="trailing" id="2YK-6f-sOF"/>
                             <constraint firstAttribute="trailing" secondItem="fFG-wh-c08" secondAttribute="trailing" constant="15" id="75H-zU-2Zy"/>
+                            <constraint firstAttribute="bottom" secondItem="fFG-wh-c08" secondAttribute="bottom" id="AN4-4u-3NL"/>
+                            <constraint firstItem="fFG-wh-c08" firstAttribute="top" secondItem="nsF-cN-yH1" secondAttribute="top" id="K4h-iY-VWt"/>
                             <constraint firstItem="Tas-Ix-t1d" firstAttribute="top" secondItem="nsF-cN-yH1" secondAttribute="top" id="VBD-Sz-cDW"/>
                             <constraint firstItem="Qtk-bK-bUb" firstAttribute="centerY" secondItem="nsF-cN-yH1" secondAttribute="centerY" id="Wor-Pd-1Ur"/>
                             <constraint firstItem="Qtk-bK-bUb" firstAttribute="leading" secondItem="nsF-cN-yH1" secondAttribute="leading" constant="15" id="cOT-gC-yWR"/>
@@ -84,7 +86,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="bg_hover" width="373" height="112"/>
+        <image name="bg_hover" width="416" height="114"/>
         <image name="bg_separator" width="383" height="6"/>
         <image name="ic_ky" width="75" height="50"/>
     </resources>

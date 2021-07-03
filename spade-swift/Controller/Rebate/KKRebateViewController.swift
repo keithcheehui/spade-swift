@@ -38,7 +38,7 @@ class KKRebateViewController: KKBaseViewController {
         initialLayout()
         appendSideMenuList()
         
-        buttonHover(type: RebateSideMenu.manualRebate.rawValue)
+        buttonHover(type: selectedViewType)
     }
     
     func setHeaderBarLayout() {
@@ -60,20 +60,25 @@ class KKRebateViewController: KKBaseViewController {
         var details = SideMenuDetails.init()
         for item in RebateSideMenu.allCases {
             switch item {
-            case .manualRebate:
+            case .myRebate:
                 details.id = item.rawValue
-                details.title = KKUtil.languageSelectedStringForKey(key: "rebate_manual_rebate")
-                details.imgIcon = "ic_manual_rebate"
+                details.title = KKUtil.languageSelectedStringForKey(key: "rebate_my_rebate")
+                details.imgIcon = "ic_my_rebate"
                 
-            case .rebateRecord:
+            case .payout:
                 details.id = item.rawValue
-                details.title = KKUtil.languageSelectedStringForKey(key: "rebate_rebate_record")
-                details.imgIcon = "ic_rebate_record"
+                details.title = KKUtil.languageSelectedStringForKey(key: "rebate_payout")
+                details.imgIcon = "ic_payout"
                 
-            case .rebateRatio:
+            case .transaction:
                 details.id = item.rawValue
-                details.title = KKUtil.languageSelectedStringForKey(key: "rebate_rebate_ratio")
-                details.imgIcon = "ic_rebate_ratio"
+                details.title = KKUtil.languageSelectedStringForKey(key: "rebate_transaction")
+                details.imgIcon = "ic_commtran"
+                
+            case .rebateTable:
+                details.id = item.rawValue
+                details.title = KKUtil.languageSelectedStringForKey(key: "rebate_rebate_table")
+                details.imgIcon = "ic_commtable"
             }
            
             sideMenuList.append(details)
@@ -114,13 +119,19 @@ class KKRebateViewController: KKBaseViewController {
         showRedeemContainer(shouldShow: false)
 
         switch type {
-        case RebateSideMenu.rebateRecord.rawValue:
+        case RebateSideMenu.payout.rawValue:
             let viewController = KKGeneralTableViewController()
             viewController.tableViewType = .RebateRecord
             changeView(vc: viewController)
             break;
             
-        case RebateSideMenu.rebateRatio.rawValue:
+        case RebateSideMenu.transaction.rawValue:
+            let viewController = KKGeneralTableViewController()
+            viewController.tableViewType = .RebateRatio
+            changeView(vc: viewController)
+            break;
+            
+        case RebateSideMenu.rebateTable.rawValue:
             let viewController = KKGeneralTableViewController()
             viewController.tableViewType = .RebateRatio
             changeView(vc: viewController)
