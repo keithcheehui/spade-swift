@@ -25,16 +25,25 @@ class KKRebateViewController: KKBaseViewController {
     @IBOutlet weak var redeemContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var redeemContainerMarginTop: NSLayoutConstraint!
     
+    @IBOutlet weak var headerBar: KKHeaderBar!
+    @IBOutlet weak var headerBarWidth: NSLayoutConstraint!
+    
     var sideMenuList: [SideMenuDetails] = []
     var selectedViewType = AffiliatteSideMenu.myAffiliate.rawValue
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setHeaderBarLayout()
         initialLayout()
         appendSideMenuList()
         
         buttonHover(type: RebateSideMenu.manualRebate.rawValue)
+    }
+    
+    func setHeaderBarLayout() {
+        headerBarWidth.constant = ConstantSize.headerBarWidth
+        headerBar.setupHeaderData(profileData: KKUtil.decodeUserProfileFromCache())
     }
     
     func initialLayout(){

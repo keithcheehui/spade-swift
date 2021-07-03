@@ -18,17 +18,25 @@ class KKAffiliateViewController: KKBaseViewController {
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
     @IBOutlet weak var headerContainerMarginLeft: NSLayoutConstraint!
 
+    @IBOutlet weak var headerBar: KKHeaderBar!
+    @IBOutlet weak var headerBarWidth: NSLayoutConstraint!
+
     var sideMenuList: [SideMenuDetails] = []
     var selectedViewType = AffiliatteSideMenu.myAffiliate.rawValue
     var selectedTabItem = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setHeaderBarLayout()
         initialLayout()
         appendSideMenuList()
         
         buttonHover(type: selectedViewType)
+    }
+    
+    func setHeaderBarLayout() {
+        headerBarWidth.constant = ConstantSize.headerBarWidth
+        headerBar.setupHeaderData(profileData: KKUtil.decodeUserProfileFromCache())
     }
     
     func initialLayout(){

@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKAffiliateViewController" customModule="spade_swift" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="Fhj-TF-i0e" id="rcd-KY-7yI"/>
+                <outlet property="headerBar" destination="YaS-TY-az6" id="CGS-CY-7gv"/>
+                <outlet property="headerBarWidth" destination="S0H-mB-Qkh" id="eBF-pw-Z4o"/>
                 <outlet property="headerContainerMarginLeft" destination="UCJ-eL-mGm" id="5oj-ot-9x3"/>
                 <outlet property="imgBG" destination="72j-lD-7nQ" id="b0j-hQ-OVb"/>
                 <outlet property="imgBackWidth" destination="zoH-8i-JIX" id="Joh-ya-0qe"/>
@@ -123,6 +125,13 @@
                                 <constraint firstAttribute="width" secondItem="abu-PH-Ueu" secondAttribute="height" multiplier="5:1" id="xVK-PF-OAN"/>
                             </constraints>
                         </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YaS-TY-az6" customClass="KKHeaderBar" customModule="spade_swift" customModuleProvider="target">
+                            <rect key="frame" x="486" y="0.0" width="370" height="54.5"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="370" id="S0H-mB-Qkh"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -130,6 +139,8 @@
                         <constraint firstItem="abu-PH-Ueu" firstAttribute="leading" secondItem="cN1-au-Sgl" secondAttribute="trailing" constant="40" id="H2I-Pl-fTU"/>
                         <constraint firstItem="abu-PH-Ueu" firstAttribute="height" secondItem="S0I-0p-Asj" secondAttribute="height" multiplier="0.7" id="P6B-Jv-oKk"/>
                         <constraint firstItem="abu-PH-Ueu" firstAttribute="centerY" secondItem="8oC-08-Q4z" secondAttribute="centerY" id="VsL-77-sme"/>
+                        <constraint firstAttribute="bottom" secondItem="YaS-TY-az6" secondAttribute="bottom" constant="5" id="dQS-ic-GaT"/>
+                        <constraint firstItem="YaS-TY-az6" firstAttribute="top" secondItem="8oC-08-Q4z" secondAttribute="top" id="idi-wj-sYi"/>
                         <constraint firstItem="cN1-au-Sgl" firstAttribute="leading" secondItem="8oC-08-Q4z" secondAttribute="leading" id="pKV-Kf-2Zi"/>
                         <constraint firstAttribute="bottom" secondItem="cN1-au-Sgl" secondAttribute="bottom" id="sSm-Fq-r3u"/>
                     </constraints>
@@ -143,6 +154,7 @@
                 <constraint firstItem="msU-ae-7Yj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AC1-CZ-6GD"/>
                 <constraint firstAttribute="trailing" secondItem="8oC-08-Q4z" secondAttribute="trailing" id="DcF-JD-tLF"/>
                 <constraint firstItem="Ggt-l0-a5y" firstAttribute="top" secondItem="8oC-08-Q4z" secondAttribute="bottom" constant="10" id="Dnh-1O-Cs1"/>
+                <constraint firstItem="YaS-TY-az6" firstAttribute="trailing" secondItem="Fhj-TF-i0e" secondAttribute="trailing" id="JAD-kg-7g6"/>
                 <constraint firstItem="07k-Gq-bf0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="OQ6-qo-E8L"/>
                 <constraint firstItem="Ggt-l0-a5y" firstAttribute="leading" secondItem="07k-Gq-bf0" secondAttribute="trailing" constant="20" id="Oee-S2-wxk"/>
                 <constraint firstItem="lLN-NU-cSH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Rbe-1Z-tVy"/>

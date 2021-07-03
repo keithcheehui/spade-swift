@@ -359,7 +359,7 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_malaysia" translatesAutoresizingMaskIntoConstraints="NO" id="Wpf-Xy-Hpb">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wpf-Xy-Hpb">
                                             <rect key="frame" x="9.9999999999999982" y="0.0" width="28.333333333333329" height="28.333333333333332"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Wpf-Xy-Hpb" secondAttribute="height" multiplier="1:1" id="21Q-0f-H5J"/>
@@ -1166,7 +1166,6 @@
         <image name="ic_bonus" width="65" height="65"/>
         <image name="ic_coin" width="102" height="101"/>
         <image name="ic_language" width="65" height="65"/>
-        <image name="ic_malaysia" width="89" height="89"/>
         <image name="ic_message" width="65" height="65"/>
         <image name="ic_mission" width="65" height="65"/>
         <image name="ic_more" width="65" height="65"/>

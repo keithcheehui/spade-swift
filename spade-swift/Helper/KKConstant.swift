@@ -52,6 +52,8 @@ struct ConstantSize {
     
     static let ssoPopUpWidth = KKUtil.isSmallerPhone() ? ScreenSize.maxLength * 0.75 : ScreenSize.maxLength * 0.6
     static let ssoPopUpHeight = ScreenSize.minLength - paddingStandard * 2
+    
+    static let headerBarWidth = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 300 : 310)
 }
 
 struct CacheKey {

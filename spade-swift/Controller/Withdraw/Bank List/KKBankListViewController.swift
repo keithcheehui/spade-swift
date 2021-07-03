@@ -62,22 +62,27 @@ class KKBankListViewController: KKBaseViewController {
             self.hideAnimatedLoader()
             self.userBankList = depositPageDataResponse.results?.userBankCards
             self.bankItemList = depositPageDataResponse.results?.companyBanks
-            
-            if (self.bankItemList.count > 0) {
-                for bank in self.bankItemList {
-                    var bankDetail = PickerDetails()
-                    bankDetail.id = String(bank.bankId ?? -1)
-                    bankDetail.name = bank.bankName ?? ""
-                    
-                    self.bankListOptions.append(bankDetail)
-                }
-            }
-            
-            self.bankTableView.reloadData()
-            
+            self.updateView()
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
             self.showAlertView(type: .Error, alertMessage: errorMessage)
+            self.updateView()
+        }
+    }
+    
+    func updateView() {
+        if (self.bankItemList.count > 0) {
+            for bank in self.bankItemList {
+                var bankDetail = PickerDetails()
+                bankDetail.id = String(bank.bankId ?? -1)
+                bankDetail.name = bank.bankName ?? ""
+                
+                self.bankListOptions.append(bankDetail)
+            }
+            self.bankTableView.reloadData()
+            self.bankTableView.isHidden = false
+        } else {
+            self.bankTableView.isHidden = true
         }
     }
     

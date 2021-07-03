@@ -16,14 +16,20 @@ class KKWithdrawViewController: KKBaseViewController {
     @IBOutlet weak var imgBackWidth: NSLayoutConstraint!
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
     @IBOutlet weak var headerContainerMarginLeft: NSLayoutConstraint!
+    @IBOutlet weak var imgBankCardMarginLeft: NSLayoutConstraint!
+    @IBOutlet weak var imgBankCardMarginRight: NSLayoutConstraint!
+
+    @IBOutlet weak var headerBar: KKHeaderBar!
+    @IBOutlet weak var headerBarWidth: NSLayoutConstraint!
     
+
     var sideMenuList: [SideMenuDetails] = []
     var selectedViewType = WithdrawSideMenu.withdraw.rawValue
     var userBankList: [KKPageDataUserBankCards]! = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setHeaderBarLayout()
         initialLayout()
         appendSideMenuList()
     }
@@ -31,6 +37,13 @@ class KKWithdrawViewController: KKBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getBankListAPI()
+    }
+    
+    func setHeaderBarLayout() {
+        imgBankCardMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 10)
+        imgBankCardMarginRight.constant = imgBankCardMarginLeft.constant
+        headerBarWidth.constant = ConstantSize.headerBarWidth
+        headerBar.setupHeaderData(profileData: KKUtil.decodeUserProfileFromCache())
     }
     
     func initialLayout(){
@@ -86,6 +99,12 @@ class KKWithdrawViewController: KKBaseViewController {
     ///Button Actions
     @IBAction func btnBackDidPressed(){
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func btnBankCardDidPressed() {
+        let vc = KKPersonalViewController.init()
+        vc.selectedViewType = PersonalSideMenu.bankCard.rawValue
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func buttonHover(type: Int){

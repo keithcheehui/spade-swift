@@ -12,8 +12,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKDepositViewController" customModule="spade_swift" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="PAR-bt-yOp" id="DPv-q0-044"/>
+                <outlet property="headerBar" destination="V6a-hg-n3t" id="Qzg-6i-n3W"/>
+                <outlet property="headerBarWidth" destination="AHG-Os-jnQ" id="sn0-zh-CZZ"/>
                 <outlet property="headerContainerMarginLeft" destination="UCJ-eL-mGm" id="5oj-ot-9x3"/>
                 <outlet property="imgBackWidth" destination="zoH-8i-JIX" id="Joh-ya-0qe"/>
+                <outlet property="imgBankCardMarginLeft" destination="GEY-7G-ERf" id="fDC-oI-Xw0"/>
+                <outlet property="imgBankCardMarginRight" destination="Gbl-ls-HFi" id="uub-qE-tbb"/>
                 <outlet property="sideMenuTableView" destination="N8U-24-GMn" id="J1f-uQ-EOk"/>
                 <outlet property="sideMenuWidth" destination="MHR-hO-hiX" id="JHJ-Xa-rjN"/>
                 <outlet property="view" destination="iN0-l3-epB" id="rfe-NP-bla"/>
@@ -122,15 +126,54 @@
                                 <constraint firstAttribute="width" secondItem="abu-PH-Ueu" secondAttribute="height" multiplier="5:1" id="xVK-PF-OAN"/>
                             </constraints>
                         </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V6a-hg-n3t" customClass="KKHeaderBar" customModule="spade_swift" customModuleProvider="target">
+                            <rect key="frame" x="421" y="0.0" width="370" height="55"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="370" id="AHG-Os-jnQ"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xPH-H9-2bJ">
+                            <rect key="frame" x="801" y="0.0" width="55" height="55"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_bankcard" translatesAutoresizingMaskIntoConstraints="NO" id="4nq-mC-04F">
+                                    <rect key="frame" x="15" y="0.0" width="25" height="55"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NzS-Tg-Mv2">
+                                    <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
+                                    <connections>
+                                        <action selector="btnBankCardDidPressed" destination="-1" eventType="touchUpInside" id="7h3-8H-pWj"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="NzS-Tg-Mv2" firstAttribute="leading" secondItem="xPH-H9-2bJ" secondAttribute="leading" id="7q0-xb-1EO"/>
+                                <constraint firstItem="4nq-mC-04F" firstAttribute="leading" secondItem="xPH-H9-2bJ" secondAttribute="leading" constant="15" id="GEY-7G-ERf"/>
+                                <constraint firstAttribute="trailing" secondItem="4nq-mC-04F" secondAttribute="trailing" constant="15" id="Gbl-ls-HFi"/>
+                                <constraint firstItem="NzS-Tg-Mv2" firstAttribute="top" secondItem="xPH-H9-2bJ" secondAttribute="top" id="NJC-ao-Ucg"/>
+                                <constraint firstAttribute="bottom" secondItem="NzS-Tg-Mv2" secondAttribute="bottom" id="Tvu-Qa-mDo"/>
+                                <constraint firstAttribute="width" secondItem="xPH-H9-2bJ" secondAttribute="height" multiplier="1:1" id="Xkj-Ch-zEG"/>
+                                <constraint firstAttribute="trailing" secondItem="NzS-Tg-Mv2" secondAttribute="trailing" id="bmX-IO-GZf"/>
+                                <constraint firstItem="4nq-mC-04F" firstAttribute="top" secondItem="xPH-H9-2bJ" secondAttribute="top" id="n48-9Y-KXv"/>
+                                <constraint firstAttribute="bottom" secondItem="4nq-mC-04F" secondAttribute="bottom" id="uZ0-EV-AJY"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="V6a-hg-n3t" firstAttribute="top" secondItem="xPH-H9-2bJ" secondAttribute="top" id="BWT-Kc-9jt"/>
+                        <constraint firstAttribute="bottom" secondItem="xPH-H9-2bJ" secondAttribute="bottom" constant="5" id="Byi-sa-0Pm"/>
+                        <constraint firstItem="V6a-hg-n3t" firstAttribute="bottom" secondItem="xPH-H9-2bJ" secondAttribute="bottom" id="EoQ-8g-8J7"/>
                         <constraint firstItem="cN1-au-Sgl" firstAttribute="top" secondItem="8oC-08-Q4z" secondAttribute="top" id="Fes-Ui-Tqo"/>
                         <constraint firstItem="abu-PH-Ueu" firstAttribute="leading" secondItem="cN1-au-Sgl" secondAttribute="trailing" constant="40" id="H2I-Pl-fTU"/>
                         <constraint firstItem="abu-PH-Ueu" firstAttribute="height" secondItem="S0I-0p-Asj" secondAttribute="height" multiplier="0.7" id="P6B-Jv-oKk"/>
                         <constraint firstItem="abu-PH-Ueu" firstAttribute="centerY" secondItem="8oC-08-Q4z" secondAttribute="centerY" id="VsL-77-sme"/>
+                        <constraint firstItem="xPH-H9-2bJ" firstAttribute="leading" secondItem="V6a-hg-n3t" secondAttribute="trailing" constant="10" id="cuC-eF-rXR"/>
+                        <constraint firstItem="xPH-H9-2bJ" firstAttribute="top" secondItem="8oC-08-Q4z" secondAttribute="top" id="gnv-WP-1yx"/>
                         <constraint firstItem="cN1-au-Sgl" firstAttribute="leading" secondItem="8oC-08-Q4z" secondAttribute="leading" id="pKV-Kf-2Zi"/>
                         <constraint firstAttribute="bottom" secondItem="cN1-au-Sgl" secondAttribute="bottom" id="sSm-Fq-r3u"/>
+                        <constraint firstItem="xPH-H9-2bJ" firstAttribute="width" secondItem="xPH-H9-2bJ" secondAttribute="height" multiplier="1:1" id="x3A-uy-hWL"/>
                     </constraints>
                 </view>
             </subviews>
@@ -157,6 +200,7 @@
                 <constraint firstItem="8oC-08-Q4z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="q2t-d9-EUX"/>
                 <constraint firstItem="lLN-NU-cSH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qnu-79-4wn"/>
                 <constraint firstItem="msU-ae-7Yj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sdJ-sn-jJm"/>
+                <constraint firstItem="xPH-H9-2bJ" firstAttribute="trailing" secondItem="Ggt-l0-a5y" secondAttribute="trailing" id="vk1-ym-k4w"/>
                 <constraint firstItem="07k-Gq-bf0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="vz3-sw-xbN"/>
                 <constraint firstAttribute="trailing" secondItem="msU-ae-7Yj" secondAttribute="trailing" id="wPa-Xc-GDJ"/>
             </constraints>
@@ -169,6 +213,7 @@
         <image name="bg_header" width="2208" height="142"/>
         <image name="bg_mini_games" width="2208" height="1242"/>
         <image name="ic_back" width="97" height="81"/>
+        <image name="ic_bankcard" width="183" height="183"/>
         <image name="title_deposit" width="207" height="57"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
