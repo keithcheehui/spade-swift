@@ -24,6 +24,7 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     var pickerStatusArray: [PickerDetails] = []
     var pickerCashflowArray: [PickerDetails] = []
     var pickerGenderArray: [PickerDetails] = []
+    var pickerTransTypeArray: [PickerDetails] = []
 
     var dataArray: [PickerDetails] = []
     var pickerTextField: UITextField!
@@ -55,6 +56,7 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         self.setupWithdrawStatusOptions()
         self.setupCashflowOptions()
         self.setupGenderOptions()
+        self.setupTransTypeOptions()
         
         self.setupPickerView()
         self.setupDatePickerView()
@@ -176,6 +178,29 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
                 details.name = item.rawValue
             }
             pickerGenderArray.append(details)
+        }
+    }
+    
+    func setupTransTypeOptions() {
+        pickerTransTypeArray.removeAll()
+        
+        var details = PickerDetails.init()
+        for item in TransactionType.allCases {
+            switch item {
+            case .all:
+                details.id = ""
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
+                
+            case .collect:
+                details.id = item.rawValue
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_type_collect")
+                
+                
+            case .payout:
+                details.id = item.rawValue
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_type_payout")
+            }
+            pickerTransTypeArray.append(details)
         }
     }
     

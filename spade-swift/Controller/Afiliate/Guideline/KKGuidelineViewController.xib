@@ -10,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKGuidelineViewController" customModule="spade_swift" customModuleProvider="target">
             <connections>
-                <outlet property="btnCommissionTableMarginRight" destination="4io-E3-Qxz" id="2ZE-pZ-rie"/>
                 <outlet property="guidelineTableView" destination="Y9A-GX-7cf" id="UEl-w8-ROz"/>
                 <outlet property="lblCommission" destination="NdI-Dw-i3q" id="Ka3-8p-jer"/>
                 <outlet property="topHeaderHeight" destination="P45-6u-Ssq" id="URQ-c2-hUH"/>
@@ -22,25 +21,18 @@
             <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_box" translatesAutoresizingMaskIntoConstraints="NO" id="eV4-kB-qH9">
+                    <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p3S-eU-lxw">
                     <rect key="frame" x="0.0" y="0.0" width="896" height="159.5"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_sample_downline" translatesAutoresizingMaskIntoConstraints="NO" id="ESx-jp-7R6">
-                            <rect key="frame" x="20" y="15" width="706" height="100"/>
+                            <rect key="frame" x="20" y="15" width="861" height="100"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="P45-6u-Ssq"/>
                             </constraints>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kmg-Vw-P6h">
-                            <rect key="frame" x="746" y="35" width="90" height="60"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="Kmg-Vw-P6h" secondAttribute="height" multiplier="3:2" id="8kE-be-4EV"/>
-                            </constraints>
-                            <state key="normal" backgroundImage="btn_commission_table"/>
-                            <connections>
-                                <action selector="btnCommissionTableDidPressed" destination="-1" eventType="touchUpInside" id="D1M-WA-lsw"/>
-                            </connections>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RM 20 commission for each RM10,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdI-Dw-i3q">
                             <rect key="frame" x="339.5" y="125" width="217" height="14.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -50,15 +42,12 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="Kmg-Vw-P6h" secondAttribute="trailing" constant="60" id="4io-E3-Qxz"/>
-                        <constraint firstItem="Kmg-Vw-P6h" firstAttribute="height" secondItem="ESx-jp-7R6" secondAttribute="height" multiplier="0.6" id="69U-zC-QEz"/>
                         <constraint firstAttribute="bottom" secondItem="NdI-Dw-i3q" secondAttribute="bottom" constant="20" id="ChZ-Ol-fLD"/>
+                        <constraint firstAttribute="trailing" secondItem="ESx-jp-7R6" secondAttribute="trailing" constant="15" id="bsp-bE-5Pf"/>
                         <constraint firstItem="ESx-jp-7R6" firstAttribute="leading" secondItem="p3S-eU-lxw" secondAttribute="leading" constant="20" id="cwF-Zv-wvX"/>
-                        <constraint firstItem="Kmg-Vw-P6h" firstAttribute="leading" secondItem="ESx-jp-7R6" secondAttribute="trailing" constant="20" id="fYE-IP-I4K"/>
                         <constraint firstItem="ESx-jp-7R6" firstAttribute="top" secondItem="p3S-eU-lxw" secondAttribute="top" constant="15" id="ias-Hd-j9k"/>
                         <constraint firstItem="NdI-Dw-i3q" firstAttribute="top" secondItem="ESx-jp-7R6" secondAttribute="bottom" constant="10" id="s2n-df-bRA"/>
                         <constraint firstItem="NdI-Dw-i3q" firstAttribute="centerX" secondItem="p3S-eU-lxw" secondAttribute="centerX" id="tfp-vg-QRA"/>
-                        <constraint firstItem="ESx-jp-7R6" firstAttribute="centerY" secondItem="Kmg-Vw-P6h" secondAttribute="centerY" id="z4B-6G-dIs"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Y9A-GX-7cf">
@@ -75,19 +64,23 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="eV4-kB-qH9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3X9-iN-FTW"/>
+                <constraint firstAttribute="trailing" secondItem="eV4-kB-qH9" secondAttribute="trailing" id="55W-LJ-MTu"/>
                 <constraint firstAttribute="bottom" secondItem="Y9A-GX-7cf" secondAttribute="bottom" id="5v5-b9-Cd7"/>
                 <constraint firstItem="Y9A-GX-7cf" firstAttribute="top" secondItem="p3S-eU-lxw" secondAttribute="bottom" id="DyR-HP-9wi"/>
+                <constraint firstItem="eV4-kB-qH9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GU3-kJ-Pqj"/>
                 <constraint firstItem="p3S-eU-lxw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ha7-qM-AmL"/>
                 <constraint firstAttribute="trailing" secondItem="Y9A-GX-7cf" secondAttribute="trailing" id="adb-eh-Gyf"/>
                 <constraint firstItem="Y9A-GX-7cf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="an4-rO-74Y"/>
                 <constraint firstAttribute="trailing" secondItem="p3S-eU-lxw" secondAttribute="trailing" id="eFZ-7W-Rvo"/>
                 <constraint firstItem="p3S-eU-lxw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qtd-3t-e08"/>
+                <constraint firstAttribute="bottom" secondItem="eV4-kB-qH9" secondAttribute="bottom" id="xgU-aD-Hc3"/>
             </constraints>
             <point key="canvasLocation" x="-168.08035714285714" y="86.956521739130437"/>
         </view>
     </objects>
     <resources>
-        <image name="btn_commission_table" width="263" height="182"/>
+        <image name="bg_box" width="1615" height="1015"/>
         <image name="ic_sample_downline" width="999" height="271"/>
     </resources>
 </document>

@@ -363,23 +363,17 @@ enum ApiRouter: URLRequestConvertible {
         urlRequest.setValue(HTTPHeaderFieldValue.contentType.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
         urlRequest.setValue(HTTPHeaderFieldValue.contentType.rawValue, forHTTPHeaderField: HTTPHeaderField.accept.rawValue)
 
-        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus)
-        {
+        if KKUtil.isUserLogin() {
             urlRequest.setValue(String(format: "Bearer %@", KKTokenManager.accessToken()), forHTTPHeaderField: HTTPHeaderField.authorization.rawValue)
         }
 
         // Parameters
-        if let parameters = parameters
-        {
-            do
-            {
-                if (urlRequest.httpMethod == "POST" || urlRequest.httpMethod == "DELETE" || urlRequest.httpMethod == "PUT")
-                {
+        if let parameters = parameters {
+            do {
+                if (urlRequest.httpMethod == "POST" || urlRequest.httpMethod == "DELETE" || urlRequest.httpMethod == "PUT") {
                     urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
                 }
-            }
-            catch
-            {
+            } catch {
                 throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
             }
         }

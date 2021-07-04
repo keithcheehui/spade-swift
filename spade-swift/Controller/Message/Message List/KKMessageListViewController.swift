@@ -82,7 +82,7 @@ class KKMessageListViewController: KKBaseViewController {
                 }
             }
             
-            if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+            if KKUtil.isUserLogin() {
                 if var userProfile = KKUtil.decodeUserProfileFromCache() {
                     userProfile.inboxUnreadMessages = gotUnread
                     KKUtil.encodeUserProfile(object: userProfile)

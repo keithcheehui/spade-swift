@@ -37,7 +37,7 @@ class KKPersonalViewController: KKBaseViewController {
         
         buttonHover(type: selectedViewType)
         
-        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+        if KKUtil.isUserLogin(){
             getUserLatestWallet()
         }
     }
@@ -159,7 +159,7 @@ class KKPersonalViewController: KKBaseViewController {
             }
             
         } onFailure: { errorMessage in
-            self.showAlertView(type: .Error, alertMessage: errorMessage)
+
         }
     }
     

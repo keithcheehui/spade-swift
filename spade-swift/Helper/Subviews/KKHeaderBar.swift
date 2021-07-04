@@ -96,7 +96,7 @@ final class KKHeaderBar: UIView {
         refreshWalletIcon.startRotate()
         refreshWalletBtn.isEnabled = false
         
-        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+        if KKUtil.isUserLogin() {
             KKApiClient.getUserLatestWallet().execute { userWalletResponse in
                 
                 self.refreshWalletIcon.removeRotate()

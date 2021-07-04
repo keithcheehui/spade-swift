@@ -13,17 +13,9 @@ class KKRebateViewController: KKBaseViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var sideMenuTableView: UITableView!
     
-    @IBOutlet weak var redeemContainer: UIView!
-    @IBOutlet weak var imgProfile: UIImageView!
-    @IBOutlet weak var lblID: UILabel!
-    @IBOutlet weak var lblRebateAmountTitle: UILabel!
-    @IBOutlet weak var lblRebateAmount: UILabel!
-    
     @IBOutlet weak var imgBackWidth: NSLayoutConstraint!
     @IBOutlet weak var sideMenuWidth: NSLayoutConstraint!
     @IBOutlet weak var headerContainerMarginLeft: NSLayoutConstraint!
-    @IBOutlet weak var redeemContainerHeight: NSLayoutConstraint!
-    @IBOutlet weak var redeemContainerMarginTop: NSLayoutConstraint!
     
     @IBOutlet weak var headerBar: KKHeaderBar!
     @IBOutlet weak var headerBarWidth: NSLayoutConstraint!
@@ -31,6 +23,8 @@ class KKRebateViewController: KKBaseViewController {
     var sideMenuList: [SideMenuDetails] = []
     var selectedViewType = AffiliatteSideMenu.myAffiliate.rawValue
     
+    var tabGroupArray: [KKUserBettingGroupDetails]! = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,6 +32,7 @@ class KKRebateViewController: KKBaseViewController {
         initialLayout()
         appendSideMenuList()
         
+        getUserBettingPlatformsAndGroupsAPI()
         buttonHover(type: selectedViewType)
     }
     
@@ -70,7 +65,7 @@ class KKRebateViewController: KKBaseViewController {
                 details.title = KKUtil.languageSelectedStringForKey(key: "rebate_payout")
                 details.imgIcon = "ic_payout"
                 
-            case .transaction:
+            case .rebateTrans:
                 details.id = item.rawValue
                 details.title = KKUtil.languageSelectedStringForKey(key: "rebate_transaction")
                 details.imgIcon = "ic_commtran"
@@ -87,26 +82,15 @@ class KKRebateViewController: KKBaseViewController {
         sideMenuTableView.reloadData()
     }
     
-    func showRedeemContainer(shouldShow: Bool) {
-        if (shouldShow) {
-            redeemContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 60)
-            redeemContainer.isHidden = false
-            
-            redeemContainer.backgroundColor = UIColor(white: 0, alpha: 0.1)
-            redeemContainer.layer.borderWidth = KKUtil.ConvertSizeByDensity(size: 1)
-            redeemContainer.layer.borderColor = UIColor(white: 1, alpha: 0.3).cgColor
-            redeemContainer.layer.cornerRadius = 8
-            
-            lblID.text = KKUtil.languageSelectedStringForKey(key: "rebate_rebate_profile_id") + String(80808080)
-            lblRebateAmountTitle.text = KKUtil.languageSelectedStringForKey(key: "rebate_rebate_amount")
-            lblRebateAmount.text = "0.00"
-            
-            lblID.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
-            lblRebateAmountTitle.font = lblID.font
-            lblRebateAmount.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 24))
-        } else {
-            redeemContainerHeight.constant = 0
-            redeemContainer.isHidden = true
+    //MARK: API Call
+    func getUserBettingPlatformsAndGroupsAPI() {
+        KKApiClient.getUserBettingPlatformsAndGroups().execute { response in
+            guard let groups = response.results?.groups else { return }
+            if !groups.isEmpty {
+                self.tabGroupArray = groups
+            }
+        } onFailure: { errorMessage in
+
         }
     }
     
@@ -116,31 +100,27 @@ class KKRebateViewController: KKBaseViewController {
     }
     
     func buttonHover(type: Int){
-        showRedeemContainer(shouldShow: false)
-
         switch type {
         case RebateSideMenu.payout.rawValue:
             let viewController = KKGeneralTableViewController()
-            viewController.tableViewType = .RebateRecord
+            viewController.tableViewType = .RebatePayout
+            viewController.tabGroupArray = tabGroupArray
             changeView(vc: viewController)
             break;
-            
-        case RebateSideMenu.transaction.rawValue:
+        case RebateSideMenu.rebateTrans.rawValue:
             let viewController = KKGeneralTableViewController()
-            viewController.tableViewType = .RebateRatio
+            viewController.tableViewType = .RebateTrans
+            viewController.rightDropdownOptions = pickerTransTypeArray
             changeView(vc: viewController)
             break;
-            
         case RebateSideMenu.rebateTable.rawValue:
             let viewController = KKGeneralTableViewController()
-            viewController.tableViewType = .RebateRatio
+            viewController.tabGroupArray = tabGroupArray
+            viewController.tableViewType = .RebateTable
             changeView(vc: viewController)
             break;
-            
         default:
-            showRedeemContainer(shouldShow: true)
-            let viewController = KKGeneralTableViewController()
-            viewController.tableViewType = .ManualRebate
+            let viewController = KKMyRebateViewController()
             changeView(vc: viewController)
             break;
         }

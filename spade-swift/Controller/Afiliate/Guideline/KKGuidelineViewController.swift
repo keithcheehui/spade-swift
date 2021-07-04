@@ -14,7 +14,6 @@ class KKGuidelineViewController: KKBaseViewController, UITableViewDataSource, UI
     @IBOutlet weak var lblCommission: UILabel!
     
     @IBOutlet weak var topHeaderHeight: NSLayoutConstraint!
-    @IBOutlet weak var btnCommissionTableMarginRight: NSLayoutConstraint!
 
     var guidelineArray: [KKGuidelineDetails]! = []
 
@@ -22,7 +21,6 @@ class KKGuidelineViewController: KKBaseViewController, UITableViewDataSource, UI
         super.viewDidLoad()
         
         topHeaderHeight.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 80 : 100)
-        btnCommissionTableMarginRight.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 30 : 60)
 
         guidelineTableView.backgroundColor = UIColor(white: 0, alpha: 0)
         guidelineTableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableCell")
@@ -31,13 +29,6 @@ class KKGuidelineViewController: KKBaseViewController, UITableViewDataSource, UI
         lblCommission.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
         
         getAffiliateGuidelineAPI()
-    }
-    
-    @IBAction func btnCommissionTableDidPressed() {
-        
-        let viewController = KKGeneralPopUpTableViewController.init()
-        viewController.tableViewType = .ComissionTable
-        self.present(viewController, animated: false, completion: nil)
     }
     
     //MARK:- API Calls

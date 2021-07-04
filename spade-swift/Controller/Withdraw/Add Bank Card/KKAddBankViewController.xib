@@ -49,7 +49,7 @@
                                     <rect key="frame" x="221" y="0.0" width="527" height="30"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EnW-eh-8kR">
-                                            <rect key="frame" x="8" y="4" width="481" height="22"/>
+                                            <rect key="frame" x="8" y="4" width="511" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
@@ -72,11 +72,11 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="Vom-2M-94N" firstAttribute="leading" secondItem="EnW-eh-8kR" secondAttribute="trailing" constant="8" id="6qN-4g-RTx"/>
                                         <constraint firstAttribute="trailing" secondItem="Vom-2M-94N" secondAttribute="trailing" id="Mvt-tl-3wU"/>
                                         <constraint firstAttribute="bottom" secondItem="EnW-eh-8kR" secondAttribute="bottom" constant="4" id="OGR-HO-TWb"/>
                                         <constraint firstItem="EnW-eh-8kR" firstAttribute="top" secondItem="2bs-P3-ihI" secondAttribute="top" constant="4" id="Q7e-EO-7gY"/>
                                         <constraint firstItem="Vom-2M-94N" firstAttribute="top" secondItem="2bs-P3-ihI" secondAttribute="top" id="Xnf-Wp-qtS"/>
+                                        <constraint firstAttribute="trailing" secondItem="EnW-eh-8kR" secondAttribute="trailing" constant="8" id="g05-kQ-Bk4"/>
                                         <constraint firstAttribute="bottom" secondItem="Vom-2M-94N" secondAttribute="bottom" id="ods-RP-MII"/>
                                         <constraint firstItem="EnW-eh-8kR" firstAttribute="leading" secondItem="2bs-P3-ihI" secondAttribute="leading" constant="8" id="xkC-Tk-nl9"/>
                                     </constraints>

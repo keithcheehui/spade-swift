@@ -41,7 +41,7 @@ class KKGeneralTableViewCell: UITableViewCell {
         }
     }
     
-    func setUpCellDetails(width: CGFloat, content: [String], type: TableViewType) {
+    func setUpCellDetails(width: CGFloat, content: [String]) {
                 
         for (index, titleString) in content.enumerated() {
             

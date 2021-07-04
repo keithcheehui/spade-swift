@@ -195,6 +195,8 @@
 		53D301B8268ECB5100BF909D /* KKWithdrawHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D301B5268ECB5100BF909D /* KKWithdrawHistoryResponse.swift */; };
 		53DD82FD26902FE900216419 /* KKHeaderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DD82FC26902FE900216419 /* KKHeaderBar.swift */; };
 		53DD83032690301300216419 /* KKHeaderBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53DD83022690301300216419 /* KKHeaderBar.xib */; };
+		53DD86D026920DAB00216419 /* KKMyRebateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DD86CF26920DA900216419 /* KKMyRebateViewController.swift */; };
+		53DD86D326920DBE00216419 /* KKMyRebateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53DD86D226920DBE00216419 /* KKMyRebateViewController.xib */; };
 		53DF81D1265028ED00BA6119 /* KKSelectCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF81D0265028ED00BA6119 /* KKSelectCountryViewController.swift */; };
 		53DF81D4265028FC00BA6119 /* KKSelectCountryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53DF81D3265028FC00BA6119 /* KKSelectCountryViewController.xib */; };
 		53DF81D926502F7200BA6119 /* KKCountryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF81D826502F7200BA6119 /* KKCountryItemCell.swift */; };
@@ -415,6 +417,8 @@
 		53D301B5268ECB5100BF909D /* KKWithdrawHistoryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKWithdrawHistoryResponse.swift; sourceTree = "<group>"; };
 		53DD82FC26902FE900216419 /* KKHeaderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKHeaderBar.swift; sourceTree = "<group>"; };
 		53DD83022690301300216419 /* KKHeaderBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKHeaderBar.xib; sourceTree = "<group>"; };
+		53DD86CF26920DA900216419 /* KKMyRebateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKMyRebateViewController.swift; sourceTree = "<group>"; };
+		53DD86D226920DBE00216419 /* KKMyRebateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKMyRebateViewController.xib; sourceTree = "<group>"; };
 		53DF81D0265028ED00BA6119 /* KKSelectCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKSelectCountryViewController.swift; sourceTree = "<group>"; };
 		53DF81D3265028FC00BA6119 /* KKSelectCountryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKSelectCountryViewController.xib; sourceTree = "<group>"; };
 		53DF81D826502F7200BA6119 /* KKCountryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKCountryItemCell.swift; sourceTree = "<group>"; };
@@ -1185,6 +1189,7 @@
 			children = (
 				53AAAE05264018E3004103F0 /* KKRebateViewController.swift */,
 				53AAAE082640191A004103F0 /* KKRebateViewController.xib */,
+				53DD86D526920DD000216419 /* My Rebate */,
 			);
 			path = Rebate;
 			sourceTree = "<group>";
@@ -1281,6 +1286,15 @@
 				53DD83022690301300216419 /* KKHeaderBar.xib */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		53DD86D526920DD000216419 /* My Rebate */ = {
+			isa = PBXGroup;
+			children = (
+				53DD86CF26920DA900216419 /* KKMyRebateViewController.swift */,
+				53DD86D226920DBE00216419 /* KKMyRebateViewController.xib */,
+			);
+			path = "My Rebate";
 			sourceTree = "<group>";
 		};
 		53DF81D62650290000BA6119 /* Select Country */ = {
@@ -1495,6 +1509,7 @@
 				53036EC6268ADDD7004592CE /* KKAvatarItemCell.xib in Resources */,
 				53F21F972686E03500A44911 /* KKTabListItemCell.xib in Resources */,
 				5380F10F267D02E7003DC6CB /* KKGeneralPopUpTableViewController.xib in Resources */,
+				53DD86D326920DBE00216419 /* KKMyRebateViewController.xib in Resources */,
 				06006E0726729AF400A2C8C9 /* FuturaBook.ttf in Resources */,
 				53E2FF2B2658CC820017CA67 /* KKBonusItemCell.xib in Resources */,
 				53C64EFA263700D00068F03E /* KKPersonalViewController.xib in Resources */,
@@ -1587,6 +1602,7 @@
 				53D301B8268ECB5100BF909D /* KKWithdrawHistoryResponse.swift in Sources */,
 				53AAAE2926401CA9004103F0 /* KKWithdrawViewController.swift in Sources */,
 				06868319267953420097E068 /* KKUserWalletResponse.swift in Sources */,
+				53DD86D026920DAB00216419 /* KKMyRebateViewController.swift in Sources */,
 				53F3EB30268F5FEF00142F22 /* KKDepositPageDataDepositChannels.swift in Sources */,
 				533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */,
 				5381D82C26495A94003BBD2A /* KKAnnouncementViewController.swift in Sources */,

@@ -145,7 +145,7 @@ class KKUserInfoViewController: KKBaseViewController {
     }
     
     func defaultLayoutValue(){
-        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus), let userProfile = KKUtil.decodeUserProfileFromCache() {
+        if KKUtil.isUserLogin(), let userProfile = KKUtil.decodeUserProfileFromCache() {
             if let code = userProfile.code {
                 lblAccountNumber.text = code
                 txtAccount.text = code
@@ -244,7 +244,7 @@ class KKUserInfoViewController: KKBaseViewController {
     }
     
     @IBAction func btnEditDidPressed(){
-        if !UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+        if !KKUtil.isUserLogin() {
             return
         }
         

@@ -54,10 +54,17 @@ class KKMyAffiliateViewController: KKBaseViewController {
     @IBOutlet weak var lblTips: UILabel!
     
     @IBOutlet weak var myIDViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var myIDViewMarginLeft: NSLayoutConstraint!
+    @IBOutlet weak var myIDViewMarginRight: NSLayoutConstraint!
     @IBOutlet weak var titleContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var iconWidth: NSLayoutConstraint!
+    
     @IBOutlet weak var iconMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var iconMarginRight: NSLayoutConstraint!
+    @IBOutlet weak var iconMarginLeft2: NSLayoutConstraint!
+    @IBOutlet weak var iconMarginRight2: NSLayoutConstraint!
+    @IBOutlet weak var amountMarginLeft: NSLayoutConstraint!
+    @IBOutlet weak var amountMarginRight: NSLayoutConstraint!
 
     @IBOutlet weak var btnCollectHeight: NSLayoutConstraint!
     @IBOutlet weak var btnShareHeight: NSLayoutConstraint!
@@ -67,18 +74,27 @@ class KKMyAffiliateViewController: KKBaseViewController {
         super.viewDidLoad()
 
         initialLayout()
+        updateValue()
     }
     
     func initialLayout(){
-        myIDViewHeight.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 18 : 20))
-        titleContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
-        iconWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 45 : 45))
-        iconMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 20 : 30)
-        iconMarginRight.constant = iconMarginLeft.constant
-        btnCollectHeight.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 25 : 25))
-        btnShareHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        btnCopyHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
+        titleContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        myIDViewHeight.constant = KKUtil.ConvertSizeByDensity(size: 22)
+        iconWidth.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.ConvertSizeByDensity(size: 45))
         
+        iconMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 20)
+        iconMarginRight.constant = iconMarginLeft.constant
+        iconMarginLeft2.constant = iconMarginLeft.constant
+        iconMarginRight2.constant = iconMarginLeft.constant
+        amountMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 10)
+        amountMarginRight.constant = amountMarginLeft.constant
+        myIDViewMarginLeft.constant = amountMarginLeft.constant
+        myIDViewMarginRight.constant = amountMarginLeft.constant
+        
+        btnCopyHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
+        btnShareHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        btnCollectHeight.constant = KKUtil.ConvertSizeByDensity(size: 25)
+
         lblMyIDView.backgroundColor = UIColor(white: 0, alpha: 0.3)
         lblReferrerIDView.backgroundColor = lblMyIDView.backgroundColor
         lblMemberCountView.backgroundColor = lblMyIDView.backgroundColor
@@ -99,6 +115,7 @@ class KKMyAffiliateViewController: KKBaseViewController {
         
         urlView.layer.cornerRadius = lblMyIDView.layer.cornerRadius
         lblTotalCommisionView.layer.cornerRadius = lblMyIDView.layer.cornerRadius
+        lblTotalTurnoverView.layer.cornerRadius = lblMyIDView.layer.cornerRadius
         lblAvailableCommissionView.layer.cornerRadius = lblMyIDView.layer.cornerRadius
         lblWithdrawCommissionView.layer.cornerRadius = lblMyIDView.layer.cornerRadius
         qrCodeContainer.layer.cornerRadius = 8
@@ -116,50 +133,82 @@ class KKMyAffiliateViewController: KKBaseViewController {
         lblEnterAmount.text = KKUtil.languageSelectedStringForKey(key: "my_affi_enter_amt")
         lblTips.text = KKUtil.languageSelectedStringForKey(key: "my_affi_tips")
         
-        lblMyID.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 8 : 11))
+        lblMyID.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 9))
         lblMyIDValue.font = lblMyID.font
         lblReferrerID.font = lblMyID.font
         lblReferrerIDValue.font = lblMyID.font
         lblMemberCount.font = lblMyID.font
         lblMemberCountValue.font = lblMyID.font
         
-        lblSaveImage.font = lblMyID.font
-        lblURL.font = lblMyID.font
-        lblCopy.font = lblMyID.font
-        lblTotalCommisionValue.font = lblMyID.font
-        lblAvailableCommissionValue.font = lblMyID.font
-        lblEnterAmount.font = lblMyID.font
-        lblTips.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 8))
-
-        lblTitleTotalCommission.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 10 : 12))
+        lblTitleTotalCommission.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 11 : 12))
         lblTitleTotalTurnover.font = lblTitleTotalCommission.font
         lblTitleAvailableCommision.font = lblTitleTotalCommission.font
         lblTitleWithdrawCommission.font = lblTitleTotalCommission.font
+        
+        lblTotalCommisionValue.font = lblMyID.font
+        lblTotalTurnoverValue.font = lblMyID.font
+        lblAvailableCommissionValue.font = lblMyID.font
+        lblEnterAmount.font = lblMyID.font
+        lblCurrency.font = lblMyID.font
+        txtWithdrawCommissionValue.font = lblMyID.font
+        lblTips.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 8))
+        
+        lblSaveImage.font = lblMyID.font
+        lblURL.font = lblMyID.font
+        lblCopy.font = lblMyID.font
 
         lblMyID.textColor = UIColor.spade_white_FFFFFF
-        lblReferrerID.textColor = lblMyID.textColor
-        lblMemberCount.textColor = lblMyID.textColor
         lblMyIDValue.textColor = lblMyIDValue.textColor
+        lblReferrerID.textColor = lblMyID.textColor
         lblReferrerIDValue.textColor = lblMyIDValue.textColor
+        lblMemberCount.textColor = lblMyID.textColor
         lblMemberCountValue.textColor = lblMyIDValue.textColor
-        lblURL.textColor = lblMyIDValue.textColor
-        lblCopy.textColor = lblMyIDValue.textColor
-        lblTotalCommisionValue.textColor = lblMyIDValue.textColor
-        lblAvailableCommissionValue.textColor = lblMyIDValue.textColor
-        lblEnterAmount.textColor = lblMyIDValue.textColor
-        lblTips.textColor = lblMyIDValue.textColor
         
         lblTitleTotalCommission.textColor = lblMyID.textColor
         lblTitleTotalTurnover.textColor = lblMyID.textColor
         lblTitleAvailableCommision.textColor = lblMyID.textColor
         lblTitleWithdrawCommission.textColor = lblMyID.textColor
-
+        
+        lblTotalCommisionValue.textColor = lblMyIDValue.textColor
+        lblTotalTurnoverValue.textColor = lblMyIDValue.textColor
+        lblAvailableCommissionValue.textColor = lblMyIDValue.textColor
+        lblEnterAmount.textColor = lblMyIDValue.textColor
+        lblCurrency.textColor = lblMyIDValue.textColor
+        txtWithdrawCommissionValue.textColor = lblMyIDValue.textColor
+        lblTips.textColor = lblMyIDValue.textColor
+        
         lblSaveImage.textColor = UIColor.spade_black_000000
+        lblURL.textColor = lblMyIDValue.textColor
+        lblCopy.textColor = lblMyIDValue.textColor
+        
+        txtWithdrawCommissionValue.delegate = self
+        txtWithdrawCommissionValue.keyboardType = .numberPad
+        txtWithdrawCommissionValue.returnKeyType = .done
+    }
+    
+    func updateValue() {
+        lblMyIDValue.text = "999999"
+        lblReferrerIDValue.text = "999999"
+        lblMemberCountValue.text = "999999"
+        
+        lblTotalCommisionValue.text = KKUtil.addCurrencyFormatWithString(value: "999999999")
+        lblTotalTurnoverValue.text = KKUtil.addCurrencyFormatWithString(value: "999999999")
+        
+        lblURL.text = "https://legend-api.com"
+        
+        lblAvailableCommissionValue.text = KKUtil.addCurrencyFormatWithString(value: "999999999")
+        
+        lblCurrency.text = "RM"
+//        txtWithdrawCommissionValue.text = KKUtil.addCurrencyFormatWithString(value: "999999999")
     }
     
     ///Button Actions
     @IBAction func btnSaveQRDidPressed(){
         writeToPhotoAlbum(image: UIImage(named: "ic_sample_qr")!)
+    }
+    
+    @IBAction func clearText() {
+        txtWithdrawCommissionValue.text = ""
     }
     
     func writeToPhotoAlbum(image: UIImage) {
@@ -194,5 +243,47 @@ class KKMyAffiliateViewController: KKBaseViewController {
     
     @IBAction func btnCollectCommissionDidPressed(){
 
+    }
+}
+
+extension KKMyAffiliateViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+         // Uses the number format corresponding to your Locale
+         let formatter = NumberFormatter()
+         formatter.numberStyle = .decimal
+         formatter.locale = Locale.current
+         formatter.maximumFractionDigits = 0
+
+
+        // Uses the grouping separator corresponding to your Locale
+        // e.g. "," in the US, a space in France, and so on
+        if let groupingSeparator = formatter.groupingSeparator {
+
+            if string == groupingSeparator {
+                return true
+            }
+
+
+            if let textWithoutGroupingSeparator = textField.text?.replacingOccurrences(of: groupingSeparator, with: "") {
+                var totalTextWithoutGroupingSeparators = textWithoutGroupingSeparator + string
+                if string.isEmpty { // pressed Backspace key
+                    totalTextWithoutGroupingSeparators.removeLast()
+                }
+                if let numberWithoutGroupingSeparator = formatter.number(from: totalTextWithoutGroupingSeparators),
+                    let formattedText = formatter.string(from: numberWithoutGroupingSeparator) {
+
+                    textField.text = formattedText
+                    return false
+                }
+            }
+        }
+        return true
     }
 }

@@ -52,6 +52,20 @@ class KKGeneralHeaderView: UITableViewHeaderFooterView {
         headerView.frame = CGRect(x: 0, y: 0, width: width, height: HeaderViewConstant.headerViewHeight)
     }
     
+    func setUpHeaderView(width: CGFloat, type: PopupTableViewType) {
+        
+        let headerTitleArray = KKUtil.getHeaderTitleViaTableViewType(popupTableViewType: type)
+        
+        for (index, titleString) in headerTitleArray.enumerated() {
+            
+            let label = labelArray[index]
+            label.text = titleString
+            label.frame = CGRect(x: CGFloat(index) * (width / CGFloat(headerTitleArray.count)), y: 0, width: (width / CGFloat(headerTitleArray.count)), height: HeaderViewConstant.headerViewHeight)
+        }
+        
+        headerView.frame = CGRect(x: 0, y: 0, width: width, height: HeaderViewConstant.headerViewHeight)
+    }
+    
     class func calculateHeaderViewHeight() -> CGFloat {
         
         return HeaderViewConstant.headerViewHeight

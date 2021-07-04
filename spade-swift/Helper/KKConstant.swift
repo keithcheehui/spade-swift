@@ -208,19 +208,28 @@ enum HTTPHeaderFieldValue: String {
     case contentType = "application/json"
 }
 
-enum TableViewType: Int {
+enum TableViewType: Int, CaseIterable {
     
-    case AffliateDownline = 1
-    case AffliateTurnover = 2
-    case CommissionTransaction = 3
-    case ComissionTable = 4
-    case ManualRebate = 5
-    case RebateRecord = 6
-    case RebateRatio = 7
-    case BettingRecord = 8
-    case AccountDetails = 9
-    case DepositHistory = 10
-    case WithdrawHistory = 11
+    case BettingRecord = 1
+    case AccountDetails = 2
+    case DepositHistory = 3
+    case WithdrawHistory = 4
+    
+    case AffiliateDownline = 5
+    case AffiliateTurnover = 6
+    case AffiliatePayout = 7
+    case AffiliateCommTrans = 8
+    case AffiliateCommTable = 9
+    
+    case RebatePayout = 10
+    case RebateTrans = 11
+    case RebateTable = 12
+}
+
+enum PopupTableViewType: Int, CaseIterable {
+    case NonCommGame = 1
+    case NonRebateGame = 2
+    case RebateDetail = 3
 }
 
 enum FilterDuration: String, CaseIterable {
@@ -252,6 +261,11 @@ enum GenderType: String, CaseIterable {
     case female = "Female"
 }
 
+enum TransactionType: String, CaseIterable {
+    case all = "all"
+    case payout = "payout"
+    case collect = "collect"
+}
 
 enum DialogAlertType: Int {
     case Logout = 1
@@ -288,7 +302,7 @@ enum AffiliatteSideMenu: Int, CaseIterable {
 enum RebateSideMenu: Int, CaseIterable {
     case myRebate = 0
     case payout = 1
-    case transaction = 2
+    case rebateTrans = 2
     case rebateTable = 3
 }
 

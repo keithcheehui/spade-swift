@@ -274,7 +274,7 @@ class KKHomeViewController: KKBaseViewController {
         refreshWalletIcon.startRotate()
         refreshWalletBtn.isEnabled = false
         
-        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+        if KKUtil.isUserLogin() {
             KKApiClient.getUserLatestWallet().execute { userWalletResponse in
                 
                 self.refreshWalletIcon.removeRotate()
@@ -335,14 +335,24 @@ class KKHomeViewController: KKBaseViewController {
         })
     }
     
+    private func showLoginPopup() {
+        let viewController = KKLoginViewController()
+        viewController.homeViewController = self
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
     //MARK:- Button Actions
     
     @IBAction func btnProfileDidPressed(){
+        if !KKUtil.isUserLogin() {
+            showLoginPopup()
+            return
+        }
         self.navigationController?.pushViewController(KKPersonalViewController(), animated: true)
     }
     
     @IBAction func btnCopyDidPressed(){
-        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus), let userProfile = KKUtil.decodeUserProfileFromCache() {
+        if KKUtil.isUserLogin(), let userProfile = KKUtil.decodeUserProfileFromCache() {
             UIPasteboard.general.string = userProfile.code
             self.showAlertView(type: .Success, alertMessage: KKUtil.languageSelectedStringForKey(key: "alert_copied"))
         }
@@ -350,10 +360,7 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnLoginDidPressed(){
         announcementBubble.isHidden = true
-        
-        let viewController = KKLoginViewController()
-        viewController.homeViewController = self
-        self.present(viewController, animated: true, completion: nil)
+        showLoginPopup()
     }
     
     @IBAction func btnRegisterDidPressed(){
@@ -367,12 +374,17 @@ class KKHomeViewController: KKBaseViewController {
 
     @IBAction func btnRefreshDidPressed(){
         announcementBubble.isHidden = true
+        if !KKUtil.isUserLogin() {
+            showLoginPopup()
+            return
+        }
+        
         self.getUserLatestWallet()
     }
     
     @IBAction func btnCountryDidPressed(){
         announcementBubble.isHidden = true
-        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+        if KKUtil.isUserLogin() {
             return
         }
         
@@ -405,16 +417,31 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnAffiliatesDidPressed(){
         announcementBubble.isHidden = true
+        if !KKUtil.isUserLogin() {
+            showLoginPopup()
+            return
+        }
+        
         self.navigationController?.pushViewController(KKAffiliateViewController(), animated: true)
     }
     
     @IBAction func btnRebateDidPressed(){
         announcementBubble.isHidden = true
+        if !KKUtil.isUserLogin() {
+            showLoginPopup()
+            return
+        }
+        
         self.navigationController?.pushViewController(KKRebateViewController(), animated: true)
     }
     
     @IBAction func btnMessageDidPressed(){
         announcementBubble.isHidden = true
+        if !KKUtil.isUserLogin() {
+            showLoginPopup()
+            return
+        }
+        
         self.navigationController?.pushViewController(KKMessageViewController(), animated: true)
     }
     
@@ -429,11 +456,21 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnDepositDidPressed(){
         announcementBubble.isHidden = true
+        if !KKUtil.isUserLogin() {
+            showLoginPopup()
+            return
+        }
+        
         self.navigationController?.pushViewController(KKDepositViewController(), animated: true)
     }
     
     @IBAction func btnWithdrawDidPressed(){
         announcementBubble.isHidden = true
+        if !KKUtil.isUserLogin() {
+            showLoginPopup()
+            return
+        }
+        
         self.navigationController?.pushViewController(KKWithdrawViewController(), animated: true)
     }
     
@@ -458,7 +495,7 @@ class KKHomeViewController: KKBaseViewController {
         flowLayout.minimumLineSpacing = 0
         flowLayout.scrollDirection = .vertical
         flowLayout.sectionInset = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
-        flowLayout.itemSize = CGSize(width: menuWidth.constant, height: KKUtil.ConvertSizeByDensity(size: 50))
+        flowLayout.itemSize = CGSize(width: menuWidth.constant, height: KKUtil.ConvertSizeByDensity(size: 45))
 
         menuCollectionView.collectionViewLayout = flowLayout
         menuCollectionView.register(UINib(nibName: "KKGameMenuItemCell", bundle: nil), forCellWithReuseIdentifier: CellIdentifier.gameMenuItemCVCIdentifier)
@@ -480,9 +517,9 @@ class KKHomeViewController: KKBaseViewController {
     
     func updateUserProfileDetails() {
         
-        setupGuestView(isGuest: !UserDefaults.standard.bool(forKey: CacheKey.loginStatus))
+        setupGuestView(isGuest: !KKUtil.isUserLogin())
         
-        if UserDefaults.standard.bool(forKey: CacheKey.loginStatus), let userProfile = KKUtil.decodeUserProfileFromCache() {
+        if KKUtil.isUserLogin(), let userProfile = KKUtil.decodeUserProfileFromCache() {
             
             lblProfileName.text = userProfile.code
             lblVip.text = userProfile.tier?.currentLevelName!
@@ -511,12 +548,15 @@ class KKHomeViewController: KKBaseViewController {
     }
     
     func getInboxReadStatusAPI() {
+        self.showAnimatedLoader()
         KKApiClient.getInboxReadStatus().execute { response in
+            self.hideAnimatedLoader()
             if let unread = response.results?.inboxUnreadMessages {
                 self.messageUnread = unread
                 self.updateUnreadStatus()
             }
         } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
             self.updateUnreadStatus()
         }
     }

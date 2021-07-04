@@ -32,7 +32,7 @@ class KKSplashScreenViewController: KKBaseViewController {
         KingfisherManager.shared.cache.clearMemoryCache()
         KingfisherManager.shared.cache.clearDiskCache()
         KingfisherManager.shared.cache.cleanExpiredDiskCache()
-        
+
         initialLayout()
         drawLoadingProgress()
                 
@@ -98,7 +98,7 @@ class KKSplashScreenViewController: KKBaseViewController {
         {
             timerStop = true
             lblLoading.text = "loading 100%..."
-            if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+            if KKUtil.isUserLogin() {
                 KKUtil.redirectToHome()
             } else {
                 self.present(KKSelectCountryViewController(), animated: false, completion: nil)
@@ -134,7 +134,7 @@ class KKSplashScreenViewController: KKBaseViewController {
             
             if let landingDetailsResults = landingDetailsResponse.results {
                 
-                if UserDefaults.standard.bool(forKey: CacheKey.loginStatus) {
+                if KKUtil.isUserLogin() {
                     
                     if var userProfile = KKUtil.decodeUserProfileFromCache(), let userInfo = landingDetailsResults.userInfo {
                         

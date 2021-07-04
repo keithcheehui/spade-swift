@@ -39,6 +39,7 @@ class KKBankListViewController: KKBaseViewController {
             
         bankTableView.backgroundColor = UIColor(white: 0, alpha: 0)
         bankTableView.register(UINib(nibName: "KKBankTableCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.bankTVCIdentifier)
+        self.bankTableView.isHidden = true
     }
     
     func changeAddBankView() {
@@ -72,19 +73,24 @@ class KKBankListViewController: KKBaseViewController {
     }
     
     func updateView() {
-        if (self.companyBankList.count > 0) {
-            for bank in self.companyBankList {
-                var bankDetail = PickerDetails()
-                bankDetail.id = String(bank.bankId ?? -1)
-                bankDetail.name = bank.bankName ?? ""
-                
-                self.bankListOptions.append(bankDetail)
+        if self.companyBankList != nil {
+            if (self.companyBankList.count > 0) {
+                for bank in self.companyBankList {
+                    var bankDetail = PickerDetails()
+                    bankDetail.id = String(bank.bankId ?? -1)
+                    bankDetail.name = bank.bankName ?? ""
+                    
+                    self.bankListOptions.append(bankDetail)
+                }
             }
-            self.bankTableView.reloadData()
+        }
+        
+        if (self.userBankList != nil) {
             self.bankTableView.isHidden = false
         } else {
             self.bankTableView.isHidden = true
         }
+        self.bankTableView.reloadData()
     }
     
     @IBAction func btnAddDidPressed() {

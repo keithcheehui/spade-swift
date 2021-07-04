@@ -101,7 +101,7 @@ class KKUtil: NSObject {
     
     ///convert size according to the screen size
     class func isSmallerPhone() -> Bool {
-        return ScreenSize.maxLength <= 812.0
+        return ScreenSize.maxLength < 812.0
     }
     
     class func hasTopNotch() -> Bool {
@@ -281,39 +281,53 @@ class KKUtil: NSObject {
     class func getHeaderTitleViaTableViewType(tableViewType: TableViewType) -> [String] {
         
         switch tableViewType {
+        case .BettingRecord:
+            return ["Bet Time", "Bet No", "Game Name", "Bet Amount", "Results"]
+                
+        case .AccountDetails:
+            return ["Transaction Time", "Status", "Out", "In", "Balance"]
+                
+        case .DepositHistory:
+            return ["Time", "Deposit ID", "Amount", "Status"]
+                
+        case .WithdrawHistory:
+            return ["Date & Time", "Withdraw ID", "Amount", "Status"]
+                
+        case .AffiliateDownline:
+            return ["Member ID", "Username", "Today Valid Stake", "Total Commission"]
+            
+        case .AffiliateTurnover:
+            return ["Member ID", "Username", "Valid Stake", "Commission"]
+            
+        case .AffiliatePayout:
+            return ["Date", "Valid Stake", "Rate", "Commission Amount"]
+                        
+        case .AffiliateCommTrans:
+            return ["Member ID", "Username", "Type", "Amount"]
+
+        case .AffiliateCommTable:
+            return ["Valid Stake", "Rate"]
+
+        case .RebatePayout:
+            return ["Date", "Valid Stake", "Rate", "Rebate Amount"]
+
+        case .RebateTrans:
+            return ["Date", "Transaction ID", "Type", "Amount"]
+
+        case .RebateTable:
+            return ["Valid Stake", "Rate"]
+        }
+    }
+    
+    class func getHeaderTitleViaTableViewType(popupTableViewType: PopupTableViewType) -> [String] {
         
-            case .AffliateDownline:
-                return ["ID", "Username", "Today's Bet", "Total Bet"]
+        switch popupTableViewType {
+        case .NonCommGame,
+             .NonRebateGame:
+            return ["Platform", "Game Name"]
                 
-            case .AffliateTurnover:
-                return ["Date", "New Affliate Member", "Total Turnover", "Commission"]
-                
-            case .CommissionTransaction:
-                return ["Time", "", "Amount"]
-                
-            case .ComissionTable:
-                return ["Agent Level", "Team Performance", "Return Commission"]
-        
-            case .ManualRebate:
-                return ["Game Type", "Valid Bet Amount", "Highest Rebate Ratio", "Rebate Amount"]
-                
-            case .RebateRecord:
-                return ["Game Type", "Stack", "Rebate Amount", "Details"]
-                
-            case .RebateRatio:
-                return ["Game Time", "Valid Bet Amount", "Rebate Percent", "Rebate Amount"]
-                
-            case .BettingRecord:
-                return ["Bet Time", "Bet No", "Game Name", "Bet Amount", "Results"]
-                
-            case .AccountDetails:
-                return ["Transaction Time", "Status", "Out", "In", "Balance"]
-                
-            case .DepositHistory:
-                return ["Time", "Deposit ID", "Amount", "Status"]
-                
-            case .WithdrawHistory:
-                return ["Date & Time", "Withdraw ID", "Amount", "Status"]
+        case .RebateDetail:
+            return ["Date", "Game", "Valid Stake", "Rate", "Rebate Amount"]
         }
     }
     
@@ -358,6 +372,10 @@ class KKUtil: NSObject {
         let valueStr = String(format: "%ld", value)
         return converter(valueStr: valueStr)
     }
+
+    class func addCurrencyFormatWithString(value: String) -> String {
+        return converter(valueStr: value)
+    }
     
     private class func converter(valueStr: String) -> String{
         let formatter = NumberFormatter()
@@ -367,5 +385,12 @@ class KKUtil: NSObject {
         
         let number = NumberFormatter().number(from: valueStr)!
         return formatter.string(from: number)!
+    }
+    
+    class func isUserLogin() -> Bool {
+        if UserDefaults.standard.object(forKey: CacheKey.loginStatus) != nil {
+            return UserDefaults.standard.bool(forKey: CacheKey.loginStatus)
+        }
+        return false
     }
 }

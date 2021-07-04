@@ -153,7 +153,12 @@ class KKSettingsViewController: KKBaseViewController {
                 details.imgIcon = "ic_logout"
             }
            
-            sideMenuList.append(details)
+            if !KKUtil.isUserLogin() && (item.rawValue == SettingsSideMenu.changePassword.rawValue || item.rawValue == SettingsSideMenu.logout.rawValue) {
+                
+            } else {
+                sideMenuList.append(details)
+            }
+            
         }
         
         sideMenuTableView.reloadData()
@@ -387,16 +392,27 @@ class KKSettingsViewController: KKBaseViewController {
         versionContentView.isHidden = true
         passwordContentView.isHidden = true
 
-        switch type {
-        case SettingsSideMenu.changePassword.rawValue:
-            passwordContentView.isHidden = false
-            break;
-        case SettingsSideMenu.version.rawValue:
-            versionContentView.isHidden = false
-            break;
-        default:
-            volumeContentView.isHidden = false
-            break;
+        if KKUtil.isUserLogin(){
+            switch type {
+            case SettingsSideMenu.changePassword.rawValue:
+                passwordContentView.isHidden = false
+                break;
+            case SettingsSideMenu.version.rawValue:
+                versionContentView.isHidden = false
+                break;
+            default:
+                volumeContentView.isHidden = false
+                break;
+            }
+        } else {
+            switch type {
+            case SettingsSideMenu.changePassword.rawValue:
+                versionContentView.isHidden = false
+                break;
+            default:
+                volumeContentView.isHidden = false
+                break;
+            }
         }
     }
     

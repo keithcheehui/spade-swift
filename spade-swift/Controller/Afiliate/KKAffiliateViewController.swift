@@ -11,7 +11,6 @@ import UIKit
 class KKAffiliateViewController: KKBaseViewController {
     
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var imgBG: UIImageView!
     @IBOutlet weak var sideMenuTableView: UITableView!
 
     @IBOutlet weak var imgBackWidth: NSLayoutConstraint!
@@ -25,12 +24,15 @@ class KKAffiliateViewController: KKBaseViewController {
     var selectedViewType = AffiliatteSideMenu.myAffiliate.rawValue
     var selectedTabItem = 0
     
+    var tabGroupArray: [KKUserBettingGroupDetails]! = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setHeaderBarLayout()
         initialLayout()
         appendSideMenuList()
         
+        getUserBettingPlatformsAndGroupsAPI()
         buttonHover(type: selectedViewType)
     }
     
@@ -96,18 +98,28 @@ class KKAffiliateViewController: KKBaseViewController {
         sideMenuTableView.reloadData()
     }
     
+    //MARK: API Call
+    func getUserBettingPlatformsAndGroupsAPI() {
+        KKApiClient.getUserBettingPlatformsAndGroups().execute { response in
+            guard let groups = response.results?.groups else { return }
+            if !groups.isEmpty {
+                self.tabGroupArray = groups
+            }
+        } onFailure: { errorMessage in
+
+        }
+    }
+    
     ///Button Actions
     @IBAction func btnBackDidPressed(){
         self.navigationController?.popViewController(animated: true)
     }
     
     func buttonHover(type: Int){
-        imgBG.isHidden = false
-
         switch type {
         case AffiliatteSideMenu.downline.rawValue:
             let viewController = KKGeneralTableViewController()
-            viewController.tableViewType = .AffliateDownline
+            viewController.tableViewType = .AffiliateDownline
             changeView(vc: viewController)
             break;
         case AffiliatteSideMenu.guideline.rawValue:
@@ -115,11 +127,27 @@ class KKAffiliateViewController: KKBaseViewController {
             break;
         case AffiliatteSideMenu.turnover.rawValue:
             let viewController = KKGeneralTableViewController()
-            viewController.tableViewType = .AffliateTurnover
+            viewController.tableViewType = .AffiliateTurnover
+            changeView(vc: viewController)
+            break;
+        case AffiliatteSideMenu.payout.rawValue:
+            let viewController = KKGeneralTableViewController()
+            viewController.tableViewType = .AffiliatePayout
+            changeView(vc: viewController)
+            break;
+        case AffiliatteSideMenu.commissionTrans.rawValue:
+            let viewController = KKGeneralTableViewController()
+            viewController.tableViewType = .AffiliateCommTrans
+            viewController.rightDropdownOptions = pickerTransTypeArray
+            changeView(vc: viewController)
+            break;
+        case AffiliatteSideMenu.commissionTable.rawValue:
+            let viewController = KKGeneralTableViewController()
+            viewController.tabGroupArray = tabGroupArray
+            viewController.tableViewType = .AffiliateCommTable
             changeView(vc: viewController)
             break;
         default:
-            imgBG.isHidden = true
             changeView(vc: KKMyAffiliateViewController())
             break;
         }

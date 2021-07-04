@@ -24,6 +24,9 @@
             <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_box" translatesAutoresizingMaskIntoConstraints="NO" id="Tx1-pl-i5H">
+                    <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RmH-pb-dxe">
                     <rect key="frame" x="100" y="166.5" width="696" height="81"/>
                     <subviews>
@@ -87,13 +90,18 @@ bank card before proceeding for deposit</string>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="RmH-pb-dxe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="100" id="1lM-D4-RN1"/>
+                <constraint firstItem="Tx1-pl-i5H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9S7-12-3ZX"/>
+                <constraint firstItem="Tx1-pl-i5H" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="F0S-4C-pti"/>
                 <constraint firstItem="RmH-pb-dxe" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="biz-7v-sdR"/>
+                <constraint firstAttribute="bottom" secondItem="Tx1-pl-i5H" secondAttribute="bottom" id="iCz-lX-YnV"/>
+                <constraint firstAttribute="trailing" secondItem="Tx1-pl-i5H" secondAttribute="trailing" id="m6n-uC-MHJ"/>
                 <constraint firstAttribute="trailing" secondItem="RmH-pb-dxe" secondAttribute="trailing" constant="100" id="sXs-UJ-LRE"/>
             </constraints>
             <point key="canvasLocation" x="140.625" y="91.304347826086968"/>
         </view>
     </objects>
     <resources>
+        <image name="bg_box" width="1615" height="1015"/>
         <image name="ic_bankcard" width="183" height="183"/>
     </resources>
 </document>

@@ -23,35 +23,77 @@ class KKGeneralTableViewController: KKBaseViewController {
     @IBOutlet weak var rightPickerTitle: UILabel!
     @IBOutlet weak var rightPickerValueView: UIView!
     @IBOutlet weak var rightPickerTxtValue: UITextField!
+    
+    @IBOutlet weak var searchContainer: UIView!
+    @IBOutlet weak var txtSearch: UITextField!
+    
+    @IBOutlet weak var labelContainer: UIView!
+    @IBOutlet weak var lblTotal: UILabel!
 
     @IBOutlet weak var topContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var pickerWidth: NSLayoutConstraint!
 
     @IBOutlet weak var contentTableView: UITableView!
+    
+    @IBOutlet weak var btnContainer: UIView!
+    @IBOutlet weak var imgButton: UIImageView!
+    @IBOutlet weak var btnNonGame: UIButton!
+    @IBOutlet weak var btnContainerHeight: NSLayoutConstraint!
+    @IBOutlet weak var btnContainerMarginTop: NSLayoutConstraint!
+    @IBOutlet weak var btnContainerMarginBottom: NSLayoutConstraint!
 
+    var downlineArray = [
+        ["01293123", "jane111", "10.00", "100.00"],
+        ["01293123", "jane122", "10.00", "100.00"],
+        ["01293123", "jane123", "10.00", "100.00"],
+        ["01293123", "jane222", "10.00", "100.00"],
+        ["01293123", "jane345", "10.00", "100.00"]
+    ]
+
+    var turnoverArray = [
+        ["2021-02-21", "jane111", "1000.00", "100.00"],
+        ["2021-02-21", "jane122", "1000.00", "100.00"],
+        ["2021-02-21", "jane123", "1000.00", "100.00"],
+        ["2021-02-21", "jane222", "1000.00", "100.00"],
+        ["2021-02-21", "jane345", "1000.00", "100.00"]
+    ]
+    
+    var payoutArray = [
+        ["2021-02-21", "100,000.00", "0.01", "2000.00"],
+        ["2021-02-21", "100,000.00", "0.01", "2000.00"],
+        ["2021-02-21", "100,000.00", "0.01", "2000.00"],
+        ["2021-02-21", "100,000.00", "0.01", "2000.00"],
+        ["2021-02-21", "100,000.00", "0.01", "2000.00"]
+    ]
+    
+    var commissionTransArray = [
+        ["2021-02-21", "9999386", "Payout", "1000.00"],
+        ["2021-02-21", "9999386", "Payout", "1000.00"],
+        ["2021-02-21", "9999386", "Payout", "1000.00"],
+        ["2021-02-21", "9999386", "Payout", "1000.00"],
+        ["2021-02-21", "9999386", "Payout", "1000.00"]
+    ]
+    
     var commissionTableArray = [
-        ["Bronze", "100-100K", "(RM 0.2+) 0.2%"],
-        ["Silver", "100K-500K", "(RM 300+) 0.3%"],
-        ["Gold", "500-1000K", "(RM 2000+) 0.4%"],
-        ["Platinum", "1000K+", "(RM 5000+) 0.5%"]
+        ["1-50K", "0.05%"],
+        ["50-80K", "0.10%"],
+        ["80-200K", "0.15%"],
+        ["200K-500K", "0.20%"],
+        ["1-50K", "0.05%"]
     ]
     
-    var manualRebateArray = [
-        ["P2P Game", "0.00", "0.00", "0.00"],
-        ["Slots", "0.00", "0.00", "0.00"],
-        ["Live Casino", "0.00", "0.00", "0.00"],
-        ["Sports", "0.00", "0.00", "0.00"],
-        ["Fishing", "0.00", "0.00", "0.00"]
+    var nonCommissionGameArray = [
+        ["918KISS", "Samurai"],
+        ["Suncity2", "Shark"],
+        ["AG Casino", "Blackjack"],
+        ["Mega888", "Birds Animal"]
     ]
     
-    var rebateRecordArray = [
-        ["2021-02-12 10:32:33", "0.00", "0.00", "-"],
-        ["2021-02-12 10:55:33", "0.00", "0.00", "-"]
-    ]
-    
-    var rebateRatioArray = [
-        ["CQ9 Poker", "0.00", "0.00", "0.00"],
-        ["KY Poker", "0.00", "0.00", "0.00"]
+    var rebateDetailsArray = [
+        ["2021-02-21", "KY", "10000", "0.01", "100.00"],
+        ["2021-02-21", "AB", "10000", "0.01", "100.00"],
+        ["2021-02-21", "KY", "10000", "0.01", "100.00"],
+        ["2021-02-21", "AB", "10000", "0.01", "100.00"],
     ]
     
     var tableViewType: TableViewType!
@@ -59,7 +101,7 @@ class KKGeneralTableViewController: KKBaseViewController {
     var bettingRecordArray: [KKUserBettingHistoryDetails]! = []
     var withdrawHistoryArray: [KKHistoryDetails]! = []
     var depositHistoryArray: [KKHistoryDetails]! = []
-    
+
     var tabGroupArray: [KKUserBettingGroupDetails]! = []
     var selectedTabItem = 0
 
@@ -82,6 +124,7 @@ class KKGeneralTableViewController: KKBaseViewController {
         
         getLeftDropdownOptions()
         initialLayout()
+        setupTableType()
         setUpContentTableView()
         updateTable()
         
@@ -89,7 +132,10 @@ class KKGeneralTableViewController: KKBaseViewController {
         
         switch tableViewType {
         case .BettingRecord,
-             .AccountDetails:
+             .AccountDetails,
+             .AffiliateCommTable,
+             .RebatePayout,
+             .RebateTable:
             initFlowLayout()
             
         default:
@@ -130,7 +176,7 @@ class KKGeneralTableViewController: KKBaseViewController {
     }
     
     func initialLayout() {
-        pickerWidth.constant = KKUtil.ConvertSizeByDensity(size: 120)
+        pickerWidth.constant = KKUtil.ConvertSizeByDensity(size: 140)
         
         leftPickerValueView.backgroundColor = UIColor.init(white: 0, alpha: 0.5)
         rightPickerValueView.backgroundColor = leftPickerValueView.backgroundColor
@@ -140,7 +186,7 @@ class KKGeneralTableViewController: KKBaseViewController {
         rightPickerTitle.textColor = leftPickerTitle.textColor
         rightPickerTxtValue.textColor = leftPickerTitle.textColor
         
-        leftPickerTitle.font = UIFont.systemFont(ofSize: 10)
+        leftPickerTitle.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
         leftPickerTxtValue.font = leftPickerTitle.font
         rightPickerTitle.font = leftPickerTitle.font
         rightPickerTxtValue.font = leftPickerTitle.font
@@ -151,6 +197,29 @@ class KKGeneralTableViewController: KKBaseViewController {
         rightPickerTxtValue.inputView = pickerView
         rightPickerTxtValue.inputAccessoryView = pickerToolBarView
 
+        leftPickerValueView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
+        leftPickerValueView.layer.masksToBounds = true
+        leftPickerValueView.clipsToBounds = true
+        rightPickerValueView.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 4)
+        rightPickerValueView.layer.masksToBounds = true
+        rightPickerValueView.clipsToBounds = true
+        
+        searchContainer.backgroundColor = UIColor.init(white: 0, alpha: 0.5)
+        searchContainer.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 8)
+        txtSearch.attributedPlaceholder = NSAttributedString(string: KKUtil.languageSelectedStringForKey(key: "affiliates_search_placeholder"), attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
+        txtSearch.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+
+        labelContainer.backgroundColor = .clear
+        lblTotal.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+        lblTotal.text = String(format: KKUtil.languageSelectedStringForKey(key: "affiliates_total_comm"), "RM", "6000.00")
+    }
+    
+    func setupTableType() {
+        btnContainer.isHidden = true
+        btnContainerHeight.constant = 0
+        btnContainerMarginTop.constant = 0
+        btnContainerMarginBottom.constant = btnContainerMarginTop.constant
+   
         switch tableViewType {
         
         case .BettingRecord:
@@ -164,7 +233,7 @@ class KKGeneralTableViewController: KKBaseViewController {
                 selectedRightItem = rightDropdownOptions[0]
             }
             
-            self.showTopContainer(shouldShow: true, withRightPicker: true)
+            self.showTopContainer(shouldShow: true, withLeftPicker: true, withRightPicker: true)
             
         case .AccountDetails:
             leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
@@ -172,7 +241,7 @@ class KKGeneralTableViewController: KKBaseViewController {
                 selectedLeftItem = leftDropdownOptions[0]
             }
             
-            self.showTopContainer(shouldShow: true, withRightPicker: false)
+            self.showTopContainer(shouldShow: true, withLeftPicker: true)
 
         case .DepositHistory:
             leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
@@ -185,7 +254,7 @@ class KKGeneralTableViewController: KKBaseViewController {
                 selectedRightItem = rightDropdownOptions[0]
             }
             
-            self.showTopContainer(shouldShow: true, withRightPicker: true)
+            self.showTopContainer(shouldShow: true, withLeftPicker: true, withRightPicker: true)
 
         case .WithdrawHistory:
             leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
@@ -198,22 +267,99 @@ class KKGeneralTableViewController: KKBaseViewController {
                 selectedRightItem = rightDropdownOptions[0]
             }
             
-            self.showTopContainer(shouldShow: true, withRightPicker: true)
+            self.showTopContainer(shouldShow: true, withLeftPicker: true, withRightPicker: true)
+            
+        case .AffiliateDownline:
+            self.showTopContainer(shouldShow: true, withSearchBar: true)
+            
+        case .AffiliateTurnover:
+            leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
+            if (selectedLeftItem == nil) {
+                selectedLeftItem = leftDropdownOptions[0]
+            }
+                        
+            self.showTopContainer(shouldShow: true, withLeftPicker: true, withSearchBar: true)
 
+        case .AffiliatePayout,
+             .RebatePayout:
+            leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
+            if (selectedLeftItem == nil) {
+                selectedLeftItem = leftDropdownOptions[0]
+            }
+            
+            self.showTopContainer(shouldShow: true, withLeftPicker: true, withLabel: true)
+            
+        case .AffiliateCommTrans,
+             .RebateTrans:
+            leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
+            if (selectedLeftItem == nil) {
+                selectedLeftItem = leftDropdownOptions[0]
+            }
+            
+            rightTitle = KKUtil.languageSelectedStringForKey(key: "picker_affiliate_type")
+            if (selectedRightItem == nil) {
+                selectedRightItem = rightDropdownOptions[0]
+            }
+            
+            self.showTopContainer(shouldShow: true, withLeftPicker: true, withRightPicker: true)
+            
+        case .AffiliateCommTable:
+            self.showTopContainer(shouldShow: false)
+            self.showButtonContainer(buttonType: .NonCommGame)
+            
+        case .RebateTable:
+            self.showTopContainer(shouldShow: false)
+            self.showButtonContainer(buttonType: .NonRebateGame)
+            
         default:
-            self.showTopContainer(shouldShow: false, withRightPicker: false)
+            self.showTopContainer(shouldShow: false)
         }
     }
 
-    func showTopContainer(shouldShow: Bool, withRightPicker: Bool){
+    func showTopContainer(shouldShow: Bool, withLeftPicker: Bool = false, withRightPicker: Bool = false, withSearchBar: Bool = false, withLabel: Bool = false){
         if (shouldShow){
             topContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 35)
             topContainer.isHidden = false
             
-            showDropdownOption(showRight: withRightPicker)
+            leftContainer.isHidden = true
+            rightContainer.isHidden = true
+            searchContainer.isHidden = true
+            labelContainer.isHidden = true
+
+            if withLeftPicker {
+                leftContainer.isHidden = false
+                leftPickerTitle.text = leftTitle
+                leftPickerTxtValue.text = leftValue
+            }
+            if withRightPicker {
+                rightContainer.isHidden = false
+                rightPickerTitle.text = rightTitle
+                rightPickerTxtValue.text = rightValue
+            }
+            if withSearchBar {
+                searchContainer.isHidden = false
+            }
+            if withLabel {
+                labelContainer.isHidden = false
+            }
         } else {
             topContainerHeight.constant = 0
             topContainer.isHidden = true
+        }
+    }
+    
+    func showButtonContainer(buttonType: PopupTableViewType?) {
+        btnContainer.isHidden = false
+        btnContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
+        btnContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 20)
+        btnContainerMarginBottom.constant = btnContainerMarginTop.constant
+        
+        if (buttonType == .NonCommGame) {
+            imgButton.image = UIImage(named: "btn_non_comm")
+            btnNonGame.addTarget(self, action: #selector(btnNonCommGameDidPressed), for: .touchUpInside)
+        } else {
+            imgButton.image = UIImage(named: "btn_non_rebate")
+            btnNonGame.addTarget(self, action: #selector(btnNonRebateGameDidPressed), for: .touchUpInside)
         }
     }
     
@@ -224,21 +370,6 @@ class KKGeneralTableViewController: KKBaseViewController {
                 leftDropdownOptions = pickerTimeArray
         }
     }
-    
-    func showDropdownOption(showRight: Bool){
-        rightContainer.isHidden = true
-        
-        leftPickerTitle.text = leftTitle
-        leftPickerTxtValue.text = leftValue
-
-        if (showRight){
-            rightContainer.isHidden = false
-            
-            rightPickerTitle.text = rightTitle
-            rightPickerTxtValue.text = rightValue
-        }
-    }
-    
     
     func updateTable() {
         if (leftDropdownOptions.count > 0 && selectedLeftItem != nil) {
@@ -252,7 +383,9 @@ class KKGeneralTableViewController: KKBaseViewController {
         switch tableViewType {
         case .AccountDetails:
             tabId = pickerCashflowArray[selectedTabItem].id
-        case .BettingRecord:
+        case .BettingRecord,
+             .RebatePayout,
+             .RebateTable:
             tabId = String(tabGroupArray[selectedTabItem].code ?? "")
         default:
             break;
@@ -273,27 +406,6 @@ class KKGeneralTableViewController: KKBaseViewController {
         
         switch tableViewType {
         
-        case .AffliateDownline:
-            return ["873524213", "james012", "10.00", "100.00"]
-            
-        case .AffliateTurnover:
-            return ["2021-02-23", "james012", "1000.00", "100.00"]
-            
-        case .CommissionTransaction:
-            return ["2021-02-21", "", "100.00"]
-            
-        case .ComissionTable:
-            return commissionTableArray[indexPath.row]
-            
-        case .ManualRebate:
-            return manualRebateArray[indexPath.row]
-            
-        case .RebateRecord:
-            return rebateRecordArray[indexPath.row]
-            
-        case .RebateRatio:
-            return rebateRatioArray[indexPath.row]
-            
         case .BettingRecord:
             let bettingRecordDetails = bettingRecordArray[indexPath.row]
             return [bettingRecordDetails.trxTimestamp ?? "", bettingRecordDetails.refNo ?? "", bettingRecordDetails.gameName ?? "", bettingRecordDetails.stake ?? "", bettingRecordDetails.result ?? ""]
@@ -310,9 +422,55 @@ class KKGeneralTableViewController: KKBaseViewController {
             let withdrawHistoryDetails = withdrawHistoryArray[indexPath.row]
             return [withdrawHistoryDetails.trxTimestamp ?? "", String(withdrawHistoryDetails.transactionId ?? 0) , withdrawHistoryDetails.amount ?? "", withdrawHistoryDetails.status ?? ""]
             
+        case .AffiliateDownline:
+            return self.downlineArray[indexPath.row]
+        
+        case .AffiliateTurnover:
+            return turnoverArray[indexPath.row]
+        
+        case .AffiliatePayout:
+            return payoutArray[indexPath.row]
+            
+        case .AffiliateCommTrans:
+            return commissionTableArray[indexPath.row]
+
+        case .AffiliateCommTable:
+            return commissionTableArray[indexPath.row]
+            
+        case .RebatePayout:
+            return payoutArray[indexPath.row]
+            
+        case .RebateTrans:
+            return commissionTransArray[indexPath.row]
+            
+        case .RebateTable:
+            return commissionTableArray[indexPath.row]
+            
         default:
             return []
         }
+    }
+    
+    @IBAction func btnSearchDidPressed() {
+        
+    }
+    
+    @objc func btnNonCommGameDidPressed() {
+        presentPopupTableView(popupTableViewType: .NonCommGame)
+    }
+    
+    @objc func btnNonRebateGameDidPressed() {
+        presentPopupTableView(popupTableViewType: .NonRebateGame)
+    }
+    
+    @objc func btnRebateDetailDidPressed() {
+        presentPopupTableView(popupTableViewType: .RebateDetail)
+    }
+    
+    func presentPopupTableView(popupTableViewType: PopupTableViewType) {
+        let vc = KKGeneralPopUpTableViewController.init()
+        vc.popupTableViewType = popupTableViewType
+        self.present(vc, animated: true, completion: nil)
     }
     
     //MARK:- API Calls
@@ -431,7 +589,10 @@ extension KKGeneralTableViewController: UICollectionViewDelegate, UICollectionVi
         switch tableViewType {
         case .AccountDetails:
             return pickerCashflowArray.count
-        case .BettingRecord:
+        case .BettingRecord,
+             .AffiliateCommTable,
+             .RebatePayout,
+             .RebateTable:
             return tabGroupArray.count
         default:
             return 0
@@ -499,18 +660,6 @@ extension KKGeneralTableViewController: UITableViewDelegate, UITableViewDataSour
         
         switch tableViewType {
         
-        case .ComissionTable:
-            return commissionTableArray.count
-            
-        case .ManualRebate:
-            return manualRebateArray.count
-            
-        case .RebateRecord:
-            return rebateRecordArray.count
-            
-        case .RebateRatio:
-            return rebateRatioArray.count
-        
         case .BettingRecord:
             return bettingRecordArray.count
             
@@ -522,6 +671,30 @@ extension KKGeneralTableViewController: UITableViewDelegate, UITableViewDataSour
             
         case .WithdrawHistory:
             return withdrawHistoryArray.count
+            
+        case .AffiliateDownline:
+            return downlineArray.count
+            
+        case .AffiliateTurnover:
+            return turnoverArray.count
+            
+        case .AffiliatePayout:
+            return payoutArray.count
+            
+        case .AffiliateCommTrans:
+            return commissionTransArray.count
+            
+        case .AffiliateCommTable:
+            return commissionTableArray.count
+            
+        case .RebatePayout:
+            return payoutArray.count
+            
+        case .RebateTrans:
+            return commissionTransArray.count
+            
+        case .RebateTable:
+            return commissionTableArray.count
             
         default:
             return 1
@@ -542,7 +715,7 @@ extension KKGeneralTableViewController: UITableViewDelegate, UITableViewDataSour
         }
         
         let cellDetails = self.returnCellDetails(indexPath: indexPath)
-        cell.setUpCellDetails(width: tableView.frame.size.width, content: cellDetails, type: tableViewType)
+        cell.setUpCellDetails(width: tableView.frame.size.width, content: cellDetails)
         cell.selectionStyle = .none
         return cell
     }
