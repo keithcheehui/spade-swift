@@ -255,6 +255,13 @@
 "error_username_text_length"                    = "Username must be between 6-12 characters.";
 "error_password_text_length"                    = "Password must be minimum 8 characters, 1 uppercase, 1 lowercase, 1 numeric and 1 special character.";
 "error_bank_limit"                              = "Only 2 bank account are allowed to set up";
+"error_deposit_bank_empty"                      = "Please select a bank to deposit";
+"error_deposit_date_empty"                      = "Please select deposit date and time";
+"error_deposit_channel_empty"                   = "Please select a deposit channel";
+"error_deposit_amount_empty"                    = "Please enter deposit amount";
+"error_deposit_refnum_empty"                    = "Please enter reference number";
+"error_deposit_promo_empty"                     = "Please select a promotion";
+"error_deposit_image_empty"                     = "Please upload your deposit receipt";
 
 //MARK: Picker
 "picker_fd_td"                                  = "Today";

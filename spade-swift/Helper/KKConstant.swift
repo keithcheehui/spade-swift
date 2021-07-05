@@ -206,6 +206,7 @@ enum HTTPHeaderField: String {
 
 enum HTTPHeaderFieldValue: String {
     case contentType = "application/json"
+    case multipartContentType = "multipart/form-data"
 }
 
 enum TableViewType: Int, CaseIterable {

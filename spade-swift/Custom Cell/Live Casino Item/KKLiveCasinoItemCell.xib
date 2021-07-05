@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +20,10 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h75-oO-DRv">
                         <rect key="frame" x="0.0" y="5" width="200" height="70"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qdX-2d-SJ3">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Ms-fU-Rrz">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="70"/>
+                            </imageView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qdX-2d-SJ3">
                                 <rect key="frame" x="0.0" y="-5" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qdX-2d-SJ3" secondAttribute="height" multiplier="1:1" id="epZ-Yg-Zwb"/>
@@ -32,7 +35,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_hover_purple" translatesAutoresizingMaskIntoConstraints="NO" id="Dyl-4b-zLt">
                                         <rect key="frame" x="-10" y="0.0" width="135" height="70"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2D-V1-kPb">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2D-V1-kPb">
                                         <rect key="frame" x="47" y="5" width="31" height="60"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9t4-6J-RhD">
@@ -79,7 +82,11 @@
                             <constraint firstItem="te8-Gf-B3n" firstAttribute="leading" secondItem="qdX-2d-SJ3" secondAttribute="trailing" id="9WA-gH-6fz"/>
                             <constraint firstItem="qdX-2d-SJ3" firstAttribute="leading" secondItem="h75-oO-DRv" secondAttribute="leading" id="JUd-aT-q6Y"/>
                             <constraint firstAttribute="trailing" secondItem="te8-Gf-B3n" secondAttribute="trailing" id="KIL-Zt-b83"/>
+                            <constraint firstAttribute="trailing" secondItem="3Ms-fU-Rrz" secondAttribute="trailing" id="QiR-dt-2Tn"/>
                             <constraint firstAttribute="bottom" secondItem="te8-Gf-B3n" secondAttribute="bottom" id="YpC-vL-9Hy"/>
+                            <constraint firstItem="3Ms-fU-Rrz" firstAttribute="leading" secondItem="h75-oO-DRv" secondAttribute="leading" id="fut-oR-Zfi"/>
+                            <constraint firstAttribute="bottom" secondItem="3Ms-fU-Rrz" secondAttribute="bottom" id="gmi-Up-sBe"/>
+                            <constraint firstItem="3Ms-fU-Rrz" firstAttribute="top" secondItem="h75-oO-DRv" secondAttribute="top" id="jWu-Sr-LQq"/>
                             <constraint firstItem="te8-Gf-B3n" firstAttribute="top" secondItem="h75-oO-DRv" secondAttribute="top" id="jeJ-Mt-jWh"/>
                             <constraint firstAttribute="bottom" secondItem="qdX-2d-SJ3" secondAttribute="bottom" id="oLo-zi-isN"/>
                         </constraints>
@@ -94,6 +101,7 @@
             </collectionViewCellContentView>
             <connections>
                 <outlet property="bgView" destination="h75-oO-DRv" id="JgO-bC-cDO"/>
+                <outlet property="img4" destination="3Ms-fU-Rrz" id="5oz-Fq-pCJ"/>
                 <outlet property="imgGameIcon" destination="9t4-6J-RhD" id="FFv-VL-61M"/>
                 <outlet property="imgGirlIcon" destination="qdX-2d-SJ3" id="F2b-JO-e4A"/>
                 <outlet property="imgHover" destination="Dyl-4b-zLt" id="hZP-t0-UFm"/>

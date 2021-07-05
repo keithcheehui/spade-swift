@@ -35,7 +35,8 @@ enum ApiRouter: URLRequestConvertible {
     case addUserBankCard(parameter: [String: Any])
     case deleteUserBankCard(parameter: [String: Any])
     case depositPageData
-    case deposit(parameter: [String: Any])
+//    case deposit(parameter: [String: Any])
+    case deposit
     case depositHistory(parameter: [String: Any])
     case withdrawPageData
     case withdraw(parameter: [String: Any])
@@ -288,9 +289,6 @@ enum ApiRouter: URLRequestConvertible {
         case .deleteUserBankCard(let parameter):
             return parameter
             
-        case .deposit(let parameter):
-            return parameter
-            
         case .depositHistory(let parameter):
             return parameter
             
@@ -332,7 +330,8 @@ enum ApiRouter: URLRequestConvertible {
              .withdrawPageData,
              .getUserProfile,
              .getLatestWallet,
-             .logOutUser:
+             .logOutUser,
+             .deposit:
             return nil
         }
     }
@@ -360,9 +359,16 @@ enum ApiRouter: URLRequestConvertible {
         }
         
         urlRequest.httpMethod = method.rawValue
-        urlRequest.setValue(HTTPHeaderFieldValue.contentType.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+//        urlRequest.setValue(HTTPHeaderFieldValue.contentType.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
         urlRequest.setValue(HTTPHeaderFieldValue.contentType.rawValue, forHTTPHeaderField: HTTPHeaderField.accept.rawValue)
 
+        switch self {
+        case .deposit:
+            urlRequest.setValue(HTTPHeaderFieldValue.multipartContentType.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        default:
+            urlRequest.setValue(HTTPHeaderFieldValue.contentType.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        }
+        
         if KKUtil.isUserLogin() {
             urlRequest.setValue(String(format: "Bearer %@", KKTokenManager.accessToken()), forHTTPHeaderField: HTTPHeaderField.authorization.rawValue)
         }

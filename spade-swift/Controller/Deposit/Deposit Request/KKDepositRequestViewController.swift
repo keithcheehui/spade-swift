@@ -73,6 +73,7 @@ class KKDepositRequestViewController: KKBaseViewController {
     var selectedChannelItem: PickerDetails!
     var selectedPromoItem: PickerDetails!
     var selectedReceipt64: String!
+    var selectedImageData: Data!
     
     var currentPicker: Int!
     enum CurrentPicker: Int {
@@ -86,61 +87,9 @@ class KKDepositRequestViewController: KKBaseViewController {
         super.viewDidLoad()
 
         initialLayout()
+        setupPickers()
         uploadedReceipt(isUploaded: false)
-        
-        if let bankList = dataResults.userBankCards {
-            userBankList = bankList
-        }
-        
-        if let companyList = dataResults.companyBanks {
-            companyBankList = companyList
-            if (companyBankList.count > 0) {
-                for bank in companyBankList {
-                    var detail = PickerDetails()
-                    detail.id = String(bank.bankId ?? -1)
-                    detail.name = bank.bankName ?? ""
-                    companyBankItemList.append(detail)
-                }
-                selectedBankItem = companyBankItemList[0]
-                currentPicker = CurrentPicker.bankName.rawValue
-                populatePickerInfo()
-            }
-        }
-        
-        if let channelList = dataResults.depositChannels {
-            depositChannelList = channelList
-            if (depositChannelList.count > 0) {
-                for channel in depositChannelList {
-                    var detail = PickerDetails()
-                    detail.id = channel.code ?? ""
-                    detail.name = channel.name ?? ""
-                    channelItemList.append(detail)
-                }
-                selectedChannelItem = channelItemList[0]
-                currentPicker = CurrentPicker.channel.rawValue
-                populatePickerInfo()
-            }
-        }
-        
-        if let promoList = dataResults.promotions {
-            promotionsList = promoList
-            var detail = PickerDetails()
-            detail.id = "-1"
-            detail.name = KKUtil.languageSelectedStringForKey(key: "deposit_promotion_placeholder")
-            promotionItemList.append(detail)
-            
-            if (promotionsList.count > 0) {
-                for promo in promotionsList {
-                    var detail = PickerDetails()
-                    detail.id = promo.promoCode ?? ""
-                    detail.name = promo.name ?? ""
-                    promotionItemList.append(detail)
-                }
-            }
-            selectedPromoItem = promotionItemList[0]
-            currentPicker = CurrentPicker.promotion.rawValue
-            populatePickerInfo()
-        }
+        setDefaultTodayDate()
     }
     
     func initialLayout(){
@@ -247,6 +196,81 @@ class KKDepositRequestViewController: KKBaseViewController {
         txtDepositTime.delegate = self
     }
     
+    func setupPickers() {
+        if let bankList = dataResults.userBankCards {
+            userBankList = bankList
+        }
+        
+        if let companyList = dataResults.companyBanks {
+            companyBankList = companyList
+            if (companyBankList.count > 0) {
+                for bank in companyBankList {
+                    var detail = PickerDetails()
+                    detail.id = String(bank.bankId ?? -1)
+                    detail.name = bank.bankName ?? ""
+                    companyBankItemList.append(detail)
+                }
+                selectedBankItem = companyBankItemList[0]
+                currentPicker = CurrentPicker.bankName.rawValue
+                populatePickerInfo()
+            }
+        }
+        
+        if let channelList = dataResults.depositChannels {
+            depositChannelList = channelList
+            if (depositChannelList.count > 0) {
+                for channel in depositChannelList {
+                    var detail = PickerDetails()
+                    detail.id = channel.code ?? ""
+                    detail.name = channel.name ?? ""
+                    channelItemList.append(detail)
+                }
+                selectedChannelItem = channelItemList[0]
+                currentPicker = CurrentPicker.channel.rawValue
+                populatePickerInfo()
+            }
+        }
+        
+        if let promoList = dataResults.promotions {
+            promotionsList = promoList
+            
+            var detail = PickerDetails()
+            detail.id = "-1"
+            detail.name = KKUtil.languageSelectedStringForKey(key: "deposit_promotion_placeholder")
+            promotionItemList.append(detail)
+            
+            if (promotionsList.count > 0) {
+                for promo in promotionsList {
+                    var detail = PickerDetails()
+                    detail.id = promo.promoCode ?? ""
+                    detail.name = promo.name ?? ""
+                    promotionItemList.append(detail)
+                }
+            }
+            selectedPromoItem = promotionItemList[0]
+            currentPicker = CurrentPicker.promotion.rawValue
+            populatePickerInfo()
+        }
+    }
+    
+    func setDefaultTodayDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat =  "yyyy-MM-dd HH:mm"
+        let dateString = dateFormatter.string(from: Date());
+
+        txtDepositTime.text = dateString
+    }
+    
+    func clearFields() {
+        self.txtDepositAmount.text = ""
+        self.txtReferenceNo.text = ""
+        self.selectedImageData = nil
+        self.selectedPromoItem = self.promotionItemList[0]
+        self.txtPromotion.text = self.selectedPromoItem.name
+        self.uploadedReceipt(isUploaded: false)
+        self.setDefaultTodayDate()
+    }
+    
     func updatePlaceholder(min: Int?, max: Int?) {
         if let minWithdraw = min, let maxWithdraw = max {
             let minFloat = KKUtil.addCurrencyFormatWithInt(value: minWithdraw)
@@ -273,79 +297,61 @@ class KKDepositRequestViewController: KKBaseViewController {
     }
     
     //MARK:- API Calls
-    
-//    func depositHistoryAPI() {
-//
-//        self.showAnimatedLoader()
-//
-//        KKApiClient.depositHistory(historyStatus: "").execute { depositHistoryResponse in
-//
-//            self.hideAnimatedLoader()
-//            let viewController = KKGeneralPopUpTableViewController.init()
-//            viewController.leftDropdownOptions = pickerTimeArray
-//            viewController.rightDropdownOptions = pickerStatusArray
-//            viewController.tableViewType = .DepositHistory
-//            viewController.depositHistoryArray = depositHistoryResponse.results?.depositHistory
-//            self.present(viewController, animated: false, completion: nil)
-//
-//        } onFailure: { errorMessage in
-//
-//            self.hideAnimatedLoader()
-//            self.showAlertView(type: .Error, alertMessage: errorMessage)
-//        }
-//    }
-    
     func validate() {
-        if (txtDepositTime.text!.isEmpty) {
-            return
-        }
-        
-        if (txtDepositAmount.text!.isEmpty) {
-            return
-        }
-        
         if (txtBankName.text!.isEmpty) {
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_bank_empty"))
+            return
+        }
+        
+        if (txtDepositTime.text!.isEmpty) {
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_date_empty"))
             return
         }
         
         if (txtDepositChannel.text!.isEmpty) {
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_channel_empty"))
+            return
+        }
+        
+        if (txtDepositAmount.text!.isEmpty) {
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_amount_empty"))
             return
         }
         
         if (txtReferenceNo.text!.isEmpty) {
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_refnum_empty"))
             return
         }
         
         if (txtPromotion.text!.isEmpty) {
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_promo_empty"))
             return
         }
         
-        if (selectedReceipt64.isEmpty) {
+        if (selectedImageData == nil) {
+            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_image_empty"))
             return
         }
         
         depositAPI()
-        
     }
     
     func depositAPI() {
-        return;
-        
         self.showAnimatedLoader()
         
         let parameter = [
             APIKeys.depositTime: txtDepositTime.text!,
             APIKeys.depositAmount: txtDepositAmount.text!,
             APIKeys.companyBankID: selectedBankItem.id,
-            APIKeys.depositChannelCode: txtDepositChannel.text!,
+            APIKeys.depositChannelCode: selectedChannelItem.id,
             APIKeys.referenceNumber: txtReferenceNo.text!,
-            APIKeys.receipt: selectedReceipt64,
-            APIKeys.promotionCode: txtPromotion.text!,
+            APIKeys.promotionCode: selectedPromoItem.id,
             
         ] as [String : Any]
         
-        KKApiClient.deposit(parameter: parameter).execute { response in
+        KKApiClient.deposit(imageData: selectedImageData, parameter: parameter).execute { response in
             self.hideAnimatedLoader()
+            self.clearFields()
             
             let viewController = KKDialogAlertViewController.init()
             viewController.alertType = .Deposit
@@ -378,14 +384,6 @@ class KKDepositRequestViewController: KKBaseViewController {
 //        self.depositHistoryAPI()
 //    }
     
-    @IBAction func btnChannelDidPressed(){
-
-    }
-    
-    @IBAction func btnPromotionDidPressed(){
-
-    }
-    
     @IBAction func btnUploadDidPressed(){
 //        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
 //            imagePicker.delegate = self
@@ -403,13 +401,13 @@ class KKDepositRequestViewController: KKBaseViewController {
     }
     
     @IBAction func btnSubmitDidPressed(){
-
+        validate()
     }
     
     @objc
     override func handleDateSelection(picker: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat =  "yyyy/MM/dd HH:mm"
+        dateFormatter.dateFormat =  "yyyy-MM-dd HH:mm"
         let dateString = dateFormatter.string(from: picker.date);
 
         txtDepositTime.text = dateString
@@ -541,19 +539,19 @@ extension KKDepositRequestViewController: UINavigationControllerDelegate, UIImag
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.editedImage] as? UIImage else { return }
 
-        let imageName = UUID().uuidString
+        let imageName = "receipt"
         let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
 
-        let jpegCompressionQuality: CGFloat = 0.9 // Set this to whatever suits your purpose
-        if let base64String = image.jpegData(compressionQuality: jpegCompressionQuality)?.base64EncodedString() {
-            uploadedReceipt(isUploaded: true)
-        }
-        
-//        if let jpegData = image.jpegData(compressionQuality: 0.8) {
-//            try? jpegData.write(to: imagePath)
-//
+//        let jpegCompressionQuality: CGFloat = 0.9 // Set this to whatever suits your purpose
+//        if let base64String = image.jpegData(compressionQuality: jpegCompressionQuality)?.base64EncodedString() {
 //            uploadedReceipt(isUploaded: true)
 //        }
+                
+        if let jpegData = image.jpegData(compressionQuality: 0.8) {
+            try? jpegData.write(to: imagePath)
+            selectedImageData = jpegData
+            uploadedReceipt(isUploaded: true)
+        }
 
         dismiss(animated: true)
     }

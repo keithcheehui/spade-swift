@@ -67,8 +67,10 @@ class KKLiveCasinoViewController: KKBaseViewController {
     
     func defaultValue() {
         imgBG.setUpImage(with: liveCasinoArray[selectedLiveCasinoIndex].img3)
-        imgGameIcon.setUpImage(with: liveCasinoArray[selectedLiveCasinoIndex].img)
-        lblGameName.text = liveCasinoArray[selectedLiveCasinoIndex].name!
+//        imgGameIcon.setUpImage(with: liveCasinoArray[selectedLiveCasinoIndex].img)
+//        lblGameName.text = liveCasinoArray[selectedLiveCasinoIndex].name!
+        imgGameIcon.isHidden = true
+        lblGameName.isHidden = true
     }
     
     ///Button Actions
@@ -98,9 +100,10 @@ extension KKLiveCasinoViewController: UICollectionViewDelegate, UICollectionView
             fatalError("DequeueReusableCell failed while casting")
         }
         
-        cell.imgGirlIcon.setUpImage(with: liveCasinoArray[indexPath.item].img2)
-        cell.imgGameIcon.setUpImage(with: liveCasinoArray[indexPath.item].img)
-        cell.lblGameName.text = liveCasinoArray[indexPath.item].name!
+        cell.img4.setUpImage(with: liveCasinoArray[indexPath.item].img4)
+//        cell.imgGirlIcon.setUpImage(with: liveCasinoArray[indexPath.item].img2)
+//        cell.imgGameIcon.setUpImage(with: liveCasinoArray[indexPath.item].img)
+//        cell.lblGameName.text = liveCasinoArray[indexPath.item].name!
 
         if (selectedLiveCasinoIndex == indexPath.row){
             cell.imgHover.isHidden = false
@@ -116,9 +119,7 @@ extension KKLiveCasinoViewController: UICollectionViewDelegate, UICollectionView
         gameCollectionView.reloadData()
         
         imgBG.setUpImage(with: liveCasinoArray[indexPath.item].img3)
-        imgGameIcon.setUpImage(with: liveCasinoArray[indexPath.item].img)
-        lblGameName.text = liveCasinoArray[indexPath.item].name!
-        
-//        switchy
+//        imgGameIcon.setUpImage(with: liveCasinoArray[indexPath.item].img)
+//        lblGameName.text = liveCasinoArray[indexPath.item].name!
     }
 }

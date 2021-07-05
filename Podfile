@@ -6,7 +6,7 @@ target 'spade-swift' do
   use_frameworks!
 
 #  pod 'FLEX',                         '~> 4.4.0' :configurations => ['Debug']
-  pod 'Alamofire',                    '~> 5.1'
+  pod 'Alamofire',                    '~> 5.4'
   pod 'MBProgressHUD',                '~> 1.2.0'
   pod 'IQKeyboardManagerSwift',       '~> 6.5.5'
   pod 'Kingfisher',                   '~> 5.14.0'

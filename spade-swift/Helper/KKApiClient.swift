@@ -222,9 +222,105 @@ class KKApiClient: NSObject {
     }
     
     //TODO: Havent implement
-    static func deposit(parameter: [String : Any]) -> Future<KKGeneralResponse> {
-        return performRequest(route: .deposit(parameter: parameter))
+    static func deposit(imageData: Data, parameter: [String : Any]) -> Future<KKGeneralResponse> {
+        return Future(operation: {completion in
+            AF.upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData, withName: APIKeys.receipt, fileName: "Receipt.jpeg", mimeType: "image/jpeg")
+                for (key, value) in parameter {
+                    multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key)
+                }
+            },
+            with: ApiRouter.deposit)
+            .uploadProgress(queue: .main, closure: { progress in
+                //Current upload progress of file
+                print("Upload Progress: \(progress.fractionCompleted)")
+            })
+            .responseJSON(completionHandler: {response in
+                //Do what ever you want to do with response
+        
+                if response.data != nil {
+                    let response: KKGeneralResponse = try! JSONDecoder().decode(KKGeneralResponse.self, from: response.data!)
+                    if response.error != nil {
+                        if let isError = response.error {
+                            if isError {
+                                completion(.failure(response.message ?? ""))
+                            } else {
+                                completion(.success(response))
+                            }
+                        } else {
+                            completion(.failure(response.message ?? ""))
+                        }
+                    } else {
+                        completion(.failure("Unexpected error. Please try again."))
+                    }
+                }
+                
+                
+//                if let error = response.error {
+//                    print(error)
+//                }
+//                guard let data = response.value else {
+//                    return
+//                }
+//                print(data)
+//                completion(.success(data as! KKGeneralResponse))
+
+            })
+        })
+            
+            
+//            .encodingCompletion: { result in
+//                switch result {
+//                case .success(let upload, _, _):
+//                    upload.validate().responseData {response in
+//                        let decoder = JSONDecoder()
+//                        let todo: Result<KKGeneralResponse> = decoder.decodeResponse(from: response)
+//                        switch todo {
+//                        case .success(let value):
+//                            completion(.success(value))
+//                        default:
+//                            completion(.failure(returnError(decoder: decoder, error: error, response: response)))
+//                        }
+//                    }
+//                case .failure(let error):
+//                    print("Error in upload: \(error.localizedDescription)")
+//                }
+//            })
+//        })
     }
+    
+//    static func deposit(parameter: [String : Any]) -> Future<KKGeneralResponse> {
+//        return Future(operation: {completion in
+//            AF.upload(multipartFormData: { multipartFormData in
+//                if let data = imageData {
+//                    multipartFormData.append(data, withName: "file", fileName: "Receipt.jpeg", mimeType: "image/jpeg")
+//                } else {
+//                    completion(.failure("data error"))
+//                }
+//            },
+//            with: ApiRouter.deposit(imageData: imageData, parameter: parameter),
+//            encodingCompletion: { encodingResult in
+//                switch encodingResult {
+//                case .success(let upload, _, _):
+//                    upload.validate().responseData {response in
+//                        let decoder = JSONDecoder()
+//                        let todo: Result<KKGeneralResponse> = decoder.decodeResponse(from: response)
+//                        switch todo {
+//                        case .success(let value):
+//                            completion(.success(value))
+//                        default:
+//                            completion(.failure(returnError(decoder: decoder, error: error, response: response)))
+//                        }
+//                    }
+//                case .failure(let error):
+//                    print("Error in upload: \(error.localizedDescription)")
+//                }
+//            })
+//        })
+            
+            
+//        return performRequest(route: .deposit(parameter: parameter))
+//    }
     
     static func depositHistory(filter: String, historyStatus: String) -> Future<KKDepositHistoryResponse> {
         let parameter = [

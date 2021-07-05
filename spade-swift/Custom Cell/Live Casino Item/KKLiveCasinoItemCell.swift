@@ -15,7 +15,8 @@ class KKLiveCasinoItemCell: UICollectionViewCell {
     @IBOutlet weak var imgGameIcon: UIImageView!
     @IBOutlet weak var lblGameName: UILabel!
     @IBOutlet weak var imgHover: UIImageView!
-    
+    @IBOutlet weak var img4: UIImageView!
+
     @IBOutlet weak var lblGameNameHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
@@ -27,5 +28,9 @@ class KKLiveCasinoItemCell: UICollectionViewCell {
         lblGameName.textColor = UIColor.spade_white_FFFFFF
         lblGameName.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 11))
         imgHover.isHidden = true
+        
+        lblGameName.isHidden = true
+        imgGirlIcon.isHidden = true
+        imgGameIcon.isHidden = true
     }
 }
