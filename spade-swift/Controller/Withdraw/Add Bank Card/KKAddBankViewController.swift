@@ -33,11 +33,7 @@ class KKAddBankViewController: KKBaseViewController {
         super.viewDidLoad()
 
         initialLayout()
-        
-        if (selectedBankItem == nil && bankListOptions.count > 0) {
-            selectedBankItem = bankListOptions[0]
-            updateLayout()
-        }
+        getBankList()
     }
     
     func initialLayout(){
@@ -117,6 +113,42 @@ class KKAddBankViewController: KKBaseViewController {
     }
     
     //MARK: - API
+    func getBankList() {
+        
+        self.showAnimatedLoader()
+        KKApiClient.getBankList().execute { bankListOptionResponse in
+            
+            if let bankList = bankListOptionResponse.results?.bankList {
+                if !bankList.isEmpty {
+                    for bank in bankList {
+                        var bankDetail = PickerDetails()
+                        bankDetail.id = String(bank.id ?? -1)
+                        bankDetail.name = bank.name ?? ""
+                        
+                        self.bankListOptions.append(bankDetail)
+                        
+                        if (self.selectedBankItem == nil && self.bankListOptions.count > 0) {
+                            self.selectedBankItem = self.bankListOptions[0]
+                            self.updateLayout()
+                        }
+                    }
+                }
+            }
+            
+            self.hideAnimatedLoader()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
+            
+            if (self.selectedBankItem == nil && self.bankListOptions.count > 0) {
+                self.selectedBankItem = self.bankListOptions[0]
+                self.updateLayout()
+            }
+        }
+    }
+    
     func addUserBankCardAPI(){
         self.showAnimatedLoader()
         KKApiClient.addUserBankCard(bankAccountNo: txtBankAccount.text!, bankAccountName: txtCardholderName.text!, bankId: selectedBankItem.id).execute { addBankResponse in

@@ -178,11 +178,11 @@ struct CellIdentifier {
 struct Spade {
     
     struct DevServer {
-        static let baseApiURL: String = "https://legend.fteg.dev/api/"
+        static let baseApiURL: String = "https://lg-api.fteg.app/api/"
     }
     
     struct StagingServer {
-        static let baseApiURL: String = "https://lg-api.fteg.app/api/"
+        static let baseApiURL: String = ""
     }
 }
 

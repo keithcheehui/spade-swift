@@ -33,7 +33,7 @@ enum ApiRouter: URLRequestConvertible {
     //MARK: - Private
     //MARK: - Deposit / Withdrawal
     case addUserBankCard(parameter: [String: Any])
-    case deleteUserBankCard(parameter: [String: Any])
+    case getBankList
     case depositPageData
 //    case deposit(parameter: [String: Any])
     case deposit
@@ -75,6 +75,7 @@ enum ApiRouter: URLRequestConvertible {
              .getLiveChat,
              .getPromotion,
              .getAffiliateGuideline,
+             .getBankList,
              .depositPageData,
              .depositHistory,
              .withdrawPageData,
@@ -107,9 +108,6 @@ enum ApiRouter: URLRequestConvertible {
         case .updateUserProfile,
              .updateUserLanguagePreference:
             return .put
-            
-        case .deleteUserBankCard:
-            return .delete
         }
     }
     
@@ -169,8 +167,8 @@ enum ApiRouter: URLRequestConvertible {
         case .addUserBankCard:
             return "member/finance/addUserBankCard"
             
-        case .deleteUserBankCard:
-            return "member/finance/removeUserBankCard"
+        case .getBankList:
+            return "member/finance/getBankList"
             
         case .depositPageData:
             return "member/deposit/depositPageData"
@@ -286,9 +284,6 @@ enum ApiRouter: URLRequestConvertible {
         case .addUserBankCard(let parameter):
             return parameter
             
-        case .deleteUserBankCard(let parameter):
-            return parameter
-            
         case .depositHistory(let parameter):
             return parameter
             
@@ -326,6 +321,7 @@ enum ApiRouter: URLRequestConvertible {
             return parameter
             
         case .getInboxReadStatus,
+             .getBankList,
              .depositPageData,
              .withdrawPageData,
              .getUserProfile,

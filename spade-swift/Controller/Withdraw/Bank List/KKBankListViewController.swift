@@ -17,8 +17,6 @@ class KKBankListViewController: KKBaseViewController {
     @IBOutlet weak var bankTableView: UITableView!
 
     var userBankList: [KKPageDataUserBankCards]! = []
-    var companyBankList: [KKPageDataUserBankCards]! = []
-    var bankListOptions: [PickerDetails]! = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +46,6 @@ class KKBankListViewController: KKBaseViewController {
         }
         
         let vc = KKAddBankViewController.init()
-        vc.bankListOptions = bankListOptions
-
         vc.tableContentView = self.view
         vc.displayViewController = self
         vc.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
@@ -63,7 +59,6 @@ class KKBankListViewController: KKBaseViewController {
         KKApiClient.depositPageData().execute { depositPageDataResponse in
             self.hideAnimatedLoader()
             self.userBankList = depositPageDataResponse.results?.userBankCards
-            self.companyBankList = depositPageDataResponse.results?.companyBanks
             self.updateView()
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
@@ -73,18 +68,6 @@ class KKBankListViewController: KKBaseViewController {
     }
     
     func updateView() {
-        if self.companyBankList != nil {
-            if (self.companyBankList.count > 0) {
-                for bank in self.companyBankList {
-                    var bankDetail = PickerDetails()
-                    bankDetail.id = String(bank.bankId ?? -1)
-                    bankDetail.name = bank.bankName ?? ""
-                    
-                    self.bankListOptions.append(bankDetail)
-                }
-            }
-        }
-        
         if (self.userBankList != nil) {
             self.bankTableView.isHidden = false
         } else {
@@ -94,10 +77,10 @@ class KKBankListViewController: KKBaseViewController {
     }
     
     @IBAction func btnAddDidPressed() {
-        if (userBankList.count >= 2) {
-            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_bank_limit"))
-            return
-        }
+//        if (userBankList.count >= 2) {
+//            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_bank_limit"))
+//            return
+//        }
         
         changeAddBankView()
     }

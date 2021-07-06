@@ -208,13 +208,8 @@ class KKApiClient: NSObject {
         return performRequest(route: .addUserBankCard(parameter: parameter))
     }
     
-    //TODO: Havent implement
-    static func deleteUserBankCard(bankId: Int) -> Future<KKGeneralResponse> {
-        let parameter = [
-            APIKeys.bankAccountCardId: bankId
-        ] as [String : Any]
-        
-        return performRequest(route: .deleteUserBankCard(parameter: parameter))
+    static func getBankList() -> Future<KKBankListOptionResponse> {
+        return performRequest(route: .getBankList)
     }
     
     static func depositPageData() -> Future<KKDepositPageDataResponse> {

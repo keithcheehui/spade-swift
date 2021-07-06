@@ -181,6 +181,9 @@
 		53AAAE2C26401CAE004103F0 /* KKWithdrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53AAAE2B26401CAE004103F0 /* KKWithdrawViewController.xib */; };
 		53AAAE3426401FF0004103F0 /* KKAffiliateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AAAE3326401FF0004103F0 /* KKAffiliateViewController.swift */; };
 		53AAAE3726401FF7004103F0 /* KKAffiliateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53AAAE3626401FF7004103F0 /* KKAffiliateViewController.xib */; };
+		53B5A8842694033F00E0CFF3 /* KKBankListOptionResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5A8812694033F00E0CFF3 /* KKBankListOptionResults.swift */; };
+		53B5A8852694033F00E0CFF3 /* KKBankListOptionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5A8822694033F00E0CFF3 /* KKBankListOptionResponse.swift */; };
+		53B5A8862694033F00E0CFF3 /* KKBankListOptionBankList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5A8832694033F00E0CFF3 /* KKBankListOptionBankList.swift */; };
 		53C64EFA263700D00068F03E /* KKPersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53C64EF9263700D00068F03E /* KKPersonalViewController.xib */; };
 		53C64EFD263700E10068F03E /* KKPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C64EFC263700E10068F03E /* KKPersonalViewController.swift */; };
 		53D008D626888BC900FDE9D7 /* KKCustomToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D008D526888BC800FDE9D7 /* KKCustomToastViewController.swift */; };
@@ -403,6 +406,9 @@
 		53AAAE2B26401CAE004103F0 /* KKWithdrawViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKWithdrawViewController.xib; sourceTree = "<group>"; };
 		53AAAE3326401FF0004103F0 /* KKAffiliateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKAffiliateViewController.swift; sourceTree = "<group>"; };
 		53AAAE3626401FF7004103F0 /* KKAffiliateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKAffiliateViewController.xib; sourceTree = "<group>"; };
+		53B5A8812694033F00E0CFF3 /* KKBankListOptionResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKBankListOptionResults.swift; sourceTree = "<group>"; };
+		53B5A8822694033F00E0CFF3 /* KKBankListOptionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKBankListOptionResponse.swift; sourceTree = "<group>"; };
+		53B5A8832694033F00E0CFF3 /* KKBankListOptionBankList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKBankListOptionBankList.swift; sourceTree = "<group>"; };
 		53C64EF9263700D00068F03E /* KKPersonalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKPersonalViewController.xib; sourceTree = "<group>"; };
 		53C64EFC263700E10068F03E /* KKPersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPersonalViewController.swift; sourceTree = "<group>"; };
 		53D008D526888BC800FDE9D7 /* KKCustomToastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKCustomToastViewController.swift; sourceTree = "<group>"; };
@@ -677,6 +683,7 @@
 		0676B61F262FDC320023311F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				53B5A87D269402CC00E0CFF3 /* Bank List Options */,
 				06BF5C1B2669791600C10008 /* General */,
 				06BF5C012669762200C10008 /* App Version */,
 				06566B83267ADB29009FE072 /* Landing Details */,
@@ -1237,6 +1244,16 @@
 			path = Withdraw;
 			sourceTree = "<group>";
 		};
+		53B5A87D269402CC00E0CFF3 /* Bank List Options */ = {
+			isa = PBXGroup;
+			children = (
+				53B5A8822694033F00E0CFF3 /* KKBankListOptionResponse.swift */,
+				53B5A8812694033F00E0CFF3 /* KKBankListOptionResults.swift */,
+				53B5A8832694033F00E0CFF3 /* KKBankListOptionBankList.swift */,
+			);
+			path = "Bank List Options";
+			sourceTree = "<group>";
+		};
 		53C64EF72637006C0068F03E /* Personal */ = {
 			isa = PBXGroup;
 			children = (
@@ -1592,6 +1609,7 @@
 				532FF61C264FF76D00999512 /* KKLiveCasinoViewController.swift in Sources */,
 				06566B85267ADB94009FE072 /* KKLandingDetailsResponse.swift in Sources */,
 				53F21FBE2687C20900A44911 /* KKUserCountry.swift in Sources */,
+				53B5A8852694033F00E0CFF3 /* KKBankListOptionResponse.swift in Sources */,
 				06E4DEFB267C00C000482979 /* KKUserCashFlowDetails.swift in Sources */,
 				0676B612262FDAFE0023311F /* SKResult.swift in Sources */,
 				5380F10E267D02E7003DC6CB /* KKGeneralPopUpTableViewController.swift in Sources */,
@@ -1621,6 +1639,7 @@
 				06BF5C2426697A1900C10008 /* KKUserCredential.swift in Sources */,
 				53F21F962686E03500A44911 /* KKTabListItemCell.swift in Sources */,
 				5381676D26464B3300FC96A6 /* KKUserInfoViewController.swift in Sources */,
+				53B5A8862694033F00E0CFF3 /* KKBankListOptionBankList.swift in Sources */,
 				06BF5C332669814C00C10008 /* KKGroupPlatformResponse.swift in Sources */,
 				5381D837264961EC003BBD2A /* KKAnnouncementTableCell.swift in Sources */,
 				532FF60B264FD0AA00999512 /* KKGuidelineViewController.swift in Sources */,
@@ -1629,6 +1648,7 @@
 				06868314267948980097E068 /* KKUserProfileDetails.swift in Sources */,
 				0676B5A8262FD6EF0023311F /* AppDelegate.swift in Sources */,
 				06868312267948980097E068 /* KKUserProfileResponse.swift in Sources */,
+				53B5A8842694033F00E0CFF3 /* KKBankListOptionResults.swift in Sources */,
 				06FF072D267FEF670073BE8E /* KKGeneralTableViewCell.swift in Sources */,
 				53AAAE3426401FF0004103F0 /* KKAffiliateViewController.swift in Sources */,
 				5317F232264C222A0076D69B /* KKBankTableCell.swift in Sources */,
