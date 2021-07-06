@@ -182,7 +182,7 @@ struct Spade {
     }
     
     struct StagingServer {
-        static let baseApiURL: String = ""
+        static let baseApiURL: String = "https://live-lg-api.fteg.app/api/"
     }
 }
 

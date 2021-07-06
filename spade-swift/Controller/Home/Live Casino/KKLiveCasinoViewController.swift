@@ -66,7 +66,7 @@ class KKLiveCasinoViewController: KKBaseViewController {
     }
     
     func defaultValue() {
-        imgBG.setUpImage(with: liveCasinoArray[selectedLiveCasinoIndex].img3)
+        imgBG.setUpImage(with: liveCasinoArray[selectedLiveCasinoIndex].img2)
 //        imgGameIcon.setUpImage(with: liveCasinoArray[selectedLiveCasinoIndex].img)
 //        lblGameName.text = liveCasinoArray[selectedLiveCasinoIndex].name!
         imgGameIcon.isHidden = true
@@ -100,7 +100,7 @@ extension KKLiveCasinoViewController: UICollectionViewDelegate, UICollectionView
             fatalError("DequeueReusableCell failed while casting")
         }
         
-        cell.img4.setUpImage(with: liveCasinoArray[indexPath.item].img4)
+        cell.img4.setUpImage(with: liveCasinoArray[indexPath.item].img)
 //        cell.imgGirlIcon.setUpImage(with: liveCasinoArray[indexPath.item].img2)
 //        cell.imgGameIcon.setUpImage(with: liveCasinoArray[indexPath.item].img)
 //        cell.lblGameName.text = liveCasinoArray[indexPath.item].name!
@@ -118,7 +118,7 @@ extension KKLiveCasinoViewController: UICollectionViewDelegate, UICollectionView
         selectedLiveCasinoIndex = indexPath.row
         gameCollectionView.reloadData()
         
-        imgBG.setUpImage(with: liveCasinoArray[indexPath.item].img3)
+        imgBG.setUpImage(with: liveCasinoArray[indexPath.item].img2)
 //        imgGameIcon.setUpImage(with: liveCasinoArray[indexPath.item].img)
 //        lblGameName.text = liveCasinoArray[indexPath.item].name!
     }
