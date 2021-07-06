@@ -34,6 +34,7 @@ enum ApiRouter: URLRequestConvertible {
     //MARK: - Deposit / Withdrawal
     case addUserBankCard(parameter: [String: Any])
     case getBankList
+    case userBankCards
     case depositPageData
 //    case deposit(parameter: [String: Any])
     case deposit
@@ -53,6 +54,12 @@ enum ApiRouter: URLRequestConvertible {
     case getInbox(parameter: [String: Any])
     case getInboxReadStatus
     case updateInboxReadStatus(parameter: [String: Any])
+    
+    //MARK: - Rebate
+    case rebateTable
+    
+    //MARK: - Affiliate
+    
     
     case memberLandingData(parameter: [String: Any])
     case getLatestWallet
@@ -76,6 +83,7 @@ enum ApiRouter: URLRequestConvertible {
              .getPromotion,
              .getAffiliateGuideline,
              .getBankList,
+             .userBankCards,
              .depositPageData,
              .depositHistory,
              .withdrawPageData,
@@ -86,6 +94,7 @@ enum ApiRouter: URLRequestConvertible {
              .getUserBettingRecord,
              .getInbox,
              .getInboxReadStatus,
+             .rebateTable,
              .memberLandingData,
              .getLatestWallet:
             return .get
@@ -168,8 +177,11 @@ enum ApiRouter: URLRequestConvertible {
             return "member/finance/addUserBankCard"
             
         case .getBankList:
-            return "member/finance/getBankList"
+            return "member/finance/bankList"
             
+        case .userBankCards:
+            return "member/finance/userBankCards"
+                        
         case .depositPageData:
             return "member/deposit/depositPageData"
             
@@ -211,6 +223,9 @@ enum ApiRouter: URLRequestConvertible {
             
         case .updateInboxReadStatus:
             return "member/updateInboxReadStatus"
+            
+        case .rebateTable:
+            return "member/rebate/rebateTable"
             
         case .memberLandingData:
             return "member/memberLanding"
@@ -322,9 +337,11 @@ enum ApiRouter: URLRequestConvertible {
             
         case .getInboxReadStatus,
              .getBankList,
+             .userBankCards,
              .depositPageData,
              .withdrawPageData,
              .getUserProfile,
+             .rebateTable,
              .getLatestWallet,
              .logOutUser,
              .deposit:
@@ -335,7 +352,7 @@ enum ApiRouter: URLRequestConvertible {
     // MARK: - URL Request
     func asURLRequest() throws -> URLRequest {
         
-        let url : URL = try Spade.DevServer.baseApiURL.asURL()
+        let url : URL = try Spade.ProdServer.baseApiURL.asURL()
         
         var urlRequest : URLRequest = URLRequest(url: url.appendingPathComponent(path))
         

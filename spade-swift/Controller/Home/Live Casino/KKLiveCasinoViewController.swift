@@ -82,6 +82,7 @@ class KKLiveCasinoViewController: KKBaseViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             //TODO: PUT Web view for game redirect url
+            self.navigationController?.pushViewController(KKWebViewController(), animated: true)
         }
     }
 }

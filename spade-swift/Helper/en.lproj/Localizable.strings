@@ -293,6 +293,7 @@
 "alert_desc_withdraw"                           = "Your withdrawal request has been submitted successfully.\nYou can check the processing status in History page.\nYour transaction id is %@";
 "alert_desc_deposit"                            = "Your deposit request has been submitted successfully.\nYou can check the processing status in History page.\nYour transaction id is %@";
 "alert_logout"                                  = "Are you sure you want to log out?";
+"alert_close_page"                              = "Are you sure you want to close this page?";
 "alert_copied"                                  = "Copied to clipboard.";
 "alert_shared"                                  = "Shared successfully.";
 
@@ -305,3 +306,4 @@
 "no_bank_liner_withdraw"                        = "Please set up your at least one (1)\nbank card before proceeding for withdraw";
 "no_bank_liner_step_1"                          = "Click upper right corner bank card icon";
 "no_bank_liner_step_2"                          = "to setup a bank card";
+

@@ -33,7 +33,7 @@ class KKAddBankViewController: KKBaseViewController {
         super.viewDidLoad()
 
         initialLayout()
-        getBankList()
+        getBankListAPI()
     }
     
     func initialLayout(){
@@ -113,7 +113,7 @@ class KKAddBankViewController: KKBaseViewController {
     }
     
     //MARK: - API
-    func getBankList() {
+    func getBankListAPI() {
         
         self.showAnimatedLoader()
         KKApiClient.getBankList().execute { bankListOptionResponse in

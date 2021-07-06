@@ -146,6 +146,7 @@ extension KKPlatformViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         //TODO: PUT Web view for game redirect url
+        self.navigationController?.pushViewController(KKWebViewController(), animated: true)
     }
 }
 

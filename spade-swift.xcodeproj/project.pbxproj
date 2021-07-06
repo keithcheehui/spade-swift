@@ -184,6 +184,13 @@
 		53B5A8842694033F00E0CFF3 /* KKBankListOptionResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5A8812694033F00E0CFF3 /* KKBankListOptionResults.swift */; };
 		53B5A8852694033F00E0CFF3 /* KKBankListOptionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5A8822694033F00E0CFF3 /* KKBankListOptionResponse.swift */; };
 		53B5A8862694033F00E0CFF3 /* KKBankListOptionBankList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5A8832694033F00E0CFF3 /* KKBankListOptionBankList.swift */; };
+		53B5A88B26949AC000E0CFF3 /* KKRebateTableRebateTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5A88726949AC000E0CFF3 /* KKRebateTableRebateTable.swift */; };
+		53B5A88C26949AC000E0CFF3 /* KKRebateTableResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5A88826949AC000E0CFF3 /* KKRebateTableResponse.swift */; };
+		53B5A88D26949AC000E0CFF3 /* KKRebateTableRebateRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5A88926949AC000E0CFF3 /* KKRebateTableRebateRates.swift */; };
+		53B5A88E26949AC000E0CFF3 /* KKRebateTableResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5A88A26949AC000E0CFF3 /* KKRebateTableResults.swift */; };
+		53B5A89126949B3D00E0CFF3 /* KKRebateTableRebateExcludedProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5A89026949B3D00E0CFF3 /* KKRebateTableRebateExcludedProducts.swift */; };
+		53B5A8992694C60100E0CFF3 /* KKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B5A8972694C60100E0CFF3 /* KKWebViewController.swift */; };
+		53B5A89A2694C60100E0CFF3 /* KKWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53B5A8982694C60100E0CFF3 /* KKWebViewController.xib */; };
 		53C64EFA263700D00068F03E /* KKPersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53C64EF9263700D00068F03E /* KKPersonalViewController.xib */; };
 		53C64EFD263700E10068F03E /* KKPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C64EFC263700E10068F03E /* KKPersonalViewController.swift */; };
 		53D008D626888BC900FDE9D7 /* KKCustomToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D008D526888BC800FDE9D7 /* KKCustomToastViewController.swift */; };
@@ -409,6 +416,13 @@
 		53B5A8812694033F00E0CFF3 /* KKBankListOptionResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKBankListOptionResults.swift; sourceTree = "<group>"; };
 		53B5A8822694033F00E0CFF3 /* KKBankListOptionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKBankListOptionResponse.swift; sourceTree = "<group>"; };
 		53B5A8832694033F00E0CFF3 /* KKBankListOptionBankList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKBankListOptionBankList.swift; sourceTree = "<group>"; };
+		53B5A88726949AC000E0CFF3 /* KKRebateTableRebateTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKRebateTableRebateTable.swift; sourceTree = "<group>"; };
+		53B5A88826949AC000E0CFF3 /* KKRebateTableResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKRebateTableResponse.swift; sourceTree = "<group>"; };
+		53B5A88926949AC000E0CFF3 /* KKRebateTableRebateRates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKRebateTableRebateRates.swift; sourceTree = "<group>"; };
+		53B5A88A26949AC000E0CFF3 /* KKRebateTableResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKRebateTableResults.swift; sourceTree = "<group>"; };
+		53B5A89026949B3D00E0CFF3 /* KKRebateTableRebateExcludedProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKRebateTableRebateExcludedProducts.swift; sourceTree = "<group>"; };
+		53B5A8972694C60100E0CFF3 /* KKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKWebViewController.swift; sourceTree = "<group>"; };
+		53B5A8982694C60100E0CFF3 /* KKWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKWebViewController.xib; sourceTree = "<group>"; };
 		53C64EF9263700D00068F03E /* KKPersonalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKPersonalViewController.xib; sourceTree = "<group>"; };
 		53C64EFC263700E10068F03E /* KKPersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKPersonalViewController.swift; sourceTree = "<group>"; };
 		53D008D526888BC800FDE9D7 /* KKCustomToastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKCustomToastViewController.swift; sourceTree = "<group>"; };
@@ -654,6 +668,7 @@
 				5381D83126495AA2003BBD2A /* Announcement */,
 				5380F10A267CF08E003DC6CB /* General Table View */,
 				53F21FBB2687AD4D00A44911 /* Alert */,
+				53B5A89B2694C60600E0CFF3 /* In App Web */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -702,6 +717,7 @@
 				06290623266FFF1700A26DC5 /* FAQ */,
 				531428B12674A34D00801FD9 /* Bonus */,
 				531428BE2674A58C00801FD9 /* Affiliate Guideline */,
+				53B5A88F26949AC500E0CFF3 /* Rebate Table */,
 				062C39832632C96A00E86EEA /* Api Error */,
 			);
 			path = Model;
@@ -1254,6 +1270,27 @@
 			path = "Bank List Options";
 			sourceTree = "<group>";
 		};
+		53B5A88F26949AC500E0CFF3 /* Rebate Table */ = {
+			isa = PBXGroup;
+			children = (
+				53B5A88826949AC000E0CFF3 /* KKRebateTableResponse.swift */,
+				53B5A88A26949AC000E0CFF3 /* KKRebateTableResults.swift */,
+				53B5A88726949AC000E0CFF3 /* KKRebateTableRebateTable.swift */,
+				53B5A88926949AC000E0CFF3 /* KKRebateTableRebateRates.swift */,
+				53B5A89026949B3D00E0CFF3 /* KKRebateTableRebateExcludedProducts.swift */,
+			);
+			path = "Rebate Table";
+			sourceTree = "<group>";
+		};
+		53B5A89B2694C60600E0CFF3 /* In App Web */ = {
+			isa = PBXGroup;
+			children = (
+				53B5A8972694C60100E0CFF3 /* KKWebViewController.swift */,
+				53B5A8982694C60100E0CFF3 /* KKWebViewController.xib */,
+			);
+			path = "In App Web";
+			sourceTree = "<group>";
+		};
 		53C64EF72637006C0068F03E /* Personal */ = {
 			isa = PBXGroup;
 			children = (
@@ -1448,6 +1485,7 @@
 				TargetAttributes = {
 					0676B5A3262FD6EF0023311F = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -1532,6 +1570,7 @@
 				53C64EFA263700D00068F03E /* KKPersonalViewController.xib in Resources */,
 				53E2FF122658BDEB0017CA67 /* KKBonusViewController.xib in Resources */,
 				53DF81DC26502F8100BA6119 /* KKCountryItemCell.xib in Resources */,
+				53B5A89A2694C60100E0CFF3 /* KKWebViewController.xib in Resources */,
 				533F2B2E268A435E00209F9D /* KKPlatfromGameItemCell.xib in Resources */,
 				532FF60E264FD0B300999512 /* KKGuidelineViewController.xib in Resources */,
 				53AAAE092640191A004103F0 /* KKRebateViewController.xib in Resources */,
@@ -1623,6 +1662,7 @@
 				53DD86D026920DAB00216419 /* KKMyRebateViewController.swift in Sources */,
 				53F3EB30268F5FEF00142F22 /* KKDepositPageDataDepositChannels.swift in Sources */,
 				533CA6BE2631746800768C08 /* KKHomeViewController.swift in Sources */,
+				53B5A88C26949AC000E0CFF3 /* KKRebateTableResponse.swift in Sources */,
 				5381D82C26495A94003BBD2A /* KKAnnouncementViewController.swift in Sources */,
 				5317F23B264C2A8E0076D69B /* KKAddBankViewController.swift in Sources */,
 				06BF5C352669814C00C10008 /* KKGroupPlatformGroups.swift in Sources */,
@@ -1650,10 +1690,12 @@
 				06868312267948980097E068 /* KKUserProfileResponse.swift in Sources */,
 				53B5A8842694033F00E0CFF3 /* KKBankListOptionResults.swift in Sources */,
 				06FF072D267FEF670073BE8E /* KKGeneralTableViewCell.swift in Sources */,
+				53B5A88B26949AC000E0CFF3 /* KKRebateTableRebateTable.swift in Sources */,
 				53AAAE3426401FF0004103F0 /* KKAffiliateViewController.swift in Sources */,
 				5317F232264C222A0076D69B /* KKBankTableCell.swift in Sources */,
 				0676B5F6262FD8BD0023311F /* KKSingleton.swift in Sources */,
 				06290628266FFF4D00A26DC5 /* KKFAQDetails.swift in Sources */,
+				53B5A88D26949AC000E0CFF3 /* KKRebateTableRebateRates.swift in Sources */,
 				5365E210265135B8005CB297 /* KKGameMenuItemCell.swift in Sources */,
 				06BF5C17266977B200C10008 /* KKAppVersionCountries.swift in Sources */,
 				531428AC2674A2BB00801FD9 /* KKPromotionDetails.swift in Sources */,
@@ -1669,6 +1711,7 @@
 				538FB09326482B3500F3E823 /* KKLiveChatCollectionViewCell.swift in Sources */,
 				06290622266FFEE600A26DC5 /* KKInboxMessageResponse.swift in Sources */,
 				531428B42674A50800801FD9 /* KKGuidelineResults.swift in Sources */,
+				53B5A8992694C60100E0CFF3 /* KKWebViewController.swift in Sources */,
 				53D301AA268ECA1D00BF909D /* KKWithdrawPageDataResults.swift in Sources */,
 				538A5888265A5BB800F0B03B /* KKMessageListViewController.swift in Sources */,
 				06BF5C2C2669803300C10008 /* KKAnnouncementDetails.swift in Sources */,
@@ -1676,12 +1719,14 @@
 				0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */,
 				06E4DF02267C02B500482979 /* KKUserBettingHistoryResponse.swift in Sources */,
 				531428A5267497A300801FD9 /* KKLiveChatResults.swift in Sources */,
+				53B5A88E26949AC000E0CFF3 /* KKRebateTableResults.swift in Sources */,
 				06BF5C0F2669776E00C10008 /* KKOTPRequestResponse.swift in Sources */,
 				06BF5C3D2669833100C10008 /* KKPlatformProductResults.swift in Sources */,
 				53D301A2268EC95200BF909D /* KKDepositHistoryResponse.swift in Sources */,
 				06E4DEF5267BFF9500482979 /* KKUserBettingGroupDetails.swift in Sources */,
 				06BF5C2B2669803300C10008 /* KKAnnouncementResults.swift in Sources */,
 				06290627266FFF4D00A26DC5 /* KKFAQResults.swift in Sources */,
+				53B5A89126949B3D00E0CFF3 /* KKRebateTableRebateExcludedProducts.swift in Sources */,
 				06BF5C2D2669803300C10008 /* KKAnnouncementResponse.swift in Sources */,
 				06290621266FFEE600A26DC5 /* KKInboxMessageDetails.swift in Sources */,
 				0676B5FC262FD94A0023311F /* KKFont.swift in Sources */,
@@ -1900,9 +1945,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = ZB74P7LU6H;
 				INFOPLIST_FILE = "$(SRCROOT)/spade-swift/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1914,6 +1960,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.spade.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "spade profile";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1925,9 +1972,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = ZB74P7LU6H;
 				INFOPLIST_FILE = "$(SRCROOT)/spade-swift/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

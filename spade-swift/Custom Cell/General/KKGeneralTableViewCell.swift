@@ -33,7 +33,7 @@ class KKGeneralTableViewCell: UITableViewCell {
             label.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
             label.textColor = .spade_white_FFFFFF
             label.textAlignment = .center
-            label.numberOfLines = 1
+            label.numberOfLines = 0
             label.tag = index
             cellView.addSubview(label)
             
@@ -43,18 +43,58 @@ class KKGeneralTableViewCell: UITableViewCell {
     
     func setUpCellDetails(width: CGFloat, content: [String]) {
                 
+        let maximumLabelSize = CGSize(width: (width / CGFloat(content.count)), height: .greatestFiniteMagnitude)
+        let labelAttributes: [NSAttributedString.Key: Any] = [
+            .font   : UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+        ]
+        
+        var highestSize = CGSize(width: 0, height: 0)
         for (index, titleString) in content.enumerated() {
             
             labelArray[index].text = titleString.capitalized
-            labelArray[index].frame = CGRect(x: CGFloat(index) * (width / CGFloat(content.count)), y: 0, width: (width / CGFloat(content.count)), height: CellViewConstant.cellViewHeight)
+//            labelArray[index].frame = CGRect(x: CGFloat(index) * (width / CGFloat(content.count)), y: 0, width: (width / CGFloat(content.count)), height: CellViewConstant.cellViewHeight)
+            
+            let expectedLabelSize = KKUtil.getLabelSize(text: titleString.capitalized,
+                                                                  maximumLabelSize: maximumLabelSize,
+                                                                  attributes: labelAttributes)
+            
+            if expectedLabelSize.height < CellViewConstant.cellViewHeight {
+                if highestSize.height < CellViewConstant.cellViewHeight {
+                    highestSize.height = CellViewConstant.cellViewHeight
+                }
+            } else {
+                highestSize.height = expectedLabelSize.height
+            }
+            
+            labelArray[index].frame = CGRect(x: CGFloat(index) * (width / CGFloat(content.count)), y: ConstantSize.paddingSecondaryHalf / 2, width: maximumLabelSize.width, height: expectedLabelSize.height)
         }
         
-        cellView.frame = CGRect(x: 0, y: 0, width: width, height: CellViewConstant.cellViewHeight)
+        cellView.frame = CGRect(x: 0, y: 0, width: width, height: highestSize.height + ConstantSize.paddingHalf)
     }
     
-    class func calculateCellDetailsHeight() -> CGFloat {
+    class func calculateCellDetailsHeight(width: CGFloat, content: [String]) -> CGFloat {
         
-        return CellViewConstant.cellViewHeight
+        let maximumLabelSize = CGSize(width: (width / CGFloat(content.count)), height: .greatestFiniteMagnitude)
+        let labelAttributes: [NSAttributedString.Key: Any] = [
+            .font   : UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
+        ]
+        
+        var highestSize = CGSize(width: 0, height: 0)
+        for (_, titleString) in content.enumerated() {
+            let expectedLabelSize = KKUtil.getLabelSize(text: titleString.capitalized,
+                                                                  maximumLabelSize: maximumLabelSize,
+                                                                  attributes: labelAttributes)
+            
+            if expectedLabelSize.height < CellViewConstant.cellViewHeight {
+                if highestSize.height < CellViewConstant.cellViewHeight {
+                    highestSize.height = CellViewConstant.cellViewHeight
+                }
+            } else {
+                highestSize.height = expectedLabelSize.height
+            }
+        }
+        
+        return highestSize.height + ConstantSize.paddingSecondaryHalf
     }
     
     required init?(coder: NSCoder) {

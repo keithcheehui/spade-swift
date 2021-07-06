@@ -35,6 +35,7 @@ class KKGeneralPopUpTableViewController: KKBaseViewController {
     ]
     
     var popupTableViewType: PopupTableViewType!
+    var excludedRebateProducts: [KKRebateTableRebateExcludedProducts]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,12 +80,12 @@ class KKGeneralPopUpTableViewController: KKBaseViewController {
     
     func returnCellDetails(indexPath: IndexPath) -> [String] {
         switch popupTableViewType {
-        case .NonCommGame,
-             .NonRebateGame:
+        case .NonRebateGame:
+            let details = excludedRebateProducts[indexPath.row]
+            return [details.platformName ?? "", details.productName ?? ""]
+        
+        case .NonCommGame:
             return nonCommissionGameArray[indexPath.row]
-            
-        case .RebateDetail:
-            return rebateDetailsArray[indexPath.row]
             
         default:
             return []
@@ -126,8 +127,10 @@ extension KKGeneralPopUpTableViewController: UITableViewDelegate, UITableViewDat
         
         switch popupTableViewType {
         
-        case .NonCommGame,
-             .NonRebateGame:
+        case .NonRebateGame:
+            return excludedRebateProducts.count
+            
+        case .NonCommGame:
             return nonCommissionGameArray.count
             
         case .RebateDetail:
@@ -158,6 +161,8 @@ extension KKGeneralPopUpTableViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return KKGeneralTableViewCell.calculateCellDetailsHeight()
+//        return KKGeneralTableViewCell.calculateCellDetailsHeight()
+        let cellDetails = self.returnCellDetails(indexPath: indexPath)
+        return KKGeneralTableViewCell.calculateCellDetailsHeight(width: tableView.frame.size.width, content: cellDetails)
     }
 }

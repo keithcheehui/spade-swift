@@ -212,11 +212,14 @@ class KKApiClient: NSObject {
         return performRequest(route: .getBankList)
     }
     
+    static func getUserBankCards() -> Future<KKWithdrawPageDataResponse> {
+        return performRequest(route: .userBankCards)
+    }
+    
     static func depositPageData() -> Future<KKDepositPageDataResponse> {
         return performRequest(route: .depositPageData)
     }
     
-    //TODO: Havent implement
     static func deposit(imageData: Data, parameter: [String : Any]) -> Future<KKGeneralResponse> {
         return Future(operation: {completion in
             AF.upload(multipartFormData: { multipartFormData in
@@ -249,73 +252,9 @@ class KKApiClient: NSObject {
                         completion(.failure("Unexpected error. Please try again."))
                     }
                 }
-                
-                
-//                if let error = response.error {
-//                    print(error)
-//                }
-//                guard let data = response.value else {
-//                    return
-//                }
-//                print(data)
-//                completion(.success(data as! KKGeneralResponse))
-
             })
         })
-            
-            
-//            .encodingCompletion: { result in
-//                switch result {
-//                case .success(let upload, _, _):
-//                    upload.validate().responseData {response in
-//                        let decoder = JSONDecoder()
-//                        let todo: Result<KKGeneralResponse> = decoder.decodeResponse(from: response)
-//                        switch todo {
-//                        case .success(let value):
-//                            completion(.success(value))
-//                        default:
-//                            completion(.failure(returnError(decoder: decoder, error: error, response: response)))
-//                        }
-//                    }
-//                case .failure(let error):
-//                    print("Error in upload: \(error.localizedDescription)")
-//                }
-//            })
-//        })
     }
-    
-//    static func deposit(parameter: [String : Any]) -> Future<KKGeneralResponse> {
-//        return Future(operation: {completion in
-//            AF.upload(multipartFormData: { multipartFormData in
-//                if let data = imageData {
-//                    multipartFormData.append(data, withName: "file", fileName: "Receipt.jpeg", mimeType: "image/jpeg")
-//                } else {
-//                    completion(.failure("data error"))
-//                }
-//            },
-//            with: ApiRouter.deposit(imageData: imageData, parameter: parameter),
-//            encodingCompletion: { encodingResult in
-//                switch encodingResult {
-//                case .success(let upload, _, _):
-//                    upload.validate().responseData {response in
-//                        let decoder = JSONDecoder()
-//                        let todo: Result<KKGeneralResponse> = decoder.decodeResponse(from: response)
-//                        switch todo {
-//                        case .success(let value):
-//                            completion(.success(value))
-//                        default:
-//                            completion(.failure(returnError(decoder: decoder, error: error, response: response)))
-//                        }
-//                    }
-//                case .failure(let error):
-//                    print("Error in upload: \(error.localizedDescription)")
-//                }
-//            })
-//        })
-            
-            
-//        return performRequest(route: .deposit(parameter: parameter))
-//    }
     
     static func depositHistory(filter: String, historyStatus: String) -> Future<KKDepositHistoryResponse> {
         let parameter = [
@@ -372,19 +311,19 @@ class KKApiClient: NSObject {
         return performRequest(route: .getUserBettingPlatformsAndGroups(parameter: parameter))
     }
     
-    static func getUserAccountDetails(filter: String, tabItem: String) -> Future<KKUserCashFlowResponse> {
+    static func getUserAccountDetails(filter: String) -> Future<KKUserCashFlowResponse> {
         let parameter = [
-            APIKeys.filterDuration: filter,
-            APIKeys.transStatus: tabItem
+            APIKeys.filterDuration: filter
         ] as [String : Any]
         
         return performRequest(route: .getUserAccountDetails(parameter: parameter))
     }
     
-    static func getUserBettingRecord(filter: String, code: String) -> Future<KKUserBettingHistoryResponse> {
+    static func getUserBettingRecord(platformCode: String, groupCode: String) -> Future<KKUserBettingHistoryResponse> {
         let parameter = [
-            APIKeys.filterDuration : filter,
-            APIKeys.code : code
+//            APIKeys.filterDuration : filter,
+            APIKeys.groupCode : groupCode,
+            APIKeys.platformCode: platformCode
         ] as [String : Any]
         
         return performRequest(route: .getUserBettingRecord(parameter: parameter))
@@ -409,6 +348,11 @@ class KKApiClient: NSObject {
         ] as [String : Any]
         
         return performRequest(route: .updateInboxReadStatus(parameter: parameter))
+    }
+    
+    //MARK: - Rebate
+    static func getRebateTable() -> Future<KKRebateTableResponse> {
+        return performRequest(route: .rebateTable)
     }
     
     //MARK: - Private

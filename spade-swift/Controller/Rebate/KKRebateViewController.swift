@@ -24,6 +24,7 @@ class KKRebateViewController: KKBaseViewController {
     var selectedViewType = AffiliatteSideMenu.myAffiliate.rawValue
     
     var tabGroupArray: [KKUserBettingGroupDetails]! = []
+    var rebateTableArray: [KKRebateTableRebateTable]! = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,7 @@ class KKRebateViewController: KKBaseViewController {
         appendSideMenuList()
         
         getUserBettingPlatformsAndGroupsAPI()
+        getRebateTableAPI()
         buttonHover(type: selectedViewType)
     }
     
@@ -94,6 +96,17 @@ class KKRebateViewController: KKBaseViewController {
         }
     }
     
+    func getRebateTableAPI() {
+        KKApiClient.getRebateTable().execute { response in
+            guard let rebateTable = response.results?.rebateTable else { return }
+            if !rebateTable.isEmpty {
+                self.rebateTableArray = rebateTable
+            }
+        } onFailure: { errorMessage in
+
+        }
+    }
+    
     ///Button Actions
     @IBAction func btnBackDidPressed(){
         self.navigationController?.popViewController(animated: true)
@@ -115,7 +128,7 @@ class KKRebateViewController: KKBaseViewController {
             break;
         case RebateSideMenu.rebateTable.rawValue:
             let viewController = KKGeneralTableViewController()
-            viewController.tabGroupArray = tabGroupArray
+            viewController.rebateTableArray = rebateTableArray
             viewController.tableViewType = .RebateTable
             changeView(vc: viewController)
             break;

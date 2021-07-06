@@ -177,11 +177,11 @@ struct CellIdentifier {
 
 struct Spade {
     
-    struct DevServer {
+    struct StagingServer {
         static let baseApiURL: String = "https://lg-api.fteg.app/api/"
     }
     
-    struct StagingServer {
+    struct ProdServer {
         static let baseApiURL: String = "https://live-lg-api.fteg.app/api/"
     }
 }
@@ -272,6 +272,7 @@ enum DialogAlertType: Int {
     case Logout = 1
     case Deposit = 2
     case Withdraw = 3
+    case ExitGame = 4
 }
 
 enum ToastType: String {

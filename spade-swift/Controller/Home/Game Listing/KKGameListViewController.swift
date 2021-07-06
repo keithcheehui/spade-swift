@@ -80,7 +80,7 @@ class KKGameListViewController: KKBaseViewController {
                 }
             }
             
-            flowLayout.minimumLineSpacing = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 60 : 60)
+            flowLayout.minimumLineSpacing = KKUtil.ConvertSizeByDensity(size: 30)
             flowLayout.itemSize = CGSize(width: size, height: size)
         }
 
@@ -126,6 +126,7 @@ extension KKGameListViewController: UICollectionViewDelegate, UICollectionViewDa
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             //TODO: PUT Web view for game redirect url
+            self.navigationController?.pushViewController(KKWebViewController(), animated: true)
         }
     }
 }

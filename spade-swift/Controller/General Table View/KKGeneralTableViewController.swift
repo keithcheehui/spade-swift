@@ -103,6 +103,7 @@ class KKGeneralTableViewController: KKBaseViewController {
     var depositHistoryArray: [KKHistoryDetails]! = []
 
     var tabGroupArray: [KKUserBettingGroupDetails]! = []
+    var rebateTableArray: [KKRebateTableRebateTable]! = []
     var selectedTabItem = 0
 
     var leftTitle: String!
@@ -132,7 +133,7 @@ class KKGeneralTableViewController: KKBaseViewController {
         
         switch tableViewType {
         case .BettingRecord,
-             .AccountDetails,
+//             .AccountDetails,
              .AffiliateCommTable,
              .RebatePayout,
              .RebateTable:
@@ -223,17 +224,17 @@ class KKGeneralTableViewController: KKBaseViewController {
         switch tableViewType {
         
         case .BettingRecord:
-            leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_bet_time")
-            if (selectedLeftItem == nil) {
-                selectedLeftItem = leftDropdownOptions[0]
-            }
+//            leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_bet_time")
+//            if (selectedLeftItem == nil) {
+//                selectedLeftItem = leftDropdownOptions[0]
+//            }
             
             rightTitle = KKUtil.languageSelectedStringForKey(key: "picker_game_platform")
             if (selectedRightItem == nil) {
                 selectedRightItem = rightDropdownOptions[0]
             }
             
-            self.showTopContainer(shouldShow: true, withLeftPicker: true, withRightPicker: true)
+            self.showTopContainer(shouldShow: true, withLeftPicker: false, withRightPicker: true)
             
         case .AccountDetails:
             leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
@@ -381,24 +382,28 @@ class KKGeneralTableViewController: KKBaseViewController {
         
         var tabId = ""
         switch tableViewType {
-        case .AccountDetails:
-            tabId = pickerCashflowArray[selectedTabItem].id
+//        case .AccountDetails:
+//            tabId = pickerCashflowArray[selectedTabItem].id
+        case .RebateTable:
+            tabId = String(rebateTableArray[selectedTabItem].groupId ?? -1)
+            
         case .BettingRecord,
-             .RebatePayout,
-             .RebateTable:
+             .RebatePayout:
             tabId = String(tabGroupArray[selectedTabItem].code ?? "")
         default:
             break;
         }
         
         if tableViewType == .BettingRecord {
-            self.getUserBettingRecordAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id, tabItem: tabId)
+            self.getUserBettingRecordAPI(rightPicker: selectedRightItem.id, tabItem: tabId)
         } else if tableViewType == .AccountDetails {
-            self.getUserAccountDetailsAPI(leftPicker: selectedLeftItem.id, tabItem: tabId)
+            self.getUserAccountDetailsAPI(leftPicker: selectedLeftItem.id)
         } else if tableViewType == .WithdrawHistory {
             self.withdrawHistoryAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id)
         } else if tableViewType == .DepositHistory {
             self.depositHistoryAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id)
+        } else if tableViewType == .RebateTable {
+            contentTableView.reloadData()
         }
     }
     
@@ -444,8 +449,9 @@ class KKGeneralTableViewController: KKBaseViewController {
             return commissionTransArray[indexPath.row]
             
         case .RebateTable:
-            return commissionTableArray[indexPath.row]
-            
+            let rebateRates = rebateTableArray[selectedTabItem].rebateRates?[indexPath.row]
+            return [rebateRates?.rate ?? "", rebateRates?.validStake ?? ""]
+
         default:
             return []
         }
@@ -460,7 +466,12 @@ class KKGeneralTableViewController: KKBaseViewController {
     }
     
     @objc func btnNonRebateGameDidPressed() {
-        presentPopupTableView(popupTableViewType: .NonRebateGame)
+        let excludedRebateProducts = rebateTableArray[selectedTabItem].excludedProducts
+        
+        let vc = KKGeneralPopUpTableViewController.init()
+        vc.popupTableViewType = .NonRebateGame
+        vc.excludedRebateProducts = excludedRebateProducts
+        self.present(vc, animated: true, completion: nil)
     }
     
     @objc func btnRebateDetailDidPressed() {
@@ -475,11 +486,11 @@ class KKGeneralTableViewController: KKBaseViewController {
     
     //MARK:- API Calls
 
-    func getUserBettingRecordAPI(leftPicker: String, rightPicker: String, tabItem: String)   {
+    func getUserBettingRecordAPI(rightPicker: String, tabItem: String)   {
         
         self.showAnimatedLoader()
         
-        KKApiClient.getUserBettingRecord(filter: leftPicker, code: rightPicker).execute { bettingHistoryResponse in
+        KKApiClient.getUserBettingRecord(platformCode: rightPicker, groupCode: tabItem).execute { bettingHistoryResponse in
             
             self.hideAnimatedLoader()
             self.bettingRecordArray = bettingHistoryResponse.results?.betslips
@@ -492,11 +503,11 @@ class KKGeneralTableViewController: KKBaseViewController {
         }
     }
     
-    func getUserAccountDetailsAPI(leftPicker: String, tabItem: String) {
+    func getUserAccountDetailsAPI(leftPicker: String) {
         
         self.showAnimatedLoader()
         
-        KKApiClient.getUserAccountDetails(filter: leftPicker, tabItem: tabItem).execute { cashFlowResponse in
+        KKApiClient.getUserAccountDetails(filter: leftPicker).execute { cashFlowResponse in
             
             self.hideAnimatedLoader()
             self.cashFlowArray = cashFlowResponse.results?.cashflows
@@ -587,12 +598,14 @@ extension KKGeneralTableViewController: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch tableViewType {
-        case .AccountDetails:
-            return pickerCashflowArray.count
+//        case .AccountDetails:
+//            return pickerCashflowArray.count
+        case .RebateTable:
+            return rebateTableArray.count
+        
         case .BettingRecord,
              .AffiliateCommTable,
-             .RebatePayout,
-             .RebateTable:
+             .RebatePayout:
             return tabGroupArray.count
         default:
             return 0
@@ -613,8 +626,11 @@ extension KKGeneralTableViewController: UICollectionViewDelegate, UICollectionVi
         }
         
         switch tableViewType {
-        case .AccountDetails:
-            cell.lblTitle.text = pickerCashflowArray[indexPath.item].name
+//        case .AccountDetails:
+//            cell.lblTitle.text = pickerCashflowArray[indexPath.item].name
+        case .RebateTable:
+            cell.lblTitle.text = rebateTableArray[indexPath.item].name ?? ""
+        
         default:
             cell.lblTitle.text = tabGroupArray[indexPath.item].name
         }
@@ -694,7 +710,7 @@ extension KKGeneralTableViewController: UITableViewDelegate, UITableViewDataSour
             return commissionTransArray.count
             
         case .RebateTable:
-            return commissionTableArray.count
+            return rebateTableArray[selectedTabItem].rebateRates?.count ?? 0
             
         default:
             return 1
@@ -721,6 +737,7 @@ extension KKGeneralTableViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return KKGeneralTableViewCell.calculateCellDetailsHeight()
+        let cellDetails = self.returnCellDetails(indexPath: indexPath)
+        return KKGeneralTableViewCell.calculateCellDetailsHeight(width: tableView.frame.size.width, content: cellDetails)
     }
 }

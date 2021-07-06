@@ -21,7 +21,7 @@ class KKBankListViewController: KKBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialLayout()
-        getBankListAPI()
+        getUserBankCardsAPI()
     }
     
     func initialLayout(){
@@ -53,12 +53,12 @@ class KKBankListViewController: KKBaseViewController {
         self.addChild(vc)
     }
     
-    func getBankListAPI() {
+    func getUserBankCardsAPI() {
         self.showAnimatedLoader()
         
-        KKApiClient.depositPageData().execute { depositPageDataResponse in
+        KKApiClient.getUserBankCards().execute { withdrawPageDataResponse in
             self.hideAnimatedLoader()
-            self.userBankList = depositPageDataResponse.results?.userBankCards
+            self.userBankList = withdrawPageDataResponse.results?.userBankCards
             self.updateView()
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()

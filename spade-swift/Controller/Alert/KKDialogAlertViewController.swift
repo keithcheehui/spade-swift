@@ -33,6 +33,7 @@ class KKDialogAlertViewController: KKBaseViewController {
 
     var alertType: DialogAlertType!
     var transactionId: String!
+    var webViewController: KKWebViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +92,9 @@ class KKDialogAlertViewController: KKBaseViewController {
         switch alertType {
         case .Logout:
             KKUtil.logOutUser()
+            
+        case .ExitGame:
+            webViewController.closeDialogAndPop()
         
         default:
             self.dismiss(animated: true, completion: nil)
@@ -108,6 +112,9 @@ class KKDialogAlertViewController: KKBaseViewController {
         case .Withdraw:
             return KKUtil.languageSelectedStringForKey(key: "alert_title_withdraw")
         
+        case .ExitGame:
+            return KKUtil.languageSelectedStringForKey(key: "alert_close_page")
+
         default: return ""
         }
     }
