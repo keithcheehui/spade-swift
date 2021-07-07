@@ -389,7 +389,7 @@ enum ApiRouter: URLRequestConvertible {
     // MARK: - URL Request
     func asURLRequest() throws -> URLRequest {
         
-        let url : URL = try Spade.StagingServer.baseApiURL.asURL()
+        let url : URL = try Spade.ProdServer.baseApiURL.asURL()
         
         var urlRequest : URLRequest = URLRequest(url: url.appendingPathComponent(path))
         
