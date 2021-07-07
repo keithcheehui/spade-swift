@@ -25,7 +25,9 @@ class KKAffiliateViewController: KKBaseViewController {
     var selectedTabItem = 0
     
     var tabGroupArray: [KKUserBettingGroupDetails]! = []
-
+    var affiliateInfo: KKAffiliateProfileAffiliate!
+    var commissionTableArray: [KKAffiliateCommissionTableResults]! = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setHeaderBarLayout()
@@ -33,7 +35,8 @@ class KKAffiliateViewController: KKBaseViewController {
         appendSideMenuList()
         
         getUserBettingPlatformsAndGroupsAPI()
-        buttonHover(type: selectedViewType)
+        getMyAffiliateAPI()
+        getCommissionTableAPI()
     }
     
     func setHeaderBarLayout() {
@@ -110,6 +113,43 @@ class KKAffiliateViewController: KKBaseViewController {
         }
     }
     
+    func getMyAffiliateAPI() {
+        self.showAnimatedLoader()
+        
+        KKApiClient.getMyAffiliate().execute { response in
+            if let user = response.results?.user, var userProfile = KKUtil.decodeUserProfileFromCache() {
+                if let wallet = user.wallet {
+                    if let balance = wallet.balance {
+                        if !balance.isEmpty {
+                            let balanceFloat = Float(balance)
+                            userProfile.walletBalance = balanceFloat
+                            KKUtil.encodeUserProfile(object: userProfile)
+                        }
+                    }
+                }
+                if let affiliate = user.affiliate {
+                    self.affiliateInfo = affiliate
+                }
+            }
+            self.buttonHover(type: self.selectedViewType)
+            self.hideAnimatedLoader()
+
+        } onFailure: { errorMessage in
+            self.buttonHover(type: self.selectedViewType)
+            self.hideAnimatedLoader()
+        }
+    }
+    
+    func getCommissionTableAPI() {
+        KKApiClient.getAffiliateCommissionTable().execute { response in
+            if let rebateResults = response.results {
+                self.commissionTableArray = rebateResults
+            }
+        } onFailure: { errorMessage in
+
+        }
+    }
+    
     ///Button Actions
     @IBAction func btnBackDidPressed(){
         self.navigationController?.popViewController(animated: true)
@@ -117,13 +157,13 @@ class KKAffiliateViewController: KKBaseViewController {
     
     func buttonHover(type: Int){
         switch type {
+        case AffiliatteSideMenu.guideline.rawValue:
+            changeView(vc: KKGuidelineViewController())
+            break;
         case AffiliatteSideMenu.downline.rawValue:
             let viewController = KKGeneralTableViewController()
             viewController.tableViewType = .AffiliateDownline
             changeView(vc: viewController)
-            break;
-        case AffiliatteSideMenu.guideline.rawValue:
-            changeView(vc: KKGuidelineViewController())
             break;
         case AffiliatteSideMenu.turnover.rawValue:
             let viewController = KKGeneralTableViewController()
@@ -143,12 +183,14 @@ class KKAffiliateViewController: KKBaseViewController {
             break;
         case AffiliatteSideMenu.commissionTable.rawValue:
             let viewController = KKGeneralTableViewController()
-            viewController.tabGroupArray = tabGroupArray
+            viewController.commissionTableArray = commissionTableArray
             viewController.tableViewType = .AffiliateCommTable
             changeView(vc: viewController)
             break;
         default:
-            changeView(vc: KKMyAffiliateViewController())
+            let viewController = KKMyAffiliateViewController.init()
+            viewController.affiliateInfo = affiliateInfo
+            changeView(vc: viewController)
             break;
         }
     }

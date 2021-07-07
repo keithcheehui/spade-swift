@@ -188,14 +188,6 @@ class KKApiClient: NSObject {
         return performRequest(route: .getPromotion(parameter: parameter))
     }
     
-    static func getAffiliateGuideline() -> Future<KKGuidelineResponse> {
-        let parameter = [
-            APIKeys.locale: KKUtil.decodeUserLanguageFromCache().locale!
-        ] as [String : Any]
-        
-        return performRequest(route: .getAffiliateGuideline(parameter: parameter))
-    }
-    
     //MARK: - Private
     //MARK: - Deposit / Withdrawal
     static func addUserBankCard(bankAccountNo: String, bankAccountName: String, bankId: String) -> Future<KKAddBankResponse> {
@@ -303,6 +295,14 @@ class KKApiClient: NSObject {
         return performRequest(route: .updateUserProfile(parameter: parameter))
     }
     
+    static func updateUserAvatar(avatarId: Int) -> Future<KKGeneralResponse> {
+        let parameter = [
+            APIKeys.avatarId: avatarId
+        ] as [String : Any]
+        
+        return performRequest(route: .updateUserAvatar(parameter: parameter))
+    }
+    
     static func getUserBettingPlatformsAndGroups() -> Future<KKUserBettingResponse> {
         let parameter = [
             APIKeys.locale: KKUtil.decodeUserLanguageFromCache().locale!,
@@ -353,6 +353,35 @@ class KKApiClient: NSObject {
     //MARK: - Rebate
     static func getRebateTable() -> Future<KKRebateTableResponse> {
         return performRequest(route: .rebateTable)
+    }
+    
+    static func getRebateProfile() -> Future<KKRebateProfileResponse> {
+        return performRequest(route: .rebateProfile)
+    }
+    
+    //MARK: - Affiliate
+    static func getMyAffiliate() -> Future<KKAffiliateProfileResponse> {
+        return performRequest(route: .myAffiliate)
+    }
+    
+    static func getAffiliateGuideline() -> Future<KKGuidelineResponse> {
+        let parameter = [
+            APIKeys.locale: KKUtil.decodeUserLanguageFromCache().locale!
+        ] as [String : Any]
+        
+        return performRequest(route: .getAffiliateGuideline(parameter: parameter))
+    }
+    
+    static func getAffiliateDownline() -> Future<KKAffiliateDownlineResponse> {
+        return performRequest(route: .affiliateDownline)
+    }
+    
+    static func getAffiliateTurnover() -> Future<KKAffiliateDownlineResponse> {
+        return performRequest(route: .affiliateTurnover)
+    }
+    
+    static func getAffiliateCommissionTable() -> Future<KKAffiliateCommissionTableResponse> {
+        return performRequest(route: .commissionTable)
     }
     
     //MARK: - Private

@@ -21,10 +21,13 @@ class KKBonusContentViewController: KKBaseViewController, WKNavigationDelegate {
 
         initialLayout()
         
-        loadingActivity.color = .spade_white_FFFFFF
-        contentWebView.addSubview(loadingActivity)
-        loadingActivity.startAnimating()
         contentWebView.navigationDelegate = self
+        contentWebView.isOpaque = false
+        contentWebView.addSubview(loadingActivity)
+        contentWebView.clipsToBounds = true
+
+        loadingActivity.color = .spade_white_FFFFFF
+        loadingActivity.startAnimating()
         loadingActivity.hidesWhenStopped = true
     }
     

@@ -66,6 +66,7 @@ struct CacheKey {
     static let selectedLanguage = "selected_language"
     static let username = "username"
     static let secret = "secret"
+    static let rememberMe = "remember_me"
 }
 
 struct APIKeys {
@@ -106,6 +107,7 @@ struct APIKeys {
     static let inboxMessageId = "inbox_message_id"
     static let transStatus = "trans_status"
     static let bankAccountCardId = "bank_account_card_id"
+    static let avatarId = "avatar_id"
 }
 
 struct APIValue {
@@ -215,16 +217,18 @@ enum TableViewType: Int, CaseIterable {
     case AccountDetails = 2
     case DepositHistory = 3
     case WithdrawHistory = 4
+    case TransferHistory = 5
+    case PromotionHistory = 6
+
+    case AffiliateDownline = 7
+    case AffiliateTurnover = 8
+    case AffiliatePayout = 9
+    case AffiliateCommTrans = 10
+    case AffiliateCommTable = 11
     
-    case AffiliateDownline = 5
-    case AffiliateTurnover = 6
-    case AffiliatePayout = 7
-    case AffiliateCommTrans = 8
-    case AffiliateCommTable = 9
-    
-    case RebatePayout = 10
-    case RebateTrans = 11
-    case RebateTable = 12
+    case RebatePayout = 12
+    case RebateTrans = 13
+    case RebateTable = 14
 }
 
 enum PopupTableViewType: Int, CaseIterable {
@@ -285,10 +289,10 @@ enum PersonalSideMenu: Int, CaseIterable {
     case userInfo = 0
     case bettingRecord = 1
     case accountDetail = 2
-    case individualReport = 3
-    case wallet = 4
-    case bankCard = 5
-    case history = 6
+//    case individualReport = 3
+    case wallet = 3
+    case bankCard = 4
+    case history = 5
 }
 
 enum AffiliatteSideMenu: Int, CaseIterable {
@@ -310,7 +314,7 @@ enum RebateSideMenu: Int, CaseIterable {
 
 enum MessageSideMenu: Int, CaseIterable {
     case systemMail = 0
-    case notification = 1
+//    case notification = 1
 }
 
 enum SupportSideMenu: Int, CaseIterable {

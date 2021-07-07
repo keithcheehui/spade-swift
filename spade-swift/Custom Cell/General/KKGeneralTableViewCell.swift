@@ -26,8 +26,11 @@ class KKGeneralTableViewCell: UITableViewCell {
         cellView = UIView.init()
         cellView.backgroundColor = .clear
         self.contentView.addSubview(cellView)
-        
-        for index in 1...5 {
+    }
+    
+    func setUpCellDetails(width: CGFloat, content: [String]) {
+                
+        for index in 1...content.count {
             
             let label = UILabel.init()
             label.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
@@ -39,10 +42,7 @@ class KKGeneralTableViewCell: UITableViewCell {
             
             labelArray.append(label)
         }
-    }
-    
-    func setUpCellDetails(width: CGFloat, content: [String]) {
-                
+        
         let maximumLabelSize = CGSize(width: (width / CGFloat(content.count)), height: .greatestFiniteMagnitude)
         let labelAttributes: [NSAttributedString.Key: Any] = [
             .font   : UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
@@ -51,10 +51,10 @@ class KKGeneralTableViewCell: UITableViewCell {
         var highestSize = CGSize(width: 0, height: 0)
         for (index, titleString) in content.enumerated() {
             
-            labelArray[index].text = titleString.capitalized
+            labelArray[index].text = titleString
 //            labelArray[index].frame = CGRect(x: CGFloat(index) * (width / CGFloat(content.count)), y: 0, width: (width / CGFloat(content.count)), height: CellViewConstant.cellViewHeight)
             
-            let expectedLabelSize = KKUtil.getLabelSize(text: titleString.capitalized,
+            let expectedLabelSize = KKUtil.getLabelSize(text: titleString,
                                                                   maximumLabelSize: maximumLabelSize,
                                                                   attributes: labelAttributes)
             
@@ -81,7 +81,7 @@ class KKGeneralTableViewCell: UITableViewCell {
         
         var highestSize = CGSize(width: 0, height: 0)
         for (_, titleString) in content.enumerated() {
-            let expectedLabelSize = KKUtil.getLabelSize(text: titleString.capitalized,
+            let expectedLabelSize = KKUtil.getLabelSize(text: titleString,
                                                                   maximumLabelSize: maximumLabelSize,
                                                                   attributes: labelAttributes)
             

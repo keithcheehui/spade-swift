@@ -28,6 +28,7 @@ class KKAvatarViewController: KKBaseViewController {
         super.viewDidLoad()
         initialLayout()
         appendAvatarList()
+        updateDefaultAvatar()
         
         let size = KKUtil.ConvertSizeByDensity(size: 90)
         let flowLayout = UICollectionViewFlowLayout()
@@ -69,12 +70,45 @@ class KKAvatarViewController: KKBaseViewController {
         avatarCollectionView.reloadData()
     }
     
+    func updateDefaultAvatar() {
+        if let userProfile = KKUtil.decodeUserProfileFromCache() {
+            if let avatarId = userProfile.avatarId {
+                if avatarId > 0 {
+                    selectedItem = avatarId - 1
+                } else {
+                    selectedItem = 0
+                }
+            }
+        }
+    }
+    
     @IBAction func btnCloseDidPressed() {
         self.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func btnSaveDidPressed() {
-        self.dismiss(animated: false, completion: nil)
+        updateUserAvatarAPI()
+    }
+    
+    func updateUserAvatarAPI() {
+        
+        let id = avatarList[selectedItem].id
+        KKApiClient.updateUserAvatar(avatarId: id).execute{ response in
+            if var userProfile = KKUtil.decodeUserProfileFromCache() {
+                userProfile.avatarId = id
+                KKUtil.encodeUserProfile(object: userProfile)
+                NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
+            }
+            
+            self.showAnimatedLoader()
+            self.dismiss(animated: false, completion: nil)
+
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
+        }
+        
+
     }
 }
 

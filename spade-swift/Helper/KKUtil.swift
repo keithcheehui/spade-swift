@@ -130,8 +130,18 @@ class KKUtil: NSObject {
         UserDefaults.standard.set(nil, forKey: CacheKey.selectedLanguage)
         UserDefaults.standard.set(nil, forKey: CacheKey.selectedCountry)
 
-        KeychainSwift().set("", forKey: CacheKey.username)
         KeychainSwift().set("", forKey: CacheKey.secret)
+
+        if UserDefaults.standard.object(forKey: CacheKey.rememberMe) != nil {
+            let isRemember = UserDefaults.standard.bool(forKey: CacheKey.rememberMe)
+            
+            if (!isRemember) {
+                KeychainSwift().set("", forKey: CacheKey.username)
+                KeychainSwift().set("", forKey: CacheKey.secret)
+            }
+        } else {
+            KeychainSwift().set("", forKey: CacheKey.username)
+        }
         
         UserDefaults.standard.synchronize()
     }
@@ -282,40 +292,90 @@ class KKUtil: NSObject {
         
         switch tableViewType {
         case .BettingRecord:
-            return ["Bet Time", "Bet No", "Game Name", "Bet Amount", "Results"]
+            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_betslip_id"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_game"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_stake"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_results"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_win_loss"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_valid_stake")]
                 
         case .AccountDetails:
-            return ["Transaction Time", "Status", "Out", "In", "Balance"]
+            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_description"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_in"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_out"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_balance")]
                 
         case .DepositHistory:
-            return ["Time", "Deposit ID", "Amount", "Status"]
+            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_trans_id"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_amount"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_status"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_reason")]
                 
         case .WithdrawHistory:
-            return ["Date & Time", "Withdraw ID", "Amount", "Status"]
-                
+            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_trans_id"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_amount"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_status"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_reason")]
+            
+        case .TransferHistory:
+            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_trans_id"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_from"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_to"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_amount"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_status")]
+        
+        case .PromotionHistory:
+            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_trans_id"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_type"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_amount"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_status")]
+
         case .AffiliateDownline:
-            return ["Member ID", "Username", "Today Valid Stake", "Total Commission"]
+            return [KKUtil.languageSelectedStringForKey(key: "table_header_member_id"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_username"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_total_valid_stake"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_total_commission")]
             
         case .AffiliateTurnover:
-            return ["Member ID", "Username", "Valid Stake", "Commission"]
+            return [KKUtil.languageSelectedStringForKey(key: "table_header_member_id"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_username"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_valid_stake"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_commission")]
             
         case .AffiliatePayout:
-            return ["Date", "Valid Stake", "Rate", "Commission Amount"]
+            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_valid_stake"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_rate"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_commission_amount")]
                         
         case .AffiliateCommTrans:
-            return ["Member ID", "Username", "Type", "Amount"]
-
-        case .AffiliateCommTable:
-            return ["Valid Stake", "Rate"]
+            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_trans_id"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_type"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_amount")]
 
         case .RebatePayout:
-            return ["Date", "Valid Stake", "Rate", "Rebate Amount"]
+            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_valid_stake"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_rate"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_rebate_amount")]
 
         case .RebateTrans:
-            return ["Date", "Transaction ID", "Type", "Amount"]
+            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_trans_id"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_type"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_amount")]
 
-        case .RebateTable:
-            return ["Valid Stake", "Rate"]
+        case .RebateTable,
+             .AffiliateCommTable:
+            return [KKUtil.languageSelectedStringForKey(key: "table_header_valid_stake"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_rate")]
         }
     }
     
@@ -324,10 +384,15 @@ class KKUtil: NSObject {
         switch popupTableViewType {
         case .NonCommGame,
              .NonRebateGame:
-            return ["Platform", "Game Name"]
+            return [KKUtil.languageSelectedStringForKey(key: "table_header_platform"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_game_name")]
                 
         case .RebateDetail:
-            return ["Date", "Game", "Valid Stake", "Rate", "Rebate Amount"]
+            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_game"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_valid_stake"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_rate"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_rebate_amount")]
         }
     }
     

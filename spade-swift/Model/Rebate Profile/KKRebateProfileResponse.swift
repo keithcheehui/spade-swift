@@ -1,34 +1,34 @@
 //
-//  KKRebateTableResponse.swift
+//  KKRebateProfileResponse.swift
 //
-//  Created by Wong Sai Khong on 06/07/2021
+//  Created by Wong Sai Khong on 08/07/2021
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 
-struct KKRebateTableResponse: Codable {
+struct KKRebateProfileResponse: Codable {
 
   enum CodingKeys: String, CodingKey {
-    case message
-    case code
     case error
+    case message
     case results
+    case code
   }
 
-  var message: String?
-  var code: Int?
   var error: Bool?
-  var results: [KKRebateTableResults]?
+  var message: String?
+  var results: KKRebateProfileResults?
+  var code: Int?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    message = try container.decodeIfPresent(String.self, forKey: .message)
-    code = try container.decodeIfPresent(Int.self, forKey: .code)
     error = try container.decodeIfPresent(Bool.self, forKey: .error)
-    results = try container.decodeIfPresent([KKRebateTableResults].self, forKey: .results)
+    message = try container.decodeIfPresent(String.self, forKey: .message)
+    results = try container.decodeIfPresent(KKRebateProfileResults.self, forKey: .results)
+    code = try container.decodeIfPresent(Int.self, forKey: .code)
   }
 
 }

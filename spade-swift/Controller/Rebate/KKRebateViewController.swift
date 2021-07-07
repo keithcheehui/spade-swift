@@ -24,7 +24,8 @@ class KKRebateViewController: KKBaseViewController {
     var selectedViewType = AffiliatteSideMenu.myAffiliate.rawValue
     
     var tabGroupArray: [KKUserBettingGroupDetails]! = []
-    var rebateTableArray: [KKRebateTableRebateTable]! = []
+    var rebateTableArray: [KKRebateTableResults]! = []
+    var rebateInfo: KKRebateProfileRebate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,7 @@ class KKRebateViewController: KKBaseViewController {
         
         getUserBettingPlatformsAndGroupsAPI()
         getRebateTableAPI()
-        buttonHover(type: selectedViewType)
+        getRebateProfileAPI()
     }
     
     func setHeaderBarLayout() {
@@ -98,12 +99,38 @@ class KKRebateViewController: KKBaseViewController {
     
     func getRebateTableAPI() {
         KKApiClient.getRebateTable().execute { response in
-            guard let rebateTable = response.results?.rebateTable else { return }
-            if !rebateTable.isEmpty {
-                self.rebateTableArray = rebateTable
+            if let rebateResults = response.results {
+                self.rebateTableArray = rebateResults
             }
         } onFailure: { errorMessage in
 
+        }
+    }
+    
+    func getRebateProfileAPI() {
+        self.showAnimatedLoader()
+        
+        KKApiClient.getRebateProfile().execute { response in
+            if let user = response.results?.user, var userProfile = KKUtil.decodeUserProfileFromCache() {
+                if let wallet = user.wallet {
+                    if let balance = wallet.balance {
+                        if !balance.isEmpty {
+                            let balanceFloat = Float(balance)
+                            userProfile.walletBalance = balanceFloat
+                            KKUtil.encodeUserProfile(object: userProfile)
+                        }
+                    }
+                }
+                if let rebate = user.rebate {
+                    self.rebateInfo = rebate
+                }
+            }
+            self.buttonHover(type: self.selectedViewType)
+            self.hideAnimatedLoader()
+
+        } onFailure: { errorMessage in
+            self.buttonHover(type: self.selectedViewType)
+            self.hideAnimatedLoader()
         }
     }
     
@@ -133,7 +160,8 @@ class KKRebateViewController: KKBaseViewController {
             changeView(vc: viewController)
             break;
         default:
-            let viewController = KKMyRebateViewController()
+            let viewController = KKMyRebateViewController.init()
+            viewController.rebateInfo = rebateInfo
             changeView(vc: viewController)
             break;
         }

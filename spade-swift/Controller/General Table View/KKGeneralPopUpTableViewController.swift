@@ -20,19 +20,12 @@ class KKGeneralPopUpTableViewController: KKBaseViewController {
     @IBOutlet weak var imgCloseWidth: NSLayoutConstraint!
     @IBOutlet weak var titleMarginTop: NSLayoutConstraint!
     
-    var nonCommissionGameArray = [
-        ["918KISS", "Samurai"],
-        ["Suncity2", "Shark"],
-        ["AG Casino", "Blackjack"],
-        ["Mega888", "Birds Animal"]
-    ]
-    
-    var rebateDetailsArray = [
-        ["2021-02-21", "KY", "10000", "0.01", "100.00"],
-        ["2021-02-21", "AB", "10000", "0.01", "100.00"],
-        ["2021-02-21", "KY", "10000", "0.01", "100.00"],
-        ["2021-02-21", "AB", "10000", "0.01", "100.00"],
-    ]
+//    var rebateDetailsArray = [
+//        ["2021-02-21", "KY", "10000", "0.01", "100.00"],
+//        ["2021-02-21", "AB", "10000", "0.01", "100.00"],
+//        ["2021-02-21", "KY", "10000", "0.01", "100.00"],
+//        ["2021-02-21", "AB", "10000", "0.01", "100.00"],
+//    ]
     
     var popupTableViewType: PopupTableViewType!
     var excludedRebateProducts: [KKRebateTableRebateExcludedProducts]! = []
@@ -80,12 +73,10 @@ class KKGeneralPopUpTableViewController: KKBaseViewController {
     
     func returnCellDetails(indexPath: IndexPath) -> [String] {
         switch popupTableViewType {
-        case .NonRebateGame:
+        case .NonRebateGame,
+             .NonCommGame:
             let details = excludedRebateProducts[indexPath.row]
             return [details.platformName ?? "", details.productName ?? ""]
-        
-        case .NonCommGame:
-            return nonCommissionGameArray[indexPath.row]
             
         default:
             return []
@@ -127,14 +118,12 @@ extension KKGeneralPopUpTableViewController: UITableViewDelegate, UITableViewDat
         
         switch popupTableViewType {
         
-        case .NonRebateGame:
+        case .NonRebateGame,
+             .NonCommGame:
             return excludedRebateProducts.count
             
-        case .NonCommGame:
-            return nonCommissionGameArray.count
-            
-        case .RebateDetail:
-            return rebateDetailsArray.count
+//        case .RebateDetail:
+//            return rebateDetailsArray.count
             
         default:
             return 1

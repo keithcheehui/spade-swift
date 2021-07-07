@@ -42,68 +42,47 @@ class KKGeneralTableViewController: KKBaseViewController {
     @IBOutlet weak var btnContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var btnContainerMarginBottom: NSLayoutConstraint!
 
-    var downlineArray = [
-        ["01293123", "jane111", "10.00", "100.00"],
-        ["01293123", "jane122", "10.00", "100.00"],
-        ["01293123", "jane123", "10.00", "100.00"],
-        ["01293123", "jane222", "10.00", "100.00"],
-        ["01293123", "jane345", "10.00", "100.00"]
-    ]
-
-    var turnoverArray = [
-        ["2021-02-21", "jane111", "1000.00", "100.00"],
-        ["2021-02-21", "jane122", "1000.00", "100.00"],
-        ["2021-02-21", "jane123", "1000.00", "100.00"],
-        ["2021-02-21", "jane222", "1000.00", "100.00"],
-        ["2021-02-21", "jane345", "1000.00", "100.00"]
-    ]
-    
-    var payoutArray = [
-        ["2021-02-21", "100,000.00", "0.01", "2000.00"],
-        ["2021-02-21", "100,000.00", "0.01", "2000.00"],
-        ["2021-02-21", "100,000.00", "0.01", "2000.00"],
-        ["2021-02-21", "100,000.00", "0.01", "2000.00"],
-        ["2021-02-21", "100,000.00", "0.01", "2000.00"]
-    ]
-    
-    var commissionTransArray = [
-        ["2021-02-21", "9999386", "Payout", "1000.00"],
-        ["2021-02-21", "9999386", "Payout", "1000.00"],
-        ["2021-02-21", "9999386", "Payout", "1000.00"],
-        ["2021-02-21", "9999386", "Payout", "1000.00"],
-        ["2021-02-21", "9999386", "Payout", "1000.00"]
-    ]
-    
-    var commissionTableArray = [
-        ["1-50K", "0.05%"],
-        ["50-80K", "0.10%"],
-        ["80-200K", "0.15%"],
-        ["200K-500K", "0.20%"],
-        ["1-50K", "0.05%"]
-    ]
-    
-    var nonCommissionGameArray = [
-        ["918KISS", "Samurai"],
-        ["Suncity2", "Shark"],
-        ["AG Casino", "Blackjack"],
-        ["Mega888", "Birds Animal"]
-    ]
-    
-    var rebateDetailsArray = [
-        ["2021-02-21", "KY", "10000", "0.01", "100.00"],
-        ["2021-02-21", "AB", "10000", "0.01", "100.00"],
-        ["2021-02-21", "KY", "10000", "0.01", "100.00"],
-        ["2021-02-21", "AB", "10000", "0.01", "100.00"],
-    ]
+//    var payoutArray = [
+//        ["2021-02-21", "100,000.00", "0.01", "2000.00"],
+//        ["2021-02-21", "100,000.00", "0.01", "2000.00"],
+//        ["2021-02-21", "100,000.00", "0.01", "2000.00"],
+//        ["2021-02-21", "100,000.00", "0.01", "2000.00"],
+//        ["2021-02-21", "100,000.00", "0.01", "2000.00"]
+//    ]
+//
+//    var commissionTransArray = [
+//        ["2021-02-21", "9999386", "Payout", "1000.00"],
+//        ["2021-02-21", "9999386", "Payout", "1000.00"],
+//        ["2021-02-21", "9999386", "Payout", "1000.00"],
+//        ["2021-02-21", "9999386", "Payout", "1000.00"],
+//        ["2021-02-21", "9999386", "Payout", "1000.00"]
+//    ]
+//
+//    var nonCommissionGameArray = [
+//        ["918KISS", "Samurai"],
+//        ["Suncity2", "Shark"],
+//        ["AG Casino", "Blackjack"],
+//        ["Mega888", "Birds Animal"]
+//    ]
+//
+//    var rebateDetailsArray = [
+//        ["2021-02-21", "KY", "10000", "0.01", "100.00"],
+//        ["2021-02-21", "AB", "10000", "0.01", "100.00"],
+//        ["2021-02-21", "KY", "10000", "0.01", "100.00"],
+//        ["2021-02-21", "AB", "10000", "0.01", "100.00"],
+//    ]
     
     var tableViewType: TableViewType!
     var cashFlowArray: [KKUserCashFlowDetails]! = []
     var bettingRecordArray: [KKUserBettingHistoryDetails]! = []
     var withdrawHistoryArray: [KKHistoryDetails]! = []
     var depositHistoryArray: [KKHistoryDetails]! = []
+    var affiliateDownlineArray: [KKAffiliateDownlineResults]! = []
+    var affiliateTurnoverArray: [KKAffiliateDownlineResults]! = []
+    var commissionTableArray: [KKAffiliateCommissionTableResults]! = []
+    var rebateTableArray: [KKRebateTableResults]! = []
 
     var tabGroupArray: [KKUserBettingGroupDetails]! = []
-    var rebateTableArray: [KKRebateTableRebateTable]! = []
     var selectedTabItem = 0
 
     var leftTitle: String!
@@ -134,9 +113,9 @@ class KKGeneralTableViewController: KKBaseViewController {
         switch tableViewType {
         case .BettingRecord,
 //             .AccountDetails,
-             .AffiliateCommTable,
              .RebatePayout,
-             .RebateTable:
+             .RebateTable,
+             .AffiliateCommTable:
             initFlowLayout()
             
         default:
@@ -350,11 +329,6 @@ class KKGeneralTableViewController: KKBaseViewController {
     }
     
     func showButtonContainer(buttonType: PopupTableViewType?) {
-        btnContainer.isHidden = false
-        btnContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
-        btnContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 20)
-        btnContainerMarginBottom.constant = btnContainerMarginTop.constant
-        
         if (buttonType == .NonCommGame) {
             imgButton.image = UIImage(named: "btn_non_comm")
             btnNonGame.addTarget(self, action: #selector(btnNonCommGameDidPressed), for: .touchUpInside)
@@ -372,6 +346,31 @@ class KKGeneralTableViewController: KKBaseViewController {
         }
     }
     
+    func updateButton() {
+        var isHide = true
+        if tableViewType == .RebateTable {
+            if rebateTableArray[selectedTabItem].excludedProducts != nil && !rebateTableArray[selectedTabItem].excludedProducts!.isEmpty{
+                isHide = false
+            }
+        } else if tableViewType == .AffiliateCommTable {
+            if commissionTableArray[selectedTabItem].excludedProducts != nil && !commissionTableArray[selectedTabItem].excludedProducts!.isEmpty{
+                isHide = false
+            }
+        }
+        
+        if (isHide) {
+            btnContainer.isHidden = true
+            btnContainerHeight.constant = 0
+            btnContainerMarginTop.constant = 0
+            btnContainerMarginBottom.constant = btnContainerMarginTop.constant
+        } else {
+            btnContainer.isHidden = false
+            btnContainerHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
+            btnContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 20)
+            btnContainerMarginBottom.constant = btnContainerMarginTop.constant
+        }
+    }
+    
     func updateTable() {
         if (leftDropdownOptions.count > 0 && selectedLeftItem != nil) {
             leftPickerTxtValue.text = selectedLeftItem.name
@@ -384,9 +383,10 @@ class KKGeneralTableViewController: KKBaseViewController {
         switch tableViewType {
 //        case .AccountDetails:
 //            tabId = pickerCashflowArray[selectedTabItem].id
+        case .AffiliateCommTable:
+            tabId = String(commissionTableArray[selectedTabItem].id ?? 0)
         case .RebateTable:
-            tabId = String(rebateTableArray[selectedTabItem].groupId ?? -1)
-            
+            tabId = String(rebateTableArray[selectedTabItem].id ?? 0)
         case .BettingRecord,
              .RebatePayout:
             tabId = String(tabGroupArray[selectedTabItem].code ?? "")
@@ -402,7 +402,12 @@ class KKGeneralTableViewController: KKBaseViewController {
             self.withdrawHistoryAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id)
         } else if tableViewType == .DepositHistory {
             self.depositHistoryAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id)
-        } else if tableViewType == .RebateTable {
+        } else if tableViewType == .AffiliateDownline {
+            self.getAffiliateDownlineAPI()
+        } else if tableViewType == .AffiliateTurnover {
+            self.getAffiliateTurnoverAPI()
+        } else if tableViewType == .RebateTable || tableViewType == .AffiliateCommTable {
+            updateButton()
             contentTableView.reloadData()
         }
     }
@@ -412,45 +417,58 @@ class KKGeneralTableViewController: KKBaseViewController {
         switch tableViewType {
         
         case .BettingRecord:
-            let bettingRecordDetails = bettingRecordArray[indexPath.row]
-            return [bettingRecordDetails.trxTimestamp ?? "", bettingRecordDetails.refNo ?? "", bettingRecordDetails.gameName ?? "", bettingRecordDetails.stake ?? "", bettingRecordDetails.result ?? ""]
+            let details = bettingRecordArray[indexPath.row]
+            return [details.trxTimestamp ?? "", String(details.betslipId ?? 0), details.gameName ?? "", details.stake ?? "", details.result ?? "", details.amount ?? "", details.validStake ?? ""]
             
         case .AccountDetails:
-            let cashFlowDetails = cashFlowArray[indexPath.row]
-            return [cashFlowDetails.trxTimestamp ?? "", cashFlowDetails.type ?? "", cashFlowDetails.type!.contains("Deposit") ? cashFlowDetails.amount ?? "" : "", cashFlowDetails.type!.contains("Withdrawal") ? cashFlowDetails.amount ?? "" : "", "\(cashFlowDetails.balance ?? 0)"]
+            let details = cashFlowArray[indexPath.row]
+            return [details.trxTimestamp ?? "", "API_NO_DATA", "API_NO_DATA", "API_NO_DATA", "\(details.balance ?? 0)"]
             
         case .DepositHistory:
-            let depositHistoryDetails = depositHistoryArray[indexPath.row]
-            return [depositHistoryDetails.trxTimestamp ?? "", String(depositHistoryDetails.transactionId ?? 0), depositHistoryDetails.amount ?? "", depositHistoryDetails.status ?? ""]
+            let details = depositHistoryArray[indexPath.row]
+            return [details.trxTimestamp ?? "", String(details.transactionId ?? 0), details.amount ?? "", details.status ?? "", details.reason ?? ""]
 
         case .WithdrawHistory:
-            let withdrawHistoryDetails = withdrawHistoryArray[indexPath.row]
-            return [withdrawHistoryDetails.trxTimestamp ?? "", String(withdrawHistoryDetails.transactionId ?? 0) , withdrawHistoryDetails.amount ?? "", withdrawHistoryDetails.status ?? ""]
+            let details = withdrawHistoryArray[indexPath.row]
+            return [details.trxTimestamp ?? "", String(details.transactionId ?? 0) , details.amount ?? "", details.status ?? "", details.reason ?? ""]
+            
+        case .TransferHistory:
+            return ["API_NO_DATA", "API_NO_DATA", "API_NO_DATA", "API_NO_DATA", "API_NO_DATA", "API_NO_DATA"]
+            
+        case .PromotionHistory:
+            return ["API_NO_DATA", "API_NO_DATA", "API_NO_DATA", "API_NO_DATA", "API_NO_DATA"]
             
         case .AffiliateDownline:
-            return self.downlineArray[indexPath.row]
-        
+            let details = affiliateDownlineArray[indexPath.row]
+            return [details.id ?? "", details.username ?? "", String(details.totalValidStake ?? 0), String(details.totalCommission ?? 0)]
+            
         case .AffiliateTurnover:
-            return turnoverArray[indexPath.row]
+            let details = affiliateTurnoverArray[indexPath.row]
+            return [details.id ?? "", details.username ?? "", String(details.totalValidStake ?? 0), String(details.totalCommission ?? 0)]
         
         case .AffiliatePayout:
-            return payoutArray[indexPath.row]
-            
+//            return payoutArray[indexPath.row]
+            return ["API_NO_DATA", "API_NO_DATA", "API_NO_DATA", "API_NO_DATA", "API_NO_DATA"]
+
         case .AffiliateCommTrans:
-            return commissionTableArray[indexPath.row]
+//            return commissionTableArray[indexPath.row]
+            return ["API_NO_DATA", "API_NO_DATA", "API_NO_DATA", "API_NO_DATA", "API_NO_DATA"]
 
         case .AffiliateCommTable:
-            return commissionTableArray[indexPath.row]
+            let details = commissionTableArray[selectedTabItem].rebates?[indexPath.row]
+            return [details?.validStake ?? "", details?.rate ?? ""]
             
         case .RebatePayout:
-            return payoutArray[indexPath.row]
+//            return payoutArray[indexPath.row]
+            return ["API_NO_DATA", "API_NO_DATA", "API_NO_DATA", "API_NO_DATA"]
             
         case .RebateTrans:
-            return commissionTransArray[indexPath.row]
-            
+//            return commissionTransArray[indexPath.row]
+            return ["API_NO_DATA", "API_NO_DATA", "API_NO_DATA", "API_NO_DATA"]
+
         case .RebateTable:
-            let rebateRates = rebateTableArray[selectedTabItem].rebateRates?[indexPath.row]
-            return [rebateRates?.rate ?? "", rebateRates?.validStake ?? ""]
+            let details = rebateTableArray[selectedTabItem].rebates?[indexPath.row]
+            return [details?.validStake ?? "", details?.rate ?? ""]
 
         default:
             return []
@@ -462,11 +480,22 @@ class KKGeneralTableViewController: KKBaseViewController {
     }
     
     @objc func btnNonCommGameDidPressed() {
-        presentPopupTableView(popupTableViewType: .NonCommGame)
+        let excludedRebateProducts = commissionTableArray[selectedTabItem].excludedProducts
+        if excludedRebateProducts == nil {
+            return
+        }
+        
+        let vc = KKGeneralPopUpTableViewController.init()
+        vc.popupTableViewType = .NonCommGame
+        vc.excludedRebateProducts = excludedRebateProducts
+        self.present(vc, animated: true, completion: nil)
     }
     
     @objc func btnNonRebateGameDidPressed() {
         let excludedRebateProducts = rebateTableArray[selectedTabItem].excludedProducts
+        if excludedRebateProducts == nil {
+            return
+        }
         
         let vc = KKGeneralPopUpTableViewController.init()
         vc.popupTableViewType = .NonRebateGame
@@ -554,6 +583,40 @@ class KKGeneralTableViewController: KKBaseViewController {
         }
     }
     
+    func getAffiliateDownlineAPI() {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.getAffiliateDownline().execute { response in
+            
+            self.hideAnimatedLoader()
+            self.affiliateDownlineArray = response.results
+            self.contentTableView.reloadData()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
+        }
+    }
+    
+    func getAffiliateTurnoverAPI() {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.getAffiliateTurnover().execute { response in
+            
+            self.hideAnimatedLoader()
+            self.affiliateTurnoverArray = response.results
+            self.contentTableView.reloadData()
+            
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
+        }
+    }
+    
     @objc
     override func didTapDone() {
         view.endEditing(true)
@@ -602,9 +665,10 @@ extension KKGeneralTableViewController: UICollectionViewDelegate, UICollectionVi
 //            return pickerCashflowArray.count
         case .RebateTable:
             return rebateTableArray.count
-        
+        case .AffiliateCommTable:
+            return commissionTableArray.count
+
         case .BettingRecord,
-             .AffiliateCommTable,
              .RebatePayout:
             return tabGroupArray.count
         default:
@@ -631,6 +695,9 @@ extension KKGeneralTableViewController: UICollectionViewDelegate, UICollectionVi
         case .RebateTable:
             cell.lblTitle.text = rebateTableArray[indexPath.item].name ?? ""
         
+        case .AffiliateCommTable:
+            cell.lblTitle.text = commissionTableArray[indexPath.item].name ?? ""
+        
         default:
             cell.lblTitle.text = tabGroupArray[indexPath.item].name
         }
@@ -642,7 +709,6 @@ extension KKGeneralTableViewController: UICollectionViewDelegate, UICollectionVi
         selectedTabItem = indexPath.item
         collectionView.reloadData()
         updateTable()
-        
         return
     }
 }
@@ -689,28 +755,28 @@ extension KKGeneralTableViewController: UITableViewDelegate, UITableViewDataSour
             return withdrawHistoryArray.count
             
         case .AffiliateDownline:
-            return downlineArray.count
+            return affiliateDownlineArray.count
             
         case .AffiliateTurnover:
-            return turnoverArray.count
+            return affiliateTurnoverArray.count
             
-        case .AffiliatePayout:
-            return payoutArray.count
-            
-        case .AffiliateCommTrans:
-            return commissionTransArray.count
+//        case .AffiliatePayout:
+//            return payoutArray.count
+//            
+//        case .AffiliateCommTrans:
+//            return commissionTransArray.count
             
         case .AffiliateCommTable:
-            return commissionTableArray.count
+            return commissionTableArray[selectedTabItem].rebates?.count ?? 0
             
-        case .RebatePayout:
-            return payoutArray.count
-            
-        case .RebateTrans:
-            return commissionTransArray.count
+//        case .RebatePayout:
+//            return payoutArray.count
+//            
+//        case .RebateTrans:
+//            return commissionTransArray.count
             
         case .RebateTable:
-            return rebateTableArray[selectedTabItem].rebateRates?.count ?? 0
+            return rebateTableArray[selectedTabItem].rebates?.count ?? 0
             
         default:
             return 1

@@ -21,7 +21,8 @@ class KKGameListViewController: KKBaseViewController {
     }
     
     var gameListArray: [KKGroupPlatformDetails]! = []
-        
+    var homeViewController: KKHomeViewController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -121,12 +122,17 @@ extension KKGameListViewController: UICollectionViewDelegate, UICollectionViewDa
         
         if gameListArray[indexPath.item].type == itemType.gameType.rawValue {
             let vc = KKPlatformViewController()
+            vc.homeViewController = homeViewController
             vc.selectedMenuItem = indexPath.item
             vc.platformCode = selectedGroupCode
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             //TODO: PUT Web view for game redirect url
-            self.navigationController?.pushViewController(KKWebViewController(), animated: true)
+            if (KKUtil.isUserLogin()) {
+                self.navigationController?.pushViewController(KKWebViewController(), animated: true)
+            } else {
+                homeViewController.showLoginPopup()
+            }
         }
     }
 }

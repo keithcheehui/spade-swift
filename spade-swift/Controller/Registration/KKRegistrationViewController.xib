@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,7 +15,6 @@
                 <outlet property="btnConfirm" destination="wsh-sk-655" id="y8U-Om-Ksm"/>
                 <outlet property="btnConfirmContainerMarginBottom" destination="X2f-rz-RUi" id="0Rc-Uq-qgL"/>
                 <outlet property="btnConfirmHeight" destination="GTb-qr-88L" id="2KT-v8-8Xc"/>
-                <outlet property="confirmPasswordContainerMarginTop" destination="tiA-aX-pfb" id="3Vp-v5-4St"/>
                 <outlet property="confirmPasswordView" destination="4PP-73-43f" id="UaO-2I-jpY"/>
                 <outlet property="containerHeight" destination="ZbH-AP-Rti" id="Set-A5-Nho"/>
                 <outlet property="containerWidth" destination="5ki-xE-g1D" id="6Mk-Yp-PDy"/>
@@ -25,6 +24,7 @@
                 <outlet property="imgRegister" destination="0HL-63-HQY" id="VRO-ZR-zWa"/>
                 <outlet property="imgRegisterHeight" destination="iVc-VZ-tSu" id="g5M-VS-U3a"/>
                 <outlet property="lblConfirmPassword" destination="7NU-OP-RnC" id="sRF-sl-k3x"/>
+                <outlet property="lblNote" destination="8Mk-SE-g6t" id="CfB-zy-aUI"/>
                 <outlet property="lblPassword" destination="n5S-af-SIA" id="KNf-QR-VWN"/>
                 <outlet property="lblUsername" destination="H0Q-UL-OvZ" id="X8D-5g-mhU"/>
                 <outlet property="lblUsernameWidth" destination="3vD-EQ-t12" id="SVF-BE-jUw"/>
@@ -169,7 +169,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpO-me-tCb">
-                            <rect key="frame" x="80" y="187" width="468" height="30"/>
+                            <rect key="frame" x="80" y="195" width="468" height="30"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NU-OP-RnC">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
@@ -234,6 +234,12 @@
                                 <constraint firstItem="Fof-Bv-vVv" firstAttribute="leading" secondItem="6Xa-8j-7zH" secondAttribute="leading" id="vHG-71-D19"/>
                             </constraints>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mk-SE-g6t">
+                            <rect key="frame" x="246" y="175" width="302" height="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -243,10 +249,14 @@
                         <constraint firstItem="dHm-MK-Qfd" firstAttribute="top" secondItem="MVN-Wd-4BF" secondAttribute="top" constant="20" id="8NP-Ws-XQm"/>
                         <constraint firstItem="0HL-63-HQY" firstAttribute="top" secondItem="MVN-Wd-4BF" secondAttribute="top" constant="20" id="A0a-Sx-I9O"/>
                         <constraint firstAttribute="trailing" secondItem="0HL-63-HQY" secondAttribute="trailing" constant="25" id="De1-A2-Tyl"/>
+                        <constraint firstItem="8Mk-SE-g6t" firstAttribute="leading" secondItem="hsm-IE-mNd" secondAttribute="leading" id="HKN-y6-uAe"/>
                         <constraint firstAttribute="trailing" secondItem="PlF-nf-H6J" secondAttribute="trailing" constant="80" id="HZX-wZ-Qrh"/>
                         <constraint firstItem="PlF-nf-H6J" firstAttribute="leading" secondItem="MVN-Wd-4BF" secondAttribute="leading" constant="80" id="IDX-Zp-dxS"/>
                         <constraint firstItem="kI8-Kg-dMq" firstAttribute="leading" secondItem="MVN-Wd-4BF" secondAttribute="leading" id="KDy-uS-C9d"/>
                         <constraint firstItem="0HL-63-HQY" firstAttribute="leading" secondItem="MVN-Wd-4BF" secondAttribute="leading" constant="25" id="KOs-FI-tcg"/>
+                        <constraint firstItem="gpO-me-tCb" firstAttribute="top" secondItem="8Mk-SE-g6t" secondAttribute="bottom" constant="8" id="ONk-gO-HTg"/>
+                        <constraint firstItem="8Mk-SE-g6t" firstAttribute="trailing" secondItem="hsm-IE-mNd" secondAttribute="trailing" id="PMJ-Av-soJ"/>
+                        <constraint firstItem="8Mk-SE-g6t" firstAttribute="top" secondItem="xWo-rY-8Uq" secondAttribute="bottom" constant="4" id="QPv-hX-Rz6"/>
                         <constraint firstAttribute="trailing" secondItem="kI8-Kg-dMq" secondAttribute="trailing" id="RaR-Zn-sgA"/>
                         <constraint firstAttribute="trailing" secondItem="dHm-MK-Qfd" secondAttribute="trailing" constant="25" id="UzZ-Ug-tO2"/>
                         <constraint firstItem="gpO-me-tCb" firstAttribute="trailing" secondItem="xWo-rY-8Uq" secondAttribute="trailing" id="VSU-QP-7gz"/>
@@ -260,7 +270,6 @@
                         <constraint firstItem="7NU-OP-RnC" firstAttribute="width" secondItem="n5S-af-SIA" secondAttribute="width" id="lN6-Ow-Ul0"/>
                         <constraint firstItem="xWo-rY-8Uq" firstAttribute="trailing" secondItem="PlF-nf-H6J" secondAttribute="trailing" id="n8D-aX-uIQ"/>
                         <constraint firstItem="kI8-Kg-dMq" firstAttribute="top" secondItem="MVN-Wd-4BF" secondAttribute="top" id="qhI-ct-bue"/>
-                        <constraint firstItem="gpO-me-tCb" firstAttribute="top" secondItem="xWo-rY-8Uq" secondAttribute="bottom" constant="16" id="tiA-aX-pfb"/>
                         <constraint firstItem="xWo-rY-8Uq" firstAttribute="leading" secondItem="PlF-nf-H6J" secondAttribute="leading" id="zUW-8O-jxu"/>
                         <constraint firstItem="xWo-rY-8Uq" firstAttribute="height" secondItem="PlF-nf-H6J" secondAttribute="height" id="zjJ-E7-9zf"/>
                     </constraints>

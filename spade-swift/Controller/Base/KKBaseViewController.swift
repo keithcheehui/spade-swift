@@ -121,7 +121,7 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
             switch item {
             case .all:
                 details.id = ""
-                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_all_status")
                 
             case .success:
                 details.id = item.rawValue
@@ -189,7 +189,7 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
             switch item {
             case .all:
                 details.id = ""
-                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
+                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_all_type")
                 
             case .collect:
                 details.id = item.rawValue

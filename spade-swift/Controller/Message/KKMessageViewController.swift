@@ -48,10 +48,10 @@ class KKMessageViewController: KKBaseViewController {
                 details.title = KKUtil.languageSelectedStringForKey(key: "message_inbox")
                 details.imgIcon = "ic_system_mail"
                 
-            case .notification:
-                details.id = item.rawValue
-                details.title = KKUtil.languageSelectedStringForKey(key: "message_notification")
-                details.imgIcon = "ic_notification"
+//            case .notification:
+//                details.id = item.rawValue
+//                details.title = KKUtil.languageSelectedStringForKey(key: "message_notification")
+//                details.imgIcon = "ic_notification"
             }
             sideMenuList.append(details)
         }
@@ -65,9 +65,9 @@ class KKMessageViewController: KKBaseViewController {
 
     func buttonHover(type: Int){
         switch type {
-        case MessageSideMenu.notification.rawValue:
-            changeView(vc: KKOnBoardingViewController())
-            break;
+//        case MessageSideMenu.notification.rawValue:
+//            changeView(vc: KKOnBoardingViewController())
+//            break;
         default:
             changeView(vc: KKMessageListViewController())
             break;

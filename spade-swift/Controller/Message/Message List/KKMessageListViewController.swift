@@ -11,7 +11,7 @@ import KeychainSwift
 
 class KKMessageListViewController: KKBaseViewController {
     
-    @IBOutlet weak var lblTitle: UILabel!
+//    @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var messageTableView: UITableView!
 
     var selectedMessageIndex = -1
@@ -36,9 +36,9 @@ class KKMessageListViewController: KKBaseViewController {
         messageTableView.backgroundColor = UIColor(white: 0, alpha: 0)
         messageTableView.register(KKMessageDetailsTableViewCell.self, forCellReuseIdentifier: CellIdentifier.messageTVCIdentifier)
         
-        lblTitle.text = KKUtil.languageSelectedStringForKey(key: "message_title")
-        lblTitle.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
-        lblTitle.textColor = UIColor.spade_white_FFFFFF
+//        lblTitle.text = KKUtil.languageSelectedStringForKey(key: "message_title")
+//        lblTitle.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
+//        lblTitle.textColor = UIColor.spade_white_FFFFFF
     }
 
     //MARK:- API Calls

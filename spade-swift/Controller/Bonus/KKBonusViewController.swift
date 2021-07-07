@@ -175,7 +175,7 @@ class KKBonusViewController: KKBaseViewController, UITableViewDataSource, UITabl
         }
         
         let promoItem: KKPromotionItemDetails! = sideMenuItem[selectedMenuItem].items?[indexPath.item]
-        cell.imgBonusBG.setUpImage(with: promoItem.img)
+        cell.imgBonusBG.setUpImage(with: promoItem.img, placeholder: UIImage(named: "img_placeholder_long"))
 
         return cell
     }

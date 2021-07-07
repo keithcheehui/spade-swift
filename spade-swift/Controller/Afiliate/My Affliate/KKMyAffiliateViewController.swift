@@ -70,6 +70,8 @@ class KKMyAffiliateViewController: KKBaseViewController {
     @IBOutlet weak var btnShareHeight: NSLayoutConstraint!
     @IBOutlet weak var btnCopyHeight: NSLayoutConstraint!
 
+    var affiliateInfo: KKAffiliateProfileAffiliate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -187,19 +189,32 @@ class KKMyAffiliateViewController: KKBaseViewController {
     }
     
     func updateValue() {
-        lblMyIDValue.text = "999999"
-        lblReferrerIDValue.text = "999999"
-        lblMemberCountValue.text = "999999"
-        
-        lblTotalCommisionValue.text = KKUtil.addCurrencyFormatWithString(value: "999999999")
-        lblTotalTurnoverValue.text = KKUtil.addCurrencyFormatWithString(value: "999999999")
-        
-        lblURL.text = "https://legend-api.com"
-        
-        lblAvailableCommissionValue.text = KKUtil.addCurrencyFormatWithString(value: "999999999")
-        
+        if let info = affiliateInfo {
+            if let userId = KKUtil.decodeUserProfileFromCache()?.code {
+                lblMyIDValue.text = userId
+            }
+            if let referrerCode = info.referrerCode {
+                lblReferrerIDValue.text = referrerCode
+            }
+            if let memberRecruited = info.memberRecruited {
+                lblMemberCountValue.text = String(format: "\(memberRecruited)")
+            }
+            if let url = info.affiliateUrl {
+                lblURL.text = url
+            }
+            if let commission = info.commission {
+                if let total = commission.total {
+                    lblTotalCommisionValue.text = KKUtil.addCurrencyFormatWithString(value: total)
+                }
+                if let turnover = commission.turnover {
+                    lblTotalTurnoverValue.text = KKUtil.addCurrencyFormatWithString(value: turnover)
+                }
+                if let available = commission.available {
+                    lblAvailableCommissionValue.text = KKUtil.addCurrencyFormatWithString(value: available)
+                }
+            }
+        }
         lblCurrency.text = "RM"
-//        txtWithdrawCommissionValue.text = KKUtil.addCurrencyFormatWithString(value: "999999999")
     }
     
     ///Button Actions

@@ -26,7 +26,8 @@ class KKRegistrationViewController: KKBaseViewController {
     @IBOutlet weak var txtConfirmPassword: UITextField!
     @IBOutlet weak var imgConfirm: UIImageView!
     @IBOutlet weak var btnConfirm: UIButton!
-    
+    @IBOutlet weak var lblNote: UILabel!
+
     @IBOutlet weak var imgRegisterHeight: NSLayoutConstraint!
     @IBOutlet weak var imgCloseWidth: NSLayoutConstraint!
     @IBOutlet weak var usernameContainerHeight: NSLayoutConstraint!
@@ -39,7 +40,7 @@ class KKRegistrationViewController: KKBaseViewController {
     @IBOutlet weak var usernameContainerMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var usernameContainerMarginRight: NSLayoutConstraint!
     @IBOutlet weak var passwordContainerMarginTop: NSLayoutConstraint!
-    @IBOutlet weak var confirmPasswordContainerMarginTop: NSLayoutConstraint!
+//    @IBOutlet weak var confirmPasswordContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmContainerMarginBottom: NSLayoutConstraint!
     
     var verifiedPhoneNumber: String!
@@ -84,7 +85,6 @@ class KKRegistrationViewController: KKBaseViewController {
         usernameContainerMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: 60)
         usernameContainerMarginRight.constant = usernameContainerMarginLeft.constant
         passwordContainerMarginTop.constant = KKUtil.ConvertSizeByDensity(size: 16)
-        confirmPasswordContainerMarginTop.constant = passwordContainerMarginTop.constant
         btnConfirmContainerMarginBottom.constant = KKUtil.ConvertSizeByDensity(size: 50)
         
         lblUsername.text = KKUtil.languageSelectedStringForKey(key: "register_username")
@@ -109,6 +109,10 @@ class KKRegistrationViewController: KKBaseViewController {
         txtUsername.returnKeyType = .next
         txtPassword.returnKeyType = .next
         txtConfirmPassword.returnKeyType = .done
+        
+        lblNote.text = KKUtil.languageSelectedStringForKey(key: "settings_notes")
+        lblNote.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 9))
+        lblNote.textColor = .spade_orange_FFBA00
         
         if (isFromForgotPassword) {
             usernameContainer.isHidden = true

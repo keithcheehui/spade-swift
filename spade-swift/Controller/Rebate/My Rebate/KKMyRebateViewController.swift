@@ -42,6 +42,8 @@ class KKMyRebateViewController: KKBaseViewController {
 
     @IBOutlet weak var btnCollectHeight: NSLayoutConstraint!
 
+    var rebateInfo: KKRebateProfileRebate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -110,11 +112,17 @@ class KKMyRebateViewController: KKBaseViewController {
     }
     
     func updateValue() {
-        lblTotalCommisionValue.text = KKUtil.addCurrencyFormatWithString(value: "999999999")
-        lblAvailableCommissionValue.text = KKUtil.addCurrencyFormatWithString(value: "999999999")
+        if let info = rebateInfo {
+            if let totalRebate = info.totalRebate {
+                lblTotalCommisionValue.text = KKUtil.addCurrencyFormatWithString(value: totalRebate)
+            }
+            
+            if let availableRebate = info.availableRebate {
+                lblAvailableCommissionValue.text = KKUtil.addCurrencyFormatWithString(value: availableRebate)
+            }
+        }
         
         lblCurrency.text = "RM"
-//        txtWithdrawCommissionValue.text = KKUtil.addCurrencyFormatWithString(value: "999999999")
     }
     
     ///Button Actions

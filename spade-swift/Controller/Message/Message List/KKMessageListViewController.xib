@@ -10,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKMessageListViewController" customModule="spade_swift" customModuleProvider="target">
             <connections>
-                <outlet property="lblTitle" destination="rDg-Nw-Vq3" id="fJG-6Y-FjJ"/>
                 <outlet property="messageTableView" destination="7Vd-7j-bDu" id="PC4-bQ-iRS"/>
                 <outlet property="view" destination="iN0-l3-epB" id="f7u-MU-wff"/>
             </connections>
@@ -20,14 +19,8 @@
             <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDg-Nw-Vq3">
-                    <rect key="frame" x="20" y="10" width="856" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Vd-7j-bDu">
-                    <rect key="frame" x="20" y="41" width="856" height="342"/>
+                    <rect key="frame" x="20" y="10" width="856" height="373"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -40,13 +33,10 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="rDg-Nw-Vq3" secondAttribute="trailing" constant="20" id="6As-Ca-OSI"/>
-                <constraint firstItem="7Vd-7j-bDu" firstAttribute="top" secondItem="rDg-Nw-Vq3" secondAttribute="bottom" constant="10" id="GTC-eQ-mFa"/>
+                <constraint firstAttribute="trailing" secondItem="7Vd-7j-bDu" secondAttribute="trailing" constant="20" id="1lP-rJ-7mo"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="7Vd-7j-bDu" secondAttribute="bottom" constant="10" id="JFD-ur-mdC"/>
-                <constraint firstItem="rDg-Nw-Vq3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="KWM-7g-00w"/>
-                <constraint firstItem="rDg-Nw-Vq3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="Oc1-hx-dcz"/>
-                <constraint firstItem="7Vd-7j-bDu" firstAttribute="leading" secondItem="rDg-Nw-Vq3" secondAttribute="leading" id="SMK-fm-SwC"/>
-                <constraint firstItem="7Vd-7j-bDu" firstAttribute="trailing" secondItem="rDg-Nw-Vq3" secondAttribute="trailing" id="iCT-pM-Rrn"/>
+                <constraint firstItem="7Vd-7j-bDu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="LjX-pG-Ssg"/>
+                <constraint firstItem="7Vd-7j-bDu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="SPY-YG-HEr"/>
             </constraints>
             <point key="canvasLocation" x="-165" y="92"/>
         </view>

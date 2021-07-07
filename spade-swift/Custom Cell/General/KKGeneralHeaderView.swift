@@ -23,8 +23,12 @@ class KKGeneralHeaderView: UITableViewHeaderFooterView {
         headerView = UIView.init()
         headerView.backgroundColor = .spade_blue_292969
         self.contentView.addSubview(headerView)
+    }
+    
+    func setUpHeaderView(width: CGFloat, type: TableViewType) {
         
-        for index in 1...5 {
+        let headerTitleArray = KKUtil.getHeaderTitleViaTableViewType(tableViewType: type)
+        for index in 1...headerTitleArray.count {
             
             let label = UILabel.init()
             label.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
@@ -36,11 +40,6 @@ class KKGeneralHeaderView: UITableViewHeaderFooterView {
             
             labelArray.append(label)
         }
-    }
-    
-    func setUpHeaderView(width: CGFloat, type: TableViewType) {
-        
-        let headerTitleArray = KKUtil.getHeaderTitleViaTableViewType(tableViewType: type)
         
         for (index, titleString) in headerTitleArray.enumerated() {
             
@@ -55,6 +54,18 @@ class KKGeneralHeaderView: UITableViewHeaderFooterView {
     func setUpHeaderView(width: CGFloat, type: PopupTableViewType) {
         
         let headerTitleArray = KKUtil.getHeaderTitleViaTableViewType(popupTableViewType: type)
+        for index in 1...headerTitleArray.count {
+            
+            let label = UILabel.init()
+            label.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
+            label.textColor = .spade_orange_FFBA00
+            label.textAlignment = .center
+            label.numberOfLines = 1
+            label.tag = index
+            headerView.addSubview(label)
+            
+            labelArray.append(label)
+        }
         
         for (index, titleString) in headerTitleArray.enumerated() {
             

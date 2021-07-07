@@ -65,11 +65,43 @@ class KKUserInfoViewController: KKBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         initialLayout()
         defaultLayoutValue()
 
         isEditMode = false
         displayView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.getNotified), name: Notification.Name("NotificationIdentifier"), object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("NotificationIdentifier"), object: nil)
+    }
+    
+    @objc private func getNotified(notification: NSNotification){
+        updateAvatar()
+    }
+    
+    func updateAvatar() {
+        if let userProfile = KKUtil.decodeUserProfileFromCache() {
+            if let avatarId = userProfile.avatarId {
+                if avatarId > 0 {
+                    let image = String(format: "ic_avatar_%d", avatarId)
+                    imgProfile.image = UIImage(named: image)
+                } else {
+                    imgProfile.image = UIImage(named: "ic_profile")
+                }
+            } else {
+                imgProfile.image = UIImage(named: "ic_profile")
+            }
+        } else {
+            imgProfile.image = UIImage(named: "ic_profile")
+        }
     }
     
     func initialLayout(){
@@ -203,6 +235,8 @@ class KKUserInfoViewController: KKBaseViewController {
             txtEmail.text = ""
             lblProgress.text = ""
         }
+        
+        updateAvatar()
     }
     
     func displayView(){

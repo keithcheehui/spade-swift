@@ -17,13 +17,15 @@ class KKWebViewController: KKBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadingActivity.color = .spade_white_FFFFFF
-        webView.addSubview(loadingActivity)
-        loadingActivity.startAnimating()
         webView.navigationDelegate = self
+        webView.isOpaque = false
+        webView.addSubview(loadingActivity)
+        webView.clipsToBounds = true
+
+        loadingActivity.color = .spade_white_FFFFFF
+        loadingActivity.startAnimating()
         loadingActivity.hidesWhenStopped = true
-        
-        webView.clipsToBounds = true        
+              
         webView.load(URLRequest(url: URL(string: "https://www.google.com")!))
         
         self.draggableView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handler)))

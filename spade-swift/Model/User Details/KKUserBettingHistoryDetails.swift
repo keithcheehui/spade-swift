@@ -10,26 +10,35 @@ import Foundation
 struct KKUserBettingHistoryDetails: Codable {
 
   enum CodingKeys: String, CodingKey {
-    case refNo = "ref_no"
+    case betslipId = "betslip_id"
+    case platformId = "platform_id"
     case stake
+    case validStake = "valid_stake"
     case gameName = "game_name"
     case result
+    case amount
     case trxTimestamp = "trx_timestamp"
   }
 
-  var refNo: String?
-  var stake: String?
-  var gameName: String?
-  var result: String?
-  var trxTimestamp: String?
+    var betslipId: Int?
+    var platformId: Int?
+    var stake: String?
+    var validStake: String?
+    var gameName: String?
+    var result: String?
+    var amount: String?
+    var trxTimestamp: String?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    refNo = try container.decodeIfPresent(String.self, forKey: .refNo)
+    betslipId = try container.decodeIfPresent(Int.self, forKey: .betslipId)
+    platformId = try container.decodeIfPresent(Int.self, forKey: .platformId)
     stake = try container.decodeIfPresent(String.self, forKey: .stake)
+    validStake = try container.decodeIfPresent(String.self, forKey: .validStake)
     gameName = try container.decodeIfPresent(String.self, forKey: .gameName)
+    amount = try container.decodeIfPresent(String.self, forKey: .amount)
     result = try container.decodeIfPresent(String.self, forKey: .result)
     trxTimestamp = try container.decodeIfPresent(String.self, forKey: .trxTimestamp)
   }

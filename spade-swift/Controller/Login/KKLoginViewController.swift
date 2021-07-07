@@ -43,6 +43,7 @@ class KKLoginViewController: KKBaseViewController {
     @IBOutlet weak var btnConfirmContainerMarginBottom: NSLayoutConstraint!
     
     var homeViewController: KKHomeViewController!
+    var selectedRememberMe = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,8 +109,16 @@ class KKLoginViewController: KKBaseViewController {
         
         txtUsername.returnKeyType = .next
         txtPassword.returnKeyType = .done
-        
-        imgRememberMe.isHidden = true
+
+        if UserDefaults.standard.object(forKey: CacheKey.rememberMe) != nil {
+            selectedRememberMe = UserDefaults.standard.bool(forKey: CacheKey.rememberMe)
+            
+            if (selectedRememberMe) {
+                let username = KeychainSwift().get(CacheKey.username) == nil ? "" : KeychainSwift().get(CacheKey.username)
+                txtUsername.text = username
+            }
+        }
+        updateRememberMeLayout()
     }
     
     //MARK:- Validation
@@ -138,6 +147,7 @@ class KKLoginViewController: KKBaseViewController {
         KKApiClient.login(username: txtUsername.text!, password: txtPassword.text!).execute { userCredential in
             KeychainSwift().set(self.txtUsername.text!, forKey: CacheKey.username)
             KeychainSwift().set(self.txtPassword.text!, forKey: CacheKey.secret)
+            UserDefaults.standard.set(self.selectedRememberMe, forKey: CacheKey.rememberMe)
             
             KKTokenManager.setUserCredential(userCredential: userCredential)
             UserDefaults.standard.set(true, forKey: CacheKey.loginStatus)
@@ -192,6 +202,14 @@ class KKLoginViewController: KKBaseViewController {
             }
         }
     }
+    
+    func updateRememberMeLayout() {
+        if (selectedRememberMe){
+            imgRememberMe.isHidden = false
+        } else {
+            imgRememberMe.isHidden = true
+        }
+    }
 
     //MARK:- Button Actions
     
@@ -200,11 +218,8 @@ class KKLoginViewController: KKBaseViewController {
     }
     
     @IBAction func btnRememberMeDidPressed(){
-        if (imgRememberMe.isHidden){
-            imgRememberMe.isHidden = false
-        } else {
-            imgRememberMe.isHidden = true
-        }
+        selectedRememberMe = !selectedRememberMe
+        updateRememberMeLayout()
     }
     
     @IBAction func btnForgotPasswordDidPressed(){

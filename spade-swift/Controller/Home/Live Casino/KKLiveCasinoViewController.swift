@@ -32,7 +32,8 @@ class KKLiveCasinoViewController: KKBaseViewController {
     
     var selectedLiveCasinoIndex = 0
     var liveCasinoArray: [KKGroupPlatformDetails]! = []
-    
+    var homeViewController: KKHomeViewController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -77,12 +78,17 @@ class KKLiveCasinoViewController: KKBaseViewController {
     @IBAction func btnBetNowDidPressed(){
         if liveCasinoArray[selectedLiveCasinoIndex].type == itemType.gameType.rawValue {
             let vc = KKPlatformViewController()
+            vc.homeViewController = homeViewController
             vc.selectedMenuItem = selectedLiveCasinoIndex
             vc.platformCode = selectedGroupCode
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             //TODO: PUT Web view for game redirect url
-            self.navigationController?.pushViewController(KKWebViewController(), animated: true)
+            if (KKUtil.isUserLogin()) {
+                self.navigationController?.pushViewController(KKWebViewController(), animated: true)
+            } else {
+                homeViewController.showLoginPopup()
+            }
         }
     }
 }

@@ -71,10 +71,10 @@ class KKPersonalViewController: KKBaseViewController {
                 details.title = KKUtil.languageSelectedStringForKey(key: "personal_account_detail")
                 details.imgIcon = "ic_account_detail"
                 
-            case .individualReport:
-                details.id = item.rawValue
-                details.title = KKUtil.languageSelectedStringForKey(key: "personal_individual_report")
-                details.imgIcon = "ic_report"
+//            case .individualReport:
+//                details.id = item.rawValue
+//                details.title = KKUtil.languageSelectedStringForKey(key: "personal_individual_report")
+//                details.imgIcon = "ic_report"
                 
             case .wallet:
                 details.id = item.rawValue
@@ -147,7 +147,7 @@ class KKPersonalViewController: KKBaseViewController {
                 self.bettingRecordPlatfromsNameArray.removeAll()
                 var detail = PickerDetails()
                 detail.id = ""
-                detail.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
+                detail.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_all_provider")
                 self.bettingRecordPlatfromsNameArray.append(detail)
 
                 for platform in platforms {
@@ -187,11 +187,11 @@ class KKPersonalViewController: KKBaseViewController {
             viewController.tableViewType = .AccountDetails
             changeView(vc: viewController)
             break;
-        case PersonalSideMenu.individualReport.rawValue:
-            let viewController = KKIndividualReportViewController.init()
-            viewController.tabGroupArray = tabGroupArray
-            changeView(vc: viewController)
-            break;
+//        case PersonalSideMenu.individualReport.rawValue:
+//            let viewController = KKIndividualReportViewController.init()
+//            viewController.tabGroupArray = tabGroupArray
+//            changeView(vc: viewController)
+//            break;
         case PersonalSideMenu.wallet.rawValue:
             let viewController = KKIndividualReportViewController.init()
             viewController.tabGroupArray = tabGroupArray

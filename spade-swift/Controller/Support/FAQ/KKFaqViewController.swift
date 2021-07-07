@@ -23,13 +23,14 @@ class KKFaqViewController: KKBaseViewController, WKNavigationDelegate {
         
         faqTableView.isHidden = true
         
-        loadingActivity.color = .spade_white_FFFFFF
-        faqWebView.addSubview(loadingActivity)
-        loadingActivity.startAnimating()
         faqWebView.navigationDelegate = self
-        loadingActivity.hidesWhenStopped = true
-        
+        faqWebView.isOpaque = false
+        faqWebView.addSubview(loadingActivity)
         faqWebView.clipsToBounds = true
+
+        loadingActivity.color = .spade_white_FFFFFF
+        loadingActivity.startAnimating()
+        loadingActivity.hidesWhenStopped = true
     }
     
     //MARK:- API Calls
@@ -39,11 +40,9 @@ class KKFaqViewController: KKBaseViewController, WKNavigationDelegate {
         KKApiClient.getFAQ().execute { [self] FAQResponse in
             
             self.faqArray = FAQResponse.results?.faqs
-            
-            if !faqArray[0].content!.isEmpty {
-                faqWebView.loadHTMLString(faqArray[0].content!, baseURL: nil)
+            if !self.faqArray[0].content!.isEmpty {
+                self.faqWebView.loadHTMLString(self.faqArray[0].content!, baseURL: nil)
             }
-
         } onFailure: { errorMessage in
             self.showAlertView(type: .Error, alertMessage: errorMessage)
         }

@@ -31,6 +31,7 @@ class KKPlatformViewController: KKBaseViewController {
     var selectedMenuItem = 0
     var selectedPlatformId = ""
     var searchArray: [KKGameTypeItems]! = []
+    var homeViewController: KKHomeViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,7 +147,11 @@ extension KKPlatformViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         //TODO: PUT Web view for game redirect url
-        self.navigationController?.pushViewController(KKWebViewController(), animated: true)
+        if (KKUtil.isUserLogin()) {
+            self.navigationController?.pushViewController(KKWebViewController(), animated: true)
+        } else {
+            homeViewController.showLoginPopup()
+        }
     }
 }
 

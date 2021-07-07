@@ -17,7 +17,7 @@
 "login_username"                            = "Username:";
 "login_username_placeholder"                = "Please enter username";
 "login_password"                            = "Password:";
-"login_password_placeholder"                = "Please enter your password";
+"login_password_placeholder"                = "Please enter password";
 "login_remember_me"                         = "Remember me";
 "login_forgot_password"                     = "Forgot Password?";
 
@@ -27,11 +27,11 @@
 
 //MARK: REGISTRATION
 "register_username"                         = "Username:";
-"register_username_placeholder"             = "Username must be between 6-12 characters.";
+"register_username_placeholder"             = "Please enter username";
 "register_password"                         = "Password:";
-"register_password_placeholder"             = "Password must be between 6-12 characters.";
+"register_password_placeholder"             = "Please enter password";
 "register_confirm_password"                 = "Confirm Password:";
-"register_confirm_password_placeholder"     = "Please re-enter your password";
+"register_confirm_password_placeholder"     = "Please re-enter password";
 
 //MARK: OTP
 "otp_mobile"                                = "Mobile Number:";
@@ -101,7 +101,7 @@
 "settings_logout"                           = "Logout";
 "settings_current_password"                 = "Current Password";
 "settings_new_password"                     = "New Password";
-"settings_notes"                            = "*Password must be between 6-12 characters";
+"settings_notes"                            = "*Password minimum 8 characters with at least one lowercase, one uppercase, one number and one special character.";
 "settings_reconfirm_password"               = "Reconfirm Password";
 "settings_current_password_placeholder"     = "Enter current password";
 "settings_new_password_placeholder"         = "Enter new password";
@@ -170,7 +170,7 @@
 "deposit_account_number"                    = "Account Number";
 "deposit_copy"                              = "COPY";
 "deposit_information"                       = "Deposit Information";
-"deposit_history"                           = "Deposit History";
+"deposit_history"                           = "History";
 "deposit_date"                              = "Deposit Date";
 "deposit_channel"                           = "Deposit Channel";
 "deposit_amount"                            = "Deposit Amount";
@@ -253,7 +253,7 @@
 "error_gender_empty"                            = "Please select a gender.";
 "error_birthday_empty"                          = "Please select your birdthday.";
 "error_username_text_length"                    = "Username must be between 6-12 characters.";
-"error_password_text_length"                    = "Password must be minimum 8 characters, 1 uppercase, 1 lowercase, 1 numeric and 1 special character.";
+"error_password_text_length"                    = "Password minimum 8 characters with at least one lowercase, one uppercase, one number and one special character.";
 "error_bank_limit"                              = "Only 2 bank account are allowed to set up";
 "error_deposit_bank_empty"                      = "Please select a bank to deposit";
 "error_deposit_date_empty"                      = "Please select deposit date and time";
@@ -272,6 +272,9 @@
 "picker_fd_l30d"                                = "Last 30 days";
 "picker_fd_l90d"                                = "Last 90 days";
 "picker_ws_all"                                 = "All";
+"picker_ws_all_status"                          = "All Status";
+"picker_ws_all_provider"                        = "All Provider";
+"picker_ws_all_type"                            = "All Type";
 "picker_ws_success"                             = "Success";
 "picker_ws_fail"                                = "Fail";
 "picker_ws_pending"                             = "Pending";
@@ -307,3 +310,32 @@
 "no_bank_liner_step_1"                          = "Click upper right corner bank card icon";
 "no_bank_liner_step_2"                          = "to setup a bank card";
 
+//MARK: Table Header
+"table_header_date" = "Date";
+"table_header_valid_stake" = "Valid Stake";
+"table_header_rate" = "Rate";
+"table_header_rebate_amount" = "Rebate Amount";
+"table_header_trans_id" = "Transaction ID";
+"table_header_type" = "Type";
+"table_header_amount" = "Amount";
+"table_header_platform" = "Platform";
+"table_header_game_name" = "Game Name";
+"table_header_game" = "Game";
+"table_header_betslip_id" = "Betslip ID";
+"table_header_stake" = "Stake";
+"table_header_results" = "Results";
+"table_header_win_loss" = "Win/Loss";
+"table_header_description" = "Description";
+"table_header_in" = "In";
+"table_header_out" = "Out";
+"table_header_balance" = "Balance";
+"table_header_status" = "Status";
+"table_header_from" = "From";
+"table_header_to" = "To";
+"table_header_reason" = "Reason";
+"table_header_member_id" = "Member ID";
+"table_header_username" = "Username";
+"table_header_total_valid_stake" = "Total Valid Stake";
+"table_header_total_commission" = "Total Commission";
+"table_header_commission" = "Commission";
+"table_header_commission_amount" = "Commission Amount";

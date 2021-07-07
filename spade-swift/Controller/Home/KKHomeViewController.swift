@@ -317,6 +317,7 @@ class KKHomeViewController: KKBaseViewController {
             self.updateLobbyBackgroundImage(gameType: self.selectedGameType)
             
             let viewController = KKGameListViewController.init()
+            viewController.homeViewController = self
             viewController.selectedGameType = self.selectedGameType
             viewController.selectedGroupCode = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].code!
             viewController.gameListArray = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].platforms
@@ -335,7 +336,7 @@ class KKHomeViewController: KKBaseViewController {
         })
     }
     
-    private func showLoginPopup() {
+    func showLoginPopup() {
         let viewController = KKLoginViewController()
         viewController.homeViewController = self
         self.present(viewController, animated: true, completion: nil)
@@ -509,6 +510,7 @@ class KKHomeViewController: KKBaseViewController {
         self.updateLobbyBackgroundImage(gameType: self.selectedGameType)
         
         let viewController = KKGameListViewController.init()
+        viewController.homeViewController = self
         viewController.selectedGameType = self.selectedGameType
         viewController.selectedGroupCode = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].code!
         viewController.gameListArray = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].platforms
@@ -534,14 +536,23 @@ class KKHomeViewController: KKBaseViewController {
             let ratio = balance / next
             expBar.progress = Float(ratio)
             messageUnread = userProfile.inboxUnreadMessages!
+            
+            if let avatarId = userProfile.avatarId {
+                if avatarId > 0 {
+                    let image = String(format: "ic_avatar_%d", avatarId)
+                    imgProfile.image = UIImage(named: image)
+                } else {
+                    imgProfile.image = UIImage(named: "ic_profile")
+                }
+            }
         }
         else {
             lblProfileName.text = KKUtil.languageSelectedStringForKey(key: "home_guest")
             lblVip.text = "VIP 1"
             lblMoney.text = "0"
+            imgProfile.image = UIImage(named: "ic_profile")
         }
 
-        imgProfile.image = UIImage(named: "ic_profile")
         lblLanguage.text = KKUtil.decodeUserLanguageFromCache().name
         countryImageView.setUpImage(with: KKUtil.decodeUserCountryFromCache().img)
         lblCountry.text = KKUtil.decodeUserCountryFromCache().code
@@ -595,6 +606,7 @@ extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
         switch selectedGameType {
         case GameType.liveCasino:
             let viewController = KKLiveCasinoViewController.init()
+            viewController.homeViewController = self
             viewController.selectedGameType = selectedGameType
             viewController.selectedGroupCode = KKSingleton.sharedInstance.groupPlatformArray[indexPath.item].code!
             viewController.liveCasinoArray = KKSingleton.sharedInstance.groupPlatformArray[indexPath.item].platforms
@@ -602,6 +614,7 @@ extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
             break;
         default:
             let viewController = KKGameListViewController.init()
+            viewController.homeViewController = self
             viewController.selectedGameType = selectedGameType
             viewController.selectedGroupCode = KKSingleton.sharedInstance.groupPlatformArray[indexPath.item].code!
             viewController.gameListArray = KKSingleton.sharedInstance.groupPlatformArray[indexPath.item].platforms
