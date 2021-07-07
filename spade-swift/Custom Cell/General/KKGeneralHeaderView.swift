@@ -11,7 +11,7 @@ class KKGeneralHeaderView: UITableViewHeaderFooterView {
     
     struct HeaderViewConstant {
         
-        static let headerViewHeight = CGFloat(30)
+        static let headerViewHeight = CGFloat(35)
     }
     
     var headerView: UIView!
