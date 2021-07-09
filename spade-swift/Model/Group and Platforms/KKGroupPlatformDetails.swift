@@ -13,8 +13,6 @@ struct KKGroupPlatformDetails: Codable {
         case name
         case img
         case img2
-//        case img3
-//        case img4
         case code
         case type
     }
@@ -22,8 +20,6 @@ struct KKGroupPlatformDetails: Codable {
     var name: String?
     var img: String?
     var img2: String?
-//    var img3: String?
-//    var img4: String?
     var code: String?
     var type: String?
 
@@ -32,8 +28,6 @@ struct KKGroupPlatformDetails: Codable {
         name = try container.decodeIfPresent(String.self, forKey: .name)
         img = try container.decodeIfPresent(String.self, forKey: .img)
         img2 = try container.decodeIfPresent(String.self, forKey: .img2)
-//        img3 = try container.decodeIfPresent(String.self, forKey: .img3)
-//        img4 = try container.decodeIfPresent(String.self, forKey: .img3)
         code = try container.decodeIfPresent(String.self, forKey: .code)
         type = try container.decodeIfPresent(String.self, forKey: .type)
     }

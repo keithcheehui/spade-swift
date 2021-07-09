@@ -1,7 +1,7 @@
 //
 //  KKFAQResults.swift
 //
-//  Created by Keith CheeHui on 09/06/2021
+//  Created by Wong Sai Khong on 10/07/2021
 //  Copyright (c) . All rights reserved.
 //
 
@@ -10,16 +10,19 @@ import Foundation
 struct KKFAQResults: Codable {
 
   enum CodingKeys: String, CodingKey {
-    case faqs
+    case faqCode = "faq_code"
+    case faq
   }
 
-  var faqs: [KKFAQDetails]?
+  var faqCode: KKFAQFaqCode?
+  var faq: String?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    faqs = try container.decodeIfPresent([KKFAQDetails].self, forKey: .faqs)
+    faqCode = try container.decodeIfPresent(KKFAQFaqCode.self, forKey: .faqCode)
+    faq = try container.decodeIfPresent(String.self, forKey: .faq)
   }
 
 }

@@ -333,20 +333,20 @@ class KKUtil: NSObject {
                     KKUtil.languageSelectedStringForKey(key: "table_header_status"),
                     KKUtil.languageSelectedStringForKey(key: "table_header_reason")]
             
-        case .TransferHistory:
-            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
-                    KKUtil.languageSelectedStringForKey(key: "table_header_trans_id"),
-                    KKUtil.languageSelectedStringForKey(key: "table_header_from"),
-                    KKUtil.languageSelectedStringForKey(key: "table_header_to"),
-                    KKUtil.languageSelectedStringForKey(key: "table_header_amount"),
-                    KKUtil.languageSelectedStringForKey(key: "table_header_status")]
-        
-        case .PromotionHistory:
-            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
-                    KKUtil.languageSelectedStringForKey(key: "table_header_trans_id"),
-                    KKUtil.languageSelectedStringForKey(key: "table_header_type"),
-                    KKUtil.languageSelectedStringForKey(key: "table_header_amount"),
-                    KKUtil.languageSelectedStringForKey(key: "table_header_status")]
+//        case .TransferHistory:
+//            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
+//                    KKUtil.languageSelectedStringForKey(key: "table_header_trans_id"),
+//                    KKUtil.languageSelectedStringForKey(key: "table_header_from"),
+//                    KKUtil.languageSelectedStringForKey(key: "table_header_to"),
+//                    KKUtil.languageSelectedStringForKey(key: "table_header_amount"),
+//                    KKUtil.languageSelectedStringForKey(key: "table_header_status")]
+//
+//        case .PromotionHistory:
+//            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
+//                    KKUtil.languageSelectedStringForKey(key: "table_header_trans_id"),
+//                    KKUtil.languageSelectedStringForKey(key: "table_header_type"),
+//                    KKUtil.languageSelectedStringForKey(key: "table_header_amount"),
+//                    KKUtil.languageSelectedStringForKey(key: "table_header_status")]
 
         case .AffiliateDownline:
             return [KKUtil.languageSelectedStringForKey(key: "table_header_member_id"),
@@ -366,19 +366,14 @@ class KKUtil: NSObject {
                     KKUtil.languageSelectedStringForKey(key: "table_header_rate"),
                     KKUtil.languageSelectedStringForKey(key: "table_header_commission_amount")]
                         
-        case .AffiliateCommTrans:
-            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
-                    KKUtil.languageSelectedStringForKey(key: "table_header_trans_id"),
-                    KKUtil.languageSelectedStringForKey(key: "table_header_type"),
-                    KKUtil.languageSelectedStringForKey(key: "table_header_amount")]
-
         case .RebatePayout:
             return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
                     KKUtil.languageSelectedStringForKey(key: "table_header_valid_stake"),
                     KKUtil.languageSelectedStringForKey(key: "table_header_rate"),
                     KKUtil.languageSelectedStringForKey(key: "table_header_rebate_amount")]
-
-        case .RebateTrans:
+            
+        case .RebateTrans,
+             .AffiliateCommTrans:
             return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
                     KKUtil.languageSelectedStringForKey(key: "table_header_trans_id"),
                     KKUtil.languageSelectedStringForKey(key: "table_header_type"),
@@ -388,6 +383,13 @@ class KKUtil: NSObject {
              .AffiliateCommTable:
             return [KKUtil.languageSelectedStringForKey(key: "table_header_valid_stake"),
                     KKUtil.languageSelectedStringForKey(key: "table_header_rate")]
+            
+        case .History:
+            return [KKUtil.languageSelectedStringForKey(key: "table_header_date"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_trans_id"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_amount"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_status"),
+                    KKUtil.languageSelectedStringForKey(key: "table_header_reason")]
         }
     }
     

@@ -86,7 +86,7 @@ class KKSupportViewController: KKBaseViewController {
         KKApiClient.getLiveChat().execute { LiveChatResponse in
             
             self.hideAnimatedLoader()
-            self.liveChatArray = LiveChatResponse.results?.live_chats
+            self.liveChatArray = LiveChatResponse.results?.liveChats
             self.liveChatCollectionView.reloadData()
             
         } onFailure: { errorMessage in

@@ -69,16 +69,9 @@ class KKWithdrawViewController: KKBaseViewController {
                 details.id = item.rawValue
                 details.title = KKUtil.languageSelectedStringForKey(key: "withdraw_history")
                 details.imgIcon = "ic_withdraw_history"
-                
-//            case .bankCard:
-//                details.id = item.rawValue
-//                details.title = KKUtil.languageSelectedStringForKey(key: "withdraw_bank_card")
-//                details.imgIcon = "ic_bank_card"
             }
-           
             sideMenuList.append(details)
         }
-        
         sideMenuTableView.reloadData()
     }
     
@@ -116,10 +109,6 @@ class KKWithdrawViewController: KKBaseViewController {
             viewController.tableViewType = .WithdrawHistory
             changeView(vc: viewController)
             break;
-//        case WithdrawSideMenu.bankCard.rawValue:
-//            let viewController = KKBankListViewController()
-//            changeView(vc: viewController)
-//            break;
         default:
             if userBankList.isEmpty {
                 let viewController = KKNoBankViewController()

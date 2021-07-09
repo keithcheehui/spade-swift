@@ -1,7 +1,7 @@
 //
 //  KKUserProfileResponse.swift
 //
-//  Created by Keith CheeHui on 16/06/2021
+//  Created by Wong Sai Khong on 10/07/2021
 //  Copyright (c) . All rights reserved.
 //
 
@@ -10,25 +10,25 @@ import Foundation
 struct KKUserProfileResponse: Codable {
 
   enum CodingKeys: String, CodingKey {
-    case error
+    case results
     case code
     case message
-    case results
+    case error
   }
 
-  var error: Bool?
+  var results: KKUserProfileResults?
   var code: Int?
   var message: String?
-  var results: KKUserProfileResults?
+  var error: Bool?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    error = try container.decodeIfPresent(Bool.self, forKey: .error)
+    results = try container.decodeIfPresent(KKUserProfileResults.self, forKey: .results)
     code = try container.decodeIfPresent(Int.self, forKey: .code)
     message = try container.decodeIfPresent(String.self, forKey: .message)
-    results = try container.decodeIfPresent(KKUserProfileResults.self, forKey: .results)
+    error = try container.decodeIfPresent(Bool.self, forKey: .error)
   }
 
 }

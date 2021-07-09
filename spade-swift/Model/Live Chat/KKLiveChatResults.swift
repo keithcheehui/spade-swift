@@ -10,13 +10,13 @@ import Foundation
 struct KKLiveChatResults: Codable {
 
   enum CodingKeys: String, CodingKey {
-    case live_chats
+    case liveChats = "live_chats"
   }
 
-  var live_chats: [KKLiveChatDetails]?
+  var liveChats: [KKLiveChatDetails]?
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    live_chats = try container.decodeIfPresent([KKLiveChatDetails].self, forKey: .live_chats)
+    liveChats = try container.decodeIfPresent([KKLiveChatDetails].self, forKey: .liveChats)
   }
 }

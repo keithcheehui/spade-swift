@@ -35,10 +35,10 @@ class KKApiClient: NSObject {
                         print("failure data = \(apiErrorDetail)")
                         
                         if let apiCode = apiErrorDetail.code, let apiMessage = apiErrorDetail.message {
-//                            if (apiCode == 401 && apiMessage == "Unauthenticated.") {
-//                                KKUtil.forceLogoutUser()
-//                                return
-//                            }
+                            if (apiCode == 401 && apiMessage == "Unauthenticated.") {
+                                KKUtil.forceLogoutUser()
+                                return
+                            }
                             return completion(.failure(apiMessage))
                         } else {
                             return completion(.failure(error.localizedDescription))
@@ -171,6 +171,7 @@ class KKApiClient: NSObject {
     static func getFAQ() -> Future<KKFAQResponse> {
         let parameter = [
             APIKeys.locale: KKUtil.decodeUserLanguageFromCache().locale!,
+            APIKeys.faqCode: "GNL"
         ] as [String : Any]
         
         return performRequest(route: .getFAQ(parameter: parameter))
@@ -208,11 +209,11 @@ class KKApiClient: NSObject {
         return performRequest(route: .getBankList)
     }
     
-    static func getUserBankCards() -> Future<KKWithdrawPageDataResponse> {
+    static func getUserBankCards() -> Future<KKPageDataResponse> {
         return performRequest(route: .userBankCards)
     }
     
-    static func depositPageData() -> Future<KKDepositPageDataResponse> {
+    static func depositPageData() -> Future<KKPageDataResponse> {
         return performRequest(route: .depositPageData)
     }
     
@@ -252,7 +253,7 @@ class KKApiClient: NSObject {
         })
     }
     
-    static func depositHistory(filter: String, historyStatus: String) -> Future<KKDepositHistoryResponse> {
+    static func depositHistory(filter: String, historyStatus: String) -> Future<KKHistoryResponse> {
         let parameter = [
             APIKeys.filterDuration: filter,
             APIKeys.status: historyStatus
@@ -260,7 +261,7 @@ class KKApiClient: NSObject {
         return performRequest(route: .depositHistory(parameter: parameter))
     }
         
-    static func withdrawPageData() -> Future<KKWithdrawPageDataResponse> {
+    static func withdrawPageData() -> Future<KKPageDataResponse> {
         return performRequest(route: .withdrawPageData)
     }
     
@@ -273,7 +274,7 @@ class KKApiClient: NSObject {
         return performRequest(route: .withdraw(parameter: parameter))
     }
     
-    static func withdrawHistory(filter: String, historyStatus: String) -> Future<KKWithdrawHistoryResponse> {
+    static func withdrawHistory(filter: String, historyStatus: String) -> Future<KKHistoryResponse> {
         let parameter = [
             APIKeys.filterDuration: filter,
             APIKeys.status: historyStatus
@@ -315,12 +316,22 @@ class KKApiClient: NSObject {
         return performRequest(route: .getUserBettingPlatformsAndGroups(parameter: parameter))
     }
     
-    static func getUserAccountDetails(filter: String) -> Future<KKUserCashFlowResponse> {
+    static func getUserAccountDetails(filter: String) -> Future<KKUserAccountDetailResponse> {
         let parameter = [
             APIKeys.filterDuration: filter
         ] as [String : Any]
         
         return performRequest(route: .getUserAccountDetails(parameter: parameter))
+    }
+    
+    static func getHistory(filter: String, status: String, groupCode: String) -> Future<KKUserHistoryResponse> {
+        let parameter = [
+            APIKeys.filterDuration: filter,
+            APIKeys.status: status,
+            APIKeys.filterType: groupCode
+        ] as [String : Any]
+        
+        return performRequest(route: .getHistory(parameter: parameter))
     }
     
     static func getUserBettingRecord(platformCode: String, groupCode: String) -> Future<KKUserBettingHistoryResponse> {
@@ -359,8 +370,24 @@ class KKApiClient: NSObject {
         return performRequest(route: .rebateProfile)
     }
     
+    static func getRebatePayout() -> Future<KKPayoutResponse> {
+        return performRequest(route: .rebatePayout)
+    }
+    
+    static func getRebateTransaction() -> Future<KKTransactionResponse> {
+        return performRequest(route: .rebateTransaction)
+    }
+    
     static func getRebateTable() -> Future<KKTableResponse> {
         return performRequest(route: .rebateTable)
+    }
+    
+    static func rebateCollect(amount: String) -> Future<KKGeneralResponse> {
+        let parameter = [
+            APIKeys.amount: amount
+        ] as [String : Any]
+        
+        return performRequest(route: .rebateCollect(parameter: parameter))
     }
     
     //MARK: - Affiliate
@@ -380,12 +407,28 @@ class KKApiClient: NSObject {
         return performRequest(route: .affiliateDownline)
     }
     
-    static func getAffiliateTurnover() -> Future<KKAffiliateDownlineResponse> {
+    static func getAffiliateTurnover() -> Future<KKAffiliateTurnoverResponse> {
         return performRequest(route: .affiliateTurnover)
+    }
+    
+    static func getAffiliatePayout() -> Future<KKPayoutResponse> {
+        return performRequest(route: .affiliatePayout)
+    }
+    
+    static func getAffiliateCommissionTransaction() -> Future<KKTransactionResponse> {
+        return performRequest(route: .affiliateCommissionTransaction)
     }
     
     static func getAffiliateCommissionTable() -> Future<KKTableResponse> {
         return performRequest(route: .commissionTable)
+    }
+    
+    static func affiliateCollect(amount: String) -> Future<KKGeneralResponse> {
+        let parameter = [
+            APIKeys.amount: amount
+        ] as [String : Any]
+        
+        return performRequest(route: .affiliateCollect(parameter: parameter))
     }
     
     //MARK: - Private

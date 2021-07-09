@@ -122,16 +122,34 @@ class KKMyRebateViewController: KKBaseViewController {
             }
         }
         
-        lblCurrency.text = "RM"
+        lblCurrency.text = KKUtil.decodeUserCountryFromCache().currency
     }
     
     ///Button Actions
     @IBAction func btnCollectCommissionDidPressed(){
-
+        if let text = txtWithdrawCommissionValue.text {
+            if text.isEmpty {
+                self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_amount_empty"))
+                return
+            }
+            rebateCollectAPI(amount: text)
+        }
     }
     
     @IBAction func clearText() {
         txtWithdrawCommissionValue.text = ""
+    }
+    
+    //MARK: API Call
+    func rebateCollectAPI(amount: String){
+        self.showAnimatedLoader()
+        KKApiClient.rebateCollect(amount: amount).execute{ response in
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Success, alertMessage: response.message ?? "")
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
+        }
     }
 }
 

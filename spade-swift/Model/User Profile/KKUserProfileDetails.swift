@@ -40,7 +40,7 @@ struct KKUserProfileDetails: Codable {
   var tier: KKUserProfileTier?
   var phoneNo: String?
   var locale: String?
-  var walletBalance: Float?
+  var walletBalance: String?
   var inboxUnreadMessages: Bool?
 
   init(from decoder: Decoder) throws {
@@ -58,7 +58,7 @@ struct KKUserProfileDetails: Codable {
     tier = try container.decodeIfPresent(KKUserProfileTier.self, forKey: .tier)
     phoneNo = try container.decodeIfPresent(String.self, forKey: .phoneNo)
     locale = try container.decodeIfPresent(String.self, forKey: .locale)
-    walletBalance = try container.decodeIfPresent(Float.self, forKey: .walletBalance) ?? 0.00
+    walletBalance = try container.decodeIfPresent(String.self, forKey: .walletBalance)
     inboxUnreadMessages = try container.decodeIfPresent(Bool.self, forKey: .inboxUnreadMessages) ?? false
   }
 }

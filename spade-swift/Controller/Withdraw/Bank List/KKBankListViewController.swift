@@ -68,7 +68,7 @@ class KKBankListViewController: KKBaseViewController {
     }
     
     func updateView() {
-        if (self.userBankList != nil) {
+        if (self.userBankList != nil && !self.userBankList.isEmpty) {
             self.bankTableView.isHidden = false
         } else {
             self.bankTableView.isHidden = true
@@ -119,34 +119,16 @@ extension KKBankListViewController: UITableViewDataSource, UITableViewDelegate {
             fatalError("DequeueReusableCell failed while casting")
         }
         cell.imgSelected.isHidden = true
+        cell.containerView.layer.borderWidth = 0
+        cell.lblBankAccount.isHidden = false
+        cell.lblAccountName.isHidden = false
+        cell.lblAccountNameHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
 
-//        if (indexPath.row == 0) {
-//            cell.containerView.backgroundColor = UIColor(white: 0, alpha: 0.3)
-//            cell.lblBankName.font = UIFont.boldSystemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
-//
-//            cell.lblBankName.text = KKUtil.languageSelectedStringForKey(key: "withdraw_add_bank")
-//            cell.lblBankAccount.isHidden = true
-//            cell.lblAccountName.isHidden = true
-//            cell.lblAccountNameHeight.constant = 0
-//            cell.imgBank.image = UIImage(named: "ic_add")
-//        } else {
-            cell.containerView.layer.borderWidth = 0
- 
-            if let bankAccNumber = userBankList[indexPath.row].bankAccountNumber {
-                if bankAccNumber.isEmpty {
-                    cell.lblBankAccount.text = ""
-                } else {
-                    cell.lblBankAccount.text = userBankList[indexPath.row].bankAccountNumber!.bankAccountMasked
-                }
-            }
-            cell.imgBank.setUpImage(with: userBankList[indexPath.row].bankImg)
-            cell.lblBankName.text = userBankList[indexPath.row].bankName
-            cell.lblAccountName.text = userBankList[indexPath.row].bankAccountName
-            cell.lblBankAccount.isHidden = false
-            cell.lblAccountName.isHidden = false
-            cell.lblAccountNameHeight.constant = KKUtil.ConvertSizeByDensity(size: 20)
-//        }
-        
+        cell.lblBankAccount.text = userBankList[indexPath.row].bankAccountNumber?.bankAccountMasked
+        cell.lblAccountName.text = userBankList[indexPath.row].bankAccountName
+        cell.imgBank.setUpImage(with: userBankList[indexPath.row].bank?.img)
+        cell.lblBankName.text = userBankList[indexPath.row].bank?.name
+
         cell.selectionStyle = .none
 
         return cell

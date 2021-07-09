@@ -48,6 +48,7 @@ enum ApiRouter: URLRequestConvertible {
     case updateUserAvatar(parameter: [String: Any])
     case getUserBettingPlatformsAndGroups(parameter: [String: Any])
     case getUserAccountDetails(parameter: [String: Any])
+    case getHistory(parameter: [String: Any])
     case getUserBettingRecord(parameter: [String: Any])
     
     //MARK: - Inbox
@@ -57,14 +58,20 @@ enum ApiRouter: URLRequestConvertible {
     
     //MARK: - Rebate
     case rebateProfile
+    case rebatePayout
+    case rebateTransaction
     case rebateTable
-    
+    case rebateCollect(parameter: [String: Any])
+
     //MARK: - Affiliate
     case myAffiliate
     case getAffiliateGuideline(parameter: [String: Any])
     case affiliateDownline
     case affiliateTurnover
+    case affiliatePayout
+    case affiliateCommissionTransaction
     case commissionTable
+    case affiliateCollect(parameter: [String: Any])
     
     case memberLandingData(parameter: [String: Any])
     case getLatestWallet
@@ -95,15 +102,20 @@ enum ApiRouter: URLRequestConvertible {
              .getUserProfile,
              .getUserBettingPlatformsAndGroups,
              .getUserAccountDetails,
+             .getHistory,
              .getUserBettingRecord,
              .getInbox,
              .getInboxReadStatus,
              .rebateProfile,
+             .rebatePayout,
+             .rebateTransaction,
              .rebateTable,
              .myAffiliate,
              .getAffiliateGuideline,
              .affiliateDownline,
              .affiliateTurnover,
+             .affiliatePayout,
+             .affiliateCommissionTransaction,
              .commissionTable,
              .memberLandingData,
              .getLatestWallet:
@@ -120,6 +132,8 @@ enum ApiRouter: URLRequestConvertible {
              .deposit,
              .withdraw,
              .updateInboxReadStatus,
+             .rebateCollect,
+             .affiliateCollect,
              .changePassword,
              .logOutUser:
             return .post
@@ -221,7 +235,10 @@ enum ApiRouter: URLRequestConvertible {
             return "member/betslipsPlatformsAndGroups"
             
         case .getUserAccountDetails:
-            return "member/cashflows"
+            return "member/account/detail"
+            
+        case .getHistory:
+            return "member/history"
             
         case .getUserBettingRecord:
             return "member/betslips"
@@ -238,8 +255,17 @@ enum ApiRouter: URLRequestConvertible {
         case .rebateProfile:
             return "member/rebate/profile"
             
+        case .rebatePayout:
+            return "member/rebate/payout"
+            
+        case .rebateTransaction:
+            return "member/rebate/transaction"
+            
         case .rebateTable:
             return "member/rebate/rebateTable"
+            
+        case .rebateCollect:
+            return "member/rebate/collect"
             
         case .myAffiliate:
             return "member/affiliate/myAffiliate"
@@ -253,8 +279,17 @@ enum ApiRouter: URLRequestConvertible {
         case .affiliateTurnover:
             return "member/affiliate/affiliateTurnover"
             
+        case .affiliatePayout:
+            return "member/affiliate/affiliatePayout"
+            
+        case .affiliateCommissionTransaction:
+            return "member/affiliate/affiliateCommissionTransaction"
+            
         case .commissionTable:
             return "member/affiliate/commissionTable"
+            
+        case .affiliateCollect:
+            return "member/affiliate/collect"
             
         case .memberLandingData:
             return "member/memberLanding"
@@ -349,6 +384,9 @@ enum ApiRouter: URLRequestConvertible {
         case .getUserAccountDetails(let parameter):
             return parameter
             
+        case .getHistory(let parameter):
+            return parameter
+            
         case .getUserBettingRecord(let parameter):
             return parameter
             
@@ -356,6 +394,12 @@ enum ApiRouter: URLRequestConvertible {
             return parameter
             
         case .updateInboxReadStatus(let parameter):
+            return parameter
+            
+        case .rebateCollect(let parameter):
+            return parameter
+            
+        case .affiliateCollect(let parameter):
             return parameter
             
         case .memberLandingData(let parameter):
@@ -374,10 +418,14 @@ enum ApiRouter: URLRequestConvertible {
              .withdrawPageData,
              .getUserProfile,
              .rebateProfile,
+             .rebatePayout,
+             .rebateTransaction,
              .rebateTable,
              .myAffiliate,
              .affiliateDownline,
              .affiliateTurnover,
+             .affiliatePayout,
+             .affiliateCommissionTransaction,
              .commissionTable,
              .getLatestWallet,
              .logOutUser,

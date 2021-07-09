@@ -474,10 +474,7 @@ class KKHomeViewController: KKBaseViewController {
             
             lblProfileName.text = userProfile.code
             lblVip.text = userProfile.tier?.currentLevelName!
-            
-            if let userWallet = userProfile.walletBalance {
-                self.lblMoney.text = KKUtil.addCurrencyFormatWithFloat(value: userWallet)
-            }
+            lblMoney.text = userProfile.walletBalance
             
             let balance = CGFloat(truncating: NumberFormatter().number(from: (userProfile.tier?.balance)!)!)
             let next = CGFloat(truncating: NumberFormatter().number(from: (userProfile.tier?.totalAmountToNextLevel)!)!)
@@ -519,12 +516,10 @@ class KKHomeViewController: KKBaseViewController {
                 self.refreshWalletBtn.isEnabled = true
                 
                 if var userProfile = KKUtil.decodeUserProfileFromCache(), let userInfo = userWalletResponse.results {
-                    userProfile.walletBalance = userInfo.walletBalance!
+                    userProfile.walletBalance = userInfo.walletBalance
                     KKUtil.encodeUserProfile(object: userProfile)
-                }
-                
-                if let userWalletResult = userWalletResponse.results {
-                    self.lblMoney.text = KKUtil.addCurrencyFormatWithFloat(value: userWalletResult.walletBalance!)
+                    
+                    self.lblMoney.text = userInfo.walletBalance
                 }
                 
                 self.showAlertView(type: .Success, alertMessage: userWalletResponse.message ?? "")
@@ -599,15 +594,15 @@ class KKHomeViewController: KKBaseViewController {
                 let languageObject = KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == locale})
                 KKUtil.encodeUserLanguage(object: languageObject)
                 
-                let walletBalance = detailResponse.userInfo?.walletBalance ?? 0.00
+                let walletBalance = detailResponse.userInfo?.walletBalance
                 self.getUserProfilAPI(walletBalance: walletBalance)
             }
         } onFailure: { errorMessage in
-            self.getUserProfilAPI(walletBalance: 0.00)
+            self.getUserProfilAPI(walletBalance: "0.00")
         }
     }
     
-    @objc func getUserProfilAPI(walletBalance: Float) {
+    @objc func getUserProfilAPI(walletBalance: String?) {
         KKApiClient.getUserProfile().execute { userProfileResponse in
 
             guard var userProfile = userProfileResponse.results?.user else { return }

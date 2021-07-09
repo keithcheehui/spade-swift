@@ -37,7 +37,7 @@ class KKWithdrawRequestViewController: KKBaseViewController {
 
         initialLayout()
         changeLayoutView(noBank: userBankList.isEmpty)
-        setNoticeLabel(min: userBankList[selectedBankItem].bankMinWithdrawal, max: userBankList[selectedBankItem].bankMaxWithdrawal)
+        setNoticeLabel(min: userBankList[selectedBankItem].bank?.minWithdrawal, max: userBankList[selectedBankItem].bank?.maxWithdrawal)
 
 //        getBankListAPI()
     }
@@ -192,17 +192,10 @@ extension KKWithdrawRequestViewController: UITableViewDataSource, UITableViewDel
             cell.containerView.layer.borderWidth = 0
         }
  
-        if let bankAccNumber = userBankList[indexPath.row].bankAccountNumber {
-            if bankAccNumber.isEmpty {
-                cell.lblBankAccount.text = ""
-            } else {
-                cell.lblBankAccount.text = userBankList[indexPath.row].bankAccountNumber!.bankAccountMasked
-            }
-        }
-        
-        cell.imgBank.setUpImage(with: userBankList[indexPath.row].bankImg)
-        cell.lblBankName.text = userBankList[indexPath.row].bankName
+        cell.lblBankAccount.text = userBankList[indexPath.row].bankAccountNumber?.bankAccountMasked
         cell.lblAccountName.text = userBankList[indexPath.row].bankAccountName
+        cell.imgBank.setUpImage(with: userBankList[indexPath.row].bank?.img)
+        cell.lblBankName.text = userBankList[indexPath.row].bank?.name
         
         cell.selectionStyle = .none
         
@@ -211,7 +204,7 @@ extension KKWithdrawRequestViewController: UITableViewDataSource, UITableViewDel
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedBankItem = indexPath.row
-        setNoticeLabel(min: userBankList[selectedBankItem].bankMinWithdrawal, max: userBankList[selectedBankItem].bankMaxWithdrawal)
+        setNoticeLabel(min: userBankList[selectedBankItem].bank?.minWithdrawal, max: userBankList[selectedBankItem].bank?.maxWithdrawal)
         tableView.reloadData()
     }
     

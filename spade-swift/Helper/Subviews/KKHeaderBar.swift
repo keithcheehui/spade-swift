@@ -78,11 +78,7 @@ final class KKHeaderBar: UIView {
             lblProfileName.text = ""
         }
         
-        if let wallet = profileData?.walletBalance {
-            lblMoney.text = KKUtil.addCurrencyFormatWithFloat(value: wallet)
-        } else {
-            lblMoney.text = KKUtil.addCurrencyFormatWithFloat(value: 0.00)
-        }
+        lblMoney.text = profileData?.walletBalance
     }
     
     @IBAction func btnRefreshDidPressed(){
@@ -103,16 +99,12 @@ final class KKHeaderBar: UIView {
                 self.refreshWalletBtn.isEnabled = true
                 
                 if var userProfile = KKUtil.decodeUserProfileFromCache(), let userInfo = userWalletResponse.results {
-                    userProfile.walletBalance = userInfo.walletBalance!
+                    userProfile.walletBalance = userInfo.walletBalance
                     KKUtil.encodeUserProfile(object: userProfile)
+                    
+                    self.lblMoney.text = userInfo.walletBalance
                 }
-                
-                if let userWalletResult = userWalletResponse.results {
-                    self.lblMoney.text = KKUtil.addCurrencyFormatWithFloat(value: userWalletResult.walletBalance!)
-                }
-                
             } onFailure: { errorMessage in
-                
                 self.refreshWalletIcon.removeRotate()
                 self.refreshWalletBtn.isEnabled = true
             }

@@ -104,10 +104,13 @@ struct APIKeys {
     static let withdrawAmount = "withdraw_amount"
     static let withdrawAccountNo = "bank_account_number"
     static let filterDuration = "filter_duration"
+    static let filterType = "filter_type"
     static let inboxMessageId = "inbox_message_id"
     static let transStatus = "trans_status"
     static let bankAccountCardId = "bank_account_card_id"
     static let avatarId = "avatar_id"
+    static let amount = "amount"
+    static let faqCode = "faq_code"
 }
 
 struct APIValue {
@@ -217,18 +220,17 @@ enum TableViewType: Int, CaseIterable {
     case AccountDetails = 2
     case DepositHistory = 3
     case WithdrawHistory = 4
-    case TransferHistory = 5
-    case PromotionHistory = 6
+    case History = 5
 
-    case AffiliateDownline = 7
-    case AffiliateTurnover = 8
-    case AffiliatePayout = 9
-    case AffiliateCommTrans = 10
-    case AffiliateCommTable = 11
+    case AffiliateDownline = 6
+    case AffiliateTurnover = 7
+    case AffiliatePayout = 8
+    case AffiliateCommTrans = 9
+    case AffiliateCommTable = 10
     
-    case RebatePayout = 12
-    case RebateTrans = 13
-    case RebateTable = 14
+    case RebatePayout = 11
+    case RebateTrans = 12
+    case RebateTable = 13
 }
 
 enum PopupTableViewType: Int, CaseIterable {
@@ -255,10 +257,11 @@ enum HistoryStatus: String, CaseIterable {
     case pending = "pending"
 }
 
-enum CashflowStatus: String, CaseIterable {
-    case deposit = "Deposit"
-    case depositPromotion = "Deposit promotion"
-    case withdrawal = "Withdrawal"
+enum HistoryTab: String, CaseIterable {
+    case deposit = "deposit"
+    case withdraw = "withdraw"
+    case transfer = "transfer"
+    case promotion = "promotion"
 }
 
 enum GenderType: String, CaseIterable {
@@ -289,7 +292,6 @@ enum PersonalSideMenu: Int, CaseIterable {
     case userInfo = 0
     case bettingRecord = 1
     case accountDetail = 2
-//    case individualReport = 3
     case wallet = 3
     case bankCard = 4
     case history = 5
@@ -331,7 +333,6 @@ enum DepositSideMenu: Int, CaseIterable {
 enum WithdrawSideMenu: Int, CaseIterable {
     case withdraw = 0
     case withdrawHistory = 1
-//    case bankCard = 2
 }
 
 enum SettingsSideMenu: Int, CaseIterable {

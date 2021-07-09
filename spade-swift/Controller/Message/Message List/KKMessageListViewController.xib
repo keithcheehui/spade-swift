@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Vd-7j-bDu">
-                    <rect key="frame" x="20" y="10" width="856" height="373"/>
+                    <rect key="frame" x="20" y="20" width="856" height="394"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -34,9 +34,9 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="7Vd-7j-bDu" secondAttribute="trailing" constant="20" id="1lP-rJ-7mo"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="7Vd-7j-bDu" secondAttribute="bottom" constant="10" id="JFD-ur-mdC"/>
                 <constraint firstItem="7Vd-7j-bDu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="LjX-pG-Ssg"/>
-                <constraint firstItem="7Vd-7j-bDu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="SPY-YG-HEr"/>
+                <constraint firstAttribute="bottom" secondItem="7Vd-7j-bDu" secondAttribute="bottom" id="kvT-xa-66u"/>
+                <constraint firstItem="7Vd-7j-bDu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="r1e-2J-nB0"/>
             </constraints>
             <point key="canvasLocation" x="-165" y="92"/>
         </view>

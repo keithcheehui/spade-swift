@@ -146,6 +146,7 @@
 "rebate_rebate_table"                       = "Rebate Table";
 "rebate_rebate_amount"                      = "Rebate Amount";
 "rebate_rebate_profile_id"                  = "ID: ";
+"rebate_total_rebate"                     = "Total Rebate: %@%@";
 
 //MARK: My Rebate
 "my_rebate_total_rebate"                    = "Total Rebate";
@@ -262,6 +263,7 @@
 "error_deposit_refnum_empty"                    = "Please enter reference number";
 "error_deposit_promo_empty"                     = "Please select a promotion";
 "error_deposit_image_empty"                     = "Please upload your deposit receipt";
+"error_amount_empty"                            = "Amount should not be empty.";
 
 //MARK: Picker
 "picker_fd_td"                                  = "Today";
@@ -289,6 +291,7 @@
 "picker_affiliate_type"                         = "Type";
 "picker_type_payout"                            = "Payout";
 "picker_type_collect"                           = "Collect";
+"picker_transfer"                               = "Transfer";
 
 //MARK: Dialog Alert
 "alert_title_withdraw"                          = "Withdrawal Request Status";

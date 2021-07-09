@@ -148,15 +148,15 @@ class KKSplashScreenViewController: KKBaseViewController {
                 let languageObject = KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == locale})
                 KKUtil.encodeUserLanguage(object: languageObject)
                 
-                let walletBalance = detailResponse.userInfo?.walletBalance ?? 0.00
+                let walletBalance = detailResponse.userInfo?.walletBalance
                 self.getUserProfilAPI(walletBalance: walletBalance)
             }
         } onFailure: { errorMessage in
-            self.getUserProfilAPI(walletBalance: 0.00)
+            self.getUserProfilAPI(walletBalance: "0.00")
         }
     }
     
-    @objc func getUserProfilAPI(walletBalance: Float) {
+    @objc func getUserProfilAPI(walletBalance: String?) {
         KKApiClient.getUserProfile().execute { userProfileResponse in
             guard var userProfile = userProfileResponse.results?.user else { return }
             userProfile.walletBalance = walletBalance

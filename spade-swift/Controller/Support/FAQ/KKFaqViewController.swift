@@ -14,8 +14,6 @@ class KKFaqViewController: KKBaseViewController, WKNavigationDelegate {
     @IBOutlet weak var faqTableView: UITableView!
     @IBOutlet weak var faqWebView: WKWebView!
     @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
-
-    var faqArray: [KKFAQDetails]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +36,7 @@ class KKFaqViewController: KKBaseViewController, WKNavigationDelegate {
     func getFAQAPI() {
                 
         KKApiClient.getFAQ().execute { [self] FAQResponse in
-            
-            self.faqArray = FAQResponse.results?.faqs
-            if !self.faqArray[0].content!.isEmpty {
-                self.faqWebView.loadHTMLString(self.faqArray[0].content!, baseURL: nil)
-            }
+            self.faqWebView.loadHTMLString(FAQResponse.results?.faq ?? "", baseURL: nil)
         } onFailure: { errorMessage in
             self.showAlertView(type: .Error, alertMessage: errorMessage)
         }

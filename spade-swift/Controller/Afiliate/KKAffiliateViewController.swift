@@ -26,6 +26,8 @@ class KKAffiliateViewController: KKBaseViewController {
     
     var tabGroupArray: [KKUserBettingGroupDetails]! = []
     var affiliateInfo: KKAffiliateProfileAffiliate!
+    var payoutArray: [KKPayoutGroup]! = []
+    var transactionArray: [KKTransactionTransactions]! = []
     var tableArray: [KKTableGroups]! = []
     
     override func viewDidLoad() {
@@ -36,7 +38,23 @@ class KKAffiliateViewController: KKBaseViewController {
         
         getUserBettingPlatformsAndGroupsAPI()
         getMyAffiliateAPI()
+        getAffiliatePayoutAPI()
+        getAffiliateTransactionAPI()
         getCommissionTableAPI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.getNotified), name: Notification.Name("NotificationGetMyAffiliate"), object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("NotificationGetMyAffiliate"), object: nil)
+    }
+    
+    @objc private func getNotified(notification: NSNotification){
+        getMyAffiliateAPI()
     }
     
     func setHeaderBarLayout() {
@@ -120,23 +138,41 @@ class KKAffiliateViewController: KKBaseViewController {
             if let user = response.results?.user, var userProfile = KKUtil.decodeUserProfileFromCache() {
                 if let wallet = user.wallet {
                     if let balance = wallet.balance {
-                        if !balance.isEmpty {
-                            let balanceFloat = Float(balance)
-                            userProfile.walletBalance = balanceFloat
-                            KKUtil.encodeUserProfile(object: userProfile)
-                        }
+                        userProfile.walletBalance = balance
+                        KKUtil.encodeUserProfile(object: userProfile)
                     }
                 }
-                if let affiliate = user.affiliate {
-                    self.affiliateInfo = affiliate
-                }
             }
+            if let affiliate = response.results?.affiliate {
+                self.affiliateInfo = affiliate
+            }
+            self.setHeaderBarLayout()
             self.buttonHover(type: self.selectedViewType)
             self.hideAnimatedLoader()
 
         } onFailure: { errorMessage in
             self.buttonHover(type: self.selectedViewType)
             self.hideAnimatedLoader()
+        }
+    }
+    
+    func getAffiliatePayoutAPI() {
+        self.showAnimatedLoader()
+        KKApiClient.getAffiliatePayout().execute { response in
+            self.hideAnimatedLoader()
+            self.payoutArray = response.results?.group
+        } onFailure: { errorMessage in
+
+        }
+    }
+    
+    func getAffiliateTransactionAPI() {
+        self.showAnimatedLoader()
+        KKApiClient.getAffiliateCommissionTransaction().execute { response in
+            self.hideAnimatedLoader()
+            self.transactionArray = response.results?.commissionTransactions
+        } onFailure: { errorMessage in
+
         }
     }
     
@@ -172,11 +208,14 @@ class KKAffiliateViewController: KKBaseViewController {
             break;
         case AffiliatteSideMenu.payout.rawValue:
             let viewController = KKGeneralTableViewController()
+            viewController.payoutArray = payoutArray
+            viewController.tableArray = tableArray
             viewController.tableViewType = .AffiliatePayout
             changeView(vc: viewController)
             break;
         case AffiliatteSideMenu.commissionTrans.rawValue:
             let viewController = KKGeneralTableViewController()
+            viewController.transactionArray = transactionArray
             viewController.tableViewType = .AffiliateCommTrans
             viewController.rightDropdownOptions = pickerTransTypeArray
             changeView(vc: viewController)

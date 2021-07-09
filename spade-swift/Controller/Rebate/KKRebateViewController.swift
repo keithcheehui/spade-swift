@@ -24,6 +24,8 @@ class KKRebateViewController: KKBaseViewController {
     var selectedViewType = AffiliatteSideMenu.myAffiliate.rawValue
     
     var tabGroupArray: [KKUserBettingGroupDetails]! = []
+    var payoutArray: [KKPayoutGroup]! = []
+    var transactionArray: [KKTransactionTransactions]! = []
     var tableArray: [KKTableGroups]! = []
     var rebateInfo: KKRebateProfileRebate!
 
@@ -97,31 +99,21 @@ class KKRebateViewController: KKBaseViewController {
         }
     }
     
-    func getRebateTableAPI() {
-        KKApiClient.getRebateTable().execute { response in
-            if let rebateResults = response.results?.groups {
-                self.tableArray = rebateResults
-            }
-        } onFailure: { errorMessage in
-
-        }
-    }
-    
     func getRebateProfileAPI() {
         self.showAnimatedLoader()
         
         KKApiClient.getRebateProfile().execute { response in
-            if let user = response.results?.user, var userProfile = KKUtil.decodeUserProfileFromCache() {
-                if let wallet = user.wallet {
-                    if let balance = wallet.balance {
-                        if !balance.isEmpty {
-                            let balanceFloat = Float(balance)
-                            userProfile.walletBalance = balanceFloat
-                            KKUtil.encodeUserProfile(object: userProfile)
-                        }
-                    }
-                }
-            }
+//            if let user = response.results?.user, var userProfile = KKUtil.decodeUserProfileFromCache() {
+//                if let wallet = user.wallet {
+//                    if let balance = wallet.balance {
+//                        if !balance.isEmpty {
+//                            let balanceFloat = Float(balance)
+//                            userProfile.walletBalance = balanceFloat
+//                            KKUtil.encodeUserProfile(object: userProfile)
+//                        }
+//                    }
+//                }
+//            }
             if let rebate = response.results?.rebate {
                 self.rebateInfo = rebate
             }
@@ -131,6 +123,36 @@ class KKRebateViewController: KKBaseViewController {
         } onFailure: { errorMessage in
             self.buttonHover(type: self.selectedViewType)
             self.hideAnimatedLoader()
+        }
+    }
+    
+    func getRebatePayoutAPI() {
+        self.showAnimatedLoader()
+        KKApiClient.getRebatePayout().execute { response in
+            self.hideAnimatedLoader()
+            self.payoutArray = response.results?.group
+        } onFailure: { errorMessage in
+
+        }
+    }
+    
+    func getRebateTransactionAPI() {
+        self.showAnimatedLoader()
+        KKApiClient.getRebateTransaction().execute { response in
+            self.hideAnimatedLoader()
+            self.transactionArray = response.results?.commissionTransactions
+        } onFailure: { errorMessage in
+
+        }
+    }
+    
+    func getRebateTableAPI() {
+        KKApiClient.getRebateTable().execute { response in
+            if let rebateResults = response.results?.groups {
+                self.tableArray = rebateResults
+            }
+        } onFailure: { errorMessage in
+
         }
     }
     
@@ -144,7 +166,7 @@ class KKRebateViewController: KKBaseViewController {
         case RebateSideMenu.payout.rawValue:
             let viewController = KKGeneralTableViewController()
             viewController.tableViewType = .RebatePayout
-            viewController.tabGroupArray = tabGroupArray
+            viewController.tableArray = tableArray
             changeView(vc: viewController)
             break;
         case RebateSideMenu.rebateTrans.rawValue:

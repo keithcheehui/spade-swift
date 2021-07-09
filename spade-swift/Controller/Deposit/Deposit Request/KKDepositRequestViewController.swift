@@ -59,11 +59,11 @@ class KKDepositRequestViewController: KKBaseViewController {
 //    var imagePicker = UIImagePickerController()
     let pickerController = UIImagePickerController()
 
-    var dataResults: KKDepositPageDataResults!
+    var dataResults: KKPageDataResults!
     var userBankList: [KKPageDataUserBankCards]! = []
     var companyBankList: [KKPageDataUserBankCards]! = []
-    var depositChannelList: [KKDepositPageDataDepositChannels]! = []
-    var promotionsList: [KKDepositPageDataPromotions]! = []
+    var depositChannelList: [KKPageDataDepositChannels]! = []
+    var promotionsList: [KKPageDataPromotions]! = []
     
     var companyBankItemList: [PickerDetails]! = []
     var channelItemList: [PickerDetails]! = []
@@ -206,8 +206,10 @@ class KKDepositRequestViewController: KKBaseViewController {
             if (companyBankList.count > 0) {
                 for bank in companyBankList {
                     var detail = PickerDetails()
-                    detail.id = String(bank.bankId ?? -1)
-                    detail.name = bank.bankName ?? ""
+                    if let bankDetail = bank.bank {
+                        detail.id = String(bankDetail.id ?? -1)
+                        detail.name = bankDetail.name ?? ""
+                    }
                     companyBankItemList.append(detail)
                 }
                 selectedBankItem = companyBankItemList[0]
@@ -448,15 +450,11 @@ class KKDepositRequestViewController: KKBaseViewController {
         case CurrentPicker.bankName.rawValue:
             if let bankList = companyBankList, let pickerList = companyBankItemList {
                 if bankList.count > 0 && pickerList.count > 0 {
-                    let detail = bankList.first(where: {$0.bankId! == Int(selectedBankItem.id)})
-                    if detail == nil {
-                        
-                    } else {
-                        lblAccountNameValue.text = detail!.bankAccountName
-                        lblAccountNumberValue.text = detail!.bankAccountNumber
-                        txtBankName.text = detail!.bankName
-                        updatePlaceholder(min: detail!.bankMinDeposit, max: detail!.bankMaxDeposit)
-                    }
+                    let bankDetail = bankList.first(where: {$0.id == Int(selectedBankItem.id)})
+                    lblAccountNameValue.text = bankDetail?.bankAccountName
+                    lblAccountNumberValue.text = bankDetail?.bankAccountNumber
+                    txtBankName.text = bankDetail?.bank?.name
+                    updatePlaceholder(min: bankDetail?.bank?.minDeposit, max: bankDetail?.bank?.maxDeposit)
                 }
             }
             break

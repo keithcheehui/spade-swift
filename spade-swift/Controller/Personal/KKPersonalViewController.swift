@@ -22,7 +22,7 @@ class KKPersonalViewController: KKBaseViewController {
     var selectedViewType = PersonalSideMenu.userInfo.rawValue
 
     var tabGroupArray: [KKUserBettingGroupDetails]! = []
-    var bettingRecordGroupsNameArray: [String]! = []
+    var historyTabArray: [PickerDetails]! = []
 
     var bettingRecordPlatfromsArray: [KKUserBettingPlatformDetails]! = []
     var bettingRecordPlatfromsNameArray: [PickerDetails]! = []
@@ -32,14 +32,37 @@ class KKPersonalViewController: KKBaseViewController {
 
         initialLayout()
         appendSideMenuList()
+        setupHistoryTab()
         
         getUserBettingPlatformsAndGroupsAPI()
-        
         buttonHover(type: selectedViewType)
-        
-//        if KKUtil.isUserLogin(){
-//            getUserLatestWalletAPI()
-//        }
+    }
+    
+    func setupHistoryTab() {
+        historyTabArray.removeAll()
+
+        for item in HistoryTab.allCases {
+            var detail = PickerDetails()
+
+            switch item {
+            case .deposit:
+                detail.id = item.rawValue
+                detail.name = KKUtil.languageSelectedStringForKey(key: "picker_cf_deposit")
+                
+            case .withdraw:
+                detail.id = item.rawValue
+                detail.name = KKUtil.languageSelectedStringForKey(key: "withdraw_withdraw")
+                  
+            case .transfer:
+                detail.id = item.rawValue
+                detail.name = KKUtil.languageSelectedStringForKey(key: "picker_transfer")
+                        
+            case .promotion:
+                detail.id = item.rawValue
+                detail.name = KKUtil.languageSelectedStringForKey(key: "deposit_promotion")
+            }
+            historyTabArray.append(detail)
+        }
     }
     
     func initialLayout(){
@@ -97,37 +120,6 @@ class KKPersonalViewController: KKBaseViewController {
         
         sideMenuTableView.reloadData()
     }
-        
-//    func getUserLatestWalletAPI() {
-//
-//        KKApiClient.getUserLatestWallet().execute { userWalletResponse in
-//
-//            if let userWalletResult = userWalletResponse.results {
-//
-//                self.getUserProfilAPI(walletBalance: userWalletResult.walletBalance!)
-//            }
-//
-//        } onFailure: { errorMessage in
-//
-//            self.hideAnimatedLoader()
-//            self.showAlertView(type: .Error, alertMessage: errorMessage)
-//        }
-//    }
-    
-//    @objc func getUserProfilAPI(walletBalance: Float) {
-//
-//        KKApiClient.getUserProfile().execute { userProfileResponse in
-//
-//            guard var userProfile = userProfileResponse.results?.user else { return }
-//            userProfile.walletBalance = walletBalance
-//            KKUtil.encodeUserProfile(object: userProfile)
-//
-//            self.hideAnimatedLoader()
-//        } onFailure: { errorMessage in
-//            self.hideAnimatedLoader()
-//            self.showAlertView(type: .Error, alertMessage: errorMessage)
-//        }
-//    }
     
     func getUserBettingPlatformsAndGroupsAPI() {
         KKApiClient.getUserBettingPlatformsAndGroups().execute { response in
@@ -136,10 +128,6 @@ class KKPersonalViewController: KKBaseViewController {
 
             if !groups.isEmpty {
                 self.tabGroupArray = groups
-                self.bettingRecordGroupsNameArray.removeAll()
-                for group in groups {
-                    self.bettingRecordGroupsNameArray.append(group.name ?? "")
-                }
             }
             if !platforms.isEmpty {
                 self.bettingRecordPlatfromsArray = platforms
@@ -175,41 +163,30 @@ class KKPersonalViewController: KKBaseViewController {
             let viewController = KKGeneralTableViewController.init()
             viewController.tabGroupArray = tabGroupArray
             viewController.rightDropdownOptions = bettingRecordPlatfromsNameArray
-//            viewController.selectedTabItem = tabGroupArray[selectedTabItem].code
             viewController.tableViewType = .BettingRecord
             changeView(vc: viewController)
             break;
         case PersonalSideMenu.accountDetail.rawValue:
             let viewController = KKGeneralTableViewController()
-            viewController.tabGroupArray = tabGroupArray
-//            viewController.selectedTabItem = pickerCashflowArray[selectedTabItem].id
             viewController.tableViewType = .AccountDetails
             changeView(vc: viewController)
             break;
-//        case PersonalSideMenu.individualReport.rawValue:
-//            let viewController = KKIndividualReportViewController.init()
-//            viewController.tabGroupArray = tabGroupArray
-//            changeView(vc: viewController)
-//            break;
         case PersonalSideMenu.wallet.rawValue:
             let viewController = KKIndividualReportViewController.init()
             viewController.tabGroupArray = tabGroupArray
             changeView(vc: viewController)
             break;
         case PersonalSideMenu.bankCard.rawValue:
-//            groupsCollectionView.isHidden = true
-//            groupsCollectionViewHeight.constant = 0
             changeView(vc: KKBankListViewController())
             break;
         case PersonalSideMenu.history.rawValue:
-            let viewController = KKIndividualReportViewController.init()
-            viewController.tabGroupArray = tabGroupArray
+            let viewController = KKGeneralTableViewController.init()
+            viewController.historyTabArray = historyTabArray
+            viewController.rightDropdownOptions = pickerStatusArray
+            viewController.tableViewType = .History
             changeView(vc: viewController)
             break;
         default:
-//            groupsCollectionView.isHidden = true
-//            groupsCollectionViewHeight.constant = 0
-            
             changeView(vc: KKUserInfoViewController())
             break;
         }

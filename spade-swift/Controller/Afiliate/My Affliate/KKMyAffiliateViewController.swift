@@ -203,18 +203,12 @@ class KKMyAffiliateViewController: KKBaseViewController {
                 lblURL.text = url
             }
             if let commission = info.commission {
-                if let total = commission.total {
-                    lblTotalCommisionValue.text = KKUtil.addCurrencyFormatWithString(value: total)
-                }
-                if let turnover = commission.turnover {
-                    lblTotalTurnoverValue.text = KKUtil.addCurrencyFormatWithString(value: turnover)
-                }
-                if let available = commission.available {
-                    lblAvailableCommissionValue.text = KKUtil.addCurrencyFormatWithString(value: available)
-                }
+                lblTotalCommisionValue.text = commission.total
+                lblTotalTurnoverValue.text = commission.turnover
+                lblAvailableCommissionValue.text = commission.available
             }
         }
-        lblCurrency.text = "RM"
+        lblCurrency.text = KKUtil.decodeUserCountryFromCache().currency
     }
     
     ///Button Actions
@@ -257,7 +251,27 @@ class KKMyAffiliateViewController: KKBaseViewController {
     }
     
     @IBAction func btnCollectCommissionDidPressed(){
-
+        if let text = txtWithdrawCommissionValue.text {
+            if text.isEmpty {
+                self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_amount_empty"))
+                return
+            }
+            affiliateCollectAPI(amount: text)
+        }
+    }
+    
+    //MARK: API Call
+    func affiliateCollectAPI(amount: String){
+        self.showAnimatedLoader()
+        KKApiClient.affiliateCollect(amount: amount).execute{ response in
+            self.hideAnimatedLoader()
+            NotificationCenter.default.post(name: Notification.Name("NotificationGetMyAffiliate"), object: nil)
+            self.clearText()
+            self.showAlertView(type: .Success, alertMessage: response.message ?? "")
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
+        }
     }
 }
 

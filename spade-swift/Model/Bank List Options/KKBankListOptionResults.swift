@@ -13,13 +13,13 @@ struct KKBankListOptionResults: Codable {
     case bankList = "bank_list"
   }
 
-  var bankList: [KKBankListOptionBankList]?
+  var bankList: [KKPageDataBank]?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    bankList = try container.decodeIfPresent([KKBankListOptionBankList].self, forKey: .bankList)
+    bankList = try container.decodeIfPresent([KKPageDataBank].self, forKey: .bankList)
   }
 
 }

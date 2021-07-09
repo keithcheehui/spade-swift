@@ -24,7 +24,7 @@ class KKDepositViewController: KKBaseViewController {
     
     var sideMenuList: [SideMenuDetails] = []
     var selectedViewType = DepositSideMenu.bankAccount.rawValue
-    var dataResults: KKDepositPageDataResults!
+    var dataResults: KKPageDataResults!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +84,7 @@ class KKDepositViewController: KKBaseViewController {
         
         KKApiClient.depositPageData().execute { depositPageDataResponse in
             self.hideAnimatedLoader()
-            self.dataResults = depositPageDataResponse.results!
+            self.dataResults = depositPageDataResponse.results
             self.buttonHover(type: self.selectedViewType)
 
         } onFailure: { errorMessage in
@@ -114,15 +114,20 @@ class KKDepositViewController: KKBaseViewController {
             changeView(vc: viewController)
             break;
         default:
-            if dataResults.userBankCards!.isEmpty {
-                let viewController = KKNoBankViewController()
-                viewController.isFromDeposit = true
-                changeView(vc: viewController)
-            } else {
-                let viewController = KKDepositRequestViewController.init()
-                viewController.dataResults = dataResults
-                changeView(vc: viewController)
+            if let result = dataResults {
+                if let cards = result.userBankCards {
+                    if !cards.isEmpty {
+                        let viewController = KKDepositRequestViewController.init()
+                        viewController.dataResults = dataResults
+                        changeView(vc: viewController)
+                        return;
+                    }
+                }
             }
+            
+            let viewController = KKNoBankViewController()
+            viewController.isFromDeposit = true
+            changeView(vc: viewController)
             break;
         }
     }

@@ -110,10 +110,11 @@ class KKPlatformViewController: KKBaseViewController {
         if (txtSearch.text!.isEmpty) {
             searchArray = gameListArray
         } else {
-            let pattern = "\\b" + NSRegularExpression.escapedPattern(for: txtSearch.text!)
-            searchArray = gameListArray.filter {
-                $0.name!.range(of: pattern, options: [.regularExpression, .caseInsensitive]) != nil
-            }
+            searchArray = gameListArray.filter { $0.name!.lowercased().contains(txtSearch.text!.lowercased())}
+//            let pattern = "\\b" + NSRegularExpression.escapedPattern(for: txtSearch.text!)
+//            searchArray = gameListArray.filter {
+//                $0.name!.range(of: pattern, options: [.regularExpression, .caseInsensitive]) != nil
+//            }
         }
         
         gameCollectionView.reloadData()

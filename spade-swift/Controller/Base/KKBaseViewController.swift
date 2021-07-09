@@ -22,7 +22,6 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     var pickerTimeArray: [PickerDetails] = []
     var pickerStatusArray: [PickerDetails] = []
-    var pickerCashflowArray: [PickerDetails] = []
     var pickerGenderArray: [PickerDetails] = []
     var pickerTransTypeArray: [PickerDetails] = []
 
@@ -53,7 +52,6 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         self.setupPickerTimeOptions()
         self.setupWithdrawStatusOptions()
-        self.setupCashflowOptions()
         self.setupGenderOptions()
         self.setupTransTypeOptions()
         
@@ -136,29 +134,6 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
                 details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_pending")
             }
             pickerStatusArray.append(details)
-        }
-    }
-    
-    func setupCashflowOptions() {
-        pickerCashflowArray.removeAll()
-        
-        var details = PickerDetails.init()
-        for item in CashflowStatus.allCases {
-            switch item {
-            case .deposit:
-                details.id = item.rawValue
-                details.name = KKUtil.languageSelectedStringForKey(key: "picker_cf_deposit")
-                
-            case .depositPromotion:
-                details.id = item.rawValue
-                details.name = KKUtil.languageSelectedStringForKey(key: "picker_cf_deposit_promo")
-                
-                
-            case .withdrawal:
-                details.id = item.rawValue
-                details.name = KKUtil.languageSelectedStringForKey(key: "picker_cf_withdrawal")
-            }
-            pickerCashflowArray.append(details)
         }
     }
     

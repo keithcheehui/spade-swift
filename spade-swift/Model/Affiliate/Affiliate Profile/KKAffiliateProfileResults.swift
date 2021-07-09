@@ -1,7 +1,7 @@
 //
 //  KKAffiliateProfileResults.swift
 //
-//  Created by Wong Sai Khong on 08/07/2021
+//  Created by Wong Sai Khong on 10/07/2021
 //  Copyright (c) . All rights reserved.
 //
 
@@ -10,16 +10,19 @@ import Foundation
 struct KKAffiliateProfileResults: Codable {
 
   enum CodingKeys: String, CodingKey {
+    case affiliate
     case user
   }
 
-  var user: KKAffiliateProfileUser?
+  var affiliate: KKAffiliateProfileAffiliate?
+  var user: KKPageDataUser?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    user = try container.decodeIfPresent(KKAffiliateProfileUser.self, forKey: .user)
+    affiliate = try container.decodeIfPresent(KKAffiliateProfileAffiliate.self, forKey: .affiliate)
+    user = try container.decodeIfPresent(KKPageDataUser.self, forKey: .user)
   }
 
 }
