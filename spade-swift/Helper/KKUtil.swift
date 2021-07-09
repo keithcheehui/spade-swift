@@ -122,6 +122,19 @@ class KKUtil: NSObject {
         }
     }
     
+    class func forceLogoutUser() {
+        let viewController = KKHomeViewController()
+        let alertView = KKCustomToastViewController.init(toastType: .Error, msgDesc: "Your credential had been expired. Please login again.")
+        viewController.present(alertView, animated: true, completion: nil)
+
+        let when = DispatchTime.now() + 2
+        DispatchQueue.main.asyncAfter(deadline: when){
+            alertView.dismiss(animated: true, completion: nil)
+            cleanSet()
+            KKUtil.proceedToPage(vc: KKSplashScreenViewController.init())
+        }
+    }
+    
     class func cleanSet() {
         UserDefaults.standard.set(false, forKey: CacheKey.loginStatus)
         UserDefaults.standard.set(nil, forKey: CacheKey.userProfile)
@@ -137,7 +150,6 @@ class KKUtil: NSObject {
             
             if (!isRemember) {
                 KeychainSwift().set("", forKey: CacheKey.username)
-                KeychainSwift().set("", forKey: CacheKey.secret)
             }
         } else {
             KeychainSwift().set("", forKey: CacheKey.username)

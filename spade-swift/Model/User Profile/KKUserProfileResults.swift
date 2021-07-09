@@ -14,14 +14,14 @@ struct KKUserProfileResults: Codable {
     case allTiers = "all_tiers"
   }
 
-  var user: [KKUserProfileDetails]?
+  var user: KKUserProfileDetails?
   var allTiers: [KKUserProfileAllTiers]?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    user = try container.decodeIfPresent([KKUserProfileDetails].self, forKey: .user)
+    user = try container.decodeIfPresent(KKUserProfileDetails.self, forKey: .user)
     allTiers = try container.decodeIfPresent([KKUserProfileAllTiers].self, forKey: .allTiers)
   }
 

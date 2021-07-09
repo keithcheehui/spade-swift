@@ -37,9 +37,9 @@ class KKPersonalViewController: KKBaseViewController {
         
         buttonHover(type: selectedViewType)
         
-        if KKUtil.isUserLogin(){
-            getUserLatestWallet()
-        }
+//        if KKUtil.isUserLogin(){
+//            getUserLatestWalletAPI()
+//        }
     }
     
     func initialLayout(){
@@ -98,37 +98,36 @@ class KKPersonalViewController: KKBaseViewController {
         sideMenuTableView.reloadData()
     }
         
-    func getUserLatestWallet() {
-        
-        KKApiClient.getUserLatestWallet().execute { userWalletResponse in
-            
-            if let userWalletResult = userWalletResponse.results {
-                
-                self.getUserProfilAPI(walletBalance: userWalletResult.walletBalance!)
-            }
-            
-        } onFailure: { errorMessage in
-            
-            self.hideAnimatedLoader()
-            self.showAlertView(type: .Error, alertMessage: errorMessage)
-        }
-    }
+//    func getUserLatestWalletAPI() {
+//
+//        KKApiClient.getUserLatestWallet().execute { userWalletResponse in
+//
+//            if let userWalletResult = userWalletResponse.results {
+//
+//                self.getUserProfilAPI(walletBalance: userWalletResult.walletBalance!)
+//            }
+//
+//        } onFailure: { errorMessage in
+//
+//            self.hideAnimatedLoader()
+//            self.showAlertView(type: .Error, alertMessage: errorMessage)
+//        }
+//    }
     
-    @objc func getUserProfilAPI(walletBalance: Float) {
-        
-        KKApiClient.getUserProfile().execute { userProfileResponse in
-            
-            guard var userProfile = userProfileResponse.results?.user![0] else { return }
-            userProfile.walletBalance = walletBalance
-            
-            KKUtil.encodeUserProfile(object: userProfile)
-            KKUtil.encodeUserLanguage(object: KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == userProfile.locale}))
-            self.hideAnimatedLoader()
-        } onFailure: { errorMessage in
-            self.hideAnimatedLoader()
-            self.showAlertView(type: .Error, alertMessage: errorMessage)
-        }
-    }
+//    @objc func getUserProfilAPI(walletBalance: Float) {
+//
+//        KKApiClient.getUserProfile().execute { userProfileResponse in
+//
+//            guard var userProfile = userProfileResponse.results?.user else { return }
+//            userProfile.walletBalance = walletBalance
+//            KKUtil.encodeUserProfile(object: userProfile)
+//
+//            self.hideAnimatedLoader()
+//        } onFailure: { errorMessage in
+//            self.hideAnimatedLoader()
+//            self.showAlertView(type: .Error, alertMessage: errorMessage)
+//        }
+//    }
     
     func getUserBettingPlatformsAndGroupsAPI() {
         KKApiClient.getUserBettingPlatformsAndGroups().execute { response in

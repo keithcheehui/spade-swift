@@ -26,7 +26,7 @@ class KKAffiliateViewController: KKBaseViewController {
     
     var tabGroupArray: [KKUserBettingGroupDetails]! = []
     var affiliateInfo: KKAffiliateProfileAffiliate!
-    var commissionTableArray: [KKAffiliateCommissionTableResults]! = []
+    var tableArray: [KKTableGroups]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,8 +142,8 @@ class KKAffiliateViewController: KKBaseViewController {
     
     func getCommissionTableAPI() {
         KKApiClient.getAffiliateCommissionTable().execute { response in
-            if let rebateResults = response.results {
-                self.commissionTableArray = rebateResults
+            if let rebateResults = response.results?.groups {
+                self.tableArray = rebateResults
             }
         } onFailure: { errorMessage in
 
@@ -183,7 +183,7 @@ class KKAffiliateViewController: KKBaseViewController {
             break;
         case AffiliatteSideMenu.commissionTable.rawValue:
             let viewController = KKGeneralTableViewController()
-            viewController.commissionTableArray = commissionTableArray
+            viewController.tableArray = tableArray
             viewController.tableViewType = .AffiliateCommTable
             changeView(vc: viewController)
             break;

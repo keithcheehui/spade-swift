@@ -47,15 +47,12 @@ class KKLoginViewController: KKBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         initialLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         UIView.animate(withDuration: 0.25) {
-            
             self.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
         }
     }
@@ -112,7 +109,6 @@ class KKLoginViewController: KKBaseViewController {
 
         if UserDefaults.standard.object(forKey: CacheKey.rememberMe) != nil {
             selectedRememberMe = UserDefaults.standard.bool(forKey: CacheKey.rememberMe)
-            
             if (selectedRememberMe) {
                 let username = KeychainSwift().get(CacheKey.username) == nil ? "" : KeychainSwift().get(CacheKey.username)
                 txtUsername.text = username
@@ -144,6 +140,8 @@ class KKLoginViewController: KKBaseViewController {
     //MARK:- API Calls
     
     @objc func loginAPI() {
+        self.showAnimatedLoader()
+
         KKApiClient.login(username: txtUsername.text!, password: txtPassword.text!).execute { userCredential in
             KeychainSwift().set(self.txtUsername.text!, forKey: CacheKey.username)
             KeychainSwift().set(self.txtPassword.text!, forKey: CacheKey.secret)
@@ -153,53 +151,15 @@ class KKLoginViewController: KKBaseViewController {
             UserDefaults.standard.set(true, forKey: CacheKey.loginStatus)
             UserDefaults.standard.synchronize()
             self.showAlertView(type: .Success, alertMessage: userCredential.message ?? "")
-            
-            self.getUserLatestWallet()
-        } onFailure: { errorMessage in
-            self.hideAnimatedLoader()
-            self.showAlertView(type: .Error, alertMessage: errorMessage)
-        }
-    }
-    
-    func getUserLatestWallet() {
-        KKApiClient.getUserLatestWallet().execute { userWalletResponse in
-            if let userWalletResult = userWalletResponse.results {
-                self.getUserProfilAPI(walletBalance: userWalletResult.walletBalance!)
-            }
-        } onFailure: { errorMessage in
-            self.hideAnimatedLoader()
-            self.showAlertView(type: .Error, alertMessage: errorMessage)
-            
-            let when = DispatchTime.now() + 2
-            DispatchQueue.main.asyncAfter(deadline: when){
-                self.dismissPresentedViewWithBackgroundFaded()
-            }
-        }
-    }
-    
-    @objc func getUserProfilAPI(walletBalance: Float) {
-        KKApiClient.getUserProfile().execute { userProfileResponse in
-            guard var userProfile = userProfileResponse.results?.user![0] else { return }
-            userProfile.walletBalance = walletBalance
-            
-            KKUtil.encodeUserProfile(object: userProfile)
-            KKUtil.encodeUserLanguage(object: KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == userProfile.locale})!)
-            self.hideAnimatedLoader()
-            
-            let when = DispatchTime.now() + 2
-            DispatchQueue.main.asyncAfter(deadline: when){
-                self.dismissPresentedViewWithBackgroundFaded()
-            }
-            
-        } onFailure: { errorMessage in
-            
-            self.hideAnimatedLoader()
-            self.showAlertView(type: .Error, alertMessage: errorMessage)
+            NotificationCenter.default.post(name: Notification.Name("NotificationUpdateProfile"), object: nil)
 
             let when = DispatchTime.now() + 2
             DispatchQueue.main.asyncAfter(deadline: when){
                 self.dismissPresentedViewWithBackgroundFaded()
             }
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
@@ -229,15 +189,10 @@ class KKLoginViewController: KKBaseViewController {
     //MARK:- OTP and Registration
     
     @objc func closeOTPAndOpenForgotPassword() {
-
         weak var pvc = self.presentingViewController
-
         UIView.animate(withDuration: 0.25) {
-            
             self.view.backgroundColor = UIColor(white: 0, alpha: 0)
-            
         } completion: { complete in
-            
             self.dismiss(animated: true, completion: {
                 let viewController = KKOTPViewController.init()
                 viewController.isFromForgotPassword = true
@@ -248,28 +203,22 @@ class KKLoginViewController: KKBaseViewController {
     }
     
     @IBAction func btnConfirmDidPressed(){
-        
         self.runTextFieldValidation()
     }
     
     //MARK:- Others
     
     @objc func dismissPresentedViewWithBackgroundFaded() {
-        
         homeViewController.updateUserProfileDetails()
-        
         UIView.animate(withDuration: 0.25) {
             self.view.backgroundColor = UIColor(white: 0, alpha: 0)
-            
         } completion: { complete in
-            
             self.dismiss(animated: true, completion: nil)
         }
     }
 }
 
 extension KKLoginViewController: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.switchBasedNextTextField(textField)
         return true

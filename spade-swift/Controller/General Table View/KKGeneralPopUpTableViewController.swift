@@ -28,7 +28,7 @@ class KKGeneralPopUpTableViewController: KKBaseViewController {
 //    ]
     
     var popupTableViewType: PopupTableViewType!
-    var excludedRebateProducts: [KKRebateTableRebateExcludedProducts]! = []
+    var excludedRebateProducts: [KKTableExcludedProducts]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

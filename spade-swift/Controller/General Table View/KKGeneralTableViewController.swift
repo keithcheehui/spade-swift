@@ -79,8 +79,7 @@ class KKGeneralTableViewController: KKBaseViewController {
     var depositHistoryArray: [KKHistoryDetails]! = []
     var affiliateDownlineArray: [KKAffiliateDownlineResults]! = []
     var affiliateTurnoverArray: [KKAffiliateDownlineResults]! = []
-    var commissionTableArray: [KKAffiliateCommissionTableResults]! = []
-    var rebateTableArray: [KKRebateTableResults]! = []
+    var tableArray: [KKTableGroups]! = []
 
     var tabGroupArray: [KKUserBettingGroupDetails]! = []
     var selectedTabItem = 0
@@ -331,11 +330,10 @@ class KKGeneralTableViewController: KKBaseViewController {
     func showButtonContainer(buttonType: PopupTableViewType?) {
         if (buttonType == .NonCommGame) {
             imgButton.image = UIImage(named: "btn_non_comm")
-            btnNonGame.addTarget(self, action: #selector(btnNonCommGameDidPressed), for: .touchUpInside)
         } else {
             imgButton.image = UIImage(named: "btn_non_rebate")
-            btnNonGame.addTarget(self, action: #selector(btnNonRebateGameDidPressed), for: .touchUpInside)
         }
+        btnNonGame.addTarget(self, action: #selector(btnNonCommRebateGameDidPressed), for: .touchUpInside)
     }
     
     func getLeftDropdownOptions() {
@@ -348,12 +346,8 @@ class KKGeneralTableViewController: KKBaseViewController {
     
     func updateButton() {
         var isHide = true
-        if tableViewType == .RebateTable {
-            if rebateTableArray[selectedTabItem].excludedProducts != nil && !rebateTableArray[selectedTabItem].excludedProducts!.isEmpty{
-                isHide = false
-            }
-        } else if tableViewType == .AffiliateCommTable {
-            if commissionTableArray[selectedTabItem].excludedProducts != nil && !commissionTableArray[selectedTabItem].excludedProducts!.isEmpty{
+        if tableViewType == .RebateTable || tableViewType == .AffiliateCommTable {
+            if tableArray[selectedTabItem].excludedProducts != nil && !tableArray[selectedTabItem].excludedProducts!.isEmpty{
                 isHide = false
             }
         }
@@ -383,10 +377,9 @@ class KKGeneralTableViewController: KKBaseViewController {
         switch tableViewType {
 //        case .AccountDetails:
 //            tabId = pickerCashflowArray[selectedTabItem].id
-        case .AffiliateCommTable:
-            tabId = String(commissionTableArray[selectedTabItem].id ?? 0)
-        case .RebateTable:
-            tabId = String(rebateTableArray[selectedTabItem].id ?? 0)
+        case .AffiliateCommTable,
+             .RebateTable:
+            tabId = String(tableArray[selectedTabItem].id ?? 0)
         case .BettingRecord,
              .RebatePayout:
             tabId = String(tabGroupArray[selectedTabItem].code ?? "")
@@ -454,10 +447,6 @@ class KKGeneralTableViewController: KKBaseViewController {
 //            return commissionTableArray[indexPath.row]
             return ["API_NO_DATA", "API_NO_DATA", "API_NO_DATA", "API_NO_DATA", "API_NO_DATA"]
 
-        case .AffiliateCommTable:
-            let details = commissionTableArray[selectedTabItem].rebates?[indexPath.row]
-            return [details?.validStake ?? "", details?.rate ?? ""]
-            
         case .RebatePayout:
 //            return payoutArray[indexPath.row]
             return ["API_NO_DATA", "API_NO_DATA", "API_NO_DATA", "API_NO_DATA"]
@@ -466,8 +455,9 @@ class KKGeneralTableViewController: KKBaseViewController {
 //            return commissionTransArray[indexPath.row]
             return ["API_NO_DATA", "API_NO_DATA", "API_NO_DATA", "API_NO_DATA"]
 
-        case .RebateTable:
-            let details = rebateTableArray[selectedTabItem].rebates?[indexPath.row]
+        case .RebateTable,
+             .AffiliateCommTable:
+            let details = tableArray[selectedTabItem].rebates?[indexPath.row]
             return [details?.validStake ?? "", details?.rate ?? ""]
 
         default:
@@ -479,26 +469,14 @@ class KKGeneralTableViewController: KKBaseViewController {
         
     }
     
-    @objc func btnNonCommGameDidPressed() {
-        let excludedRebateProducts = commissionTableArray[selectedTabItem].excludedProducts
+    @objc func btnNonCommRebateGameDidPressed() {
+        let excludedRebateProducts = tableArray[selectedTabItem].excludedProducts
         if excludedRebateProducts == nil {
             return
         }
         
         let vc = KKGeneralPopUpTableViewController.init()
-        vc.popupTableViewType = .NonCommGame
-        vc.excludedRebateProducts = excludedRebateProducts
-        self.present(vc, animated: true, completion: nil)
-    }
-    
-    @objc func btnNonRebateGameDidPressed() {
-        let excludedRebateProducts = rebateTableArray[selectedTabItem].excludedProducts
-        if excludedRebateProducts == nil {
-            return
-        }
-        
-        let vc = KKGeneralPopUpTableViewController.init()
-        vc.popupTableViewType = .NonRebateGame
+        vc.popupTableViewType = tableViewType == .AffiliateCommTable ? .NonCommGame : .NonRebateGame
         vc.excludedRebateProducts = excludedRebateProducts
         self.present(vc, animated: true, completion: nil)
     }
@@ -663,10 +641,9 @@ extension KKGeneralTableViewController: UICollectionViewDelegate, UICollectionVi
         switch tableViewType {
 //        case .AccountDetails:
 //            return pickerCashflowArray.count
-        case .RebateTable:
-            return rebateTableArray.count
-        case .AffiliateCommTable:
-            return commissionTableArray.count
+        case .RebateTable,
+             .AffiliateCommTable:
+            return tableArray.count
 
         case .BettingRecord,
              .RebatePayout:
@@ -692,11 +669,9 @@ extension KKGeneralTableViewController: UICollectionViewDelegate, UICollectionVi
         switch tableViewType {
 //        case .AccountDetails:
 //            cell.lblTitle.text = pickerCashflowArray[indexPath.item].name
-        case .RebateTable:
-            cell.lblTitle.text = rebateTableArray[indexPath.item].name ?? ""
-        
-        case .AffiliateCommTable:
-            cell.lblTitle.text = commissionTableArray[indexPath.item].name ?? ""
+        case .RebateTable,
+             .AffiliateCommTable:
+            cell.lblTitle.text = tableArray[indexPath.item].name ?? ""
         
         default:
             cell.lblTitle.text = tabGroupArray[indexPath.item].name
@@ -765,18 +740,16 @@ extension KKGeneralTableViewController: UITableViewDelegate, UITableViewDataSour
 //            
 //        case .AffiliateCommTrans:
 //            return commissionTransArray.count
-            
-        case .AffiliateCommTable:
-            return commissionTableArray[selectedTabItem].rebates?.count ?? 0
-            
+//
 //        case .RebatePayout:
 //            return payoutArray.count
 //            
 //        case .RebateTrans:
 //            return commissionTransArray.count
             
-        case .RebateTable:
-            return rebateTableArray[selectedTabItem].rebates?.count ?? 0
+        case .RebateTable,
+             .AffiliateCommTable:
+            return tableArray[selectedTabItem].rebates?.count ?? 0
             
         default:
             return 1

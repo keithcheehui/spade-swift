@@ -10,9 +10,9 @@ import Kingfisher
 
 class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    var activityIndicator:      UIActivityIndicatorView!
-    var tableContentView:       UIView!
-    var displayViewController:  KKBaseViewController!
+    var activityIndicator: UIActivityIndicatorView!
+    var tableContentView: UIView!
+    var displayViewController: KKBaseViewController!
     var selectedGameType: Int = 0
     var selectedGroupCode = ""
     
@@ -32,7 +32,6 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     var datePickerTextField: UITextField!
 
     override var prefersHomeIndicatorAutoHidden: Bool {
-        
         return true
     }
 
@@ -230,6 +229,7 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     //MARK:- Show Picker View
     func showPickerView(optionList: [PickerDetails]) {
+        selectedPickerItem = nil
         dataArray = optionList
         pickerView.isHidden = false
     }

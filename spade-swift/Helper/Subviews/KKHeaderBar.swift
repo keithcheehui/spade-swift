@@ -86,12 +86,12 @@ final class KKHeaderBar: UIView {
     }
     
     @IBAction func btnRefreshDidPressed(){
-        self.getUserLatestWallet()
+        self.getUserLatestWalletAPI()
     }
     
     //MARK:- API Calls
     
-    func getUserLatestWallet() {
+    func getUserLatestWalletAPI() {
         
         refreshWalletIcon.startRotate()
         refreshWalletBtn.isEnabled = false
@@ -104,7 +104,6 @@ final class KKHeaderBar: UIView {
                 
                 if var userProfile = KKUtil.decodeUserProfileFromCache(), let userInfo = userWalletResponse.results {
                     userProfile.walletBalance = userInfo.walletBalance!
-                    
                     KKUtil.encodeUserProfile(object: userProfile)
                 }
                 

@@ -1,34 +1,34 @@
 //
-//  KKAffiliateCommissionTableRebates.swift
+//  KKRebateTableRebates.swift
 //
-//  Created by Wong Sai Khong on 08/07/2021
+//  Created by Wong Sai Khong on 09/07/2021
 //  Copyright (c) . All rights reserved.
 //
 
 import Foundation
 
-struct KKAffiliateCommissionTableRebates: Codable {
+struct KKTableRebates: Codable {
 
   enum CodingKeys: String, CodingKey {
-    case minAmount = "min_amount"
-    case maxAmount = "max_amount"
     case rate
+    case minAmount = "min_amount"
     case validStake = "valid_stake"
+    case maxAmount = "max_amount"
   }
 
-  var minAmount: String?
-  var maxAmount: String?
   var rate: String?
+  var minAmount: String?
   var validStake: String?
+  var maxAmount: String?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    minAmount = try container.decodeIfPresent(String.self, forKey: .minAmount)
-    maxAmount = try container.decodeIfPresent(String.self, forKey: .maxAmount)
     rate = try container.decodeIfPresent(String.self, forKey: .rate)
+    minAmount = try container.decodeIfPresent(String.self, forKey: .minAmount)
     validStake = try container.decodeIfPresent(String.self, forKey: .validStake)
+    maxAmount = try container.decodeIfPresent(String.self, forKey: .maxAmount)
   }
 
 }

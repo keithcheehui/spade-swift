@@ -13,13 +13,11 @@ struct KKRebateProfileUser: Codable {
     case wallet
     case code
     case id
-    case rebate
   }
 
   var wallet: KKRebateProfileWallet?
   var code: String?
   var id: Int?
-  var rebate: KKRebateProfileRebate?
 
 
 
@@ -28,7 +26,6 @@ struct KKRebateProfileUser: Codable {
     wallet = try container.decodeIfPresent(KKRebateProfileWallet.self, forKey: .wallet)
     code = try container.decodeIfPresent(String.self, forKey: .code)
     id = try container.decodeIfPresent(Int.self, forKey: .id)
-    rebate = try container.decodeIfPresent(KKRebateProfileRebate.self, forKey: .rebate)
   }
 
 }

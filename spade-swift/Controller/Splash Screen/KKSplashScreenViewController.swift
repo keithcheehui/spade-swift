@@ -67,7 +67,6 @@ class KKSplashScreenViewController: KKBaseViewController {
     }
 
     func drawLoadingProgress(){
-        
         loadingBar.layer.cornerRadius = loadingBar.frame.size.height/2 - 2
         loadingBar.clipsToBounds = true
         
@@ -84,18 +83,14 @@ class KKSplashScreenViewController: KKBaseViewController {
     //MARK:- Animation
     
     @objc func updateProgress() {
-        
         progressValue = progressValue + 0.01
         self.imgProgress.frame.size.width = self.loadingBar.bounds.width * progressValue
 
         if progressValue <= stopProgress {
-            
             timerStop = false
             lblLoading.text = String.init(format: "loading %.0f%%...", progressValue*100)
             self.perform(#selector(updateProgress), with: nil, afterDelay: 0.03)
-        }
-        else if stopProgress >= 1
-        {
+        } else if stopProgress >= 1 {
             timerStop = true
             lblLoading.text = "loading 100%..."
             if KKUtil.isUserLogin() {
@@ -103,9 +98,7 @@ class KKSplashScreenViewController: KKBaseViewController {
             } else {
                 self.present(KKSelectCountryViewController(), animated: false, completion: nil)
             }
-        }
-        else
-        {
+        } else {
             timerStop = true
         }
     }
@@ -113,105 +106,79 @@ class KKSplashScreenViewController: KKBaseViewController {
     //MARK:- API Calls
     
     func loginAPI(username: String, password: String) {
-        
         KKApiClient.login(username: username, password: password).execute { userCredential in
-        
             KKTokenManager.setUserCredential(userCredential: userCredential)
             UserDefaults.standard.set(true, forKey: CacheKey.loginStatus)
             UserDefaults.standard.synchronize()
-            
-            self.getLandingDetails()
-            
+            self.getMemberLandingAPI()
         } onFailure: { errorMessage in
             KKUtil.cleanSet()
             self.getAppVersionAPI()
         }
     }
     
-    func getLandingDetails() {
-        
-        KKApiClient.memberLandingData().execute { landingDetailsResponse in
-            
-            if let landingDetailsResults = landingDetailsResponse.results {
-                
-                if KKUtil.isUserLogin() {
-                    
-                    if var userProfile = KKUtil.decodeUserProfileFromCache(), let userInfo = landingDetailsResults.userInfo {
-                        
-                        if let walletBalance = userInfo.walletBalance {
-                            userProfile.walletBalance = walletBalance
-                        }
-                        
-                        if let currencyCode = userInfo.currencyCode {
-                            userProfile.currencyCode = currencyCode
-                        }
-                        
-                        if let userTier = userInfo.tier {
-                            userProfile.tier = userTier
-                        }
-                        
-                        KKUtil.encodeUserProfile(object: userProfile)
-                    }
-                }
-                
-                KKSingleton.sharedInstance.announcementArray = landingDetailsResults.announcements!
-                KKSingleton.sharedInstance.groupPlatformArray = landingDetailsResults.groups!
+    func getAppVersionAPI() {
+        KKApiClient.appVersion().execute { appVersionResponse in
+            guard let appVersionDetails = appVersionResponse.results else { return }
+            KKUtil.encodeAppVersion(object: appVersionDetails)
+            KKSingleton.sharedInstance.countryArray = appVersionDetails.countries!
+            KKSingleton.sharedInstance.languageArray = appVersionDetails.languages!
+            KKSingleton.sharedInstance.appVersion = appVersionDetails.appVersion!
+
+            self.stopProgress = 1
+            if self.timerStop {
+                self.perform(#selector(self.updateProgress), with: nil, afterDelay: 0.03)
             }
-            
-            self.getAppVersionAPI()
-            
         } onFailure: { errorMessage in
-            
-            self.getAppVersionAPI()
+            self.appVersionApiFailed()
         }
     }
     
-    func getAppVersionAPI() {
-        
-        KKApiClient.appVersion().execute { appVersionResponse in
-                        
-            guard let appVersionDetails = appVersionResponse.results else { return }
-            
-            do {
-                KKUtil.encodeAppVersion(object: appVersionDetails)
-                KKSingleton.sharedInstance.countryArray = appVersionDetails.countries!
-                KKSingleton.sharedInstance.languageArray = appVersionDetails.languages!
-                KKSingleton.sharedInstance.appVersion = appVersionDetails.appVersion!
+    func getMemberLandingAPI() {
+        KKApiClient.memberLandingData().execute { response in
 
-                self.stopProgress = 1
+            if let detailResponse = response.results {
+                KKSingleton.sharedInstance.announcementArray = detailResponse.announcements!
+                KKSingleton.sharedInstance.groupPlatformArray = detailResponse.groups!
+                let name = detailResponse.userCountry?.countryName
+                let countryObject = KKSingleton.sharedInstance.countryArray.first(where: {$0.name == name})
+                KKUtil.encodeUserCountry(object: countryObject)
                 
-                if self.timerStop {
-                    
-                    self.perform(#selector(self.updateProgress), with: nil, afterDelay: 0.03)
-                }
+                let locale = detailResponse.userInfo?.locale
+                let languageObject = KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == locale})
+                KKUtil.encodeUserLanguage(object: languageObject)
+                
+                let walletBalance = detailResponse.userInfo?.walletBalance ?? 0.00
+                self.getUserProfilAPI(walletBalance: walletBalance)
             }
-            catch {
-                self.appVersionApiFailed()
-            }
-            
         } onFailure: { errorMessage in
-            
-            self.appVersionApiFailed()
+            self.getUserProfilAPI(walletBalance: 0.00)
+        }
+    }
+    
+    @objc func getUserProfilAPI(walletBalance: Float) {
+        KKApiClient.getUserProfile().execute { userProfileResponse in
+            guard var userProfile = userProfileResponse.results?.user else { return }
+            userProfile.walletBalance = walletBalance
+            KKUtil.encodeUserProfile(object: userProfile)
+            self.getAppVersionAPI()
+        } onFailure: { errorMessage in
+            self.getAppVersionAPI()
         }
     }
     
     //MARK:- Others
     
     func appVersionApiFailed() {
-        
         let appVersionDetails = KKUtil.decodeAppVersionFromCache()
-        
         if appVersionDetails != nil {
-            
             KKSingleton.sharedInstance.countryArray = appVersionDetails!.countries!
             KKSingleton.sharedInstance.languageArray = appVersionDetails!.languages!
             KKSingleton.sharedInstance.appVersion = appVersionDetails!.appVersion!
         }
         
         self.stopProgress = 1
-        
         if self.timerStop {
-            
             self.perform(#selector(self.updateProgress), with: nil, afterDelay: 0.03)
         }
     }

@@ -9,6 +9,13 @@ import Foundation
 
 struct KKLandingDetailsResults: Codable {
 
+    enum CodingKeys: String, CodingKey {
+      case groups
+      case announcements
+      case userCountry = "user_country"
+      case userInfo = "user_info"
+    }
+    
     var userCountry: KKUserCountry?
     var userInfo: KKUserProfileDetails?
     var groups: [KKGroupPlatformGroups]?

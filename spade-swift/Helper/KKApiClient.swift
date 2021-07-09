@@ -33,12 +33,16 @@ class KKApiClient: NSObject {
                     do {
                         let apiErrorDetail = try decoder.decode(KKApiErrorDetails.self, from: data)
                         print("failure data = \(apiErrorDetail)")
-
-                        guard let apiMessage = apiErrorDetail.message
-                        else {
+                        
+                        if let apiCode = apiErrorDetail.code, let apiMessage = apiErrorDetail.message {
+//                            if (apiCode == 401 && apiMessage == "Unauthenticated.") {
+//                                KKUtil.forceLogoutUser()
+//                                return
+//                            }
+                            return completion(.failure(apiMessage))
+                        } else {
                             return completion(.failure(error.localizedDescription))
                         }
-                        return completion(.failure(apiMessage))
                     } catch {
                         completion(.failure("Unexpected error. Please try again."))
                     }
@@ -351,12 +355,12 @@ class KKApiClient: NSObject {
     }
     
     //MARK: - Rebate
-    static func getRebateTable() -> Future<KKRebateTableResponse> {
-        return performRequest(route: .rebateTable)
-    }
-    
     static func getRebateProfile() -> Future<KKRebateProfileResponse> {
         return performRequest(route: .rebateProfile)
+    }
+    
+    static func getRebateTable() -> Future<KKTableResponse> {
+        return performRequest(route: .rebateTable)
     }
     
     //MARK: - Affiliate
@@ -380,7 +384,7 @@ class KKApiClient: NSObject {
         return performRequest(route: .affiliateTurnover)
     }
     
-    static func getAffiliateCommissionTable() -> Future<KKAffiliateCommissionTableResponse> {
+    static func getAffiliateCommissionTable() -> Future<KKTableResponse> {
         return performRequest(route: .commissionTable)
     }
     

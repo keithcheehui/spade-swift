@@ -488,6 +488,12 @@ extension KKSettingsViewController: UITableViewDataSource, UITableViewDelegate {
             fatalError("DequeueReusableCell failed while casting")
         }
  
+        if (indexPath.row == SettingsSideMenu.logout.rawValue) {
+            cell.lblName.textColor = .spade_orange_FFBA00
+        } else {
+            cell.lblName.textColor = .spade_white_FFFFFF
+        }
+        
         if (selectedViewType == indexPath.row){
             cell.imgHover.isHidden = false
             cell.lblName.font = ConstantSize.sideMenuSelectedFont

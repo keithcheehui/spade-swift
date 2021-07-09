@@ -56,8 +56,8 @@ enum ApiRouter: URLRequestConvertible {
     case updateInboxReadStatus(parameter: [String: Any])
     
     //MARK: - Rebate
-    case rebateTable
     case rebateProfile
+    case rebateTable
     
     //MARK: - Affiliate
     case myAffiliate
@@ -98,8 +98,8 @@ enum ApiRouter: URLRequestConvertible {
              .getUserBettingRecord,
              .getInbox,
              .getInboxReadStatus,
-             .rebateTable,
              .rebateProfile,
+             .rebateTable,
              .myAffiliate,
              .getAffiliateGuideline,
              .affiliateDownline,
@@ -235,11 +235,11 @@ enum ApiRouter: URLRequestConvertible {
         case .updateInboxReadStatus:
             return "member/updateInboxReadStatus"
             
-        case .rebateTable:
-            return "member/rebate/rebateTable"
-            
         case .rebateProfile:
             return "member/rebate/profile"
+            
+        case .rebateTable:
+            return "member/rebate/rebateTable"
             
         case .myAffiliate:
             return "member/affiliate/myAffiliate"
@@ -373,8 +373,8 @@ enum ApiRouter: URLRequestConvertible {
              .depositPageData,
              .withdrawPageData,
              .getUserProfile,
-             .rebateTable,
              .rebateProfile,
+             .rebateTable,
              .myAffiliate,
              .affiliateDownline,
              .affiliateTurnover,
@@ -389,7 +389,7 @@ enum ApiRouter: URLRequestConvertible {
     // MARK: - URL Request
     func asURLRequest() throws -> URLRequest {
         
-        let url : URL = try Spade.ProdServer.baseApiURL.asURL()
+        let url : URL = try Spade.StagingServer.baseApiURL.asURL()
         
         var urlRequest : URLRequest = URLRequest(url: url.appendingPathComponent(path))
         

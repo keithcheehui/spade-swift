@@ -218,41 +218,7 @@ class KKRegistrationViewController: KKBaseViewController {
             KKTokenManager.setUserCredential(userCredential: userCredential)
             UserDefaults.standard.set(true, forKey: CacheKey.loginStatus)
             UserDefaults.standard.synchronize()
-            
-            self.getUserLatestWallet()
-        } onFailure: { errorMessage in
-            
-            self.hideAnimatedLoader()
-            self.showAlertView(type: .Error, alertMessage: errorMessage)
-        }
-    }
-    
-    func getUserLatestWallet() {
-        
-        KKApiClient.getUserLatestWallet().execute { userWalletResponse in
-            
-            if let userWalletResult = userWalletResponse.results {
-                
-                self.getUserProfilAPI(walletBalance: userWalletResult.walletBalance!)
-            }
-            
-        } onFailure: { errorMessage in
-            
-            self.hideAnimatedLoader()
-            self.showAlertView(type: .Error, alertMessage: errorMessage)
-        }
-    }
-    
-    @objc func getUserProfilAPI(walletBalance: Float) {
-        
-        KKApiClient.getUserProfile().execute { userProfileResponse in
-            
-            guard var userProfile = userProfileResponse.results?.user![0] else { return }
-            userProfile.walletBalance = walletBalance
-            
-            KKUtil.encodeUserProfile(object: userProfile)
-            KKUtil.encodeUserLanguage(object: KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == userProfile.locale}))
-            self.hideAnimatedLoader()
+            NotificationCenter.default.post(name: Notification.Name("NotificationUpdateProfile"), object: nil)
 
             let when = DispatchTime.now() + 2
             DispatchQueue.main.asyncAfter(deadline: when){

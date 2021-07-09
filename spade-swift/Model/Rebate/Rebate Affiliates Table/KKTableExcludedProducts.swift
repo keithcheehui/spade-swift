@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct KKRebateTableRebateExcludedProducts: Codable {
+struct KKTableExcludedProducts: Codable {
 
   enum CodingKeys: String, CodingKey {
     case productName = "product_name"

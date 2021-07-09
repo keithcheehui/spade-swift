@@ -92,7 +92,7 @@ class KKHomeViewController: KKBaseViewController {
         // Do any additional setup after loading the view.
         initialLayout()
         initFlowLayout()
-        
+
         if KKSingleton.sharedInstance.groupPlatformArray.count > 0 {
             self.menuCollectionView.reloadData()
             self.selectedDefaultSideMenu()
@@ -103,8 +103,21 @@ class KKHomeViewController: KKBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.updateUserProfileDetails()
-        self.getInboxReadStatusAPI()
+        updateUserProfileDetails()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.getNotified), name: Notification.Name("NotificationUpdateProfile"), object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("NotificationUpdateProfile"), object: nil)
+    }
+    
+    @objc private func getNotified(notification: NSNotification){
+        if (KKUtil.isUserLogin()) {
+            self.getMemberLandingAPI()
+            self.getInboxReadStatusAPI()
+        }
     }
     
     func initialLayout(){
@@ -267,69 +280,6 @@ class KKHomeViewController: KKBaseViewController {
         self.addChild(vc)
     }
     
-    //MARK:- API Calls
-    
-    func getUserLatestWallet() {
-        
-        refreshWalletIcon.startRotate()
-        refreshWalletBtn.isEnabled = false
-        
-        if KKUtil.isUserLogin() {
-            KKApiClient.getUserLatestWallet().execute { userWalletResponse in
-                
-                self.refreshWalletIcon.removeRotate()
-                self.refreshWalletBtn.isEnabled = true
-                
-                if var userProfile = KKUtil.decodeUserProfileFromCache(), let userInfo = userWalletResponse.results {
-                    userProfile.walletBalance = userInfo.walletBalance!
-                    
-                    KKUtil.encodeUserProfile(object: userProfile)
-                }
-                
-                if let userWalletResult = userWalletResponse.results {
-                    self.lblMoney.text = KKUtil.addCurrencyFormatWithFloat(value: userWalletResult.walletBalance!)
-                }
-                
-            } onFailure: { errorMessage in
-                
-                self.refreshWalletIcon.removeRotate()
-                self.refreshWalletBtn.isEnabled = true
-                self.showAlertView(type: .Error, alertMessage: errorMessage)
-            }
-        } else {
-            self.refreshWalletIcon.removeRotate()
-            self.refreshWalletBtn.isEnabled = true
-        }
-        
-    }
-    
-    func getGroupAndPlatformAPI() {
-        
-        self.showAnimatedLoader()
-        
-        KKApiClient.getGroupAndPlatform().execute { groupPlatformResponse in
-            
-            self.hideAnimatedLoader()
-            KKSingleton.sharedInstance.groupPlatformArray = groupPlatformResponse.results!.groups!
-            self.menuCollectionView.reloadData()
-            
-            self.selectedGameType = 0
-            self.updateLobbyBackgroundImage(gameType: self.selectedGameType)
-            
-            let viewController = KKGameListViewController.init()
-            viewController.homeViewController = self
-            viewController.selectedGameType = self.selectedGameType
-            viewController.selectedGroupCode = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].code!
-            viewController.gameListArray = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].platforms
-            self.changeView(vc: viewController)
-            
-        } onFailure: { errorMessage in
-            
-            self.hideAnimatedLoader()
-            self.showAlertView(type: .Error, alertMessage: errorMessage)
-        }
-    }
-
     func animateHideBubble() {
         UIView.animate(withDuration: 10.0, animations: {
             self.announcementBubble.isHidden = true
@@ -380,7 +330,7 @@ class KKHomeViewController: KKBaseViewController {
             return
         }
         
-        self.getUserLatestWallet()
+        self.getUserLatestWalletAPI()
     }
     
     @IBAction func btnCountryDidPressed(){
@@ -518,9 +468,8 @@ class KKHomeViewController: KKBaseViewController {
     }
     
     func updateUserProfileDetails() {
-        
         setupGuestView(isGuest: !KKUtil.isUserLogin())
-        
+
         if KKUtil.isUserLogin(), let userProfile = KKUtil.decodeUserProfileFromCache() {
             
             lblProfileName.text = userProfile.code
@@ -548,7 +497,6 @@ class KKHomeViewController: KKBaseViewController {
         }
         else {
             lblProfileName.text = KKUtil.languageSelectedStringForKey(key: "home_guest")
-            lblVip.text = "VIP 1"
             lblMoney.text = "0"
             imgProfile.image = UIImage(named: "ic_profile")
         }
@@ -558,17 +506,118 @@ class KKHomeViewController: KKBaseViewController {
         lblCountry.text = KKUtil.decodeUserCountryFromCache().code
     }
     
+    //MARK:- API Calls
+    
+    func getUserLatestWalletAPI() {
+        
+        refreshWalletIcon.startRotate()
+        refreshWalletBtn.isEnabled = false
+        
+        if KKUtil.isUserLogin() {
+            KKApiClient.getUserLatestWallet().execute { userWalletResponse in
+                self.refreshWalletIcon.removeRotate()
+                self.refreshWalletBtn.isEnabled = true
+                
+                if var userProfile = KKUtil.decodeUserProfileFromCache(), let userInfo = userWalletResponse.results {
+                    userProfile.walletBalance = userInfo.walletBalance!
+                    KKUtil.encodeUserProfile(object: userProfile)
+                }
+                
+                if let userWalletResult = userWalletResponse.results {
+                    self.lblMoney.text = KKUtil.addCurrencyFormatWithFloat(value: userWalletResult.walletBalance!)
+                }
+                
+                self.showAlertView(type: .Success, alertMessage: userWalletResponse.message ?? "")
+                
+            } onFailure: { errorMessage in
+                
+                self.refreshWalletIcon.removeRotate()
+                self.refreshWalletBtn.isEnabled = true
+                self.showAlertView(type: .Error, alertMessage: errorMessage)
+            }
+        } else {
+            self.refreshWalletIcon.removeRotate()
+            self.refreshWalletBtn.isEnabled = true
+        }
+        
+    }
+    
+    func getGroupAndPlatformAPI() {
+        
+        self.showAnimatedLoader()
+        
+        KKApiClient.getGroupAndPlatform().execute { groupPlatformResponse in
+            
+            KKSingleton.sharedInstance.groupPlatformArray = groupPlatformResponse.results!.groups!
+            self.menuCollectionView.reloadData()
+            
+            self.selectedGameType = 0
+            self.updateLobbyBackgroundImage(gameType: self.selectedGameType)
+            
+            let viewController = KKGameListViewController.init()
+            viewController.homeViewController = self
+            viewController.selectedGameType = self.selectedGameType
+            viewController.selectedGroupCode = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].code!
+            viewController.gameListArray = KKSingleton.sharedInstance.groupPlatformArray[self.selectedGameType].platforms
+            self.changeView(vc: viewController)
+            self.hideAnimatedLoader()
+
+        } onFailure: { errorMessage in
+            
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
+        }
+    }
+    
     func getInboxReadStatusAPI() {
         self.showAnimatedLoader()
         KKApiClient.getInboxReadStatus().execute { response in
-            self.hideAnimatedLoader()
             if let unread = response.results?.inboxUnreadMessages {
                 self.messageUnread = unread
                 self.updateUnreadStatus()
             }
+            self.hideAnimatedLoader()
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
             self.updateUnreadStatus()
+        }
+    }
+    
+    func getMemberLandingAPI() {
+        self.showAnimatedLoader()
+        
+        KKApiClient.memberLandingData().execute { response in
+
+            if let detailResponse = response.results {
+                KKSingleton.sharedInstance.announcementArray = detailResponse.announcements!
+                KKSingleton.sharedInstance.groupPlatformArray = detailResponse.groups!
+                let name = detailResponse.userCountry?.countryName
+                let countryObject = KKSingleton.sharedInstance.countryArray.first(where: {$0.name == name})
+                KKUtil.encodeUserCountry(object: countryObject)
+                
+                let locale = detailResponse.userInfo?.locale
+                let languageObject = KKSingleton.sharedInstance.languageArray.first(where: {$0.locale == locale})
+                KKUtil.encodeUserLanguage(object: languageObject)
+                
+                let walletBalance = detailResponse.userInfo?.walletBalance ?? 0.00
+                self.getUserProfilAPI(walletBalance: walletBalance)
+            }
+        } onFailure: { errorMessage in
+            self.getUserProfilAPI(walletBalance: 0.00)
+        }
+    }
+    
+    @objc func getUserProfilAPI(walletBalance: Float) {
+        KKApiClient.getUserProfile().execute { userProfileResponse in
+
+            guard var userProfile = userProfileResponse.results?.user else { return }
+            userProfile.walletBalance = walletBalance
+            KKUtil.encodeUserProfile(object: userProfile)
+            
+            self.updateUserProfileDetails()
+            self.hideAnimatedLoader()
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
         }
     }
 }
