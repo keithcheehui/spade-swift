@@ -17,9 +17,9 @@ struct KKTransactionResults: Codable {
     case commissionTransactions = "commission_transactions"
   }
 
-  var user: KKPageDataUser?
-  var filterDurations: KKPageDataFilterDurations?
-  var type: KKTransactionType?
+  var user: KKHeaderUserDetails?
+  var filterDurations: KKFilterDurations?
+  var type: KKFilterType?
     var rebateTransactions: [KKTransactionTransactions]?
     var commissionTransactions: [KKTransactionTransactions]?
 
@@ -27,9 +27,9 @@ struct KKTransactionResults: Codable {
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    user = try container.decodeIfPresent(KKPageDataUser.self, forKey: .user)
-    filterDurations = try container.decodeIfPresent(KKPageDataFilterDurations.self, forKey: .filterDurations)
-    type = try container.decodeIfPresent(KKTransactionType.self, forKey: .type)
+    user = try container.decodeIfPresent(KKHeaderUserDetails.self, forKey: .user)
+    filterDurations = try container.decodeIfPresent(KKFilterDurations.self, forKey: .filterDurations)
+    type = try container.decodeIfPresent(KKFilterType.self, forKey: .type)
     rebateTransactions = try container.decodeIfPresent([KKTransactionTransactions].self, forKey: .rebateTransactions)
     commissionTransactions = try container.decodeIfPresent([KKTransactionTransactions].self, forKey: .commissionTransactions)
   }

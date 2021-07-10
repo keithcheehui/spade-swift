@@ -15,14 +15,14 @@ struct KKAffiliateProfileResults: Codable {
   }
 
   var affiliate: KKAffiliateProfileAffiliate?
-  var user: KKPageDataUser?
+  var user: KKHeaderUserDetails?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     affiliate = try container.decodeIfPresent(KKAffiliateProfileAffiliate.self, forKey: .affiliate)
-    user = try container.decodeIfPresent(KKPageDataUser.self, forKey: .user)
+    user = try container.decodeIfPresent(KKHeaderUserDetails.self, forKey: .user)
   }
 
 }

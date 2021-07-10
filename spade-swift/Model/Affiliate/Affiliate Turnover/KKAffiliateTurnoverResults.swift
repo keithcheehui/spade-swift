@@ -15,16 +15,16 @@ struct KKAffiliateTurnoverResults: Codable {
     case commissionTurnover = "commission_turnover"
   }
 
-  var filterDurations: KKPageDataFilterDurations?
-  var user: KKPageDataUser?
+  var filterDurations: KKFilterDurations?
+  var user: KKHeaderUserDetails?
   var commissionTurnover: [KKAffiliateTurnoverCommissionTurnover]?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    filterDurations = try container.decodeIfPresent(KKPageDataFilterDurations.self, forKey: .filterDurations)
-    user = try container.decodeIfPresent(KKPageDataUser.self, forKey: .user)
+    filterDurations = try container.decodeIfPresent(KKFilterDurations.self, forKey: .filterDurations)
+    user = try container.decodeIfPresent(KKHeaderUserDetails.self, forKey: .user)
     commissionTurnover = try container.decodeIfPresent([KKAffiliateTurnoverCommissionTurnover].self, forKey: .commissionTurnover)
   }
 

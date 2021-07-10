@@ -1,5 +1,5 @@
 //
-//  KKRebateTransType.swift
+//  KKFilterType.swift
 //
 //  Created by Wong Sai Khong on 10/07/2021
 //  Copyright (c) . All rights reserved.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct KKTransactionType: Codable {
+struct KKFilterType: Codable {
 
   enum CodingKeys: String, CodingKey {
     case collect = "COLLECT"

@@ -112,7 +112,7 @@ class KKUserInfoViewController: KKBaseViewController {
         sectionIconWidth.constant = KKUtil.ConvertSizeByDensity(size: 12)
         
         imgProfileWidth.constant = KKUtil.ConvertSizeByDensity(size: 60)
-        rankContainerViewHeight.constant = KKUtil.ConvertSizeByDensity(size: 30)
+        rankContainerViewHeight.constant = KKUtil.ConvertSizeByDensity(size: 40)
         
         viewMarginLeft.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 16 : 24)
         viewMarginRight.constant = KKUtil.ConvertSizeByDensity(size: KKUtil.isSmallerPhone() ? 8 : 16)
@@ -211,7 +211,7 @@ class KKUserInfoViewController: KKBaseViewController {
                 if let currentTier = tier.currentLevelName {
                     lblCurrentMembership.text = String(format: KKUtil.languageSelectedStringForKey(key: "user_info_current_membership"), currentTier)
                 }
-                if let balance = tier.balance, let next = tier.totalAmountToNextLevel, let currency = userProfile.currencyCode {
+                if let balance = tier.balance, let next = tier.totalAmountToNextLevel, let currency = KKUtil.decodeUserCountryFromCache().currency {
                     lblProgress.text = String(format: "%@%@ / %@%@", currency, balance, currency, next)
                     
                     let progress = Float(balance)!/Float(next)!
@@ -274,7 +274,7 @@ class KKUserInfoViewController: KKBaseViewController {
     }
     
     @IBAction func btnMyVipLevelDidPressed(){
-        
+        self.navigationController?.pushViewController(KKVipViewController(), animated: true)
     }
     
     @IBAction func btnEditDidPressed(){

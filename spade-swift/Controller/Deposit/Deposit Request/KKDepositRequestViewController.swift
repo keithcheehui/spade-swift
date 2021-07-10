@@ -60,8 +60,8 @@ class KKDepositRequestViewController: KKBaseViewController {
     let pickerController = UIImagePickerController()
 
     var dataResults: KKPageDataResults!
-    var userBankList: [KKPageDataUserBankCards]! = []
-    var companyBankList: [KKPageDataUserBankCards]! = []
+    var userBankList: [KKUserBankCards]! = []
+    var companyBankList: [KKUserBankCards]! = []
     var depositChannelList: [KKPageDataDepositChannels]! = []
     var promotionsList: [KKPageDataPromotions]! = []
     

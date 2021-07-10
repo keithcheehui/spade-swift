@@ -18,22 +18,22 @@ struct KKPageDataResults: Codable {
     case promotions
   }
 
-  var filterDurations: KKPageDataFilterDurations?
-  var userBankCards: [KKPageDataUserBankCards]?
-  var companyBanks: [KKPageDataUserBankCards]?
+  var filterDurations: KKFilterDurations?
+  var userBankCards: [KKUserBankCards]?
+  var companyBanks: [KKUserBankCards]?
   var depositChannels: [KKPageDataDepositChannels]?
-  var user: KKPageDataUser?
+  var user: KKHeaderUserDetails?
   var promotions: [KKPageDataPromotions]?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    filterDurations = try container.decodeIfPresent(KKPageDataFilterDurations.self, forKey: .filterDurations)
-    userBankCards = try container.decodeIfPresent([KKPageDataUserBankCards].self, forKey: .userBankCards)
-    companyBanks = try container.decodeIfPresent([KKPageDataUserBankCards].self, forKey: .companyBanks)
+    filterDurations = try container.decodeIfPresent(KKFilterDurations.self, forKey: .filterDurations)
+    userBankCards = try container.decodeIfPresent([KKUserBankCards].self, forKey: .userBankCards)
+    companyBanks = try container.decodeIfPresent([KKUserBankCards].self, forKey: .companyBanks)
     depositChannels = try container.decodeIfPresent([KKPageDataDepositChannels].self, forKey: .depositChannels)
-    user = try container.decodeIfPresent(KKPageDataUser.self, forKey: .user)
+    user = try container.decodeIfPresent(KKHeaderUserDetails.self, forKey: .user)
     promotions = try container.decodeIfPresent([KKPageDataPromotions].self, forKey: .promotions)
   }
 

@@ -18,8 +18,10 @@ extension UIColor {
     static let spade_blue_292969 = UIColor.init(hexCode: "#292969")
     static let spade_blue_4850C6 = UIColor.init(hexCode: "#4850C6")
     static let spade_blue_5CB5DE = UIColor.init(hexCode: "#5CB5DE")
+    static let spade_blue_2C336D = UIColor.init(hexCode: "#2C336D")
     static let spade_yellow_FFFF99 = UIColor.init(hexCode: "#FFFF99")
     static let spade_yellow_FFFF00 = UIColor.init(hexCode: "#FFFF00")
+    static let spade_yellow_F9F53B = UIColor.init(hexCode: "#F9F53B")
     static let spade_green_8AD942 = UIColor.init(hexCode: "#8AD942")
     static let spade_green_74f56b = UIColor.init(hexCode: "#74f56b")
     

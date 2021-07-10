@@ -80,7 +80,6 @@ class KKGeneralTableViewController: KKBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getLeftDropdownOptions()
         initialLayout()
         setupTableType()
         setUpContentTableView()
@@ -185,63 +184,30 @@ class KKGeneralTableViewController: KKBaseViewController {
         switch tableViewType {
         
         case .BettingRecord:
-//            leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_bet_time")
-//            if (selectedLeftItem == nil) {
-//                selectedLeftItem = leftDropdownOptions[0]
+            rightTitle = KKUtil.languageSelectedStringForKey(key: "picker_game_platform")
+//            if (selectedRightItem == nil) {
+//                selectedRightItem = rightDropdownOptions[0]
 //            }
             
-            rightTitle = KKUtil.languageSelectedStringForKey(key: "picker_game_platform")
-            if (selectedRightItem == nil) {
-                selectedRightItem = rightDropdownOptions[0]
-            }
-            
-            self.showTopContainer(shouldShow: true, withLeftPicker: false, withRightPicker: true)
+            self.showTopContainer(shouldShow: true, withRightPicker: true)
             
         case .AccountDetails:
             leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
-            if (selectedLeftItem == nil) {
-                selectedLeftItem = leftDropdownOptions[0]
-            }
-            
             self.showTopContainer(shouldShow: true, withLeftPicker: true)
 
         case .DepositHistory:
             leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
-            if (selectedLeftItem == nil) {
-                selectedLeftItem = leftDropdownOptions[0]
-            }
-            
             rightTitle = KKUtil.languageSelectedStringForKey(key: "picker_withdraw_status")
-            if (selectedRightItem == nil) {
-                selectedRightItem = rightDropdownOptions[0]
-            }
-            
             self.showTopContainer(shouldShow: true, withLeftPicker: true, withRightPicker: true)
 
         case .WithdrawHistory:
             leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
-            if (selectedLeftItem == nil) {
-                selectedLeftItem = leftDropdownOptions[0]
-            }
-            
             rightTitle = KKUtil.languageSelectedStringForKey(key: "picker_withdraw_status")
-            if (selectedRightItem == nil) {
-                selectedRightItem = rightDropdownOptions[0]
-            }
-            
             self.showTopContainer(shouldShow: true, withLeftPicker: true, withRightPicker: true)
             
         case .History:
             leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
-            if (selectedLeftItem == nil) {
-                selectedLeftItem = leftDropdownOptions[0]
-            }
-            
             rightTitle = KKUtil.languageSelectedStringForKey(key: "picker_withdraw_status")
-            if (selectedRightItem == nil) {
-                selectedRightItem = rightDropdownOptions[0]
-            }
-            
             self.showTopContainer(shouldShow: true, withLeftPicker: true, withRightPicker: true)
             
         case .AffiliateDownline:
@@ -249,33 +215,17 @@ class KKGeneralTableViewController: KKBaseViewController {
             
         case .AffiliateTurnover:
             leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
-            if (selectedLeftItem == nil) {
-                selectedLeftItem = leftDropdownOptions[0]
-            }
-                        
             self.showTopContainer(shouldShow: true, withLeftPicker: true, withSearchBar: true)
 
         case .AffiliatePayout,
              .RebatePayout:
             leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
-            if (selectedLeftItem == nil) {
-                selectedLeftItem = leftDropdownOptions[0]
-            }
-            
             self.showTopContainer(shouldShow: true, withLeftPicker: true, withLabel: true)
             
         case .AffiliateCommTrans,
              .RebateTrans:
             leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
-            if (selectedLeftItem == nil) {
-                selectedLeftItem = leftDropdownOptions[0]
-            }
-            
             rightTitle = KKUtil.languageSelectedStringForKey(key: "picker_affiliate_type")
-            if (selectedRightItem == nil) {
-                selectedRightItem = rightDropdownOptions[0]
-            }
-            
             self.showTopContainer(shouldShow: true, withLeftPicker: true, withRightPicker: true)
             
         case .AffiliateCommTable:
@@ -304,12 +254,12 @@ class KKGeneralTableViewController: KKBaseViewController {
             if withLeftPicker {
                 leftContainer.isHidden = false
                 leftPickerTitle.text = leftTitle
-                leftPickerTxtValue.text = leftValue
+//                leftPickerTxtValue.text = leftValue
             }
             if withRightPicker {
                 rightContainer.isHidden = false
                 rightPickerTitle.text = rightTitle
-                rightPickerTxtValue.text = rightValue
+//                rightPickerTxtValue.text = rightValue
             }
             if withSearchBar {
                 searchContainer.isHidden = false
@@ -332,12 +282,71 @@ class KKGeneralTableViewController: KKBaseViewController {
         btnNonGame.addTarget(self, action: #selector(btnNonCommRebateGameDidPressed), for: .touchUpInside)
     }
     
-    func getLeftDropdownOptions() {
-        switch tableViewType {
-            
-            default:
-                leftDropdownOptions = pickerTimeArray
+    func setupFilterDuration(filter: KKFilterDurations) -> [PickerDetails]{
+        var options: [PickerDetails] = []
+        
+        var details = PickerDetails.init()
+        if let id = filter.td {
+            details.id = id
+            details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_td")
+            options.append(details)
         }
+        if let id = filter.yd {
+            details.id = id
+            details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_yd")
+            options.append(details)
+        }
+        if let id = filter.l7d {
+            details.id = id
+            details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_l7d")
+            options.append(details)
+        }
+        if let id = filter.l30d {
+            details.id = id
+            details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_l30d")
+            options.append(details)
+        }
+        
+        return options
+    }
+    
+    func setupFilterStatus(filter: KKFilterStatus) -> [PickerDetails]{
+        var options: [PickerDetails] = []
+        
+        var details = PickerDetails.init()
+        if let id = filter.success {
+            details.id = id
+            details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_success")
+            options.append(details)
+        }
+        if let id = filter.pending {
+            details.id = id
+            details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_pending")
+            options.append(details)
+        }
+        if let id = filter.fail {
+            details.id = id
+            details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_fail")
+            options.append(details)
+        }
+        return options
+    }
+    
+    func setupFilterType(filter: KKFilterType) -> [PickerDetails]{
+        var options: [PickerDetails] = []
+        
+        var details = PickerDetails.init()
+        if let id = filter.collect {
+            details.id = id
+            details.name = KKUtil.languageSelectedStringForKey(key: "picker_type_collect")
+            options.append(details)
+        }
+        if let id = filter.payout {
+            details.id = id
+            details.name = KKUtil.languageSelectedStringForKey(key: "picker_type_payout")
+            options.append(details)
+        }
+        return options
     }
     
     func updateButton() {
@@ -362,12 +371,6 @@ class KKGeneralTableViewController: KKBaseViewController {
     }
     
     func updateTable() {
-        if (leftDropdownOptions.count > 0 && selectedLeftItem != nil) {
-            leftPickerTxtValue.text = selectedLeftItem.name
-        }
-        if (rightDropdownOptions.count > 0 && selectedRightItem != nil) {
-            rightPickerTxtValue.text = selectedRightItem.name
-        }
         
         var tabId = ""
         switch tableViewType {
@@ -380,42 +383,57 @@ class KKGeneralTableViewController: KKBaseViewController {
             break;
         }
         
+//        if (leftDropdownOptions.count > 0 && selectedLeftItem != nil) {
+//            leftPickerTxtValue.text = selectedLeftItem.name
+//        }
+//        if (rightDropdownOptions.count > 0 && selectedRightItem != nil) {
+//            rightPickerTxtValue.text = selectedRightItem.name
+//        }
+        
+        var leftId = ""
+        var rightId = ""
+        if selectedLeftItem != nil {
+            leftId = selectedLeftItem.id
+            leftPickerTxtValue.text = selectedLeftItem.name
+        }
+        if selectedRightItem != nil {
+            rightId = selectedRightItem.id
+            rightPickerTxtValue.text = selectedRightItem.name
+        }
+        
         switch tableViewType {
         case .BettingRecord:
-            self.getUserBettingRecordAPI(rightPicker: selectedRightItem.id, tabItem: tabId)
+            self.getUserBettingRecordAPI(leftPicker: leftId, rightPicker: rightId, tabItem: tabId)
 
         case .AccountDetails:
-            self.getUserAccountDetailsAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id, tabItem: tabId)
+            self.getUserAccountDetailsAPI(leftPicker: leftId)
 
         case .WithdrawHistory:
-            self.withdrawHistoryAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id)
+            self.withdrawHistoryAPI(leftPicker: leftId, rightPicker: rightId)
 
         case .DepositHistory:
-            self.depositHistoryAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id)
+            self.depositHistoryAPI(leftPicker: leftId, rightPicker: rightId)
 
         case .AffiliateDownline:
             self.getAffiliateDownlineAPI()
 
         case .AffiliateTurnover:
-            self.getAffiliateTurnoverAPI(leftPicker: selectedLeftItem.id)
+            self.getAffiliateTurnoverAPI(leftPicker: leftId)
 
         case .AffiliatePayout:
-            self.getAffiliatePayoutAPI(leftPicker: selectedLeftItem.id)
+            self.getAffiliatePayoutAPI(leftPicker: leftId)
             
         case .AffiliateCommTrans:
-            self.getAffiliateCommissionTransactionAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id)
+            self.getAffiliateCommissionTransactionAPI(leftPicker: leftId, rightPicker: rightId)
             
         case .RebatePayout:
-//            let total = payoutArray[selectedTabItem].totalRebate ?? ""
-//            let currency = KKUtil.decodeUserCountryFromCache().currency ?? ""
-//            lblTotal.text = String(format: KKUtil.languageSelectedStringForKey(key: "rebate_total_rebate"), currency, total)
-            self.getRebatePayoutAPI(leftPicker: selectedLeftItem.id)
+            self.getRebatePayoutAPI(leftPicker: leftId)
             
         case .RebateTrans:
-            self.getRebateTransactionAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id)
+            self.getRebateTransactionAPI(leftPicker: leftId, rightPicker: rightId)
             
         case .History:
-            self.getHistoryAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id, tabItem: tabId)
+            self.getHistoryAPI(leftPicker: leftId, rightPicker: rightId, tabItem: tabId)
             
         case .AffiliateCommTable,
              .RebateTable:
@@ -483,14 +501,14 @@ class KKGeneralTableViewController: KKBaseViewController {
                 return ["", "", "", "", ""]
             }
             let details = depositHistoryArray[indexPath.row]
-            return [details.trxTimestamp ?? "", String(details.transactionId ?? 0), details.amount ?? "", details.status ?? "", details.reason ?? ""]
+            return [details.trxTimestamp ?? "", details.transactionId ?? "", details.amount ?? "", details.status ?? "", details.reason ?? ""]
 
         case .WithdrawHistory:
             if withdrawHistoryArray.isEmpty {
                 return ["", "", "", "", ""]
             }
             let details = withdrawHistoryArray[indexPath.row]
-            return [details.trxTimestamp ?? "", String(details.transactionId ?? 0) , details.amount ?? "", details.status ?? "", details.reason ?? ""]
+            return [details.trxTimestamp ?? "", details.transactionId ?? "" , details.amount ?? "", details.status ?? "", details.reason ?? ""]
             
         case .History:
             if historyTabArray[selectedTabItem].id == HistoryTab.deposit.rawValue {
@@ -498,25 +516,25 @@ class KKGeneralTableViewController: KKBaseViewController {
                     return ["", "", "", "", ""]
                 }
                 let details = depositHistoryArray[indexPath.row]
-                return [details.trxTimestamp ?? "", String(details.transactionId ?? 0), details.amount ?? "", details.status ?? "", details.reason ?? ""]
+                return [details.trxTimestamp ?? "", details.transactionId ?? "", details.amount ?? "", details.status ?? "", details.reason ?? ""]
             } else if historyTabArray[selectedTabItem].id == HistoryTab.withdraw.rawValue {
                 if withdrawHistoryArray.isEmpty {
                     return ["", "", "", "", ""]
                 }
                 let details = withdrawHistoryArray[indexPath.row]
-                return [details.trxTimestamp ?? "", String(details.transactionId ?? 0) , details.amount ?? "", details.status ?? "", details.reason ?? ""]
+                return [details.trxTimestamp ?? "", details.transactionId ?? "" , details.amount ?? "", details.status ?? "", details.reason ?? ""]
             } else if historyTabArray[selectedTabItem].id == HistoryTab.transfer.rawValue {
                 if transferHistoryArray.isEmpty {
                     return ["", "", "", "", ""]
                 }
                 let details = transferHistoryArray[indexPath.row]
-                return [details.trxTimestamp ?? "", String(details.transactionId ?? 0) , details.amount ?? "", details.status ?? "", details.reason ?? ""]
+                return [details.trxTimestamp ?? "", details.transactionId ?? "" , details.amount ?? "", details.status ?? "", details.reason ?? ""]
             } else {
                 if promotionHistoryArray.isEmpty {
                     return ["", "", "", "", ""]
                 }
                 let details = promotionHistoryArray[indexPath.row]
-                return [details.trxTimestamp ?? "", String(details.transactionId ?? 0) , details.amount ?? "", details.status ?? "", details.reason ?? ""]
+                return [details.trxTimestamp ?? "", details.transactionId ?? "" , details.amount ?? "", details.status ?? "", details.reason ?? ""]
             }
             
         case .AffiliateDownline:
@@ -590,9 +608,9 @@ class KKGeneralTableViewController: KKBaseViewController {
     
     //MARK:- API Calls
 
-    func getUserBettingRecordAPI(rightPicker: String, tabItem: String)   {
+    func getUserBettingRecordAPI(leftPicker: String, rightPicker: String, tabItem: String)   {
         self.showAnimatedLoader()
-        KKApiClient.getUserBettingRecord(platformCode: rightPicker, groupCode: tabItem).execute { bettingHistoryResponse in
+        KKApiClient.getUserBettingRecord(filter: leftPicker, platformCode: rightPicker, groupCode: tabItem).execute { bettingHistoryResponse in
             self.hideAnimatedLoader()
             self.bettingRecordArray = bettingHistoryResponse.results?.betslips
             self.contentTableView.reloadData()
@@ -602,11 +620,16 @@ class KKGeneralTableViewController: KKBaseViewController {
         }
     }
     
-    func getUserAccountDetailsAPI(leftPicker: String, rightPicker: String, tabItem: String) {
+    func getUserAccountDetailsAPI(leftPicker: String) {
         self.showAnimatedLoader()
         KKApiClient.getUserAccountDetails(filter: leftPicker).execute { cashFlowResponse in
             self.hideAnimatedLoader()
             self.cashFlowArray = cashFlowResponse.results?.walletTrx
+            
+            if let duration = cashFlowResponse.results?.filterDurations {
+                self.leftDropdownOptions = self.setupFilterDuration(filter: duration)
+            }
+            
             self.contentTableView.reloadData()
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
@@ -619,6 +642,14 @@ class KKGeneralTableViewController: KKBaseViewController {
         KKApiClient.withdrawHistory(filter: leftPicker, historyStatus: rightPicker).execute { withdrawHistoryResponse in
             self.hideAnimatedLoader()
             self.withdrawHistoryArray = withdrawHistoryResponse.results?.history
+            
+            if let duration = withdrawHistoryResponse.results?.filterDurations {
+                self.leftDropdownOptions = self.setupFilterDuration(filter: duration)
+            }
+            if let status = withdrawHistoryResponse.results?.filterStatus {
+                self.rightDropdownOptions = self.setupFilterStatus(filter: status)
+            }
+            
             self.contentTableView.reloadData()
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
@@ -631,6 +662,14 @@ class KKGeneralTableViewController: KKBaseViewController {
         KKApiClient.depositHistory(filter: leftPicker, historyStatus: rightPicker).execute { depositHistoryResponse in
             self.hideAnimatedLoader()
             self.depositHistoryArray = depositHistoryResponse.results?.history
+            
+            if let duration = depositHistoryResponse.results?.filterDurations {
+                self.leftDropdownOptions = self.setupFilterDuration(filter: duration)
+            }
+            if let status = depositHistoryResponse.results?.filterStatus {
+                self.rightDropdownOptions = self.setupFilterStatus(filter: status)
+            }
+            
             self.contentTableView.reloadData()
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
@@ -643,6 +682,17 @@ class KKGeneralTableViewController: KKBaseViewController {
         KKApiClient.getRebatePayout(filter: leftPicker).execute { response in
             self.hideAnimatedLoader()
             self.payoutArray = response.results?.group
+            
+            if let duration = response.results?.filterDurations {
+                self.leftDropdownOptions = self.setupFilterDuration(filter: duration)
+            }
+            
+            let total = self.payoutArray[self.selectedTabItem].totalRebate ?? ""
+            let currency = KKUtil.decodeUserCountryFromCache().currency ?? ""
+            self.lblTotal.text = String(format: KKUtil.languageSelectedStringForKey(key: "rebate_total_rebate"), currency, total)
+            
+            self.contentTableView.reloadData()
+            self.groupsCollectionView.reloadData()
         } onFailure: { errorMessage in
 
         }
@@ -653,6 +703,14 @@ class KKGeneralTableViewController: KKBaseViewController {
         KKApiClient.getRebateTransaction(filter: leftPicker, type: rightPicker).execute { response in
             self.hideAnimatedLoader()
             self.transactionArray = response.results?.rebateTransactions
+            
+            if let duration = response.results?.filterDurations {
+                self.leftDropdownOptions = self.setupFilterDuration(filter: duration)
+            }
+            if let type = response.results?.type {
+                self.rightDropdownOptions = self.setupFilterType(filter: type)
+            }
+            
             self.contentTableView.reloadData()
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
@@ -678,6 +736,11 @@ class KKGeneralTableViewController: KKBaseViewController {
         KKApiClient.getAffiliateTurnover(filter: leftPicker).execute { response in
             self.hideAnimatedLoader()
             self.affiliateTurnoverArray = response.results?.commissionTurnover
+            
+            if let duration = response.results?.filterDurations {
+                self.leftDropdownOptions = self.setupFilterDuration(filter: duration)
+            }
+            
             self.filterUsername()
             self.contentTableView.reloadData()
         } onFailure: { errorMessage in
@@ -692,9 +755,14 @@ class KKGeneralTableViewController: KKBaseViewController {
             self.hideAnimatedLoader()
             self.payoutArray = response.results?.group
             
+            if let duration = response.results?.filterDurations {
+                self.leftDropdownOptions = self.setupFilterDuration(filter: duration)
+            }
+            
             let total = self.payoutArray[self.selectedTabItem].totalCommission ?? ""
             let currency = KKUtil.decodeUserCountryFromCache().currency ?? ""
             self.lblTotal.text = String(format: KKUtil.languageSelectedStringForKey(key: "affiliates_total_comm"), currency, total)
+            
             self.contentTableView.reloadData()
             self.groupsCollectionView.reloadData()
         } onFailure: { errorMessage in
@@ -707,6 +775,14 @@ class KKGeneralTableViewController: KKBaseViewController {
         KKApiClient.getAffiliateCommissionTransaction(filter: leftPicker, type: rightPicker).execute { response in
             self.hideAnimatedLoader()
             self.transactionArray = response.results?.commissionTransactions
+            
+            if let duration = response.results?.filterDurations {
+                self.leftDropdownOptions = self.setupFilterDuration(filter: duration)
+            }
+            if let type = response.results?.type {
+                self.rightDropdownOptions = self.setupFilterType(filter: type)
+            }
+            
             self.filterUsername()
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
@@ -716,7 +792,8 @@ class KKGeneralTableViewController: KKBaseViewController {
     
     func getHistoryAPI(leftPicker: String, rightPicker: String, tabItem: String){
         self.showAnimatedLoader()
-        KKApiClient.getHistory(filter: leftPicker, status: rightPicker, groupCode: tabItem).execute { response in
+        
+        KKApiClient.getHistory(filter: leftPicker, status: rightPicker, tabItem: tabItem).execute { response in
             self.hideAnimatedLoader()
             if tabItem == HistoryTab.withdraw.rawValue {
                 self.withdrawHistoryArray = response.results?.history
@@ -727,6 +804,14 @@ class KKGeneralTableViewController: KKBaseViewController {
             } else if tabItem == HistoryTab.promotion.rawValue {
                 self.promotionHistoryArray = response.results?.history
             }
+            
+            if let duration = response.results?.filterDurations {
+                self.leftDropdownOptions = self.setupFilterDuration(filter: duration)
+            }
+            if let status = response.results?.filterStatus {
+                self.rightDropdownOptions = self.setupFilterStatus(filter: status)
+            }
+            
             self.contentTableView.reloadData()
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()

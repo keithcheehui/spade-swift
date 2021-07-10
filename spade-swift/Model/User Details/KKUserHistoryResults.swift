@@ -11,21 +11,24 @@ struct KKUserHistoryResults: Codable {
 
   enum CodingKeys: String, CodingKey {
     case filterDurations = "filter_durations"
+    case filterStatus = "filter_status"
     case history
     case user
   }
 
-  var filterDurations: KKPageDataFilterDurations?
+    var filterDurations: KKFilterDurations?
+    var filterStatus: KKFilterStatus?
   var history: [KKHistoryDetails]?
-  var user: KKPageDataUser?
+  var user: KKHeaderUserDetails?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    filterDurations = try container.decodeIfPresent(KKPageDataFilterDurations.self, forKey: .filterDurations)
+    filterDurations = try container.decodeIfPresent(KKFilterDurations.self, forKey: .filterDurations)
+    filterStatus = try container.decodeIfPresent(KKFilterStatus.self, forKey: .filterStatus)
     history = try container.decodeIfPresent([KKHistoryDetails].self, forKey: .history)
-    user = try container.decodeIfPresent(KKPageDataUser.self, forKey: .user)
+    user = try container.decodeIfPresent(KKHeaderUserDetails.self, forKey: .user)
   }
 
 }

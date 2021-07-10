@@ -1,5 +1,5 @@
 //
-//  KKPageDataUserBankCards.swift
+//  KKUserBankCards.swift
 //
 //  Created by Wong Sai Khong on 10/07/2021
 //  Copyright (c) . All rights reserved.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct KKPageDataUserBankCards: Codable {
+struct KKUserBankCards: Codable {
 
   enum CodingKeys: String, CodingKey {
     case bankAccountNumber = "bank_account_number"
@@ -19,7 +19,7 @@ struct KKPageDataUserBankCards: Codable {
   var bankAccountNumber: String?
   var id: Int?
   var bankAccountName: String?
-  var bank: KKPageDataBank?
+  var bank: KKBankItemDetails?
 
 
 
@@ -28,6 +28,6 @@ struct KKPageDataUserBankCards: Codable {
     bankAccountNumber = try container.decodeIfPresent(String.self, forKey: .bankAccountNumber)
     id = try container.decodeIfPresent(Int.self, forKey: .id)
     bankAccountName = try container.decodeIfPresent(String.self, forKey: .bankAccountName)
-    bank = try container.decodeIfPresent(KKPageDataBank.self, forKey: .bank)
+    bank = try container.decodeIfPresent(KKBankItemDetails.self, forKey: .bank)
   }
 }

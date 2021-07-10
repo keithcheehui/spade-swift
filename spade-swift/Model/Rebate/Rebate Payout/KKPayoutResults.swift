@@ -16,16 +16,16 @@ struct KKPayoutResults: Codable {
   }
 
   var group: [KKPayoutGroup]?
-  var user: KKPageDataUser?
-  var filterDurations: KKPageDataFilterDurations?
+  var user: KKHeaderUserDetails?
+  var filterDurations: KKFilterDurations?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     group = try container.decodeIfPresent([KKPayoutGroup].self, forKey: .group)
-    user = try container.decodeIfPresent(KKPageDataUser.self, forKey: .user)
-    filterDurations = try container.decodeIfPresent(KKPageDataFilterDurations.self, forKey: .filterDurations)
+    user = try container.decodeIfPresent(KKHeaderUserDetails.self, forKey: .user)
+    filterDurations = try container.decodeIfPresent(KKFilterDurations.self, forKey: .filterDurations)
   }
 
 }

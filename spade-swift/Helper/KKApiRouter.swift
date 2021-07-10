@@ -48,8 +48,12 @@ enum ApiRouter: URLRequestConvertible {
     case updateUserAvatar(parameter: [String: Any])
     case getUserBettingPlatformsAndGroups(parameter: [String: Any])
     case getUserAccountDetails(parameter: [String: Any])
-    case getHistory(parameter: [String: Any])
+    case getHistoryDeposit(parameter: [String: Any])
+    case getHistoryWithdraw(parameter: [String: Any])
+    case getHistoryTransfer(parameter: [String: Any])
+    case getHistoryPromotion(parameter: [String: Any])
     case getUserBettingRecord(parameter: [String: Any])
+    case vipLevel
     
     //MARK: - Inbox
     case getInbox(parameter: [String: Any])
@@ -102,8 +106,12 @@ enum ApiRouter: URLRequestConvertible {
              .getUserProfile,
              .getUserBettingPlatformsAndGroups,
              .getUserAccountDetails,
-             .getHistory,
+             .getHistoryDeposit,
+             .getHistoryWithdraw,
+             .getHistoryTransfer,
+             .getHistoryPromotion,
              .getUserBettingRecord,
+             .vipLevel,
              .getInbox,
              .getInboxReadStatus,
              .rebateProfile,
@@ -237,11 +245,23 @@ enum ApiRouter: URLRequestConvertible {
         case .getUserAccountDetails:
             return "member/account/detail"
             
-        case .getHistory:
-            return "member/history"
+        case .getHistoryDeposit:
+            return "member/history/deposit"
+            
+        case .getHistoryWithdraw:
+            return "member/history/withdraw"
+            
+        case .getHistoryTransfer:
+            return "member/history/transfer"
+            
+        case .getHistoryPromotion:
+            return "member/history/promotion"
             
         case .getUserBettingRecord:
             return "member/betslips"
+            
+        case .vipLevel:
+            return "vip/level"
             
         case .getInbox:
             return "member/inbox"
@@ -336,7 +356,10 @@ enum ApiRouter: URLRequestConvertible {
              .updateUserAvatar(let parameter),
              .getUserBettingPlatformsAndGroups(let parameter),
              .getUserAccountDetails(let parameter),
-             .getHistory(let parameter),
+             .getHistoryDeposit(let parameter),
+             .getHistoryWithdraw(let parameter),
+             .getHistoryTransfer(let parameter),
+             .getHistoryPromotion(let parameter),
              .getUserBettingRecord(let parameter),
              .getInbox(let parameter),
              .updateInboxReadStatus(let parameter),
@@ -358,6 +381,7 @@ enum ApiRouter: URLRequestConvertible {
              .depositPageData,
              .withdrawPageData,
              .getUserProfile,
+             .vipLevel,
              .rebateProfile,
              .rebateTable,
              .myAffiliate,

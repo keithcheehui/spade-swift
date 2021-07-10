@@ -324,24 +324,35 @@ class KKApiClient: NSObject {
         return performRequest(route: .getUserAccountDetails(parameter: parameter))
     }
     
-    static func getHistory(filter: String, status: String, groupCode: String) -> Future<KKUserHistoryResponse> {
+    static func getHistory(filter: String, status: String, tabItem: String) -> Future<KKUserHistoryResponse> {
         let parameter = [
             APIKeys.filterDuration: filter,
-            APIKeys.status: status,
-            APIKeys.filterType: groupCode
+            APIKeys.status: status
         ] as [String : Any]
         
-        return performRequest(route: .getHistory(parameter: parameter))
+        if tabItem == HistoryTab.deposit.rawValue {
+            return performRequest(route: .getHistoryDeposit(parameter: parameter))
+        } else if tabItem == HistoryTab.withdraw.rawValue {
+            return performRequest(route: .getHistoryWithdraw(parameter: parameter))
+        } else if tabItem == HistoryTab.transfer.rawValue {
+            return performRequest(route: .getHistoryTransfer(parameter: parameter))
+        } else {
+            return performRequest(route: .getHistoryPromotion(parameter: parameter))
+        }
     }
     
-    static func getUserBettingRecord(platformCode: String, groupCode: String) -> Future<KKUserBettingHistoryResponse> {
+    static func getUserBettingRecord(filter: String, platformCode: String, groupCode: String) -> Future<KKUserBettingHistoryResponse> {
         let parameter = [
-//            APIKeys.filterDuration : filter,
+            APIKeys.filterDuration : filter,
             APIKeys.groupCode : groupCode,
             APIKeys.platformCode: platformCode
         ] as [String : Any]
         
         return performRequest(route: .getUserBettingRecord(parameter: parameter))
+    }
+    
+    static func getVipLevel() -> Future<KKVipResponse> {
+        return performRequest(route: .vipLevel)
     }
     
     //MARK: - Inbox

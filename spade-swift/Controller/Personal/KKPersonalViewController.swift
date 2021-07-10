@@ -182,7 +182,6 @@ class KKPersonalViewController: KKBaseViewController {
         case PersonalSideMenu.history.rawValue:
             let viewController = KKGeneralTableViewController.init()
             viewController.historyTabArray = historyTabArray
-            viewController.rightDropdownOptions = pickerStatusArray
             viewController.tableViewType = .History
             changeView(vc: viewController)
             break;

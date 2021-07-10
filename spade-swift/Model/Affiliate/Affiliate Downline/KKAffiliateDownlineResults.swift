@@ -15,14 +15,14 @@ struct KKAffiliateDownlineResults: Codable {
   }
 
   var downlines: [KKAffiliateDownlineDownlines]?
-  var user: KKPageDataUser?
+  var user: KKHeaderUserDetails?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     downlines = try container.decodeIfPresent([KKAffiliateDownlineDownlines].self, forKey: .downlines)
-    user = try container.decodeIfPresent(KKPageDataUser.self, forKey: .user)
+    user = try container.decodeIfPresent(KKHeaderUserDetails.self, forKey: .user)
   }
 
 }

@@ -184,7 +184,6 @@ class KKRebateViewController: KKBaseViewController {
         case RebateSideMenu.rebateTrans.rawValue:
             let viewController = KKGeneralTableViewController()
             viewController.tableViewType = .RebateTrans
-            viewController.rightDropdownOptions = pickerTransTypeArray
             changeView(vc: viewController)
             break;
         case RebateSideMenu.rebateTable.rawValue:

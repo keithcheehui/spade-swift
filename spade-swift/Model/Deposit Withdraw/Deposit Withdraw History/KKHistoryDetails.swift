@@ -21,7 +21,7 @@ struct KKHistoryDetails: Codable {
   var status: String?
   var amount: String?
   var trxTimestamp: String?
-  var transactionId: Int?
+  var transactionId: String?
 
 
 
@@ -31,7 +31,7 @@ struct KKHistoryDetails: Codable {
     status = try container.decodeIfPresent(String.self, forKey: .status)
     amount = try container.decodeIfPresent(String.self, forKey: .amount)
     trxTimestamp = try container.decodeIfPresent(String.self, forKey: .trxTimestamp)
-    transactionId = try container.decodeIfPresent(Int.self, forKey: .transactionId)
+    transactionId = try container.decodeIfPresent(String.self, forKey: .transactionId)
   }
 
 }

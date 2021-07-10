@@ -108,8 +108,6 @@ class KKDepositViewController: KKBaseViewController {
         switch type {
         case DepositSideMenu.depositHistory.rawValue:
             let viewController = KKGeneralTableViewController()
-            viewController.leftDropdownOptions = pickerTimeArray
-            viewController.rightDropdownOptions = pickerStatusArray
             viewController.tableViewType = .DepositHistory
             changeView(vc: viewController)
             break;

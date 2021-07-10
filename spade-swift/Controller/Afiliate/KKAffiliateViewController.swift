@@ -190,7 +190,6 @@ class KKAffiliateViewController: KKBaseViewController {
         case AffiliatteSideMenu.commissionTrans.rawValue:
             let viewController = KKGeneralTableViewController()
             viewController.tableViewType = .AffiliateCommTrans
-            viewController.rightDropdownOptions = pickerTransTypeArray
             changeView(vc: viewController)
             break;
         case AffiliatteSideMenu.commissionTable.rawValue:

@@ -15,17 +15,17 @@ struct KKUserAccountDetailResults: Codable {
     case user
   }
 
-  var filterDurations: KKPageDataFilterDurations?
+  var filterDurations: KKFilterDurations?
   var walletTrx: [KKUserAccountDetailWalletTrx]?
-  var user: KKPageDataUser?
+  var user: KKHeaderUserDetails?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    filterDurations = try container.decodeIfPresent(KKPageDataFilterDurations.self, forKey: .filterDurations)
+    filterDurations = try container.decodeIfPresent(KKFilterDurations.self, forKey: .filterDurations)
     walletTrx = try container.decodeIfPresent([KKUserAccountDetailWalletTrx].self, forKey: .walletTrx)
-    user = try container.decodeIfPresent(KKPageDataUser.self, forKey: .user)
+    user = try container.decodeIfPresent(KKHeaderUserDetails.self, forKey: .user)
   }
 
 }

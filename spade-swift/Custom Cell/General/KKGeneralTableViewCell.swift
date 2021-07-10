@@ -36,7 +36,7 @@ class KKGeneralTableViewCell: UITableViewCell {
             label.font = UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 10))
             label.textColor = .spade_white_FFFFFF
             label.textAlignment = .center
-            label.numberOfLines = 1
+            label.numberOfLines = 2
             label.tag = index
             cellView.addSubview(label)
             

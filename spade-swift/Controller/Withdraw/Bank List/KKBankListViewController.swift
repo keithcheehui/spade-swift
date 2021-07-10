@@ -16,7 +16,7 @@ class KKBankListViewController: KKBaseViewController {
 
     @IBOutlet weak var bankTableView: UITableView!
 
-    var userBankList: [KKPageDataUserBankCards]! = []
+    var userBankList: [KKUserBankCards]! = []
 
     override func viewDidLoad() {
         super.viewDidLoad()

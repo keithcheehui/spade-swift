@@ -27,7 +27,7 @@ class KKWithdrawRequestViewController: KKBaseViewController {
     @IBOutlet weak var addBankContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmHeight: NSLayoutConstraint!
         
-    var userBankList: [KKPageDataUserBankCards]! = []
+    var userBankList: [KKUserBankCards]! = []
     var selectedBankItem = 0
 
     override func viewDidLoad() {

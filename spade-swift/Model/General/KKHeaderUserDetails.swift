@@ -1,5 +1,5 @@
 //
-//  KKPageDataUser.swift
+//  KKHeaderUserDetails.swift
 //
 //  Created by Wong Sai Khong on 10/07/2021
 //  Copyright (c) . All rights reserved.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct KKPageDataUser: Codable {
+struct KKHeaderUserDetails: Codable {
 
   enum CodingKeys: String, CodingKey {
     case id
@@ -16,7 +16,7 @@ struct KKPageDataUser: Codable {
   }
 
   var id: Int?
-  var wallet: KKPageDataWallet?
+  var wallet: KKHeaderWallet?
   var code: String?
 
 
@@ -24,7 +24,7 @@ struct KKPageDataUser: Codable {
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     id = try container.decodeIfPresent(Int.self, forKey: .id)
-    wallet = try container.decodeIfPresent(KKPageDataWallet.self, forKey: .wallet)
+    wallet = try container.decodeIfPresent(KKHeaderWallet.self, forKey: .wallet)
     code = try container.decodeIfPresent(String.self, forKey: .code)
   }
 

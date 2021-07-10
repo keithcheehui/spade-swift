@@ -51,7 +51,7 @@ class KKIndividualReportViewController: KKBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectedLeftItem = pickerTimeArray[selectedTabItem]
+//        selectedLeftItem = pickerTimeArray[selectedTabItem]
 
         
         setupTopContainer()
@@ -92,7 +92,7 @@ class KKIndividualReportViewController: KKBaseViewController {
         leftPickerTxtValue.inputAccessoryView = pickerToolBarView
         
         leftPickerTitle.text = "Transaction Time"
-        leftPickerTxtValue.text = selectedLeftItem.name
+//        leftPickerTxtValue.text = selectedLeftItem.name
         leftPickerTxtValue.delegate = self
     }
     
@@ -177,7 +177,7 @@ class KKIndividualReportViewController: KKBaseViewController {
 
 extension KKIndividualReportViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        showPickerView(optionList: pickerTimeArray)
+//        showPickerView(optionList: pickerTimeArray)
         pickerTextField = textField
         selectedLeftItem = selectedPickerItem
 

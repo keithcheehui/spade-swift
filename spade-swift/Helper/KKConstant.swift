@@ -179,6 +179,7 @@ struct CellIdentifier {
     static let tabListItemCVCIdentifier = "KKTabListItemCell"
     static let platformGameItemCVCIdentifier = "KKPlatfromGameItemCell"
     static let avatarItemCVCIdentifier = "KKAvatarItemCell"
+    static let vipItemCVCIdentifier = "KKVipItemCell"
 }
 
 struct Spade {

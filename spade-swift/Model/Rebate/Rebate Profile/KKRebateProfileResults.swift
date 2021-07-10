@@ -14,14 +14,14 @@ struct KKRebateProfileResults: Codable {
     case rebate
   }
 
-    var user: KKPageDataUser?
+    var user: KKHeaderUserDetails?
     var rebate: KKRebateProfileRebate?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    user = try container.decodeIfPresent(KKPageDataUser.self, forKey: .user)
+    user = try container.decodeIfPresent(KKHeaderUserDetails.self, forKey: .user)
     rebate = try container.decodeIfPresent(KKRebateProfileRebate.self, forKey: .rebate)
   }
 

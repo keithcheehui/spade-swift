@@ -1,5 +1,5 @@
 //
-//  KKPageDataWallet.swift
+//  KKHeaderWallet.swift
 //
 //  Created by Wong Sai Khong on 10/07/2021
 //  Copyright (c) . All rights reserved.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct KKPageDataWallet: Codable {
+struct KKHeaderWallet: Codable {
 
   enum CodingKeys: String, CodingKey {
     case id

@@ -1,5 +1,5 @@
 //
-//  KKPageDataBank.swift
+//  KKBankItemDetails.swift
 //
 //  Created by Wong Sai Khong on 10/07/2021
 //  Copyright (c) . All rights reserved.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct KKPageDataBank: Codable {
+struct KKBankItemDetails: Codable {
 
   enum CodingKeys: String, CodingKey {
     case name

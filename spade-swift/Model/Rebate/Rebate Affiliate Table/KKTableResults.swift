@@ -14,14 +14,14 @@ struct KKTableResults: Codable {
     case groups
   }
 
-  var user: KKPageDataUser?
+  var user: KKHeaderUserDetails?
   var groups: [KKTableGroups]?
 
 
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    user = try container.decodeIfPresent(KKPageDataUser.self, forKey: .user)
+    user = try container.decodeIfPresent(KKHeaderUserDetails.self, forKey: .user)
     groups = try container.decodeIfPresent([KKTableGroups].self, forKey: .groups)
   }
 

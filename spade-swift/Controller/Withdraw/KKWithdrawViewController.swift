@@ -25,7 +25,7 @@ class KKWithdrawViewController: KKBaseViewController {
 
     var sideMenuList: [SideMenuDetails] = []
     var selectedViewType = WithdrawSideMenu.withdraw.rawValue
-    var userBankList: [KKPageDataUserBankCards]! = []
+    var userBankList: [KKUserBankCards]! = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,8 +104,6 @@ class KKWithdrawViewController: KKBaseViewController {
         switch type {
         case WithdrawSideMenu.withdrawHistory.rawValue:
             let viewController = KKGeneralTableViewController()
-            viewController.leftDropdownOptions = pickerTimeArray
-            viewController.rightDropdownOptions = pickerStatusArray
             viewController.tableViewType = .WithdrawHistory
             changeView(vc: viewController)
             break;
