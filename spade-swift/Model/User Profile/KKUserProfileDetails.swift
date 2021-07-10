@@ -22,7 +22,7 @@ struct KKUserProfileDetails: Codable {
     case gender
     case tier
     case phoneNo = "phone_no"
-    case locale = "locale_preference"
+    case locale
     case walletBalance = "wallet_balance"
     case inboxUnreadMessages = "inbox_unread_messages"
   }

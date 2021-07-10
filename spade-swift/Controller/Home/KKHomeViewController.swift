@@ -105,6 +105,7 @@ class KKHomeViewController: KKBaseViewController {
         super.viewWillAppear(animated)
         updateUserProfileDetails()
         if KKUtil.isUserLogin() {
+            self.getMemberLandingAPI()
             self.getInboxReadStatusAPI()
         } else {
             updateUnreadStatus()

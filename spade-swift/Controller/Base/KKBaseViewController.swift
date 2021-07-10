@@ -214,6 +214,11 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         datePickerView.date = Date()
         datePickerView.locale = .current
         datePickerView.datePickerMode = .dateAndTime
+        if #available(iOS 13.4, *) {
+            datePickerView.preferredDatePickerStyle = .wheels
+        } else {
+            // Fallback on earlier versions
+        }
         datePickerView.addTarget(self, action: #selector(handleDateSelection), for: .valueChanged)
         
         if let window = UIApplication.shared.keyWindow {
