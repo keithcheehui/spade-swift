@@ -24,8 +24,8 @@ class KKRebateViewController: KKBaseViewController {
     var selectedViewType = AffiliatteSideMenu.myAffiliate.rawValue
     
     var tabGroupArray: [KKUserBettingGroupDetails]! = []
-    var payoutArray: [KKPayoutGroup]! = []
-    var transactionArray: [KKTransactionTransactions]! = []
+//    var payoutArray: [KKPayoutGroup]! = []
+//    var transactionArray: [KKTransactionTransactions]! = []
     var tableArray: [KKTableGroups]! = []
     var rebateInfo: KKRebateProfileRebate!
 
@@ -38,6 +38,20 @@ class KKRebateViewController: KKBaseViewController {
         
         getUserBettingPlatformsAndGroupsAPI()
         getRebateTableAPI()
+        getRebateProfileAPI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.getNotified), name: Notification.Name("NotificationGetMyRebate"), object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("NotificationGetMyRebate"), object: nil)
+    }
+    
+    @objc private func getNotified(notification: NSNotification){
         getRebateProfileAPI()
     }
     
@@ -103,20 +117,18 @@ class KKRebateViewController: KKBaseViewController {
         self.showAnimatedLoader()
         
         KKApiClient.getRebateProfile().execute { response in
-//            if let user = response.results?.user, var userProfile = KKUtil.decodeUserProfileFromCache() {
-//                if let wallet = user.wallet {
-//                    if let balance = wallet.balance {
-//                        if !balance.isEmpty {
-//                            let balanceFloat = Float(balance)
-//                            userProfile.walletBalance = balanceFloat
-//                            KKUtil.encodeUserProfile(object: userProfile)
-//                        }
-//                    }
-//                }
-//            }
+            if let user = response.results?.user, var userProfile = KKUtil.decodeUserProfileFromCache() {
+                if let wallet = user.wallet {
+                    if let balance = wallet.balance {
+                        userProfile.walletBalance = balance
+                        KKUtil.encodeUserProfile(object: userProfile)
+                    }
+                }
+            }
             if let rebate = response.results?.rebate {
                 self.rebateInfo = rebate
             }
+            self.setHeaderBarLayout()
             self.buttonHover(type: self.selectedViewType)
             self.hideAnimatedLoader()
 
@@ -126,25 +138,25 @@ class KKRebateViewController: KKBaseViewController {
         }
     }
     
-    func getRebatePayoutAPI() {
-        self.showAnimatedLoader()
-        KKApiClient.getRebatePayout().execute { response in
-            self.hideAnimatedLoader()
-            self.payoutArray = response.results?.group
-        } onFailure: { errorMessage in
-
-        }
-    }
-    
-    func getRebateTransactionAPI() {
-        self.showAnimatedLoader()
-        KKApiClient.getRebateTransaction().execute { response in
-            self.hideAnimatedLoader()
-            self.transactionArray = response.results?.commissionTransactions
-        } onFailure: { errorMessage in
-
-        }
-    }
+//    func getRebatePayoutAPI() {
+//        self.showAnimatedLoader()
+//        KKApiClient.getRebatePayout().execute { response in
+//            self.hideAnimatedLoader()
+//            self.payoutArray = response.results?.group
+//        } onFailure: { errorMessage in
+//
+//        }
+//    }
+//    
+//    func getRebateTransactionAPI() {
+//        self.showAnimatedLoader()
+//        KKApiClient.getRebateTransaction().execute { response in
+//            self.hideAnimatedLoader()
+//            self.transactionArray = response.results?.commissionTransactions
+//        } onFailure: { errorMessage in
+//
+//        }
+//    }
     
     func getRebateTableAPI() {
         KKApiClient.getRebateTable().execute { response in

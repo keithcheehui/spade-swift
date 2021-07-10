@@ -179,6 +179,14 @@ class KKDepositRequestViewController: KKBaseViewController {
         txtPromotion.textColor = lblAccountNameValue.textColor
         lblReceiptValue.textColor = lblAccountNameValue.textColor
         
+        txtDepositAmount.keyboardType = .numberPad
+        txtDepositAmount.returnKeyType = .next
+        txtDepositAmount.delegate = self
+        
+        txtReferenceNo.keyboardType = .numberPad
+        txtReferenceNo.returnKeyType = .done
+        txtReferenceNo.delegate = self
+        
         txtBankName.inputView = pickerView
         txtBankName.inputAccessoryView = pickerToolBarView
         txtBankName.delegate = self
@@ -273,15 +281,15 @@ class KKDepositRequestViewController: KKBaseViewController {
         self.setDefaultTodayDate()
     }
     
-    func updatePlaceholder(min: Int?, max: Int?) {
+    func updatePlaceholder(min: String?, max: String?) {
         if let minWithdraw = min, let maxWithdraw = max {
-            let minFloat = KKUtil.addCurrencyFormatWithInt(value: minWithdraw)
-            let maxFloat = KKUtil.addCurrencyFormatWithInt(value: maxWithdraw)
-            let placeholder = String(format: KKUtil.languageSelectedStringForKey(key: "deposit_amount_placeholder"), minFloat, maxFloat)
+//            let minFloat = KKUtil.addCurrencyFormatWithInt(value: minWithdraw)
+//            let maxFloat = KKUtil.addCurrencyFormatWithInt(value: maxWithdraw)
+            let placeholder = String(format: KKUtil.languageSelectedStringForKey(key: "deposit_amount_placeholder"), minWithdraw, maxWithdraw)
             
             txtDepositAmount.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
         } else {
-            let placeholder = String(format: KKUtil.languageSelectedStringForKey(key: "deposit_amount_placeholder"), 0, 0)
+            let placeholder = String(format: KKUtil.languageSelectedStringForKey(key: "deposit_amount_placeholder"), "0", "0")
 
             txtDepositAmount.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
         }
@@ -300,40 +308,40 @@ class KKDepositRequestViewController: KKBaseViewController {
     
     //MARK:- API Calls
     func validate() {
-        if (txtBankName.text!.isEmpty) {
-            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_bank_empty"))
-            return
-        }
-        
-        if (txtDepositTime.text!.isEmpty) {
-            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_date_empty"))
-            return
-        }
-        
-        if (txtDepositChannel.text!.isEmpty) {
-            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_channel_empty"))
-            return
-        }
-        
-        if (txtDepositAmount.text!.isEmpty) {
-            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_amount_empty"))
-            return
-        }
-        
-        if (txtReferenceNo.text!.isEmpty) {
-            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_refnum_empty"))
-            return
-        }
-        
-        if (txtPromotion.text!.isEmpty) {
-            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_promo_empty"))
-            return
-        }
-        
-        if (selectedImageData == nil) {
-            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_image_empty"))
-            return
-        }
+//        if (txtBankName.text!.isEmpty) {
+//            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_bank_empty"))
+//            return
+//        }
+//
+//        if (txtDepositTime.text!.isEmpty) {
+//            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_date_empty"))
+//            return
+//        }
+//
+//        if (txtDepositChannel.text!.isEmpty) {
+//            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_channel_empty"))
+//            return
+//        }
+//
+//        if (txtDepositAmount.text!.isEmpty) {
+//            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_amount_empty"))
+//            return
+//        }
+//
+//        if (txtReferenceNo.text!.isEmpty) {
+//            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_refnum_empty"))
+//            return
+//        }
+//
+//        if (txtPromotion.text!.isEmpty) {
+//            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_promo_empty"))
+//            return
+//        }
+//
+//        if (selectedImageData == nil) {
+//            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_image_empty"))
+//            return
+//        }
         
         depositAPI()
     }
@@ -357,7 +365,7 @@ class KKDepositRequestViewController: KKBaseViewController {
             
             let viewController = KKDialogAlertViewController.init()
             viewController.alertType = .Deposit
-            viewController.transactionId = ""
+            viewController.message = response.message
             self.present(viewController, animated: true, completion: nil)
             
         } onFailure: { errorMessage in
@@ -510,41 +518,32 @@ extension KKDepositRequestViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        if textField == txtDepositAmount || textField == txtReferenceNo {
+            self.switchBasedNextTextField(textField)
+        } else {
+            textField.resignFirstResponder()
+        }
         return true
+    }
+    
+    private func switchBasedNextTextField(_ textField: UITextField) {
+        switch textField {
+        case txtDepositAmount:
+            txtReferenceNo.becomeFirstResponder()
+        default:
+            txtReferenceNo.resignFirstResponder()
+        }
     }
 }
 
 extension KKDepositRequestViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-//    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
-////        self.dismiss(animated: true, completion: { () -> Void in
-////
-////        })
-//        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-//
-//            }
-//
-//
-//        let jpegCompressionQuality: CGFloat = 0.9 // Set this to whatever suits your purpose
-//        if let base64String = image.jpegData(compressionQuality: jpegCompressionQuality)?.base64EncodedString() {
-//            selectedReceipt64 = base64String
-//            uploadedReceipt(isUploaded: true)
-//        }
-//
-//        dismiss(animated: true, completion: nil)
-//    }
-    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.editedImage] as? UIImage else { return }
 
         let imageName = "receipt"
         let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
-
-//        let jpegCompressionQuality: CGFloat = 0.9 // Set this to whatever suits your purpose
-//        if let base64String = image.jpegData(compressionQuality: jpegCompressionQuality)?.base64EncodedString() {
-//            uploadedReceipt(isUploaded: true)
-//        }
-                
+   
         if let jpegData = image.jpegData(compressionQuality: 0.8) {
             try? jpegData.write(to: imagePath)
             selectedImageData = jpegData

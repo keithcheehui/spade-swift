@@ -33,6 +33,7 @@ class KKDialogAlertViewController: KKBaseViewController {
 
     var alertType: DialogAlertType!
     var transactionId: String!
+    var message: String!
     var webViewController: KKWebViewController!
 
     override func viewDidLoad() {
@@ -122,11 +123,13 @@ class KKDialogAlertViewController: KKBaseViewController {
     func setupDescLabel() -> String {
         switch alertType {
         case .Deposit:
-            return KKUtil.languageSelectedStringForKey(key: "alert_desc_deposit")
-            
+            return message
+//            return KKUtil.languageSelectedStringForKey(key: "alert_desc_deposit")
+
         case .Withdraw:
-            return KKUtil.languageSelectedStringForKey(key: "alert_desc_withdraw")
-        
+            return message
+//            return KKUtil.languageSelectedStringForKey(key: "alert_desc_withdraw")
+
         default: return ""
         }
     }

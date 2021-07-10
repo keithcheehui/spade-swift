@@ -26,8 +26,6 @@ class KKAffiliateViewController: KKBaseViewController {
     
     var tabGroupArray: [KKUserBettingGroupDetails]! = []
     var affiliateInfo: KKAffiliateProfileAffiliate!
-    var payoutArray: [KKPayoutGroup]! = []
-    var transactionArray: [KKTransactionTransactions]! = []
     var tableArray: [KKTableGroups]! = []
     
     override func viewDidLoad() {
@@ -38,8 +36,6 @@ class KKAffiliateViewController: KKBaseViewController {
         
         getUserBettingPlatformsAndGroupsAPI()
         getMyAffiliateAPI()
-        getAffiliatePayoutAPI()
-        getAffiliateTransactionAPI()
         getCommissionTableAPI()
     }
     
@@ -156,26 +152,6 @@ class KKAffiliateViewController: KKBaseViewController {
         }
     }
     
-    func getAffiliatePayoutAPI() {
-        self.showAnimatedLoader()
-        KKApiClient.getAffiliatePayout().execute { response in
-            self.hideAnimatedLoader()
-            self.payoutArray = response.results?.group
-        } onFailure: { errorMessage in
-
-        }
-    }
-    
-    func getAffiliateTransactionAPI() {
-        self.showAnimatedLoader()
-        KKApiClient.getAffiliateCommissionTransaction().execute { response in
-            self.hideAnimatedLoader()
-            self.transactionArray = response.results?.commissionTransactions
-        } onFailure: { errorMessage in
-
-        }
-    }
-    
     func getCommissionTableAPI() {
         KKApiClient.getAffiliateCommissionTable().execute { response in
             if let rebateResults = response.results?.groups {
@@ -208,14 +184,11 @@ class KKAffiliateViewController: KKBaseViewController {
             break;
         case AffiliatteSideMenu.payout.rawValue:
             let viewController = KKGeneralTableViewController()
-            viewController.payoutArray = payoutArray
-            viewController.tableArray = tableArray
             viewController.tableViewType = .AffiliatePayout
             changeView(vc: viewController)
             break;
         case AffiliatteSideMenu.commissionTrans.rawValue:
             let viewController = KKGeneralTableViewController()
-            viewController.transactionArray = transactionArray
             viewController.tableViewType = .AffiliateCommTrans
             viewController.rightDropdownOptions = pickerTransTypeArray
             changeView(vc: viewController)

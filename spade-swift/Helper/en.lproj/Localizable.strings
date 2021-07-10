@@ -189,7 +189,7 @@
 "withdraw_bank_card"                        = "Bank Card";
 "withdraw_withdraw_amount"                  = "Withdraw Amount";
 "withdraw_withdraw_placeholder"             = "Please enter withdraw amount";
-"withdraw_notice"                           = "Notice: Withdraw only from RM%@-Rm%@ only";
+"withdraw_notice"                           = "Notice: Withdraw only from %@%@ - %@%@ only";
 "withdraw_description"                      = "You have not add any bank account yet, please add bank account first before withdrawal";
 "withdraw_select_bank"                      = "Please select your bank account";
 "withdraw_add_bank"                         = "Add Bank Account";
@@ -247,7 +247,7 @@
 "error_account_name_empty"                      = "Bank account name should not be empty.";
 "error_bank_name_empty"                         = "Please select a bank name.";
 "error_account_number_empty"                    = "Bank account number should not be empty.";
-"error_withdraw_empty"                          = "Withdraw amount should not less than RM30 and exceeded RM10,000";
+"error_withdraw_empty"                          = "Withdraw amount should not less than %@%@ and exceeded %@%@";
 "error_okay"                                    = "OKAY";
 "error_email_empty"                             = "Email should not be empty.";
 "error_email_invalid"                           = "Email format is invalid.";

@@ -26,9 +26,7 @@ class KKWithdrawRequestViewController: KKBaseViewController {
     @IBOutlet weak var withdrawContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var addBankContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmHeight: NSLayoutConstraint!
-    
-//    var parentVC: KKWithdrawViewController!
-    
+        
     var userBankList: [KKPageDataUserBankCards]! = []
     var selectedBankItem = 0
 
@@ -38,8 +36,6 @@ class KKWithdrawRequestViewController: KKBaseViewController {
         initialLayout()
         changeLayoutView(noBank: userBankList.isEmpty)
         setNoticeLabel(min: userBankList[selectedBankItem].bank?.minWithdrawal, max: userBankList[selectedBankItem].bank?.maxWithdrawal)
-
-//        getBankListAPI()
     }
     
     func initialLayout(){
@@ -84,13 +80,15 @@ class KKWithdrawRequestViewController: KKBaseViewController {
         changeLayoutView(noBank: true)
     }
     
-    func setNoticeLabel(min: Int?, max: Int?) {
+    func setNoticeLabel(min: String?, max: String?) {
+        let currency = KKUtil.decodeUserCountryFromCache().currency ?? ""
+
         if let minWithdraw = min, let maxWithdraw = max {
-            let minFloat = KKUtil.addCurrencyFormatWithInt(value: minWithdraw)
-            let maxFloat = KKUtil.addCurrencyFormatWithInt(value: maxWithdraw)
-            lblNotice.text = String(format: KKUtil.languageSelectedStringForKey(key: "withdraw_notice"), minFloat, maxFloat)
+//            let minFloat = KKUtil.addCurrencyFormatWithInt(value: minWithdraw)
+//            let maxFloat = KKUtil.addCurrencyFormatWithInt(value: maxWithdraw)
+            lblNotice.text = String(format: KKUtil.languageSelectedStringForKey(key: "withdraw_notice"), currency, minWithdraw, currency, maxWithdraw)
         } else {
-            lblNotice.text = String(format: KKUtil.languageSelectedStringForKey(key: "withdraw_notice"), 0, 0)
+            lblNotice.text = String(format: KKUtil.languageSelectedStringForKey(key: "withdraw_notice"), currency, 0, currency, 0)
         }
     }
     
@@ -103,33 +101,22 @@ class KKWithdrawRequestViewController: KKBaseViewController {
             addBankContainerHeight.constant = 0
         }
     }
-    
-//    func getBankListAPI() {
-//        self.showAnimatedLoader()
-//
-//        KKApiClient.withdrawPageData().execute { withdrawBankResponse in
-//            self.hideAnimatedLoader()
-//            self.userBankList = withdrawBankResponse.results?.userBankCards
-//
-//            self.changeLayoutView(noBank: self.userBankList.isEmpty)
-//            self.bankTableView.reloadData()
-//
-//        } onFailure: { errorMessage in
-//            self.hideAnimatedLoader()
-//            self.showAlertView(type: .Error, alertMessage: errorMessage)
-//            self.changeLayoutView(noBank: self.userBankList.isEmpty)
-//        }
-//    }
-    
+
     func validateEnty() {
         if (userBankList.isEmpty) {
             return
         }
         
-        if txtWithdrawAmount.text!.count == 0 {
-            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_withdraw_empty"))
-            return
-        }
+//        if txtWithdrawAmount.text!.count == 0 {
+//            let min = userBankList[selectedBankItem].bank?.minWithdrawal ?? ""
+//            let max = userBankList[selectedBankItem].bank?.maxWithdrawal ?? ""
+//            let currency = KKUtil.decodeUserCountryFromCache().currency ?? ""
+//
+//            let message = String(format: KKUtil.languageSelectedStringForKey(key: "withdraw_notice"), currency, min, currency, max)
+//
+//            self.showAlertView(type: .Error, alertMessage: message)
+//            return
+//        }
         
         withdrawAPI()
     }
@@ -140,15 +127,15 @@ class KKWithdrawRequestViewController: KKBaseViewController {
         let amount: String = txtWithdrawAmount.text!
         let amountFloat = Float(amount)
         
-        let bankAccount = userBankList[selectedBankItem].bankAccountNumber!
+        let bankId = userBankList[selectedBankItem].bank?.id ?? 0
         
-        KKApiClient.withdraw(amount: amountFloat!, bankAcc: bankAccount).execute { withdrawResponse in
+        KKApiClient.withdraw(amount: amountFloat!, bankId: bankId).execute { withdrawResponse in
             self.hideAnimatedLoader()
             self.txtWithdrawAmount.text = ""
             
             let viewController = KKDialogAlertViewController.init()
             viewController.alertType = .Withdraw
-            viewController.transactionId = ""
+            viewController.message = withdrawResponse.message
             self.present(viewController, animated: true, completion: nil)
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
@@ -160,10 +147,6 @@ class KKWithdrawRequestViewController: KKBaseViewController {
     @IBAction func btnClearDidPressed(){
         txtWithdrawAmount.text = ""
     }
-    
-//    @IBAction func btnAddDidPressed(){
-//        parentVC.changeToHoverBankCard()
-//    }
     
     @IBAction func btnConfirmDidPressed(){
         validateEnty()

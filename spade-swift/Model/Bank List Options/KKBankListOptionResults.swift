@@ -10,7 +10,7 @@ import Foundation
 struct KKBankListOptionResults: Codable {
 
   enum CodingKeys: String, CodingKey {
-    case bankList = "bank_list"
+    case bankList = "bank_lists"
   }
 
   var bankList: [KKPageDataBank]?

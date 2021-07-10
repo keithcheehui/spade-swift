@@ -36,7 +36,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q3A-1b-LM7">
                     <rect key="frame" x="782" y="323" width="50" height="50"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_info" translatesAutoresizingMaskIntoConstraints="NO" id="n0b-mE-CWe">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_floating" translatesAutoresizingMaskIntoConstraints="NO" id="n0b-mE-CWe">
                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyX-5d-1ET">
@@ -77,6 +77,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_info" width="38" height="38"/>
+        <image name="ic_floating" width="400" height="400"/>
     </resources>
 </document>

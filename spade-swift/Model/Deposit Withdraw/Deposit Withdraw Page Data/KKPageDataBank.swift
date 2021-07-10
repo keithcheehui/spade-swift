@@ -22,11 +22,11 @@ struct KKPageDataBank: Codable {
 
   var name: String?
   var id: Int?
-  var maxDeposit: Int?
+  var maxDeposit: String?
   var img: String?
-  var minWithdrawal: Int?
-  var minDeposit: Int?
-  var maxWithdrawal: Int?
+  var minWithdrawal: String?
+  var minDeposit: String?
+  var maxWithdrawal: String?
   var code: String?
 
 
@@ -35,11 +35,11 @@ struct KKPageDataBank: Codable {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     name = try container.decodeIfPresent(String.self, forKey: .name)
     id = try container.decodeIfPresent(Int.self, forKey: .id)
-    maxDeposit = try container.decodeIfPresent(Int.self, forKey: .maxDeposit)
+    maxDeposit = try container.decodeIfPresent(String.self, forKey: .maxDeposit)
     img = try container.decodeIfPresent(String.self, forKey: .img)
-    minWithdrawal = try container.decodeIfPresent(Int.self, forKey: .minWithdrawal)
-    minDeposit = try container.decodeIfPresent(Int.self, forKey: .minDeposit)
-    maxWithdrawal = try container.decodeIfPresent(Int.self, forKey: .maxWithdrawal)
+    minWithdrawal = try container.decodeIfPresent(String.self, forKey: .minWithdrawal)
+    minDeposit = try container.decodeIfPresent(String.self, forKey: .minDeposit)
+    maxWithdrawal = try container.decodeIfPresent(String.self, forKey: .maxWithdrawal)
     code = try container.decodeIfPresent(String.self, forKey: .code)
   }
 

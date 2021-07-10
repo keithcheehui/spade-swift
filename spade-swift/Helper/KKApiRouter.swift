@@ -58,8 +58,8 @@ enum ApiRouter: URLRequestConvertible {
     
     //MARK: - Rebate
     case rebateProfile
-    case rebatePayout
-    case rebateTransaction
+    case rebatePayout(parameter: [String: Any])
+    case rebateTransaction(parameter: [String: Any])
     case rebateTable
     case rebateCollect(parameter: [String: Any])
 
@@ -67,9 +67,9 @@ enum ApiRouter: URLRequestConvertible {
     case myAffiliate
     case getAffiliateGuideline(parameter: [String: Any])
     case affiliateDownline
-    case affiliateTurnover
-    case affiliatePayout
-    case affiliateCommissionTransaction
+    case affiliateTurnover(parameter: [String: Any])
+    case affiliatePayout(parameter: [String: Any])
+    case affiliateCommissionTransaction(parameter: [String: Any])
     case commissionTable
     case affiliateCollect(parameter: [String: Any])
     
@@ -312,103 +312,44 @@ enum ApiRouter: URLRequestConvertible {
     private var parameters: Parameters? {
            
         switch self {
-        case .registerOTPRequest(let parameter):
-            return parameter
-        
-        case .registerOTPVerify(let parameter):
-            return parameter
-            
-        case .registration(let parameter):
-            return parameter
-            
-        case .login(let parameter):
-            return parameter
-            
-        case .forgotPasswordOTPRequest(let parameter):
-            return parameter
-            
-        case .forgotPasswordOTPVerify(let parameter):
-            return parameter
-            
-        case .forgotPassword(let parameter):
-            return parameter
-            
-        case .appVersion(let parameter):
-            return parameter
-        
-        case .guestLandingData(let parameter):
-            return parameter
-            
-        case .getGroupAndPlatform(let parameter):
-            return parameter
-
-        case .getGameTypeListing(let parameter):
-            return parameter
-            
-        case .getAnnouncement(let parameter):
-            return parameter
-            
-        case .getFAQ(let parameter):
-            return parameter
-            
-        case .getLiveChat(let parameter):
-            return parameter
-            
-        case .getPromotion(let parameter):
-            return parameter
-            
-        case .getAffiliateGuideline(let parameter):
-            return parameter
-            
-        case .addUserBankCard(let parameter):
-            return parameter
-            
-        case .depositHistory(let parameter):
-            return parameter
-            
-        case .withdraw(let parameter):
-            return parameter
-            
-        case .withdrawHistory(let parameter):
-            return parameter
-            
-        case .updateUserProfile(let parameter):
-            return parameter
-            
-        case .updateUserAvatar(let parameter):
-            return parameter
-            
-        case .getUserBettingPlatformsAndGroups(let parameter):
-            return parameter
-            
-        case .getUserAccountDetails(let parameter):
-            return parameter
-            
-        case .getHistory(let parameter):
-            return parameter
-            
-        case .getUserBettingRecord(let parameter):
-            return parameter
-            
-        case .getInbox(let parameter):
-            return parameter
-            
-        case .updateInboxReadStatus(let parameter):
-            return parameter
-            
-        case .rebateCollect(let parameter):
-            return parameter
-            
-        case .affiliateCollect(let parameter):
-            return parameter
-            
-        case .memberLandingData(let parameter):
-            return parameter
-            
-        case .updateUserLanguagePreference(let parameter):
-            return parameter
-            
-        case .changePassword(let parameter):
+        case .registerOTPRequest(let parameter),
+             .registerOTPVerify(let parameter),
+             .registration(let parameter),
+             .login(let parameter),
+             .forgotPasswordOTPRequest(let parameter),
+             .forgotPasswordOTPVerify(let parameter),
+             .forgotPassword(let parameter),
+             .appVersion(let parameter),
+             .guestLandingData(let parameter),
+             .getGroupAndPlatform(let parameter),
+             .getGameTypeListing(let parameter),
+             .getAnnouncement(let parameter),
+             .getFAQ(let parameter),
+             .getLiveChat(let parameter),
+             .getPromotion(let parameter),
+             .getAffiliateGuideline(let parameter),
+             .addUserBankCard(let parameter),
+             .depositHistory(let parameter),
+             .withdraw(let parameter),
+             .withdrawHistory(let parameter),
+             .updateUserProfile(let parameter),
+             .updateUserAvatar(let parameter),
+             .getUserBettingPlatformsAndGroups(let parameter),
+             .getUserAccountDetails(let parameter),
+             .getHistory(let parameter),
+             .getUserBettingRecord(let parameter),
+             .getInbox(let parameter),
+             .updateInboxReadStatus(let parameter),
+             .rebateCollect(let parameter),
+             .rebatePayout(let parameter),
+             .rebateTransaction(let parameter),
+             .affiliateTurnover(let parameter),
+             .affiliatePayout(let parameter),
+             .affiliateCommissionTransaction(let parameter),
+             .affiliateCollect(let parameter),
+             .memberLandingData(let parameter),
+             .updateUserLanguagePreference(let parameter),
+             .changePassword(let parameter):
             return parameter
             
         case .getInboxReadStatus,
@@ -418,14 +359,9 @@ enum ApiRouter: URLRequestConvertible {
              .withdrawPageData,
              .getUserProfile,
              .rebateProfile,
-             .rebatePayout,
-             .rebateTransaction,
              .rebateTable,
              .myAffiliate,
              .affiliateDownline,
-             .affiliateTurnover,
-             .affiliatePayout,
-             .affiliateCommissionTransaction,
              .commissionTable,
              .getLatestWallet,
              .logOutUser,

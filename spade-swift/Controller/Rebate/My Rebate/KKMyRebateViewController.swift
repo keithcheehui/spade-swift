@@ -145,6 +145,8 @@ class KKMyRebateViewController: KKBaseViewController {
         self.showAnimatedLoader()
         KKApiClient.rebateCollect(amount: amount).execute{ response in
             self.hideAnimatedLoader()
+            NotificationCenter.default.post(name: Notification.Name("NotificationGetMyRebate"), object: nil)
+            self.clearText()
             self.showAlertView(type: .Success, alertMessage: response.message ?? "")
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()

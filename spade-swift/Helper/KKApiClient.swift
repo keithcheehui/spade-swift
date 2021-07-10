@@ -265,10 +265,10 @@ class KKApiClient: NSObject {
         return performRequest(route: .withdrawPageData)
     }
     
-    static func withdraw(amount: Float, bankAcc: String) -> Future<KKGeneralResponse> {
+    static func withdraw(amount: Float, bankId: Int) -> Future<KKGeneralResponse> {
         let parameter = [
             APIKeys.withdrawAmount: amount,
-            APIKeys.withdrawAccountNo: bankAcc
+            APIKeys.userBankCardId: bankId
         ] as [String : Any]
         
         return performRequest(route: .withdraw(parameter: parameter))
@@ -370,12 +370,21 @@ class KKApiClient: NSObject {
         return performRequest(route: .rebateProfile)
     }
     
-    static func getRebatePayout() -> Future<KKPayoutResponse> {
-        return performRequest(route: .rebatePayout)
+    static func getRebatePayout(filter:String) -> Future<KKPayoutResponse> {
+        let parameter = [
+            APIKeys.filterDuration: filter
+        ] as [String : Any]
+        
+        return performRequest(route: .rebatePayout(parameter: parameter))
     }
     
-    static func getRebateTransaction() -> Future<KKTransactionResponse> {
-        return performRequest(route: .rebateTransaction)
+    static func getRebateTransaction(filter: String, type: String) -> Future<KKTransactionResponse> {
+        let parameter = [
+            APIKeys.filterDuration: filter,
+            APIKeys.type: type
+        ] as [String : Any]
+        
+        return performRequest(route: .rebateTransaction(parameter: parameter))
     }
     
     static func getRebateTable() -> Future<KKTableResponse> {
@@ -407,16 +416,29 @@ class KKApiClient: NSObject {
         return performRequest(route: .affiliateDownline)
     }
     
-    static func getAffiliateTurnover() -> Future<KKAffiliateTurnoverResponse> {
-        return performRequest(route: .affiliateTurnover)
+    static func getAffiliateTurnover(filter: String) -> Future<KKAffiliateTurnoverResponse> {
+        let parameter = [
+            APIKeys.filterDuration: filter
+        ] as [String : Any]
+        
+        return performRequest(route: .affiliateTurnover(parameter: parameter))
     }
     
-    static func getAffiliatePayout() -> Future<KKPayoutResponse> {
-        return performRequest(route: .affiliatePayout)
+    static func getAffiliatePayout(filter: String) -> Future<KKPayoutResponse> {
+        let parameter = [
+            APIKeys.filterDuration: filter
+        ] as [String : Any]
+        
+        return performRequest(route: .affiliatePayout(parameter: parameter))
     }
     
-    static func getAffiliateCommissionTransaction() -> Future<KKTransactionResponse> {
-        return performRequest(route: .affiliateCommissionTransaction)
+    static func getAffiliateCommissionTransaction(filter: String, type: String) -> Future<KKTransactionResponse> {
+        let parameter = [
+            APIKeys.filterDuration: filter,
+            APIKeys.type: type
+        ] as [String : Any]
+        
+        return performRequest(route: .affiliateCommissionTransaction(parameter: parameter))
     }
     
     static func getAffiliateCommissionTable() -> Future<KKTableResponse> {

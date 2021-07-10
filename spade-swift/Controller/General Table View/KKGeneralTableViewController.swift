@@ -380,34 +380,84 @@ class KKGeneralTableViewController: KKBaseViewController {
             break;
         }
         
-        if tableViewType == .BettingRecord {
+        switch tableViewType {
+        case .BettingRecord:
             self.getUserBettingRecordAPI(rightPicker: selectedRightItem.id, tabItem: tabId)
-        } else if tableViewType == .AccountDetails {
+
+        case .AccountDetails:
             self.getUserAccountDetailsAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id, tabItem: tabId)
-        } else if tableViewType == .WithdrawHistory {
+
+        case .WithdrawHistory:
             self.withdrawHistoryAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id)
-        } else if tableViewType == .DepositHistory {
+
+        case .DepositHistory:
             self.depositHistoryAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id)
-        } else if tableViewType == .AffiliateDownline {
+
+        case .AffiliateDownline:
             self.getAffiliateDownlineAPI()
-        } else if tableViewType == .AffiliateTurnover {
-            self.getAffiliateTurnoverAPI()
-        } else if tableViewType == .RebateTable || tableViewType == .AffiliateCommTable {
+
+        case .AffiliateTurnover:
+            self.getAffiliateTurnoverAPI(leftPicker: selectedLeftItem.id)
+
+        case .AffiliatePayout:
+            self.getAffiliatePayoutAPI(leftPicker: selectedLeftItem.id)
+            
+        case .AffiliateCommTrans:
+            self.getAffiliateCommissionTransactionAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id)
+            
+        case .RebatePayout:
+//            let total = payoutArray[selectedTabItem].totalRebate ?? ""
+//            let currency = KKUtil.decodeUserCountryFromCache().currency ?? ""
+//            lblTotal.text = String(format: KKUtil.languageSelectedStringForKey(key: "rebate_total_rebate"), currency, total)
+            self.getRebatePayoutAPI(leftPicker: selectedLeftItem.id)
+            
+        case .RebateTrans:
+            self.getRebateTransactionAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id)
+            
+        case .History:
+            self.getHistoryAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id, tabItem: tabId)
+            
+        case .AffiliateCommTable,
+             .RebateTable:
             updateButton()
             contentTableView.reloadData()
-        } else if tableViewType == .RebatePayout {
-            let total = payoutArray[selectedTabItem].totalRebate ?? ""
-            let currency = KKUtil.decodeUserCountryFromCache().currency ?? ""
-            lblTotal.text = String(format: KKUtil.languageSelectedStringForKey(key: "rebate_total_rebate"), currency, total)
-            contentTableView.reloadData()
-        } else if tableViewType == .AffiliatePayout {
-            let total = payoutArray[selectedTabItem].totalCommission ?? ""
-            let currency = KKUtil.decodeUserCountryFromCache().currency ?? ""
-            lblTotal.text = String(format: KKUtil.languageSelectedStringForKey(key: "affiliates_total_comm"), currency, total)
-            contentTableView.reloadData()
-        } else if tableViewType == .History {
-            self.getHistoryAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id, tabItem: tabId)
+            
+        default: break
         }
+        
+        
+//        if tableViewType == .BettingRecord {
+//            self.getUserBettingRecordAPI(rightPicker: selectedRightItem.id, tabItem: tabId)
+//        } else if tableViewType == .AccountDetails {
+//            self.getUserAccountDetailsAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id, tabItem: tabId)
+//        } else if tableViewType == .WithdrawHistory {
+//            self.withdrawHistoryAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id)
+//        } else if tableViewType == .DepositHistory {
+//            self.depositHistoryAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id)
+//        } else if tableViewType == .AffiliateDownline {
+//            self.getAffiliateDownlineAPI()
+//        } else if tableViewType == .AffiliateTurnover {
+//            self.getAffiliateTurnoverAPI(leftPicker: selectedLeftItem.id)
+//        } else if tableViewType == .AffiliatePayout {
+//            let total = payoutArray[selectedTabItem].totalCommission ?? ""
+//            let currency = KKUtil.decodeUserCountryFromCache().currency ?? ""
+//            lblTotal.text = String(format: KKUtil.languageSelectedStringForKey(key: "affiliates_total_comm"), currency, total)
+//            self.getAffiliatePayoutAPI(leftPicker: selectedLeftItem.id)
+//        } else if tableViewType == .AffiliateCommTrans {
+//            self.getAffiliatePayoutAPI(leftPicker: selectedLeftItem.id)
+//        } else if tableViewType == .RebateTable || tableViewType == .AffiliateCommTable {
+//            updateButton()
+//            contentTableView.reloadData()
+//        } else if tableViewType == .RebatePayout {
+//            let total = payoutArray[selectedTabItem].totalRebate ?? ""
+//            let currency = KKUtil.decodeUserCountryFromCache().currency ?? ""
+//            lblTotal.text = String(format: KKUtil.languageSelectedStringForKey(key: "rebate_total_rebate"), currency, total)
+//            contentTableView.reloadData()
+//        } else if tableViewType == .RebateTrans {
+//            self.getRebateTransactionAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id)
+//        } else if tableViewType == .History {
+//            self.getHistoryAPI(leftPicker: selectedLeftItem.id, rightPicker: selectedRightItem.id, tabItem: tabId)
+//        }
     }
     
     func returnCellDetails(indexPath: IndexPath) -> [String] {
@@ -516,10 +566,6 @@ class KKGeneralTableViewController: KKBaseViewController {
         }
     }
     
-    @IBAction func btnSearchDidPressed() {
-        
-    }
-    
     @objc func btnNonCommRebateGameDidPressed() {
         let excludedRebateProducts = tableArray[selectedTabItem].excludedProducts
         if excludedRebateProducts == nil {
@@ -592,23 +638,75 @@ class KKGeneralTableViewController: KKBaseViewController {
         }
     }
     
-    func getAffiliateDownlineAPI() {
+    func getRebatePayoutAPI(leftPicker: String) {
         self.showAnimatedLoader()
-        KKApiClient.getAffiliateDownline().execute { response in
+        KKApiClient.getRebatePayout(filter: leftPicker).execute { response in
             self.hideAnimatedLoader()
-            self.affiliateDownlineArray = response.results?.downlines
-            self.filterUsername()
+            self.payoutArray = response.results?.group
+        } onFailure: { errorMessage in
+
+        }
+    }
+    
+    func getRebateTransactionAPI(leftPicker: String, rightPicker: String) {
+        self.showAnimatedLoader()
+        KKApiClient.getRebateTransaction(filter: leftPicker, type: rightPicker).execute { response in
+            self.hideAnimatedLoader()
+            self.transactionArray = response.results?.rebateTransactions
+            self.contentTableView.reloadData()
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
             self.showAlertView(type: .Error, alertMessage: errorMessage)
         }
     }
     
-    func getAffiliateTurnoverAPI() {
+    func getAffiliateDownlineAPI() {
         self.showAnimatedLoader()
-        KKApiClient.getAffiliateTurnover().execute { response in
+        KKApiClient.getAffiliateDownline().execute { response in
+            self.hideAnimatedLoader()
+            self.affiliateDownlineArray = response.results?.downlines
+            self.filterUsername()
+            self.contentTableView.reloadData()
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
+        }
+    }
+    
+    func getAffiliateTurnoverAPI(leftPicker: String) {
+        self.showAnimatedLoader()
+        KKApiClient.getAffiliateTurnover(filter: leftPicker).execute { response in
             self.hideAnimatedLoader()
             self.affiliateTurnoverArray = response.results?.commissionTurnover
+            self.filterUsername()
+            self.contentTableView.reloadData()
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
+        }
+    }
+    
+    func getAffiliatePayoutAPI(leftPicker: String) {
+        self.showAnimatedLoader()
+        KKApiClient.getAffiliatePayout(filter: leftPicker).execute { response in
+            self.hideAnimatedLoader()
+            self.payoutArray = response.results?.group
+            
+            let total = self.payoutArray[self.selectedTabItem].totalCommission ?? ""
+            let currency = KKUtil.decodeUserCountryFromCache().currency ?? ""
+            self.lblTotal.text = String(format: KKUtil.languageSelectedStringForKey(key: "affiliates_total_comm"), currency, total)
+            self.contentTableView.reloadData()
+            self.groupsCollectionView.reloadData()
+        } onFailure: { errorMessage in
+
+        }
+    }
+
+    func getAffiliateCommissionTransactionAPI(leftPicker: String, rightPicker: String) {
+        self.showAnimatedLoader()
+        KKApiClient.getAffiliateCommissionTransaction(filter: leftPicker, type: rightPicker).execute { response in
+            self.hideAnimatedLoader()
+            self.transactionArray = response.results?.commissionTransactions
             self.filterUsername()
         } onFailure: { errorMessage in
             self.hideAnimatedLoader()
@@ -678,7 +776,6 @@ class KKGeneralTableViewController: KKBaseViewController {
                 searchTurnoverArray = affiliateTurnoverArray
             }
         }
-        
         contentTableView.reloadData()
     }
 }
@@ -724,8 +821,10 @@ extension KKGeneralTableViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch tableViewType {
         case .RebatePayout,
-             .AffiliatePayout,
-             .RebateTable,
+             .AffiliatePayout:
+            return payoutArray.count
+            
+        case .RebateTable,
              .AffiliateCommTable:
             return tableArray.count
 
@@ -755,8 +854,10 @@ extension KKGeneralTableViewController: UICollectionViewDelegate, UICollectionVi
         
         switch tableViewType {
         case .RebatePayout,
-             .AffiliatePayout,
-             .RebateTable,
+             .AffiliatePayout:
+            cell.lblTitle.text = payoutArray[indexPath.item].name ?? ""
+
+        case .RebateTable,
              .AffiliateCommTable:
             cell.lblTitle.text = tableArray[indexPath.item].name ?? ""
         

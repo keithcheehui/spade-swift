@@ -102,6 +102,7 @@ struct APIKeys {
     static let bankAccountName = "bank_account_name"
     static let bankAccountNo = "bank_account_number"
     static let withdrawAmount = "withdraw_amount"
+    static let userBankCardId = "user_bank_card_id"
     static let withdrawAccountNo = "bank_account_number"
     static let filterDuration = "filter_duration"
     static let filterType = "filter_type"

@@ -18,7 +18,7 @@ class KKWebViewController: KKBaseViewController {
         super.viewDidLoad()
         
         webView.navigationDelegate = self
-        webView.isOpaque = false
+//        webView.isOpaque = false
         webView.addSubview(loadingActivity)
         webView.clipsToBounds = true
 

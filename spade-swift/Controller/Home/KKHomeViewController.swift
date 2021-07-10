@@ -104,7 +104,12 @@ class KKHomeViewController: KKBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateUserProfileDetails()
-        
+        if KKUtil.isUserLogin() {
+            self.getInboxReadStatusAPI()
+        } else {
+            updateUnreadStatus()
+        }
+
         NotificationCenter.default.addObserver(self, selector: #selector(self.getNotified), name: Notification.Name("NotificationUpdateProfile"), object: nil)
     }
     
@@ -596,6 +601,9 @@ class KKHomeViewController: KKBaseViewController {
                 
                 let walletBalance = detailResponse.userInfo?.walletBalance
                 self.getUserProfilAPI(walletBalance: walletBalance)
+                
+                self.messageUnread = detailResponse.userInfo?.inboxUnreadMessages ?? false
+                self.updateUnreadStatus()
             }
         } onFailure: { errorMessage in
             self.getUserProfilAPI(walletBalance: "0.00")
