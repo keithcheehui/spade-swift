@@ -37,6 +37,9 @@
                 <outlet property="imgProfileMarginLeft" destination="peh-5k-zm1" id="ojh-mW-7GM"/>
                 <outlet property="imgProfileWidth" destination="59s-FL-Mjf" id="sQd-vw-IcL"/>
                 <outlet property="imgRefreshWidth" destination="2LZ-go-mqz" id="yYv-hv-tlz"/>
+                <outlet property="languageContainer" destination="7UV-Ke-VXd" id="PI1-6t-QhC"/>
+                <outlet property="languageContainerHeight" destination="ARt-1O-Yxw" id="ZQc-l0-YXf"/>
+                <outlet property="languageContainerWidth" destination="egg-HL-uHf" id="RDb-o6-dfz"/>
                 <outlet property="lblAffiliate" destination="xjj-Kz-CTx" id="4p1-SP-sVS"/>
                 <outlet property="lblAnnouncement" destination="FhT-j7-giH" id="qpX-ZP-ZCy"/>
                 <outlet property="lblAnnouncementBubble" destination="Tki-X3-Xhw" id="IaJ-0A-nOa"/>
@@ -1107,6 +1110,14 @@
                         <action selector="btnDownDidPressed" destination="-1" eventType="touchUpInside" id="CHc-3v-Vop"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UV-Ke-VXd">
+                    <rect key="frame" x="678" y="52" width="150" height="150"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="ARt-1O-Yxw"/>
+                        <constraint firstAttribute="width" constant="150" id="egg-HL-uHf"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1140,6 +1151,8 @@
                 <constraint firstAttribute="bottom" secondItem="AR4-6P-MLd" secondAttribute="bottom" id="kHx-Oz-fhj"/>
                 <constraint firstAttribute="bottom" secondItem="WIb-Hr-phc" secondAttribute="bottom" id="kdP-VH-Ssh"/>
                 <constraint firstItem="WIb-Hr-phc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nNk-7U-TTm"/>
+                <constraint firstItem="7UV-Ke-VXd" firstAttribute="trailing" secondItem="EJb-Zk-xG0" secondAttribute="trailing" id="nWd-Ye-YbZ"/>
+                <constraint firstItem="7UV-Ke-VXd" firstAttribute="top" secondItem="EJb-Zk-xG0" secondAttribute="bottom" id="oeA-zj-sm5"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="AR4-6P-MLd" secondAttribute="trailing" id="p3N-Kc-9AA"/>
                 <constraint firstItem="olL-sr-RUg" firstAttribute="bottom" secondItem="9Kw-Ap-8iK" secondAttribute="bottom" constant="10" id="uN7-Wx-fG1"/>
             </constraints>

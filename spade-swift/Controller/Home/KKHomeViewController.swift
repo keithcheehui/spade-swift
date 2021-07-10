@@ -85,14 +85,20 @@ class KKHomeViewController: KKBaseViewController {
     @IBOutlet weak var messageUnreadViewWidth: NSLayoutConstraint!
     @IBOutlet weak var messageUnreadViewMarginRight: NSLayoutConstraint!
 
-    var messageUnread = false
+    @IBOutlet weak var languageContainer: UIView!
+    @IBOutlet weak var languageContainerWidth: NSLayoutConstraint!
+    @IBOutlet weak var languageContainerHeight: NSLayoutConstraint!
     
+    var messageUnread = false
+    var showLanguageContainer = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        initialLanguageContainer()
         initialLayout()
         initFlowLayout()
-
+        
         if KKSingleton.sharedInstance.groupPlatformArray.count > 0 {
             self.menuCollectionView.reloadData()
             self.selectedDefaultSideMenu()
@@ -122,7 +128,59 @@ class KKHomeViewController: KKBaseViewController {
     @objc private func getNotified(notification: NSNotification){
         if (KKUtil.isUserLogin()) {
             self.getMemberLandingAPI()
+            self.getGroupAndPlatformAPI()
             self.getInboxReadStatusAPI()
+        }
+    }
+    
+    func initialLanguageContainer() {
+        languageContainer.backgroundColor = UIColor(white: 0, alpha: 0.9)
+        languageContainer.layer.cornerRadius = KKUtil.ConvertSizeByDensity(size: 8)
+        languageContainerWidth.constant = KKUtil.ConvertSizeByDensity(size: 150)
+        
+        if KKSingleton.sharedInstance.languageArray.count > 0 {
+            var index = 0
+            var startY: CGFloat = 0
+            for language in KKSingleton.sharedInstance.languageArray {
+                let button = UIButton()
+                button.tag = index
+                button.backgroundColor = .clear
+                button.setTitle(language.name, for: .normal)
+                button.titleLabel?.font =  UIFont.systemFont(ofSize: KKUtil.ConvertSizeByDensity(size: 12))
+                button.addTarget(self, action: #selector(changeLanguage(sender:)), for: .touchUpInside)
+                index += 1
+                
+                button.frame = CGRect(x: 0, y: startY, width: languageContainerWidth.constant, height: KKUtil.ConvertSizeByDensity(size: 30))
+                languageContainer.addSubview(button)
+                startY += KKUtil.ConvertSizeByDensity(size: 30)
+            }
+            languageContainerHeight.constant = startY
+        }
+    }
+    
+    func updateLanguageContainerVisible() {
+        if showLanguageContainer {
+            languageContainer.isHidden = false
+        } else {
+            languageContainer.isHidden = true
+        }
+    }
+    
+    @objc func changeLanguage(sender: UIButton) {
+        if let locale = KKSingleton.sharedInstance.languageArray[sender.tag].locale {
+            self.showAnimatedLoader()
+
+            KKApiClient.updateUserLanguagePreference(languageCode: locale).execute { response in
+                self.showLanguageContainer = false
+                self.updateLanguageContainerVisible()
+                
+                NotificationCenter.default.post(name: Notification.Name("NotificationUpdateProfile"), object: nil)
+                self.showAlertView(type: .Success, alertMessage: response.message ?? "")
+                self.hideAnimatedLoader()
+            } onFailure: { errorMessage in
+                self.hideAnimatedLoader()
+                self.showAlertView(type: .Error, alertMessage: errorMessage)
+            }
         }
     }
     
@@ -194,6 +252,8 @@ class KKHomeViewController: KKBaseViewController {
 
         imgArrowUp.transform = imgArrowUp.transform.rotated(by: .pi)
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
         
         self.imgArrowUp.alpha = 0
         self.imgArrowDown.alpha = 1
@@ -286,12 +346,6 @@ class KKHomeViewController: KKBaseViewController {
         self.addChild(vc)
     }
     
-    func animateHideBubble() {
-        UIView.animate(withDuration: 10.0, animations: {
-            self.announcementBubble.isHidden = true
-        })
-    }
-    
     func showLoginPopup() {
         let viewController = KKLoginViewController()
         viewController.homeViewController = self
@@ -317,11 +371,16 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnLoginDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
+        
         showLoginPopup()
     }
     
     @IBAction func btnRegisterDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
         
         let viewController = KKOTPViewController()
         viewController.homeViewController = self
@@ -331,6 +390,9 @@ class KKHomeViewController: KKBaseViewController {
 
     @IBAction func btnRefreshDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
+        
         if !KKUtil.isUserLogin() {
             showLoginPopup()
             return
@@ -341,6 +403,9 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnCountryDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
+        
         if KKUtil.isUserLogin() {
             return
         }
@@ -350,30 +415,47 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnMissionDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
+        
         self.showAlertView(type: .Error, alertMessage: "Coming soon!")
     }
     
     @IBAction func btnBonusDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
+        
         self.present(KKBonusViewController(), animated: false, completion: nil)
     }
     
     @IBAction func btnSettingsDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
+        
         self.present(KKSettingsViewController(), animated: false, completion: nil)
     }
     
     @IBAction func btnLanguageDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = !showLanguageContainer
+        updateLanguageContainerVisible()
     }
     
     @IBAction func btnAnnouncementDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
+        
         self.present(KKAnnouncementViewController(), animated: false, completion: nil)
     }
     
     @IBAction func btnAffiliatesDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
+        
         if !KKUtil.isUserLogin() {
             showLoginPopup()
             return
@@ -384,6 +466,9 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnRebateDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
+        
         if !KKUtil.isUserLogin() {
             showLoginPopup()
             return
@@ -394,6 +479,9 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnMessageDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
+        
         if !KKUtil.isUserLogin() {
             showLoginPopup()
             return
@@ -404,15 +492,23 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnSupportDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
+        
         self.navigationController?.pushViewController(KKSupportViewController(), animated: true)
     }
     
     @IBAction func btnMoreDidPressed(){
         announcementBubble.isHidden = !announcementBubble.isHidden
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
     }
     
     @IBAction func btnDepositDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
+        
         if !KKUtil.isUserLogin() {
             showLoginPopup()
             return
@@ -423,6 +519,9 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnWithdrawDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
+        
         if !KKUtil.isUserLogin() {
             showLoginPopup()
             return
@@ -433,6 +532,9 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnUpDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
+        
         if (KKSingleton.sharedInstance.groupPlatformArray.count > 0) {
             self.menuCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .bottom, animated: true)
         }
@@ -440,6 +542,9 @@ class KKHomeViewController: KKBaseViewController {
     
     @IBAction func btnDownDidPressed(){
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
+        
         if (KKSingleton.sharedInstance.groupPlatformArray.count > 0) {
             self.menuCollectionView.scrollToItem(at: IndexPath(item: KKSingleton.sharedInstance.groupPlatformArray.count - 1, section: 0), at: .top, animated: true)
         }
@@ -653,6 +758,9 @@ extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
+        
         selectedGameType = indexPath.item
         updateLobbyBackgroundImage(gameType: selectedGameType)
         
@@ -681,6 +789,8 @@ extension KKHomeViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         announcementBubble.isHidden = true
+        showLanguageContainer = false
+        updateLanguageContainerVisible()
         
         if (indexPath.row >= KKSingleton.sharedInstance.groupPlatformArray.count - 1) {
             UIView.animate(withDuration: 0.3, animations: {

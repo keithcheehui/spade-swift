@@ -47,7 +47,7 @@ class KKDepositRequestViewController: KKBaseViewController {
     
     @IBOutlet weak var lblReceipt: UILabel!
     @IBOutlet weak var lblReceiptValue: UILabel!
-    @IBOutlet weak var receiptButtonContainer: UIView!
+    @IBOutlet weak var imgReceiptButton: UIImageView!
     
     @IBOutlet weak var bankSectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var textFieldHeight: NSLayoutConstraint!
@@ -297,17 +297,16 @@ class KKDepositRequestViewController: KKBaseViewController {
     
     func uploadedReceipt(isUploaded: Bool){
         if (isUploaded){
-            lblReceiptValue.text = "Receipt.jpeg"
             lblReceiptValue.isHidden = false
-            receiptButtonContainer.isHidden = true
+            imgReceiptButton.isHidden = true
         } else {
             lblReceiptValue.isHidden = true
-            receiptButtonContainer.isHidden = false
+            imgReceiptButton.isHidden = false
         }
     }
     
     //MARK:- API Calls
-    func validate() {
+//    func validate() {
 //        if (txtBankName.text!.isEmpty) {
 //            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_bank_empty"))
 //            return
@@ -342,9 +341,9 @@ class KKDepositRequestViewController: KKBaseViewController {
 //            self.showAlertView(type: .Error, alertMessage: KKUtil.languageSelectedStringForKey(key: "error_deposit_image_empty"))
 //            return
 //        }
-        
-        depositAPI()
-    }
+//
+//        depositAPI()
+//    }
     
     func depositAPI() {
         self.showAnimatedLoader()
@@ -375,10 +374,6 @@ class KKDepositRequestViewController: KKBaseViewController {
     }
     
     ///Button Actions
-    @IBAction func btnBankNameDidPressed(){
-
-    }
-    
     @IBAction func btnCopyDidPressed(){
         if let value = lblAccountNumberValue.text {
             if value.isEmpty {
@@ -390,19 +385,7 @@ class KKDepositRequestViewController: KKBaseViewController {
         }
     }
     
-//    @IBAction func btnDepositHistoryDidPressed(){
-//        self.depositHistoryAPI()
-//    }
-    
     @IBAction func btnUploadDidPressed(){
-//        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-//            imagePicker.delegate = self
-//            imagePicker.sourceType = .savedPhotosAlbum
-//            imagePicker.allowsEditing = false
-//
-//            present(imagePicker, animated: true, completion: nil)
-//        }
-        
         pickerController.delegate = self
         pickerController.allowsEditing = true
         pickerController.mediaTypes = ["public.image"]
@@ -411,7 +394,7 @@ class KKDepositRequestViewController: KKBaseViewController {
     }
     
     @IBAction func btnSubmitDidPressed(){
-        validate()
+        depositAPI()
     }
     
     @objc
@@ -540,13 +523,15 @@ extension KKDepositRequestViewController: UINavigationControllerDelegate, UIImag
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.editedImage] as? UIImage else { return }
-
-        let imageName = "receipt"
+        
+        guard let fileUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL else { return }
+        let imageName = fileUrl.lastPathComponent
         let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
    
         if let jpegData = image.jpegData(compressionQuality: 0.8) {
             try? jpegData.write(to: imagePath)
             selectedImageData = jpegData
+            self.lblReceiptValue.text = imageName
             uploadedReceipt(isUploaded: true)
         }
 
