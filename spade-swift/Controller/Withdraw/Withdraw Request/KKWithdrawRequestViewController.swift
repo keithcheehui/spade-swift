@@ -84,8 +84,6 @@ class KKWithdrawRequestViewController: KKBaseViewController {
         let currency = KKUtil.decodeUserCountryFromCache().currency ?? ""
 
         if let minWithdraw = min, let maxWithdraw = max {
-//            let minFloat = KKUtil.addCurrencyFormatWithInt(value: minWithdraw)
-//            let maxFloat = KKUtil.addCurrencyFormatWithInt(value: maxWithdraw)
             lblNotice.text = String(format: KKUtil.languageSelectedStringForKey(key: "withdraw_notice"), currency, minWithdraw, currency, maxWithdraw)
         } else {
             lblNotice.text = String(format: KKUtil.languageSelectedStringForKey(key: "withdraw_notice"), currency, 0, currency, 0)
@@ -106,18 +104,6 @@ class KKWithdrawRequestViewController: KKBaseViewController {
         if (userBankList.isEmpty) {
             return
         }
-        
-//        if txtWithdrawAmount.text!.count == 0 {
-//            let min = userBankList[selectedBankItem].bank?.minWithdrawal ?? ""
-//            let max = userBankList[selectedBankItem].bank?.maxWithdrawal ?? ""
-//            let currency = KKUtil.decodeUserCountryFromCache().currency ?? ""
-//
-//            let message = String(format: KKUtil.languageSelectedStringForKey(key: "withdraw_notice"), currency, min, currency, max)
-//
-//            self.showAlertView(type: .Error, alertMessage: message)
-//            return
-//        }
-        
         withdrawAPI()
     }
     

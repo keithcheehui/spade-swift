@@ -56,7 +56,6 @@ class KKDepositRequestViewController: KKBaseViewController {
     @IBOutlet weak var depositItemMargin: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmHeight: NSLayoutConstraint!
     
-//    var imagePicker = UIImagePickerController()
     let pickerController = UIImagePickerController()
 
     var dataResults: KKPageDataResults!
@@ -283,8 +282,6 @@ class KKDepositRequestViewController: KKBaseViewController {
     
     func updatePlaceholder(min: String?, max: String?) {
         if let minWithdraw = min, let maxWithdraw = max {
-//            let minFloat = KKUtil.addCurrencyFormatWithInt(value: minWithdraw)
-//            let maxFloat = KKUtil.addCurrencyFormatWithInt(value: maxWithdraw)
             let placeholder = String(format: KKUtil.languageSelectedStringForKey(key: "deposit_amount_placeholder"), minWithdraw, maxWithdraw)
             
             txtDepositAmount.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.spade_grey_BDBDBD])
@@ -427,9 +424,6 @@ class KKDepositRequestViewController: KKBaseViewController {
             selectedPromoItem = selectedPickerItem
             break
             
-//        case CurrentPicker.date.rawValue:
-//            break
-
         default: break
         }
         

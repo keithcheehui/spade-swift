@@ -94,7 +94,6 @@ class KKHomeViewController: KKBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         initialLanguageContainer()
         initialLayout()
         initFlowLayout()

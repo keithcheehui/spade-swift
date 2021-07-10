@@ -40,7 +40,6 @@ class KKRegistrationViewController: KKBaseViewController {
     @IBOutlet weak var usernameContainerMarginLeft: NSLayoutConstraint!
     @IBOutlet weak var usernameContainerMarginRight: NSLayoutConstraint!
     @IBOutlet weak var passwordContainerMarginTop: NSLayoutConstraint!
-//    @IBOutlet weak var confirmPasswordContainerMarginTop: NSLayoutConstraint!
     @IBOutlet weak var btnConfirmContainerMarginBottom: NSLayoutConstraint!
     
     var verifiedPhoneNumber: String!
@@ -49,7 +48,6 @@ class KKRegistrationViewController: KKBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         initialLayout()
     }
     

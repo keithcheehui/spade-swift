@@ -24,8 +24,6 @@ class KKRebateViewController: KKBaseViewController {
     var selectedViewType = AffiliatteSideMenu.myAffiliate.rawValue
     
     var tabGroupArray: [KKUserBettingGroupDetails]! = []
-//    var payoutArray: [KKPayoutGroup]! = []
-//    var transactionArray: [KKTransactionTransactions]! = []
     var tableArray: [KKTableGroups]! = []
     var rebateInfo: KKRebateProfileRebate!
 
@@ -137,26 +135,6 @@ class KKRebateViewController: KKBaseViewController {
             self.hideAnimatedLoader()
         }
     }
-    
-//    func getRebatePayoutAPI() {
-//        self.showAnimatedLoader()
-//        KKApiClient.getRebatePayout().execute { response in
-//            self.hideAnimatedLoader()
-//            self.payoutArray = response.results?.group
-//        } onFailure: { errorMessage in
-//
-//        }
-//    }
-//    
-//    func getRebateTransactionAPI() {
-//        self.showAnimatedLoader()
-//        KKApiClient.getRebateTransaction().execute { response in
-//            self.hideAnimatedLoader()
-//            self.transactionArray = response.results?.commissionTransactions
-//        } onFailure: { errorMessage in
-//
-//        }
-//    }
     
     func getRebateTableAPI() {
         KKApiClient.getRebateTable().execute { response in

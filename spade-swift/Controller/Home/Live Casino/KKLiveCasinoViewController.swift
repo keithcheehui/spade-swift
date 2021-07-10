@@ -36,7 +36,6 @@ class KKLiveCasinoViewController: KKBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         initialLayout()
         
         let flowLayout = UICollectionViewFlowLayout()
@@ -68,8 +67,6 @@ class KKLiveCasinoViewController: KKBaseViewController {
     
     func defaultValue() {
         imgBG.setUpImage(with: liveCasinoArray[selectedLiveCasinoIndex].img2)
-//        imgGameIcon.setUpImage(with: liveCasinoArray[selectedLiveCasinoIndex].img)
-//        lblGameName.text = liveCasinoArray[selectedLiveCasinoIndex].name!
         imgGameIcon.isHidden = true
         lblGameName.isHidden = true
     }
@@ -108,9 +105,6 @@ extension KKLiveCasinoViewController: UICollectionViewDelegate, UICollectionView
         }
         
         cell.img4.setUpImage(with: liveCasinoArray[indexPath.item].img)
-//        cell.imgGirlIcon.setUpImage(with: liveCasinoArray[indexPath.item].img2)
-//        cell.imgGameIcon.setUpImage(with: liveCasinoArray[indexPath.item].img)
-//        cell.lblGameName.text = liveCasinoArray[indexPath.item].name!
 
         if (selectedLiveCasinoIndex == indexPath.row){
             cell.imgHover.isHidden = false
@@ -126,7 +120,5 @@ extension KKLiveCasinoViewController: UICollectionViewDelegate, UICollectionView
         gameCollectionView.reloadData()
         
         imgBG.setUpImage(with: liveCasinoArray[indexPath.item].img2)
-//        imgGameIcon.setUpImage(with: liveCasinoArray[indexPath.item].img)
-//        lblGameName.text = liveCasinoArray[indexPath.item].name!
     }
 }

@@ -184,12 +184,13 @@ class KKGeneralTableViewController: KKBaseViewController {
         switch tableViewType {
         
         case .BettingRecord:
+            leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")
             rightTitle = KKUtil.languageSelectedStringForKey(key: "picker_game_platform")
 //            if (selectedRightItem == nil) {
 //                selectedRightItem = rightDropdownOptions[0]
 //            }
             
-            self.showTopContainer(shouldShow: true, withRightPicker: true)
+            self.showTopContainer(shouldShow: true, withLeftPicker: true, withRightPicker: true)
             
         case .AccountDetails:
             leftTitle = KKUtil.languageSelectedStringForKey(key: "picker_trans_time")

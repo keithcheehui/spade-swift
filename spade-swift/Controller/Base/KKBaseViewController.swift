@@ -20,10 +20,7 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     var datePickerView: UIDatePicker = UIDatePicker()
     var pickerToolBarView: UIToolbar = UIToolbar()
     
-//    var pickerTimeArray: [PickerDetails] = []
-//    var pickerStatusArray: [PickerDetails] = []
     var pickerGenderArray: [PickerDetails] = []
-//    var pickerTransTypeArray: [PickerDetails] = []
 
     var dataArray: [PickerDetails] = []
     var pickerTextField: UITextField!
@@ -50,11 +47,7 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
             activityIndicator.frame = CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.height)
         }
         
-//        self.setupPickerTimeOptions()
-//        self.setupWithdrawStatusOptions()
         self.setupGenderOptions()
-//        self.setupTransTypeOptions()
-        
         self.setupPickerView()
         self.setupDatePickerView()
     }
@@ -65,77 +58,6 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.navigationController?.isNavigationBarHidden = true
     }
-    
-//    func setupPickerTimeOptions() {
-//        pickerTimeArray.removeAll()
-//
-//        var details = PickerDetails.init()
-//        for item in FilterDuration.allCases {
-//            switch item {
-//            case .all:
-//                details.id = ""
-//                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_all")
-//
-////            case .td:
-////                details.id = item.rawValue
-////                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_td")
-////
-////            case .yd:
-////                details.id = item.rawValue
-////                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_yd")
-//
-//            case .l7d:
-//                details.id = item.rawValue
-//                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_l7d")
-//
-////            case .tm:
-////                details.id = item.rawValue
-////                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_tm")
-//
-//
-////            case .lm:
-////                details.id = item.rawValue
-////                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_lm")
-//
-//            case .l30d:
-//                details.id = item.rawValue
-//                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_l30d")
-//
-////            case .l90d:
-////                details.id = item.rawValue
-////                details.name = KKUtil.languageSelectedStringForKey(key: "picker_fd_l90d")
-//            }
-//
-//            pickerTimeArray.append(details)
-//        }
-//    }
-//
-//    func setupWithdrawStatusOptions() {
-//        pickerStatusArray.removeAll()
-//
-//        var details = PickerDetails.init()
-//        for item in HistoryStatus.allCases {
-//            switch item {
-//            case .all:
-//                details.id = ""
-//                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_all_status")
-//
-//            case .success:
-//                details.id = item.rawValue
-//                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_success")
-//
-//            case .fail:
-//                details.id = item.rawValue
-//                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_fail")
-//
-//
-//            case .pending:
-//                details.id = item.rawValue
-//                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_pending")
-//            }
-//            pickerStatusArray.append(details)
-//        }
-//    }
     
     func setupGenderOptions() {
         pickerGenderArray.removeAll()
@@ -154,29 +76,6 @@ class KKBaseViewController: UIViewController, UIGestureRecognizerDelegate {
             pickerGenderArray.append(details)
         }
     }
-    
-//    func setupTransTypeOptions() {
-//        pickerTransTypeArray.removeAll()
-//
-//        var details = PickerDetails.init()
-//        for item in TransactionType.allCases {
-//            switch item {
-//            case .all:
-//                details.id = ""
-//                details.name = KKUtil.languageSelectedStringForKey(key: "picker_ws_all_type")
-//
-//            case .collect:
-//                details.id = item.rawValue
-//                details.name = KKUtil.languageSelectedStringForKey(key: "picker_type_collect")
-//
-//
-//            case .payout:
-//                details.id = item.rawValue
-//                details.name = KKUtil.languageSelectedStringForKey(key: "picker_type_payout")
-//            }
-//            pickerTransTypeArray.append(details)
-//        }
-//    }
     
     //MARK:- Picker View
     func setupPickerView() {

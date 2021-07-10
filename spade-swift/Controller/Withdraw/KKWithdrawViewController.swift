@@ -132,12 +132,6 @@ class KKWithdrawViewController: KKBaseViewController {
         contentView.addSubview(vc.view)
         self.addChild(vc)
     }
-    
-//    func changeToHoverBankCard() {
-//        selectedViewType = WithdrawSideMenu.bankCard.rawValue
-//        buttonHover(type: selectedViewType)
-//        changeView(vc: KKAddBankViewController())
-//    }
 }
 
 extension KKWithdrawViewController: UITableViewDataSource, UITableViewDelegate {
