@@ -94,6 +94,14 @@
 "user_info_gender_male"                     = "Male";
 "user_info_gender_female"                   = "Female";
 
+//MARK: Wallet
+"wallet_platform_wallet_balance" = "Platform Wallet Balance";
+"wallet_total_wallet" = "Total Wallet";
+"wallet_transfer" = "Transfer";
+"wallet_from" = "From";
+"wallet_to" = "To";
+"wallet_swap" = "Press to swap";
+
 //MARK: Settings
 "settings_volume_setting"                   = "Volume Setting";
 "settings_change_password"                  = "Change Password";

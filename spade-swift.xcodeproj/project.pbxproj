@@ -252,13 +252,13 @@
 		53E2FF232658CA3A0017CA67 /* KKBonusMenuTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E2FF222658CA3A0017CA67 /* KKBonusMenuTableCell.xib */; };
 		53E2FF282658CC730017CA67 /* KKBonusItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2FF272658CC730017CA67 /* KKBonusItemCell.swift */; };
 		53E2FF2B2658CC820017CA67 /* KKBonusItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E2FF2A2658CC820017CA67 /* KKBonusItemCell.xib */; };
+		53EE4C8A269ABF7A0007FB15 /* KKWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EE4C89269ABF7A0007FB15 /* KKWalletViewController.swift */; };
+		53EE4C8C269ABF820007FB15 /* KKWalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53EE4C8B269ABF820007FB15 /* KKWalletViewController.xib */; };
 		53F0801F26962F3B00B5D8DE /* KKRebateProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F0801A26962F3A00B5D8DE /* KKRebateProfileResponse.swift */; };
 		53F0802126962F3B00B5D8DE /* KKRebateProfileRebate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F0801C26962F3A00B5D8DE /* KKRebateProfileRebate.swift */; };
 		53F0802226962F3B00B5D8DE /* KKRebateProfileResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F0801D26962F3A00B5D8DE /* KKRebateProfileResults.swift */; };
 		53F21F962686E03500A44911 /* KKTabListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F21F942686E03500A44911 /* KKTabListItemCell.swift */; };
 		53F21F972686E03500A44911 /* KKTabListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F21F952686E03500A44911 /* KKTabListItemCell.xib */; };
-		53F21FB026871DDE00A44911 /* KKIndividualReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F21FAE26871DDE00A44911 /* KKIndividualReportViewController.swift */; };
-		53F21FB126871DDE00A44911 /* KKIndividualReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F21FAF26871DDE00A44911 /* KKIndividualReportViewController.xib */; };
 		53F21FB82687AD4500A44911 /* KKDialogAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F21FB62687AD4500A44911 /* KKDialogAlertViewController.swift */; };
 		53F21FB92687AD4500A44911 /* KKDialogAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53F21FB72687AD4500A44911 /* KKDialogAlertViewController.xib */; };
 		53F21FBE2687C20900A44911 /* KKUserCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F21FBD2687C20800A44911 /* KKUserCountry.swift */; };
@@ -515,13 +515,13 @@
 		53E2FF222658CA3A0017CA67 /* KKBonusMenuTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKBonusMenuTableCell.xib; sourceTree = "<group>"; };
 		53E2FF272658CC730017CA67 /* KKBonusItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKBonusItemCell.swift; sourceTree = "<group>"; };
 		53E2FF2A2658CC820017CA67 /* KKBonusItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKBonusItemCell.xib; sourceTree = "<group>"; };
+		53EE4C89269ABF7A0007FB15 /* KKWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKWalletViewController.swift; sourceTree = "<group>"; };
+		53EE4C8B269ABF820007FB15 /* KKWalletViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKWalletViewController.xib; sourceTree = "<group>"; };
 		53F0801A26962F3A00B5D8DE /* KKRebateProfileResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKRebateProfileResponse.swift; sourceTree = "<group>"; };
 		53F0801C26962F3A00B5D8DE /* KKRebateProfileRebate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKRebateProfileRebate.swift; sourceTree = "<group>"; };
 		53F0801D26962F3A00B5D8DE /* KKRebateProfileResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKRebateProfileResults.swift; sourceTree = "<group>"; };
 		53F21F942686E03500A44911 /* KKTabListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKTabListItemCell.swift; sourceTree = "<group>"; };
 		53F21F952686E03500A44911 /* KKTabListItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKTabListItemCell.xib; sourceTree = "<group>"; };
-		53F21FAE26871DDE00A44911 /* KKIndividualReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKIndividualReportViewController.swift; sourceTree = "<group>"; };
-		53F21FAF26871DDE00A44911 /* KKIndividualReportViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKIndividualReportViewController.xib; sourceTree = "<group>"; };
 		53F21FB62687AD4500A44911 /* KKDialogAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKDialogAlertViewController.swift; sourceTree = "<group>"; };
 		53F21FB72687AD4500A44911 /* KKDialogAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KKDialogAlertViewController.xib; sourceTree = "<group>"; };
 		53F21FBD2687C20800A44911 /* KKUserCountry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKUserCountry.swift; sourceTree = "<group>"; };
@@ -1443,7 +1443,7 @@
 				5381676F26464B3900FC96A6 /* UserInfo */,
 				5390C0BB269A086400D6C35B /* VIP */,
 				53036EC1268AD795004592CE /* Avatar */,
-				53F21FB326871DE300A44911 /* IndividualReport */,
+				53EE4C88269ABD300007FB15 /* Wallet */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -1541,6 +1541,15 @@
 			path = "Bonus Item Cell";
 			sourceTree = "<group>";
 		};
+		53EE4C88269ABD300007FB15 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				53EE4C89269ABF7A0007FB15 /* KKWalletViewController.swift */,
+				53EE4C8B269ABF820007FB15 /* KKWalletViewController.xib */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
 		53F0802426962F3F00B5D8DE /* Rebate Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -1579,15 +1588,6 @@
 				53F21F952686E03500A44911 /* KKTabListItemCell.xib */,
 			);
 			path = "Tab List Item Cell";
-			sourceTree = "<group>";
-		};
-		53F21FB326871DE300A44911 /* IndividualReport */ = {
-			isa = PBXGroup;
-			children = (
-				53F21FAE26871DDE00A44911 /* KKIndividualReportViewController.swift */,
-				53F21FAF26871DDE00A44911 /* KKIndividualReportViewController.xib */,
-			);
-			path = IndividualReport;
 			sourceTree = "<group>";
 		};
 		53F21FBB2687AD4D00A44911 /* Alert */ = {
@@ -1685,7 +1685,6 @@
 				53E2FF1B2658C5B60017CA67 /* KKBonusContentViewController.xib in Resources */,
 				53268C0D263068F600ECAAE2 /* KKLoginViewController.xib in Resources */,
 				53268C062630612900ECAAE2 /* KKOnBoardingViewController.xib in Resources */,
-				53F21FB126871DDE00A44911 /* KKIndividualReportViewController.xib in Resources */,
 				0676B668263095EE0023311F /* Localizable.strings in Resources */,
 				06006E0526729AF400A2C8C9 /* Haarlem Deco DEMO.ttf in Resources */,
 				539A0FA4266343510098739E /* KKOTPViewController.xib in Resources */,
@@ -1734,6 +1733,7 @@
 				532FF60E264FD0B300999512 /* KKGuidelineViewController.xib in Resources */,
 				53AAAE092640191A004103F0 /* KKRebateViewController.xib in Resources */,
 				53963E0D2639A37400D803D4 /* KKSettingsViewController.xib in Resources */,
+				53EE4C8C269ABF820007FB15 /* KKWalletViewController.xib in Resources */,
 				53602F68265A5F0400137AD6 /* KKMessageTableCell.xib in Resources */,
 				53DF81D4265028FC00BA6119 /* KKSelectCountryViewController.xib in Resources */,
 				53F21FB92687AD4500A44911 /* KKDialogAlertViewController.xib in Resources */,
@@ -1833,7 +1833,6 @@
 				06BF5C352669814C00C10008 /* KKGroupPlatformGroups.swift in Sources */,
 				5390C0722698C89500D6C35B /* KKPayoutResults.swift in Sources */,
 				5390C0312698BA8A00D6C35B /* KKPageDataPromotions.swift in Sources */,
-				53F21FB026871DDE00A44911 /* KKIndividualReportViewController.swift in Sources */,
 				53E2FF182658C5A00017CA67 /* KKBonusContentViewController.swift in Sources */,
 				06E4DEF6267BFF9500482979 /* KKUserBettingPlatformDetails.swift in Sources */,
 				5390C0A22698E4EF00D6C35B /* KKUserProfileTier.swift in Sources */,
@@ -1892,6 +1891,7 @@
 				0676B624262FDC8F0023311F /* KKBaseViewController.swift in Sources */,
 				06E4DF02267C02B500482979 /* KKUserBettingHistoryResponse.swift in Sources */,
 				531428A5267497A300801FD9 /* KKLiveChatResults.swift in Sources */,
+				53EE4C8A269ABF7A0007FB15 /* KKWalletViewController.swift in Sources */,
 				06BF5C0F2669776E00C10008 /* KKOTPRequestResponse.swift in Sources */,
 				06BF5C3D2669833100C10008 /* KKPlatformProductResults.swift in Sources */,
 				53D301A2268EC95200BF909D /* KKHistoryResponse.swift in Sources */,
@@ -2136,7 +2136,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZB74P7LU6H;
 				INFOPLIST_FILE = "$(SRCROOT)/spade-swift/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2163,7 +2163,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = ZB74P7LU6H;
 				INFOPLIST_FILE = "$(SRCROOT)/spade-swift/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

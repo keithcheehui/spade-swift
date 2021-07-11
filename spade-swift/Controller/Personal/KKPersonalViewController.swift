@@ -167,8 +167,7 @@ class KKPersonalViewController: KKBaseViewController {
             changeView(vc: viewController)
             break;
         case PersonalSideMenu.wallet.rawValue:
-            let viewController = KKIndividualReportViewController.init()
-            viewController.tabGroupArray = tabGroupArray
+            let viewController = KKWalletViewController.init()
             changeView(vc: viewController)
             break;
         case PersonalSideMenu.bankCard.rawValue:
