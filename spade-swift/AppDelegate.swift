@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import OneSignal
 import IQKeyboardManagerSwift
 
 @main
@@ -15,6 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
+        // Replace 'YOUR_APP_ID' with your OneSignal App ID.
+        
+        OneSignal.initWithLaunchOptions(launchOptions,
+                                        appId: Spade.OneSignalCredential.appID,
+                                        handleNotificationAction: nil,
+                                        settings: onesignalInitSettings)
+        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
+
+        // Recommend moving the below line to prompt for push after informing the user about
+        //   how your app will use them.
+        OneSignal.promptForPushNotifications(userResponse: { accepted in
+        print("User accepted notifications: \(accepted)")
+        })
         
         if #available(iOS 13.0, *) {
             
@@ -50,6 +66,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 
+        let deviceTokenString = deviceToken.hexString
+        UserDefaults.standard.set(deviceTokenString, forKey: CacheKey.deviceToken)
+        UserDefaults.standard.synchronize()
+    }
 }
 

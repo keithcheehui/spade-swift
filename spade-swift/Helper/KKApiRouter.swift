@@ -83,6 +83,9 @@ enum ApiRouter: URLRequestConvertible {
     case changePassword(parameter: [String: Any])
     case logOutUser
     
+    //MARK:- Device Register/Remove
+    case deviceRegister(parameter: [String: Any])
+    case deviceRemoved(uuid: String)
     
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
@@ -143,6 +146,8 @@ enum ApiRouter: URLRequestConvertible {
              .rebateCollect,
              .affiliateCollect,
              .changePassword,
+             .deviceRegister,
+             .deviceRemoved,
              .logOutUser:
             return .post
             
@@ -323,6 +328,12 @@ enum ApiRouter: URLRequestConvertible {
         case .changePassword:
             return "member/password/change"
             
+        case .deviceRegister:
+            return "device/register"
+            
+        case .deviceRemoved(let uuid):
+            return String(format: "device/remove?uuid=%@", uuid)
+            
         case .logOutUser:
             return "logout"
         }
@@ -372,6 +383,7 @@ enum ApiRouter: URLRequestConvertible {
              .affiliateCollect(let parameter),
              .memberLandingData(let parameter),
              .updateUserLanguagePreference(let parameter),
+             .deviceRegister(let parameter),
              .changePassword(let parameter):
             return parameter
             
@@ -389,6 +401,7 @@ enum ApiRouter: URLRequestConvertible {
              .commissionTable,
              .getLatestWallet,
              .logOutUser,
+             .deviceRemoved,
              .deposit:
             return nil
         }

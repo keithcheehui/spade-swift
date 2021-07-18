@@ -113,15 +113,30 @@ class KKUtil: NSObject {
     
     ///logout user
     class func logOutUser() {
-        KKApiClient.logOutUser().execute { res in
-            cleanSet()
-            KKUtil.proceedToPage(vc: KKSplashScreenViewController.init())
+        
+        KKApiClient.deviceRemoved().execute { generalResponse in
+            
+            KKApiClient.logOutUser().execute { res in
+                cleanSet()
+                KKUtil.proceedToPage(vc: KKSplashScreenViewController.init())
+            } onFailure: { errorMessage in
+                cleanSet()
+                KKUtil.proceedToPage(vc: KKSplashScreenViewController.init())
+            }
+            
         } onFailure: { errorMessage in
-            cleanSet()
-            KKUtil.proceedToPage(vc: KKSplashScreenViewController.init())
+            
+            KKApiClient.logOutUser().execute { res in
+                cleanSet()
+                KKUtil.proceedToPage(vc: KKSplashScreenViewController.init())
+            } onFailure: { errorMessage in
+                cleanSet()
+                KKUtil.proceedToPage(vc: KKSplashScreenViewController.init())
+            }
         }
+        
     }
-    
+
     class func forceLogoutUser() {
         let viewController = KKHomeViewController()
         let alertView = KKCustomToastViewController.init(toastType: .Error, msgDesc: "Your credential had been expired. Please login again.")

@@ -499,6 +499,29 @@ class KKApiClient: NSObject {
     static func logOutUser() -> Future<KKGeneralResponse> {
         return performRequest(route: .logOutUser)
     }
+    
+    //MARK:- Device Register/Remove
+    
+    static func deviceRegister() -> Future<KKGeneralResponse> {
+                
+        let parameter = [
+            APIKeys.inUse: 1,
+            APIKeys.appVersion: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String,
+            APIKeys.os: Platform.iOS,
+            APIKeys.deviceToken: UserDefaults.standard.string(forKey: CacheKey.deviceToken) ?? "empty",
+            APIKeys.model: UIDevice.modelName,
+            APIKeys.osVersion: UIDevice.current.systemVersion,
+            APIKeys.uuid: UIDevice.current.identifierForVendor!.uuidString,
+            APIKeys.brand: Brand.apple
+        ] as [String : Any]
+        
+        return performRequest(route: .deviceRegister(parameter: parameter))
+    }
+    
+    static func deviceRemoved() -> Future<KKGeneralResponse> {
+        
+        return performRequest(route: .deviceRemoved(uuid: UIDevice.current.identifierForVendor!.uuidString))
+    }
 }
 
 extension URL {

@@ -110,10 +110,22 @@ class KKSplashScreenViewController: KKBaseViewController {
             KKTokenManager.setUserCredential(userCredential: userCredential)
             UserDefaults.standard.set(true, forKey: CacheKey.loginStatus)
             UserDefaults.standard.synchronize()
-            self.getMemberLandingAPI()
+            self.deviceRegister()
         } onFailure: { errorMessage in
             KKUtil.cleanSet()
             self.getAppVersionAPI()
+        }
+    }
+    
+    @objc func deviceRegister() {
+        
+        KKApiClient.deviceRegister().execute { generalResponse in
+            
+            self.getMemberLandingAPI()
+            
+        } onFailure: { errorMessage in
+            
+            self.getMemberLandingAPI()
         }
     }
     

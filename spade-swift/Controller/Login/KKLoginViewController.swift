@@ -153,11 +153,26 @@ class KKLoginViewController: KKBaseViewController {
             self.showAlertView(type: .Success, alertMessage: userCredential.message ?? "")
             NotificationCenter.default.post(name: Notification.Name("NotificationUpdateProfile"), object: nil)
 
+            self.deviceRegister()
+            
+        } onFailure: { errorMessage in
+            self.hideAnimatedLoader()
+            self.showAlertView(type: .Error, alertMessage: errorMessage)
+        }
+    }
+    
+    @objc func deviceRegister() {
+        
+        KKApiClient.deviceRegister().execute { generalResponse in
+            
+            self.hideAnimatedLoader()
             let when = DispatchTime.now() + 2
             DispatchQueue.main.asyncAfter(deadline: when){
                 self.dismissPresentedViewWithBackgroundFaded()
             }
+            
         } onFailure: { errorMessage in
+            
             self.hideAnimatedLoader()
             self.showAlertView(type: .Error, alertMessage: errorMessage)
         }

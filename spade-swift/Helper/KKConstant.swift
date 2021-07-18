@@ -67,6 +67,7 @@ struct CacheKey {
     static let username = "username"
     static let secret = "secret"
     static let rememberMe = "remember_me"
+    static let deviceToken = "device_token"
 }
 
 struct APIKeys {
@@ -112,6 +113,14 @@ struct APIKeys {
     static let avatarId = "avatar_id"
     static let amount = "amount"
     static let faqCode = "faq_code"
+    static let inUse = "in_use"
+    static let appVersion = "app_version"
+    static let os = "os"
+    static let deviceToken = "device_token"
+    static let model = "model"
+    static let osVersion = "os_version"
+    static let uuid = "uuid"
+    static let brand = "brand"
 }
 
 struct APIValue {
@@ -120,6 +129,10 @@ struct APIValue {
 
 struct Platform {
     static let iOS = "ios"
+}
+
+struct Brand {
+    static let apple = "Apple"
 }
 
 struct LoginType {
@@ -185,13 +198,19 @@ struct CellIdentifier {
 struct Spade {
     
     struct StagingServer {
-        static let baseApiURL: String = "https://lg-api.fteg.app/api/"
+        static let baseApiURL: String = "https://dev-apis.lg88.dev/api/"
     }
     
     struct ProdServer {
         static let baseApiURL: String = "https://live-lg-api.fteg.app/api/"
     }
+    
+    struct OneSignalCredential {
+        static let appID: String = "69fe838a-30bf-4eaa-b986-bbb01d48644d"
+    }
 }
+
+
 
 struct GameType {
     static let hotGame = 0
