@@ -332,7 +332,7 @@ enum ApiRouter: URLRequestConvertible {
             return "device/register"
             
         case .deviceRemoved(let uuid):
-            return String(format: "device/remove?uuid=%@", uuid)
+            return String(format: "%@device/remove?uuid=%@", Spade.StagingServer.baseApiURL, uuid)
             
         case .logOutUser:
             return "logout"
@@ -410,9 +410,15 @@ enum ApiRouter: URLRequestConvertible {
     // MARK: - URL Request
     func asURLRequest() throws -> URLRequest {
         
+        var urlRequest: URLRequest!
         let url : URL = try Spade.StagingServer.baseApiURL.asURL()
         
-        var urlRequest : URLRequest = URLRequest(url: url.appendingPathComponent(path))
+        if path.contains("https") {
+            urlRequest = URLRequest(url: URL(string: path)!)
+        }
+        else {
+            urlRequest = URLRequest(url: url.appendingPathComponent(path))
+        }
         
         if method.rawValue == "GET" && parameters != nil {
             
@@ -457,6 +463,4 @@ enum ApiRouter: URLRequestConvertible {
         
         return urlRequest
     }
-
-    
 }
